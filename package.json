@@ -1,0 +1,26 @@
+{
+  "name": "flexible-grid",
+  "version": "1.0.0",
+  "description": "A Sass flexbox grid system with backups for old browsers",
+  "main": "grid.scss",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dan503/flexible-grid.git"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "grid",
+    "system",
+    "flexbox"
+  ],
+  "author": "Daniel Tonon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dan503/flexible-grid/issues"
+  },
+  "homepage": "https://github.com/Dan503/flexible-grid#readme",
+  "devDependencies": {
+    "mq-scss": "^1.0.6"
+  }
+}
