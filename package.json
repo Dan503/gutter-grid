@@ -20,7 +20,7 @@
     "url": "https://github.com/Dan503/flexible-grid/issues"
   },
   "homepage": "https://github.com/Dan503/flexible-grid#readme",
-  "devDependencies": {
+  "dependencies": {
     "mq-scss": "^1.0.6"
   }
 }
