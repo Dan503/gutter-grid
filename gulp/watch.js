@@ -7,14 +7,11 @@ export default function(gulp, plugins, args, browserSync) {
       // Styles
       gulp.watch([
         '*.scss',
-        'website/**/*.scss'
+        'website-src/**/*.scss'
       ], ['sass']);
 
       gulp.watch([
-        'js/**/*.js',
-        'articles/**/*.php',
-        'includes/**/*.php',
-        '*.php'
+        'website-src/**/*.pug',
       ]).on('change', function () {
         browserSync.reload();
       });

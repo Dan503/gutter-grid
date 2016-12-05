@@ -1,13 +1,12 @@
 'use strict';
 
-import path from 'path';
 import autoprefixer from 'autoprefixer';
 import gulpif from 'gulp-if';
 
 export default function(gulp, plugins, args, browserSync) {
   // Sass compilation
   gulp.task('sass', () => {
-    gulp.src('website/custom-styles.scss')
+    gulp.src('website-src/custom-styles.scss')
       .pipe(plugins.plumber())
       .pipe(plugins.sourcemaps.init())
       .pipe(plugins.sass({

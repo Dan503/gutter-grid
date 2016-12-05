@@ -26,6 +26,7 @@ wrench.readdirSyncRecursive('./gulp').filter((file) => {
 // Default task
 gulp.task('default', [
   'sass',
+  'pug',
   'browserSync',
   'watch'
 ]);
