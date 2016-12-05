@@ -10,9 +10,10 @@ export default function(gulp, plugins, args, browserSync) {
         'website-src/**/*.scss'
       ], ['sass']);
 
+      //Pug
       gulp.watch([
         'website-src/**/*.pug',
-      ]).on('change', function () {
+      ], ['pug'], ()=>{
         browserSync.reload();
       });
   });
