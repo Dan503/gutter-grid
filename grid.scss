@@ -97,7 +97,11 @@ $grid-bp-list: if(
 
 //base grid styling
 .#{$fullPrefix}grid {
-	@extend %noDots;
+	box-sizing: border-box;
+	list-style: none;
+	display: block;
+	margin: 0;
+	padding: 0;
 	min-width: 100%;
 	border: 0 solid #000;
 	display: flex!important;
@@ -110,6 +114,7 @@ $grid-bp-list: if(
 
 //base grid__cell styling
 	&__cell {
+		box-sizing: border-box;
 		min-width: 0%;
 		max-width: 100%;
 		display: block;
@@ -340,7 +345,11 @@ $grid-bp-list: if(
 		&--vAlign > .#{$fullPrefix}grid__cell { vertical-align: middle; }
 		&--vertical {
 			display: block;
-			@include MG-clearfix;
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
 			& > .#{$fullPrefix}grid__cell {
 				float: left;
 				display: block;

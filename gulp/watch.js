@@ -6,7 +6,8 @@ export default function(gulp, plugins, args, browserSync) {
   gulp.task('watch', ['browserSync'], () => {
       // Styles
       gulp.watch([
-        'scss/**/*.scss',
+        '*.scss',
+        'website/**/*.scss'
       ], ['sass']);
 
       gulp.watch([

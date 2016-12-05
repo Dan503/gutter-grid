@@ -6,10 +6,12 @@ export default function(gulp, plugins, args, browserSync) {
 	gulp.task('browserSync', () => {
 
 		if (!args.open){
-			console.log('\n  Use "gulp --open" to open a browser window with the site loaded in it.\n')
+			console.log('\n  Use "gulp --open" to open a browser window with the site loaded in it.\n');
 		}
 
 		browserSync.init({
+			debugInfo: false,
+			server: "./website",
 			open: args.open ? 'local' : false,
 			port: 3000
 		});

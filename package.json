@@ -2,6 +2,9 @@
   "name": "flexible-grid",
   "version": "1.0.0",
   "description": "A Sass flexbox grid system with backups for old browsers",
+  "dependencies": {
+    "mq-scss": "^1.0.7"
+  },
   "devDependencies": {
     "autoprefixer": "~6.3.1",
     "babel-cli": "^6.11.4",
@@ -40,8 +43,5 @@
   "bugs": {
     "url": "https://github.com/Dan503/flexible-grid/issues"
   },
-  "homepage": "https://github.com/Dan503/flexible-grid#readme",
-  "dependencies": {
-    "mq-scss": "^1.0.6"
-  }
+  "homepage": "https://github.com/Dan503/flexible-grid#readme"
 }
