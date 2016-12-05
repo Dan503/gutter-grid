@@ -25,6 +25,7 @@
     "gulp-pug": "^3.2.0",
     "gulp-sass": "~2.3.2",
     "gulp-sourcemaps": "~1.6.0",
+    "jstransformer-marked": "^1.0.1",
     "pug": "^2.0.0-beta6",
     "wrench": "~1.5.8"
   },
