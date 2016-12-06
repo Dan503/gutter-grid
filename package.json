@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A Sass flexbox grid system with backups for old browsers",
   "dependencies": {
+    "customizr": "^1.0.0-alpha",
     "mq-scss": "^1.0.7"
   },
   "devDependencies": {
@@ -20,11 +21,13 @@
     "gulp-cssnano": "^2.1.2",
     "gulp-if": "^2.0.2",
     "gulp-load-plugins": "^1.4.0",
+    "gulp-modernizr": "^1.0.0-alpha",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "~6.0.1",
     "gulp-pug": "^3.2.0",
     "gulp-sass": "~2.3.2",
     "gulp-sourcemaps": "~1.6.0",
+    "gulp-uglify": "^2.0.0",
     "jstransformer-marked": "^1.0.1",
     "pug": "^2.0.0-beta6",
     "wrench": "~1.5.8"

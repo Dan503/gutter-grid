@@ -18,15 +18,16 @@ const browserSync = browserSyncLib.create();
 // This will grab all js in the `gulp` directory
 // in order to load all gulp tasks
 wrench.readdirSyncRecursive('./gulp').filter((file) => {
-  return (/\.(js)$/i).test(file);
+	return (/\.(js)$/i).test(file);
 }).map(function(file) {
-  require('./gulp/' + file)(gulp, plugins, args, browserSync);
+	require('./gulp/' + file)(gulp, plugins, args, browserSync);
 });
 
 // Default task
 gulp.task('default', [
-  'sass',
-  'pug',
-  'browserSync',
-  'watch'
+	'modernizr',
+	'sass',
+	'pug',
+	'browserSync',
+	'watch'
 ]);

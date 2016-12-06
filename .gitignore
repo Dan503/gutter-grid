@@ -2,3 +2,4 @@ node_modules/
 index.html
 custom-styles.css
 custom-styles.css.map
+modernizr.min.js
