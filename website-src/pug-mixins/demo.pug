@@ -1,0 +1,12 @@
+
+-
+	function render(pugMarkup, settings, locals){
+		return compile(pugMarkup, { pretty: true })(locals);
+	}
+
+mixin demo(pugMarkup)
+	-var html = render(pugMarkup)
+
+	!=html
+	pre
+		=html

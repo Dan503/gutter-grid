@@ -4,6 +4,8 @@ import pug from 'pug';
 
 export default function(gulp, plugins, args, browserSync) {
 
+	const pugFilters = [ require('marked') ];
+
 	// Sass compilation
 	gulp.task('pug', () => {
 		gulp.src('website-src/*.pug')
@@ -11,10 +13,12 @@ export default function(gulp, plugins, args, browserSync) {
 			.pipe(plugins.pug({
 				pug: pug,
 				basedir: 'website-src',
-				filters: [ require('marked') ],
+				filters: pugFilters,
 				pretty: true,
 				locals: {
 					require,
+					pugFilters,
+					compile: pug.compile
 				}
 			}))
 			.pipe(gulp.dest('website'))
