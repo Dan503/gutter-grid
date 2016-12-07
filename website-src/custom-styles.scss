@@ -25,3 +25,9 @@ footer {
 .grid {
 	min-height: 100px;
 }
+
+.markdown-body pre {
+	&, &.lines {
+		margin: 0;
+	}
+}
