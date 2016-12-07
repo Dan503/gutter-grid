@@ -4,9 +4,10 @@
 		return compile(pugMarkup, { pretty: true })(locals);
 	}
 
-mixin demo(demoMarkup, type)
-	-var type = typeof type !== 'undefined' ? type : 'html';
-	-var markup = type === 'html' ? render(demoMarkup) : demoMarkup;
+mixin demo(demoMarkup)
+	-var isObj = typeof demoMarkup === 'object' && !Array.isArray(demoMarkup);
+
+	-var html = isObj ? render(demoMarkup.html) : render(demoMarkup);
 
 	aside.demo
 		if block
@@ -14,7 +15,15 @@ mixin demo(demoMarkup, type)
 				block
 		.demo__example
 			.demo__result.demo__segment
-				!=markup
-			.demo__markup.demo__segment
-				pre
-					code(class=type)= markup
+				!=html
+
+			if isObj
+				each markup, type in demoMarkup
+					- markup = type === 'html' ? html : markup;
+					.demo__markup.demo__segment(class=type)
+						pre
+							code(class=type)= markup
+			else
+				.demo__markup.demo__segment
+					pre
+						code.html= html

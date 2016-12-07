@@ -79,5 +79,11 @@ footer {
 		&:before {
 			content: 'Markup';
 		}
+		&.html:before {
+			content: 'HTML';
+		}
+		&.scss:before {
+			content: 'Sass';
+		}
 	}
 }

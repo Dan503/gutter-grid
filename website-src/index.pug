@@ -45,10 +45,13 @@ html
 
 							If you prefer to not use the automatic generator, push a branch named `gh-pages` to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.
 
-						+demo(`
+						+demo({
+html:`
 .grid.grid--cols-2
 	.grid__cell.-color-1
-	.grid__cell.-color-2`)
+	.grid__cell.-color-2`,
+scss:`
+$variable: red;`})
 							:marked
 								Summary text for the demo goes here
 
