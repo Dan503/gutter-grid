@@ -8,8 +8,17 @@ body {
 	padding: 0 20px;
 }
 
-.wrapper {
+h2,h3,h4,p,ul,ol{
+	&:first-child { margin-top: 0; }
+	&:last-child { margin-bottom: 0; }
+}
+
+.wrapper, .current-section {
+	width: 100%;
 	max-width: bp('page');
+	margin: 0 auto;
+	left: 0;
+	right: 0;
 }
 
 footer {
@@ -22,12 +31,52 @@ footer {
     }
 }
 
-.grid {
+.grid__cell {
 	min-height: 100px;
 }
 
 .markdown-body pre {
+	padding: 0;
 	&, &.lines {
 		margin: 0;
+	}
+	code {
+		padding: {bottom: 10px; top: 10px; }
+	}
+}
+
+.demo {
+	margin: 60px 0 35px;
+	&__segment {
+		position: relative;
+		margin-top: 45px;
+		&:before {
+			content: 'label';
+			position: absolute;
+			bottom: 100%;
+			left: 0;
+			padding: 5px 10px;
+			background: #000;
+			color: #fff;
+			border-radius: 5px 5px 0 0;
+		}
+	}
+	&__summary {
+		background-color: #CDDEC4;
+		padding: 20px;
+		margin-bottom: 10px;
+		&:before {
+			content: 'Summary';
+		}
+	}
+	&__result {
+		&:before {
+			content: 'Example';
+		}
+	}
+	&__markup {
+		&:before {
+			content: 'Markup';
+		}
 	}
 }

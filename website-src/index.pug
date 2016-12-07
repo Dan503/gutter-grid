@@ -49,6 +49,8 @@ html
 .grid.grid--cols-2
 	.grid__cell.-color-1
 	.grid__cell.-color-2`)
+							:marked
+								Summary text for the demo goes here
 
 			footer
 				.owner
@@ -67,5 +69,9 @@ html
 			a.code(href='') source code
 			p.name
 
+		link(rel='stylesheet', href='/stylesheets/highlight.theme.atom-one-dark.css')
+		script(type='text/javascript', src='javascripts/highlight.pack.js')
+		script(type='text/javascript').
+			hljs.initHighlightingOnLoad();
 		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
 		script(type='text/javascript', src='javascripts/script.js')

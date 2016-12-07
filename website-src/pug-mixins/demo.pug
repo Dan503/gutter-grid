@@ -4,9 +4,17 @@
 		return compile(pugMarkup, { pretty: true })(locals);
 	}
 
-mixin demo(pugMarkup)
-	-var html = render(pugMarkup)
+mixin demo(demoMarkup, type)
+	-var type = typeof type !== 'undefined' ? type : 'html';
+	-var markup = type === 'html' ? render(demoMarkup) : demoMarkup;
 
-	!=html
-	pre
-		=html
+	aside.demo
+		if block
+			.demo__summary.demo__segment
+				block
+		.demo__example
+			.demo__result.demo__segment
+				!=markup
+			.demo__markup.demo__segment
+				pre
+					code(class=type)= markup
