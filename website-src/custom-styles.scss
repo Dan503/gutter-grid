@@ -36,13 +36,9 @@ footer {
 }
 
 .markdown-body pre {
-	padding: 0;
+	padding: 3px 0 4px;
 	&, &.lines {
 		margin: 0;
-	}
-	code {
-		margin-top: -20px;
-		padding: {bottom: 10px; top: 10px; }
 	}
 }
 
