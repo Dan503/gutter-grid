@@ -36,9 +36,16 @@ footer {
 }
 
 .markdown-body pre {
-	padding: 3px 0 4px;
+	background-color: #282c34;
+	padding: 0;
 	&, &.lines {
 		margin: 0;
+	}
+	&.lines {
+		background-color: #000;
+	}
+	code {
+		padding: 10px 5px;
 	}
 }
 
