@@ -87,7 +87,7 @@ $grid-bp-list: if(
 				}
 			}
 		}
-		.no-flexbox &.#{$fullPrefix}grid--wrap > .#{$fullPrefix}grid__cell {
+		.no-flexwrap &.#{$fullPrefix}grid--wrap > .#{$fullPrefix}grid__cell {
 			@if ($i > 2) {
 				&:nth-child(#{$i}n+1) { clear: left; }
 			}
@@ -337,7 +337,7 @@ $grid-bp-list: if(
 	}
 
 //tabular backup for IE9 and below
-	.no-flexbox & {
+	.no-flexwrap & {
 		display: table;
 		width: 100%;
 		> .#{$fullPrefix}grid__cell { display: table-cell; vertical-align: top; }
