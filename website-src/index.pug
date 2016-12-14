@@ -38,6 +38,23 @@ html
 							npm install flexible-grid --save
 							```````
 
+							Flexible-grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr property it is dependent on is flex-wrap. To add Modernizr to your site, either [download a custom build that includes flex-wrap](https://modernizr.com/download?setclasses&q=flex-wrap) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
+
+							Another Dependency that Flexible-grid has is mq-scss. This is used for the media queries. After npm installing Flexible-grid, add this to the top of your main Sass file:
+
+							`````scss
+							@import '../node_modules/mq-scss/mq';
+							@import '../node_modules/flexible-grid/grid';
+							`````
+
+							Things to note:
+
+							- mq-scss will automatically install when installing flexible-grid
+							- I've purposly not put the mq-scss include in the grid Sass file so that users will more likely see that mq-scss is available for them to use
+							- Make sure that the import paths are actually correct. They will differ depending on your folder structure.
+
+							## Basic usage
+
 						+demo({
 html:`
 .grid.grid--cols-2
