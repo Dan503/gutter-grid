@@ -16,6 +16,7 @@
     "babelify": "~7.2.0",
     "browser-sync": "~2.11.1",
     "browserify": "~13.0.0",
+    "count-keys": "^1.1.2",
     "gulp": "~3.9.0",
     "gulp-connect-php": "0.0.8",
     "gulp-cssnano": "^2.1.2",

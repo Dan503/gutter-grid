@@ -8,6 +8,7 @@ mixin demo(demoMarkup)
 	-var isObj = typeof demoMarkup === 'object' && !Array.isArray(demoMarkup);
 
 	-var html = isObj ? render(demoMarkup.html) : render(demoMarkup);
+	-var countKeys = require('count-keys');
 
 	aside.demo
 		if block
@@ -18,11 +19,12 @@ mixin demo(demoMarkup)
 				!=html
 
 			if isObj
-				each markup, type in demoMarkup
-					- markup = type === 'html' ? html : markup;
-					.demo__markup.demo__segment(class=type)
-						pre
-							code(class=type)= markup
+				.demo__grid.grid(class=`grid--cols-${countKeys(demoMarkup, {maxDepth: 1})}`)
+					each markup, type in demoMarkup
+						- markup = type === 'html' ? html : markup;
+						.demo__markup.demo__segment.grid__cell(class=type)
+							pre
+								code(class=type)= markup
 			else
 				.demo__markup.demo__segment
 					pre

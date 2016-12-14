@@ -28,11 +28,22 @@
 		}
 	}
 	&__markup {
+		background-color: #282c34;
+		position: relative;
+		padding-left: 30px;
 		&:before {
 			content: 'HTML';
 		}
 		&.scss:before {
 			content: 'Sass';
+		}
+
+		pre.lines {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			background: #000;
 		}
 	}
 }
