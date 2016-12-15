@@ -26,11 +26,14 @@
 		&:before {
 			content: 'Example';
 		}
+		.grid__cell {
+			padding: 10px;
+		}
 	}
 	&__markup {
 		background-color: #282c34;
 		position: relative;
-		padding-left: 30px;
+		padding-left: 40px;
 		&:before {
 			content: 'HTML';
 		}
@@ -45,6 +48,7 @@
 			}
 
 			&.lines {
+				overflow: hidden;
 				position: absolute;
 				top: 0;
 				left: 0;

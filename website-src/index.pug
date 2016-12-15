@@ -4,87 +4,232 @@ doctype html
 // The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012.
 // Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan
 html
-	head
-		meta(charset='utf-8')
-		meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-		link(rel='stylesheet', href='stylesheets/stylesheet.css', media='screen')
-		link(rel='stylesheet', href='stylesheets/github-dark.css')
-		link(rel='stylesheet', href='stylesheets/custom-styles.css')
-		script(type='text/javascript', src='javascripts/modernizr.min.js')
-		title flexible-grid
-		meta(name='description', content='A grid system that uses flexbox with display:table and float:left backups')
-		meta(name='viewport', content='width=device-width,initial-scale=1')
-	body
-		.wrapper
-			header
-				h1.title flexible-grid
-			#container
-				p.tagline A grid system that uses flexbox with display:table and float:left backups
-				#main(role='main')
-					.download-bar
-						.inner
-							a.download-button.tar(href='https://github.com/Dan503/flexible-grid/tarball/master')
-								span Download
-							a.download-button.zip(href='https://github.com/Dan503/flexible-grid/zipball/master')
-								span Download
-							a.code(href='https://github.com/Dan503/flexible-grid') View flexible-grid on GitHub
-						span.blc
-						span.trc
-					article.markdown-body
-						:marked
-							## Installation
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    link(rel='stylesheet', href='stylesheets/stylesheet.css', media='screen')
+    link(rel='stylesheet', href='stylesheets/github-dark.css')
+    link(rel='stylesheet', href='stylesheets/custom-styles.css')
+    script(type='text/javascript', src='javascripts/modernizr.min.js')
+    title flexible-grid
+    meta(name='description', content='A grid system that uses flexbox with display:table and float:left backups')
+    meta(name='viewport', content='width=device-width,initial-scale=1')
+  body
+    .wrapper
+      header
+        h1.title flexible-grid
+      #container
+        p.tagline A grid system that uses flexbox with display:table and float:left backups
+        #main(role='main')
+          .download-bar
+            .inner
+              a.download-button.tar(href='https://github.com/Dan503/flexible-grid/tarball/master')
+                span Download
+              a.download-button.zip(href='https://github.com/Dan503/flexible-grid/zipball/master')
+                span Download
+              a.code(href='https://github.com/Dan503/flexible-grid') View flexible-grid on GitHub
+            span.blc
+            span.trc
+          article.markdown-body
+            :marked
+              ## Installation
 
-							```````
-							npm install flexible-grid --save
-							```````
+              ```````
+              npm install flexible-grid --save
+              ```````
 
-							Flexible-grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr property it is dependent on is flex-wrap. To add Modernizr to your site, either [download a custom build that includes flex-wrap](https://modernizr.com/download?setclasses&q=flex-wrap) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
+              Flexible-grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr property it is dependent on is flex-wrap. To add Modernizr to your site, either [download a custom build that includes flex-wrap](https://modernizr.com/download?setclasses&q=flex-wrap) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
 
-							Another Dependency that Flexible-grid has is mq-scss. This is used for the media queries. After npm installing Flexible-grid, add this to the top of your main Sass file:
+              Another Dependency that Flexible-grid has is mq-scss. This is used for the media queries. After npm installing Flexible-grid, add this to the top of your main Sass file:
 
-							`````scss
-							@import '../node_modules/mq-scss/mq';
-							@import '../node_modules/flexible-grid/grid';
-							`````
+              `````scss
+              @import '../node_modules/mq-scss/mq';
+              @import '../node_modules/flexible-grid/grid';
+              `````
 
-							Things to note:
+              Things to note:
 
-							- mq-scss will automatically install when installing flexible-grid
-							- I've purposly not put the mq-scss include in the grid Sass file so that users will more likely see that mq-scss is available for them to use
-							- Make sure that the import paths are actually correct. They will differ depending on your folder structure.
+              - mq-scss will automatically install when installing flexible-grid
+              - I've purposly not put the mq-scss include in the grid Sass file so that users will more likely see that mq-scss is available for them to use
+              - Make sure that the import paths are actually correct. They will differ depending on your folder structure.
 
-							## Basic usage
+              ## Basic usage
 
-						+demo({
+              The `grid` class initiallizes the grid frunctionality. The `grid__cell` classes are needed for compatibility with older browsers and they are also needed for some pf the more advanced functionality in the grid system
+
+            +demo({
+html:`
+.grid
+  .grid__cell.-color-1
+  .grid__cell.-color-2`,
+})
+              :marked
+                The bare bones markup of what you need for flexible-grid to work (excluding color classes)
+
+            :marked
+              That example is a bit misleading though. Having 2 grid cells doesn't mean they will be 50% width each
+
+            +demo({
+html:`
+.grid
+  .grid__cell.-color-1
+    | lots and lots and lots of text in this cell.
+    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+    | Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+    | At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+    | Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .grid__cell.-color-2
+    | Barely any text in this cell`,
+})
+              :marked
+                The previous example, but one cell has a lot of text while the other barely has any
+
+            :marked
+              ### Using columns
+
+              To ensure that cells take up only 50% width each, add a `grid--cols-2` class to the same div as the `grid` element.
+
+            +demo({
 html:`
 .grid.grid--cols-2
-	.grid__cell.-color-1
-	.grid__cell.-color-2`,
+  .grid__cell.-color-1
+    | lots and lots and lots of text in this cell.
+    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+    | Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+    | At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+    | Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .grid__cell.-color-2
+    | Barely any text in this cell`,
+})
+              :marked
+                The previous example but adding the `grid--cols-2` class
+
+            :marked
+              The added bonus of using column classes is that there are baked in media queries for typical break points. This lets you build your site layout and not have to worry as much about making it mobile friendly.
+
+            +demo({
+html:`
+.grid.grid--cols-2
+  .grid__cell.-color-1
+  .grid__cell.-color-2`
+})
+              :marked
+                Examples of all the default column widths. Resize your browser to watch the media queries take effect.
+
+            +demo({
+html:`
+.grid.grid--cols-3
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+`
+})
+            +demo({
+html:`
+.grid.grid--cols-4
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+`
+})
+            +demo({
+html:`
+.grid.grid--cols-5
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+`
+})
+            +demo({
+html:`
+.grid.grid--cols-6
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+  .grid__cell.-color-6
+`
+})
+            :marked
+              ### Customising the columns
+
+              If you don't like the default breakpoints or you need more columns, you can easily edit them by altering the `$grid-break-points` variable.
+
+            +demo({
 scss:`
-$variable: red;`})
-							:marked
-								Summary text for the demo goes here
+$grid-break-points: (
+  (
+  //*1 column grid*/
+  // no media query
+    false
+  ), (
+  //*2 column grid*/
+  //* From 600px screen size and below, make the columns 100% width */
+    600px 100%,
+  ), (
+  //*3 column grid*/
+    600px 100%,
+  ), (
+  //*4 column grid*/
+    960px 50%,
+    480px 100%,
+  ), (
+  //*5 column grid*/
+    960px 33.33%,
+    600px 50%,
+    480px 100%,
+  ), (
+  //*6 column grid*/
+    960px 33.33%,
+    600px 50%,
+    480px 100%,
+  )
+);
 
-			footer
-				.owner
-					p
-						a.avatar(href='https://github.com/Dan503')
-							img(src='https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=50&default=retro', width='48', height='48')
-						| #[a(href='https://github.com/Dan503') Dan503] maintains #[a(href='https://github.com/Dan503/flexible-grid') flexible-grid]
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/flexible-grid/grid';`
+})
+              :marked
+                These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements.
 
-				.creds
-					small
-						| theme by #[a(href='https://twitter.com/jonrohan/') Jon Rohan]
-		.current-section
-			a(href='#top') Scroll to top
-			a.tar(href='https://github.com/Dan503/flexible-grid/tarball/master') tar
-			a.zip(href='https://github.com/Dan503/flexible-grid/zipball/master') zip
-			a.code(href='') source code
-			p.name
+            +demo({
+scss:`
+//Disable all breakpoints
+$grid-break-points: false;
 
-		link(rel='stylesheet', href='/stylesheets/highlight.theme.atom-one-dark.css')
-		script(type='text/javascript', src='javascripts/highlight.pack.js')
-		script(type='text/javascript').
-			hljs.initHighlightingOnLoad();
-		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
-		script(type='text/javascript', src='javascripts/script.js')
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/flexible-grid/grid';`
+})
+              :marked
+                You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns.
+
+            :marked
+              ## Adding Gutters
+
+      footer
+        .owner
+          p
+            a.avatar(href='https://github.com/Dan503')
+              img(src='https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=50&default=retro', width='48', height='48')
+            | #[a(href='https://github.com/Dan503') Dan503] maintains #[a(href='https://github.com/Dan503/flexible-grid') flexible-grid]
+
+        .creds
+          small
+            | theme by #[a(href='https://twitter.com/jonrohan/') Jon Rohan]
+    .current-section
+      a(href='#top') Scroll to top
+      a.tar(href='https://github.com/Dan503/flexible-grid/tarball/master') tar
+      a.zip(href='https://github.com/Dan503/flexible-grid/zipball/master') zip
+      a.code(href='') source code
+      p.name
+
+    link(rel='stylesheet', href='/stylesheets/highlight.theme.atom-one-dark.css')
+    script(type='text/javascript', src='javascripts/highlight.pack.js')
+    script(type='text/javascript').
+      hljs.initHighlightingOnLoad();
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+    script(type='text/javascript', src='javascripts/script.js')

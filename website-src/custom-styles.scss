@@ -35,17 +35,29 @@ footer {
 	min-height: 100px;
 }
 
+code {
+	background-color: #C5C7CC;
+	//color: #abb2bf;
+	padding: 3px 4px;
+	font-size: 0.85em;
+}
+
 .markdown-body pre {
 	background-color: #282c34;
 	padding: 0;
 	&, &.lines {
 		margin: 0;
+		padding:{left: 0; right: 0;}
 	}
 	&.lines {
 		background-color: #000;
+		width: 40px;
+		padding: {left: 0; right: 0;}
+		text-align: center;
 	}
 	code {
 		padding: 10px 5px;
+		font-size: 1em;
 	}
 }
 
