@@ -16,13 +16,12 @@ $grid-gutter-ie-fallback: #fff !default;
 //usage: class="grid grid--gutter-moduleName"
 $grid-cell-gutters: (
 	'moduleName' : 20px,
-	'demo' : 10px,
 	'pageLayout' : 30px,
-	'mediaQueryFriendly' : (
+	'mediaQueryGutter' : (
 		50px, //*default*/
 		25px (max, 960px), //*affected by media query*/
 		10px (max, 600px) //*affected by media query*/
-	)
+	),
 ) !default;
 
 //Set the points at which columns change widths

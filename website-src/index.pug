@@ -38,7 +38,7 @@ html
               npm install flexible-grid --save
               ```````
 
-              Flexible-grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr property it is dependent on is flex-wrap. To add Modernizr to your site, either [download a custom build that includes flex-wrap](https://modernizr.com/download?setclasses&q=flex-wrap) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
+              Flexible-grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr property it is dependent on is `flex-wrap`. To add Modernizr to your site, either [download a custom build that includes flex-wrap](https://modernizr.com/download?setclasses&q=flex-wrap) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
 
               Another Dependency that Flexible-grid has is mq-scss. This is used for the media queries. After npm installing Flexible-grid, add this to the top of your main Sass file:
 
@@ -270,6 +270,69 @@ html:`
 
             :marked
               ## Adding Gutters
+
+              One of the hardest things to do well in css that is very common in web design is when you have multiple columns on multiple rows with gutters inbetween each item but the content in the outer columns need to line up with the edges of the other content on the page.
+
+              This is easily achieved using flexible-grid though.
+
+            +demo({
+html:`
+.grid__wrapper
+  .grid.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/flexible-grid/grid';`
+})
+              :marked
+                Defining a gutter size
+
+            :marked
+              The `grid__wrapper` element is to help contain the grid inside it's bounding box when gutters are applied to it. It isn't always necessary but it is often needed for the grid to behave as expected.
+
+              Anyway, that is how to create a fixed gutter that is the same width for all screen sizes, but what if you have a very thick gutter on desktop? It won't work well having an 80px wide gutter on a tablet or mobile device, it would take up too much screen realestate. The solution is gutters that contain media queries. Here is how to do them:
+
+            +demo({
+html:`
+.grid__wrapper
+  .grid.grid--gutter-mediaQueryGutter.grid--cols-3.grid--wrap
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'basicGutter' : 20px,
+  'mediaQueryGutter' : (
+    80px, //*default gutter width*/
+    25px (max, 960px), //*gutter width at 960px and below*/
+    10px (max, 600px) //*gutter width at 600px and below*/
+  )
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/flexible-grid/grid';`
+})
+            :marked
+              Applying gutters that are affected by media queries
+
+          :marked
+            Unlike a basic gutter which is just a single pixel value, a media query gutter is a list of pixel values with an optional media query attached to them. The media queries are not written in the standard css media query syntax though. They are written in the mq-scss mixin syntax. To learn more about how to write media queries using the mq-scss syntax, see the [mq-scss documentation](https://www.npmjs.com/package/mq-scss).
 
       footer
         .owner
