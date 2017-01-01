@@ -44,7 +44,7 @@ html
 
               `````scss
               @import '../node_modules/mq-scss/mq';
-              @import '../node_modules/flexible-grid/grid';
+              @import '../node_modules/flexible-grid/grid-classes';
               `````
 
               Things to note:
@@ -191,7 +191,7 @@ $grid-break-points: (
 );
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/flexible-grid/grid';`
+@import '../node_modules/flexible-grid/grid-classes';`
 })
               :marked
                 These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements.
@@ -202,7 +202,7 @@ scss:`
 $grid-break-points: false;
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/flexible-grid/grid';`
+@import '../node_modules/flexible-grid/grid-classes';`
 })
               :marked
                 You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns.
@@ -247,7 +247,7 @@ scss:`
 $grid-page-width: 1200px;
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/flexible-grid/grid';`
+@import '../node_modules/flexible-grid/grid-classes';`
 })
               :marked
                 Alter the screen size that grid wrapping becomes enabled by default at
@@ -325,7 +325,7 @@ $grid-cell-gutters: (
 );
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/flexible-grid/grid';`
+@import '../node_modules/flexible-grid/grid-classes';`
 })
               :marked
                 Defining a gutter size
@@ -357,7 +357,7 @@ $grid-cell-gutters: (
 );
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/flexible-grid/grid';`
+@import '../node_modules/flexible-grid/grid-classes';`
 })
               :marked
                 Applying gutters that are affected by media queries

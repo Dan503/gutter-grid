@@ -1,6 +1,6 @@
 
 //================================================*\
-/*	GRID STYLING FILE						*/
+//*	GRID STYLING FILE						*/
 //----------------------------------------------------
 //	This file holds the code that generates the
 //	classes for the grid system.
@@ -203,7 +203,6 @@ $grid-bp-list: if(
 			border-width: 0 $gutter $gutter 0;
 		}
 
-//
 		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
 		&.#{$fullPrefix}grid--outerGutters {
 			@include mq(max, ($grid-page-width + ($gutter * 2))){
