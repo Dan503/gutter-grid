@@ -127,6 +127,7 @@ $grid-bp-list: if(
 		outline-color: #000;
 		border-color: #000;
 
+//
 		//cell vertical alignment
 		&--vAlign {
 			&-center {
@@ -147,6 +148,7 @@ $grid-bp-list: if(
 			flex-shrink: 1;
 		}
 
+//
 		&--noGrowth {
 			flex-grow: 0;
 		}
@@ -159,10 +161,10 @@ $grid-bp-list: if(
 		}
 	}
 
-//base grid__inner styling
+	//base grid__inner styling
 	&__inner { display: block; }
 
-//grid--gutter-# styling
+	//grid--gutter-# styling
 	&[class*="#{$fullPrefix}grid--gutter-"] {
 		&.#{$fullPrefix}grid--outerGutters {
 			margin: 0;
@@ -201,6 +203,7 @@ $grid-bp-list: if(
 			border-width: 0 $gutter $gutter 0;
 		}
 
+//
 		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
 		&.#{$fullPrefix}grid--outerGutters {
 			@include mq(max, ($grid-page-width + ($gutter * 2))){
@@ -238,6 +241,7 @@ $grid-bp-list: if(
 		}
 	}
 
+//
 	//hasInners makes grid__inner elements take up the full height of the grid cell
 	&--hasInners {
 		> .#{$fullPrefix}grid__cell {
@@ -255,7 +259,8 @@ $grid-bp-list: if(
 		}
 	}
 
-//vertical alignment code
+//
+	//vertical alignment code
 	&--vAlign {
 		&:not(.#{$fullPrefix}grid--hasInners){
 			> .#{$fullPrefix}grid__cell {
@@ -279,15 +284,26 @@ $grid-bp-list: if(
 		}
 	}
 
-
+//
 	&--vertical {
 		flex-direction: column;
 	}
 
+//
 	&--noGrowth {
 		> .#{$fullPrefix}grid__cell { flex-grow: 0; }
 	}
+	&--noShrink {
+		> .#{$fullPrefix}grid__cell { flex-shrink: 0; }
+	}
+	&--noResize {
+		> .#{$fullPrefix}grid__cell {
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+	}
 
+//
 	//allows grid to be set at something other than 100% width
 	&--shrinkable {
 		min-width: 0;
@@ -309,6 +325,7 @@ $grid-bp-list: if(
 		flex-wrap: nowrap;
 	}
 
+//
 	//quick access to space-between and space-around
 	&--space {
 		&-between, &-around {
@@ -322,6 +339,7 @@ $grid-bp-list: if(
 		}
 	}
 
+//
 	//quick access to left,center and right alignments
 	&--align {
 		&-left, &-center, &-right {
