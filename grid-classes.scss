@@ -124,8 +124,6 @@ $grid-bp-list: if(
 		border: 0 solid transparent;
 		flex-grow: 1;
 		flex-shrink: 1;
-		outline-color: #000;
-		border-color: #000;
 
 //
 		//cell vertical alignment
@@ -356,7 +354,7 @@ $grid-bp-list: if(
 	}
 
 	//tabular/float:left backup for IE9 and below
-	.no-flexwrap & {
+	.no-flexbox & {
 		display: table;
 		width: 100%;
 		> .#{$fullPrefix}grid__cell { display: table-cell; vertical-align: top; }
