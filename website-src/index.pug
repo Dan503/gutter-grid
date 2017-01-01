@@ -365,6 +365,161 @@ $grid-cell-gutters: (
             :marked
               Unlike a basic gutter which is just a single pixel value, a media query gutter is a list of pixel values with an optional media query attached to them. The media queries are not written in the standard css media query syntax though. They are written in the mq-scss mixin syntax. To learn more about how to write media queries using the mq-scss syntax, see the [mq-scss documentation](https://www.npmjs.com/package/mq-scss).
 
+            :marked
+              ## Outer gutters
+
+              By default, gutters will place the grid cells on the very edge of the content area as shown in this example by a red bounding box:
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+
+            :marked
+              This isn't always the desired layout though. sometimes you want the gutters to also apply around the edges of the grid as well. This is when the `grid--outerGutters` class comes in.
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--outerGutters.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+              :marked
+                Using the `grid--outerGutters` class to apply the gutter to the edges of the grid
+
+            :marked
+              The class also comes in horizontal only, and vertical only variants as `grid--outerGutters-h` for horizontal only and `grid--outerGutters-v` for vertical only.
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--outerGutters-h.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+              :marked
+                Horizontal and vertical only variants of the `grid--outerGutters` class
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--outerGutters-v.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--outerGutters-top.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+              :marked
+                Top, bottom, left and right only variants
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--outerGutters-bottom.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--outerGutters-left.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--outerGutters-right.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+
+
+            :marked
+              Also, there is a delayed variant for the horizontal classes. This is primarily for use with overarching page layouts. The idea with the delayed varient is that when the screen reaches the point where the edge of the screen would meet the edge of the grid + the gutter, horizontal outer gutters are applied to prevent the edges of the grid from touching the edges of the screen.
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--outerGutters-h-delayed.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+              :marked
+                Delayed horizontal, left and right gutter varients (resize browser to see it take effect).
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--outerGutters-left-delayed.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+
+            +demo({
+html:`
+.boundingBox.grid__wrapper
+  .grid.grid--outerGutters-right-delayed.grid--cols-3.grid--wrap.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+
       footer
         .owner
           p
