@@ -269,6 +269,38 @@ html:`
                 Disable grid wrapping at all screen sizes (resize browser window to see the effect)
 
             :marked
+              ## Cells that span multiple columns
+
+              Cells can be made to take up more than just a single column width by using a `grid__cell--span-#` class. The `#` being the number of columns you wish for the cell to span.
+
+            +demo({
+html:`
+.grid.grid--cols-4.grid--wrap
+  .grid__cell.grid__cell--span-3.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+  .grid__cell.-color-6
+`})
+
+            :marked
+              Grids that feature column spans often don't play nicely with the default media queries though. To work around this, it's usually best to simply disable the media queries on that particular grid and write your own custom styles with new media queries. To disable media queries on a grid, add the `grid--disableMQs` class.
+
+            +demo({
+html:`
+.grid.grid--disableMQs.grid--cols-4.grid--wrap
+  .grid__cell.grid__cell--span-3.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+  .grid__cell.-color-6
+`})
+              :marked
+                Same example as above except this time with the default media queries disabled. Resize your screen to see the difference.
+
+            :marked
               ## Adding Gutters
 
               One of the hardest things to do well in css that is very common in web design is when you have multiple columns on multiple rows with gutters inbetween each item but the content in the outer columns need to line up with the edges of the other content on the page.
@@ -315,7 +347,6 @@ html:`
     .grid__cell.-color-6
 `,
 scss:`
-//Define gutter sizes like this
 $grid-cell-gutters: (
   'basicGutter' : 20px,
   'mediaQueryGutter' : (
@@ -328,11 +359,11 @@ $grid-cell-gutters: (
 @import '../node_modules/mq-scss/mq';
 @import '../node_modules/flexible-grid/grid';`
 })
-            :marked
-              Applying gutters that are affected by media queries
+              :marked
+                Applying gutters that are affected by media queries
 
-          :marked
-            Unlike a basic gutter which is just a single pixel value, a media query gutter is a list of pixel values with an optional media query attached to them. The media queries are not written in the standard css media query syntax though. They are written in the mq-scss mixin syntax. To learn more about how to write media queries using the mq-scss syntax, see the [mq-scss documentation](https://www.npmjs.com/package/mq-scss).
+            :marked
+              Unlike a basic gutter which is just a single pixel value, a media query gutter is a list of pixel values with an optional media query attached to them. The media queries are not written in the standard css media query syntax though. They are written in the mq-scss mixin syntax. To learn more about how to write media queries using the mq-scss syntax, see the [mq-scss documentation](https://www.npmjs.com/package/mq-scss).
 
       footer
         .owner
