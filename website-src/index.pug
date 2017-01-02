@@ -8,7 +8,7 @@ doctype html
 head
   meta(charset='utf-8')
   meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-  link(rel='stylesheet', href='stylesheets/stylesheet.css', media='screen')
+  //-link(rel='stylesheet', href='stylesheets/stylesheet.css', media='screen')
   link(rel='stylesheet', href='stylesheets/github-dark.css')
   link(rel='stylesheet', href='stylesheets/custom-styles.css')
   script(type='text/javascript', src='javascripts/modernizr.min.js')
@@ -32,9 +32,11 @@ body
           span.blc
           span.trc
         article.markdown-body
+          :marked
+            _**This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.**_
+
           div
             :marked
-              _**This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.**_
 
               ## Installation
 
