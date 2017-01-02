@@ -4,13 +4,20 @@
 		return compile(pugMarkup, { pretty: true })(locals);
 	}
 
-mixin demo(demoMarkup)
+	var defaultTo = require('default-to').default;
+
+mixin demo(demoMarkup, spec)
+	-
+		spec = defaultTo(spec, {
+			classes: ''
+		})
+
 	-var isObj = typeof demoMarkup === 'object' && !Array.isArray(demoMarkup);
 
 	-var html = isObj ? render(demoMarkup.html) : render(demoMarkup);
 	-var countKeys = require('count-keys');
 
-	aside.demo
+	aside.demo(class=spec.classes)
 		if block
 			.demo__summary.demo__segment
 				block

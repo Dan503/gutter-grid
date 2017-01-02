@@ -99,12 +99,11 @@ $grid-bp-list: if(
 .#{$fullPrefix}grid {
 	box-sizing: border-box;
 	list-style: none;
-	display: block;
 	margin: 0;
 	padding: 0;
 	min-width: 100%;
 	border: 0 solid #000;
-	display: flex!important;
+	display: flex;
 	align-content: stretch;
 
 	//grid__wrapper styling... really only necessary for use with grid--gutter-#

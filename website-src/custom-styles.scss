@@ -94,8 +94,17 @@ code {
 	}
 }
 
-.boundingBox{
+.current-section p {
+	font-family: Georgia, serif;
+	font-style: italic;
+}
+
+.add-border {
 	border: 2px solid red;
+}
+
+.add-shadow {
+	box-shadow: 0 0 10px #000;
 }
 
 #main {

@@ -28,6 +28,18 @@
 		}
 		.grid__cell {
 			padding: 10px;
+
+			.-noCellPadding & {
+				padding: 0;
+			}
+		}
+
+		.grid__inner {
+			padding: 10px;
+
+			.-noInnerPadding & {
+				padding: 0;
+			}
 		}
 	}
 	&__markup {

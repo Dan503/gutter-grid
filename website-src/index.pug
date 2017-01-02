@@ -79,13 +79,16 @@ html:`
 html:`
 .grid
   .grid__cell.-color-1
-    | lots and lots and lots of text in this cell.
-    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-    | Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-    | At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-    | Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+    :marked
+      lots and lots and lots of text in this cell.
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
   .grid__cell.-color-2
-    | Barely any text in this cell`,
+    :marked
+      Barely any text in this cell`,
 })
               :marked
                 The previous example, but one cell has a lot of text while the other barely has any
@@ -99,13 +102,16 @@ html:`
 html:`
 .grid.grid--cols-2
   .grid__cell.-color-1
-    | lots and lots and lots of text in this cell.
-    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-    | Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-    | At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-    | Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+    :marked
+      lots and lots and lots of text in this cell.
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
   .grid__cell.-color-2
-    | Barely any text in this cell`,
+    :marked
+      Barely any text in this cell`,
 })
               :marked
                 The previous example but adding the `grid--cols-2` class
@@ -337,7 +343,7 @@ $grid-cell-gutters: (
                 Defining a gutter size
 
             :marked
-              The `grid__wrapper` element is to help contain the grid inside it's bounding box when gutters are applied to it. It isn't always necessary but it is often needed for the grid to behave as expected.
+              The `grid__wrapper` element is to help contain the grid inside it's bounding box when gutters are applied to it. There is a glitch in Chrome that often ignores the top negative margin rule that makes the grid cells sit hard up againt the boundries of the grid. `grid__wrapper` prevents this glitch from being an issue.
 
               Anyway, that is how to create a fixed gutter that is the same width for all screen sizes, but what if you have a very thick gutter on desktop? It won't work well having an 80px wide gutter on a tablet or mobile device, it would take up too much screen realestate. The solution is gutters that contain media queries. Here is how to do them:
 
@@ -378,7 +384,7 @@ $grid-cell-gutters: (
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -393,7 +399,7 @@ html:`
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--outerGutters.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -410,7 +416,7 @@ html:`
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--outerGutters-h.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -424,7 +430,7 @@ html:`
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--outerGutters-v.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -436,7 +442,7 @@ html:`
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--outerGutters-top.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -450,7 +456,7 @@ html:`
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--outerGutters-bottom.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -462,7 +468,7 @@ html:`
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--outerGutters-left.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -474,7 +480,7 @@ html:`
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--outerGutters-right.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -490,7 +496,7 @@ html:`
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--outerGutters-h-delayed.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -504,7 +510,7 @@ html:`
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--outerGutters-left-delayed.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -516,7 +522,7 @@ html:`
 
             +demo({
 html:`
-.boundingBox.grid__wrapper
+.add-border.grid__wrapper
   .grid.grid--outerGutters-right-delayed.grid--gutter-moduleName.grid--cols-3.grid--wrap
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -529,11 +535,106 @@ html:`
             :marked
               ## Nesting grids
 
-              Things to mention:
+              (For demonstration purposes, the grid cells have been given padding. Padding is not included as part of the grid system though)
 
-              - grid--hasInners
-              - grid__inner
-              - how .grid.grid__cell works but only for modern browsers
+              To nest a grid inside another grid and ensure that the nested grid takes up the full height of the parent grid, you could do this, however it doesn't regress as nicely in legacy browsers that don't support flexbox.
+
+            +demo({
+html:`
+.grid.grid--cols-2
+  .grid__cell.grid.grid--cols-2.-color-1
+    .grid__cell.-color-2
+      :marked
+        lots and lots of text in this cell forces the other grid to grow.
+
+        This method doesn't regress nicely in legacy browsers though.
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+    .grid__cell.-color-3
+  .grid__cell.grid.grid--cols-2.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`})
+              :marked
+                This method is ok if you don't need to support browsers that don't support flexbox.
+
+            :marked
+              If you do need to support legacy browsers though, the following method is not quite as clean but it has much better legacy browser support built in.
+
+            +demo({
+html:`
+.grid.grid--hasInners.grid--cols-2
+  .grid__cell.-color-1
+    .grid__inner.grid.grid--cols-2
+      .grid__cell.-color-2
+        :marked
+          Same as before but this time with much better legacy browser support.
+
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      .grid__cell.-color-3
+  .grid__cell.-color-4
+    .grid__inner.grid.grid--cols-2
+      .grid__cell.-color-5
+      .grid__cell.-color-6
+`})
+              :marked
+                The prefered method when legacy browser support is required
+
+            :marked
+              The important things to note here are the `grid--hasInners` and the `grid__inner` classes.
+
+              The `grid--hasInners` class tells the grid that the `grid__inner` inside each `grid__cell` should take up the full height and width of it's parent.
+
+            :marked
+              ## Borders and shadows on guttered cells
+
+              The `grid__inner` technique can be used for more than just nesting grids. Whenever you want the child element of a grid cell to take up the same dimensions as the content area of the cell, you can use `grid__inner`.
+
+              The most common use case for wanting to do this is when you want to apply either a border or a box shadow to each cell in a grid that also features a gutter between each cell. Gutters are by made adding invisible borders to each of the grid cells. So trying to add borders or box shadows directly to the grid cells doesn't work.
+
+            +demo({
+html:`
+.grid.grid--hasInners.grid--gutter-moduleName.grid--cols-2
+  .grid__cell
+    .grid__inner.add-border.add-shadow
+      :marked
+        To give grid cells a border or padding as well as a gutter, you will need to use \`grid__inner\`
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+        At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+        Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .grid__cell
+    .grid__inner.add-border.add-shadow
+`}, {classes:'-noCellPadding'})
+
+
+            :marked
+              Unfortunatly, if you are adding shadows, you can't use the `grid__wrapper` element to prevent the spacing glitch from occuring like you normally would. `grid__wrapper` is just applying `overflow:hidden`. Using `overflow:hidden` will also hide the shadows though.
+
+              You will need to find other ways to work around the browser glitch. One way is to add 1 pixel of padding to a parent element. It doesn't fix the problem outright but makes it at least makes the glitch far less obvious.
+
+            +demo({
+html:`
+div(style="padding-top: 1px;")
+  .grid.grid--hasInners.grid--gutter-moduleName.grid--cols-2
+    .grid__cell
+      .grid__inner.add-border.add-shadow
+        :marked
+          To give grid cells a border or padding as well as a gutter, you will need to use \`grid__inner\`
+
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+          At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+          Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+    .grid__cell
+      .grid__inner.add-border.add-shadow
+`}, {classes:'-noCellPadding'})
+
+              :marked
+                Using padding to mitigate the Chrome spacing glitch
 
             :marked
               ## How to support legacy browsers
