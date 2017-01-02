@@ -14,3 +14,13 @@ $breakPoints: (
 }
 
 $colors: #63a52a #F16031 #510558 #3F53B2 #722912 #293F2D;
+
+$grid-cell-gutters: (
+	'moduleName' : 20px,
+	'pageLayout' : 30px,
+	'mediaQueryGutter' : (
+		50px, //*default*/
+		25px (max, 960px), //*affected by media query*/
+		10px (max, 600px) //*affected by media query*/
+	),
+);
