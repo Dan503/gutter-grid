@@ -34,6 +34,8 @@ body
         article.markdown-body
           div
             :marked
+              _**This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.**_
+
               ## Installation
 
               ```````
@@ -57,7 +59,7 @@ body
 
               ## Basic usage
 
-              The `grid` class initiallizes the grid frunctionality. The `grid__cell` classes are needed for compatibility with older browsers and they are also needed for some pf the more advanced functionality in the grid system
+              The `grid` class initiallizes the grid frunctionality. The `grid__cell` classes are needed for compatibility with older browsers, to keep specificity down, and they are also needed for some of the more advanced functionality in the grid system
 
             +demo({
 html:`
@@ -69,7 +71,7 @@ html:`
                 The bare bones markup of what you need for flexible-grid to work (excluding color classes)
 
             :marked
-              That example is a bit misleading though. Having 2 grid cells doesn't mean they will be 50% width each
+              That example is a bit misleading though. Having 2 grid cells doesn't necessarily mean they will always be 50% width each
 
             +demo({
 html:`
@@ -89,7 +91,7 @@ html:`
             :marked
               ### Using columns
 
-              To ensure that cells take up only 50% width each, add a `grid--cols-2` class to the same div as the `grid` element.
+              To ensure that cells take up only 50% width each, add a `grid--cols-2` class to the same element as the `grid` class.
 
             +demo({
 html:`
@@ -255,7 +257,7 @@ $grid-page-width: 1200px;
                 Alter the screen size that grid wrapping becomes enabled by default at
 
             :marked
-              To just outright disable grid wrapping for all screen sizes (useful for very small instances of the grid system being used), use the `grid--noWrap` class.
+              To just outright disable grid wrapping for all screen sizes, use the `grid--noWrap` class.
 
             +demo({
 html:`
