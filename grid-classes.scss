@@ -237,7 +237,6 @@ $grid-bp-list: if(
 		}
 	}
 
-//
 	//hasInners makes grid__inner elements take up the full height of the grid cell
 	&--hasInners {
 		> .#{$fullPrefix}grid__cell {
@@ -321,7 +320,6 @@ $grid-bp-list: if(
 		flex-wrap: nowrap;
 	}
 
-//
 	//quick access to space-between and space-around
 	&--space {
 		&-between, &-around {
@@ -335,7 +333,6 @@ $grid-bp-list: if(
 		}
 	}
 
-//
 	//quick access to left,center and right alignments
 	&--align {
 		&-left, &-center, &-right {

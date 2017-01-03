@@ -26,19 +26,29 @@
 		&:before {
 			content: 'Example';
 		}
-		.grid__cell {
-			padding: 10px;
+		.grid {
+			padding: 0;
 
-			.-noCellPadding & {
-				padding: 0;
+			&__cell {
+				padding: 10px;
+				min-height: 100px;
+				margin: 0;
+
+				.-noCellPadding & {
+					padding: 0;
+				}
+
+				.-noHeight & {
+					min-height: 0;
+				}
 			}
-		}
 
-		.grid__inner {
-			padding: 10px;
+			&__inner {
+				padding: 10px;
 
-			.-noInnerPadding & {
-				padding: 0;
+				.-noInnerPadding & {
+					padding: 0;
+				}
 			}
 		}
 	}
