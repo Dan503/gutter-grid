@@ -59,6 +59,10 @@ body
               - I've purposly not put the mq-scss include in the grid Sass file so that users will more likely see that mq-scss is available for them to use
               - Make sure that the import paths are actually correct. They will differ depending on your folder structure.
 
+              At this point, you are able to use the grid system and it will work well in any browsers that have full standards complient flexbox support. There are many old browsers that don't feature that level of support though. If your site needs to support those older browsers, there are a few more steps you need to take.
+
+              Read the **[How to support legacy browsers](#how-to-support-legacy-browsers)** section to get a run down on how to achieve maximum browser compatibility.
+
               ## Basic usage
 
               The `grid` class initiallizes the grid frunctionality. The `grid__cell` classes are needed for compatibility with older browsers, to keep specificity down, and they are also needed for some of the more advanced functionality in the grid system
@@ -733,7 +737,7 @@ ol.grid.grid--space-around.grid--hasInners.add-border
 
               The design in IE8 & 9 won't look like the design on browsers that support flex-box. It will mainly just help stop the layout from completly breaking on you when compared to using purely flex-box on it's own.
 
-              IE10 has support for flex-box however you will need to incorporate [Autoprefixer](https://github.com/postcss/autoprefixer) into your build process to support it.
+              IE10 has support for flex-box however you will need to incorporate [Autoprefixer](https://github.com/postcss/autoprefixer) into your build process to support it's outdated flex-box syntax.
 
               Also, in order to better support IE8, the HTML for your HTML element will need to look something like this:
 
@@ -746,7 +750,7 @@ ol.grid.grid--space-around.grid--hasInners.add-border
               </html>
               ```````
 
-              Also the `$grid-gutter-ie-fallback` setting should be set to the main background color of your website. IE8 doesn't support the css `background-clip` property which is a key part of how the gutters are able to retain transparency. This variable defines a color that the gutters will be displayed in by default in IE8.
+              The `$grid-gutter-ie-fallback` setting should be set to the main background color of your website. IE8 doesn't support the css `background-clip` property which is a key part of how the gutters are able to retain transparency. This variable defines a color that the gutters will be displayed in by default in IE8.
 
               ````scss
               //Set what color gutters will be in IE8
