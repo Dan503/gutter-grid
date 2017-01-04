@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "A Sass flexbox based grid system with backups for old browsers featuring a robust gutter system",
   "dependencies": {
-    "customizr": "^1.0.0-alpha",
     "mq-scss": "^1.0.7"
   },
   "devDependencies": {
+    "customizr": "^1.0.0-alpha",
     "autoprefixer": "~6.3.1",
     "babel-cli": "^6.11.4",
     "babel-core": "~6.4.0",
