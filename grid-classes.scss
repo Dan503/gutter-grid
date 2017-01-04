@@ -32,7 +32,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 
 //================================================*\
-/*				GRID WIDTHS						*/
+//*				GRID WIDTHS						*/
 //----------------------------------------------------
 //	Quickly and easily apply standard percentage
 //	widths to grid cells based on fractions.
@@ -124,7 +124,6 @@ $grid-bp-list: if(
 		flex-grow: 1;
 		flex-shrink: 1;
 
-//
 		//cell vertical alignment
 		&--vAlign {
 			&-center {
@@ -254,28 +253,15 @@ $grid-bp-list: if(
 		}
 	}
 
-//
-	//vertical alignment code
 	&--vAlign {
-		&:not(.#{$fullPrefix}grid--hasInners){
-			> .#{$fullPrefix}grid__cell {
-				display: flex;
-				align-items: center;
-			}
+		&-center {
+			align-items: center;
 		}
-		&.#{$fullPrefix}grid--hasInners {
-			align-items: stretch;
-
-			> .#{$fullPrefix}grid__cell > .#{$fullPrefix}grid__inner {
-				display: flex;
-				align-items: center;
-			}
+		&-top {
+			align-items: flex-start;
 		}
-		&-centered {
-			&.#{$fullPrefix}grid--hasInners > .#{$fullPrefix}grid__cell > .#{$fullPrefix}grid__inner,
-			&:not(.#{$fullPrefix}grid--hasInners) > .#{$fullPrefix}grid__cell {
-				justify-content: center;
-			}
+		&-bottom {
+			align-items: flex-end;
 		}
 	}
 
