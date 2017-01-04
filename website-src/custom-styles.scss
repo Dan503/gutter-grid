@@ -102,12 +102,16 @@ code {
 	font-style: italic;
 }
 
-.add-border {
-	border: 2px solid red;
-}
-
-.add-shadow {
-	box-shadow: 0 0 10px #000;
+.add {
+	&-border {
+		border: 2px solid red;
+	}
+	&-shadow {
+		box-shadow: 0 0 10px #000;
+	}
+	&-padding {
+		padding: 15px !important;
+	}
 }
 
 #main {

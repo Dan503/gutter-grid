@@ -65,7 +65,9 @@ body
 
               ## Basic usage
 
-              The `grid` class initiallizes the grid frunctionality. The `grid__cell` classes are needed for compatibility with older browsers, to keep specificity down, and they are also needed for some of the more advanced functionality in the grid system
+              A note on the examples. Any class that doesn't feature `grid` at the start of it's name is not part of the grid system. The minimum 100px height on grid cells is not part of the grid system either.
+
+              The `grid` class initiallizes the grid functionality. The `grid__cell` classes are needed for compatibility with older browsers, to keep specificity down, and they are also needed for some of the more advanced functionality in the grid system
 
             +demo({
 html:`
@@ -82,7 +84,7 @@ html:`
             +demo({
 html:`
 .grid
-  .grid__cell.-color-1
+  .grid__cell.-color-1.add-padding
     :marked
       lots and lots and lots of text in this cell.
 
@@ -90,7 +92,7 @@ html:`
       Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
       At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
       Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-  .grid__cell.-color-2
+  .grid__cell.-color-2.add-padding
     :marked
       Barely any text in this cell`,
 })
@@ -105,7 +107,7 @@ html:`
             +demo({
 html:`
 .grid.grid--cols-2
-  .grid__cell.-color-1
+  .grid__cell.-color-1.add-padding
     :marked
       lots and lots and lots of text in this cell.
 
@@ -113,7 +115,7 @@ html:`
       Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
       At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
       Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-  .grid__cell.-color-2
+  .grid__cell.-color-2.add-padding
     :marked
       Barely any text in this cell`,
 })
@@ -546,8 +548,8 @@ html:`
             +demo({
 html:`
 .grid.grid--cols-2
-  .grid__cell.grid.grid--cols-2.-color-1
-    .grid__cell.-color-2
+  .grid__cell.grid.grid--cols-2.-color-1.add-padding
+    .grid__cell.-color-2.add-padding
       :marked
         lots and lots of text in this cell forces the other grid to grow.
 
@@ -556,7 +558,7 @@ html:`
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
         Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
     .grid__cell.-color-3
-  .grid__cell.grid.grid--cols-2.-color-4
+  .grid__cell.grid.grid--cols-2.-color-4.add-padding
     .grid__cell.-color-5
     .grid__cell.-color-6
 `})
@@ -569,16 +571,16 @@ html:`
             +demo({
 html:`
 .grid.grid--hasInners.grid--cols-2
-  .grid__cell.-color-1
+  .grid__cell.-color-1.add-padding
     .grid__inner.grid.grid--cols-2
-      .grid__cell.-color-2
+      .grid__cell.-color-2.add-padding
         :marked
           Same as before but this time with much better legacy browser support.
 
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
           Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
       .grid__cell.-color-3
-  .grid__cell.-color-4
+  .grid__cell.-color-4.add-padding
     .grid__inner.grid.grid--cols-2
       .grid__cell.-color-5
       .grid__cell.-color-6
@@ -602,7 +604,7 @@ html:`
 html:`
 .grid.grid--hasInners.grid--gutter-moduleName.grid--cols-2
   .grid__cell
-    .grid__inner.add-border.add-shadow
+    .grid__inner.add-border.add-shadow.add-padding
       :marked
         To give grid cells a border or padding as well as a gutter, you will need to use \`grid__inner\`
 
@@ -611,7 +613,7 @@ html:`
         At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
         Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
   .grid__cell
-    .grid__inner.add-border.add-shadow
+    .grid__inner.add-border.add-shadow.add-padding
 `}, {classes:'-noCellPadding'})
 
 
@@ -625,7 +627,7 @@ html:`
 div(style="padding-top: 1px;")
   .grid.grid--hasInners.grid--gutter-moduleName.grid--cols-2
     .grid__cell
-      .grid__inner.add-border.add-shadow
+      .grid__inner.add-border.add-shadow.add-padding
         :marked
           To give grid cells a border or padding as well as a gutter, you will need to use \`grid__inner\`
 
@@ -634,7 +636,7 @@ div(style="padding-top: 1px;")
           At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
           Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
     .grid__cell
-      .grid__inner.add-border.add-shadow
+      .grid__inner.add-border.add-shadow.add-padding
 `}, {classes:'-noCellPadding'})
 
               :marked
@@ -723,8 +725,8 @@ html:`
 ol.grid.grid--space-around.grid--hasInners.add-border
   - var i = 0
   while i < 5
-    li.grid__cell
-      a.grid__inner.add-shadow= i + 1
+    li.grid__cell.add-padding
+      a.grid__inner.add-shadow.add-padding= i + 1
     - i++;
 `}, {classes: '-noHeight'})
 
@@ -785,9 +787,9 @@ html:`
     each text in heights
       .grid__cell
         .grid__inner.grid.grid--vAlign-center.add-border
-          .grid__cell
+          .grid__cell.add-padding
             != text
-`}, {classes: '-noHeight -noCellPadding'})
+`}, {classes: '-noHeight'})
               :marked
                 Using nested grids to vertically align text inside full sized grid cells
 
@@ -800,6 +802,14 @@ html:`
 `}, {classes: '-noHeight'})
               :marked
                 Changing the vertical alignment of a single cell using `grid__cell--vAlign-xxx` classes (`xxx` being `top`, `bottom`, or `center`)... or you could just use the `align-self` css property.
+
+            +demo({
+html:`
+.grid.grid--vAlign-bottom.add-border(style='height:100px;')
+  - var heights = [80, 25, 50, 75];
+  each height, i in heights
+    .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join('') + (i === 2 ? ' grid__cell--vAlign-top' : ''))
+`}, {classes: '-noHeight'})
 
             :marked
               ## How to support legacy browsers

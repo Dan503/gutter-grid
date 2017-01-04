@@ -30,24 +30,11 @@
 			padding: 0;
 
 			&__cell {
-				padding: 10px;
 				min-height: 100px;
 				margin: 0;
 
-				.-noCellPadding & {
-					padding: 0;
-				}
-
 				.-noHeight & {
 					min-height: 0;
-				}
-			}
-
-			&__inner {
-				padding: 10px;
-
-				.-noInnerPadding & {
-					padding: 0;
 				}
 			}
 		}
