@@ -61,6 +61,13 @@ code {
 		color: #315116;
 	}
 
+	blockquote {
+		margin: 50px 5%;
+		&:before {
+			display: none;
+		}
+	}
+
 	pre {
 		background-color: #282c34;
 		padding: 0;
