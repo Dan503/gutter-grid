@@ -1,4 +1,4 @@
-# flexible-grid
+# gutter-grid
 
 This project is still under development.
 
