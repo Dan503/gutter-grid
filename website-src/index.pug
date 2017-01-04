@@ -12,23 +12,23 @@ head
   link(rel='stylesheet', href='stylesheets/github-dark.css')
   link(rel='stylesheet', href='stylesheets/custom-styles.css')
   script(type='text/javascript', src='javascripts/modernizr.min.js')
-  title flexible-grid
+  title gutter-grid
   meta(name='description', content='A grid system that uses flexbox with display:table and float:left backups')
   meta(name='viewport', content='width=device-width,initial-scale=1')
 body
   .wrapper
     header
-      h1.title flexible-grid
+      h1.title gutter-grid
     #container
       p.tagline A grid system that uses flexbox with display:table and float:left backups
       #main(role='main')
         .download-bar
           .inner
-            a.download-button.tar(href='https://github.com/Dan503/flexible-grid/tarball/master')
+            a.download-button.tar(href='https://github.com/Dan503/gutter-grid/tarball/master')
               span Download
-            a.download-button.zip(href='https://github.com/Dan503/flexible-grid/zipball/master')
+            a.download-button.zip(href='https://github.com/Dan503/gutter-grid/zipball/master')
               span Download
-            a.code(href='https://github.com/Dan503/flexible-grid') View flexible-grid on GitHub
+            a.code(href='https://github.com/Dan503/gutter-grid') View gutter-grid on GitHub
           span.blc
           span.trc
         article.markdown-body
@@ -41,21 +41,21 @@ body
               ## Installation
 
               ```````
-              npm install flexible-grid --save
+              npm install gutter-grid --save
               ```````
 
-              A dependency that Flexible-grid has is [mq-scss](https://www.npmjs.com/package/mq-scss). This is used for the media queries.
+              A dependency that gutter-grid has is [mq-scss](https://www.npmjs.com/package/mq-scss). This is used for the media queries.
 
-              After npm installing Flexible-grid, add this to the top of your main Sass file:
+              After npm installing gutter-grid, add this to the top of your main Sass file:
 
               `````scss
               @import '../node_modules/mq-scss/mq';
-              @import '../node_modules/flexible-grid/grid-classes';
+              @import '../node_modules/gutter-grid/grid-classes';
               `````
 
               Things to note:
 
-              - mq-scss will automatically install when installing flexible-grid
+              - mq-scss will automatically install when installing gutter-grid
               - I've purposly not put the mq-scss include in the grid Sass file so that users will more likely see that mq-scss is available for them to use
               - Make sure that the import paths are actually correct. They will differ depending on your folder structure.
 
@@ -70,7 +70,7 @@ html:`
   .grid__cell.-color-2`,
 })
               :marked
-                The bare bones markup of what you need for flexible-grid to work (excluding color classes)
+                The bare bones markup of what you need for gutter-grid to work (excluding color classes)
 
             :marked
               That example is a bit misleading though. Having 2 grid cells doesn't necessarily mean they will always be 50% width each
@@ -203,7 +203,7 @@ $grid-break-points: (
 );
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/flexible-grid/grid-classes';`
+@import '../node_modules/gutter-grid/grid-classes';`
 })
               :marked
                 These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements.
@@ -214,7 +214,7 @@ scss:`
 $grid-break-points: false;
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/flexible-grid/grid-classes';`
+@import '../node_modules/gutter-grid/grid-classes';`
 })
               :marked
                 You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns.
@@ -259,7 +259,7 @@ scss:`
 $grid-page-width: 1200px;
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/flexible-grid/grid-classes';`
+@import '../node_modules/gutter-grid/grid-classes';`
 })
               :marked
                 Alter the screen size that grid wrapping becomes enabled by default at
@@ -317,7 +317,7 @@ html:`
 
               One of the hardest things to do well in css that is very common in web design is when you have multiple columns on multiple rows with gutters inbetween each item but the content in the outer columns need to line up with the edges of the other content on the page.
 
-              This is easily achieved using flexible-grid though.
+              This is easily achieved using gutter-grid though.
 
             +demo({
 html:`
@@ -337,7 +337,7 @@ $grid-cell-gutters: (
 );
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/flexible-grid/grid-classes';`
+@import '../node_modules/gutter-grid/grid-classes';`
 })
               :marked
                 Defining a gutter size
@@ -369,7 +369,7 @@ $grid-cell-gutters: (
 );
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/flexible-grid/grid-classes';`
+@import '../node_modules/gutter-grid/grid-classes';`
 })
               :marked
                 Applying gutters that are affected by media queries
@@ -727,9 +727,9 @@ ol.grid.grid--space-around.grid--hasInners.add-border
             :marked
               ## How to support legacy browsers
 
-              Flexible-grid is powered mostly by flexbox. Flexbox is not supported in many older browsers though, particularly IE8 & 9. To help cater to those browsers, flexible-grid has `display:table` and `float:left` backups built into it for when `flex-box` is not supported. In general it will use `display:table` since tables act in a very similar way to how flex-box acts. However, when wrapping is involved and the browser does not support the `flex-wrap`, it will use `float:left` styling instead.
+              gutter-grid is powered mostly by flexbox. Flexbox is not supported in many older browsers though, particularly IE8 & 9. To help cater to those browsers, gutter-grid has `display:table` and `float:left` backups built into it for when `flex-box` is not supported. In general it will use `display:table` since tables act in a very similar way to how flex-box acts. However, when wrapping is involved and the browser does not support the `flex-wrap` css property, it will use `float:left` styling instead.
 
-              In order to detect if the browser supports flex-box and flex-wrap, flexible-grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr properties it is dependent on is `flexwrap` and `flexbox`. To add Modernizr to your site, either [download a custom build that includes flexbox and flexwrap](https://modernizr.com/download?setclasses&q=flex) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
+              In order to detect if the browser supports flex-box and flex-wrap, gutter-grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr properties it is dependent on is `flexwrap` and `flexbox`. To add Modernizr to your site, either [download a custom build that includes flexbox and flexwrap](https://modernizr.com/download?setclasses&q=flex) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
 
               The design in IE8 & 9 won't look like the design on browsers that support flex-box. It will mainly just help stop the layout from completly breaking on you when compared to using purely flex-box on it's own.
 
@@ -753,7 +753,7 @@ ol.grid.grid--space-around.grid--hasInners.add-border
               $grid-gutter-ie-fallback: #fff;
 
               @import '../node_modules/mq-scss/mq';
-              @import '../node_modules/flexible-grid/grid-classes';
+              @import '../node_modules/gutter-grid/grid-classes';
               ````
 
     footer
@@ -761,15 +761,15 @@ ol.grid.grid--space-around.grid--hasInners.add-border
         p
           a.avatar(href='https://github.com/Dan503')
             img(src='https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=50&default=retro', width='48', height='48')
-          | #[a(href='https://github.com/Dan503') Dan503] maintains #[a(href='https://github.com/Dan503/flexible-grid') flexible-grid]
+          | #[a(href='https://github.com/Dan503') Dan503] maintains #[a(href='https://github.com/Dan503/gutter-grid') gutter-grid]
 
       .creds
         small
           | theme by #[a(href='https://twitter.com/jonrohan/') Jon Rohan]
   .current-section
     a(href='#top') Scroll to top
-    a.tar(href='https://github.com/Dan503/flexible-grid/tarball/master') tar
-    a.zip(href='https://github.com/Dan503/flexible-grid/zipball/master') zip
+    a.tar(href='https://github.com/Dan503/gutter-grid/tarball/master') tar
+    a.zip(href='https://github.com/Dan503/gutter-grid/zipball/master') zip
     a.code(href='') source code
     p.name
 
