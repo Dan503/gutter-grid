@@ -743,6 +743,19 @@ ol.grid.grid--space-around.grid--hasInners.add-border
     - i++;
 `}, {classes: '-noHeight'})
 
+            +demo({
+html:`
+.grid__wrapper
+  .grid.grid--vertical.grid--gutter-moduleName
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+`})
+              :marked
+                Applying `grid--vertical` is simply adding `flex-direction: column`. This flips the grid around so that grid cells progressivly move down the page instead of across.
+
+                Using the `grid--vertical` class features a backup for legacy browsers though whereas applying `flex-direction: column` on it's own in your css does not.
+
             :marked
               ### Vertical alignment
 
