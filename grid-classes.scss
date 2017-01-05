@@ -75,7 +75,7 @@ $grid-bp-list: if(
 		}
 
 		//Applies the media queries for the break points
-		&:not(.#{$fullPrefix}grid--disableMQs) {
+		&:not(.#{$fullPrefix}grid--noMQs) {
 			@if ($breaks != false) {
 				@for $y from 1 through length($breaks) {
 					$MQ-breakData : nth($breaks, $y);
