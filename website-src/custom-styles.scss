@@ -8,12 +8,18 @@
 @import '../grid-classes';
 
 body {
-	padding: 0 20px;
+	padding: 0;
 }
 
 h2,h3,h4,p,ul,ol{
 	&:first-child { margin-top: 0; }
 	&:last-child { margin-bottom: 0; }
+}
+
+.wrapper {
+	padding: 0 20px;
+	overflow: hidden;
+	box-sizing: border-box;
 }
 
 .wrapper, .current-section {
@@ -112,6 +118,16 @@ code {
 	&-padding {
 		padding: 15px !important;
 	}
+}
+
+.wideBox {
+	height: 50px;
+	width: 500px;
+}
+
+.thinBox {
+	height: 50px;
+	width: 50px;
 }
 
 #main {

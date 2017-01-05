@@ -37,7 +37,6 @@ body
 
           div
             :marked
-
               ## Installation
 
               ```````
@@ -63,11 +62,23 @@ body
 
               > Read the **[How to support legacy browsers](#how-to-support-legacy-browsers)** section to get a run down on how to achieve maximum browser compatibility.
 
+            :marked
               ## Basic usage
 
               A note on the examples. Any class that doesn't feature `grid` at the start of it's name is not part of the grid system. The minimum 100px height on grid cells is not part of the grid system either.
 
-              The `grid` class initiallizes the grid functionality. The `grid__cell` classes are needed for compatibility with older browsers, to keep specificity down, and they are also needed for some of the more advanced functionality in the grid system
+              The grid system classes follow a pattern based on the BEM naming convention:
+
+              - **`grid`** initiallizes the grid functionality and acts as the grid module declaration
+
+              - **`grid__elementName`** double underscores in a class name represent an element of the grid. Each element of a grid always goes in the same position relative to it's relevent `grid` class other related elements.
+
+              - **`grid--settingName`** grid settings are represented with double dashes before the setting name. Grid settings alter the functionality of how the whole grid behaves.
+
+              - **`grid__elementName--settingName`** a setting name after a grid element name is a setting that applies only to that grid element.
+
+              The `grid__cell` classes may seem uneccessary but they help keep specificity down, they are needed for compatibility with older browsers, and they are also needed for some of the more advanced functionality in the grid system. `grid__cell` classes must always be direct decendents of a parent `grid` class.
+
 
             +demo({
 html:`
@@ -593,6 +604,8 @@ html:`
 
               The `grid--hasInners` class tells the grid that the `grid__inner` inside each `grid__cell` should take up the full height and width of it's parent.
 
+              Each `grid__cell` can only contain one `grid__inner` and `grid__inner` must be a direct decendent of it's `grid__cell` parent.
+
             :marked
               ## Borders and shadows on guttered cells
 
@@ -803,13 +816,94 @@ html:`
               :marked
                 Changing the vertical alignment of a single cell using `grid__cell--vAlign-xxx` classes (`xxx` being `top`, `bottom`, or `center`)... or you could just use the `align-self` css property.
 
+            :marked
+              ## Controlling cell growth and shrinkage
+
+              Another way of handling cell alignments is with grid cell growth and shrink settings. By default, grid cells will both grow and shrink as necessary but this can be overridden with the `grid--noGrowth`, `grid--noShrink`, and `grid--noResize` classes.
+
+              - **`grid--noGrowth`** will prevent all cells in the grid from growing
+              - **`grid__cell--noGrowth`** will prevent only the cell that it is applied to from growing
+              - **`grid--noShrink`** will prevent all cells in the grid from shrinking below their content width
+              - **`grid__cell--noShrink`** will prevent that specific cell from shrinking bellow it's content width
+              - **`grid--noResize`** a shortcut for applying both `grid--noGrowth` and `grid--noShrink` classes
+              - **`grid__cell--noResize`** a shortcut for applying both `grid__cell--noGrowth` and `grid__cell--noShrink` classes
+
             +demo({
 html:`
-.grid.grid--vAlign-bottom.add-border(style='height:100px;')
-  - var heights = [80, 25, 50, 75];
-  each height, i in heights
-    .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join('') + (i === 2 ? ' grid__cell--vAlign-top' : ''))
-`}, {classes: '-noHeight'})
+.grid.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.-color-2
+    .thinBox.-color-4
+`})
+              :marked
+                This is the control example to show how the grid setup behaves with minimal settings and a block of content at a fixed 500px by 50px size and a small 50px by 50px square.
+
+            +demo({
+html:`
+.grid.grid--noGrowth.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.-color-2
+    .thinBox.-color-4
+`})
+              :marked
+                If `grid--noGrowth` is applied, it is essentially the equivelent of using `grid--align-left`
+
+            +demo({
+html:`
+.grid.grid--noShrink.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.-color-2
+    .thinBox.-color-4
+`})
+              :marked
+                If `grid--noShrink` is applied, the grid cells will try their best not to shrink below the required width of the content inside them (you will need to resize your browser to a mobile sized view to see the difference)
+
+            +demo({
+html:`
+.grid.grid--noResize.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.-color-2
+    .thinBox.-color-4
+`})
+              :marked
+                If you want to apply `grid--noShrink` and `grid--noGrowth` at the same time, use `grid--noResize`
+
+            +demo({
+html:`
+.grid.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.grid__cell--noGrowth.-color-2
+    .thinBox.-color-4
+`})
+              :marked
+                Applying `noGrowth` to only 1 of the grid cells
+
+            +demo({
+html:`
+.grid.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.grid__cell--noShrink.-color-2
+    .thinBox.-color-4
+`})
+              :marked
+                Applying `noShrink` to only 1 of the grid cells (resize browser to see effect)
+
+            +demo({
+html:`
+.grid.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.grid__cell--noResize.-color-2
+    .thinBox.-color-4
+`})
+              :marked
+                Applying `noResize` to prevent shrinking and growth in only 1 of the grid cells at the same time (very useful for listings with thumbnail images if you apply `noResize` to the thumbnail cell)
 
             :marked
               ## How to support legacy browsers
