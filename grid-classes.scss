@@ -143,7 +143,6 @@ $grid-bp-list: if(
 			flex-shrink: 1;
 		}
 
-//
 		&--noGrowth {
 			flex-grow: 0;
 		}
@@ -269,7 +268,6 @@ $grid-bp-list: if(
 		flex-direction: column;
 	}
 
-//
 	&--noGrowth {
 		> .#{$fullPrefix}grid__cell { flex-grow: 0; }
 	}
@@ -283,9 +281,8 @@ $grid-bp-list: if(
 		}
 	}
 
-//
-	//allows grid to be set at something other than 100% width
-	&--shrinkable {
+	//allows a grid to be set at something other than 100% of it's parents width
+	&--mini {
 		min-width: 0;
 	}
 

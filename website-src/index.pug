@@ -905,6 +905,21 @@ html:`
               :marked
                 Applying `noResize` to prevent shrinking and growth in only 1 of the grid cells at the same time (very useful for listings with thumbnail images if you apply `noResize` to the thumbnail cell)
 
+            +demo({
+html:`
+.grid.grid--mini(style="width: 50%")
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+`})
+              :marked
+                Somewhat related. The `grid--mini` class allows a grid to take up less than 100% of it's parent's width.
+            +demo({
+html:`
+.grid(style="width: 50%")
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+`})
+
             :marked
               ## How to support legacy browsers
 
