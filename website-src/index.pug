@@ -20,7 +20,7 @@ body
     header
       h1.title gutter-grid
     #container
-      p.tagline A grid system that uses flexbox with display:table and float:left backups
+      p.tagline A Sass flex-box based grid system with backups for old browsers featuring a robust gutter system
       #main(role='main')
         .download-bar
           .inner
@@ -112,24 +112,30 @@ body
 
               At this point, you are able to use the grid system and it will work well in any browsers that have full standards complient flexbox support. There are many old browsers that don't feature that level of support though. If your site needs to support those older browsers, there are a few more steps you need to take.
 
-              > Read the **[How to support legacy browsers](#how-to-support-legacy-browsers)** section to get a run down on how to achieve maximum browser compatibility.
+              > Read **[how to support legacy browsers](#how-to-support-legacy-browsers)** to get a run down on how to achieve maximum browser compatibility.
 
             :marked
               ## Basic usage
 
               A note on the examples. Any class that doesn't feature `grid` at the start of it's name is not part of the grid system. The minimum 100px height on grid cells is not part of the grid system either.
 
-              The grid system classes follow a pattern based on the BEM naming convention:
+              The grid system classes follow a pattern based on the BEM naming convention with the exception that it uses camelCase when necessary to retain clear grouping:
 
               - **`grid`** initiallizes the grid functionality and acts as the grid module declaration
 
-              - **`grid__elementName`** double underscores in a class name represent an element of the grid. Each element of a grid always goes in the same position relative to it's relevent `grid` class other related elements.
+              - **`grid__elementName`** double underscores in a class name represent an element of the grid. Each element of a grid always goes in the same position relative to it's relevent `grid` class.
 
               - **`grid--settingName`** grid settings are represented with double dashes before the setting name. Grid settings alter the functionality of how the whole grid behaves.
 
+              - **`grid--settingName-specifierName`** If a setting has a specifier, the setting name defines what setting is being set. The specifier sets the value of the setting and is represented by a single dash before the specifier name.
+
               - **`grid__elementName--settingName`** a setting name after a grid element name is a setting that applies only to that grid element.
 
+              - **`grid__elementName--settingName-specifierName`** cell based settings can have specifiers as well.
+
               The `grid__cell` classes may seem uneccessary but they help keep specificity down, they are needed for compatibility with older browsers, and they are also needed for some of the more advanced functionality in the grid system. `grid__cell` classes must always be direct decendents of a parent `grid` class.
+
+              If the naming convention looks daunting, don't worry. The classes are actually quite simple when you start looking through the examples.
 
 
             +demo({
@@ -414,6 +420,8 @@ $grid-cell-gutters: (
 
             :marked
               The `grid__wrapper` element is to help contain the grid inside it's bounding box when gutters are applied to it. There is a glitch in Chrome that often ignores the top negative margin rule that makes the grid cells sit hard up againt the boundries of the grid. `grid__wrapper` prevents this glitch from being an issue.
+
+              I name the grid gutters based on the module name that the gutter is being applied to rather than a specific number like `grid--gutter-20`. While this can lead to multiple grid gutters having the same value, this improves maintainability by making gutter widths controllable entirely through the css without having to make changes across multiple html files. If you disagree, nothing is stopping you from naming the gutters however you want.
 
               Anyway, that is how to create a fixed gutter that is the same width for all screen sizes, but what if you have a very thick gutter on desktop? It won't work well having an 80px wide gutter on a tablet or mobile device, it would take up too much screen realestate. The solution is gutters that contain media queries. Here is how to do them:
 
@@ -798,7 +806,7 @@ ol.grid.grid--space-around.grid--hasInners.add-border
 
             +demo({
 html:`
-.grid__wrapper
+.grid__wrapper.add-border
   .grid.grid--vertical.grid--gutter-moduleName
     .grid__cell.-color-1
     .grid__cell.-color-2

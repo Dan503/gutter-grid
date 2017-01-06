@@ -1,7 +1,7 @@
 {
   "name": "gutter-grid",
   "version": "1.0.0",
-  "description": "A Sass flexbox based grid system with backups for old browsers featuring a robust gutter system",
+  "description": "A Sass flex-box based grid system with backups for old browsers featuring a robust gutter system",
   "dependencies": {
     "mq-scss": "^1.0.7"
   },
