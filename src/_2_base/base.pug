@@ -7,6 +7,7 @@ include /_1_modules/siteContainer/siteContainer
 include /_1_modules/pageLayout/pageLayout
 include /_1_modules/nav/nav
 include /_1_modules/nextPrev/nextPrev
+include /_1_modules/0-cmsContent/cmsContent
 
 include /_1_modules/demo/demo
 
@@ -104,7 +105,7 @@ body
 									:marked
 										_**This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.**_
 
-									.cmsContent
+									+cmsContent()
 										h2= get.current.altTitle || get.current.title
 										block content
 
