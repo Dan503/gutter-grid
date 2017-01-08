@@ -10,10 +10,13 @@ $grid-cell-gutters: (
 	'moduleName' : 20px,
 	'share' : 20px,
 	'body' : 30px,
-	'mediaQueryFriendly' : (
-		50px, //*default*/
-		25px (max, bp('tablet')), //*affected by media query*/
-		10px (max, bp('mobile')) //*affected by media query*/
+	'mediaQueryGutter' : (
+		80px, //*default*/
+		25px (max, 960px), //*affected by media query*/
+		10px (max, 600px) //*affected by media query*/
 	)
 );
+//IE8 can't do transparent borders.
+//This defines what the default color for gutters is in IE.
+$grid-gutter-ie-fallback: $CF-body__bg;
 @import '../../../grid-classes';
