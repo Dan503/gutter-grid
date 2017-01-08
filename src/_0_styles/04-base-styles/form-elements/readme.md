@@ -1,1 +1,0 @@
-This folder holds the base styles that all form elements inherit. Do not put module specific css in this folder.

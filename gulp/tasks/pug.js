@@ -209,7 +209,9 @@ export default function() {
 			});
 
 			//Adds the template nav item to the main nav map
-			siteData.navMap.subnav[0].subnav.push(templateNavItem);
+			const homeSubnav = defaultTo(siteData.navMap.subnav[0].subnav, []);
+			homeSubnav.push(templateNavItem);
+			siteData.navMap.subnav[0].subnav = homeSubnav;
 
 			//waits for the content.json file to be created before going any further
 			waitForFile(path.join(navMapDest, 'content.json'), ()=> {

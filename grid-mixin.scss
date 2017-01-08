@@ -35,11 +35,11 @@ $grid-bp-list: if(
 }
 
 //make cells take up multiple columns worth of width
-@mixin MG-cell--span($span, $totalCols, $important: ()){
+@mixin grid__cell--span($span, $totalCols, $important: ()){
 	width: (percentage(1/$totalCols) * $span) $important;
 }
 
-@mixin MG-grid(
+@mixin grid(
 	$cols: auto,
 	$gutter: false,
 	$hasInners: false,

@@ -1,41 +1,11 @@
-include ../arrow/arrow
-include ../0-chevron/chevron
-
-mixin btnExtra(spec)
-	if spec.hasChev
-		+chevron(spec.chevron)
-	else if spec.hasArrow
-		+arrow(spec.arrow)
-
 mixin btn(spec)
 	-
 		spec = defaultTo(spec, {
-			class : '',
-			text: 'Button text',
+			classes : '',
 			mods : [],
 			href : '#',
 			type : 'a',
-			extras : {
-				arrow : {},
-				chevron : {}
-			}
 		});
-
-		// available mods: ['clear', 'noArrow', 'hasChevron']
-		var modClasses = mods('btn', spec.mods);
-
-		var extra = {
-			hasArrow : spec.mods.indexOf('noArrow') === -1,
-			hasChev : spec.mods.indexOf('hasChevron') > -1,
-		}
-
-		for (var module in spec.extras){
-			//adds the spec.extras settings to the "extra" object
-			extra[module] = spec.extras[module];
-
-			//Applies btn__[module] class without the risk of it being overitten
-			extra[module].class = isset(extra[module].class) ? `${extra[module].class} btn__${module}` : ` btn__${module}`;
-		}
 
 		var elem, attr;
 
@@ -50,5 +20,7 @@ mixin btn(spec)
 		attr = defaultTo(attributes, attr);
 
 	#{elem}.btn(class=spec.class + modClasses)&attributes(attr)
-		| #{spec.text}
-		+btnExtra(extra)
+		if block
+			block
+		else
+			| Button text

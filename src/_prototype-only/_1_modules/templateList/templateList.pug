@@ -23,8 +23,8 @@ mixin templateList(piece, spec)
 						li.templateList__item
 							+btn({
 								class:'templateList__link JS-templateList__link' + activeClass,
-								href: item.link,
-								text : item.title
+								href: item.link
 							})&attributes({tabindex:"-1"})
+								= item.title
 
 	// end Prototype only

@@ -1,0 +1,13 @@
+
+mixin nav(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	nav.nav(class=spec.classes)&attributes(attributes)
+		ol.nav__list.grid.grid--vertical
+			each item in navMap.subnav
+				- var activeClass = isActive(item) ? '-active' : '';
+				li.nav__item.grid__cell
+					a.nav__link(href=item.link, class=activeClass)= item.title

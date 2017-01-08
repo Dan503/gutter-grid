@@ -1,4 +1,4 @@
-﻿.skipLinks {
+.skipLinks {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -10,7 +10,7 @@
 		left: 0;
 		width: 100%;
 		background: brand(2);
-		color: #fff;
+		color: brand(2, 'text');
 		text-decoration: underline;
 		z-index: 99999999;
 		text-align: center;

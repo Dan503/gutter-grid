@@ -5,28 +5,33 @@ $V-hoverModifier: 60%;
 //Greys do not belong in this list unless it is a MAJOR brand color
 $brand: (
 	//*Main color*/
-	color: $CB-blue-dim,
+	color: #63a52a,
 
-	//*Most likely hover state color for the main color*/
-	hover: shade($CB-blue-dim, $V-hoverModifier),
+	// the color this turns into on hover
+	hover: #90D355,
 
-	//*If there is a color that is commonly used alongside the main color, set it as the partner color*/
-	partner: $CB-blue-light,
-
-	/*if set as a background color, the text inside will most likely be this color*/
-	text: #fff,
+	//*if set as a background color, the text inside will most likely be this color*/
+	text: #000,
 ),
 
 //*Second most prominent brand color etc. */
 (
-	color: $CB-blue-dark,
-	hover: $CB-blue-dark--hover,
-	partner: $CB-blue-dimmer,
+	color: #F16031,
+	text: #000,
+),
+(
+	color: #510558,
 	text: #fff,
 ),
 (
-	color: $CB-blue-light,
-	hover: $CB-blue-light--hover,
-	partner: $CB-blue-mid,
+	color: #3F53B2,
+	text: #fff,
+),
+(
+	color: #722912,
+	text: #fff,
+),
+(
+	color: #293F2D,
 	text: #fff,
 );

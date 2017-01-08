@@ -5,5 +5,15 @@
 $mq-ems: true;
 @import '../../../node_modules/mq-scss/mq';
 
-//kf animate
-@import '../../../node_modules/kf-animate/kf-animate';
+//this grid system
+$grid-cell-gutters: (
+	'moduleName' : 20px,
+	'share' : 20px,
+	'body' : 30px,
+	'mediaQueryFriendly' : (
+		50px, //*default*/
+		25px (max, bp('tablet')), //*affected by media query*/
+		10px (max, bp('mobile')) //*affected by media query*/
+	)
+);
+@import '../../../grid-classes';

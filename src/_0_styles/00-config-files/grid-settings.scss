@@ -7,14 +7,13 @@
 
 //IE8 can't do transparent borders.
 //This defines what the default color for gutters is in IE.
-$gutter-ieFallback: $CF-body__bg;
+$grid-gutter-ie-fallback: $CF-body__bg;
 
 //You can alter the available grid gutter sizes here
 //usage: class="grid grid--gutter-moduleName"
-$cellGutters: (
+$grid-cell-gutters: (
 	'moduleName' : 20px,
-	'demo' : 10px,
-	'pageLayout' : 30px,
+	'body' : 30px,
 	'mediaQueryFriendly' : (
 		50px, //*default*/
 		25px (max, bp('tablet')), //*affected by media query*/
