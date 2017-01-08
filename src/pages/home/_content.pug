@@ -1,0 +1,50 @@
+block content
+	:marked
+		Gutter-grid is a flexbox based grid system for building fully responsive grid layouts with customisable gutters. Even though it is powered by flex-box, it features `display:table` and `float:left` backups for legacy browsers to prevent your site from blowing up when viewed in IE8. It's Gutter system makes adding gutters to grid cells far easier than any other method.
+
+		Have you ever had to do a layout that looked something like this in a design?
+
+	.demo__result.demo__segment
+		.grid__wrapper.add-border
+			.grid.grid--cols-3.grid--gutter-moduleName.grid--wrap.grid--align-left
+				.grid__cell.-color-1
+				.grid__cell.-color-2
+				.grid__cell.-color-3
+				.grid__cell.-color-4
+				.grid__cell.-color-5
+				.grid__cell.-color-6
+				.grid__cell.-color-3
+				.grid__cell.-color-1
+				.grid__cell.-color-5
+
+	:marked
+		Looks simple enough right? Just three columns and some margin around each cell. How hard can that be?
+
+		Well you would be surprised. The problem comes from the edges of each cell needing to be hard up against the edges of its container.
+
+		_Ok, so that just means I wrap each row in a div, then give each cell a right margin, but remove the right margin from the last cell. The bottom spacing can be added to the row elements and the last row can have the margin removed._
+
+		There are a few problems with that, the margins would need to be percentages leading to awkward percentages like 2% margin and 31.33% width.
+
+		_Whatever, I can live with that, what's the other problems?_
+
+		It would be more combersome to maintain than just having a list of grid cells in a single element. Also, this is a responsive design. Have a look at what happens to the grid on a tablet sized screen. The cells go to 50% width instead of 30% width. Doing the method mentioned above would mean every 3rd cell would be on a row of it's own when the cells are at 50% width.
+
+		_Ok, so I can't use rows. I'll just use nth-child so every 3rd cell has no margin right and the last 3 have no margin bottom_
+
+		Again, you're forgetting about the responsive side of things. You can remove the margin from the "last row", but as the screen shrinks, the first cell in the "last row" isn't in the last row any more, it's in the second last row. Also the last cell in the first row isn't the last cell of the first row any more. It has become the first cell of the second row. All the cells have shifted positions in the grid.
+
+		To present the grid correctly, you would need to create a unique set of nth-child selectors cancelling the margin for each grid cell width. This can be tricky to do.
+
+		_Ok fine, I'll do that then_
+
+		What if I told you that this also had to work in IE8 and IE8 doesn't support nth-child selectors?
+
+		_Ok... ummm... well how do you do it then?_
+
+		I use gutter-grid :)
+
+	| #[em -_-]
+
+	:marked
+		Ok, the grid system mostly works by using a combination of borders for setting the widths of the gutters, negative margin for removing the extra space around the edges and `box-sizing: border-box;` to retain it's responsiveness to screen size despite having fixed width gutters.
