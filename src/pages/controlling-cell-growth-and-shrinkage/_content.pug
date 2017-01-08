@@ -1,0 +1,104 @@
+block content
+	:marked
+		## Controlling cell growth and shrinkage
+
+		Another way of handling cell alignments is with grid cell growth and shrink settings. By default, grid cells will both grow and shrink as necessary but this can be overridden with the `grid--noGrowth`, `grid--noShrink`, and `grid--noResize` classes.
+
+		- **`grid--noGrowth`** will prevent all cells in the grid from growing
+		- **`grid__cell--noGrowth`** will prevent only the cell that it is applied to from growing
+		- **`grid--noShrink`** will prevent all cells in the grid from shrinking below their content width
+		- **`grid__cell--noShrink`** will prevent that specific cell from shrinking bellow it's content width
+		- **`grid--noResize`** a shortcut for applying both `grid--noGrowth` and `grid--noShrink` classes
+		- **`grid__cell--noResize`** a shortcut for applying both `grid__cell--noGrowth` and `grid__cell--noShrink` classes
+
+	+demo({
+html:`
+.grid.grid--noWrap
+	.grid__cell.-color-1
+		.wideBox.-color-3
+	.grid__cell.-color-2
+		.thinBox.-color-4
+`})
+		:marked
+			This is the control example to show how the grid setup behaves with minimal settings and a block of content at a fixed 500px by 50px size and a small 50px by 50px square.
+
+	+demo({
+html:`
+.grid.grid--noGrowth.grid--noWrap
+	.grid__cell.-color-1
+		.wideBox.-color-3
+	.grid__cell.-color-2
+		.thinBox.-color-4
+`})
+		:marked
+			If `grid--noGrowth` is applied, it is essentially the equivelent of using `grid--align-left`
+
+	+demo({
+html:`
+.grid.grid--noShrink.grid--noWrap
+	.grid__cell.-color-1
+		.wideBox.-color-3
+	.grid__cell.-color-2
+		.thinBox.-color-4
+`})
+		:marked
+			If `grid--noShrink` is applied, the grid cells will try their best not to shrink below the required width of the content inside them (you will need to resize your browser to a mobile sized view to see the difference)
+
+	+demo({
+html:`
+.grid.grid--noResize.grid--noWrap
+	.grid__cell.-color-1
+		.wideBox.-color-3
+	.grid__cell.-color-2
+		.thinBox.-color-4
+`})
+		:marked
+			If you want to apply `grid--noShrink` and `grid--noGrowth` at the same time, use `grid--noResize`
+
+	+demo({
+html:`
+.grid.grid--noWrap
+	.grid__cell.-color-1
+		.wideBox.-color-3
+	.grid__cell.grid__cell--noGrowth.-color-2
+		.thinBox.-color-4
+`})
+		:marked
+			Applying `noGrowth` to only 1 of the grid cells
+
+	+demo({
+html:`
+.grid.grid--noWrap
+	.grid__cell.-color-1
+		.wideBox.-color-3
+	.grid__cell.grid__cell--noShrink.-color-2
+		.thinBox.-color-4
+`})
+		:marked
+			Applying `noShrink` to only 1 of the grid cells (resize browser to see effect)
+
+	+demo({
+html:`
+.grid.grid--noWrap
+	.grid__cell.-color-1
+		.wideBox.-color-3
+	.grid__cell.grid__cell--noResize.-color-2
+		.thinBox.-color-4
+`})
+		:marked
+			Applying `noResize` to prevent shrinking and growth in only 1 of the grid cells at the same time (very useful for listings with thumbnail images if you apply `noResize` to the thumbnail cell)
+
+	+demo({
+html:`
+.grid.grid--mini(style="width: 50%")
+	.grid__cell.-color-1
+	.grid__cell.-color-2
+`})
+		:marked
+			Somewhat related. The `grid--mini` class allows a grid to take up less than 100% of it's parent's width.
+	+demo({
+html:`
+.grid(style="width: 50%")
+	.grid__cell.-color-1
+	.grid__cell.-color-2
+`})

@@ -1,0 +1,101 @@
+block content
+	:marked
+		## Cell alignments
+
+		There are multiple options available to you when it comes to aligning grid cells but only for browsers that support flexbox.
+
+		By default, if there are not enough cells in the row to fill the specified number of columns, the cells will grow like this:
+
+	+demo({
+html:`
+.grid.grid--cols-3.grid--wrap
+	.grid__cell.-color-1
+	.grid__cell.-color-2
+	.grid__cell.-color-3
+	.grid__cell.-color-4
+	.grid__cell.-color-5
+`})
+		:marked
+			Default cell alignment when there are not enough cells to fill the row
+
+	:marked
+		If this isn't the effect you are after, you might want to use some of these other alignment options
+
+
+	+demo({
+html:`
+.grid.grid--align-left.grid--cols-3.grid--wrap
+	.grid__cell.-color-1
+	.grid__cell.-color-2
+	.grid__cell.-color-3
+	.grid__cell.-color-4
+	.grid__cell.-color-5
+`})
+		:marked
+			Alternate cell alignment options
+
+	+demo({
+html:`
+.grid.grid--align-right.grid--cols-3.grid--wrap
+	.grid__cell.-color-1
+	.grid__cell.-color-2
+	.grid__cell.-color-3
+	.grid__cell.-color-4
+	.grid__cell.-color-5
+`})
+
+	+demo({
+html:`
+.grid.grid--align-center.grid--cols-3.grid--wrap
+	.grid__cell.-color-1
+	.grid__cell.-color-2
+	.grid__cell.-color-3
+	.grid__cell.-color-4
+	.grid__cell.-color-5
+`})
+
+	+demo({
+html:`
+.grid.grid--space-between.grid--cols-3.grid--wrap
+	.grid__cell.-color-1
+	.grid__cell.-color-2
+	.grid__cell.-color-3
+	.grid__cell.-color-4
+	.grid__cell.-color-5
+`})
+
+	+demo({
+html:`
+.grid.grid--space-around.grid--cols-3.grid--wrap
+	.grid__cell.-color-1
+	.grid__cell.-color-2
+	.grid__cell.-color-3
+	.grid__cell.-color-4
+	.grid__cell.-color-5
+`})
+
+	:marked
+		Of coarse, you can use alignment in more circumstances than just how the grid handles not having enough cells to fill a row. A good example is pagination that uses `grid--space-around` to space out the pagination cells:
+
+	+demo({
+html:`
+ol.grid.grid--space-around.grid--hasInners.add-border
+	- var i = 0
+	while i < 5
+		li.grid__cell.add-padding
+			a.grid__inner.add-shadow.add-padding= i + 1
+		- i++;
+`}, {classes: '-noHeight'})
+
+						+demo({
+html:`
+.grid__wrapper.add-border
+	.grid.grid--vertical.grid--gutter-moduleName
+		.grid__cell.-color-1
+		.grid__cell.-color-2
+		.grid__cell.-color-3
+`})
+	:marked
+		Applying `grid--vertical` is simply adding `flex-direction: column`. This flips the grid around so that grid cells progressivly move down the page instead of across.
+
+		Using the `grid--vertical` class features a backup for legacy browsers though whereas applying `flex-direction: column` on it's own in your css does not.

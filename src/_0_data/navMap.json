@@ -18,12 +18,7 @@
       "title": "Basic usage"
     },
     {
-      "title": "Using columns",
-      "subnav": [
-        {
-          "title": "Customising the columns"
-        }
-      ]
+      "title": "Using columns"
     },
     {
       "title": "Enabling/disabling wrapping"
@@ -41,12 +36,13 @@
     	"title": "Nesting grids"
     },
     {
-    	"title": "Cell alignments",
-    	"subnav": [
-    		{
-    			"title": "Vertical alignment"
-    		}
-    	]
+    	"title": "Borders and shadows on guttered cells"
+    },
+    {
+    	"title": "Horizontal cell alignments"
+    },
+    {
+    	"title": "Vertical cell alignments"
     },
     {
     	"title": "Controlling cell growth and shrinkage"

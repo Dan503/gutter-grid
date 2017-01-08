@@ -1,0 +1,68 @@
+block content
+	:marked
+		## Adding Gutters
+
+		One of the hardest things to do well in css that is very common in web design is when you have multiple columns on multiple rows with gutters inbetween each item but the content in the outer columns need to line up with the edges of the other content on the page.
+
+		This is easily achieved using gutter-grid though.
+
+	+demo({
+html:`
+.grid__wrapper
+	.grid.grid--gutter-moduleName.grid--cols-3.grid--wrap
+		.grid__cell.-color-1
+		.grid__cell.-color-2
+		.grid__cell.-color-3
+		.grid__cell.-color-4
+		.grid__cell.-color-5
+		.grid__cell.-color-6
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+	'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+})
+		:marked
+			Defining a gutter size
+
+	:marked
+		The `grid__wrapper` element is to help contain the grid inside it's bounding box when gutters are applied to it. There is a glitch in Chrome that often ignores the top negative margin rule that makes the grid cells sit hard up againt the boundries of the grid. `grid__wrapper` prevents this glitch from being an issue.
+
+		I name the grid gutters based on the module name that the gutter is being applied to rather than a specific number like `grid--gutter-20`. While this can lead to multiple grid gutters having the same value, this improves maintainability by making gutter widths controllable entirely through the css without having to make changes across multiple html files. If you disagree, nothing is stopping you from naming the gutters however you want.
+
+		Anyway, that is how to create a fixed gutter that is the same width for all screen sizes, but what if you have a very thick gutter on desktop? It won't work well having an 80px wide gutter on a tablet or mobile device, it would take up too much screen realestate. The solution is gutters that contain media queries. Here is how to do them:
+
+	+demo({
+html:`
+.grid__wrapper
+	.grid.grid--gutter-mediaQueryGutter.grid--cols-3.grid--wrap
+		.grid__cell.-color-1
+		.grid__cell.-color-2
+		.grid__cell.-color-3
+		.grid__cell.-color-4
+		.grid__cell.-color-5
+		.grid__cell.-color-6
+`,
+scss:`
+$grid-cell-gutters: (
+	'basicGutter' : 20px,
+	'mediaQueryGutter' : (
+		80px, //*default gutter width*/
+		25px (max, 960px), //*gutter width at 960px and below*/
+		10px (max, 600px) //*gutter width at 600px and below*/
+	)
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+})
+		:marked
+			Applying gutters that are affected by media queries
+
+	:marked
+		Unlike a basic gutter which is just a single pixel value, a media query gutter is a list of pixel values with an optional media query attached to them. The media queries are not written in the standard css media query syntax though. They are written in the mq-scss mixin syntax. To learn more about how to write media queries using the mq-scss syntax, see the [mq-scss documentation](https://www.npmjs.com/package/mq-scss).
+
