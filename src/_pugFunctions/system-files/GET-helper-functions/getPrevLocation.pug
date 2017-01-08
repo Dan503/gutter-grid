@@ -14,12 +14,14 @@
 		//creating a copy of providedLocation so I can retain access to the origional
 		var locationCopy = providedLocation.slice(0);
 
+		var providedLocationMap = Get(providedLocation);
+
 		//it's being a major pain in the ass not matching [0] with [0]
 		//this was the only way I could get it to match
-		if (Get(providedLocation,'location') === Get([0],'location')){
+		if (providedLocationMap.location[0] === 0  && providedLocation.length === 1){
 			//basically if on the home page, return as false
 			return false;
-		} else if (providedLocation === [1]){
+		} else if (providedLocation[0] === 1 && providedLocation.length === 1){
 			//prevents the user from pressing a prev button into miscellaneous pages
 			return [0];
 		}
