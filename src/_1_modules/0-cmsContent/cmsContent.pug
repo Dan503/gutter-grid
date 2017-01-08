@@ -1,9 +1,10 @@
 mixin cmsContent(spec)
-	- spec = spec || {}
-	- spec.__class = spec.__class || ''
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		})
 
-
-	.cmsContent(class=spec.__class)&attributes(attributes)
+	.cmsContent(class=spec.classes)&attributes(attributes)
 		if block
 			block
 		else
