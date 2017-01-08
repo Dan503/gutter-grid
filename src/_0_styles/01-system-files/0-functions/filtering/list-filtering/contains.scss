@@ -1,0 +1,4 @@
+//check if a value exists in a list
+@function contains($list,$var) {
+	@return index($list, $var) != null;
+}

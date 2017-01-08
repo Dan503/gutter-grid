@@ -1,0 +1,138 @@
+
+//this module wraps around text spat out by a CMS editor.
+//Elements inside this module can't have classes attatched
+
+$C-numbers: brand(2);//$CB-blue-dim;
+$C-dots: $C-numbers;
+
+.cmsContent, .cmsContent td {
+	text-align: left;
+
+	strong, b { font-weight: $bold; }
+
+	a:not(.btn) {
+		font-weight: $normal;
+		text-decoration: underline;
+		color: $CF-links;
+		&:before, &:after {
+			@include MG-animate;
+		}
+		@include MG-hover {
+			text-decoration: none;
+		}
+	}
+
+	//custom dot points do not appear in IE8 or print
+	@media screen {
+		ul, ol {
+			ul, ol {
+				margin: 0;
+			}
+			li {
+				margin-top: 10px;
+			}
+		}
+
+		> ul, > ol {
+			&:not(.TK-noDots) {
+				&:not(:first-child){
+					margin-top: $VG-p__spacing;
+				}
+				> li {
+					margin: 0;
+					padding-bottom: 11px;
+					&:first-child {
+						border-top: none;
+						padding-top: 0;
+					}
+					&:last-child {
+						padding-bottom: 0;
+					}
+				}
+			}
+		}
+
+		ul:not(.TK-noDots) {
+			padding: 0;
+			li {
+				list-style: none;
+				padding-left: 25px;
+				//padding: 5px 5px 5px 25px;
+				position: relative;
+				@include MG-before {
+					position: absolute;
+					top: 15px;
+					left: 0;
+				}
+			}
+		}
+
+		> ul:not(.TK-noDots) {
+			> li {
+				&:before {
+					@include MG-circle(fill, $C-dots, 6px);
+					top: 6px;
+				}
+				> ul > li {
+					&:before {
+						@include MG-line(h, $C-dots, 10px, 2px);
+						top: 9px;
+					}
+
+					> ul > li {
+						&:before {
+							@include MG-circle(stroke, $C-dots, 8px, 1px);
+							top: 5px;
+						}
+					}
+				}
+			}
+		}
+
+		ol:not(.TK-noDots) {
+			counter-reset: li;
+			list-style: none;
+			padding-left: 0;
+			li {
+				padding-left: 25px;
+				position: relative;
+
+				&:before {
+					content:counter(li)'.'; //* Use the counter as content */
+					counter-increment:li; //* Increment the counter by 1 */
+					position: absolute;
+					left: 0;
+					font-weight: $bold;
+					color: $C-numbers;
+				}
+				ol li {
+					&:before {
+						content:counter(li,lower-alpha)'.';
+					}
+					ol li {
+						&:before {
+							content:counter(li,lower-roman)'.';
+							left: auto;
+							right: 100%;
+							margin-right: -15px;
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	.externalLink-JS {
+		@include MG-icon('external', $CB-grey-dim, $pos:after){
+			margin-left: 2px;
+			font-size: 0.75em;
+			vertical-align: text-top;
+		};
+	}
+
+	> blockquote {
+	}
+
+	img { display: inline-block; }
+}

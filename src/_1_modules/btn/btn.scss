@@ -1,0 +1,75 @@
+$CL-module: '.btn';
+
+$MQ-text--is-small: (max, bp('mobile'));
+
+$MQ-arrow--is-small: $MQ-text--is-small;
+
+#{$CL-module} {
+	font-weight: $bold;
+	font-size: 1em;
+	background-color: brand(1);
+	color: brand(1, 'text');
+	@include MG-animate;
+	padding: 10px 15px;
+	padding-right: 55px;
+	display: inline-block;
+	border-radius: 50px;
+	transition: all 0.25s ease-in-out;
+	position: relative;
+	text-align: left;
+
+	@include mq($MQ-arrow--is-small){
+		padding-right: 35px;
+	}
+
+	@include MG-hover {
+		text-decoration: none;
+		background-color: brand(1, 'hover');
+	}
+
+	@include mq($MQ-text--is-small){
+		font-size: 0.75em;
+	}
+
+	&__arrow, &__chevron {
+		right: 20px;
+	}
+
+	&__arrow {
+		@include mq($MQ-arrow--is-small){
+			@include MG-not('.arrow--up', '.arrow--down'){
+				transform: scale(0.5);
+				transform-origin: right center;
+				right: 15px;
+			}
+		}
+	}
+
+	&__chevron {
+		@include MG-centered(v);
+	}
+
+	&--noArrow {
+		text-align: center;
+		min-width: 0;
+		padding-right: 15px;
+	}
+
+	&--noRadius {
+		border-radius: 0;
+	}
+
+	&--fullWidth {
+		width: 100%;
+		font-size: 1em;
+	}
+
+	&--clear {
+		background: rgba(#000, 0.5);
+		color: #fff;
+		border: 1px solid #fff;
+		@include MG-hover {
+			background-color: #000;
+		}
+	}
+}

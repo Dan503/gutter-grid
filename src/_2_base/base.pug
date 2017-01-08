@@ -1,0 +1,109 @@
+
+include ../_pugFunctions/config/config-loader.pug
+
+include /_1_modules/alert/alert
+include /_prototype-only/_1_modules/templateList/templateList
+include /_1_modules/siteContainer/siteContainer
+include /_1_modules/pageLayout/pageLayout
+
+include /_1_modules/svg/svg
+
+//- console.log(location)
+//- console.log(layout)
+//- console.log(get.current.title)
+
+doctype html
+
+<!--[if lt IE 9]><html class='lt-ie10 lt-ie9 no-js' lang='en'><![endif]-->
+<!--[if IE 9]><html class='ie9 lt-ie10 no-js' lang='en'><![endif]-->
+<!--[if gt IE 9]><!--><html class='no-js' lang='en'><!--<![endif]-->
+
+head
+	meta(charset='utf-8')
+	meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+	title #{get.current.title} | YeoSword
+	meta(name='description', content= 'A new YeoSword application')
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+	// Open Graph data
+	//- meta(property='og:title', content!= stripTags(pageTitle))
+	//- meta(property='og:type', content='article')
+	//- meta(property='og:image', content=basePath+'/assets/images/social-media.jpg')
+
+	// Google analytics code
+	script.
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		//Unncomment these 2 lines and update the tracking code to enable google analytics tracking
+		//ga('create', 'UA-xxxxxxxx-xx', 'auto');
+		//ga('send', 'pageview');
+
+	script(src=basePath+'/assets/scripts/modernizr.min.js')
+
+	block stylesheets
+		<!--[if gt IE 8]><!-->
+		link(rel='stylesheet', href=basePath+'/assets/styles/main.css')
+		<!--<![endif]-->
+
+		<!--[if lte IE8]>
+		link(rel='stylesheet', href=basePath+'/assets/styles/noMQs-main.css')
+		<![endif]-->
+
+		//prototype only
+		link(rel='stylesheet', href=basePath+'/assets/styles/prototype-only.css')
+		//end prototype only
+
+body
+
+	//holds the svg sprite
+	div(style="display:none")
+		include ../../tmp/svg-symbols.svg
+
+	//- appears in IE <= 9
+	<!--[if lte IE9]>
+	+alert({type:'error'})
+		p You are using an #[strong outdated] browser. Please #[a(href="http://browsehappy.com/") upgrade your browser] to improve your experience.
+	<![endif]-->
+
+	//- I've found the <noscript> tag to not always work properly
+	+alert({type:'nojs'})
+		p Please #[a(href="http://www.enable-javascript.com/") enable javascript] to access the full functionality of this site
+
+	+siteContainer()
+
+		.skipLinks
+			+templateList('trigger')
+			-
+				var skipLinks = {
+					"Skip to side navigation" : "#contentStart-sideNav",
+					"Skip to content" : "#contentStart-1",
+				};
+			each href, text in skipLinks
+				a.skipLinks__link.TK-skipLink.JS-skipLinks__link(href=href) #{text}
+
+			+templateList()
+
+		header.header
+			+pageLayout()
+				h1.header__heading= get.current.altTitle || get.current.title
+				block header
+
+		block mainArea
+			.mainArea.TK-flexGrow
+				+pageLayout()
+					block content
+
+		footer.footer
+			block footer
+
+	block scripts
+		script(src=basePath+'/assets/scripts/main.js')
+		//prototype only
+		script(src=basePath+'/assets/scripts/prototype-only.js')
+		//end prototype only
+		<!--[if lte IE9]>#[script(src=basePath+'/assets/scripts/plugins/flexibility.js')]<![endif]-->
+
+</html>

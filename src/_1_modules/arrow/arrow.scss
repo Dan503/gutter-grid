@@ -1,0 +1,51 @@
+
+$CL-module: '.arrow';
+
+#{$CL-module} {
+	@include MG-arrow(right, brand(1, 'text'), 20px, 7px, 2px, $pos: absolute);
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+
+	&--left {
+		@include MG-arrow(left, brand(1, 'text'), 20px, 7px, 2px, $pos: absolute);
+	}
+
+	&--down {
+		@include MG-arrow(down,  brand(1, 'text'), 12px, 5px, 2px);
+	}
+
+	&--up {
+		@include MG-arrow(up,  brand(1, 'text'), 12px, 5px, 2px);
+	}
+
+	@for $i from 1 through length($brand) {
+		&.-color-#{$i}, .-color-#{$i} & {
+			&, &:before {border-color: brand($i);}
+		}
+	}
+
+	[disabled] & {
+		animation: none !important;
+		&, &--left {
+			&, &:before { border-color: $CB-grey-dim !important; }
+		}
+	}
+
+}
+
+//adds a bobbing effect to arrows in links & buttons on hover
+a, button {
+	@include MG-hover {
+		> #{$CL-module}:not(#{$CL-module}--noBob) {
+			@include MG-bob(right);
+		}
+		$directions: (up, down, left);
+		@each $direction in $directions {
+			> #{$CL-module}--#{$direction}:not(#{$CL-module}--noBob) {
+				@include MG-bob($direction);
+			}
+		}
+	}
+}

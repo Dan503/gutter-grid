@@ -1,0 +1,14 @@
+extend ../_2_base/base
+
+include /_1_modules/breadcrumb/breadcrumb
+include /_1_modules/0-cmsContent/cmsContent
+
+block prepend pre_nav_config
+	- var layout = 'standard';
+
+block prepend post_nav_config
+
+block content
+	+breadcrumb()
+
+	+cmsContent()

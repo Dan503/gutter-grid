@@ -1,0 +1,40 @@
+-
+	function digForLastLocation(prevOrNext, definedLocation){
+		var locationCopy = definedLocation.slice(0);
+
+		var subNav = getNavMap(definedLocation, 'subnav');
+
+		if (prevOrNext === 'prev'){
+			if(hasSubnav(locationCopy)){
+				locationCopy.push(subNav.length - 1);
+				return digForLastLocation(prevOrNext, locationCopy);
+			} else {
+				return locationCopy;
+			}
+		} else {
+
+			var atRootLevel = definedLocation.length === 1;
+			var parentSibings = atRootLevel ? navMap.subnav : Get('grandParent','subnav');
+			var siblingCount = parentSibings.length - 1;
+
+			if (!atRootLevel){
+				locationCopy.pop();
+			}
+
+			var lastDigit = end(locationCopy);
+
+			var isLastSibling = lastDigit === siblingCount;
+
+			if (isLastSibling && !atRootLevel){
+				return digForLastLocation(prevOrNext, locationCopy);
+
+			} else {
+				nextSiblingLocation = locationCopy;
+
+				nextSiblingLocation = update_last(nextSiblingLocation, lastDigit + 1);
+
+				return nextSiblingLocation;
+
+			}
+		}
+	}

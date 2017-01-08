@@ -1,0 +1,9 @@
+mixin tooltip(term)
+	span.tooltip.JS-tooltip.JS-term(tabindex='0')
+		span.tooltip__term.JS-tooltip__open= term
+		span.tooltip__definition
+			span.tooltip__close.JS-tooltip__close
+			if block
+				block
+			else
+				| Definition for taxonomy term

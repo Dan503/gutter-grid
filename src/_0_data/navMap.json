@@ -1,0 +1,103 @@
+{
+  "title": "ROOT",
+  "subTemplate": "landing",
+  "subnav": [
+    {
+      "//" : "Use 'generate': 'exclusive', to restict page generation down to only the pages that have 'generate': 'exclusive' applied to them. This greatly decreases compilation time",
+      "title": "Home",
+      "altTitle": "Welcome to YeoSword!",
+      "link": "/",
+      "template": "home",
+      "subNavigable": false,
+      "subnav": [
+        {
+          "title": "0.0 miscellaneous",
+          "//" : "Use 'generate': false, to prevent gulp from generating a page for this item",
+          "generate" : false,
+          "//" : "Use 'generateKids': false, to prevent gulp from generating a page for all direct children of this item",
+          "generateKids" : false,
+          "subnav": [
+            {
+              "title": "0.0.0 404: page not found",
+              "//" : "Use 'generate': true, to overide the 'generateKids' setting",
+              "generate" : true,
+              "template": "404"
+            },
+            {
+              "generate" : true,
+              "title": "0.0.1 Search"
+            },
+            {
+              "title": "0.0.2 shortcutLinks",
+              "generateKids" : false,
+              "subnav": [
+                {
+                  "title": "0.0.2.0 example shortcut",
+                  "link" : ["1.0.1 level 2 example", 0 ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "1 Nested nav structure",
+      "subnav": [
+        {
+          "title": "1.0 level 1 example",
+          "subnav": [
+            {
+              "title": "1.0.0 lorem Ipsum",
+              "//" : "by not including a slash at the front, the path is relative to the base path",
+              "//" : "Also, check out the fullNavMap file. File sizes and file types are provided to you in the generated nav map as long as the item is stored locally",
+              "link" : "downloads/example.pdf"
+            },
+            {
+              "title": "1.0.1 level 2 example",
+              "subnav": [
+                {
+                  "title": "1.0.1.0 level 3 example"
+                },
+                {
+                  "title": "1.0.1.1 Dolor sit emet"
+                },
+                {
+                  "title": "1.0.1.2 Quam hoc suave"
+                }
+              ]
+            },
+            {
+              "title": "1.0.2 Summum enim bonum"
+            }
+          ]
+        },
+        {
+          "title": "1.1 Exposuit vacuitatem doloris",
+          "subnav": [
+            {
+              "title": "1.1.0 Ita ne hoc quidem",
+              "subnav": [
+                {
+                  "title": "1.1.0.0 Indicant pueri"
+                },
+                {
+                  "title": "1.1.0.1 Atqui iste locus est"
+                },
+                {
+                  "title": "1.1.0.2 Atqui iste locus est"
+                }
+              ]
+            },
+            {
+              "title": "1.1.1 Duo Reges"
+            },
+            {
+              "title": "1.1.2 Summum a"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+
+mixin pageLayout(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : {
+				buffer: '',
+				width: '',
+			},
+			elem : {
+				buffer: 'div',
+				width: 'div',
+			}
+		});
+
+	#{spec.elem.buffer}.pageLayout__buffer(class=spec.classes.buffer)&attributes(attributes)
+		#{spec.elem.width}.pageLayout__width(class=spec.classes.width)
+			block

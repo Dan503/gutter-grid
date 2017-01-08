@@ -1,0 +1,18 @@
+extend ../_2_base/base
+
+include /_1_modules/share/share
+
+block append pre_nav_config
+	- var layout = 'home';
+
+block append post_nav_config
+
+block content
+	.cmsContent
+		code.version= 'v'+pkg.version
+		p This is an adapted version of Yeogurt
+		p Take a look at the #[a(href='https://github.com/larsonjj/generator-yeogurt#yeogurt-generator---') Yeogurt documentation] to understand the core concepts.
+
+		+svg('fire')
+
+	+share()

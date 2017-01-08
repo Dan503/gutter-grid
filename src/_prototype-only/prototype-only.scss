@@ -1,0 +1,21 @@
+//imports the converted icon names sass map
+@import '../../tmp/icon-names.scss';
+
+//Swordion alteration functions
+@import '../_0_styles/01-system-files/0-functions/alteration/**/*.scss';
+
+//variables and settings for this project
+@import '../_0_styles/00-config-files/**/*.scss';
+
+//Swordion filtering functions
+@import '../_0_styles/01-system-files/0-functions/filtering/**/*.scss';
+
+//Swordion SASS mixins
+@import '../_0_styles/01-system-files/1-mixins/**/*.scss';
+
+//Global mixins specific to this project
+//The sass doesn't compile if I uncomment this for some reason
+//@import '../_0_styles/02-mixins[user]/**/*.scss';
+
+//prototype only module styles
+@import '_1_modules/**/*.scss';

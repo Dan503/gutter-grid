@@ -1,0 +1,330 @@
+///************\
+//	HELPERS
+//************/
+
+@mixin MG-noDots { margin: 0; padding: 0; list-style: none; }
+%noDots { @include MG-noDots; }
+
+///////////////////////
+//laziness shortcuts//
+/////////////////////
+
+//Just get straight into styling a :before or :after without worrying about content or display
+@mixin MG-before($display: block) {
+	&:before {
+		content: "";
+		display: $display;
+		@content;
+	}
+}
+@mixin MG-after($display: block) {
+	&:after {
+		content: "";
+		display: $display;
+		@content;
+	}
+}
+@mixin MG-before-after($display: block) {
+	&:before, &:after {
+		content: "";
+		display: $display;
+		@content;
+	}
+}
+
+//set equal height and width
+@mixin MG-size($height, $width: $height){
+	height: $height;
+	width: $width;
+}
+
+
+//Because writing "pos" is easier than "background-position"
+@mixin MG-pos ($bg_position){
+	background-position: $bg_position;
+};
+
+@mixin MG-hover {
+	@include mq($MQG-interactives--have-hoverState){
+		&:hover, &:focus {
+			@content;
+		}
+	}
+}
+
+//simple mixin for checking if a variable is equal to a value
+@mixin MG-is($variable, $value){
+	@if ($variable == $value){
+		@content;
+	}
+}
+
+//simple mixin for checking if a variable is NOT equal to a value
+@mixin MG-isNot($variable, $value){
+	@if ($variable != $value){
+		@content;
+	}
+}
+
+//Quick mixin for only hiding something if JS is enabled
+@mixin MG-jsHide {
+	.js & { display: none!important; }
+	.no-js & { display: block;  }
+}
+
+////////////////////////////////////
+//Browser compatibility shortcuts//
+//////////////////////////////////
+
+//don't forget about appearance: none; to clear defaults particularly on submit buttons
+//appearance not supported by auto-prefix
+@mixin MG-appearanceNone {
+   -webkit-appearance: none!important;
+   -moz-appearance:    none!important;
+   appearance:         none!important;
+   //necessary for iOS
+   border-radius:0;
+}
+
+///////////////////////////////////////////////////////
+//************** TECHNIQUE SHORTCUTS ***************//
+//////////////////////////////////////////////////////
+
+////////////////////////
+// Image replacement //
+///////////////////////
+
+//Image replacement as a function
+@mixin MG-ir { font-size: 0em; text-shadow: none; color: transparent; text-transform: capitalize; display: block; }
+
+//old image replacement
+//@mixin MG-ir { display: block; text-indent:-999px; overflow:hidden; text-align:left; direction:ltr; }
+@mixin MG-ir2 { line-height: 999px; overflow: hidden; font-size: 0; color: transparent; text-transform: capitalize; }//*works on submit buttons even in IE7*/
+
+//////////////////////
+// Visually hidden //
+////////////////////
+
+//(visually hidden) so screen readers can read it but normally it can not be seen
+@mixin MG-vh {
+	border:0;
+	//clip:rect(0 0 0 0);
+	width:0;
+	height:0;
+	padding:0;
+	overflow:hidden;
+	position:absolute;
+	opacity: 0;
+}
+
+//counters the vh styles
+@mixin MG-anti-vh {
+	//border:0;
+	//clip: auto;
+	width:auto;
+	height:auto;
+	position: static;
+	opacity: 1;
+}
+
+//a less favorable version of visually hidden since browsers still have to render it way off screen
+@mixin MG-offscreen { position: absolute; left: -999em; }
+
+
+////////////////
+// Alignment//
+//////////////
+
+//vertically center align text that is only on one line
+@mixin MG-valign-text {
+	@include MG-before{
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		@content;
+	}
+}
+
+//CENTER AN ELEMENT BOTH VERTICALLY AND HORIZONTALLY (or only one of the two)
+//Element must have a set width and height to work
+
+//usage:
+//@include MG-centered; //center both horizontally and vertically
+//@include MG-centered(v); // only center vertically
+//@include MG-centered(h); // only center horizontally
+
+@mixin MG-centered($type: both, $isModern: 'not-modern') {
+
+	position: absolute;
+
+	@if ($isModern == 'modern') {
+		@if ($type == both) {
+			top: 50%;
+			left: 50%;
+			transform: translateY(-50%) translateX(-50%);
+		} @else if ($type == v) {
+			top: 50%;
+			transform: translateY(-50%);
+		} @else if ($type == h) {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	} @else {
+		@if ($type == both) {
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		} @else if ($type == v) {
+			top: 0;
+			bottom: 0;
+			margin: auto 0;
+		} @else if ($type == h) {
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+		}
+	}
+}
+
+//Use this if parent is smaller than the target element
+//(the regular centered mixin works in chrome when parent is smaller but not in Fire fox)
+@mixin MG-centered-margin ($size, $type: both, $side: left) {
+	position: absolute;
+	@if ($type == v) {
+		@if ($side == left){
+			$side: top;
+		}
+		#{$side}: 50%;
+		top: 50%;
+		margin-#{$side}: -$size / 2;
+		height: $size;
+	} @else if ($type == h) {
+		#{$side}: 50%;
+		margin-#{$side}: -$size / 2;
+		width: $size;
+	} @else {
+		top: 50%;
+		left: 50%;
+		margin-top: -$size / 2;
+		margin-left: -$size / 2;
+		height: $size;
+		width: $size;
+	}
+}
+
+//make an element fill the entire area of it's parent (parent needs position relative)
+@mixin MG-fill($adjustments: false) {
+
+	@if ($adjustments == false or $adjustments == 'fixed'){
+		@if ($adjustments == 'fixed'){
+			position: fixed;
+		} @else {
+			position: absolute;
+		}
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	} @else {
+		$adjustments: defaultTo($adjustments, (
+			top: 0,
+			left: 0,
+			right: 0,
+			bottom: 0,
+			position: absolute,
+		));
+		top: map-get($adjustments, top);
+		left: map-get($adjustments, left);
+		bottom: map-get($adjustments, bottom);
+		right: map-get($adjustments, right);
+		position: map-get($adjustments, position);
+		@include MG-size(auto);
+	}
+}
+
+////////////
+// Other //
+///////////
+
+//clear fix
+@mixin MG-clearfix{
+	&:after{ content:""; display: block; width: 100%; clear: both; }
+}
+
+//multi :not() rule
+@mixin MG-not ($ignorList...) {
+	//if only a single value given
+	@if (length($ignorList) == 1){
+		//it is probably a list variable so set ignore list to the 1st item
+		$ignorList: nth($ignorList,1);
+	}
+	$notOutput: '';
+	//for each item in the list
+	@each $not in $ignorList {
+		//generate a :not([ignored_item]) segment for each item in the ignore list and put them back to back
+		$notOutput: $notOutput + ':not(#{$not})';
+	}
+	//output the full :not() rule including all ignored items
+	&#{$notOutput} {
+		@content;
+	}
+}
+
+//adds a shadow to items that have overflow:auto
+@mixin MG-overflowShadow ($direction: h, $bg: #fff, $shadow: grey(25%), $shadowSize: 20px, $baseSize: 11 * $shadowSize){
+
+	$start: to right;
+	$end: to left;
+
+	$sizeBase: $baseSize 100%;
+	$sizeShadow: $shadowSize 100%;
+
+	$posStart: 0 0;
+	$posEnd: 100% 0;
+
+	$axis : x;
+
+	@if ($direction == 'v'){
+		$start: top;
+		$end: bottom;
+
+		$sizeBase: 100% $baseSize;
+		$sizeShadow: 100% $shadowSize;
+
+		$posEnd: 0 100%;
+
+		$axis : y;
+	} @else if ($direction != 'h'){
+		@error "direction (#{$direction}) must be either 'h' (horizontal) or 'v' (vertical)";
+	}
+
+	overflow-#{$axis}: auto;
+
+	//adds the shadow to the table
+	background-image:
+		linear-gradient($start, $bg, rgba($bg, 0)),
+		linear-gradient($end, $bg, rgba($bg, 0)),
+		linear-gradient($start, $shadow, rgba($shadow, 0)),
+		linear-gradient($end, $shadow, rgba($shadow, 0));
+
+	background-position: $posStart, $posEnd, $posStart, $posEnd;
+	background-repeat: no-repeat;
+	background-color: $bg;
+	background-size: $sizeBase, $sizeBase, $sizeShadow, $sizeShadow;
+	background-attachment: local, local, scroll, scroll;
+}
+
+@mixin MG-ellipsis(){
+	 white-space: nowrap;
+	 overflow: hidden;
+	 text-overflow: ellipsis;
+}
+
+//quickly and easily generate css from a map of css rules and values
+@mixin MG-generateCSS($cssMap){
+	@each $rule, $value in $cssMap {
+		#{$rule}: $value;
+	}
+}

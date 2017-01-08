@@ -1,0 +1,115 @@
+///*================================================*\
+//	ICON MIXINS
+//----------------------------------------------------
+//	Quickly and easily add icons from the icon font
+//	your site.
+//
+//	These are the mixins you would use in your
+//	style sheet:
+
+//	@include MG-icon(icon_name, color, icon_size, box_size);
+	// the standard way to add an icon with scss
+
+//	@include MG-mq-icon(icon_name, color, icon_size, box_size);
+	//(same as M-icon() but self contained for media queries)
+
+//	@include MG-icon-size(icon_size, box_size);
+	// set the size of an icon that was added using a class
+
+//	icon(icon_name);
+	//the easiest way to get an icon reference key
+
+//*================================================*/
+
+
+//Quick and easy icon reference function
+@function icon($icon_name, $iconSet: $icons){
+	$character: map-get($iconSet, $icon_name);
+
+	//This will output the raw unicode into the css instead of the computed unicode value
+	@return if($icon_name == "", "", unquote("\"")+unquote(str-insert($character,"\\", 1))+unquote("\""));
+}
+
+
+/////////////////////////
+//CONSTANT ICON STYLES//
+//
+///////////////////////
+
+//styles that are the same for all icons
+@mixin MG-icon-static-styles {
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	speak: none;
+	text-transform: none;
+    text-align: center;
+	text-indent: 0;
+	vertical-align: middle;
+	text-decoration: none;
+
+	//* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+%MG-icon-static-styles {
+	@include MG-icon-static-styles;
+};
+
+//styles that require altering from icon to icon
+@mixin MG-icon-dynamic-styles($icon, $color: inherit, $size: 16px, $height: $size, $width:$height, $display: inline-block, $family: 'icons'){
+	$iconSet: $icons;
+	font-family: $family;
+	content:  icon($icon, $iconSet);
+	display: $display;
+	@if ( $color != inherit ){
+		color: $color;
+	}
+	@include MG-icon-size($size, $height, $width);
+}
+
+
+
+//////////////////
+//SETTING ICONS//
+////////////////
+
+//set the size of the icon and makes it work with the M-centered mixin
+//This is good on it's own when addressing an icon that was added with an icon class
+@mixin MG-icon-size ($size, $height: $size, $width: $height ) {
+	@if ($size != false){
+		$lineHeight: round($height * 0.8);
+		@if ($height != $size){
+			$lineHeight: $height;
+		}
+		font-size: $size;
+		line-height: $lineHeight;
+		@include MG-size($height, $width);
+		text-align: center;
+	}
+}
+
+//add an icon through a css rule
+@mixin MG-icon($icon, $color: inherit, $size: false, $height: $size, $width: $height, $display: inline-block, $pos: before, $family: 'icons') {
+
+	@if ($pos == before){
+		&:before {
+			@include MG-icon-static-styles;
+			@include MG-icon-dynamic-styles($icon, $color, $size, $height, $width, $display, $family);
+			@content;
+		}
+	} @else if ($pos == after){
+		&:after {
+			@include MG-icon-static-styles;
+			@include MG-icon-dynamic-styles($icon, $color, $size, $height, $width, $display, $family);
+			@content;
+		}
+	}  @else if ($pos == both){
+		&:before, &:after {
+			@include MG-icon-static-styles;
+			@include MG-icon-dynamic-styles($icon, $color, $size, $height, $width, $display, $family);
+			@content;
+		}
+	}
+} ;

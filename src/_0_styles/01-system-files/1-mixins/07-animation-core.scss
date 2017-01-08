@@ -1,0 +1,85 @@
+////////////////////////////
+//     CSS3 ANIMATION    //
+//////////////////////////
+
+@mixin MG-3d {
+	transform-style: preserve-3d;
+}
+
+/*@include MG-animate(0.5s);
+@include MG-animate((
+(
+	attributes: margin padding background, (default: all)
+	duration: 0.2s,
+	delay: '',
+	ease: ease-in-out
+), (
+	attributes: border-radius,
+	duration: 0.5s
+)
+));
+*/
+//basic animation
+@mixin MG-animate($settings: 0.2s, $ease: ease-in-out, $attributes: all, $style: flat){
+
+		$rule: ();
+
+		@if (type-of(nth($settings,1)) == 'map'){
+			$defaultSettings: (
+				attributes: all,
+				duration: 0.2s,
+				delay: 0s,
+				ease: ease-in-out
+			);
+
+
+			@each $transition in $settings {
+
+				//applies the default value to any values that are missing from the provided list
+				$transition: defaultTo($transition, $defaultSettings);
+
+				//iterates through each setting
+				@each $key, $value in $transition {
+
+					@if ($key == 'attributes'){
+						//iterates through every listed attribute
+						@each $attribute in $value {
+
+							//grabs the settings that are to be applied to the attribute
+							$duration: map-get($transition, 'duration');
+							$delay: map-get($transition, 'delay');
+							$ease: map-get($transition, 'ease');
+
+							//generates the final rule ready for output
+							$values: $attribute $duration $delay $ease;
+							$rule: append($rule, $values, 'comma');
+
+						}
+					}
+				}
+			}
+			//
+		} @else {
+			@if ($settings == 'fast'){
+				$settings: 0.2s;
+			} @else if ($settings == 'medium'){
+				$settings: 0.5s;
+			} @else if ($settings == 'slow'){
+				$settings: 1s;
+			}
+
+			//allows $attributes to take multiple arguments
+			@each $variable in $attributes {
+				$values: $variable $settings $ease;
+				$rule: append($rule, $values, 'comma');
+			}
+		}
+
+		//@debug $rule;
+	    transition: $rule;
+
+		@if ($style == '3D'){
+			@include MG-3d;
+		}
+}
+

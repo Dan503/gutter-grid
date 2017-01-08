@@ -1,0 +1,13 @@
+
+//Get prominent colors easily
+//    usage standard: brand(1);
+//    usage for hover state: brand(1, 'hover')
+//    usage for partner: brand(1, 'partner')
+@function brand($prominance, $type: color){
+	$colorGroup: nth($brand,$prominance);
+	@if (not map-has-key($colorGroup, $type)){
+		@warn '"#{$type}" is not a valid color type for "brand(#{$prominance})"';
+		$type: color;
+	}
+	@return map-get($colorGroup, $type);
+}

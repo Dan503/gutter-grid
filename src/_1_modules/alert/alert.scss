@@ -1,0 +1,40 @@
+
+/*================================================*\
+	ALERT STYLES
+//-----------------------------------------------
+//	Holds styles for alert boxes. These are elements
+//	designed to bring the users attention to
+//	something.
+\*================================================*/
+
+.alert {
+	padding: 20px;
+	border: 1px solid #000;
+
+//alert box for error messages
+	&--error {
+		background-color: $CF-error__bg;
+		border-color: $CF-error__border;
+		color:  $CF-error__text;
+
+		a { color: darken($CF-error__text, 15%); text-decoration: underline;
+			&:hover, &:focus { text-decoration: none; }
+		}
+	}
+
+//alert box to warn the user of something dangerous
+	&--warning {
+		//
+	}
+
+//alert box for when something has been done successfully
+	&--success {
+		//
+	}
+
+//alert box for when the user should know something
+	&--info {
+		//
+	}
+}
+

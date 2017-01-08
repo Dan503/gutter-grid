@@ -1,0 +1,109 @@
+/********* Custom select boxes **********/
+
+$C-display-border: brand(1);
+$C-display-bg: #fff;
+$C-display-text: $CF-body__text;
+
+$C-arrowBox-bg:  brand(1);
+$C-arrowBox-arrow: brand(1, 'text');
+
+$V-display-class: '.styledSelect__display-JSadded';
+
+%hoverState { background-color: $CF-input--focus; }
+
+select {
+	cursor: pointer;
+	option { font-weight: 100; }
+	.js & { opacity: 0; }
+	&:hover + .styledSelect-display { @extend %hoverState; }
+}
+
+.styledSelect {
+	&-JSadded {
+		@extend %inputStyling;
+		width: 100%;
+		padding: 0;
+		position: relative;
+		overflow: hidden;
+		cursor: pointer;
+		background-color: $C-display-bg;
+		z-index: 0;
+		padding-right: 30px;
+		border-radius: 3px;
+		display: inline-block;
+
+		//add the arrow with a css triangle
+		@include MG-after {
+			@include MG-tri(down, brand(1,'text'), 7px);
+			//content: 'v';
+			//height: 12px;
+			//width: 30px;
+			//right: 0;
+			font-size: 12px;
+			line-height: 0.8;
+			text-align: center;
+			color: $C-arrowBox-arrow;
+			@include MG-centered(v);
+			right: 10px;
+		}
+
+		@include MG-before {
+			background-color: $C-arrowBox-bg;
+			width: 30px;
+			position: absolute;
+			top: -1px;
+			bottom: -1px;
+			right: 0;
+		}
+
+		//adding arrow with an icon instead
+		/*@include MG-icon('arrow--down', brand(1), 5px, 30px){
+			@include MG-centered(v);
+			right: 0;
+			z-index: 1;
+		}*/
+
+		select {
+			appearance: none;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			border: none!important;
+			z-index: 2;
+			&:focus + #{$V-display-class} { background: $CF-input--focus; }
+		}
+
+		&.#{$CLG-errorClass} {
+			background: $CB-red-pale!important;
+			border-color: $CB-red-dim;
+			&:before {
+				border-color: $CF-error__border;
+				background-color: $CF-error__border;
+				color: $CF-error__bg;
+			}
+			#{$V-display-class} { color: $CF-error__text; background-color: $CF-error__bg; }
+
+			&:hover #{$V-display-class},
+			select:hover + #{$V-display-class}  { background: $CF-error__bg--hover; }
+		}
+
+		&:hover #{$V-display-class} {
+			@extend %hoverState;
+		}
+	}
+
+	&__display-JSadded {
+		@include MG-animate(0.25s,$attributes:background);
+		padding: 5px 10px 5px 10px;
+		color: $C-display-text;
+		background-color: $C-display-bg;
+		position: relative;
+		z-index: 0;
+		display: block;
+		background-color: $C-display-bg;
+		border-radius: 3px 0 0 3px;
+	}
+}

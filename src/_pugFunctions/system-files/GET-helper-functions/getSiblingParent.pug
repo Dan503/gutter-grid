@@ -1,0 +1,17 @@
+-
+	function getSiblingParent(_location, nextPrev){
+		var locationCopy = _location.slice(0);
+		if (locationCopy.length === 1){
+			return false;
+		} else {
+			locationCopy.pop();
+		}
+		var lastDigit = end(locationCopy);
+		if (nextPrev == 'next'){
+			locationCopy = update_last(locationCopy, lastDigit + 1);
+		} else {
+			locationCopy = update_last(locationCopy, lastDigit - 1);
+			if (locationCopy == -1) locationCopy.pop();
+		}
+		return getNavMap(locationCopy);
+	}

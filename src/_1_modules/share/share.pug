@@ -1,0 +1,44 @@
+
+mixin share(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : {
+				wrapper: '',
+				btn: '',
+			},
+			hiddenText: 'Toggle share options',
+		});
+
+		var shareURL = `http://www.live_site_url.com${get.current.link}`;
+		var urlTitle = encodeURI(pageTitle);
+
+		var shareLinks = [
+			{
+				"icon": "mail",
+				"text": "Share via email",
+				"link": `mailto:?subject=Share subject&body=Share body ${shareURL}`
+			},
+			{
+				"icon": "facebook",
+				"text": "Share on Facebook",
+				"link": `http://www.facebook.com/sharer/sharer.php?u=${shareURL}&title=${urlTitle}`
+			},
+			{
+				"icon": "twitter",
+				"text": "Tweet this site",
+				"link": `http://twitter.com/intent/tweet?status=Share+message+${shareURL}`
+			},
+			{
+				"icon": "linkedin",
+				"text": "Share on LinkedIn",
+				"link": `https://www.linkedin.com/shareArticle?mini=true&url=${shareURL}&title=${urlTitle}`
+			}
+		];
+
+	.share.grid__wrapper(class=spec.classes.wrapper)&attributes(attributes)
+		ul.share__list.grid.grid--noWrap.grid--space-between.TK-noDots
+			each option in shareLinks
+				li.share__option.grid__cell
+					a.share__link(href!=option.link, title=option.text, class='-'+option.icon).JS-share__link
+						+svg(option.icon)
+						span.TK-visHid= option.text

@@ -1,0 +1,26 @@
+
+@mixin MG-thumb($chrome-margin) {
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		margin-top: $chrome-margin;
+		@content;
+	}
+	&::-moz-range-thumb {
+		@content;
+	}
+	&::-ms-thumb {
+		@content;
+	}
+}
+
+@mixin MG-track {
+	&::-webkit-slider-runnable-track {
+		@content;
+	}
+	&::-moz-range-track {
+		@content;
+	}
+	&::-ms-track {
+		@content;
+	}
+}

@@ -1,0 +1,10 @@
+mixin arrow(spec)
+	-
+		spec = defaultTo(spec, {
+			class : '',
+			mods: []
+		});
+
+		var modClasses = mods('arrow', spec.mods);
+
+	i.arrow(class=spec.class+ modClasses)&attributes(attributes)

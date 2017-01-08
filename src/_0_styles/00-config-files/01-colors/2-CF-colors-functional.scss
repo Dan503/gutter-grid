@@ -1,0 +1,28 @@
+/////////////////////////////////
+// functional color variables //
+///////////////////////////////
+
+//CF- for color-functional-
+
+$CF-body__text: $CB-grey-dark;
+$CF-body__bg: #fff;
+
+$CF-border-1: $CB-grey-light;
+$CF-border-2: $CF-body__bg;
+$CF-border-3: #d2d2d2;
+
+$CF-links: $CB-blue-dim;
+
+$CF-heading: $CF-body__text;
+
+$CF-error__text: $CB-red-dim;
+$CF-error__bg: $CB-red-pale;
+$CF-error__border: $CF-error__text;
+	$CF-error__text--hover: $CB-red-dim--hover;
+	$CF-error__bg--hover: $CB-red-pale--hover;
+	$CF-error__border--hover: $CF-error__text--hover;
+
+$CF-input: $CB-grey-dark;
+$CF-input__placeholder: #767676;//#767676 is the lightest possible grey against a white bg that passes AA for small text
+$CF-input__border: $CF-border-1;
+$CF-input--focus: $CB-grey-pale;

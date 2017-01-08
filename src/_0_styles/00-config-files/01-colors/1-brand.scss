@@ -1,0 +1,32 @@
+//changes the intensity of color change on hover
+$V-hoverModifier: 60%;
+
+//lists the primary brand colors of the site.
+//Greys do not belong in this list unless it is a MAJOR brand color
+$brand: (
+	//*Main color*/
+	color: $CB-blue-dim,
+
+	//*Most likely hover state color for the main color*/
+	hover: shade($CB-blue-dim, $V-hoverModifier),
+
+	//*If there is a color that is commonly used alongside the main color, set it as the partner color*/
+	partner: $CB-blue-light,
+
+	/*if set as a background color, the text inside will most likely be this color*/
+	text: #fff,
+),
+
+//*Second most prominent brand color etc. */
+(
+	color: $CB-blue-dark,
+	hover: $CB-blue-dark--hover,
+	partner: $CB-blue-dimmer,
+	text: #fff,
+),
+(
+	color: $CB-blue-light,
+	hover: $CB-blue-light--hover,
+	partner: $CB-blue-mid,
+	text: #fff,
+);

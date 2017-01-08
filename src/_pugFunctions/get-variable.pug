@@ -1,0 +1,39 @@
+-
+	//This is your primary tool for accessing the navMap of the current page and the pages relative to it.
+
+	//usage:
+	//-var title = get.current.title;
+
+	//If you need to access the navMap of a differnt page, use the "Get" function instead (capital "G")
+
+	//usage:
+	//-var link = Get(['Page title',0],'link')
+
+	//NOTE:
+	// Comment out all the parameters you don't need. The more parameters you have active,
+	// the longer it will take to compile the site.
+	// For many sites, the only parameter you need is 'current'.
+
+	var get = defaultTo(get, {
+		'current' : Get('current'),// navMap for the current page
+
+		'prev' : Get('prev'),//navMap for the previous page (goes into sibling subnav)
+		// 'strictPrev' : Get('prev', 'strict'),//navMap for the previous page (returns false if no previous page available in current subnav, skips sibling subnav)
+		// 'lazyPrev' : Get('prev', 'lazy'),//navMap for the previous page (skips sibling subnav, goes up to parent when no page available in current subnav)
+
+		//same as prev but for next pages
+		'next' : Get('next'),
+		// 'strictNext' : Get('next', 'strict'),
+		// 'lazyNext' : Get('next', 'lazy'),
+
+		// 'siblings' : Get('siblings'),//an array of the current pages sibling navMaps (includes the current page in the list)
+
+		'parent' : Get('parent'),//parent navMap of the current page
+		// 'nextParent' : Get('nextParent'),//the parents next sibling navMap (strict mode only)
+		// 'prevParent' : Get('prevParent'),//the parents previous sibling navMap (strict mode only)
+		// 'grandParent' : Get('grandParent')//the parents parent navMap
+	});
+
+	//console.log(get.prev.title);
+	//console.log(get.current.title+' **');
+	//console.log(get.next.title+' \n');

@@ -1,0 +1,140 @@
+///***********************************\
+//
+//				GRADIENTS
+//
+//************************************/
+
+
+$gradTypes: (
+	v : (linear, 'to bottom'),
+	h : (linear, 'to right'),
+	diag-down : (linear, 135deg),
+	diag-up : (linear, 45deg),
+	radial : (radial, 'ellipse at center'),/*gets overwritten*/
+);
+
+
+$validStrings: map-keys($gradTypes);
+
+@function errorMessage($value){
+	@return "#{$value} needs to be a number given in degrees or be a valid string. Valid strings are: #{$validStrings}";
+}
+
+//*********************\
+//	IE only Gradient
+//*********************/
+// Good to use this in combination with the multi-gradient mixin
+
+@mixin MG-ie-grad($gradColor1,$gradColor2,$type:v){
+	//vertical (|)
+	$gradColor1: ie-hex-str($gradColor1);
+	$gradColor2: ie-hex-str($gradColor2);
+
+	@if ($type == v){
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$gradColor1}', endColorstr='#{$gradColor2}',GradientType=0 );
+	}
+	//horizontal (-)
+	@if ($type == h){
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$gradColor1}', endColorstr='#{$gradColor2}',GradientType=1 );
+	}
+}
+
+
+//*********************\
+//	Gradients
+//*********************/
+/*@function grad(	$gradColor1,
+	$gradColor2: null,
+	$type: v,
+	$settings: ()
+){
+
+}*/
+
+@mixin MG-grad(
+	$gradColor1,
+	$gradColor2: null,
+	$type: v,
+	$settings: ()
+){
+
+//advanced default settings
+	$settings: defaultTo($settings, (
+		backup: default,
+		radial-range: closest-side,
+		radial-type: unquote(''),/*default is ellipse*/
+		radial-pos: center,
+		repeat: false,
+		ie-polyfill: true,
+	));
+
+	$isMultiGrad: type-of(first($gradColor2)) != 'color';
+	$colorSet: $gradColor1;//for multi-grad code
+
+	//allows multigrads to use second slot for type declaration and 3rd slot for settings
+	$settings: if(type-of($type) == "map", $type, $settings);
+	$type: if($isMultiGrad, $gradColor2, $type);
+
+	$radialSettings : unquote("#{map-get($settings, radial-type)} #{map-get($settings, radial-range)} at #{map-get($settings, radial-pos)}");
+
+	$backup: map-get($settings, backup);
+
+	$repeater: unquote(if(map-get($settings, repeat), 'repeating-', ''));
+
+	$color1: $gradColor1;
+	$color2: $gradColor2;
+
+	$pureColor1 : first($color1);
+	$pureColor2 : first($color2);
+
+	@if ($isMultiGrad){
+		$pureColor1 : first(first($colorSet));
+		$pureColor2 : first(last($colorSet));
+	}
+
+	$bgString: '';
+
+	@if((not contains($validStrings, $type)) and (type-of($type) != 'number')){
+		@error errorMessage($type);
+	}
+
+	//backup background
+	background: if($backup == default, mix($pureColor1, $pureColor2), $backup);
+
+	@if (contains($validStrings, $type)){
+		@each $gradType, $attributes in $gradTypes {
+			$cssGradType: nth($attributes,1);
+			$direction: nth($attributes,2);
+
+			@if($isMultiGrad){
+				@if ($type == radial){
+					$bgString: #{$repeater}radial-gradient($radialSettings, $colorSet);
+				} @else if($type == $gradType){
+					$bgString: '#{$repeater}#{$cssGradType}-gradient(#{$direction}, #{$colorSet})';
+				}
+			} @else {
+				@if ($type == radial){
+					$bgString: '#{$repeater}radial-gradient(#{$radialSettings}, #{$color1}, #{$color2})';
+				} @else if($type == $gradType){
+					$bgString: '#{$repeater}#{$cssGradType}-gradient(#{$direction}, #{$color1}, #{$color2})';
+				}
+			}
+		}
+
+	} @else if (type-of($type) == 'number'){
+		@if($isMultiGrad){
+			$bgString: '#{$repeater}linear-gradient(#{$type}, #{$colorSet})';
+		} @else {
+			$bgString: '#{$repeater}linear-gradient(#{$type}, #{$color1}, #{$color2})';
+		}
+	}
+
+	background: unquote($bgString);
+
+	@if(($type == v or $type == h) and map-get($settings, ie-polyfill)){
+		@include MG-ie-grad($pureColor1,$pureColor2,$type);
+	}
+
+}
+
+

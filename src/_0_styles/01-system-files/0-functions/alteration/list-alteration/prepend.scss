@@ -1,0 +1,7 @@
+//http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+
+//Join a value to the start of a list
+//uses the same syntax as the built in append function
+@function prepend($list, $value) {
+	@return join($value, $list);
+}

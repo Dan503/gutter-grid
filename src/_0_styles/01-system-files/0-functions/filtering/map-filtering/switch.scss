@@ -1,0 +1,21 @@
+//an easy way of returning a value in a switch statement sort of syntax
+//only works for getting variables
+
+// $newVariable: switch($testVariable, (
+//    case_1_value : case_1_return_value,
+//    case_2_value : case_2_return_value,
+// ));
+
+// $vehicle: car;
+// $vehicleSeating: switch($vehicle, (
+//    car : 4,
+//    bus : 20,
+// ));
+// $vehicleSeating = 4
+
+//yes I know it seems redundant since it is just map-get but I think
+//the syntax for this is slightly nicer since the variable goes first before the map
+
+@function switch($var, $map){
+	@return map-get($map, $var)
+}

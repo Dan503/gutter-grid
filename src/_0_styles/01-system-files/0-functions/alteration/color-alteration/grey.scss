@@ -1,0 +1,4 @@
+//Generate a grey color based on a percentage of black
+@function grey($percentage){
+	@return mix(#000, #fff, $percentage);
+}

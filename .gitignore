@@ -1,6 +1,12 @@
-node_modules/
-index.html
-custom-styles.css
-custom-styles.css.map
-modernizr.min.js
+node_modules
+*.log
+build
+tmp
+.grunt
+.DS_Store
+tmp
+production-files
 gulp-start-up.txt
+src/pages/**/index.pug
+#src/pages/**/content
+src/_0_scripts/main.js

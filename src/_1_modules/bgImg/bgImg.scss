@@ -1,0 +1,20 @@
+.bgImg {
+	height: 100%;//if set to position absolute, it will fill it's container
+	width: 100%;
+	position: relative;
+	padding-bottom: 56.25%; //16:9 ratio by default (so the image has a base height to work with if no other height is provided)
+	background-position: center;
+	background-size: cover;
+
+	> img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 1;
+		margin: 0;
+		padding: 0;
+	}
+}
