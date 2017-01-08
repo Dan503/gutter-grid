@@ -3,8 +3,10 @@ mixin cmsContent(spec)
 	- spec.__class = spec.__class || ''
 
 
-	div.cmsContent(class=spec.__class)&attributes(attributes)
-		block cmsContent
+	.cmsContent(class=spec.__class)&attributes(attributes)
+		if block
+			block
+		else
 			:marked
 				## This is a heading 2
 
@@ -64,23 +66,23 @@ mixin cmsContent(spec)
 
 				Nam Pyrrho, Aristo, Erillus iam diu abiecti. Sed ea mala virtuti magnitudine obruebantur. Cur, nisi quod turpis oratio est? Sit enim idem caecus, debilis. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Cum ageremus, inquit, vitae beatum et eundem supremum diem, scribebamus haec. Erat enim res aperta. Hos contra singulos dici est melius. Ad eos igitur converte te, quaeso.
 
-		table
-			thead
-				tr
-					th Table heading
-					th Table heading
-					th Table heading
-			tbody
-				tr
-					th Table heading
-					td Table data
-					td Table data
-				tr
-					th Table heading
-					td Table data
-					td Table data
+			table
+				thead
+					tr
+						th Table heading
+						th Table heading
+						th Table heading
+				tbody
+					tr
+						th Table heading
+						td Table data
+						td Table data
+					tr
+						th Table heading
+						td Table data
+						td Table data
 
-		:marked
-			#### Quoad poterant - H4
+			:marked
+				#### Quoad poterant - H4
 
-			Quae cum magnifice primo dici viderentur, considerata minus probabantur. Respondent extrema primis, media utrisque, omnia omnibus. Praeteritis, inquit, gaudeo. Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Sin kakan malitiam dixisses, ad aliud nos unum certum vitium consuetudo Latina traduceret. Beatus autem esse in maximarum rerum timore nemo potest. Sed haec nihil sane ad rem; At, si voluptas esset bonum, desideraret. Graece donan, Latine voluptatem vocant. Qua ex cognitione facilior facta est investigatio rerum occultissimarum.
+				Quae cum magnifice primo dici viderentur, considerata minus probabantur. Respondent extrema primis, media utrisque, omnia omnibus. Praeteritis, inquit, gaudeo. Quae cum praeponunt, ut sit aliqua rerum selectio, naturam videntur sequi; Sin kakan malitiam dixisses, ad aliud nos unum certum vitium consuetudo Latina traduceret. Beatus autem esse in maximarum rerum timore nemo potest. Sed haec nihil sane ad rem; At, si voluptas esset bonum, desideraret. Graece donan, Latine voluptatem vocant. Qua ex cognitione facilior facta est investigatio rerum occultissimarum.
