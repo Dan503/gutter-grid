@@ -7,7 +7,6 @@ mixin skipLinks(spec)
 		});
 
 	.skipLinks(class=spec.classes)&attributes(attributes)
-		+templateList('trigger')
 		-
 			var skipLinks = {
 				"Skip to side navigation" : "#contentStart-sideNav",
@@ -15,5 +14,3 @@ mixin skipLinks(spec)
 			};
 		each href, text in skipLinks
 			a.skipLinks__link.TK-skipLink(href=href) #{text}
-
-		+templateList()
