@@ -31,14 +31,15 @@ footer {
 	margin-bottom: 0;
 }
 
-code {
-	background-color: #C5C7CC;
-	//color: #abb2bf;
-	padding: 3px 4px;
-	font-size: 0.85em;
-}
 
 .markdown-body {
+
+	code {
+		background-color: #C5C7CC;
+		//color: #abb2bf;
+		padding: 3px 4px;
+		font-size: 0.85em;
+	}
 
 	h2, h3 {
 		font-family: Georgia, serif;
@@ -135,6 +136,10 @@ code {
 .owner p {
 	position: relative;
 	padding-left: 70px;
+}
+
+.title .small {
+	font-size: 14px;
 }
 
 p.tagline { padding: 10px 20px; }
