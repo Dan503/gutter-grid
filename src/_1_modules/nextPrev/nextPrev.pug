@@ -1,0 +1,12 @@
+mixin nextPrev(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	.nextPrev(class=spec.classes)&attributes(attributes)
+		.grid.grid--space-between(class=(!get.prev)?'grid--align-right':'')
+			if get.prev
+				a.nextPrev__prev.grid__cell(href=get.prev.link)= 'Prev: '+get.prev.title
+			if get.next
+				a.nextPrev__next.grid__cell(href=get.next.link)= 'Next: '+get.next.title
