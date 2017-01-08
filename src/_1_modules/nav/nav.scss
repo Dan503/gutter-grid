@@ -1,5 +1,9 @@
 
 .nav {
 	width: 300px;
-	&__element {}
+	&__link {
+		&.-active {
+			color: #000;
+		}
+	}
 }
