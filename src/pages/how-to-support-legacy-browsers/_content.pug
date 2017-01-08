@@ -1,3 +1,30 @@
 block content
 	:marked
-		## Installation
+		gutter-grid is powered mostly by flexbox. Flexbox is not supported in many older browsers though, particularly IE8 & 9. To help cater to those browsers, gutter-grid has `display:table` and `float:left` backups built into it for when `flex-box` is not supported. In general it will use `display:table` since tables act in a very similar way to how flex-box acts. However, when wrapping is involved and the browser does not support the `flex-wrap` css property, it will use `float:left` styling instead.
+
+		In order to detect if the browser supports flex-box and flex-wrap, gutter-grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr properties it is dependent on is `flexwrap` and `flexbox`. To add Modernizr to your site, either [download a custom build that includes flexbox and flexwrap](https://modernizr.com/download?setclasses&q=flex) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
+
+		The design in IE8 & 9 won't look like the design on browsers that support flex-box. It will mainly just help stop the layout from completly breaking on you when compared to using purely flex-box on it's own.
+
+		IE10 has support for flex-box however you will need to incorporate [Autoprefixer](https://github.com/postcss/autoprefixer) into your build process to support it's outdated flex-box syntax.
+
+		Also, in order to better support IE8, the HTML for your HTML element will need to look something like this:
+
+		```````html
+		<!--[if lte IE 8]><html class="lt-ie9" lang="en"><![endif]-->
+		<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+
+		...
+
+		</html>
+		```````
+
+		The `$grid-gutter-ie-fallback` setting should be set to the main background color of your website. IE8 doesn't support the css `background-clip` property which is a key part of how the gutters are able to retain transparency. This variable defines a color that the gutters will be displayed in by default in IE8.
+
+		````scss
+		//Set what color gutters will be in IE8
+		$grid-gutter-ie-fallback: #fff;
+
+		@import '../node_modules/mq-scss/mq';
+		@import '../node_modules/gutter-grid/grid-classes';
+		````

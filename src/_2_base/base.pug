@@ -84,7 +84,7 @@ body
 
 		header.header
 			+pageLayout()
-				p.title Gutter Grid #[code.small= 'v'+pkg.version]
+				h1.title Gutter Grid #[code.small= 'v'+pkg.version]
 
 		block mainArea
 			.mainArea.TK-flexGrow
@@ -109,6 +109,7 @@ body
 										_**This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.**_
 
 									.cmsContent
+										h2= get.current.altTitle || get.current.title
 										block content
 
 									+nextPrev()
