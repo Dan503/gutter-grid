@@ -8,6 +8,8 @@ include /_1_modules/pageLayout/pageLayout
 include /_1_modules/nav/nav
 include /_1_modules/nextPrev/nextPrev
 
+include /_1_modules/demo/demo
+
 include /_1_modules/share/share
 
 include /_1_modules/svg/svg
@@ -76,7 +78,7 @@ body
 	+alert({type:'nojs'})
 		p Please #[a(href="http://www.enable-javascript.com/") enable javascript] to access the full functionality of this site
 
-	+siteContainer({classes:'wrapper'})
+	+siteContainer({classes:{outer:'wrapper'}})
 
 		+skipLinks()
 
