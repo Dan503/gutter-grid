@@ -93,7 +93,7 @@
     "host": "127.0.0.1",
     "port": "3000",
     "\\basePath": "is used to hold the entire site inside a subdirectory rather than the root folder of a site, leave blank if you want the site in the root folder",
-    "basePath": "path/to/base",
+    "basePath": "",
     "\\serve": "can be either 'html' or 'php' depending on what type of files you want the pug to compile into. HTML is a bit faster and cleaner but PHP gives you access to server side scripting",
     "serve": "html",
     "\\exportLocations1": "defines where to export front end assets to when running the 'gulp export' task.",
