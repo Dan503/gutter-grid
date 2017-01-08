@@ -1,48 +1,48 @@
 block content
-	:marked
-		The `grid__inner` technique can be used for more than just nesting grids. Whenever you want the child element of a grid cell to take up the same dimensions as the content area of the cell, you can use `grid__inner`.
+  :marked
+    The `grid__inner` technique can be used for more than just nesting grids. Whenever you want the child element of a grid cell to take up the same dimensions as the content area of the cell, you can use `grid__inner`.
 
-		The most common use case for wanting to do this is when you want to apply either a border or a box shadow to each cell in a grid that also features a gutter between each cell. Gutters are made by adding invisible borders to each of the grid cells. So trying to add borders or box shadows directly to the grid cells doesn't work.
+    The most common use case for wanting to do this is when you want to apply either a border or a box shadow to each cell in a grid that also features a gutter between each cell. Gutters are made by adding invisible borders to each of the grid cells. So trying to add borders or box shadows directly to the grid cells doesn't work.
 
-	+demo({
+  +demo({
 html:`
 .grid.grid--hasInners.grid--gutter-moduleName.grid--cols-2
-	.grid__cell
-		.grid__inner.add-border.add-shadow.add-padding
-			:marked
-				To give grid cells a border or padding as well as a gutter, you will need to use \`grid__inner\`
+  .grid__cell
+    .grid__inner.add-border.add-shadow.add-padding
+      :marked
+        To give grid cells a border or padding as well as a gutter, you will need to use \`grid__inner\`
 
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-				Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-				At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-				Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-	.grid__cell
-		.grid__inner.add-border.add-shadow.add-padding
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+        At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+        Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .grid__cell
+    .grid__inner.add-border.add-shadow.add-padding
 `}, {classes:'-noCellPadding'})
 
 
-	:marked
-		Unfortunatly, if you are adding shadows, you can't use the `grid__wrapper` element to prevent the spacing glitch from occuring like you normally would. `grid__wrapper` is just applying `overflow:hidden`. Using `overflow:hidden` will also hide the shadows though.
+  :marked
+    Unfortunatly, if you are adding shadows, you can't use the `grid__wrapper` element to prevent the spacing glitch from occuring like you normally would. `grid__wrapper` is just applying `overflow:hidden`. Using `overflow:hidden` will also hide the shadows though.
 
-		You will need to find other ways to work around the browser glitch. One way is to add 1 pixel of padding to a parent element. It doesn't fix the problem outright but makes it at least makes the glitch far less obvious.
+    You will need to find other ways to work around the browser glitch. One way is to add 1 pixel of padding to a parent element. It doesn't fix the problem outright but makes it at least makes the glitch far less obvious.
 
-	+demo({
+  +demo({
 html:`
 div(style="padding-top: 1px;")
-	.grid.grid--hasInners.grid--gutter-moduleName.grid--cols-2
-		.grid__cell
-			.grid__inner.add-border.add-shadow.add-padding
-				:marked
-					To give grid cells a border or padding as well as a gutter, you will need to use \`grid__inner\`
+  .grid.grid--hasInners.grid--gutter-moduleName.grid--cols-2
+    .grid__cell
+      .grid__inner.add-border.add-shadow.add-padding
+        :marked
+          To give grid cells a border or padding as well as a gutter, you will need to use \`grid__inner\`
 
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-					Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-					At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-					Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-		.grid__cell
-			.grid__inner.add-border.add-shadow.add-padding
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+          At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+          Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+    .grid__cell
+      .grid__inner.add-border.add-shadow.add-padding
 `}, {classes:'-noCellPadding'})
 
-		:marked
-			Using padding to mitigate the Chrome spacing glitch
+    :marked
+      Using padding to mitigate the Chrome spacing glitch
 

@@ -1,138 +1,138 @@
 block content
-	:marked
-		Without defining columns, a grid can easily end up looking like this:
+  :marked
+    Without defining columns, a grid can easily end up looking like this:
 
-	+demo({
+  +demo({
 html:`
 .grid
-	.grid__cell.-color-1.add-padding
-		:marked
-			lots and lots and lots of text in this cell.
+  .grid__cell.-color-1.add-padding
+    :marked
+      lots and lots and lots of text in this cell.
 
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-			Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-			At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-			Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-	.grid__cell.-color-2.add-padding
-		:marked
-			Barely any text in this cell`,
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .grid__cell.-color-2.add-padding
+    :marked
+      Barely any text in this cell`,
 })
 
-	:marked
-		To ensure that cells take up only 50% width each, add a `grid--cols-2` class to the same element as the `grid` class.
+  :marked
+    To ensure that cells take up only 50% width each, add a `grid--cols-2` class to the same element as the `grid` class.
 
-	+demo({
+  +demo({
 html:`
 .grid.grid--cols-2
-	.grid__cell.-color-1.add-padding
-		:marked
-			lots and lots and lots of text in this cell.
+  .grid__cell.-color-1.add-padding
+    :marked
+      lots and lots and lots of text in this cell.
 
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-			Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-			At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-			Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-	.grid__cell.-color-2.add-padding
-		:marked
-			Barely any text in this cell`,
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .grid__cell.-color-2.add-padding
+    :marked
+      Barely any text in this cell`,
 })
-		:marked
-			The previous example but adding the `grid--cols-2` class
+    :marked
+      The previous example but adding the `grid--cols-2` class
 
-	:marked
-		The added bonus of using column classes is that there are baked in media queries for typical break points. This lets you build your site layout and not have to worry as much about making it mobile friendly.
+  :marked
+    The added bonus of using column classes is that there are baked in media queries for typical break points. This lets you build your site layout and not have to worry as much about making it mobile friendly.
 
-	+demo({
+  +demo({
 html:`
 .grid.grid--cols-2
-	.grid__cell.-color-1
-	.grid__cell.-color-2`
+  .grid__cell.-color-1
+  .grid__cell.-color-2`
 })
-		:marked
-			Examples of all the default column widths. Resize your browser to watch the media queries take effect.
+    :marked
+      Examples of all the default column widths. Resize your browser to watch the media queries take effect.
 
-	+demo({
+  +demo({
 html:`
 .grid.grid--cols-3
-	.grid__cell.-color-1
-	.grid__cell.-color-2
-	.grid__cell.-color-3
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
 `
 })
-	+demo({
+  +demo({
 html:`
 .grid.grid--cols-4
-	.grid__cell.-color-1
-	.grid__cell.-color-2
-	.grid__cell.-color-3
-	.grid__cell.-color-4
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
 `
 })
-	+demo({
+  +demo({
 html:`
 .grid.grid--cols-5
-	.grid__cell.-color-1
-	.grid__cell.-color-2
-	.grid__cell.-color-3
-	.grid__cell.-color-4
-	.grid__cell.-color-5
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
 `
 })
-	+demo({
+  +demo({
 html:`
 .grid.grid--cols-6
-	.grid__cell.-color-1
-	.grid__cell.-color-2
-	.grid__cell.-color-3
-	.grid__cell.-color-4
-	.grid__cell.-color-5
-	.grid__cell.-color-6
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+  .grid__cell.-color-6
 `
 })
-	:marked
-		## Customising the columns
+  :marked
+    ## Customising the columns
 
-		If you don't like the default breakpoints or you need more columns, you can easily edit them by altering the `$grid-break-points` variable.
+    If you don't like the default breakpoints or you need more columns, you can easily edit them by altering the `$grid-break-points` variable.
 
-	+demo({
+  +demo({
 scss:`
 $grid-break-points: (
-	(
-	//*1 column grid*/
-	// no media query
-		false
-	), (
-	//*2 column grid*/
-	//* From 600px screen size and below, make the columns 100% width */
-		600px 100%,
-	), (
-	//*3 column grid*/
-		960px 50%,
-		600px 100%,
-	), (
-	//*4 column grid*/
-		960px 50%,
-		480px 100%,
-	), (
-	//*5 column grid*/
-		960px 33.33%,
-		600px 50%,
-		480px 100%,
-	), (
-	//*6 column grid*/
-		960px 33.33%,
-		600px 50%,
-		480px 100%,
-	)
+  (
+  //*1 column grid*/
+  // no media query
+    false
+  ), (
+  //*2 column grid*/
+  //* From 600px screen size and below, make the columns 100% width */
+    600px 100%,
+  ), (
+  //*3 column grid*/
+    960px 50%,
+    600px 100%,
+  ), (
+  //*4 column grid*/
+    960px 50%,
+    480px 100%,
+  ), (
+  //*5 column grid*/
+    960px 33.33%,
+    600px 50%,
+    480px 100%,
+  ), (
+  //*6 column grid*/
+    960px 33.33%,
+    600px 50%,
+    480px 100%,
+  )
 );
 
 @import '../node_modules/mq-scss/mq';
 @import '../node_modules/gutter-grid/grid-classes';`
 })
-		:marked
-			These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements.
+    :marked
+      These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements.
 
-	+demo({
+  +demo({
 scss:`
 //Disable all breakpoints
 $grid-break-points: false;
@@ -140,5 +140,5 @@ $grid-break-points: false;
 @import '../node_modules/mq-scss/mq';
 @import '../node_modules/gutter-grid/grid-classes';`
 })
-		:marked
-			You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns.
+    :marked
+      You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns.
