@@ -10,18 +10,6 @@ $C-dots: $C-numbers;
 
 	strong, b { font-weight: $bold; }
 
-	a:not(.btn) {
-		font-weight: $normal;
-		text-decoration: underline;
-		color: $CF-links;
-		&:before, &:after {
-			@include MG-animate;
-		}
-		@include MG-hover {
-			text-decoration: none;
-		}
-	}
-
 	//custom dot points do not appear in IE8 or print
 	@media screen {
 		ul, ol {

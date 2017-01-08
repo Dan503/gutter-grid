@@ -34,11 +34,13 @@ footer {
 
 .markdown-body {
 
-	code {
-		background-color: #C5C7CC;
-		//color: #abb2bf;
-		padding: 3px 4px;
-		font-size: 0.85em;
+	p, li {
+		code {
+			background-color: #C5C7CC;
+			//color: #abb2bf;
+			padding: 3px 4px;
+			font-size: 0.85em;
+		}
 	}
 
 	h2, h3 {
@@ -51,7 +53,7 @@ footer {
 		font-size: 2em;
 		padding-top: 50px;
 		&:first-child {
-			padding-top: 25px;
+			padding-top: 0px;
 		}
 	}
 
