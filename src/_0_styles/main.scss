@@ -31,11 +31,12 @@ $icomoon-font-path: "/sites/default/files/publications/annual_reports/2015-16/as
 //system base styles (Do not edit these)
 @import '01-system-files/2-base-styles/**/*.scss';
 
+//styles mainly for altering the default styles
+@import 'custom-styles.scss';
+
 //loads project specific module css
 @import '../_1_modules/**/*.scss';
 
-//styles mainly for altering the default styles
-@import 'custom-styles.scss';
 
 //do not place any actual styles in this file
 //this file is only for stitching together the output css
