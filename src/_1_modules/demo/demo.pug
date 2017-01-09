@@ -21,7 +21,7 @@ mixin demo(demoMarkup, spec)
 		if block
 			.demo__summary.demo__segment
 				block
-		if isObj && demoMarkup.html
+		if isObj && demoMarkup.html || !isObj
 			.demo__result.demo__segment
 				!=html
 
