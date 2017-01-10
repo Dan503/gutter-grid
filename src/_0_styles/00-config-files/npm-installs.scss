@@ -12,9 +12,9 @@ $grid-cell-gutters: (
 	'share' : 20px,
 	'body' : 30px,
 	'mediaQueryGutter' : (
-		80px, //*default*/
-		25px (max, 960px), //*affected by media query*/
-		10px (max, 600px) //*affected by media query*/
+		50px, //*default*/
+		25px (max, 800px), //*affected by media query*/
+		10px (max, 700px) //*affected by media query*/
 	)
 );
 //IE8 can't do transparent borders.
