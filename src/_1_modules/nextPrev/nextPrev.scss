@@ -1,5 +1,48 @@
 
 .nextPrev {
 	margin-top: 50px;
-	&__element {}
+	&__tag {
+		color: #4d7f22;
+		font-size: 0.8em;
+		display: block;
+	}
+	&__link {
+		.-next & {
+			padding-right: 50px;
+		}
+		.-prev & {
+			padding-left: 50px;
+		}
+		&:hover, &:focus {
+			background-color: #f0f0f0;
+			.nextPrev {
+				&__title {
+					//text-decoration: underline;
+				}
+			}
+		}
+	}
+	&__arrow {
+		display: block;
+		@include MG-centered('v');
+		height: 20px;
+		width: 15px;
+		&:before {
+			content: '';
+			display: block;
+		}
+		.-next & {
+			right: 15px;
+			top: -9px;
+			&:before {
+				@include MG-chevron('right',#000, 15px, 1px);
+			}
+		}
+		.-prev & {
+			left: 15px;
+			&:before {
+				@include MG-chevron('left',#000, 15px, 1px);
+			}
+		}
+	}
 }

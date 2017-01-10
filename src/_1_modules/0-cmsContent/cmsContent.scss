@@ -108,7 +108,6 @@ $C-dots: $C-numbers;
 				}
 			}
 		}
-
 	}
 
 	.externalLink-JS {
@@ -123,4 +122,13 @@ $C-dots: $C-numbers;
 	}
 
 	img { display: inline-block; }
+
+	a {
+		color: #4d7f22;
+		text-decoration: underline;
+		&:hover {
+			color: #315116;
+			text-decoration: none;
+		}
+	}
 }

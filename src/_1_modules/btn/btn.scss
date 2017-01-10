@@ -30,6 +30,11 @@ $MQ-text--is-small: (max, bp('mobile'));
 			text-decoration: none;
 			background-color: brand(1, 'hover');
 		}
+	}
 
+	&.-light, .-light & {
+		background: #fff;
+		border-width: 1px;
+		color: #000;
 	}
 }

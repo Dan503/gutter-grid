@@ -4,9 +4,17 @@ mixin nextPrev(spec)
 			classes : '',
 		});
 
-	.nextPrev(class=spec.classes)&attributes(attributes)
-		.grid.grid--space-between(class=(!get.prev)?'grid--align-right':'')
+	nav.nextPrev(class=spec.classes)&attributes(attributes)
+		ul.grid.grid--space-between(class=(!get.prev)?'grid--align-right':'')
 			if get.prev
-				a.nextPrev__prev.grid__cell(href=get.prev.link)= 'Prev: '+get.prev.title
+				li.grid__cell.-prev
+					a.nextPrev__link.btn.-light(href=get.prev.link)
+						span.nextPrev__arrow
+						span.nextPrev__tag Previous:
+						span.nextPrev__title= get.prev.altTitle || get.prev.title
 			if get.next
-				a.nextPrev__next.grid__cell(href=get.next.link)= 'Next: '+get.next.title
+				li.grid__cell.-next
+					a.nextPrev__link.btn.-light(href=get.next.link)
+						span.nextPrev__arrow
+						span.nextPrev__tag Next:
+						span.nextPrev__title= get.next.altTitle || get.next.title
