@@ -24,7 +24,7 @@ body {
 	}
 }
 
-.wrapper, .current-section {
+.wrapper {
 	width: 100%;
 	max-width: bp('page');
 	margin: 0 auto;
@@ -92,11 +92,6 @@ footer {
 			font-size: 1em;
 		}
 	}
-}
-
-.current-section p {
-	font-family: Georgia, serif;
-	font-style: italic;
 }
 
 .add {
