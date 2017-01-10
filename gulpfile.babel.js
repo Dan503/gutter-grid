@@ -13,6 +13,8 @@ wrench.readdirSyncRecursive('./'+dirs.gulp+'/tasks').filter((file) => {
   require('./'+dirs.gulp+'/tasks/'+file)();
 });
 
+var clean = args.production ? ['clean', 'clean:livesite'] : ['clean'];
+
 // Compiles all the code
 gulp.task('compile', [
   'copy',
@@ -35,7 +37,7 @@ gulp.task('serve', ()=>{
 gulp.task('test', ['eslint']);
 
 // Default task (cleans and builds then runs server then watches for changes)
-gulp.task('default', ['clean'], () => {
+gulp.task('default', clean, () => {
 
  	jsWatch.isEnabled = true;
 
@@ -56,7 +58,8 @@ gulp.task('default', ['clean'], () => {
   });
 });
 
+
 //Cleans and builds only with no server
-gulp.task('build', ['clean'], () => {
+gulp.task('build', clean, () => {
   gulp.start('compile');
 });

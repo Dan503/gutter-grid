@@ -111,7 +111,7 @@
     "redirect": true,
     "directories": {
       "source": "src",
-      "destination": "production-files",
+      "destination": "docs",
       "temporary": "tmp",
       "gulp": "gulp",
       "downloads": "downloads",

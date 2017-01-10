@@ -17,26 +17,26 @@ export default function() {
 		deleteEmpty.sync(dirs.source+'/');
 	});
 
+	gulp.task('clean:livesite', del.bind(null, [
+		path.join(dirs.destination),
+	]));
+
 	gulp.task('clean:styles', del.bind(null, [
 		path.join(dirs.temporary,'styles'),
-		path.join(dirs.destination,'styles')
 	]));
 
 	gulp.task('clean:html', del.bind(null, [
 		path.join(dirs.temporary,'**/*.html'),
-		path.join(dirs.destination,'**/*.html')
 	]));
 
 	gulp.task('clean:scripts', del.bind(null, [
 		path.join(dirs.temporary,'scripts'),
-		path.join(dirs.destination,'scripts')
 	]));
 
 	gulp.task('clean:pages:empty', ()=>{
 		let sources = [
 			path.join(dirs.source, dirs.pages),
 			path.join(dirs.temporary, dirs.pages),
-			path.join(dirs.destination, dirs.pages),
 		];
 
 		sources.forEach((source) => {
@@ -47,7 +47,6 @@ export default function() {
 	gulp.task('clean:pages:indexes', del.bind(null, [
 		path.join(dirs.source, dirs.pages,'**/index.pug'),
 		path.join(dirs.temporary, dirs.pages, '**/*'),
-		path.join(dirs.destination, dirs.pages, '**/*'),
 	]));
 
 	gulp.task('clean:pages:dynamic-assets', ['clean:pages:indexes'], ()=> {

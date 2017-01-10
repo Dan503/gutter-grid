@@ -5,7 +5,6 @@ tmp
 .grunt
 .DS_Store
 tmp
-production-files
 gulp-start-up.txt
 src/pages/**/index.pug
 #src/pages/**/content
