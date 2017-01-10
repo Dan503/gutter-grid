@@ -8,6 +8,14 @@ body {
 	padding: 0;
 }
 
+.markdown-body nav {
+	ul, ol {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}
+
 .markdown-body {
 	h2,h3,h4,p,ul,ol{
 		&:first-child { margin-top: 0; }
@@ -126,14 +134,18 @@ footer {
 	left: 0;
 }
 
-.owner p {
-	position: relative;
-	padding-left: 70px;
-	margin: 0;
-}
-
-footer .owner {
-	background-image: url(../images/pattern.png);
+.owner {
+	&__shareCell {
+		padding-left: 50px;
+	}
+	p {
+		position: relative;
+		padding-left: 70px;
+		margin: 0;
+	}
+	footer & {
+		background-image: url(../images/pattern.png);
+	}
 }
 
 .title .small {
