@@ -1,18 +1,18 @@
 block content
   :marked
-    ### Supporting browsers that support flex-box but not the latest syntax (IE10)
+    ### Supporting browsers that support flexbox but not the latest syntax (IE10)
 
-    IE10 has support for flex-box however you will need to incorporate [Autoprefixer](https://github.com/postcss/autoprefixer) into your build process to support it's outdated flex-box syntax.
+    IE10 has support for flexbox however you will need to incorporate [Autoprefixer](https://github.com/postcss/autoprefixer) into your build process to support it's outdated flexbox syntax.
 
-    Also be aware of this [IE10 flex-box bug](http://stackoverflow.com/questions/16808815/ie10-flexbox-p-element-non-wrapping/33795089) which can cause problems in page layouts.
+    Also be aware of this [IE10 flexbox bug](http://stackoverflow.com/questions/16808815/ie10-flexbox-p-element-non-wrapping/33795089) which can cause problems in page layouts.
 
-    ### Supporting browsers that do not support flex-box (IE8 & 9)
+    ### Supporting browsers that do not support flexbox (IE8 & 9)
 
-    Gutter Grid is powered mostly by flex-box. To help cater to browsers that do not support it, Gutter Grid has `display:table` and `float:left` backups built into it for when `flex-box` is not supported. In general it will use `display:table` since tables act in a very similar way to how flex-box acts. However, when wrapping is involved and the browser does not support the `flex-wrap` css property, it will use `float:left` styling instead.
+    Gutter Grid is powered mostly by flexbox. To help cater to browsers that do not support it, Gutter Grid has `display:table` and `float:left` backups built into it for when `flexbox` is not supported. In general it will use `display:table` since tables act in a very similar way to how flexbox acts. However, when wrapping is involved and the browser does not support the `flex-wrap` css property, it will use `float:left` styling instead.
 
-    In order to detect if the browser supports flex-box and flex-wrap, Gutter Grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr properties it is dependent on is `flexwrap` and `flexbox`. To add Modernizr to your site, either [download a custom build that includes flexbox and flexwrap](https://modernizr.com/download?setclasses&q=flex) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
+    In order to detect if the browser supports flexbox and flex-wrap, Gutter Grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr properties it is dependent on is `flexwrap` and `flexbox`. To add Modernizr to your site, either [download a custom build that includes flexbox and flexwrap](https://modernizr.com/download?setclasses&q=flex) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
 
-    Please note that the design in IE8 & 9 won't look like the design on browsers that support flex-box. It will mainly just help stop the layout from completly breaking on you when compared to using purely flex-box on it's own.
+    Please note that the design in IE8 & 9 won't look like the design on browsers that support flexbox. It will mainly just help stop the layout from completly breaking on you when compared to using purely flexbox on it's own.
 
     ### Supporting IE8 specifically
 

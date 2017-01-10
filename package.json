@@ -2,7 +2,7 @@
   "name": "gutter-grid",
   "version": "1.0.0",
   "yeosword-version": "2.8.2",
-  "description": "A Sass flex-box based grid system with backups for legacy browsers featuring a robust gutter system",
+  "description": "A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system",
   "dependencies": {
     "mq-scss": "^1.1.2"
   },
