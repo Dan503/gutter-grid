@@ -3,7 +3,7 @@
   "subnav": [
     {
       "title": "Home",
-      "altTitle": "Why use gutter-grid?",
+      "altTitle": "Why use Gutter Grid?",
       "link": "/",
       "template": "home",
       "subNavigable": false
