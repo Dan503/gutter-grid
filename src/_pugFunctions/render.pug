@@ -1,0 +1,11 @@
+//- a function for rendering STRINGS of pug into html
+//- this does not render pug blocks
+//- "compile" and "pugFilters" are defined in the pug.js gulp file
+-
+	function render(pugMarkup, settings, localVariables){
+		var settings = defaultTo(settings, {
+			pretty: true,
+			filters: pugFilters,
+		});
+		return compile(pugMarkup, settings)(localVariables);
+	}

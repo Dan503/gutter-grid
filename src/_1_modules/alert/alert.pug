@@ -1,0 +1,22 @@
+
+
+mixin alert(spec)
+	-
+		spec = defaultTo(spec, {
+			type : 'error',
+			classes : '',
+		});
+
+		var alertTypes = {
+			error : 'alert--error',
+			nojs : 'alert--error alert--nojs TK-jsHide',
+			warn : 'alert--warning',
+			success : 'alert--success',
+			info : 'alert--info',
+		};
+
+	.alert(class=`${alertTypes[spec.type]} ${spec.classes}`)&attributes(attributes)
+		if block
+			block
+		else
+			p This is an example paragraph for the alert module

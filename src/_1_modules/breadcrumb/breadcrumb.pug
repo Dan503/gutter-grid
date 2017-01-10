@@ -1,0 +1,58 @@
+
+include ../svg/svg
+
+mixin breadcrumb__item(map, currDepth, spec)
+	- var location = get.current.location;
+	- var target = location[currDepth];
+
+	//- Prevents an unwanted "home" link from showing up on miscellaneous pages that have a bread crumb
+	if location[0] === 0 && currDepth > 1 || location[0] !== 0
+
+		if isset(location[currDepth])
+			li.breadcrumb__item
+				if map.generate === false
+					span.breadcrumb__inner.breadcrumb__span= text
+				else
+					a.breadcrumb__inner.breadcrumb__link(href=map.link, title=`Go to ${map.title}`)= map.title
+
+			+breadcrumb__item(Get([map, target]), currDepth + 1, spec)
+
+		else if spec.hasLastItem
+			li.breadcrumb__item.-current
+				span.breadcrumb__inner.breadcrumb__span= map.title
+	else
+		+breadcrumb__item(Get([map, target]), currDepth + 1, spec)
+
+
+mixin breadcrumb(spec)
+	-
+		spec = defaultTo(spec, {
+			//does the breadcrumb also show the current page?
+			hasLastItem: true,
+
+			//Does the breadcrumb show a home link at all?
+			hasHome : true,
+
+			//If it does, is the home link just an icon? (alternative is text)
+			homeIcon : false,
+
+			//Does the breadcrumb have any extra classes?
+			classes : '',
+		});
+
+	nav.breadcrumb(class=spec.classes)&attributes(attributes)
+		- var target = get.current.location[0];
+		- var homeText = 'Back to home page';
+
+		ul.breadcrumb__list
+			if spec.hasHome
+				li.breadcrumb__item.-home
+					if spec.homeIcon
+						a.breadcrumb__link.breadcrumb__inner(href="/" title=homeText)
+							span.TK-visHid= homeText
+							//-need to save a "home.svg" icon into the _images/SVGs/ folder
+							+svg('home')
+					else
+						a.breadcrumb__link.breadcrumb__inner(href="/" title=homeText) Home
+
+			+breadcrumb__item(Get([navMap, target]), 1, spec)

@@ -1,0 +1,144 @@
+
+include ../_pugFunctions/config/config-loader.pug
+
+include /_1_modules/alert/alert
+include /_1_modules/skipLinks/skipLinks
+include /_1_modules/siteContainer/siteContainer
+include /_1_modules/pageLayout/pageLayout
+include /_1_modules/nav/nav
+include /_1_modules/nextPrev/nextPrev
+include /_1_modules/0-cmsContent/cmsContent
+
+include /_1_modules/demo/demo
+
+include /_1_modules/share/share
+
+include /_1_modules/svg/svg
+
+//- console.log(location)
+//- console.log(layout)
+//- console.log(get.current.title)
+
+doctype html
+
+<!--[if lt IE 9]><html class='lt-ie10 lt-ie9 no-js' lang='en'><![endif]-->
+<!--[if IE 9]><html class='ie9 lt-ie10 no-js' lang='en'><![endif]-->
+<!--[if gt IE 9]><!--><html class='no-js' lang='en'><!--<![endif]-->
+
+head
+	meta(charset='utf-8')
+	meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+	title #{get.current.title} | Gutter Grid
+	meta(name='description', content=pkg.description)
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+	//- Open Graph data
+	//- meta(property='og:title', content!= stripTags(pageTitle))
+	//- meta(property='og:type', content='article')
+	//- meta(property='og:image', content=basePath+'/assets/images/social-media.jpg')
+
+	//- Google analytics code
+	//-script.
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		//Unncomment these 2 lines and update the tracking code to enable google analytics tracking
+		//ga('create', 'UA-xxxxxxxx-xx', 'auto');
+		//ga('send', 'pageview');
+
+	script(src=basePath+'/assets/scripts/modernizr.min.js')
+
+	block stylesheets
+		<!--[if gt IE 8]><!-->
+		link(rel='stylesheet', href=basePath+'/assets/styles/main.css')
+		<!--<![endif]-->
+
+		<!--[if lte IE8]>
+		link(rel='stylesheet', href=basePath+'/assets/styles/noMQs-main.css')
+		<![endif]-->
+
+body
+
+	//holds the svg sprite
+	div(style="display:none")
+		include ../../tmp/svg-symbols.svg
+
+	//- appears in IE <= 9
+	<!--[if lte IE9]>
+	+alert({type:'error'})
+		p You are using an #[strong outdated] browser. Please #[a(href="http://browsehappy.com/") upgrade your browser] to improve your experience.
+	<![endif]-->
+
+	//- I've found the <noscript> tag to not always work properly
+	+alert({type:'nojs'})
+		p Please #[a(href="http://www.enable-javascript.com/") enable javascript] to access the full functionality of this site
+
+	+siteContainer({classes:{outer:'wrapper'}})
+
+		+skipLinks()
+
+		header.header
+			+pageLayout()
+				h1.title Gutter Grid #[code.small= 'v'+pkg.version]
+
+		block mainArea
+			.mainArea.TK-flexGrow
+				+pageLayout()
+					#container
+						p.tagline=pkg.description
+					#main(role='main')
+						.download-bar
+							.inner
+								a.download-button.tar(href='https://github.com/Dan503/gutter-grid/tarball/master')
+									span Download
+								a.download-button.zip(href='https://github.com/Dan503/gutter-grid/zipball/master')
+									span Download
+								a.code(href='https://github.com/Dan503/gutter-grid') View gutter-grid on GitHub
+							span.blc
+							span.trc
+						.grid.grid--gutter-body
+							+nav({classes: 'grid__cell grid__cell--noResize'})
+							.grid__cell
+								article.markdown-body
+									:marked
+										_**This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.**_
+
+									+cmsContent()
+										h2= get.current.altTitle || get.current.title
+										block content
+
+									+nextPrev()
+
+		footer
+			+pageLayout()
+				.owner
+					.grid.grid--space-between.grid--vAlign-center
+						.grid__cell
+							p
+								a.avatar(href='https://github.com/Dan503')
+									img(src='https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=50&default=retro', width='48', height='48')
+								| #[a(href='https://github.com/Dan503') Dan503] maintains #[a(href='https://github.com/Dan503/gutter-grid') gutter-grid]
+						.grid__cell
+							+share()
+
+				.creds
+					small
+						| theme by #[a(href='https://twitter.com/jonrohan/') Jon Rohan] (although lots of alterations have been made to it)
+
+	.current-section
+		a(href='#top') Scroll to top
+		a.tar(href='https://github.com/Dan503/gutter-grid/tarball/master') tar
+		a.zip(href='https://github.com/Dan503/gutter-grid/zipball/master') zip
+		a.code(href='') source code
+		p.name
+
+	script(src=basePath+'/assets/scripts/plugins/highlight.pack.js')
+	script(type='text/javascript').
+		hljs.initHighlightingOnLoad();
+
+	script(src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous")
+	script(src=basePath+'/assets/scripts/main.js')
+
+</html>

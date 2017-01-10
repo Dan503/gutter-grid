@@ -1,0 +1,27 @@
+-
+	var navMap = site.data.navMap;
+	var basePath_leadingSlash = pkg.config.basePath === '' ? '' : '/';
+	var basePath = basePath_leadingSlash + pkg.config.basePath;
+
+//- shared pug JS functions for easier variable setting
+include ../../../node_modules/default-to/defaultTo
+include ../idSafe
+include ../mods
+include ../render
+
+//- system files
+include ../system-files/pre-config-loader
+
+//- Custom Configuration
+//- use "block prepend pre_nav_config" to overide
+//- if config variables have an affect on the navMap, place them here
+block pre_nav_config
+	- var location = [0];
+
+//- system files
+include ../system-files/post-config-loader
+
+//- Custom Configuration
+//- use "block prepend post_nav_config" to overide
+//- if config variables are affected by the navMap, place them here
+block post_nav_config

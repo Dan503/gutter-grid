@@ -1,0 +1,2 @@
+##path to 404 page
+ErrorDocument 404 /pages/home/miscellaneous/404-page-not-found/index.html

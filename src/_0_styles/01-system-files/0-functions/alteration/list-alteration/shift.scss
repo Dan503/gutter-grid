@@ -1,0 +1,16 @@
+//http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+
+//SHIFT THE INDEXES OF A LIST
+//example:
+//$list: a, b, c, d, e, f;
+//$new-list: shift($list, 1);   =  f, a, b, c, d, e
+//$new-list: shift($list, -3);  =  d, e, f, a, b, c
+@function shift($list, $value: 1) {
+	$result: ();
+
+	@for $i from 0 to length($list) {
+		$result: append($result, nth($list, ($i - $value) % length($list) + 1));
+	}
+
+	@return $result;
+}

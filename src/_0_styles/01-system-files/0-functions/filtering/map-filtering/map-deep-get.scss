@@ -1,0 +1,30 @@
+//https://gist.github.com/jlong/8760275
+
+// An easy way to fetch a deep value in a multi-level map. Works much like
+// map-get() except that you pass multiple keys as the second parameter to
+// go down multiple levels in the nested map.
+//
+
+
+// $vehicles : (
+//    car : (
+//        seats : 4,
+//        wheels : 4,
+//    ),
+//    truck : (
+//        seats : 2,
+//        wheels : 6,
+//    ),
+// );
+
+// $carSeating: map-deep-get(car seats, $vehicles);
+// $carSeating = 4
+
+@function map-deep-get($map, $keys) {
+  $value: $map;
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+  @return $value;
+}
+

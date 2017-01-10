@@ -1,0 +1,73 @@
+-
+	//function for getting next page providedLocation in relation to the navMap
+	function getNextLocation(providedLocation, style){
+
+		style = defaultTo(style, 'deep');
+
+		//styles:
+		// 'deep' (default) : goes through every nav and sub nav item available in the navMap in order of appearance
+		// 'strict' : ignores sub navigation, will return false if there is no nav item that is next in line
+		// 'lazy' : ignores sub navigation, goes up to the next parent in line if no more nav items are found
+
+		//The comments use [1,1,1] as an example "providedLocation" array
+
+		//creating a copy of providedLocation so I can retain access to the origional
+		var locationCopy = providedLocation.slice(0);
+
+		if (providedLocation.length == 1 && providedLocation[0] == 0){
+			//prevents the user from pressing a next button into miscellaneous pages
+			return [1];
+		}
+
+		var lastDigit = end(providedLocation);//1
+
+		//negative 1 to align it with index counting from 0 so code makes more sense
+		var siblingCount =  Get('siblings').length - 1;
+
+		//if strict and no next items available, return false
+		if (style === 'strict' && (lastDigit + 1) > siblingCount){
+			return false;
+		} else {
+			if(hasLinkGen('override-siblings')){
+				if(hasSubNav(providedLocation) && style === 'deep'){
+					return  Get('children', 0, 'location');
+				} else {
+					locationCopy.pop();
+					var newLastDigit = end(locationCopy) + 1;
+					locationCopy = update_last(locationCopy, newLastDigit);// [1,2]
+					return locationCopy;
+				}
+			}
+
+			//keep digging through parents until you hit a page with a sibling after it, or return false if at the root level
+			var locationDig = providedLocation.length <= 1 ? false : digForLastLocation('next', locationCopy);
+			//console.log("locationDig: ",locationDig);
+
+			//resetting locationCopy
+			locationCopy = providedLocation.slice(0);
+
+			//change last item in array to be 1 higher
+			var nextIndex = lastDigit + 1;
+
+			//check if current page has a navigable subnav
+			if (hasSubnav(providedLocation) && style === 'deep'){
+
+				//point providedLocation at the first sub item
+				locationCopy.push(0);
+				return locationCopy;//[1,1,1,0]
+
+			//go to the next item in line or return the locationDig value
+			} else {
+				locationCopy = update_last(locationCopy, nextIndex);//[1,1,2]
+
+				var siblingNonExistant = end(locationCopy) > siblingCount;
+
+				if (siblingNonExistant){
+					return locationDig;
+				} else {
+					return locationCopy;
+				}
+
+			}
+		}
+	}

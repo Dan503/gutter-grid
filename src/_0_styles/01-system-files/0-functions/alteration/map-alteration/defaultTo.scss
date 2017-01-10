@@ -1,0 +1,43 @@
+
+//A function for filling in a map variable with default values
+@function defaultTo($mapVariable, $defaultMap){
+	//if it's a map, treat each setting in the map seperately
+	@if (type-of($defaultMap) == 'map' ){
+
+		//@debug $mapVariable;
+		//@debug $defaultMap;
+
+	    $finalParams: $mapVariable;
+
+	    // We iterate over each property of the defaultMap
+	    @each $key, $value in $defaultMap {
+	        // If the variable map does not have the associative key
+	        @if (not map-has-key($mapVariable, $key)) {
+
+	            // add it to finalParams
+            	$finalParams: map-merge($finalParams, ($key : $value));
+
+	        }
+	    }
+
+		//@debug $finalParams;
+
+	    @return $finalParams;
+
+	} @else {
+		@error 'The defaultTo function only works for maps, try using "@if (variable-exists(variableName)){ ... }" or "@if (global-variable-exists(variableName)){ ... }" instead';
+	}
+}
+
+//Unfortunately you need to do this for variables that aren't maps since SASS wont parse an undefined variable into a function
+/*
+@if (variable-exists(testing)){
+	//code that fires if $testing variable is defined
+	//(note that there is no "$" at the front of "testing")
+} @else {
+	//code that fires if $testing variable is undefined
+}
+*/
+
+//$test: defaultTo(testing, 'working?', $testing);
+//@debug $test;

@@ -1,0 +1,43 @@
+-
+	//finds out if the current page is located within the provided location array or deeper
+	//excellent for setting active classes on navigation
+	//the parameter it takes can be either a navmap item, search array, or location array
+	//The second parameter determines if it should return true for the currently active page or not
+	function amCurrentlyUnder (searchArray_or_navItem, includeCurrent){
+
+		includeCurrent = defaultTo(includeCurrent, true);
+
+		var matchLocation = clone(searchArray_or_navItem);
+
+		//for when a navMap item is given
+		if (isset(searchArray_or_navItem.location)){
+			matchLocation = searchArray_or_navItem.location;
+
+		//for if a navMap search array is given
+		} else if (array_has_string(searchArray_or_navItem)){
+			matchLocation = Get(searchArray_or_navItem).location;
+		}
+
+		for (var depth = 0; depth < matchLocation.length; depth++) {
+
+			if (isset(get.current.location[depth])){
+				//test each item in the provided array against the current page location
+				if(get.current.location[depth] !== matchLocation[depth] && isset(matchLocation[depth])){
+					//if the location does not match, the function returns false
+					return false;
+				}
+			} else {
+				//if the provided array is longer than the current global location array, it returns false
+				return false;
+			}
+		}
+
+		//If not including the current page, then return false if the match location matches the current page location
+		if (matchLocation.length === get.current.location.length && !includeCurrent){
+			return false;
+		} else {
+			//If it manages to get through the whole loop without returning false then return true
+			return true;
+		}
+
+	}

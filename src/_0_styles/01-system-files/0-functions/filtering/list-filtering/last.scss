@@ -1,0 +1,9 @@
+//http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+
+//SELECT LAST VALUE IN A LIST
+//example:
+//$list: a, b, c, d, e, f;
+//$last: last($list);    =  f
+@function last($list) {
+	@return nth($list, length($list));
+}

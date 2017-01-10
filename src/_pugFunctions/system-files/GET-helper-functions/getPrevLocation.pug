@@ -1,0 +1,84 @@
+-
+	//function for getting previous page providedLocation in relation to the navMap
+	function getPrevLocation(providedLocation, style){
+
+		style = defaultTo(style, 'deep');
+
+		//styles:
+		// 'deep' (default) : goes through every nav and sub nav item available in the navMap in order of appearance
+		// 'strict' : ignores sub navigation, will return false if there is no nav item that is next in line
+		// 'lazy' : ignores sub navigation, goes up to the next parent in line if no more nav items are found
+
+		//The comments use [1,1,1] as an example "providedLocation" array
+
+		//creating a copy of providedLocation so I can retain access to the origional
+		var locationCopy = providedLocation.slice(0);
+
+		var providedLocationMap = Get(providedLocation);
+
+		//it's being a major pain in the ass not matching [0] with [0]
+		//this was the only way I could get it to match
+		if (providedLocationMap.location[0] === 0  && providedLocation.length === 1){
+			//basically if on the home page, return as false
+			return false;
+		} else if (providedLocation[0] === 1 && providedLocation.length === 1){
+			//prevents the user from pressing a prev button into miscellaneous pages
+			return [0];
+		}
+
+		var lastDigit = parseInt(end(providedLocation));
+
+		//if strict and no previous items available, return false
+		if (style === 'strict' && lastDigit === 0){
+			return false;
+		} else {
+
+			if (style === 'strict'){
+				return update_last(locationCopy, lastDigit - 1);//[1,1,0]
+			}
+
+			//remove last value from the array if not at root level
+			if (lastDigit !== 0){
+				locationCopy = update_last(locationCopy, lastDigit - 1);//[1,1,0]
+			} else {
+				locationCopy.pop();//[1,1]
+			}
+
+			if(hasLinkGen('override-siblings','prev')){
+				locationCopy.pop();//[1,1]
+				return locationCopy;
+			}
+
+			if (style === 'lazy' || style == 'deep' && lastDigit === 0){
+				//if it's lazy style or it is deep style and it is the first nav item amongst it's siblings, return with the new reduced location array
+				return locationCopy;
+			} else {
+				//this is the code for the default "deep" style
+
+				//resetting locationCopy
+				locationCopy = providedLocation.slice(0);
+
+				//change last item in array to be 1 less
+				var prevIndex = end(locationCopy) - 1;
+				locationCopy = update_last(locationCopy, prevIndex);//[1,1,0]
+
+				//get subnav for the previous section
+				var prevNav = getNavMap(locationCopy, 'subnav');
+
+				if (prevNav){
+
+					//point providedLocation at the last sub item
+					var newIndex = prevNav.length - 1;
+					locationCopy.push(newIndex);
+
+					//keep digging through subnavs until you can't dig any deeper
+					return digForLastLocation('prev', locationCopy);
+
+				} else {
+					//if prev item has no children, point to it as the new providedLocation
+					locationCopy = update_last(providedLocation, prevIndex);
+					return locationCopy;
+				}
+			}
+		}
+	}

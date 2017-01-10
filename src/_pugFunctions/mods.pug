@@ -1,0 +1,29 @@
+//- a quick an easy way to add modifier classes to elements
+
+//- usage:
+//- input >> mods('moduleName', ['mod1', 'mod2', 'mod3'])
+//- output >> moduleName--mod1 moduleName--mod2 moduleName--mod3
+
+//- input >> mods('moduleName', 'string'); (useful for functions)
+//- output >> moduleName--string
+-
+	function mods(module, variable) {
+		variable = variable || ''
+		if (variable === '') {
+			return '';
+		} else {
+
+			if (Array.isArray(variable)) {
+				var modifier = '';
+
+				variable.forEach(function(mod){
+					modifier = `${modifier} ${module}--${mod}`;
+				});
+
+				return ` ${modifier}`;
+			} else {
+				return ` ${module}--${variable}`;
+			}
+
+		}
+	}

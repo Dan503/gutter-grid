@@ -1,0 +1,25 @@
+//http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+
+//Replace one specific value in a list with another value
+//If recursive is set to true, it will change all occurrences rather than just the first
+@function replace($list, $old-value, $new-value, $recursive: false) {
+	$result: ();
+
+	@for $i from 1 through length($list) {
+		@if type-of(nth($list, $i)) == list and $recursive {
+			$result: append($result, replace(nth($list, $i), $old-value, $new-value, $recursive));
+		}
+
+		@else {
+			@if nth($list, $i) == $old-value {
+				$result: append($result, $new-value);
+			}
+
+			@else {
+				$result: append($result, nth($list, $i));
+			}
+		}
+	}
+
+	@return $result;
+}

@@ -1,0 +1,38 @@
+
+-
+	function render(pugMarkup, settings, locals){
+		return compile(pugMarkup, { pretty: true })(locals);
+	}
+
+	var defaultTo = require('default-to').default;
+
+mixin demo(demoMarkup, spec)
+	-
+		spec = defaultTo(spec, {
+			classes: ''
+		})
+
+	-var isObj = typeof demoMarkup === 'object' && !Array.isArray(demoMarkup);
+
+	-var html = isObj ? render(demoMarkup.html) : render(demoMarkup);
+	-var countKeys = require('count-keys');
+
+	aside.demo(class=spec.classes)
+		if block
+			.demo__summary.demo__segment
+				block
+		if isObj && demoMarkup.html || !isObj
+			.demo__result.demo__segment
+				!=html
+
+		if isObj
+			.demo__grid.grid(class=`grid--cols-${countKeys(demoMarkup, {maxDepth: 1})}`)
+				each markup, type in demoMarkup
+					- markup = type === 'html' ? html : markup;
+					.demo__markup.demo__segment.grid__cell(class=type)
+						pre
+							code(class=type)= markup
+		else
+			.demo__markup.demo__segment
+				pre
+					code.html= html

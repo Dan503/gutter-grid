@@ -1,0 +1,8 @@
+//Check if a value is an even number
+@function isEven($value) {
+	@if ($value % 2 == 0) {
+		@return true;
+	} @else {
+		@return false;
+	}
+}

@@ -1,0 +1,9 @@
+-
+	//helper function for defining what the navMap selector is in "Get" functioons
+	function returnWith(value, selector){
+		if (isset(selector) && selector !== 'deep'){
+			return value[selector];
+		} else {
+			return value;
+		}
+	}

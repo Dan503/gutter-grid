@@ -1,0 +1,39 @@
+//http://hugogiraudel.com/2014/01/13/sass-string-replacement-function/
+
+//replace part of a string with a new string
+//string = The full string
+//old = substring you want to replace
+//new = the new substring you want to replace it with
+@function str-replace($string, $old, $new, $case-sensitive: true) {
+
+	@if type-of($string) != string or type-of($old) != string or type-of($new) != string {
+		@warn "One of the 3 arguments is not a string.";
+		@return $string;
+	}
+
+	@if str-index($new, $old) != 0 {
+		@warn "The string to be replaced is contained in the new string. Infinite recursion avoided.";
+		@return $string;
+	}
+
+	$index: if(
+	  not $case-sensitive,
+	  str-index(to-lower-case($string), to-lower-case($old)),
+	  str-index($string, $old)
+	);
+
+	@if $index > 0 and $new != $old {
+
+		$new-string: quote(str-slice($string, 1, $index - 1));
+
+		@for $i from $index through str-length($string) {
+			@if $i < $index or $i >= $index + str-length($old) {
+				$new-string: $new-string + str-slice($string, $i, $i);
+			}
+		}
+
+		$new-string: str-insert($new-string, $new, $index);
+
+		@return str-replace($new-string, $old, $new);
+	}
+}

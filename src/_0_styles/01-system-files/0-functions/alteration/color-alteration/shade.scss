@@ -1,0 +1,5 @@
+// Add percentage of black to a color
+//https://gist.github.com/benfrain/7545629
+@function shade($color, $percent){
+	@return mix(black, $color, $percent);
+}

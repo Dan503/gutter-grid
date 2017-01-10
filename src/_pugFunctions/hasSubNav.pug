@@ -1,0 +1,19 @@
+-
+	function hasSubnav(navItem_or_location){
+
+		var currentLocal = (isset(get)) ? get.current.location : Get('current').location;
+		navItem_or_location = defaultTo(navItem_or_location, currentLocal);
+
+		var item;
+
+		if(is_array(navItem_or_location)){
+			item = Get(navItem_or_location);
+		} else if (typeof navItem_or_location.location !== 'undefined') {
+			item = navItem_or_location;
+		} else {
+			console.log('\nThe hasSubnav() function only accepts navMap items and navMap search arrays (array of titles, indexes or both).\nThe variable parsed into hasSubnav() is currently:\n', navItem_or_location);
+
+			throw 'hasSubnav() failed to execute';
+		}
+		return item.subNavigable && isset(item.subnav);
+	}

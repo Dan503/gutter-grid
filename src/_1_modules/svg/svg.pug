@@ -1,0 +1,12 @@
+
+mixin svg(fileName, spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	svg(class=`svg-${fileName} ${spec.classes}`)&attributes(attributes)
+		if block
+			block
+		else
+			use(xlink:href=`#svg-${fileName}`)

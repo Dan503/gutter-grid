@@ -1,0 +1,12 @@
+
+mixin siteContainer(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : {
+				outer: '',
+				inner: ''
+			},
+		});
+	.siteContainer(class=spec.classes.outer)&attributes(attributes)
+		.siteContainer__inner(class=spec.classes.inner)
+			block

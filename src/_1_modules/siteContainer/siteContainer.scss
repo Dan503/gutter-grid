@@ -1,0 +1,15 @@
+.siteContainer {
+	overflow: hidden;
+	min-width: bp('minimum');//prevent site from shrinking bellow the minimum width
+
+	//ensures that the site will always take the full height of the browser
+	//header will be at the top
+	//footer will be at the bottom (even if very little content and a tall screen)
+	//main content area will be centered in the middle of the screen if not much content is on the page
+	&__inner {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+}

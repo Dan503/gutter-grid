@@ -1,0 +1,20 @@
+mixin nextPrev(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	nav.nextPrev(class=spec.classes)&attributes(attributes)
+		ul.grid.grid--space-between(class=(!get.prev)?'grid--align-right':'')
+			if get.prev
+				li.grid__cell.-prev
+					a.nextPrev__link.btn.-light(href=get.prev.link)
+						span.nextPrev__arrow
+						span.nextPrev__tag Previous:
+						span.nextPrev__title= get.prev.altTitle || get.prev.title
+			if get.next
+				li.grid__cell.-next
+					a.nextPrev__link.btn.-light(href=get.next.link)
+						span.nextPrev__arrow
+						span.nextPrev__tag Next:
+						span.nextPrev__title= get.next.altTitle || get.next.title

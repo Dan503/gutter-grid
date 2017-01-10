@@ -1,0 +1,131 @@
+
+/*================================================*\
+	THE TOOL KIT
+//----------------------------------------------------
+//	This file holds one off classes designed to be
+//	used globally for a specific function
+\*================================================*/
+
+//all these classes are prefixed with TL- at the front
+.TK {
+
+	//remove dot points from a list
+	&-noDots { list-style: none; margin: 0; padding: 0; }
+
+	//Image Replacement. For when you are using a sprite or icon on an element and you don't want the text to appear
+	&-imgReplace { @include MG-ir;
+		br {display:none;}
+	}
+
+	//Image Replacement 2. Good for submit buttons if you need IE7 compatibility
+	&-imgReplace2 { @include MG-ir2; }
+
+	//prevent text wrapping
+	&-noWrap { white-space: nowrap; }
+
+	//ellipsis (...) added to end of cut off text (single line only)
+	&-ellipsis { @include MG-ellipsis; display: block; }
+
+	//prevent overflow from being visible
+	&-overflowHidden { overflow: hidden; }
+
+	//hide element on page load
+	&-hide { display:none; }
+
+	//HIDE the element if JS is ENABLED,
+	//SHOW the element if JS is DISABLED
+	&-jsHide { @include MG-jsHide; }
+
+	//HIDE the element if JS is DISABLED,
+	//SHOW the element if JS is ENABLED
+	&-noJsHide {
+		.no-js & { display: none; }
+	}
+
+	//visually hidden element so that screen readers can see it but normal users cant
+	&-visHid { @include MG-vh; }
+
+	//counters the visually hidden styles
+	&-visHid--show { @include MG-anti-vh }
+
+	//a less favorable version of visually hidden since browsers still have to render it way off screen
+	&-offScreen { position: absolute; left: -999em; }
+
+	//Force a non-floating parent element to contain it's floating child elements
+	&-clearFix { @include MG-clearfix; }
+
+	//simple clear classes for clearing floats
+	&-clear { clear: both;
+		&--left { clear: left; }
+		&--right { clear: right; }
+	}
+
+
+	//both vertically and horizontally center align an element that has fixed height and width
+	&-centered {
+		@include MG-centered;
+
+	//.centered--v | only VERTICALLY center align an element that has fixed height and width
+		&--v { @include MG-centered('v'); }
+
+	//.centered--h | only HORIZONTALLY center align an element that has fixed height and width
+		&--h { @include MG-centered('h'); }
+	}
+
+
+	//	Screen size specific elements
+	&-mobileOnly { @include MG-mobileOnly; }
+	&-tabletOnly { @include MG-tabletOnly; }
+	&-desktopOnly { @include MG-desktopOnly; }
+	&-nonMobile { @include MG-nonMobile; }
+	&-nonTablet { @include MG-nonTablet; }
+	&-nonDesktop { @include MG-nonDesktop; }
+	&-nonLargeScreen { @include mq(min, bp('page')){ display: none!important; } }
+	&-largeScreenOnly {
+		@include mq(max, bp('page')){ display: none!important; }
+	}
+
+	//quickly add position relative to an element
+	&-relative { position: relative; }
+
+	//center align text
+	&-centeredText { text-align: center; }
+
+	//completly fill the space of a relative element
+	&-fill { @include MG-fill; }
+
+	//A link that only appears when the user focuses on it
+	&-skipLink {
+		@include MG-vh;
+		&:active, &:focus { @include MG-anti-vh }
+	}
+
+	//add float without extra styling
+	&-float {
+		&--left { float: left; }
+		&--right { float: right; }
+	}
+
+	//remove default styling (good for submit buttons)
+	&-appearanceNone { @include MG-appearanceNone; }
+
+	//Make element take up full screen height
+	&-fullScreen {
+		min-height: 100vh;
+	}
+
+	&-flexValign {
+		display: flex;
+		align-items: center;
+	}
+
+	&-flex {
+		display: flex!important;
+	}
+	&-flexGrow {
+		flex-grow: 1!important;
+	}
+	&-noShrink {
+		flex-shrink: 0!important;
+	}
+}

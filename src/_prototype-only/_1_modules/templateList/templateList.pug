@@ -1,0 +1,30 @@
+include /_1_modules/btn/btn
+
+mixin templateList(piece, spec)
+	-
+		spec = defaultTo(spec, {
+			__class : ''
+		});
+
+	// Prototype only
+
+	if piece === 'trigger'
+		a.skipLinks__link.TK-skipLink(href="#").JS-templateList__trigger
+			| Show template shortcuts
+
+	else
+		.templateList(class=spec.__class).JS-templateList__target.JS-templateList__closer&attributes(attributes)
+			.templateList__body
+				h2.templateList__heading Templates
+				span.templateList__focus(tabindex='0').JS-templateList__focus
+				ul.templateList__list.TK-noDots
+					each item in Get(['Templates'], 'subnav')
+						- activeClass = item.template === get.current.template ? ' -isActive' : '';
+						li.templateList__item
+							+btn({
+								class:'templateList__link JS-templateList__link' + activeClass,
+								href: item.link
+							})&attributes({tabindex:"-1"})
+								= item.title
+
+	// end Prototype only

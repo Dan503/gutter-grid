@@ -102,7 +102,7 @@ $grid-bp-list: if(
 	margin: 0;
 	padding: 0;
 	min-width: 100%;
-	border: 0 solid #000;
+	border: 0 solid transparent;
 	display: flex;
 	align-content: stretch;
 
