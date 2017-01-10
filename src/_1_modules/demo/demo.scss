@@ -25,6 +25,10 @@
 	&__result {
 		&:before {
 			content: 'Example';
+
+			.-false & {
+				content: 'Not Gutter Grid'
+			}
 		}
 		.grid {
 			padding: 0;
