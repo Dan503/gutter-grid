@@ -143,6 +143,11 @@ footer {
 .owner p {
 	position: relative;
 	padding-left: 70px;
+	margin: 0;
+}
+
+footer .owner {
+	background-image: url(../images/pattern.png);
 }
 
 .title .small {
