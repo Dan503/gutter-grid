@@ -6,8 +6,8 @@ mixin nav(spec)
 		});
 
 	nav.nav(class=spec.classes)&attributes(attributes)
-		ol.nav__list.grid.grid--vertical
+		ol.nav__list.grid.grid--gutter-nav.grid--hasInners
 			each item in navMap.subnav
 				- var activeClass = isActive(item) ? '-active' : '';
 				li.nav__item.grid__cell
-					a.nav__link(href=item.link, class=activeClass)= item.title
+					a.nav__link.btn.grid__inner(href=item.link, class=activeClass)= item.altTitle || item.title

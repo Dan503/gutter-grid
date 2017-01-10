@@ -1,25 +1,35 @@
 $MQ-text--is-small: (max, bp('mobile'));
 
 .btn {
-	font-weight: $bold;
 	font-size: 1em;
-	background-color: brand(1);
-	color: brand(1, 'text');
+	//background-color: brand(1);
+	background: #000 url(../images/pattern.png);
+	color: #fff;
 	@include MG-animate;
-	padding: 10px 15px;
-	padding-right: 55px;
-	display: inline-block;
-	border-radius: 50px;
+	padding: 5px 10px;
+	display: block;
 	transition: all 0.25s ease-in-out;
 	position: relative;
 	text-align: left;
+	border: 5px solid #444;
 
 	@include MG-hover {
 		text-decoration: none;
-		background-color: brand(1, 'hover');
+		border-color: #467320;
 	}
 
 	@include mq($MQ-text--is-small){
 		font-size: 0.75em;
+	}
+
+	&.-active {
+		background: brand(1);
+		font-weight: bold;
+
+		@include MG-hover {
+			text-decoration: none;
+			background-color: brand(1, 'hover');
+		}
+
 	}
 }
