@@ -155,14 +155,16 @@ footer {
 p.tagline { padding: 15px 20px; margin: 0; }
 
 .header {
+	.lines {
+		display: none;
+	}
 	&__npm {
 		text-align: center;
-		&.lines {
-			display: none
-		}
 		code {
 			background-color: #000;
 			color: brand(1);
+			padding: .5em;
+			display: block;
 		}
 	}
 }
