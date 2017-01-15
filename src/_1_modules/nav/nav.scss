@@ -1,5 +1,6 @@
 
 $MQ-nav--is-horizontal: (max, bp('page'));
+$MQ-nav--not-horizontal: (min, bp('page'));
 $MQ-nav--is-33width: (max, bp('tablet'));
 $MQ-nav--is-100width: (max, bp('mobile'));
 
@@ -10,6 +11,9 @@ $MQ-nav--is-100width: (max, bp('mobile'));
 		}
 	&__list {
 		flex-direction: column;
+		@include mq($MQ-nav--not-horizontal){
+			border-top: 0;
+		}
 		@include mq($MQ-nav--is-horizontal){
 			flex-direction: row;
 		}
