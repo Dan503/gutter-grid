@@ -1,0 +1,16 @@
+
+mixin logo(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+			elem: 'div',
+		});
+
+	#{spec.elem}.logo(class=spec.classes)&attributes(attributes)
+		span.logo__grid.grid.grid--noWrap.grid--align-center.grid--gutter-logo.grid--outerGutters-v
+			span.grid__cell.logo__cell.-imagery.grid__cell--noGrowth
+				+svg('gutter-grid-logo', {classes: 'logo__svg grid__cell'})
+			span.grid__cell.logo__cell.-text
+				span.logo__text.-gutter Gutter
+				span.logo__text.-grid Grid #[code.small= 'v'+pkg.version]
+

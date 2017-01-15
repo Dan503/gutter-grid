@@ -11,6 +11,10 @@ $grid-cell-gutters: (
 	'nav' : 10px,
 	'share' : 20px,
 	'body' : 30px,
+	'logo' : (
+		20px,
+		10px (max, bp('small'))
+	),
 	'mediaQueryGutter' : (
 		50px, //*default*/
 		25px (max, 800px), //*affected by media query*/

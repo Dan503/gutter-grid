@@ -12,6 +12,7 @@ include /_1_modules/0-cmsContent/cmsContent
 include /_1_modules/demo/demo
 
 include /_1_modules/share/share
+include /_1_modules/logo/logo
 
 include /_1_modules/svg/svg
 
@@ -81,7 +82,7 @@ body
 
 		header.header
 			+pageLayout()
-				h1.title Gutter Grid #[code.small= 'v'+pkg.version]
+				+logo({classes: 'title', elem: 'p'})
 
 		block mainArea
 			.mainArea.TK-flexGrow

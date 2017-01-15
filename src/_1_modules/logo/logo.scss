@@ -1,0 +1,31 @@
+
+$MQ-text--is-small: (max, bp('small'));
+
+.logo {
+	&__parent {
+		rect {
+			fill: brand(1);
+		}
+	}
+	&__svg{
+		width: 120px;
+		height: 120px;
+		@include mq($MQ-text--is-small){
+			height: 80px;
+			width: 80px;
+		}
+	}
+	&__text {
+		display: block;
+		line-height: 1;
+		text-align: left;
+
+		@include mq($MQ-text--is-small){
+			font-size: 40px;
+
+			.logo & code {
+				font-size: 10px;
+			}
+		}
+	}
+}

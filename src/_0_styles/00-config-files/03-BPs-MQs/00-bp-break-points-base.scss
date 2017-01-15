@@ -10,7 +10,7 @@
 //browser spec min-supported width: 320px (iPhones)
 
 $breakPoints: (
-	'minimum': 300px, //*The smallest width that the site is able to shrink to */
+	'minimum': 320px, //*The smallest width that the site is able to shrink to */
 	'tiny': 350px, //*essentially iphones in portrait view only*/
 	'small': 480px,
 	'mobile': 600px, ///*!MAJOR BREAK POINT!*//*Maximum for strict mobile view*/
