@@ -27,7 +27,76 @@ html: `
       each color in row
         .example__cell(class="-color-" + color)
 `,
-scss: ``,
+scss: `
+.example {
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+  &__row {
+    clear: left;
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+  }
+  &__cell {
+    min-height: 100px;
+    width: calc(33.33% - 20px);
+    float: left;
+    @media screen and (max-width: 960px){
+      width: 50%;
+    }
+
+    @media screen and (max-width: 600px){
+      width: 100%;
+      margin-right: 0;
+      &:last-child {
+        width: 100%;
+      }
+    }
+  }
+  &.-type-1 .example {
+    &__row {
+      margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__cell {
+      margin-right: 20px;
+      &:last-child {
+        width: 33.33%;
+        margin-right: 0;
+      }
+
+      @media screen and (max-width: 960px){
+        width: calc(50% - 20px);
+        margin-right: 20px;
+        margin-bottom: 20px;
+        &:last-child {
+          width: 50%;
+          margin-right: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      @media screen and (max-width: 600px){
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        &:last-child {
+          width: 100%;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+`,
 }, {classes:'-false'})
 
   :marked
@@ -45,7 +114,70 @@ html: `
   each color in colors
     .example__cell(class="-color-" + color)
 `,
-scss: ``,
+scss: `
+.example {
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+  &__row {
+    clear: left;
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+  }
+  &__cell {
+    min-height: 100px;
+    width: calc(33.33% - 20px);
+    float: left;
+    @media screen and (max-width: 960px){
+      width: 50%;
+    }
+
+    @media screen and (max-width: 600px){
+      width: 100%;
+      margin-right: 0;
+      &:last-child {
+        width: 100%;
+      }
+    }
+  }
+  &.-type-2 .example {
+    &__cell {
+      margin-right: 20px;
+      margin-bottom: 20px;
+      &:nth-child(3n) {
+        width: 33.33%;
+        margin-right: 0;
+      }
+      &:nth-last-child(-n + 3) {
+        margin-bottom: 0;
+      }
+
+    @media screen and (max-width: 960px){
+        width: calc(50% - 20px);
+        margin-right: 20px;
+        margin-bottom: 20px;
+        &:nth-last-child(3n + 1) {
+          width: 50%;
+          margin-right: 0;
+          margin-bottom: 0;
+        }
+      }
+
+    @media screen and (max-width: 600px){
+        margin-bottom: 20px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+`,
 }, {classes:'-false'})
 
   :marked
@@ -68,7 +200,7 @@ scss: ``,
 
     - Make a 3x3 grid
     - 20px gutter inbetween each cell
-    - The cells must sit hard up against the edges of the parent cell at all times
+    - The cells must sit hard up against the edges of the parent element at all times
     - On a 960px wide screen, the cell width changes to 50% width per cell
     - On a 600px wide screen, the cell width changes to 100% width per cell
     - The cells should all be the exact same width
