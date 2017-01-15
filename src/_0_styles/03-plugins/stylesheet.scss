@@ -608,7 +608,7 @@ p.tagline {
 }
 
 a.zip,
-a.zip span {
+a.zip > span {
   background: transparent url(../images/zip.png) no-repeat 0 0;
   width: 30px;
   height: 21px;
@@ -621,7 +621,7 @@ a.zip span {
 }
 
 a.tar,
-a.tar span {
+a.tar > span {
   background: transparent url(../images/tar.png) no-repeat 0 0;
   width: 30px;
   height: 21px;
@@ -669,7 +669,7 @@ a.download-button {
   margin-left: 10px;
 }
 
-a.download-button span {
+a.download-button > span {
   background-position: 10px 5px;
   width: auto;
   height: auto;
