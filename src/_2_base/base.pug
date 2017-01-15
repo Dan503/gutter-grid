@@ -65,7 +65,6 @@ body
 	//holds the svg sprite
 	div(style="display:none")
 		include ../../tmp/svg-symbols.svg
-		img(src=basePath+'/assets/images/social-media.jpg', alt='Gutter Grid Logo')
 
 	//- appears in IE <= 9
 	<!--[if lte IE9]>
@@ -135,5 +134,7 @@ body
 
 	script(src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous")
 	script(src=basePath+'/assets/scripts/main.js')
+
+	img(src=basePath+'/assets/images/social-media.jpg', alt='Gutter Grid Logo', style='display: none;')
 
 </html>
