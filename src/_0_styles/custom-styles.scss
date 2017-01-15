@@ -155,10 +155,14 @@ footer {
 p.tagline { padding: 15px 20px; margin: 0; }
 
 .header {
-	pre {
+	&__npm {
 		text-align: center;
 		&.lines {
 			display: none
+		}
+		code {
+			background-color: #000;
+			color: brand(1);
 		}
 	}
 }
