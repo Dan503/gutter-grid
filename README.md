@@ -1,4 +1,4 @@
-# flexible-grid
+![Gutter Grid logo](http://gutter-grid.net/assets/images/social-media.jpg)
 
     npm install gutter-grid --save
 
