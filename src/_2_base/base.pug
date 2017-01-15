@@ -20,6 +20,8 @@ include /_1_modules/svg/svg
 //- console.log(layout)
 //- console.log(get.current.title)
 
+- var pageTitle = stripTags(get.current.altTitle || get.current.title);
+
 doctype html
 
 <!--[if lt IE 9]><html class='lt-ie10 lt-ie9 no-js' lang='en' xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#"><![endif]-->
@@ -29,16 +31,24 @@ doctype html
 head
 	meta(charset='utf-8')
 	meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
-	title #{get.current.altTitle || get.current.title} | Gutter Grid
+	title #{pageTitle} | Gutter Grid
 	meta(name='description', content=pkg.description)
 	meta(name='viewport', content='width=device-width, initial-scale=1.0')
 
+
 	//- Open Graph data
-	meta(property='og:title', content!= stripTags(get.current.altTitle || get.current.title))
+	meta(property='og:title', content!= pageTitle)
 	meta(name='og:description', content=pkg.description)
 	meta(property='og:type', content='article')
 	meta(property='og:image', content='http://gutter-grid.net/assets/images/social-media.jpg')
 	meta(property='og:url', content=`http://gutter-grid.net${get.current.path}`)
+
+	//-twitter
+	meta(name='twitter:card', content='summary_large_image')
+	meta(name='twitter:creator', content='@daniel_tonon')
+	meta(name='twitter:title', content='Gutter Grid: '+pageTitle)
+	meta(name='twitter:description', content=pkg.description)
+	meta(name='twitter:image', content='http://gutter-grid.net/assets/images/social-media.jpg')
 
 	//- favicon
 	link(rel="apple-touch-icon", sizes="180x180", href="/apple-touch-icon.png")
@@ -72,7 +82,7 @@ head
 
 body
 
-	h1.TK-visHid= get.current.altTitle || get.current.title
+	h1.TK-visHid= pageTitle
 
 	//holds the svg sprite
 	div.svgSprite(style="display:none")
