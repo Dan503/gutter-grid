@@ -153,3 +153,12 @@ footer {
 }
 
 p.tagline { padding: 15px 20px; margin: 0; }
+
+.header {
+	pre {
+		text-align: center;
+		&.lines {
+			display: none
+		}
+	}
+}
