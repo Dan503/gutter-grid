@@ -13,8 +13,8 @@ $MQ-text--is-small: (max, bp('mobile'));
 	text-align: left;
 	border: 5px solid #444;
 
-	@include MG-hover {
-		text-decoration: none;
+	&:not(.-active):focus{
+		text-decoration: underline;
 		border-color: #467320;
 	}
 
@@ -25,9 +25,11 @@ $MQ-text--is-small: (max, bp('mobile'));
 	&.-active {
 		background: brand(1);
 		font-weight: bold;
+		text-decoration: none;
+		cursor: default;
 
-		@include MG-hover {
-			text-decoration: none;
+		&:focus {
+			text-decoration: underline;
 			background-color: brand(1, 'hover');
 		}
 	}

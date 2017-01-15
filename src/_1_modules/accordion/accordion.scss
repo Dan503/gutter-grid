@@ -7,6 +7,7 @@
 		}
 	}
 	&__btn {
+		text-decoration: none !important;
 		@include mq(min, bp('page')){
 			display: none;
 		}
