@@ -9,8 +9,8 @@ mixin share(spec)
 			hiddenText: 'Toggle share options',
 		});
 
-		var shareURL = `http://www.live_site_url.com${get.current.link}`;
-		var urlTitle = encodeURI(pageTitle);
+		var shareURL = `http://gutter-grid.net${get.current.link}`;
+		var urlTitle = encodeURI('Gutter Grid: '+ (get.current.altTitle || get.current.title));
 
 		var shareLinks = [
 			{
@@ -37,6 +37,7 @@ mixin share(spec)
 
 	.share.grid__wrapper(class=spec.classes.wrapper)&attributes(attributes)
 		ul.share__list.grid.grid--noWrap.grid--space-between.TK-noDots
+			li.share__option.grid__cell Share:
 			each option in shareLinks
 				li.share__option.grid__cell
 					a.share__link(href!=option.link, title=option.text, class='-'+option.icon).JS-share__link
