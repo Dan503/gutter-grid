@@ -19,7 +19,7 @@ mixin btn(spec)
 
 		attr = defaultTo(attributes, attr);
 
-	#{elem}.btn(class=spec.class + modClasses)&attributes(attr)
+	#{elem}.btn(class=spec.classes)&attributes(attr)
 		if block
 			block
 		else
