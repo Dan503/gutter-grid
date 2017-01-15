@@ -168,3 +168,13 @@ p.tagline { padding: 15px 20px; margin: 0; }
 		}
 	}
 }
+
+.creds {
+	a {
+		color: brand(6);
+		text-decoration: underline;
+		&:hover, &:focus {
+			text-decoration: none;
+		}
+	}
+}
