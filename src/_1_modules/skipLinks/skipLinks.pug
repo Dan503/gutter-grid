@@ -9,8 +9,8 @@ mixin skipLinks(spec)
 	.skipLinks(class=spec.classes)&attributes(attributes)
 		-
 			var skipLinks = {
-				"Skip to side navigation" : "#contentStart-sideNav",
-				"Skip to content" : "#contentStart-1",
+				"Skip to navigation" : "#navigation",
+				"Skip to content" : "#content",
 			};
 		each href, text in skipLinks
 			a.skipLinks__link.TK-skipLink(href=href) #{text}
