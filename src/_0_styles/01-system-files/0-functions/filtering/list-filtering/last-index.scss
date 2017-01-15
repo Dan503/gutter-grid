@@ -1,0 +1,19 @@
+//http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+
+//FIND THE INDEX OF THE LAST OF A CERTAIN VALUE IN A LIST
+//example
+//$list: a, b, c, a, d, e, a, f;
+//$first-index: index($list, a);      =  1
+//$last-index: last-index($list, a);  =  7
+//$middle-index: last-index($list, a, 6) = 4
+@function last-index($list, $value, $index: length($list)) {
+	$value-index: null;
+
+	@for $i from 1 through $index {
+		@if nth($list, $i) == $value {
+			$value-index: $i;
+		}
+	}
+
+	@return $value-index;
+}

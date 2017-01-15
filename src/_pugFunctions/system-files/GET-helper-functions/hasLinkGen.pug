@@ -1,0 +1,14 @@
+-
+	function hasLinkGen(linkGenType, prevNext){
+		prevNext = defaultTo(prevNext, 'next');
+
+		var siblings = Get('siblings');
+		for (var i = 0; i < siblings.length; i++) {
+			var sibling = siblings[i];
+			if (isset(sibling.linkGen) && sibling.linkGen == linkGenType){
+				return true;
+			}
+		}
+
+		return false;
+	}

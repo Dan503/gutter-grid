@@ -1,0 +1,206 @@
+block content
+  :marked
+    Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters. Even though it is powered by flexbox, it features `display:table` and `float:left` backups for legacy browsers to prevent your site from blowing up when viewed in IE8 and 9.
+
+    Have you ever had to do a layout that looked something like this in a design?
+
+  .demo__result.demo__segment
+    .grid__wrapper.add-border
+      .grid.grid--cols-3.grid--gutter-moduleName.grid--wrap.grid--align-left
+        - var colors = [1,2,3,4,5,6,3,1,5];
+        each color in colors
+          .grid__cell(class=`-color-${color}`)
+
+  :marked
+    Looks simple enough right? Just three columns and some margin around each cell. How hard can that be?
+
+    Well you would be surprised. The problem comes from the edges of each cell needing to be hard up against the edges of its container.
+
+    _Ok, so that just means I wrap each row in a div, then give each cell a right margin, but remove the right margin from the last cell. The bottom spacing can be added to the row elements and the last row can have the margin removed._
+
+  +demo({
+html: `
+.example.-type-1.add-border
+  - var colors = [[5,6,3], [6,5,4], [3,4,6]];
+  each row in colors
+    .example__row
+      each color in row
+        .example__cell(class="-color-" + color)
+`,
+scss: `
+.example {
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+  &__row {
+    clear: left;
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+  }
+  &__cell {
+    min-height: 100px;
+    width: calc(33.33% - 20px);
+    float: left;
+    @media screen and (max-width: 960px){
+      width: 50%;
+    }
+
+    @media screen and (max-width: 600px){
+      width: 100%;
+      margin-right: 0;
+      &:last-child {
+        width: 100%;
+      }
+    }
+  }
+  &.-type-1 .example {
+    &__row {
+      margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__cell {
+      margin-right: 20px;
+      &:last-child {
+        width: 33.33%;
+        margin-right: 0;
+      }
+
+      @media screen and (max-width: 960px){
+        width: calc(50% - 20px);
+        margin-right: 20px;
+        margin-bottom: 20px;
+        &:last-child {
+          width: 50%;
+          margin-right: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      @media screen and (max-width: 600px){
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        &:last-child {
+          width: 100%;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+`,
+}, {classes:'-false'})
+
+  :marked
+    Yes you could, it would be more combersome to maintain than just having a list of grid cells in a single element though. Also, this is a responsive design which means percentages. Using `width: calc(33.33% - 20px)` makes the last cell wider than the others when the margin is removed and the cell takes up the remaining width. Using percentages in the margin means the width has to turn into something awkward like 31.33% instead of 33.33% with a 2% margin.
+
+    Have a look at what happens to the grid on a tablet sized screen. The cells go to 50% width. Doing the method mentioned above would mean that the grid either has to always be at 33.33% or it has to snap straight to 100% without going to the 50% stage in between. Otherwise Every 3rd cell would be on a row of it's own when the cells are at 50% width. It also makes the last row
+
+    _Ok, so I can't use rows. I'll just use nth-child so every 3rd cell has no margin right and the last 3 have no margin bottom_
+
+
+  +demo({
+html: `
+.example.-type-2.add-border
+  - var colors = [6,5,4,3,4,6,5,6,3];
+  each color in colors
+    .example__cell(class="-color-" + color)
+`,
+scss: `
+.example {
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+  &__row {
+    clear: left;
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+  }
+  &__cell {
+    min-height: 100px;
+    width: calc(33.33% - 20px);
+    float: left;
+    @media screen and (max-width: 960px){
+      width: 50%;
+    }
+
+    @media screen and (max-width: 600px){
+      width: 100%;
+      margin-right: 0;
+      &:last-child {
+        width: 100%;
+      }
+    }
+  }
+  &.-type-2 .example {
+    &__cell {
+      margin-right: 20px;
+      margin-bottom: 20px;
+      &:nth-child(3n) {
+        width: 33.33%;
+        margin-right: 0;
+      }
+      &:nth-last-child(-n + 3) {
+        margin-bottom: 0;
+      }
+
+    @media screen and (max-width: 960px){
+        width: calc(50% - 20px);
+        margin-right: 20px;
+        margin-bottom: 20px;
+        &:nth-last-child(3n + 1) {
+          width: 50%;
+          margin-right: 0;
+          margin-bottom: 0;
+        }
+      }
+
+    @media screen and (max-width: 600px){
+        margin-bottom: 20px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+`,
+}, {classes:'-false'})
+
+  :marked
+    Again, you're forgetting about the responsive side of things. You can remove the margin from the "last row", but as the screen shrinks, the first cell in the "last row" isn't in the last row any more, it's in the second last row. Also the last cell in the first row isn't the last cell of the first row any more. It has become the first cell of the second row. All the cells have shifted positions in the grid.
+
+    To present the grid correctly, you would need to create a unique set of nth-child selectors cancelling the margin for each grid cell width. This can be very complicated to work out all the various nth-child selectors that you need. This is only a 3 column grid, imagine trying to work out all those nth-child selectors for a 4 or even 6 column grid.
+
+    _Ok... ummm... well how do you do it then?_
+
+    I use Gutter Grid :)
+
+  | #[em -_-]
+
+  :marked
+    Ok, the grid system mostly works by using a combination of borders for setting the widths of the gutters, negative margin for removing the extra space around the edges and `box-sizing: border-box;` to retain it's responsiveness to screen size despite having fixed width gutters.
+
+    ### Try the challenge for yourself
+
+    If you still don't think it's that hard to do, try the challenge for yourself.
+
+    - Make a 3x3 grid
+    - 20px gutter inbetween each cell
+    - The cells must sit hard up against the edges of the parent element at all times
+    - On a 960px wide screen, the cell width changes to 50% width per cell
+    - On a 600px wide screen, the cell width changes to 100% width per cell
+    - The cells should all be the exact same width

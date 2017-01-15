@@ -1,0 +1,24 @@
+
+.accordion {
+	&__revealer {
+		display: none;
+		@include mq(min, bp('page')){
+			display: block !important;
+		}
+	}
+	&__btn {
+		text-decoration: none !important;
+		@include mq(min, bp('page')){
+			display: none;
+		}
+	}
+	&__icon {
+		float: left;
+		@include MG-menuIcon(#000);
+		margin-right: 10px;
+
+		.-accordion--open & {
+			@include MG-menuIcon('cross');
+		}
+	}
+}

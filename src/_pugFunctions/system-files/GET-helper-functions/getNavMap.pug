@@ -1,0 +1,132 @@
+-
+	//function that retrieves a map from the navMap variable based on the title attribute
+	//function not to be used in regular code
+	function getTitleMap(startMap, userSearchTerm, isRecursive) {
+
+		var returnValue = false;
+		var found = false;
+		var isRecursive = defaultTo(isRecursive, true);
+
+		function iterator(map, searchTerm){
+			for(var i = 0; i < map.length; i++) {
+				var item = map[i];
+				//removes any html in the strings before searching for a match
+				var itemTitle = stripTags(item.title).toLowerCase();
+				var providedTitle = stripTags(searchTerm).toLowerCase();
+
+				//also converts strings to lowercase so they aren't case sensitive
+				if (itemTitle === providedTitle){
+					//if the provided title matches the current item title, set the return value to current item
+					returnValue = item;
+					found = true;
+					break;
+
+				} else if ('subnav' in item && isRecursive){
+					iterator(item.subnav, searchTerm);
+
+					if (found){
+						break;
+					}
+				}
+			}
+		}
+
+		iterator(startMap.subnav, userSearchTerm);
+
+		if (returnValue === false){
+			//shouldn't do this unless the function fails
+			console.log('\n"'+ userSearchTerm +'" title could not be found in navMap.json');
+		}
+
+		return returnValue;
+	}
+
+	//Throw an error if neither a string or an interval provided
+	function checkSearchTerm(searchTerm){
+		if (searchTerm.title === 'ROOT') return true;
+		if (!is_string(searchTerm) && !is_numeric(searchTerm) && !isset(searchTerm.location)){
+			console.log('\nError: This must be either a string, an interval, or a navMap item:\n', searchTerm, ' \n');
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	//function that accepts an array to search for specific sections of the nav map
+	//array accepts both numbers and titles
+	//can use "current" or a nav map item in the first slot as a short cut
+	//function not to be used in regular code
+	function getSpecificMap(map, array){
+		var returnMap;
+
+		for (var i = 0; i < array.length; i++){
+			var searchTerm = array[i];
+			var searchMap = typeof returnMap !== 'undefined' ? returnMap : map;
+
+			//Output an error if neither a string, interval, or navMap item provided
+			if (checkSearchTerm(searchTerm)){
+				//console.log(isset(searchMap.subnav))
+				if (is_string(searchTerm)){
+					//if item is a string, do a getTitleMap function on the search term using the last map
+					returnMap = getTitleMap(searchMap, searchTerm);
+
+				} else if (is_obj(searchTerm)){
+					if (i === 0){
+						returnMap = searchTerm;
+					} else {
+						console.log(`\nPug error on "${get.current.template}" template:\n\nIf a search array item is a navMap item, then it must be placed at index "0" of the search array.\nIt is currently at index "${i}"\n\nSearch array is:\n`,array);
+					}
+
+				} else if(is_numeric(searchTerm) && isset(searchMap.subnav)) {
+					//if item is a number, return the map at the specified index of the last map in array
+					returnMap = searchMap.subnav[parseInt(searchTerm)];
+				} else {
+					returnMap = false;
+					break;
+				}
+			} else {
+				break;
+			}
+		}
+
+		if (returnMap){
+			return returnMap;
+		} else {
+			return false;
+		}
+
+	}
+
+	//function for looking up a specific portion of the navMap using a location array or a title
+	function getNavMap(searchTerm, portion){
+
+		returnMap = navMap;
+
+		if (!isset(searchTerm) || is_array(searchTerm) && searchTerm.length === 0){
+			//if the search term is an empty array, it will return the full nav map (excluding ROOT)
+			return returnMap;
+		}
+
+		//code for when an array is given (filters results based on numbers and titles provided in array)
+		if (is_array(searchTerm)){
+				returnMap = getSpecificMap(returnMap, searchTerm);
+
+		//code for when a string is given (searches full nav map for Title that matches)
+		} else if (is_string(searchTerm)) {
+			returnMap = getTitleMap(returnMap, searchTerm);
+
+		//code for when a single number is given (treats it as a single level location variable)
+		} else if (is_int(searchTerm)) {
+			returnMap = returnMap[searchTerm];
+
+		//throws error if searchTerm variable doesn't make sense
+		} else {
+			console.log('\nThe search term must be either a string, interval or an array. \nSearch term =\n', searchTerm);
+		}
+
+		if (isset(portion)) {
+			return returnMap[portion];
+		} else {
+			return returnMap;
+		}
+	}

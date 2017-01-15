@@ -1,0 +1,189 @@
+-
+	//you should use the "get" variable whenever you can rather than this but if that isn't possible, use this function
+	function Get(option, parameter, style){
+		style = defaultTo(style, 'deep');
+
+		var lastIndex = end(location);
+		var locationCopy = location.slice(0);
+
+		var options = {
+
+			//Current page navMap
+			// - Get('current')
+			//Title for the current page
+			// - Get('current','title')
+			current(){
+				return returnWith(
+					getNavMap(location),
+					parameter
+				);
+			},
+
+			//Parent navMap
+			// - Get('parent')
+			//Parent page title
+			// - Get('parent','title')
+			parent(){
+				var returnVal;
+				if (location.length === 1){
+					returnVal = navMap;
+				} else {
+					locationCopy.pop();
+					returnVal = getNavMap(locationCopy);
+				}
+				return returnWith(
+					returnVal,
+					parameter
+				);
+			},
+
+			//Grand parent page title of the current page:
+			// - Get('grandParent','title')
+			//You can also go up any level of parents using the style attribute
+			//eg. this will retrieve the grand parents parent title
+			// - Get('grandParent',3,'title')
+			grandParent(){
+				if (is_numeric(parameter)){
+					style = pareseInt(parameter);
+					parameter = style;
+				}
+				style = style === 'deep' ? 2 : style;
+
+				if (location.length <= 2 || location.length < style){
+					return false;
+				} else {
+					//use style variable to tweak how far up the ancestry tree 'grandparent' goes
+					//it defaults to 2 levels
+					for(var i = 0; i < style; i++){
+						locationCopy.pop();
+					}
+					return returnWith(
+						getNavMap(locationCopy),
+						parameter
+					);
+				}
+			},
+
+			//This is useful if there is a specific ancestor page you need to target (eg. the root page)
+			//Page title of the root page
+			// - Get('mapAtDepth', 1, 'title')
+			//Get('grandParent') is relative
+			//Get('mapAtDepth') is absolute
+			//you can use parameter to set a specific depth to target
+			mapAtDepth(){
+				depthSelector = defaultTo(parameter, 1);
+
+				//"style" now acts as "parameter" normally does
+				return returnWith(
+					getNavMap(location.slice(0, depthSelector)),
+					style
+				);
+			},
+
+			//Array of all the nav items that are under the same subnav as the current page (includes current page navMap)
+			// - Get('siblings')
+			//The Sibling page link with the "Example" page title
+			// - Get('siblings', 'Example', 'link')
+			//The first navMap of a set of siblings from a different page
+			// - Get('siblings', ['Page title',0], 0)
+			siblings(){
+				//siblings is inclusive of the current nav item
+				var parent = Get('parent');
+				var sibs = parent.subnav;
+
+				//supports index
+				if (is_numeric(parameter)){
+					//"style" acts like "parameter" normally does
+					return returnWith(
+						sibs[parseInt(parameter)],
+						style
+					);
+
+				//supports title string
+				} else if (is_string(parameter)) {
+					return returnWith(
+						getTitleMap(parent, parameter, false),
+						style
+					);
+				//supports navMap search array
+				} else if (is_array(parameter)) {
+					return returnWith(
+						Get(parameter,'subnav'),
+						style
+					);
+				} else {
+					return sibs;
+				}
+			},
+
+	/*
+		In relation to previous and next...
+
+		if (style == 'deep'){//default
+			//will go to every possible page in the order they appear in the navMap
+		} else if (style == 'strict'){
+			//will skip over subnav and return NULL if a nav item doesn't exist
+		} else if (style == 'lazy'){
+			//will go up a level when hitting the edges and will skip over sub nav
+		}
+	*/
+			//Previous page navMap
+			// - Get('prev')
+			//Previous page title
+			// - Get('prev', 'title')
+			//Previous page title applying "strict" style
+			// - Get('prev', 'title', 'strict')
+			prev(){
+				return getPrevNext('prev',parameter, style);
+			},
+
+			//Next page navMap
+			// - Get('next')
+			//Next page title
+			// - Get('next', 'title')
+			//Next page title applying "strict" style
+			// - Get('next', 'title', 'strict')
+			next(){
+				return getPrevNext('next', parameter, style);
+			},
+
+			//Sibling next to the current page parent navMap (next in line)
+			// - Get('nextParent')
+			//Next parent title
+			// - Get('nextParent', 'title')
+			nextParent(){
+				return returnWith(
+					getSiblingParent(location, 'next'),
+					parameter
+				);
+			},
+
+			//Sibling next to the current page parent navMap (previous in line)
+			// - Get('prevParent')
+			//Previous parent title
+			// - Get('prevParent', 'title')
+			prevParent(){
+				return returnWith(
+					getSiblingParent(location, 'prev'),
+					parameter
+				);
+			},
+		};
+
+		if (is_string(option)) {
+			return options[option]();
+		} else {
+			//Get the navMap of a different page
+			//Get(['Page title', 0]);
+			//Get the page title of a differernt page
+			//Get(['Page title', 0], 'title');
+
+			var returnVal = getNavMap(option, parameter);
+
+			if (!returnVal){
+				console.log('\nThe following search request failed to find a match:\n', option, ' \n');
+			}
+
+			return returnVal;
+		}
+	}

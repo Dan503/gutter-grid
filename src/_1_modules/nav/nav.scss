@@ -1,0 +1,40 @@
+
+$MQ-nav--is-horizontal: (max, bp('page'));
+$MQ-nav--not-horizontal: (min, bp('page'));
+$MQ-nav--is-33width: (max, bp('tablet'));
+$MQ-nav--is-100width: (max, bp('mobile'));
+
+.nav {
+	width: 300px;
+		@include mq($MQ-nav--is-horizontal){
+			width: 100%;
+		}
+	&__list {
+		flex-direction: column;
+		@include mq($MQ-nav--not-horizontal){
+			border-top: 0;
+		}
+		@include mq($MQ-nav--is-horizontal){
+			flex-direction: row;
+		}
+	}
+	&__item {
+		@include mq($MQ-nav--is-horizontal){
+			width: 25%;
+		}
+		@include mq($MQ-nav--is-33width){
+			width: 33%;
+		}
+		@include mq($MQ-nav--is-100width){
+			width: 100%;
+		}
+	}
+	//need to overide the grid system
+	&__link.nav__link.nav__link {
+		display: flex;
+		align-items: center;
+		&.-active {
+			color: #000;
+		}
+	}
+}

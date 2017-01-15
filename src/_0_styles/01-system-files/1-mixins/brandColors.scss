@@ -1,0 +1,35 @@
+/*
+//apply color variations and overrides to specific modules more easily for stronger color application
+
+//usage:
+.module {
+	@include MG-brandColors((
+		border-left-color : 'text',
+		outline-color: 'color'
+	));
+}
+
+//equivalent to:
+
+.color-1 .module {
+	border-left-color : brand(1,'text');
+	outline-color : brand(1);
+}
+.color-2 .module {
+	border-left-color : brand(2,'text');
+	outline-color : brand(2);
+}
+
+etc.
+
+*/
+
+@mixin MG-brandColors($rules){
+	@for $i from 1 through length($brand) {
+		.color-#{$i} & {
+			@each $attribute, $colorType in $rules {
+				#{$attribute} : brand($i, $colorType);
+			}
+		}
+	}
+}

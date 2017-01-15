@@ -1,0 +1,32 @@
+//http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+
+//insert a value into a specific spot in the list
+@function insert-nth($list, $index, $value) {
+	$result: null;
+
+	@if type-of($index) != number {
+		@warn "$index: #{quote($index)} is not a number for `insert-nth`.";
+	}
+
+	@else if $index < 1 {
+		@warn "List index 0 must be a non-zero integer for `insert-nth`";
+	}
+
+	@else if $index > length($list) {
+		@warn "List index is #{$index} but list is only #{length($list)} item long for `insert-nth'.";
+	}
+
+	@else {
+		$result: ();
+
+		@for $i from 1 through length($list) {
+			@if $i == $index {
+				$result: append($result, $value);
+			}
+
+			$result: append($result, nth($list, $i));
+		}
+	}
+
+	@return $result;
+}

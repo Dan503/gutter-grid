@@ -1,0 +1,225 @@
+//grid system mixins
+
+$grid-bp-list: if(
+	$gridBreakPoints == false,
+	false false false false false false,
+	$gridBreakPoints
+);
+
+//switches IE (and other non-flexbox friendly browsers) to using float mode
+@mixin M-ieFloat {
+	.no-flexbox & {
+		display: block;
+		@extend %clearfix;
+		& > .grid__cell {
+			float: left;
+			display: block;
+		}
+	}
+}
+
+@mixin M-generateGutter ($gutter, $delayedHorizontal: false){
+	margin: -$gutter;
+	border-width: $gutter 0 0 $gutter;
+	> * {
+		border-width: 0 $gutter $gutter 0;
+	}
+
+	//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
+	@if($delayedHorizontal != false) {
+		@include mq(max, (bp('page') + $gutter)){
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}
+
+//make cells take up multiple columns worth of width
+@mixin grid__cell--span($span, $totalCols, $important: ()){
+	width: (percentage(1/$totalCols) * $span) $important;
+}
+
+@mixin grid(
+	$cols: auto,
+	$gutter: false,
+	$hasInners: false,
+	$vAlign: false,
+	$wrap: false,
+	$disableMQs: false,
+	$noWarp: false,
+	$outerGutters: false,
+	$delayedSideGutter: false,
+	$cellSpan: false,
+	$direction: row,
+	$ieFloat: false
+){
+
+	@extend %noDots;
+	min-width: 100%;
+	border: 0 solid #000;
+
+	.flexbox & {
+		display: flex;
+		align-content: stretch;
+		@if ($direction != row){
+			flex-direction: $direction;
+		}
+
+		@if ($gridBreakPoints != false){
+			@include mq(max,bp('page')){
+				@if (not $disableMQs or not $noWarp){
+					@include MG-flexWrap;
+				}
+			}
+		}
+	}
+
+
+//outer gutters
+	@if ($outerGutters != false){
+		$possibleMargins: (
+			both: margin,
+			v: margin-top margin-bottom,
+			h: margin-left margin-right,
+		);
+		@each $type, $margins in $possibleMargins {
+			@each $margin in $margins {
+				#{$margin}: 0;
+			}
+		}
+	}
+//grid--gutter-# styling
+	@if ($gutter != false){
+		> *, & {
+			border-color: transparent;
+			.lt-ie9 & { border-color: $gutter-ieFallback; }
+		}
+
+		@each $class, $gutterValue in $cellGutters {
+			@if ($gutter == $class){
+				@if (type-of($gutterValue) == 'list') {
+					@each $value in $gutterValue {
+						@if (length($value) > 1){
+							$gutterSize: nth($value,1);
+							$mediaQuery: nth($value,2);
+							@include mq($mediaQuery){
+								@include M-generateGutter($gutterSize, $delayedSideGutter);
+							}
+						} @else {
+							@include M-generateGutter($value, $delayedSideGutter);
+						}
+					}
+				} @else {
+					@include M-generateGutter($gutterValue, $delayedSideGutter);
+				}
+			}
+		}
+	}
+
+	@if($hasInners) {
+		> * {
+			display: flex;
+			align-items: stretch;
+			> * {
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+
+	@if ($vAlign){
+		$selector: if(
+			$hasInners,
+			'> * > *',
+			'> *'
+		);
+		#{unquote($selector)} {
+			display: flex!important;
+			align-items: center;
+		}
+	}
+
+//Unfortunately this is a necessity for IE compatibility
+	@if ($wrap){
+		@include M-ieFloat;
+
+		@if ($gt-ie8) {
+			.flexbox & {
+				flex-wrap: wrap;
+			}
+		}
+	}
+
+//allows IE to use floats instead of display table without affecting modern browsers
+	@if ($ieFloat) {
+		@include M-ieFloat;
+	}
+
+//tabular backup for IE9 and below
+	.no-flexbox.no-flexwrap & {
+		display: table;
+		width: 100%;
+		> * { display: table-cell; vertical-align: top;
+			@if ($hasInners){
+				> * { display: block; }
+			}
+		}
+		@if ($vAlign != false){
+		 	> * { vertical-align: middle; }
+		}
+		@if($direction == column){
+			display: block;
+			@include MG-clearFix;
+
+			> * {
+				float: left;
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+
+	//grid cell styling
+	> * {
+		min-width: 0%;
+		max-width: 100%;
+		display: if($hasInners, flex, block);
+		padding: 0;
+		margin: 0;
+		background-clip: padding-box!important;
+		border: 0 solid transparent;
+		flex-grow: 1;
+		outline-color: #000;
+		border-color: #000;
+
+	//column widths
+		@if(type-of($cols) == number){
+
+			$columnWidth: percentage(1/$cols);
+			$breaks: nth($grid-bp-list, $cols);
+
+			width: $columnWidth;
+
+	//Applies the media queries for the break points
+			@if($disableMQs == false) {
+				@if ($breaks != false) {
+					@each $V-breakData in $breaks {
+						$BP-deviceWidth : nth($V-breakData, 1);
+						$V-columnWidth : nth($V-breakData, 2);
+
+						@include mq(max, $BP-deviceWidth){
+							> * { width: $V-columnWidth; }
+						}
+					}
+				}
+			}
+			@if ($enableWrapping) {
+				.no-flexbox & {
+					@if ($cols > 2) {
+						&:nth-child(#{$cols}n+1) { clear: left; }
+					}
+				}
+			}
+		}
+	}
+}

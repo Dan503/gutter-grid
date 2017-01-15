@@ -1,0 +1,16 @@
+include /_prototype-only/_1_modules/templateList/templateList
+
+mixin skipLinks(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	.skipLinks(class=spec.classes)&attributes(attributes)
+		-
+			var skipLinks = {
+				"Skip to navigation" : "#navigation",
+				"Skip to content" : "#content",
+			};
+		each href, text in skipLinks
+			a.skipLinks__link.TK-skipLink(href=href) #{text}

@@ -1,0 +1,26 @@
+mixin btn(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+			mods : [],
+			href : '#',
+			type : 'a',
+		});
+
+		var elem, attr;
+
+		if (spec.type === 'a'){
+			elem = 'a';
+			attr = {href : spec.href};
+		} else {
+			elem = 'button';
+			attr = {type : spec.type};
+		}
+
+		attr = defaultTo(attributes, attr);
+
+	#{elem}.btn(class=spec.classes)&attributes(attr)
+		if block
+			block
+		else
+			| Button text

@@ -1,0 +1,9 @@
+//http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+
+//SELECT FIRST VALUE IN A LIST
+//example:
+//$list: a, b, c, d, e, f;
+//$first: first($list);  =  a
+@function first($list) {
+	@return nth($list, 1);
+}

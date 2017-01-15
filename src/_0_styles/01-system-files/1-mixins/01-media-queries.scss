@@ -1,0 +1,43 @@
+
+//**********************************\
+//	Resolution specific elements
+//*********************************/
+
+$BP-mobile: bp('mobile');
+$BP-tablet: bp('tablet');
+
+@mixin MG-mobileOnly {
+	@include mq(min, $BP-mobile){
+		display: none!important;
+	}
+}
+
+@mixin MG-tabletOnly {
+	@include mq(outside, $BP-tablet, $BP-mobile){
+		display: none!important;
+	}
+}
+
+@mixin MG-desktopOnly {
+	@include mq(max,$BP-tablet){
+		display: none!important;
+	}
+}
+
+@mixin MG-nonMobile {
+	@include mq(max, $BP-mobile){
+		display: none!important;
+	}
+}
+
+@mixin MG-nonTablet {
+	@include mq(inside, $BP-tablet, $BP-mobile){
+		display: none!important;
+	}
+}
+
+@mixin MG-nonDesktop {
+	@include mq(min, $BP-tablet){
+		display: none!important;
+	}
+}

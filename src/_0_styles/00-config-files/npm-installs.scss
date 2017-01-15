@@ -1,0 +1,27 @@
+//NPM installed mixins are loaded from this file
+//This allows them to be used in both the main.scss file and the prototypeOnly.scss file
+
+//mq
+//$mq-ems: true;
+@import '../../../node_modules/mq-scss/mq';
+
+//this grid system
+$grid-cell-gutters: (
+	'moduleName' : 20px,
+	'nav' : 10px,
+	'share' : 20px,
+	'body' : 30px,
+	'logo' : (
+		20px,
+		10px (max, bp('small'))
+	),
+	'mediaQueryGutter' : (
+		50px, //*default*/
+		25px (max, 800px), //*affected by media query*/
+		10px (max, 700px) //*affected by media query*/
+	)
+);
+//IE8 can't do transparent borders.
+//This defines what the default color for gutters is in IE.
+$grid-gutter-ie-fallback: $CF-body__bg;
+@import '../../../grid-classes';

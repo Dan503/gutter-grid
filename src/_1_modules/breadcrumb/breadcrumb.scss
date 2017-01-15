@@ -1,0 +1,58 @@
+
+$C-nonLink: $CB-grey-dim;
+
+.breadcrumb {
+	//float: left;
+	margin-top: 10px;
+
+	&__item {
+		display: inline-block;
+		vertical-align: middle;
+		padding-right: 15px;
+		margin-right: 5px;
+		position: relative;
+		color: $C-nonLink;
+
+		&:before {
+			@include MG-chevron(right, $C-nonLink, 5px, 1px);
+			@include MG-centered(v);
+			content: '';
+			display: block;
+			right: 0;
+			top: -6px;
+		}
+
+		&:last-child {
+			padding-right: 0;
+			margin-right: 0;
+			&:before { display: none; }
+		}
+
+		&.-current {
+			//
+		}
+
+		&.-home {
+			//
+		}
+	}
+		&__inner {
+			//
+		}
+		&__link {
+			//
+
+			.-current & {
+				//
+			}
+
+			.-home & {
+				//
+			}
+		}
+			&__icon {
+				@include MG-icon-size(20px);
+				position: relative;
+				top: 1px;
+			}
+}

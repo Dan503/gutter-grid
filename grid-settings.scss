@@ -1,0 +1,48 @@
+﻿//================================================*\
+//*	gridS CONFIGURATION FILE						*/
+//----------------------------------------------------
+//	This file holds all the configurable aspects of
+//	the grid class system
+//================================================*/
+
+$grid-prefix: '' !default;
+$grid-page-width: 1200px !default;
+
+//IE8 can't do transparent borders.
+//This defines what the default color for gutters is in IE.
+$grid-gutter-ie-fallback: #fff !default;
+
+//You can alter the available grid gutter sizes here
+//usage: class="grid grid--gutter-moduleName"
+$grid-cell-gutters: () !default;
+
+//Set the points at which columns change widths
+//position 1: the screen size the new width is applied to
+//position 2: the new width of the columns at the specified screen size
+$grid-break-points: (
+	(
+	//*1 column grid*/
+		false
+	), (
+	//*2 column grid*/
+		600px 100%,//* At the "mobile" screen size, make the columns 100% width */
+	), (
+	//*3 column grid*/
+		960px 50%,
+		600px 100%,
+	), (
+	//*4 column grid*/
+		960px 50%,
+		480px 100%,
+	), (
+	//*5 column grid*/
+		960px 33.33%,
+		600px 50%,
+		480px 100%,
+	), (
+	//*6 column grid*/
+		960px 33.33%,
+		600px 50%,
+		480px 100%,
+	)
+) !default;

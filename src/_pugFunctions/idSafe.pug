@@ -1,0 +1,40 @@
+include ./stripTags
+
+-
+	var idSafeList = []
+
+	//function that creates a guaranteed safe id to use, good for generating form label/input for/id relationships
+	function idSafe(string, hasNumber){
+		string = string || 'ID';
+		hasNumber = hasNumber || true;
+		var id = generateSafeID(string, hasNumber);
+
+		if (idSafeList.indexOf(id) > -1){
+			//If the generated id has already been used and numbers are enabled, it tries again
+			if (hasNumber){
+				return idSafe(string);
+			} else {
+				//if numbers aren't enabled and it detects a duplicate id, an error will be thrown
+				console.log('ERROR: Duplicate ID "'+ string +'" detected.')
+			}
+
+		//otherwise it adds it to the list of used id's and returns with the id value
+		} else {
+			idSafeList.push(id);
+			return id;
+		}
+	}
+
+	//Removes html tags, spaces and special characters. It also adds a random number to the end
+	function generateSafeID(string, hasNumber){
+		string = string || 'ID';
+		hasNumber = hasNumber || true;
+
+		var strippedString = stripTags(string);
+		var randNumber = Math.random();
+		randNumber = randNumber.toString().substr(2);
+		var number = hasNumber ? '-' + randNumber : '';
+
+		return strippedString.replace(/[^A-Za-z0-9]/ig,"") + number;
+	}
+

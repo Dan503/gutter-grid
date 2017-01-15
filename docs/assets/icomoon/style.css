@@ -1,0 +1,99 @@
+@font-face {
+    font-family: 'icons';
+    src:    url('fonts/icons.eot?ov948m');
+    src:    url('fonts/icons.eot?ov948m#iefix') format('embedded-opentype'),
+        url('fonts/icons.ttf?ov948m') format('truetype'),
+        url('fonts/icons.woff?ov948m') format('woff'),
+        url('fonts/icons.svg?ov948m#icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+    content: "\e617";
+}
+.icon-arrow-down:before {
+    content: "\e610";
+}
+.icon-arrow-left:before {
+    content: "\e611";
+}
+.icon-arrow-right:before {
+    content: "\e612";
+}
+.icon-arrow-up:before {
+    content: "\e613";
+}
+.icon-facebook:before {
+    content: "\e614";
+}
+.icon-fontsize:before {
+    content: "\e615";
+}
+.icon-rtf:before {
+    content: "\e616";
+}
+.icon-pdf:before {
+    content: "\e600";
+}
+.icon-word:before {
+    content: "\e601";
+}
+.icon-excel:before {
+    content: "\e602";
+}
+.icon-powerpoint:before {
+    content: "\e603";
+}
+.icon-hamburger:before {
+    content: "\e604";
+}
+.icon-audio:before {
+    content: "\e605";
+}
+.icon-podcast:before {
+    content: "\e606";
+}
+.icon-globe:before {
+    content: "\e607";
+}
+.icon-spinner:before {
+    content: "\e609";
+}
+.icon-star-empty:before {
+    content: "\e60a";
+}
+.icon-star-half:before {
+    content: "\e60b";
+}
+.icon-star-full:before {
+    content: "\e60c";
+}
+.icon-cross:before {
+    content: "\e60d";
+}
+.icon-checkmark:before {
+    content: "\e60e";
+}
+.icon-external:before {
+    content: "\e60f";
+}
+.icon-twitter:before {
+    content: "\e608";
+}
+

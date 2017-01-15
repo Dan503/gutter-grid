@@ -1,0 +1,22 @@
+
+.share {
+	width: 100%;
+	max-width: 350px;
+	margin: 0 auto;
+	&__link {
+		margin-left: 20px;
+		display: block;
+		svg {
+			transition: 0.3s;
+			fill: brand(1);
+			width: 20px;
+			height: 20px;
+		}
+
+		&:hover {
+			svg {
+				fill: brand(1, 'hover');
+			}
+		}
+	}
+}

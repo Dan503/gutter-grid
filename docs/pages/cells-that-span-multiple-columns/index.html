@@ -1,0 +1,200 @@
+<!DOCTYPE html><!--[if lt IE 9]><html class='lt-ie10 lt-ie9 no-js' lang='en'><![endif]-->
+<!--[if IE 9]><html class='ie9 lt-ie10 no-js' lang='en'><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cells that span multiple columns | Gutter Grid</title>
+  <meta name="description" content="A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta property="og:title" content="Cells that span multiple columns">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="/assets/images/social-media.jpg">
+  <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
+<!--[if lte IE8]>
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.css"><![endif]-->
+</head>
+<body>
+  <h1 class="TK-visHid">Cells that span multiple columns</h1>
+  <!--holds the svg sprite-->
+  <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg"><symbol id="svg-facebook" viewBox="0 0 32 32"><title>facebook icon</title><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></symbol><symbol id="svg-gutter-grid-logo" viewBox="0 0 299 299"><title>Gutter Grid logo</title><rect class="logo__parent" x="12.5" y="12.5" width="274" height="274" rx="30.09" ry="30.09" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="25"/><g class="logo__cells"><rect x="162.45" y="41.91" width="94.99" height="94.99" rx="17" ry="17"/><rect x="162.45" y="162.74" width="94.99" height="94.99" rx="17" ry="17"/><rect x="41.89" y="162.74" width="94.99" height="94.99" rx="17" ry="17"/><rect x="41.89" y="41.91" width="94.99" height="94.99" rx="17" ry="17"/></g></symbol><symbol id="svg-linkedin" viewBox="0 0 32 32"><title>linkedin icon</title><path d="M12 12h5.535v2.837h.079c.77-1.381 2.655-2.837 5.464-2.837C28.92 12 30 15.637 30 20.367V30h-5.769v-8.54c0-2.037-.042-4.657-3.001-4.657-3.005 0-3.463 2.218-3.463 4.509V30H12V12zM2 12h6v18H2V12zM8 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></symbol><symbol id="svg-mail" viewBox="0 0 32 32"><title>mail icon</title><path d="M29 4H3C1.35 4 0 5.35 0 7v20c0 1.65 1.35 3 3 3h26c1.65 0 3-1.35 3-3V7c0-1.65-1.35-3-3-3zM12.461 17.199L4 23.789V8.113l8.461 9.086zM5.512 8h20.976L16 15.875 5.512 8zm7.278 9.553L16 21l3.21-3.447L25.79 26H6.211l6.58-8.447zm6.749-.354L28 8.113v15.676l-8.461-6.59z"/></symbol><symbol id="svg-twitter" viewBox="0 0 32 32"><title>twitter icon</title><path d="M32 7.075a12.941 12.941 0 0 1-3.769 1.031 6.601 6.601 0 0 0 2.887-3.631 13.21 13.21 0 0 1-4.169 1.594A6.565 6.565 0 0 0 22.155 4a6.563 6.563 0 0 0-6.563 6.563c0 .512.056 1.012.169 1.494A18.635 18.635 0 0 1 2.23 5.195a6.56 6.56 0 0 0-.887 3.3 6.557 6.557 0 0 0 2.919 5.463 6.565 6.565 0 0 1-2.975-.819v.081a6.565 6.565 0 0 0 5.269 6.437 6.574 6.574 0 0 1-2.968.112 6.588 6.588 0 0 0 6.131 4.563 13.17 13.17 0 0 1-9.725 2.719 18.568 18.568 0 0 0 10.069 2.95c12.075 0 18.681-10.006 18.681-18.681 0-.287-.006-.569-.019-.85A13.216 13.216 0 0 0 32 7.076z"/></symbol></svg></div><!--[if lte IE9]>
+  <div class="alert alert--error ">
+    <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  </div><![endif]-->
+  <div class="alert alert--error alert--nojs TK-jsHide">
+    <p>Please <a href="http://www.enable-javascript.com/">enable javascript</a> to access the full functionality of this site</p>
+  </div>
+  <div class="siteContainer wrapper">
+    <div class="siteContainer__inner">
+      <div class="skipLinks"><a class="skipLinks__link TK-skipLink" href="#navigation">Skip to navigation</a><a class="skipLinks__link TK-skipLink" href="#content">Skip to content</a>
+      </div>
+      <header class="header">
+        <div class="pageLayout__buffer">
+          <div class="pageLayout__width">
+            <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
+                  <svg class="svg-gutter-grid-logo logo__svg grid__cell">
+                    <use xlink:href="#svg-gutter-grid-logo"></use>
+                  </svg></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v1.0.0</code></span></span></span></p>
+            <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
+          </div>
+        </div>
+      </header>
+      <div class="mainArea TK-flexGrow">
+        <div class="pageLayout__buffer">
+          <div class="pageLayout__width">
+            <div id="container">
+              <p class="tagline">A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system</p>
+            </div>
+            <div id="main" role="main">
+              <div class="download-bar">
+                <div class="inner"><a class="download-button tar" href="https://github.com/Dan503/gutter-grid/tarball/master"><span>Download <span class="TK-visHid">tar</span></span></a><a class="download-button zip" href="https://github.com/Dan503/gutter-grid/zipball/master"><span>Download <span class="TK-visHid">zip</span></span></a><a class="code" href="https://github.com/Dan503/gutter-grid">View Gutter Grid on GitHub</a></div><span class="blc"></span><span class="trc"></span>
+              </div>
+              <div class="grid grid--gutter-body">
+                <nav class="nav grid__cell grid__cell--noResize" id="navigation">
+                  <h2 class="TK-visHid">Main navigation</h2>
+                  <div class="accordion JS-accordion">
+                    <a class="btn accordion__btn JS-accordion__toggle -light" href="#"><span class="accordion__icon"></span>Toggle Menu
+                    </a>
+                    <div class="accordion__revealer TK-desktopOnly JS-accordion__revealer">
+                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters-top grid--hasInners">
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/installation/">Installation</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/basic-usage/">Basic usage</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/using-columns/">Using columns</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/adding-gutters/">Adding Gutters</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/outer-gutters/">Outer gutters</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/nesting-grids/">Nesting grids</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/borders-and-shadows-on-guttered-cells/">Borders and shadows on guttered cells</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/horizontal-cell-alignments/">Horizontal cell alignments</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/vertical-cell-alignments/">Vertical cell alignments</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/controlling-cell-growth-and-shrinkage/">Controlling cell growth and shrinkage</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/features-coming-in-future-releases/">Features coming in future releases</a></li>
+                      </ol>
+                    </div>
+                  </div>
+                </nav>
+                <div class="grid__cell">
+                  <article class="markdown-body" id="content"><p><em><strong>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</strong></em></p>
+
+                    <div class="cmsContent">
+                      <h2>Cells that span multiple columns</h2><p>Cells can be made to take up more than just a single column width by using a <code>grid__cell--span-#</code> class. The <code>#</code> being the number of columns you wish for the cell to span.</p>
+
+                      <aside class="demo">
+                        <div class="demo__result demo__segment">
+<div class="grid grid--cols-4 grid--wrap">
+  <div class="grid__cell grid__cell--span-3 -color-1"></div>
+  <div class="grid__cell -color-2"></div>
+  <div class="grid__cell -color-3"></div>
+  <div class="grid__cell -color-4"></div>
+  <div class="grid__cell -color-5"></div>
+  <div class="grid__cell -color-6"></div>
+</div>
+                        </div>
+                        <div class="demo__grid grid grid--cols-1">
+                          <div class="demo__markup demo__segment grid__cell html">
+                            <pre><code class="html">
+&lt;div class=&quot;grid grid--cols-4 grid--wrap&quot;&gt;
+  &lt;div class=&quot;grid__cell grid__cell--span-3 -color-1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                          </div>
+                        </div>
+                      </aside><p>Grids that feature column spans often don&#39;t play nicely with the default media queries though. To work around this, it&#39;s usually best to simply disable the media queries on that particular grid and write your own custom styles with new media queries. To disable media queries on a grid, add the <code>grid--noMQs</code> class.</p>
+
+                      <aside class="demo">
+                        <div class="demo__summary demo__segment"><p>Same example as above except this time with the default media queries disabled. Resize your screen to see the difference.</p>
+
+                        </div>
+                        <div class="demo__result demo__segment">
+<div class="grid grid--noMQs grid--cols-4 grid--wrap">
+  <div class="grid__cell grid__cell--span-3 -color-1"></div>
+  <div class="grid__cell -color-2"></div>
+  <div class="grid__cell -color-3"></div>
+  <div class="grid__cell -color-4"></div>
+  <div class="grid__cell -color-5"></div>
+  <div class="grid__cell -color-6"></div>
+</div>
+                        </div>
+                        <div class="demo__grid grid grid--cols-1">
+                          <div class="demo__markup demo__segment grid__cell html">
+                            <pre><code class="html">
+&lt;div class=&quot;grid grid--noMQs grid--cols-4 grid--wrap&quot;&gt;
+  &lt;div class=&quot;grid__cell grid__cell--span-3 -color-1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                          </div>
+                        </div>
+                      </aside>
+                    </div>
+                    <nav class="nextPrev">
+                      <ul class="grid grid--space-between">
+                        <li class="grid__cell -prev"><a class="nextPrev__link btn -light" href="/pages/enabling-disabling-wrapping/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Previous:</span><span class="nextPrev__title">Enabling/disabling wrapping</span></a></li>
+                        <li class="grid__cell -next"><a class="nextPrev__link btn -light" href="/pages/adding-gutters/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Next:</span><span class="nextPrev__title">Adding Gutters</span></a></li>
+                      </ul>
+                    </nav>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="pageLayout__buffer">
+          <div class="pageLayout__width">
+            <div class="owner">
+              <div class="grid grid--space-between grid--vAlign-center">
+                <div class="grid__cell">
+                  <p><a class="avatar" href="https://github.com/Dan503"><img src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=50&amp;default=retro" width="48" height="48"></a><a href="https://github.com/Dan503">Dan503</a> maintains <a href="https://github.com/Dan503/gutter-grid">gutter-grid</a></p>
+                </div>
+                <div class="grid__cell owner__shareCell">
+                  <div class="share grid__wrapper">
+                    <ul class="share__list grid grid--noWrap grid--space-between TK-noDots">
+                      <li class="share__option grid__cell">Share:</li>
+                      <li class="share__option grid__cell"><a class="share__link -mail JS-share__link" href="mailto:?subject=Share subject&body=Share body http://gutter-grid.net/pages/cells-that-span-multiple-columns/" title="Share via email">
+                          <svg class="svg-mail">
+                            <use xlink:href="#svg-mail"></use>
+                          </svg><span class="TK-visHid">Share via email</span></a></li>
+                      <li class="share__option grid__cell"><a class="share__link -facebook JS-share__link" href="http://www.facebook.com/sharer/sharer.php?u=http://gutter-grid.net/pages/cells-that-span-multiple-columns/&title=Gutter%20Grid:%20Cells%20that%20span%20multiple%20columns" title="Share on Facebook">
+                          <svg class="svg-facebook">
+                            <use xlink:href="#svg-facebook"></use>
+                          </svg><span class="TK-visHid">Share on Facebook</span></a></li>
+                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Share+message+http://gutter-grid.net/pages/cells-that-span-multiple-columns/" title="Tweet this site">
+                          <svg class="svg-twitter">
+                            <use xlink:href="#svg-twitter"></use>
+                          </svg><span class="TK-visHid">Tweet this site</span></a></li>
+                      <li class="share__option grid__cell"><a class="share__link -linkedin JS-share__link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://gutter-grid.net/pages/cells-that-span-multiple-columns/&title=Gutter%20Grid:%20Cells%20that%20span%20multiple%20columns" title="Share on LinkedIn">
+                          <svg class="svg-linkedin">
+                            <use xlink:href="#svg-linkedin"></use>
+                          </svg><span class="TK-visHid">Share on LinkedIn</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="creds"><small>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a> (although lots of alterations have been made to it)</small></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="/assets/scripts/plugins/highlight.pack.js"></script>
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    
+  </script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <script src="/assets/scripts/main.js"></script><img src="/assets/images/social-media.jpg" alt="Gutter Grid Logo" style="display: none">
+</body></html>

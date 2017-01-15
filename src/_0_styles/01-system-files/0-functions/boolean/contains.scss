@@ -1,0 +1,22 @@
+//**
+// * Returns whether `$list` contains `$value`.
+// *
+// * Documentation: http://sassylists.com/documentation.html#sl-contain
+// *
+// * @param {List}    $list  - list to check
+// * @param {*}       $value - value to look for
+// *
+// * @example
+// * sl-contain(a b c, a)
+// * // true
+// *
+// * @example
+// * sl-contain(a b c, z)
+// * // false
+// *
+// * @return {Bool}
+// */
+
+@function contains($list, $value) {
+  @return not not index($list, $value);
+}

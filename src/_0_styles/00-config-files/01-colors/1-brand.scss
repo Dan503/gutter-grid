@@ -1,0 +1,37 @@
+//changes the intensity of color change on hover
+$V-hoverModifier: 60%;
+
+//lists the primary brand colors of the site.
+//Greys do not belong in this list unless it is a MAJOR brand color
+$brand: (
+	//*Main color*/
+	color: #63a52a,
+
+	// the color this turns into on hover
+	hover: #90D355,
+
+	//*if set as a background color, the text inside will most likely be this color*/
+	text: #000,
+),
+
+//*Second most prominent brand color etc. */
+(
+	color: #F16031,
+	text: #000,
+),
+(
+	color: #510558,
+	text: #fff,
+),
+(
+	color: #3F53B2,
+	text: #fff,
+),
+(
+	color: #722912,
+	text: #fff,
+),
+(
+	color: #293F2D,
+	text: #fff,
+);

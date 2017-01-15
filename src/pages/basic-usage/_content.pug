@@ -1,0 +1,52 @@
+block content
+  :marked
+    A note on the examples. Any class that doesn't feature `grid` at the start of it's name is not part of the grid system. The minimum 100px height on grid cells is not part of the grid system either.
+
+    The grid system classes follow a pattern based on the BEM naming convention with the exception that it uses camelCase when necessary to retain clear grouping:
+
+    - **`grid`** initiallizes the grid functionality and acts as the grid module declaration
+
+    - **`grid__elementName`** double underscores in a class name represent an element of the grid. Each element of a grid always goes in the same position relative to it's relevent `grid` class.
+
+    - **`grid--settingName`** grid settings are represented with double dashes before the setting name. Grid settings alter the functionality of how the whole grid behaves.
+
+    - **`grid--settingName-specifierName`** If a setting has a specifier, the setting name defines what setting is being set. The specifier sets the value of the setting and is represented by a single dash before the specifier name.
+
+    - **`grid__elementName--settingName`** a setting name after a grid element name is a setting that applies only to that grid element.
+
+    - **`grid__elementName--settingName-specifierName`** cell based settings can have specifiers as well.
+
+    The `grid__cell` classes may seem uneccessary but they help keep specificity down, they are needed for compatibility with older browsers, and they are also needed for some of the more advanced functionality in the grid system. `grid__cell` classes must always be direct decendents of a parent `grid` class.
+
+    If the naming convention looks daunting, don't worry. The classes are actually quite simple when you start looking through the examples.
+
+
+  +demo({
+html:`
+.grid
+  .grid__cell.-color-1
+  .grid__cell.-color-2`,
+})
+    :marked
+      The bare bones markup of what you need for Gutter Grid to work (excluding color classes)
+
+  :marked
+    That example is a bit misleading though. Having 2 grid cells doesn't necessarily mean they will always be 50% width each
+
+  +demo({
+html:`
+.grid
+  .grid__cell.-color-1.add-padding
+    :marked
+      lots and lots and lots of text in this cell.
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .grid__cell.-color-2.add-padding
+    :marked
+      Barely any text in this cell`,
+})
+    :marked
+      The previous example, but one cell has a lot of text while the other barely has any

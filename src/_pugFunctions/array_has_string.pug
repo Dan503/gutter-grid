@@ -1,0 +1,13 @@
+-
+	//function for checking if an array contains a string or not
+	//good for checking if an array is a navMap search array (a combination of both titles and indexes) or if it is a basic location array (an array of purely indexes)
+	function array_has_string(array){
+		for (var i = 0; i < array.length; i++){
+
+			if (is_string(array[i])){
+				return true;
+			}
+
+		}
+		return false;
+	}

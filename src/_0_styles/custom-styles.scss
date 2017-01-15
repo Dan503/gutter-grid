@@ -1,0 +1,180 @@
+
+html {
+	//Makes it easier to alter font size with rem's. 1.3rem = 13px
+	font-size: 62.5%;
+}
+
+body {
+	padding: 0;
+}
+
+.markdown-body nav {
+	ul, ol {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+}
+
+.markdown-body {
+	h2,h3,h4,p,ul,ol{
+		&:first-child { margin-top: 0; }
+		&:last-child { margin-bottom: 0; }
+	}
+}
+
+.wrapper {
+	padding: 0 20px;
+	overflow: hidden;
+	box-sizing: border-box;
+	@include mq(max, bp('mobile')){
+		padding: 0;
+	}
+}
+
+.wrapper {
+	width: 100%;
+	max-width: bp('page');
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+}
+
+footer {
+	margin-bottom: 0;
+}
+
+
+.markdown-body {
+
+	p, li {
+		code {
+			background-color: #C5C7CC;
+			//color: #abb2bf;
+			padding: 3px 4px;
+			font-size: 0.85em;
+		}
+	}
+
+	h2, h3 {
+		font-family: Georgia, serif;
+		font-style: italic;
+		color: #4d7f22;
+	}
+
+	h2 {
+		font-size: 2em;
+		padding-top: 50px;
+		&:first-child {
+			padding-top: 0px;
+		}
+	}
+
+	h3 {
+		color: #315116;
+	}
+
+	blockquote {
+		margin: 50px 5%;
+		text-align: center;
+		&:before {
+			display: none;
+		}
+	}
+
+	pre {
+		background-color: #282c34;
+		padding: 0;
+		&, &.lines {
+			margin: 0;
+			padding:{left: 0; right: 0;}
+		}
+		&.lines {
+			background-color: #000;
+			width: 40px;
+			padding: {left: 0; right: 0;}
+			text-align: center;
+		}
+		code {
+			padding: 10px 5px;
+			font-size: 1em;
+		}
+	}
+}
+
+.add {
+	&-border {
+		border: 2px solid red;
+	}
+	&-shadow {
+		box-shadow: 0 0 10px #000;
+	}
+	&-padding {
+		padding: 15px !important;
+	}
+}
+
+.wideBox {
+	height: 50px;
+	width: 500px;
+}
+
+.thinBox {
+	height: 50px;
+	width: 50px;
+}
+
+#main {
+	padding-bottom: 125px;
+	margin-top: 0;
+}
+
+.avatar {
+	position: absolute;
+	left: 0;
+}
+
+.owner {
+	&__shareCell {
+		padding-left: 70px;
+	}
+	p {
+		position: relative;
+		padding-left: 70px;
+		margin: 0;
+	}
+	footer & {
+		background-image: url(../images/pattern.png);
+	}
+}
+
+.title .small {
+	font-size: 14px;
+}
+
+p.tagline { padding: 15px 20px; margin: 0; }
+
+.header {
+	.lines {
+		display: none;
+	}
+	&__npm {
+		text-align: center;
+		code {
+			background-color: #000;
+			color: brand(1);
+			padding: .5em;
+			display: block;
+		}
+	}
+}
+
+.creds {
+	a {
+		color: brand(6);
+		text-decoration: underline;
+		&:hover, &:focus {
+			text-decoration: none;
+		}
+	}
+}

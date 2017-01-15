@@ -1,0 +1,24 @@
+-
+	//Helper function for Get('next') and Get('prev')
+	//Note: linkGen screws the system up. I need safe guards for when linkGens are enabled.
+	function getPrevNext(direction, parameter, style){
+		//mode parameter can go in either the "parameter" or "style" spot
+		var mode, attribute;
+		if (parameter === 'strict' || parameter === 'lazy'){
+			mode = parameter;
+			if (parameter !== 'deep')  attribute = style;
+		} else {
+			mode = style;
+			if (parameter !== 'deep')  attribute = parameter;
+		}
+		//calculate what the previous location is in relation to the nav map
+		locationCopy = direction === 'next' ?  getNextLocation(location, mode) : getPrevLocation(location, mode);
+		if (locationCopy !== false){
+			return returnWith(
+				getNavMap(locationCopy),
+				attribute
+			);
+		} else {
+			return false;
+		}
+	}

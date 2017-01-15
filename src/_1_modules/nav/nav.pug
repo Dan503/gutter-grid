@@ -1,0 +1,16 @@
+include /_1_modules/accordion/accordion
+
+mixin nav(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	nav#navigation.nav(class=spec.classes)&attributes(attributes)
+		h2.TK-visHid Main navigation
+		+accordion()
+			ol.nav__list.grid.grid--gutter-nav.grid--outerGutters-top.grid--hasInners
+				each item in navMap.subnav
+					- var activeClass = isActive(item) ? '-active' : '';
+					li.nav__item.grid__cell
+						a.nav__link.btn.grid__inner(href=item.link, class=activeClass)= item.altTitle || item.title
