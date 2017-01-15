@@ -24,8 +24,6 @@ class accordion {
 		this.$toggle = this.$elem.find(_toggle);
 		this.$revealer = this.$elem.find(_revealer);
 
-		console.log(this.$toggle);
-
 		this.$toggle.click((e)=>{
 			e.preventDefault();
 			this.toggle();
