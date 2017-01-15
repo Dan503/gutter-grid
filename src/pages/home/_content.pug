@@ -102,7 +102,7 @@ scss: `
   :marked
     Yes you could, it would be more combersome to maintain than just having a list of grid cells in a single element though. Also, this is a responsive design which means percentages. Using `width: calc(33.33% - 20px)` makes the last cell wider than the others when the margin is removed and the cell takes up the remaining width. Using percentages in the margin means the width has to turn into something awkward like 31.33% instead of 33.33% with a 2% margin.
 
-    Have a look at what happens to the grid on a tablet sized screen. The cells go to 50% width. Doing the method mentioned above would mean that the grid either has to always be at 33.33% or it has to snap straight to 100% without going to the 50% stage in between. Otherwise Every 3rd cell would be on a row of it's own when the cells are at 50% width. It also makes the last row
+    Have a look at what happens to the grid on a tablet sized screen. The cells go to 50% width. Doing the method mentioned above would mean that the grid either has to always be at 33.33% or it has to snap straight to 100% without going to the 50% stage in between. Otherwise Every 3rd cell would be on a row of it's own when the cells are at 50% width.
 
     _Ok, so I can't use rows. I'll just use nth-child so every 3rd cell has no margin right and the last 3 have no margin bottom_
 
