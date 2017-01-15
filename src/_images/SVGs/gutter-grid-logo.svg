@@ -1,8 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 299 299" class="logo__svg">
   <title>Gutter Grid logo</title>
-  <g class="logo__parent">
-    <rect x="12.5" y="12.5" width="274" height="274" rx="30.09" ry="30.09" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="25"/>
-  </g>
+  <rect class="logo__parent" x="12.5" y="12.5" width="274" height="274" rx="30.09" ry="30.09" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="25"/>
   <g class="logo__cells">
     <rect x="162.45" y="41.91" width="94.99" height="94.99" rx="17" ry="17"/>
     <rect x="162.45" y="162.74" width="94.99" height="94.99" rx="17" ry="17"/>

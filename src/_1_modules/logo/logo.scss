@@ -3,9 +3,7 @@ $MQ-text--is-small: (max, bp('small'));
 
 .logo {
 	&__parent {
-		rect {
-			fill: brand(1);
-		}
+		fill: brand(1);
 	}
 	&__svg{
 		width: 120px;
