@@ -27,7 +27,7 @@ class accordion {
 		this.$toggle.click((e)=>{
 			e.preventDefault();
 			this.toggle();
-			})
+		})
 	}
 
 	//toggles accordion open and closed
