@@ -9,7 +9,7 @@ mixin accordion(spec)
 	.accordion(class=spec.classes).JS-accordion&attributes(attributes)
 		+btn({classes: 'accordion__btn JS-accordion__toggle -light'})
 			span.accordion__icon
-			| Toggle Menu
+			span.accordion__btnText Toggle Menu
 		.accordion__revealer.JS-accordion__revealer
 			if block
 				block
