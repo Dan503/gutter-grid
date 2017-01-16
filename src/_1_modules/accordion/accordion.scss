@@ -8,17 +8,25 @@
 	}
 	&__btn {
 		text-decoration: none !important;
+		padding: 15px;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
 		@include mq(min, bp('page')){
 			display: none;
 		}
-	}
-	&__icon {
-		float: left;
-		@include MG-menuIcon(#000);
-		margin-right: 10px;
 
-		.-accordion--open & {
-			@include MG-menuIcon('cross');
+		span {
+			display: block;
 		}
 	}
+		&__icon {
+			@include MG-menuIcon(#000);
+			margin-right: 10px;
+			margin-left: 0;
+
+			.-accordion--open & {
+				@include MG-menuIcon('cross');
+			}
+		}
 }

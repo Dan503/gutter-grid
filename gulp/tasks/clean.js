@@ -10,10 +10,8 @@ export default function() {
 
 	// Clean
 	gulp.task('clean', ()=>{
-		del.sync([
-			path.join(dirs.temporary),
-			path.join(dirs.destination),
-		]);
+		var delDir = args.production ? dirs.destination : dirs.temporary;
+		del.sync(delDir);
 		deleteEmpty.sync(dirs.source+'/');
 	});
 
