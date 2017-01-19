@@ -1,4 +1,4 @@
-![Gutter Grid logo](http://gutter-grid.net/assets/images/social-media.jpg)
+[![Gutter Grid logo](http://gutter-grid.net/assets/images/social-media.jpg)](http://gutter-grid.net)
 
     npm install gutter-grid --save
 
