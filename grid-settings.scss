@@ -46,3 +46,10 @@ $grid-break-points: (
 		480px 100%,
 	)
 ) !default;
+
+//if $grid-bp-list is set to "false", it creates a set of 6 "false" statements so grid system can have 6 columns
+$grid-bp-list: if(
+	$grid-break-points == false,
+	false false false false false false,
+	$grid-break-points
+);

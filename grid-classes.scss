@@ -12,24 +12,9 @@
 //Default settings
 @import 'grid-settings';
 
+@import 'grid-shared-mixins';
+
 $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
-
-//switches IE (and other non-flexbox friendly browsers) to using float mode
-@mixin M-ieFloat {
-	.no-flexwrap & {
-		display: block;
-		&:after {
-			content: '';
-			display: block;
-			clear: both;
-		}
-		& > .#{$fullPrefix}grid__cell {
-			float: left;
-			display: block;
-		}
-	}
-}
-
 
 //================================================*\
 //*				GRID WIDTHS						*/
@@ -50,12 +35,6 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 //		<li class="grid__cell grid__cell--span-2">column is 2/3 wide on desktop</li>
 //	</ul>
 //================================================*/
-
-$grid-bp-list: if(
-	$grid-break-points == false,
-	false false false false false false,
-	$grid-break-points
-);
 
 @for $i from 1 through length($grid-bp-list) {
 	$columnWidth: percentage(1/$i);
@@ -185,32 +164,7 @@ $grid-bp-list: if(
 		}
 
 		> .#{$fullPrefix}grid__cell, & {
-			border-color: transparent;
 			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
-		}
-	}
-
-	@mixin M-grid-cellGutter ($gutter){
-		margin: -$gutter;
-		border-width: $gutter 0 0 $gutter;
-		> .#{$fullPrefix}grid__cell {
-			border-width: 0 $gutter $gutter 0;
-		}
-
-		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
-		&.#{$fullPrefix}grid--outerGutters {
-			@include mq(max, ($grid-page-width + ($gutter * 2))){
-				&-h-delayed {
-					margin-left: 0;
-					margin-right: 0;
-				}
-				&-left-delayed {
-					margin-left: 0;
-				}
-				&-right-delayed {
-					margin-right: 0;
-				}
-			}
 		}
 	}
 
@@ -222,14 +176,14 @@ $grid-bp-list: if(
 						$gutterSize: nth($value,1);
 						$mediaQuery: nth($value,2);
 						@include mq($mediaQuery){
-							@include M-grid-cellGutter($gutterSize);
+							@include generate-gutters('classes', $gutterSize);
 						}
 					} @else {
-						@include M-grid-cellGutter($value);
+						@include generate-gutters('classes', $value);
 					}
 				}
 			} @else {
-				@include M-grid-cellGutter($gutter);
+				@include generate-gutters('classes', $gutter);
 			}
 		}
 	}
@@ -294,7 +248,7 @@ $grid-bp-list: if(
 	//allows wrapping at all screen widths
 	&--wrap {
 		flex-wrap: wrap;
-		@include M-ieFloat;
+		@include ieFloat;
 	}
 	//disables wrapping at all screen widths
 	&--noWrap {
@@ -354,7 +308,7 @@ $grid-bp-list: if(
 
 	//allows IE to use floats instead of display table without affecting modern browsers
 	&--ieFloat {
-		@include M-ieFloat;
+		@include ieFloat;
 	}
 
 }
