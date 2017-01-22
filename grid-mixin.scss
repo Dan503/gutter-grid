@@ -15,6 +15,8 @@
 	$hasInners: false,
 	$innerFlex: false,//display:flex; on inners
 	$vAlign: false,
+	$align: false,
+	$space: false,
 	$wrap: false,
 	$noMQs: false,
 	$noWarp: false,
@@ -101,23 +103,51 @@
 		}
 	}
 
-// coming back to this, vAlign is different now
-	// @if ($vAlign){
-	// 	$selector: if(
-	// 		$hasInners,
-	// 		'> * > *',
-	// 		'> *'
-	// 	);
-	// 	#{unquote($selector)} {
-	// 		display: flex!important;
-	// 		align-items: center;
-	// 	}
-	// }
-
 	//Unfortunately this is a necessity for IE compatibility
 	@if ($wrap){
 		@include ieFloat;
 		flex-wrap: wrap;
+	}
+
+	//vertical alignment of cells
+	@if ($vAlign){
+		@if ($vAlign == 'center') {
+			align-items: center;
+		} @else if ($vAlign == 'top') {
+			align-items: flex-start;
+		} @else if ($vAlign == 'bottom') {
+			align-items: flex-end;
+		} @else {
+			@warn 'invalid value for $vAlign: "#{$vAlign}". Valid values: top, center, bottom.'
+		}
+	}
+
+	//quick access to left,center and right alignments
+	@if ($align) {
+		> * { flex-grow: 0; }
+
+		@if ($align == 'left') {
+			justify-content: flex-start;
+		} @else if ($align == 'center') {
+			justify-content: center;
+		} @else if ($align == 'right') {
+			justify-content: flex-end;
+		} @else {
+			@warn 'invalid value for $align: "#{$align}". Valid values: left, center, right.'
+		}
+	}
+
+	//quick access to space-between and space-around
+	@if ($space) {
+		> * { flex-grow: 0; }
+
+		@if ($space == 'between') {
+			justify-content: space-between;
+		} @else if ($space == 'around') {
+			justify-content: space-around;
+		} @else {
+			@warn 'invalid value for $space: "#{$space}". Valid values: between, around.'
+		}
 	}
 
 	//allows IE to use floats instead of display table without affecting modern browsers
@@ -136,10 +166,16 @@
 				> * { display: block; }
 			}
 		}
-		//come back to this
-			// @if ($vAlign != false){
-			//  	> * { vertical-align: middle; }
-			// }
+
+		@if ($vAlign){
+			@if ($vAlign == 'top'){
+				> * { vertical-align: top; }
+			} @else if ($vAlign == 'center') {
+				> * { vertical-align: middle; }
+			} @else if ($vAlign == 'bottom') {
+				> * { vertical-align: bottom; }
+			}
+		}
 
 		@if($direction == column){
 			display: block;

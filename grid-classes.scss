@@ -42,7 +42,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 	//sets the default grid__cell widths
 	.#{$fullPrefix}grid--cols-#{$i} {
-		> .#{$fullPrefix}grid__cell {
+		> * {
 			width: $columnWidth;
 
 			//.grid__cell--span-# styling
@@ -61,12 +61,12 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 					$MQ-screenWidth : nth($MQ-breakData, 1);
 					$MQ-columnWidth : nth($MQ-breakData, 2);
 					@include mq(max, $MQ-screenWidth){
-						> .#{$fullPrefix}grid__cell { width: $MQ-columnWidth; }
+						> * { width: $MQ-columnWidth; }
 					}
 				}
 			}
 		}
-		.no-flexwrap &.#{$fullPrefix}grid--wrap > .#{$fullPrefix}grid__cell {
+		.no-flexwrap &.#{$fullPrefix}grid--wrap > * {
 			@if ($i > 2) {
 				&:nth-child(#{$i}n+1) { clear: left; }
 			}
@@ -163,7 +163,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			}
 		}
 
-		> .#{$fullPrefix}grid__cell, & {
+		> *, & {
 			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
 		}
 	}
@@ -190,11 +190,13 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 	//hasInners makes grid__inner elements take up the full height of the grid cell
 	&--hasInners {
-		> .#{$fullPrefix}grid__cell {
+		//grid__cell
+		> * {
 			display: flex;
 			align-items: stretch;
 
-			> .#{$fullPrefix}grid__inner {
+			//grid__inner
+			> * {
 				display: block;
 				width: 100%;
 
@@ -202,6 +204,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 					display: flex;
 				}
 			}
+		}
+
+		//an easy way to make the inner display as flex instead of block
+		&.#{$fullPrefix}grid--innerFlex {
+			> * > * { display: flex; }
 		}
 	}
 
@@ -222,13 +229,13 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	}
 
 	&--noGrowth {
-		> .#{$fullPrefix}grid__cell { flex-grow: 0; }
+		> * { flex-grow: 0; }
 	}
 	&--noShrink {
-		> .#{$fullPrefix}grid__cell { flex-shrink: 0; }
+		> * { flex-shrink: 0; }
 	}
 	&--noResize {
-		> .#{$fullPrefix}grid__cell {
+		> * {
 			flex-shrink: 0;
 			flex-grow: 0;
 		}
@@ -258,7 +265,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	//quick access to space-between and space-around
 	&--space {
 		&-between, &-around {
-			> .#{$fullPrefix}grid__cell { flex-grow: 0; }
+			> * { flex-grow: 0; }
 		}
 		&-between {
 			justify-content: space-between;
@@ -271,7 +278,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	//quick access to left,center and right alignments
 	&--align {
 		&-left, &-center, &-right {
-			> .#{$fullPrefix}grid__cell { flex-grow: 0; }
+			> * { flex-grow: 0; }
 		}
 		&-left {
 			justify-content: flex-start;
@@ -288,9 +295,36 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	.no-flexbox & {
 		display: table;
 		width: 100%;
-		> .#{$fullPrefix}grid__cell { display: table-cell; vertical-align: top; }
+		> * { display: table-cell; vertical-align: top; }
 
-		&--vAlign > .#{$fullPrefix}grid__cell { vertical-align: middle; }
+		&--vAlign {
+			&-top {
+				> * { vertical-align: top; }
+			}
+			&-center {
+				> * { vertical-align: middle; }
+			}
+			&-bottom {
+				> * { vertical-align: bottom; }
+			}
+		}
+
+		&--align {
+			&-left, &-center, &-right {
+				display: block;
+				> * { display: inline-block; }
+			}
+			&-left {
+				text-align: left;
+			}
+			&-center {
+				text-align: center;
+			}
+			&-right {
+				text-align: right;
+			}
+		}
+
 		&--vertical {
 			display: block;
 			&:after {
@@ -298,7 +332,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				display: block;
 				clear: both;
 			}
-			& > .#{$fullPrefix}grid__cell {
+			& > * {
 				float: left;
 				display: block;
 				width: 100%;
