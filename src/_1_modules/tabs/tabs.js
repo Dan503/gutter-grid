@@ -39,8 +39,8 @@ class tabs {
 		this.$triggers.filter('.'+active_).removeClass(active_);
 		_this.addClass(active_);
 
-		_content.hide();
-		_content.eq(pos).show();
+		this.$content.hide();
+		this.$content.eq(pos).show();
 	}
 }
 
