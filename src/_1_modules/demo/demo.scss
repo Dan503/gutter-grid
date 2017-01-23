@@ -32,14 +32,14 @@
 		}
 		.grid {
 			padding: 0;
+		}
 
-			&__cell {
-				min-height: 100px;
-				margin: 0;
+		.grid__cell, .mixin__cell {
+			min-height: 100px;
+			margin: 0;
 
-				.-noHeight & {
-					min-height: 0;
-				}
+			.-noHeight & {
+				min-height: 0;
 			}
 		}
 	}

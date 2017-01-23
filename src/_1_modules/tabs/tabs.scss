@@ -1,4 +1,13 @@
 
 .tabs {
-	&__element {}
+	&__link {
+		text-align: center;
+		text-transform: capitalize;
+	}
+
+	&__tab {
+		.js & {
+			display: none;
+		}
+	}
 }

@@ -123,7 +123,7 @@ $C-dots: $C-numbers;
 
 	img { display: inline-block; }
 
-	a {
+	a:not(.btn) {
 		color: #4d7f22;
 		text-decoration: underline;
 		&:hover {

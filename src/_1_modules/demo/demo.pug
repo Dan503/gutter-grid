@@ -1,4 +1,6 @@
 
+include ../tabs/tabs
+
 -
 	function render(pugMarkup, settings, locals){
 		return compile(pugMarkup, { pretty: true })(locals);
@@ -6,21 +8,12 @@
 
 	var defaultTo = require('default-to').default;
 
-mixin demo(demoMarkup, spec)
-	-
-		spec = defaultTo(spec, {
-			classes: ''
-		})
-
-	-var isObj = typeof demoMarkup === 'object' && !Array.isArray(demoMarkup);
-
-	-var html = isObj ? render(demoMarkup.html) : render(demoMarkup);
+mixin demo__tab(demoMarkup)
 	-var countKeys = require('count-keys');
+	-var isObj = typeof demoMarkup === 'object' && !Array.isArray(demoMarkup);
+	-var html = isObj ? render(demoMarkup.html) : render(demoMarkup);
 
-	aside.demo(class=spec.classes)
-		if block
-			.demo__summary.demo__segment
-				block
+	+tabs__tab()
 		if isObj && demoMarkup.html || !isObj
 			.demo__result.demo__segment
 				!=html
@@ -36,3 +29,18 @@ mixin demo(demoMarkup, spec)
 			.demo__markup.demo__segment
 				pre
 					code.html= html
+
+mixin demo(demoMarkup, spec)
+	-
+		spec = defaultTo(spec, {
+			classes: ''
+		})
+
+	aside.demo(class=spec.classes)
+		if block
+			.demo__summary.demo__segment
+				block
+
+		+tabs({links: Object.keys(demoMarkup)})
+			+demo__tab(demoMarkup.classes)
+			+demo__tab(demoMarkup.mixin)

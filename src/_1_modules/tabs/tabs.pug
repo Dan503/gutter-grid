@@ -1,12 +1,12 @@
 
-mixin tabs__tab(id, spec)
+mixin tabs__tab(spec)
 	-
 		spec = defaultTo(spec, {
 			classes : '',
 			attr: {},
 		});
 
-	.tabs__tab(class=spec.classes, id=id)&attributes(spec.attr)
+	.tabs__tab(class=spec.classes)&attributes(spec.attr).JS-tabs__content
 		if block
 			block
 		else
@@ -20,10 +20,12 @@ mixin tabs(spec)
 			links: []
 		});
 
-	.tabs(class=spec.classes)&attributes(spec.attr)
-		.tabs__links.grid
-			each link in spec.links
-				a.grid__cell(href='#'+link.replace(' ','-'))= link
+	.tabs(class=spec.classes)&attributes(spec.attr).JS-tabs
+		.tabs__links.grid.grid--hasInners.grid--noMQs.grid--gutter-tabs
+			each link, i in spec.links
+				- var activeClass = i === 0 ? '-active' : '';
+				.grid__cell
+					a.tabs__link.grid__inner.btn(href='#', class= activeClass).JS-tabs__trigger= link
 		.tabs__content
 			if block
 				block

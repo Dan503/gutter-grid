@@ -9,11 +9,11 @@ import $ from 'jquery';
 
 const //hooks
 	_module =  $('.JS-tabs'),
-	_target = $('.JS-tabs__target'),
+	_content = $('.JS-tabs__content'),
 	_trigger = $('.JS-tabs__trigger');
 
 const //classes
-	open_ = '-tabs--open';
+	active_ = '-active';
 
 //module functionality
 class tabs {
@@ -21,23 +21,31 @@ class tabs {
 		const This = this;
 		this.elem = elem;
 		this.$elem = $(elem);
+		this.$triggers = this.$elem.find(_trigger);
+		this.$content = this.$elem.find(_content);
 
-		this.$elem.find(_trigger).click(function(e){
+		this.$triggers.click(function(e){
 			e.preventDefault();
-			//This.exampleMethod($(this));
-		})
+			This.switchTab($(this));
+		});
+
+		this.$content.filter(':first-child').show();
 	}
 
-	//Description for example function
-	exampleMethod(_this){
-		//_this.doStuff();
+	//Switches to the current tab
+	switchTab(_this){
+		const pos = _this.parent().index();
+
+		this.$triggers.filter('.'+active_).removeClass(active_);
+		_this.addClass(active_);
+
+		_content.hide();
+		_content.eq(pos).show();
 	}
 }
 
 //This function is called on page load unless the name of this file starts with an underscore
 export default function() {
-	console.log('The tabs module javascript has loaded');
-
 	_module.each(function(e){
 		new tabs(this);
 	})
