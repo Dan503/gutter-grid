@@ -8,11 +8,28 @@ block content
 
     After npm installing Gutter Grid, add this to the top of your main Sass file:
 
-    `````scss
-    @import '../node_modules/mq-scss/mq';
-    @import '../node_modules/gutter-grid/grid-classes';
-    `````
+  +tabs({links: ['Classes', 'Mixin', 'Both']})
+    +tabs__content()
+      :marked
+        `````scss
+        @import '../node_modules/mq-scss/mq';
+        @import '../node_modules/gutter-grid/grid-classes';
+        `````
+    +tabs__content()
+      :marked
+        `````scss
+        @import '../node_modules/mq-scss/mq';
+        @import '../node_modules/gutter-grid/grid-mixin';
+        `````
+    +tabs__content()
+      :marked
+        `````scss
+        @import '../node_modules/mq-scss/mq';
+        @import '../node_modules/gutter-grid/grid-mixin';
+        @import '../node_modules/gutter-grid/grid-classes';
+        `````
 
+  :marked
     Things to note:
 
     - mq-scss will automatically install when installing Gutter Grid

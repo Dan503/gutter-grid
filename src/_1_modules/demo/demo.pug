@@ -42,9 +42,9 @@ mixin demo(demoMarkup, spec)
 				block
 		if spec.hasTabs
 			+tabs({links: Object.keys(demoMarkup)})
-				+tabs__tab()
+				+tabs__content()
 					+demo__tab(demoMarkup.classes)
-				+tabs__tab()
+				+tabs__content()
 					+demo__tab(demoMarkup.mixin)
 		else
 			+demo__tab(demoMarkup)
