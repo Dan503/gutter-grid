@@ -3,6 +3,7 @@ block content
     Without defining columns, a grid can easily end up looking like this:
 
   +demo({
+    classes: {
 html:`
 .grid
   .grid__cell.-color-1.add-padding
@@ -16,12 +17,34 @@ html:`
   .grid__cell.-color-2.add-padding
     :marked
       Barely any text in this cell`,
+},
+    mixin: {
+html:`
+.mixin-1
+  .mixin__cell.-color-1.add-padding
+    :marked
+      lots and lots and lots of text in this cell.
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .mixin__cell.-color-2.add-padding
+    :marked
+      Barely any text in this cell`,
+scss: `
+.mixin-1 {
+  @include grid;
+}
+`
+    }
 })
 
   :marked
     To ensure that cells take up only 50% width each, add a `grid--cols-2` class to the same element as the `grid` class.
 
   +demo({
+    classes: {
 html:`
 .grid.grid--cols-2
   .grid__cell.-color-1.add-padding
@@ -35,6 +58,27 @@ html:`
   .grid__cell.-color-2.add-padding
     :marked
       Barely any text in this cell`,
+},
+    mixin: {
+html:`
+.mixin-2
+  .mixin__cell.-color-1.add-padding
+    :marked
+      lots and lots and lots of text in this cell.
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .mixin__cell.-color-2.add-padding
+    :marked
+      Barely any text in this cell`,
+scss: `
+.mixin-2 {
+  @include grid(2);
+}
+`
+    }
 })
     :marked
       The previous example but adding the `grid--cols-2` class

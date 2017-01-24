@@ -220,7 +220,7 @@
 						$V-columnWidth : nth($V-breakData, 2);
 
 						@include mq(max, $BP-deviceWidth){
-							> * { width: $V-columnWidth; }
+							width: $V-columnWidth;
 						}
 					}
 				}
