@@ -40,14 +40,18 @@
 	}
 
 	&-10 {
-		@include grid(2);	
+		@include grid(4, $wrap: true);	
 	}
 
 	&-11 {
-		@include grid(2);	
+  	@include grid(4, $MQs: false, $wrap: true);
 	}
 
 	&-12 {
 		@include grid(2);	
+	}
+
+	&__cellSpan {
+	  @include grid__cell--span(3, 4); 
 	}
 }

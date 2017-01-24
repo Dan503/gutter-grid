@@ -18,7 +18,7 @@
 	$align: false,
 	$space: false,
 	$wrap: auto,
-	$noMQs: false,
+	$MQs: true,
 	$outerGutters: false,
 	$cellSpan: false,
 	$direction: row,
@@ -43,7 +43,7 @@
 
 	@if ($grid-break-points != false){
 		@include mq(max, $grid-page-width){
-			@if (not $noMQs and $wrap == auto){
+			@if ($MQs and $wrap == auto){
 				flex-wrap: wrap;
 			}
 		}
@@ -212,7 +212,7 @@
 			width: $columnWidth;
 
 			//Applies the media queries for the break points
-			@if($noMQs == false) {
+			@if($MQs) {
 				@if ($breaks != false) {
 					@each $V-breakData in $breaks {
 						$BP-deviceWidth : nth($V-breakData, 1);

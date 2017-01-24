@@ -1,8 +1,17 @@
 block content
   :marked
-    Cells can be made to take up more than just a single column width by using a `grid__cell--span-#` class. The `#` being the number of columns you wish for the cell to span.
+    If using the class based system, cells can be made to take up more than just a single column width by using a `grid__cell--span-#` class. The `#` being the number of columns you wish for the cell to span.
+
+    Alternatively, if you are using the mixin based system, you need to use a seperate mixin to the main one. It's syntax is like this
+
+    ``````scss
+    @include grid__cell--span([No. columns to span], [total No. of columns], [optional place to add "!important" if you need it]);
+    ``````
+
+    The first 2 parameters are required but the 3rd parameter is a completly optional parameter designed to add "!important" to the rule if you need to.
 
   +demo({
+    classes: {
 html:`
 .grid.grid--cols-4.grid--wrap
   .grid__cell.grid__cell--span-3.-color-1
@@ -11,12 +20,34 @@ html:`
   .grid__cell.-color-4
   .grid__cell.-color-5
   .grid__cell.-color-6
-`})
+`
+    },
+    mixin: {
+html:`
+.mixin-10
+  .mixin__cell.mixin__cellSpan.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+  .mixin__cell.-color-6
+`,
+scss:`
+.mixin-10 {
+  @include grid(4, $wrap: true);
+}
+
+.mixin__cellSpan {
+  @include grid__cell--span(3, 4);
+}`,
+    }
+})
 
   :marked
-    Grids that feature column spans often don't play nicely with the default media queries though. To work around this, it's usually best to simply disable the media queries on that particular grid and write your own custom styles with new media queries. To disable media queries on a grid, add the `grid--noMQs` class.
+    Grids that feature column spans often don't play nicely with the default media queries though. To work around this, it's usually best to simply disable the media queries on that particular grid and write your own custom styles with new media queries. To disable media queries on a grid, add the `grid--noMQs` class if using the class based system. Otherwise set the `$MQs` variable to `false` if using the mixin.
 
   +demo({
+    classes: {
 html:`
 .grid.grid--noMQs.grid--cols-4.grid--wrap
   .grid__cell.grid__cell--span-3.-color-1
@@ -25,6 +56,28 @@ html:`
   .grid__cell.-color-4
   .grid__cell.-color-5
   .grid__cell.-color-6
-`})
+`
+    },
+    mixin: {
+html:`
+.mixin-11
+  .mixin__cell.mixin__cellSpan.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+  .mixin__cell.-color-6
+`,
+scss:`
+.mixin__cellSpan {
+  @include grid__cell--span(3, 4);
+}
+.mixin-11 {
+  @include grid(4, $MQs: false, $wrap: true);
+}
+
+`,
+    }
+})
     :marked
       Same example as above except this time with the default media queries disabled. Resize your screen to see the difference.

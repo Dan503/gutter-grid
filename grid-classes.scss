@@ -44,12 +44,12 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	.#{$fullPrefix}grid--cols-#{$i} {
 		> * {
 			width: $columnWidth;
+		}
 
-			//.grid__cell--span-# styling
-			@if ($i > 1){
-				@for $x from 2 through $i {
-					&--span-#{$x} { width: $columnWidth * $x; }
-				}
+		//.grid__cell--span-# styling
+		@if ($i > 1){
+			@for $x from 2 through $i {
+				> .#{$fullPrefix}grid__cell--span-#{$x} { width: $columnWidth * $x; }
 			}
 		}
 
