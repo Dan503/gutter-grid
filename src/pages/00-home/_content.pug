@@ -97,7 +97,7 @@ scss: `
   }
 }
 `,
-}, {classes:'-false'})
+}, {classes:'-false', hasTabs: false})
 
   :marked
     Yes you could, it would be more combersome to maintain than just having a list of grid cells in a single element though. Also, this is a responsive design which means percentages. Using `width: calc(33.33% - 20px)` makes the last cell wider than the others when the margin is removed and the cell takes up the remaining width. Using percentages in the margin means the width has to turn into something awkward like 31.33% instead of 33.33% with a 2% margin.
@@ -178,7 +178,7 @@ scss: `
   }
 }
 `,
-}, {classes:'-false'})
+}, {classes:'-false', hasTabs: false})
 
   :marked
     Again, you're forgetting about the responsive side of things. You can remove the margin from the "last row", but as the screen shrinks, the first cell in the "last row" isn't in the last row any more, it's in the second last row. Also the last cell in the first row isn't the last cell of the first row any more. It has become the first cell of the second row. All the cells have shifted positions in the grid.
