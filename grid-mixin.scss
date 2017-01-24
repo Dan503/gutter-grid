@@ -208,7 +208,7 @@
 		@if(type-of($cols) == number){
 
 			$columnWidth: percentage(1/$cols);
-			$breaks: nth($grid-bp-list, $cols);
+			$breaks: if(length($grid-bp-list) < $cols, false, nth($grid-bp-list, $cols));
 
 			width: $columnWidth;
 

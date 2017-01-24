@@ -87,23 +87,52 @@ scss: `
     The added bonus of using column classes is that there are baked in media queries for typical break points. This lets you build your site layout and not have to worry as much about making it mobile friendly.
 
   +demo({
+    classes: {
 html:`
 .grid.grid--cols-2
   .grid__cell.-color-1
-  .grid__cell.-color-2`
+  .grid__cell.-color-2
+`
+    },
+    mixin: {
+html:`
+.mixin-2
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+`,
+scss:`
+.mixin-2 {
+  @include grid(2);
+}`
+    }
 })
     :marked
       Examples of all the default column widths. Resize your browser to watch the media queries take effect.
 
   +demo({
+    classes: {
 html:`
 .grid.grid--cols-3
   .grid__cell.-color-1
   .grid__cell.-color-2
   .grid__cell.-color-3
 `
+    },
+    mixin: {
+html:`
+.mixin-3
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+`,
+scss:`
+.mixin-3 {
+  @include grid(3);
+}`
+    }
 })
   +demo({
+    classes: {
 html:`
 .grid.grid--cols-4
   .grid__cell.-color-1
@@ -111,8 +140,23 @@ html:`
   .grid__cell.-color-3
   .grid__cell.-color-4
 `
+    },
+    mixin: {
+html:`
+.mixin-4
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+`,
+scss:`
+.mixin-4 {
+  @include grid(4);
+}`
+    }
 })
   +demo({
+    classes: {
 html:`
 .grid.grid--cols-5
   .grid__cell.-color-1
@@ -121,8 +165,24 @@ html:`
   .grid__cell.-color-4
   .grid__cell.-color-5
 `
+    },
+    mixin: {
+html:`
+.mixin-5
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+`,
+scss:`
+.mixin-5 {
+  @include grid(5);
+}`
+    }
 })
   +demo({
+    classes: {
 html:`
 .grid.grid--cols-6
   .grid__cell.-color-1
@@ -132,6 +192,22 @@ html:`
   .grid__cell.-color-5
   .grid__cell.-color-6
 `
+    },
+    mixin: {
+html:`
+.mixin-6
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+  .mixin__cell.-color-6
+`,
+scss:`
+.mixin-6 {
+  @include grid(6);
+}`
+    }
 })
   :marked
     ### Customising the columns
@@ -171,10 +247,31 @@ $grid-break-points: (
 );
 
 @import '../node_modules/mq-scss/mq';
-@import '../node_modules/gutter-grid/grid-classes';`
-})
+@import '../node_modules/gutter-grid/grid-mixin';
+@import '../node_modules/gutter-grid/grid-classes';
+`
+}, {hasTabs: false})
     :marked
       These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements.
+
+  +demo({
+html:`
+.mixin-7
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+  .mixin__cell.-color-6
+  .mixin__cell.-color-2
+`,
+scss:`
+.mixin-7 {
+  @include grid(7);
+}`
+}, {hasTabs: false})
+    :marked
+      The mixin version can have as many columns as you like without having to edit the `$grid-break-points` variable. However anything over 6 columns will not have any breakpoints applied unless you edit the `$grid-break-points` variable to include more columns.
 
   +demo({
 scss:`
@@ -182,7 +279,8 @@ scss:`
 $grid-break-points: false;
 
 @import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-mixin';
 @import '../node_modules/gutter-grid/grid-classes';`
-})
+}, {hasTabs: false})
     :marked
-      You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns.
+      You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns when using the class based grid system.

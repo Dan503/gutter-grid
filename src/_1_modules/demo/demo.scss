@@ -25,6 +25,10 @@
 		&:before {
 			content: 'Summary';
 		}
+
+		+ .demo__result {
+			margin-top: 45px;
+		}
 	}
 	&__result {
 		&:before {
