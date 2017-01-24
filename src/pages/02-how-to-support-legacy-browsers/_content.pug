@@ -12,6 +12,21 @@ block content
 
     In order to detect if the browser supports flexbox and flex-wrap, Gutter Grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr properties it is dependent on is `flexwrap` and `flexbox`. To add Modernizr to your site, either [download a custom build that includes flexbox and flexwrap](https://modernizr.com/download?setclasses&q=flex) from the modernizr website and link to it in the HTML of your website, or you can incorporate [Customizr](https://www.npmjs.com/package/customizr) into your website compilation process. I recommend taking the second option.
 
+    If taking the [Customizr](https://www.npmjs.com/package/customizr) route, you will need to force it to include `flexwrap` and `flexbox` tests since it won't look through the `node_modules` folder for Modernizr references (and for good reason!). You will also need to ensure that it is adding classes to the page. You can do this when defining the Customizr configuration settings like this:
+
+    ```````js
+    //Minimum customizr settings required for Gutter Grid to work
+    {
+      options: [
+        'setClasses',
+      ],
+      tests: [
+        'flexbox',
+        'flexwrap'
+      ]
+    }
+    ```````
+
     Please note that the design in IE8 & 9 won't look like the design on browsers that support flexbox. It will mainly just help stop the layout from completly breaking on you when compared to using purely flexbox on it's own.
 
     ### Supporting IE8 specifically
@@ -34,5 +49,6 @@ block content
     $grid-gutter-ie-fallback: #fff;
 
     @import '../node_modules/mq-scss/mq';
+    @import '../node_modules/gutter-grid/grid-mixin';
     @import '../node_modules/gutter-grid/grid-classes';
     ````
