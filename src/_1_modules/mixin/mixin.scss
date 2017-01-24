@@ -32,11 +32,11 @@
 	}
 
 	&-8 {
-		@include grid(2);	
+		@include grid(3, $wrap: true);
 	}
 
 	&-9 {
-		@include grid(2);	
+		@include grid(6, $wrap: false);
 	}
 
 	&-10 {

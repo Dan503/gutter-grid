@@ -17,9 +17,8 @@
 	$vAlign: false,
 	$align: false,
 	$space: false,
-	$wrap: false,
+	$wrap: auto,
 	$noMQs: false,
-	$noWarp: false,
 	$outerGutters: false,
 	$cellSpan: false,
 	$direction: row,
@@ -44,7 +43,7 @@
 
 	@if ($grid-break-points != false){
 		@include mq(max, $grid-page-width){
-			@if (not $noMQs or not $noWarp){
+			@if (not $noMQs and $wrap == auto){
 				flex-wrap: wrap;
 			}
 		}
@@ -104,7 +103,7 @@
 	}
 
 	//Unfortunately this is a necessity for IE compatibility
-	@if ($wrap){
+	@if ($wrap == true){
 		@include ieFloat;
 		flex-wrap: wrap;
 	}
@@ -225,7 +224,7 @@
 					}
 				}
 			}
-			@if ($wrap) {
+			@if ($wrap == true) {
 				.no-flexwrap & {
 					@if ($cols > 2) {
 						&:nth-child(#{$cols}n+1) { clear: left; }

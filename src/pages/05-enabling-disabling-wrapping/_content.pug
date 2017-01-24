@@ -1,8 +1,9 @@
 block content
   :marked
-    Wrapping isn't enabled by default on desktop sized screens mostly for the sake of legacy browser compatibility. To enable wrapping on desktop, a `grid--wrap` class needs to be added. Without the class, if there are too many grid cells for the number of columns, it will squeeze them together instead of wrapping them.
+    Wrapping isn't enabled by default on desktop sized screens mostly for the sake of legacy browser compatibility. To enable wrapping on desktop, a `grid--wrap` class needs to be added if using the class based system. If using the mixin based system, `$wrap` needs to be set to `true`. Without stating that the grid cells should wrap, if there are too many grid cells for the number of columns, it will squeeze them all together instead of wrapping them.
 
   +demo({
+    classes: {
 html:`
 .grid.grid--cols-3
   .grid__cell.-color-1
@@ -11,11 +12,29 @@ html:`
   .grid__cell.-color-4
   .grid__cell.-color-5
   .grid__cell.-color-6
-`})
+`
+    },
+    mixin: {
+html:`
+.mixin-3
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+  .mixin__cell.-color-6
+`,
+scss:`
+.mixin-3 {
+  @include grid(3);
+}`
+    }
+})
     :marked
-      6 cells in a 3 column grid with grid--wrap **not enabled**
+      6 cells in a 3 column grid with desktop wrapping **disabled**
 
   +demo({
+    classes: {
 html:`
 .grid.grid--cols-3.grid--wrap
   .grid__cell.-color-1
@@ -24,9 +43,26 @@ html:`
   .grid__cell.-color-4
   .grid__cell.-color-5
   .grid__cell.-color-6
-`})
+`
+    },
+    mixin: {
+html:`
+.mixin-8
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+  .mixin__cell.-color-6
+`,
+scss:`
+.mixin-8 {
+  @include grid(3, $wrap: true);
+}`
+    }
+})
     :marked
-      6 cells in a 3 column grid with grid--wrap **enabled**
+      6 cells in a 3 column grid with desktop wrapping **enabled**
 
   :marked
     When the browser reaches a certain screen size, wrapping becomes enabled by default so that the content in the grid is able to adapt to the smaller screen sizes. The setting that determines at what point `grid--wrap` enables itself is `$grid-page-width`. It is named "page-width" since it is meant to be the screen width at which the edge of the desktop design meets the edge of the screen.
@@ -38,14 +74,15 @@ $grid-page-width: 1200px;
 
 @import '../node_modules/mq-scss/mq';
 @import '../node_modules/gutter-grid/grid-classes';`
-})
+}, {hasTabs: false})
     :marked
       Alter the screen size that grid wrapping becomes enabled by default at
 
   :marked
-    To just outright disable grid wrapping for all screen sizes, use the `grid--noWrap` class.
+    To just outright disable grid wrapping for all screen sizes, use the `grid--noWrap` class or set `$wrap` to `false`.
 
   +demo({
+    classes: {
 html:`
 .grid.grid--cols-6.grid--noWrap
   .grid__cell.-color-1
@@ -54,6 +91,23 @@ html:`
   .grid__cell.-color-4
   .grid__cell.-color-5
   .grid__cell.-color-6
-`})
+`
+    },
+    mixin: {
+html:`
+.mixin-9
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+  .mixin__cell.-color-6
+`,
+scss:`
+.mixin-9 {
+  @include grid(6, $wrap: false);
+}`
+    }
+})
     :marked
       Disable grid wrapping at all screen sizes (resize browser window to see the effect)
