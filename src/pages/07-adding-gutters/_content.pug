@@ -5,6 +5,7 @@ block content
     This is easily achieved using Gutter Grid though.
 
   +demo({
+    classes: {
 html:`
 .grid__wrapper
   .grid.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -23,18 +24,44 @@ $grid-cell-gutters: (
 
 @import '../node_modules/mq-scss/mq';
 @import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper
+  .mixin-12
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-12 {
+  @include grid(3, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
 })
     :marked
-      Defining a gutter size
+      Defining a basic gutter size
 
   :marked
     The `grid__wrapper` element is to help contain the grid inside it's bounding box when gutters are applied to it. There is a glitch in Chrome that often ignores the top negative margin rule that makes the grid cells sit hard up againt the boundries of the grid. `grid__wrapper` prevents this glitch from being an issue.
 
-    I name the grid gutters based on the module name that the gutter is being applied to rather than a specific number like `grid--gutter-20`. While this can lead to multiple grid gutters having the same value, this improves maintainability by making gutter widths controllable entirely through the css without having to make changes across multiple html files. If you disagree, nothing is stopping you from naming the gutters however you want.
+    In the class based system, I name the grid gutters based on the module name that the gutter is being applied to rather than a specific number like `grid--gutter-20`. While this can lead to multiple grid gutters having the same value, this improves maintainability by making gutter widths controllable entirely through the css without having to make changes across multiple html files. If you disagree, nothing is stopping you from naming the gutters however you want.
+
+    In the mixin based system, the gutters are defined when the mixin is called. This makes it easy to keep all the styles in the one place.
 
     Anyway, that is how to create a fixed gutter that is the same width for all screen sizes, but what if you have a very thick gutter on desktop? It won't work well having an 80px wide gutter on a tablet or mobile device, it would take up too much screen realestate. The solution is gutters that contain media queries. Here is how to do them:
 
   +demo({
+    classes: {
 html:`
 .grid__wrapper
   .grid.grid--gutter-mediaQueryGutter.grid--cols-3.grid--wrap.grid--noMQs
@@ -57,6 +84,35 @@ $grid-cell-gutters: (
 
 @import '../node_modules/mq-scss/mq';
 @import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper
+  .mixin-13
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+$mq-gutter: (
+  50px, //*default gutter width*/
+  25px (max, 800px), //*gutter width at 800px and below*/
+  10px (max, 700px) //*gutter width at 700px and below*/
+);
+
+.mixin-13 {
+  @include grid(3, $gutter: $mq-gutter, $wrap: true, $MQs: false);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
 })
     :marked
       Applying gutters that are affected by media queries

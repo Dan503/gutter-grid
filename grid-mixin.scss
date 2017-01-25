@@ -63,34 +63,6 @@
 		}
 	}
 
-	//grid--gutter-# styling
-	@if ($gutter != false){
-		> *, & {
-			border-color: transparent;
-			.lt-ie9 & { border-color: $gutter-ieFallback; }
-		}
-
-		@each $class, $gutterValue in $cellGutters {
-			@if ($gutter == $class){
-				@if (type-of($gutterValue) == 'list') {
-					@each $value in $gutterValue {
-						@if (length($value) > 1){
-							$gutterSize: nth($value,1);
-							$mediaQuery: nth($value,2);
-							@include mq($mediaQuery){
-								@include generate-gutters('mixin', $gutterSize, $outerGutters);
-							}
-						} @else {
-							@include generate-gutters('mixin', $value, $outerGutters);
-						}
-					}
-				} @else {
-					@include generate-gutters('mixin', $gutterValue, $outerGutters);
-				}
-			}
-		}
-	}
-
 	@if($hasInners) {
 		> * {
 			display: flex;
@@ -194,6 +166,7 @@
 
 	//grid cell styling
 	> * {
+		box-sizing: border-box;
 		min-width: 0%;
 		max-width: 100%;
 		display: if($hasInners, flex, block);
@@ -231,6 +204,29 @@
 					}
 				}
 			}
+		}
+	}
+
+	//grid--gutter-# styling
+	@if ($gutter != false){
+		> *, & {
+			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
+		}
+
+		@if (type-of($gutter) == 'list') {
+			@each $value in $gutter {
+				@if (length($value) > 1){
+					$gutterSize: nth($value,1);
+					$mediaQuery: nth($value,2);
+					@include mq($mediaQuery){
+						@include generate-gutters('mixin', $gutterSize, $outerGutters);
+					}
+				} @else {
+					@include generate-gutters('mixin', $value, $outerGutters);
+				}
+			}
+		} @else {
+			@include generate-gutters('mixin', $gutter, $outerGutters);
 		}
 	}
 }

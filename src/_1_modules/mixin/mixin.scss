@@ -48,10 +48,25 @@
 	}
 
 	&-12 {
-		@include grid(2);	
+		 @include grid(3, $gutter: 20px, $wrap: true);
+	}
+
+	&-13 {
+
+		$mq-gutter: (
+		  50px, //*default gutter width*/
+		  25px (max, 800px), //*gutter width at 800px and below*/
+		  10px (max, 700px) //*gutter width at 700px and below*/
+		);
+
+		@include grid(3, $gutter: $mq-gutter, $wrap: true, $MQs: false);
 	}
 
 	&__cellSpan {
 	  @include grid__cell--span(3, 4); 
+	}
+
+	&__wrapper {
+		overflow: hidden;
 	}
 }
