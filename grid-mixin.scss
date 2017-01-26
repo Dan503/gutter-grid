@@ -13,7 +13,6 @@
 	$cols: auto,
 	$gutter: false,
 	$inners: false,
-	$innerFlex: false,//display:flex; on inners
 	$vAlign: false,
 	$align: false,
 	$space: false,
@@ -54,7 +53,7 @@
 			display: flex;
 			align-items: stretch;
 			> * {
-				display: if($innerFlex, flex, block);
+				display: block;
 				width: 100%;
 			}
 		}

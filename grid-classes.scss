@@ -205,11 +205,6 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				}
 			}
 		}
-
-		//an easy way to make the inner display as flex instead of block
-		&.#{$fullPrefix}grid--innerFlex {
-			> * > * { display: flex; }
-		}
 	}
 
 	&--vAlign {
