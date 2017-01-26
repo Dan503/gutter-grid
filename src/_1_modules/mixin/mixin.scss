@@ -102,6 +102,10 @@
 	  @include grid(3, $outerGutters: right-delayed, $gutter: 20px, $wrap: true);
 	}
 
+	&-24 {
+	  @include grid(2, $inners: true);
+	}
+
 	&__cellSpan {
 	  @include grid__cell--span(3, 4);
 	}
