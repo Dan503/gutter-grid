@@ -106,11 +106,19 @@
 	  @include grid(2, $inners: true);
 	}
 
+	&-25 {
+	  @include grid(2, $inners: true, $gutter: 20px);
+	}
+
 	&__cellSpan {
 	  @include grid__cell--span(3, 4);
 	}
 
 	&__wrapper {
 		overflow: hidden;
+	}
+
+	&__paddingHack {
+		padding-top: 1px;
 	}
 }

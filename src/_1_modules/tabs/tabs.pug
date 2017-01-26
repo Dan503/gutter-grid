@@ -20,7 +20,7 @@ mixin tabs(spec)
 			links: []
 		});
 
-	.tabs.grid__wrapper(class=spec.classes)&attributes(spec.attr).JS-tabs
+	.tabs(class=spec.classes)&attributes(spec.attr).JS-tabs
 		.tabs__links.grid.grid--hasInners.grid--noMQs.grid--gutter-tabs.grid--outerGutters-bottom
 			each link, i in spec.links
 				- var activeClass = i === 0 ? '-active' : '';
