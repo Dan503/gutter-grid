@@ -11,7 +11,7 @@ $C-dots: $C-numbers;
 	strong, b { font-weight: $bold; }
 
 	//custom dot points do not appear in IE8 or print
-	@media screen {
+	aside:not(.demo) {
 		ul, ol {
 			ul, ol {
 				margin: 0;
