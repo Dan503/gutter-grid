@@ -10,7 +10,6 @@ $MQ-nav--is-100width: (max, bp('mobile'));
 			width: 100%;
 		}
 	&__list {
-		flex-direction: column;
 		@include mq($MQ-nav--not-horizontal){
 			border-top: 0;
 		}
@@ -35,6 +34,12 @@ $MQ-nav--is-100width: (max, bp('mobile'));
 		align-items: center;
 		&.-active {
 			color: #000;
+		}
+	}
+
+	+ * {
+		.no-flexbox & {
+			max-width: 930px;
 		}
 	}
 }
