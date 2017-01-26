@@ -60,96 +60,6 @@
 		}
 	}
 
-	//Unfortunately this is a necessity for IE compatibility
-	@if ($wrap == true){
-		@include ieFloat;
-		flex-wrap: wrap;
-	}
-
-	//vertical alignment of cells
-	@if ($vAlign){
-		@if ($vAlign == 'center') {
-			align-items: center;
-		} @else if ($vAlign == 'top') {
-			align-items: flex-start;
-		} @else if ($vAlign == 'bottom') {
-			align-items: flex-end;
-		} @else {
-			@warn 'invalid value for $vAlign: "#{$vAlign}". Valid values: top, center, bottom.'
-		}
-	}
-
-	//quick access to left,center and right alignments
-	@if ($align) {
-		> * { flex-grow: 0; }
-
-		@if ($align == 'left') {
-			justify-content: flex-start;
-		} @else if ($align == 'center') {
-			justify-content: center;
-		} @else if ($align == 'right') {
-			justify-content: flex-end;
-		} @else {
-			@warn 'invalid value for $align: "#{$align}". Valid values: left, center, right.'
-		}
-	}
-
-	//quick access to space-between and space-around
-	@if ($space) {
-		> * { flex-grow: 0; }
-
-		@if ($space == 'between') {
-			justify-content: space-between;
-		} @else if ($space == 'around') {
-			justify-content: space-around;
-		} @else {
-			@warn 'invalid value for $space: "#{$space}". Valid values: between, around.'
-		}
-	}
-
-	//allows IE to use floats instead of display table without affecting modern browsers
-	@if ($ieFloat) {
-		@include M-ieFloat;
-	}
-
-	//tabular backup for IE9 and below
-	.no-flexbox & {
-		display: table;
-		width: 100%;
-		> * {
-			display: table-cell;
-			vertical-align: top;
-			@if ($inners){
-				> * { display: block; }
-			}
-		}
-
-		@if ($vAlign){
-			@if ($vAlign == 'top'){
-				> * { vertical-align: top; }
-			} @else if ($vAlign == 'center') {
-				> * { vertical-align: middle; }
-			} @else if ($vAlign == 'bottom') {
-				> * { vertical-align: bottom; }
-			}
-		}
-
-		@if($direction == column){
-			display: block;
-			&:after {
-				content: '';
-				display: block;
-				clear: both;
-			}
-
-			> * {
-				float: left;
-				display: block;
-				width: 100%;
-			}
-		}
-	}
-
 	//grid cell styling
 	> * {
 		box-sizing: border-box;
@@ -190,6 +100,114 @@
 					}
 				}
 			}
+		}
+	}
+
+	//tabular backup for IE9 and below
+	.no-flexbox & {
+		display: table !important;
+		width: 100%;
+		> * {
+			display: table-cell;
+			vertical-align: top;
+			@if ($inners){
+				> * { display: block; }
+			}
+		}
+
+		@if ($vAlign){
+			@if ($vAlign == 'top'){
+				> * { vertical-align: top; }
+			} @else if ($vAlign == 'center') {
+				> * { vertical-align: middle; }
+			} @else if ($vAlign == 'bottom') {
+				> * { vertical-align: bottom; }
+			}
+		}
+
+		@if($direction == column){
+			display: block !important;
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+			> * {
+				float: left;
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+
+	@if ($wrap == true){
+		@include ieFloat;
+		flex-wrap: wrap;
+	}
+
+	//allows IE to use floats instead of display table without affecting modern browsers
+	@if ($ieFloat) {
+		@include M-ieFloat;
+	}
+
+	//quick access to left,center and right alignments
+	@if ($align) {
+		> * {
+			flex-grow: 0;
+
+			.no-flexbox & {
+				display: inline-block !important;
+			}
+		}
+
+		@if ($align == 'left') {
+			justify-content: flex-start;
+
+			.no-flexbox & {
+				text-align: left;
+			}
+		} @else if ($align == 'center') {
+			justify-content: center;
+
+			.no-flexbox & {
+				text-align: center;
+			}
+		} @else if ($align == 'right') {
+			justify-content: flex-end;
+
+			.no-flexbox & {
+				text-align: right;
+			}
+		} @else {
+			@warn 'invalid value for $align: "#{$align}". Valid values: left, center, right.'
+		}
+
+	}
+
+	//vertical alignment of cells
+	@if ($vAlign){
+		@if ($vAlign == 'center') {
+			align-items: center;
+		} @else if ($vAlign == 'top') {
+			align-items: flex-start;
+		} @else if ($vAlign == 'bottom') {
+			align-items: flex-end;
+		} @else {
+			@warn 'invalid value for $vAlign: "#{$vAlign}". Valid values: top, center, bottom.'
+		}
+	}
+
+	//quick access to space-between and space-around
+	@if ($space) {
+		> * { flex-grow: 0; }
+
+		@if ($space == 'between') {
+			justify-content: space-between;
+		} @else if ($space == 'around') {
+			justify-content: space-around;
+		} @else {
+			@warn 'invalid value for $space: "#{$space}". Valid values: between, around.'
 		}
 	}
 
