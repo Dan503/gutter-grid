@@ -110,6 +110,38 @@
 	  @include grid(2, $inners: true, $gutter: 20px);
 	}
 
+	&-26 {
+	  @include grid(3, $wrap: true);
+	}
+
+	&-27 {
+	  @include grid(3, $align: left, $wrap: true);
+	}
+
+	&-28 {
+	  @include grid(3, $align: right, $wrap: true);
+	}
+
+	&-29 {
+	  @include grid(3, $align: center, $wrap: true);
+	}
+
+	&-30 {
+	  @include grid(3, $space: between, $wrap: true);
+	}
+
+	&-31 {
+	  @include grid(3, $space: around, $wrap: true);
+	}
+
+	&-32 {
+	  @include grid($space: around, $inners: true);
+	}
+
+	&-33 {
+  	@include grid($vertical: true, $gutter: 20px);
+	}
+
 	&__cellSpan {
 	  @include grid__cell--span(3, 4);
 	}

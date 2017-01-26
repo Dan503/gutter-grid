@@ -20,24 +20,24 @@
 	$MQs: true,
 	$outerGutters: false,
 	$cellSpan: false,
-	$direction: row,
 	$ieFloat: false,
-	$mini: false
+	$mini: false,
+	$vertical: false
 ){
 	box-sizing: border-box;
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	border: 0 solid transparent;
+	border: {style: solid; color: transparent};
 	display: flex !important;
 	align-content: stretch;
 
-	@if (not $mini){
-		min-width: 100%;
+	@if ($vertical){
+		flex-direction: column;
 	}
 
-	@if ($direction != row){
-		flex-direction: $direction;
+	@if (not $mini){
+		min-width: 100%;
 	}
 
 	@if ($grid-break-points != false){
@@ -124,7 +124,7 @@
 			}
 		}
 
-		@if($direction == column){
+		@if($vertical){
 			display: block !important;
 			&:after {
 				content: '';

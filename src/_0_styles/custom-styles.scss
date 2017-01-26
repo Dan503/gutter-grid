@@ -104,7 +104,7 @@ footer {
 
 .add {
 	&-border {
-		border: 2px solid red;
+		border: 2px solid red !important;
 	}
 	&-shadow {
 		box-shadow: 0 0 10px #000;
