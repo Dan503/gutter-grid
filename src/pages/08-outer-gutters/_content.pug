@@ -3,6 +3,7 @@ block content
     By default, gutters will place the grid cells on the very edge of the content area as shown in this example by a red bounding box:
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -12,12 +13,45 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-12
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-12 {
+  @include grid(3, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})
 
   :marked
-    This isn't always the desired layout though. sometimes you want the gutters to also apply around the edges of the grid as well. This is when the `grid--outerGutters` class comes in.
+    This isn't always the desired layout though. sometimes you want the gutters to also apply around the edges of the grid as well. This is when the `outerGutters` setting comes in.
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--outerGutters.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -27,14 +61,47 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-14
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-14 {
+  @include grid(3, $outerGutters: true, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})
     :marked
-      Using the `grid--outerGutters` class to apply the gutter to the edges of the grid
+      Using the `outerGutters` setting to apply the gutter to the edges of the grid
 
   :marked
     The class also comes in horizontal only, and vertical only variants as `grid--outerGutters-h` for horizontal only and `grid--outerGutters-v` for vertical only.
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--outerGutters-h.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -44,11 +111,44 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-15
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-15 {
+  @include grid(3, $outerGutters: h, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})
     :marked
       Horizontal and vertical only variants of the `grid--outerGutters` class
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--outerGutters-v.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -58,9 +158,42 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-16
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-16 {
+  @include grid(3, $outerGutters: v, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--outerGutters-top.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -70,11 +203,44 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-17
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-17 {
+  @include grid(3, $outerGutters: top, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})
     :marked
       Top, bottom, left and right only variants
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--outerGutters-bottom.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -84,9 +250,42 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-18
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-18 {
+  @include grid(3, $outerGutters: bottom, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--outerGutters-left.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -96,9 +295,42 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-19
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-19 {
+  @include grid(3, $outerGutters: left, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--outerGutters-right.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -108,13 +340,47 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-20
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-20 {
+  @include grid(3, $outerGutters: right, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})
+
 
 
   :marked
     Also, there is a delayed variant for the horizontal classes. This is primarily for use with overarching page layouts. The idea with the delayed varient is that when the screen reaches the point where the edge of the screen would meet the edge of the grid + the gutter, horizontal outer gutters are applied to prevent the edges of the grid from touching the edges of the screen.
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--outerGutters-h-delayed.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -124,11 +390,44 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-21
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-21 {
+  @include grid(3, $outerGutters: h-delayed, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})
     :marked
       Delayed horizontal, left and right gutter varients (resize browser to see it take effect).
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--outerGutters-left-delayed.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -138,9 +437,42 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-22
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-22 {
+  @include grid(3, $outerGutters: left-delayed, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})
 
   +demo({
+    classes: {
 html:`
 .add-border.grid__wrapper
   .grid.grid--outerGutters-right-delayed.grid--gutter-moduleName.grid--cols-3.grid--wrap
@@ -150,4 +482,36 @@ html:`
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-`})
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'moduleName' : 20px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper.add-border
+  .mixin-23
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-23 {
+  @include grid(3, $outerGutters: right-delayed, $gutter: 20px, $wrap: true);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+    }
+})

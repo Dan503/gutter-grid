@@ -49,20 +49,6 @@
 		}
 	}
 
-	//outer gutters
-	@if ($outerGutters != false){
-		$possibleMargins: (
-			true: margin,
-			v: margin-top margin-bottom,
-			h: margin-left margin-right,
-		);
-		@each $type, $margins in $possibleMargins {
-			@each $margin in $margins {
-				#{$margin}: 0;
-			}
-		}
-	}
-
 	@if($hasInners) {
 		> * {
 			display: flex;
@@ -227,6 +213,23 @@
 			}
 		} @else {
 			@include generate-gutters('mixin', $gutter, $outerGutters);
+		}
+	}
+
+	//outer gutters
+	@if ($outerGutters != false){
+		$possibleMargins: (
+			true: margin,
+			v: margin-top margin-bottom,
+			h: margin-left margin-right,
+			top: margin-top,
+			bottom: margin-bottom,
+			left: margin-left,
+			right: margin-right,
+		);
+		$marginSet: map-get($possibleMargins, $outerGutters);
+		@each $margin in $marginSet {
+			#{$margin}: 0;
 		}
 	}
 }

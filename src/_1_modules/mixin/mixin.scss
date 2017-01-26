@@ -7,28 +7,28 @@
 	}
 
 	&-2 {
-		@include grid(2);	
+		@include grid(2);
 	}
 
 	&-3 {
-		@include grid(3);	
+		@include grid(3);
 	}
 
 	&-4 {
-		@include grid(4);	
+		@include grid(4);
 	}
 
 	&-5 {
-		@include grid(5);	
+		@include grid(5);
 	}
 
 	&-6 {
-		@include grid(6);	
+		@include grid(6);
 	}
 
 
 	&-7 {
-		@include grid(7);	
+		@include grid(7);
 	}
 
 	&-8 {
@@ -40,7 +40,7 @@
 	}
 
 	&-10 {
-		@include grid(4, $wrap: true);	
+		@include grid(4, $wrap: true);
 	}
 
 	&-11 {
@@ -62,8 +62,48 @@
 		@include grid(3, $gutter: $mq-gutter, $wrap: true, $MQs: false);
 	}
 
+	&-14 {
+		 @include grid(3, $outerGutters: true, $gutter: 20px, $wrap: true);
+	}
+
+	&-15 {
+	  @include grid(3, $outerGutters: h, $gutter: 20px, $wrap: true);
+	}
+
+	&-16 {
+	  @include grid(3, $outerGutters: v, $gutter: 20px, $wrap: true);
+	}
+
+	&-17 {
+	  @include grid(3, $outerGutters: top, $gutter: 20px, $wrap: true);
+	}
+
+	&-18 {
+	  @include grid(3, $outerGutters: bottom, $gutter: 20px, $wrap: true);
+	}
+
+	&-19 {
+	  @include grid(3, $outerGutters: left, $gutter: 20px, $wrap: true);
+	}
+
+	&-20 {
+	  @include grid(3, $outerGutters: right, $gutter: 20px, $wrap: true);
+	}
+
+	&-21 {
+	  @include grid(3, $outerGutters: h-delayed, $gutter: 20px, $wrap: true);
+	}
+
+	&-22 {
+	  @include grid(3, $outerGutters: left-delayed, $gutter: 20px, $wrap: true);
+	}
+
+	&-23 {
+	  @include grid(3, $outerGutters: right-delayed, $gutter: 20px, $wrap: true);
+	}
+
 	&__cellSpan {
-	  @include grid__cell--span(3, 4); 
+	  @include grid__cell--span(3, 4);
 	}
 
 	&__wrapper {
