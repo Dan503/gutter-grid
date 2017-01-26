@@ -82,7 +82,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	padding: 0;
 	min-width: 100%;
 	border: 0 solid transparent;
-	display: flex !important;
+	display: flex;
 	align-content: stretch;
 
 	//grid__wrapper styling... really only necessary for use with grid--gutter-#
