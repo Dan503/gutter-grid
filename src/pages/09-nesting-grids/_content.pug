@@ -96,12 +96,12 @@ html:`
       .mixin__cell.-color-6
 `,
 scss:`
-.mixin-24 {
-  @include grid(2, $inners: true);
-}
-
 .mixin-2 {
   @include grid(2);
+}
+
+.mixin-24 {
+  @include grid(2, $inners: true);
 }
 `,
     }
@@ -110,8 +110,10 @@ scss:`
       The prefered method when legacy browser support is required
 
   :marked
-    The important things to note here are the `grid--hasInners` and the `grid__inner` classes.
+    The important things to note here are the `grid--hasInners` and the `grid__inner` classes in the class based system.
 
     The `grid--hasInners` class tells the grid that the `grid__inner` inside each `grid__cell` should take up the full height and width of it's parent.
 
     Each `grid__cell` can only contain one `grid__inner` and `grid__inner` must be a direct decendent of it's `grid__cell` parent.
+
+    In the mixin based system, the role of the `grid--hasInners` class is taken up by the `$inners:true` setting.
