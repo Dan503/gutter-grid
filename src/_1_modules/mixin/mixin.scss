@@ -142,6 +142,34 @@
   	@include grid($vertical: true, $gutter: 20px);
 	}
 
+	&-34 {
+  	@include grid($vAlign:top);
+	}
+
+	&-35 {
+  	@include grid($vAlign:bottom);
+	}
+
+	&-36 {
+  	@include grid($vAlign:center);
+	}
+
+	&-37 {
+  	@include grid($vAlign: center, $inners: true, $gutter: 20px);
+	}
+
+	&-38 {
+  	@include grid(3, $inners: true, $gutter: 20px);
+	}
+
+	&-39 {
+  	@include grid($vertical: true, $gutter: 20px);
+	}
+
+	&-40 {
+  	@include grid($vertical: true, $gutter: 20px);
+	}
+
 	&__cellSpan {
 	  @include grid__cell--span(3, 4);
 	}
@@ -152,5 +180,9 @@
 
 	&__paddingHack {
 		padding-top: 1px;
+	}
+
+	&__oddOneOut {
+		align-self: flex-start;
 	}
 }

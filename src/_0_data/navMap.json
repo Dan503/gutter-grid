@@ -15,8 +15,7 @@
     	"title": "How to support legacy browsers"
     },
     {
-      "title": "Basic usage",
-      "generate":"exclusive"
+      "title": "Basic usage"
     },
     {
       "title": "Using columns"
@@ -46,7 +45,8 @@
     	"title": "Vertical cell alignments"
     },
     {
-    	"title": "Controlling cell growth and shrinkage"
+    	"title": "Controlling cell growth and shrinkage",
+      "generate":"exclusive"
     },
     {
       "title": "Features coming in future releases"
