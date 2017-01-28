@@ -135,37 +135,9 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	}
 
 	//base grid__inner styling
-	&__inner { display: block; }
-
-	//grid--gutter-# styling
-	&[class*="#{$fullPrefix}grid--gutter-"] {
-		&.#{$fullPrefix}grid--outerGutters {
-			margin: 0;
-			&-v {
-				margin-top: 0;
-				margin-bottom: 0;
-			}
-			&-h {
-				margin-left: 0;
-				margin-right: 0;
-			}
-			&-top {
-				margin-top: 0;
-			}
-			&-bottom {
-				margin-bottom: 0;
-			}
-			&-left {
-				margin-left: 0;
-			}
-			&-right {
-				margin-right: 0;
-			}
-		}
-
-		> *, & {
-			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
-		}
+	&__inner {
+		display: block;
+		box-sizing: border-box;
 	}
 
 	@each $class, $gutter in $grid-cell-gutters {
@@ -185,6 +157,35 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			} @else {
 				@include generate-gutters('classes', $gutter);
 			}
+		}
+	}
+
+	//grid--outerGutters-# styling
+	&--outerGutters {
+		margin: 0;
+		&-v {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		&-h {
+			margin-left: 0;
+			margin-right: 0;
+		}
+		&-top {
+			margin-top: 0;
+		}
+		&-bottom {
+			margin-bottom: 0;
+		}
+		&-left {
+			margin-left: 0;
+		}
+		&-right {
+			margin-right: 0;
+		}
+
+		> *, & {
+			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
 		}
 	}
 
