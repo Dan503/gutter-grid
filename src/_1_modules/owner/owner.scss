@@ -1,0 +1,14 @@
+
+.owner {
+	&__shareCell {
+		padding-left: 70px;
+	}
+	p {
+		position: relative;
+		padding-left: 70px;
+		margin: 0;
+	}
+	footer & {
+		background-image: url(../images/pattern.png);
+	}
+}
