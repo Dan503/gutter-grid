@@ -27,7 +27,9 @@ block content
     }
     ```````
 
-    Please note that the design in IE8 & 9 won't look like the design on browsers that support flexbox. It will mainly just help stop the layout from completly breaking on you when compared to using purely flexbox on it's own.
+    Please note that although there are fallbacks in place, they aren't able to perfectly repliate the behaviour of a browser that has full flexbox support. **The design in IE8 & 9 won't look like the design on browsers that support flexbox**.
+
+    The fallbacks are mainly just there to help stop the layout from completly breaking on you when compared to using purely flexbox on it's own. You will likely need to do some extra custom styles but the fallbacks will most likely get you to about 80% or more of the way there.
 
     ### Supporting IE8 specifically
 

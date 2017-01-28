@@ -188,6 +188,10 @@
   	width: 50%;
 	}
 
+	&-45 {
+  	@include grid(3, $ieFloat: true);
+	}
+
 	&__cellSpan {
 	  @include grid__cell--span(3, 4);
 	}

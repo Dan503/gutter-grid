@@ -284,3 +284,86 @@ $grid-break-points: false;
 }, {hasTabs: false})
     :marked
       You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns when using the class based grid system.
+
+  :marked
+    ### The ieFloat setting
+
+    One common problem is that when grid cells have a large amount of content in them, the columns will grow outside their bounds even when you give them a column count.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--cols-3
+  .grid__cell.-color-1
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-2
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-3
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+`
+    },
+
+    mixin: {
+html:`
+.mixin-3
+  .grid__cell.-color-1
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-2
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-3
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+`,
+scss:`
+.mixin-3 {
+  @include grid(3);
+}
+`,
+    }
+})
+    :marked
+      If you view this demo in IE8, you will see that the grid cells extend beyond the boundaries of the content area
+
+  :marked
+    The easiest way to fix this issue in most cases is to use the `ieFloat` setting. This setting forces the grid to use the `float:left` backup instead of the `display:table` backup when the browser doesn't support flexbox. `float:left` is much more obedient when it comes to setting column widths than `display:table` is, so it often fixes the issue of content overflowing the page layout.
+
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--ieFloat.grid--cols-3
+  .grid__cell.-color-1
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-2
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-3
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+`
+    },
+
+    mixin: {
+html:`
+.mixin-45
+  .grid__cell.-color-1
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-2
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-3
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+`,
+scss:`
+.mixin-45 {
+  @include grid(3, $ieFloat: true);
+}
+`,
+    }
+})
+    :marked
+      Same example again except this time with `ieFloat` turned on
