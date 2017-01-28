@@ -17,10 +17,74 @@
 
 //Generates the grid cell gutters
 @mixin generate-gutters ($format, $gutter, $outerGutters: false){
-	margin: -$gutter;
-	border-width: $gutter $gutter 0 0;
+
+	$gutterCount: length($gutter);
+
+	$g1: 1;
+	$g2: 1;
+	$g3: 1;
+	$g4: 1;
+
+	@if ($gutterCount > 1){
+		$g2: 2;
+		$g3: 2;
+		$g4: 2;
+	}
+
+	@if ($gutterCount > 2){
+		$g3: 3;
+		$g4: 3;
+	}
+
+	@if ($gutterCount > 3){
+		$g4: 4;
+	}
+
+	@debug $gutterCount;
+
+	$gutterSet: map-get((
+		1: (
+			top: $gutter,
+			right: $gutter,
+			bottom: $gutter,
+			left: $gutter,
+		),
+		2: (
+			top: nth($gutter, $g1),
+			right: nth($gutter, $g2),
+			bottom: nth($gutter, $g1),
+			left: nth($gutter, $g2),
+		),
+		3: (
+			top: nth($gutter, $g1),
+			right: nth($gutter, $g2),
+			bottom: nth($gutter, $g3),
+			left: nth($gutter, $g2),
+		),
+		4: (
+			top: nth($gutter, $g1),
+			right: nth($gutter, $g2),
+			bottom: nth($gutter, $g3),
+			left: nth($gutter, $g4),
+		)
+	), $gutterCount);
+
+	$gutter-top: map-get($gutterSet, top);
+	$gutter-right: map-get($gutterSet, right);
+	$gutter-bottom: map-get($gutterSet, bottom);
+	$gutter-left: map-get($gutterSet, left);
+
+	$margin: map-get((
+		1: -$gutter,
+		2: (-$gutter-top) (-$gutter-right),
+		3: (-$gutter-top) (-$gutter-right) (-$gutter-bottom),
+		4: (-$gutter-top) (-$gutter-right) (-$gutter-bottom) (-$gutter-left),
+	), $gutterCount);
+
+	margin: $margin;
+	border-width: $gutter-top $gutter-right 0 0;
 	> * {
-		border-width: 0 0 $gutter $gutter;
+		border-width: 0 0 $gutter-bottom $gutter-left;
 	}
 
 	.lt-ie9 & {
@@ -33,7 +97,8 @@
 	@if ($format == 'classes'){
 		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
 		&.#{$fullPrefix}grid--outerGutters {
-			@include mq(max, ($grid-page-width + ($gutter * 2))){
+			$mq-width: $grid-page-width + $gutter-left + $gutter-right;
+			@include mq(max, ($mq-width)){
 				&-h-delayed {
 					margin-left: 0;
 					margin-right: 0;
@@ -47,14 +112,14 @@
 
 				.lt-ie9 & {
 					&-h-delayed, &-left-delayed, &-right-delayed {
-						margin-left: -$gutter;
+						margin-left: -$gutter-left;
 					}
 				}
 			}
 
 			.lt-ie9 & {
 				&, &-h {
-					border-right-width: $gutter !important;
+					border-right-width: $gutter-right !important;
 				}
 			}
 		}
@@ -79,11 +144,11 @@
 					$outerGutters == 'left-delayed' or
 					$outerGutters == 'right-delayed'
 				){
-					margin-left: -$gutter;
+					margin-left: -$gutter-left;
 				}
 
 				@if ($outerGutters == true or $outerGutters == 'h'){
-					border-right-width: $gutter !important;
+					border-right-width: $gutter-right !important;
 				}
 			}
 		}

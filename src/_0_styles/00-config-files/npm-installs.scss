@@ -7,18 +7,18 @@
 
 //this grid system
 $grid-cell-gutters: (
-	'moduleName' : 20px,
+	'moduleName' : 20px 10px 5px 30px,
 	'nav' : 10px,
 	'share' : 20px,
 	'body' : 30px,
 	'tabs' : 10px,
-	'logo' : (
+	'logo' : mq (
 		20px,
-		10px (max, bp('small'))
+		(10px 5px) (max, bp('small'))
 	),
 	'mediaQueryGutter' : (
 		50px, //*default*/
-		25px (max, 800px), //*affected by media query*/
+		(25px 50px) (max, 800px), //*affected by media query*/
 		10px (max, 700px) //*affected by media query*/
 	)
 );
