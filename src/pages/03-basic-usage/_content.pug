@@ -28,6 +28,22 @@ block content
 
         If the naming convention looks daunting, don't worry. The classes are actually quite simple when you start looking through the examples.
 
+        ### Class based system benefits
+
+        1. All the core styles are pre-written so that you can easily create new layouts by only editing the markup
+        2. The whole grid system is self contained inside one module
+        3. The order that the styles go in is set in stone (unless updated in a future version)
+        4. One set of styles that is re-used over and over rather than the same styles being repeated multiple times throughout the css leads to a smaller file size
+        5. Clearly shows what elements are a part of the grid structure, and what role those elements play from just looking at the HTML
+
+        ### Class based system downsides
+
+        1. Requires very specific markup, not ideal for CMS systems like Drupal that give very little control over the html output
+        2. Low specificity can make the styles get overidden accidentally
+        3. Column breakpoints can only be defined in the global settings
+        4. Gutter widths can only be defined in the global settings
+        5. Generates a lot of extra css rules that you will probably never use
+
     +tabs__content()
       :marked
         The mixin based system is designed so that you can control the grid layout primarily through SCSS stylesheets.
@@ -36,6 +52,21 @@ block content
 
         The classes used in the examples feature names like `mixin__cell` and `mixin__inner` to make the examples clearer. These classes are not part of the actual system though and do not need to be used in your project.
 
+        ### Mixin system benefits
+
+        1. You do not need to conform to using a specific set of html classes (great if building into a CMS that has limited HTML editing capabilities)
+        2. All the styles for a module, can be contained in the one file
+        3. The specificity of the system is easier to control
+        4. Columns can be given custom breakpoints on a case by case basis
+        6. Gutters are defined in the same file as the module that gutters are made for
+        7. You will only generate styles that you are actually using
+
+        ### Mixin system downsides
+
+        1. The order that the styles appear in is more difficult to control
+        2. Large bulks of Styles are repeated in the style sheet over and over again, gzipping should mitigate this problem though
+        3. Unless you name things appropriatly, it can be difficult to tell what elements are using the grid system and what elements are not
+        4. Styles need to be assigned to an element through the style sheet rather than the html which can make creating layouts a little bit slower
 
   +demo({
     classes: {
