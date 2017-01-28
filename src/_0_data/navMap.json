@@ -45,11 +45,10 @@
     	"title": "Vertical cell alignments"
     },
     {
-    	"title": "Controlling cell growth and shrinkage",
-      "generate":"exclusive"
+    	"title": "Controlling cell growth and shrinkage"
     },
     {
-      "title": "Features coming in future releases"
+      "title": "Change log"
     }
   ]
 }
