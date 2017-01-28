@@ -163,11 +163,29 @@
 	}
 
 	&-39 {
-  	@include grid($vertical: true, $gutter: 20px);
+  	@include grid($wrap: true);
 	}
 
 	&-40 {
-  	@include grid($vertical: true, $gutter: 20px);
+	  @include grid($grow: false, $wrap: false);
+	}
+
+	&-41 {
+  	@include grid($shrink: false, $wrap: false);
+	}
+
+	&-42 {
+  	@include grid($resize: false, $wrap: false);
+	}
+
+	&-43 {
+  	@include grid($mini: true);
+  	width: 50%;
+	}
+
+	&-44 {
+  	@include grid;
+  	width: 50%;
 	}
 
 	&__cellSpan {
@@ -184,5 +202,18 @@
 
 	&__oddOneOut {
 		align-self: flex-start;
+	}
+
+	&__noResize {
+		flex-grow: 0;
+		flex-shrink: 0;
+	}
+
+	&__noGrowth {
+		flex-grow: 0;
+	}
+
+	&__noShrink {
+		flex-shrink: 0;
 	}
 }

@@ -22,15 +22,18 @@
 	$cellSpan: false,
 	$ieFloat: false,
 	$mini: false,
-	$vertical: false
+	$vertical: false,
+	$grow: true,
+	$shrink: true,
+	$resize: default
 ){
 	box-sizing: border-box;
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	border: {style: solid; color: transparent};
 	display: flex !important;
 	align-content: stretch;
+	border-color: transparent;
 
 	@if ($vertical){
 		flex-direction: column;
@@ -69,7 +72,11 @@
 		margin: 0;
 		background-clip: padding-box!important;
 		border: 0 solid transparent;
-		flex-grow: 1;
+
+		$canGrow: $resize == true or ($grow == true and $resize == default);
+		$canShrink: $resize == true or ($shrink == true and $resize == default);
+		flex-grow: if($canGrow, 1, 0);
+		flex-shrink: if($canShrink, 1, 0);
 
 		//column widths
 		@if(type-of($cols) == number){
@@ -212,6 +219,7 @@
 
 	//grid--gutter-# styling
 	@if ($gutter != false){
+		border-style: solid;
 		> *, & {
 			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
 		}
