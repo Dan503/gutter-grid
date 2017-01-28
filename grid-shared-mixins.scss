@@ -18,12 +18,13 @@
 //Generates the grid cell gutters
 @mixin generate-gutters ($format, $gutter, $outerGutters: false){
 	margin: -$gutter;
-	border-width: $gutter 0 0 $gutter;
+	border-width: 0 $gutter $gutter 0;
 	> * {
-		border-width: 0 $gutter $gutter 0;
+		border-width: $gutter 0 0 $gutter;
 	}
 
 	.lt-ie9 & {
+		border-right-width: 0;
 		&, > * {
 			border-color: $grid-gutter-ie-fallback;
 		}
@@ -43,6 +44,18 @@
 				&-right-delayed {
 					margin-right: 0;
 				}
+
+				.lt-ie9 & {
+					&-h-delayed, &-left-delayed, &-right-delayed {
+						margin-left: -$gutter;
+					}
+				}
+			}
+
+			.lt-ie9 & {
+				&, &-h {
+					border-right-width: $gutter !important;
+				}
 			}
 		}
 
@@ -57,6 +70,20 @@
 					margin-left: 0;
 				} @else if ($outerGutters == 'right-delayed'){
 					margin-right: 0;
+				}
+			}
+
+			.lt-ie9 & {
+				@if (
+					$outerGutters == 'h-delayed' or
+					$outerGutters == 'left-delayed' or
+					$outerGutters == 'right-delayed'
+				){
+					margin-left: -$gutter;
+				}
+
+				@if ($outerGutters == true or $outerGutters == 'h'){
+					border-right-width: $gutter !important;
 				}
 			}
 		}

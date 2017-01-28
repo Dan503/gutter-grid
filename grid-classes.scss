@@ -184,9 +184,12 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			margin-right: 0;
 		}
 
-		> *, & {
-			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
+		.lt-ie9 & {
+			> *, & {
+				 border-color: $grid-gutter-ie-fallback;
+			}
 		}
+
 	}
 
 	//hasInners makes grid__inner elements take up the full height of the grid cell
