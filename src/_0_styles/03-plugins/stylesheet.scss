@@ -685,7 +685,7 @@ footer {
   padding-bottom: 60px;
 }
 
-footer .owner {
+.owner {
   background: #222;
   border: 5px solid #444;
   padding: 5px 15px;
@@ -693,14 +693,14 @@ footer .owner {
   color: #d6d6d6;
 }
 
-footer .creds small {
+.creds small {
   float: right;
   font-size: 10px;
   text-align: right;
   margin-left: 15px;
 }
 
-footer .owner .avatar {
+.owner .avatar {
   background-color: #666;
   display: block;
   margin: -19px 10px 0 0;
@@ -708,17 +708,17 @@ footer .owner .avatar {
   float: left;
 }
 
-footer .owner img {
+.owner img {
   display: block;
   border: 1px solid #2a2a2a;
   margin: 5px;
 }
 
-footer .owner p {
+.owner p {
   font-family:Georgia, serif;
 }
 
-footer .owner p a {
+.owner p a {
   font-size: 16px;
   font-style: italic;
 }
