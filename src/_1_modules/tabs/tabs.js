@@ -3,6 +3,7 @@
 
 //npm imports
 import $ from 'jquery';
+import PubSub from 'pubsub-js';
 
 //module imports
 //import { example } from 'example/example';
@@ -10,7 +11,7 @@ import $ from 'jquery';
 const //hooks
 	_module =  $('.JS-tabs'),
 	_content = $('.JS-tabs__content'),
-	_trigger = $('.JS-tabs__trigger');
+	_triggers = $('.JS-tabs__trigger');
 
 const //classes
 	active_ = '-active';
@@ -21,26 +22,50 @@ class tabs {
 		const This = this;
 		this.elem = elem;
 		this.$elem = $(elem);
-		this.$triggers = this.$elem.find(_trigger);
+		this.$triggers = this.$elem.find(_triggers);
 		this.$content = this.$elem.find(_content);
+		this.is_defaultSwitcher = this.$elem.is('#JS-tabs__defaultSelector');
 
 		this.$triggers.click(function(e){
 			e.preventDefault();
 			This.switchTab($(this));
 		});
 
-		this.$content.filter(':first-child').show();
+		if (typeof window.localStorage.activeTab !== 'undefined'){
+			this.switchTab(window.localStorage.activeTab);
+		} else {
+			this.$content.filter(':first-child').show();
+		}
+
+		if (!this.is_defaultSwitcher){
+			PubSub.subscribe('defaultSwitch', (msg,index)=>{
+				this.switchTab(index);
+			})
+		}
 	}
 
-	//Switches to the current tab
-	switchTab(_this){
-		const pos = _this.parent().index();
+	//Switches to the defined tab
+	switchTab(tab){
+
+		if ($.isNumeric(tab)){
+			console.log(this.$triggers, tab);
+			tab = this.$triggers.eq(tab);
+		}
+
+		console.log(tab);
+		const pos = tab.parent().index();
+
 
 		this.$triggers.filter('.'+active_).removeClass(active_);
-		_this.addClass(active_);
+		tab.addClass(active_);
 
 		this.$content.hide();
 		this.$content.eq(pos).show();
+
+		if (this.is_defaultSwitcher){
+			window.localStorage.activeTab = pos;
+			PubSub.publish('defaultSwitch', pos);
+		}
 	}
 }
 

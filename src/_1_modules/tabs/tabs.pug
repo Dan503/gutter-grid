@@ -23,9 +23,8 @@ mixin tabs(spec)
 	.tabs(class=spec.classes)&attributes(spec.attr).JS-tabs
 		.tabs__links.grid.grid--hasInners.grid--noMQs.grid--gutter-tabs.grid--outerGutters-bottom
 			each link, i in spec.links
-				- var activeClass = i === 0 ? '-active' : '';
 				.grid__cell
-					a.tabs__link.grid__inner.btn(href='#', class= activeClass).JS-tabs__trigger= link
+					a.tabs__link.grid__inner.btn(href='#').JS-tabs__trigger= link
 		.tabs__contentWrap
 			if block
 				block
