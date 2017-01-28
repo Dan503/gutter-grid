@@ -5,7 +5,11 @@ block content
     Alternatively, if you are using the mixin based system, you need to use a seperate mixin to the main one. It's syntax is like this
 
     ``````scss
-    @include grid__cell--span([No. columns to span], [total No. of columns], [optional place to add "!important" if you need it]);
+    @include grid__cell--span(
+      [No. columns to span],
+      [total No. of columns],
+      [optional place to add "!important" if you need it]
+    );
     ``````
 
     The first 2 parameters are required but the 3rd parameter is a completly optional parameter designed to add "!important" to the rule if you need to.

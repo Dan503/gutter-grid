@@ -23,6 +23,12 @@
 		border-width: 0 $gutter $gutter 0;
 	}
 
+	.lt-ie9 & {
+		&, > * {
+			border-color: $grid-gutter-ie-fallback;
+		}
+	}
+
 	@if ($format == 'classes'){
 		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
 		&.#{$fullPrefix}grid--outerGutters {

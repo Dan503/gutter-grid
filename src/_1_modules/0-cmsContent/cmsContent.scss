@@ -8,6 +8,10 @@ $C-dots: $C-numbers;
 .cmsContent, .cmsContent td {
 	text-align: left;
 
+	.no-flexbox & {
+		max-width: 780px;
+	}
+
 	strong, b { font-weight: $bold; }
 
 	//custom dot points do not appear in IE8 or print
