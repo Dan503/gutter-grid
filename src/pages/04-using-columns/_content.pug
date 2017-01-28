@@ -210,7 +210,7 @@ scss:`
     }
 })
   :marked
-    ### Customising the columns
+    ### Customising the columns and breakpoints
 
     If you don't like the default breakpoints or you need more columns, you can easily edit them by altering the `$grid-break-points` variable.
 
@@ -219,30 +219,28 @@ scss:`
 $grid-break-points: (
   (
   //*1 column grid*/
-  // no media query
     false
   ), (
   //*2 column grid*/
-  //* From 600px screen size and below, make the columns 100% width */
-    600px 100%,
+    600px: 100%,//* On a 600px wide screen, make the columns 100% width */
   ), (
   //*3 column grid*/
-    960px 50%,
-    600px 100%,
+    960px: 50%,
+    600px: 100%,
   ), (
   //*4 column grid*/
-    960px 50%,
-    480px 100%,
+    960px: 50%,
+    480px: 100%,
   ), (
   //*5 column grid*/
-    960px 33.33%,
-    600px 50%,
-    480px 100%,
+    960px: 33.33%,
+    600px: 50%,
+    480px: 100%,
   ), (
   //*6 column grid*/
-    960px 33.33%,
-    600px 50%,
-    480px 100%,
+    960px: 33.33%,
+    600px: 50%,
+    480px: 100%,
   )
 );
 
@@ -253,6 +251,23 @@ $grid-break-points: (
 }, {hasTabs: false})
     :marked
       These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements.
+
+  +demo({
+scss:`
+//Disable all breakpoints
+$grid-break-points: false;
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-mixin';
+@import '../node_modules/gutter-grid/grid-classes';`
+}, {hasTabs: false})
+    :marked
+      You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns when using the class based grid system.
+
+  :marked
+    ### Mixin column breakpoints
+
+    One of the strengths of the mixin version is that it can accept any number of columns without the need for the global `$grid-break-points` variable to be updated. Using anything over 6 columns will not have any default breakpoints applied to it though. Fortunately, the mixin version also features the ability to assign it custom breakpoints using the `$breakpoints` setting.
 
   +demo({
 html:`
@@ -267,23 +282,15 @@ html:`
 `,
 scss:`
 .mixin-7 {
-  @include grid(7);
+  @include grid(7, $breakpoints: (
+    960px: 25%, //On a 960px wide screen, the columns will be 25% wide
+    600px: 50%,
+    480px: 100%,
+  ));
 }`
 }, {hasTabs: false})
     :marked
-      The mixin version can have as many columns as you like without having to edit the `$grid-break-points` variable. However anything over 6 columns will not have any breakpoints applied unless you edit the `$grid-break-points` variable to include more columns.
-
-  +demo({
-scss:`
-//Disable all breakpoints
-$grid-break-points: false;
-
-@import '../node_modules/mq-scss/mq';
-@import '../node_modules/gutter-grid/grid-mixin';
-@import '../node_modules/gutter-grid/grid-classes';`
-}, {hasTabs: false})
-    :marked
-      You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns when using the class based grid system.
+      Assigning custom breakpoints to grids that contain more than 6 columns. (Mixin version only)
 
   :marked
     ### The ieFloat setting

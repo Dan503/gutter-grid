@@ -12,4 +12,27 @@ To read the full documentation go to http://gutter-grid.net
   - Improved legacy browser support
   - Reduced specificity on class based selectors for easier overriding of styles
 
-If upgrading, none of the class names have changed, however the reduced specificity will mean that you may need to update your styles to not conflict with the grid system.
+## v2.0.0 breaking changes
+
+  - Reduced specificity in class names
+  - New format for assigning column break points
+
+If upgrading, none of the class names have changed, however the reduced specificity will mean that you may need to update your styles to not conflict with the new grid system.
+
+The new format to the column break points isn't much different to the original, it just has a colon in the middle of the 2 values now.
+
+`````
+(
+//*2 column grid*/
+  600px: 100%
+)
+`````
+
+instead of
+
+`````
+(
+//*2 column grid*/
+  600px 100%
+)
+`````

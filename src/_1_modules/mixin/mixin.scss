@@ -28,7 +28,11 @@
 
 
 	&-7 {
-		@include grid(7);
+		@include grid(7, $breakpoints: (
+			960px: 25%,
+			600px: 50%,
+			480px: 100%,
+		));
 	}
 
 	&-8 {
@@ -44,7 +48,7 @@
 	}
 
 	&-11 {
-  	@include grid(4, $MQs: false, $wrap: true);
+		@include grid(4, $MQs: false, $wrap: true);
 	}
 
 	&-12 {
@@ -54,9 +58,9 @@
 	&-13 {
 
 		$mq-gutter: (
-		  50px, //*default gutter width*/
-		  25px (max, 800px), //*gutter width at 800px and below*/
-		  10px (max, 700px) //*gutter width at 700px and below*/
+			50px, //*default gutter width*/
+			25px (max, 800px), //*gutter width at 800px and below*/
+			10px (max, 700px) //*gutter width at 700px and below*/
 		);
 
 		@include grid(3, $gutter: $mq-gutter, $wrap: true, $MQs: false);
@@ -67,133 +71,133 @@
 	}
 
 	&-15 {
-	  @include grid(3, $outerGutters: h, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: h, $gutter: 20px, $wrap: true);
 	}
 
 	&-16 {
-	  @include grid(3, $outerGutters: v, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: v, $gutter: 20px, $wrap: true);
 	}
 
 	&-17 {
-	  @include grid(3, $outerGutters: top, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: top, $gutter: 20px, $wrap: true);
 	}
 
 	&-18 {
-	  @include grid(3, $outerGutters: bottom, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: bottom, $gutter: 20px, $wrap: true);
 	}
 
 	&-19 {
-	  @include grid(3, $outerGutters: left, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: left, $gutter: 20px, $wrap: true);
 	}
 
 	&-20 {
-	  @include grid(3, $outerGutters: right, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: right, $gutter: 20px, $wrap: true);
 	}
 
 	&-21 {
-	  @include grid(3, $outerGutters: h-delayed, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: h-delayed, $gutter: 20px, $wrap: true);
 	}
 
 	&-22 {
-	  @include grid(3, $outerGutters: left-delayed, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: left-delayed, $gutter: 20px, $wrap: true);
 	}
 
 	&-23 {
-	  @include grid(3, $outerGutters: right-delayed, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: right-delayed, $gutter: 20px, $wrap: true);
 	}
 
 	&-24 {
-	  @include grid(2, $inners: true);
+		@include grid(2, $inners: true);
 	}
 
 	&-25 {
-	  @include grid(2, $inners: true, $gutter: 20px);
+		@include grid(2, $inners: true, $gutter: 20px);
 	}
 
 	&-26 {
-	  @include grid(3, $wrap: true);
+		@include grid(3, $wrap: true);
 	}
 
 	&-27 {
-	  @include grid(3, $align: left, $wrap: true);
+		@include grid(3, $align: left, $wrap: true);
 	}
 
 	&-28 {
-	  @include grid(3, $align: right, $wrap: true);
+		@include grid(3, $align: right, $wrap: true);
 	}
 
 	&-29 {
-	  @include grid(3, $align: center, $wrap: true);
+		@include grid(3, $align: center, $wrap: true);
 	}
 
 	&-30 {
-	  @include grid(3, $space: between, $wrap: true);
+		@include grid(3, $space: between, $wrap: true);
 	}
 
 	&-31 {
-	  @include grid(3, $space: around, $wrap: true);
+		@include grid(3, $space: around, $wrap: true);
 	}
 
 	&-32 {
-	  @include grid($space: around, $inners: true);
+		@include grid($space: around, $inners: true);
 	}
 
 	&-33 {
-  	@include grid($vertical: true, $gutter: 20px);
+		@include grid($vertical: true, $gutter: 20px);
 	}
 
 	&-34 {
-  	@include grid($vAlign:top);
+		@include grid($vAlign:top);
 	}
 
 	&-35 {
-  	@include grid($vAlign:bottom);
+		@include grid($vAlign:bottom);
 	}
 
 	&-36 {
-  	@include grid($vAlign:center);
+		@include grid($vAlign:center);
 	}
 
 	&-37 {
-  	@include grid($vAlign: center, $inners: true, $gutter: 20px);
+		@include grid($vAlign: center, $inners: true, $gutter: 20px);
 	}
 
 	&-38 {
-  	@include grid(3, $inners: true, $gutter: 20px);
+		@include grid(3, $inners: true, $gutter: 20px);
 	}
 
 	&-39 {
-  	@include grid($wrap: false);
+		@include grid($wrap: false);
 	}
 
 	&-40 {
-	  @include grid($grow: false, $wrap: false);
+		@include grid($grow: false, $wrap: false);
 	}
 
 	&-41 {
-  	@include grid($shrink: false, $wrap: false);
+		@include grid($shrink: false, $wrap: false);
 	}
 
 	&-42 {
-  	@include grid($resize: false, $wrap: false);
+		@include grid($resize: false, $wrap: false);
 	}
 
 	&-43 {
-  	@include grid($mini: true);
-  	width: 50%;
+		@include grid($mini: true);
+		width: 50%;
 	}
 
 	&-44 {
-  	@include grid;
-  	width: 50%;
+		@include grid;
+		width: 50%;
 	}
 
 	&-45 {
-  	@include grid(3, $ieFloat: true);
+		@include grid(3, $ieFloat: true);
 	}
 
 	&__cellSpan {
-	  @include grid__cell--span(3, 4);
+		@include grid__cell--span(3, 4);
 	}
 
 	&__wrapper {

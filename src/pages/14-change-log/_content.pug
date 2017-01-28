@@ -5,6 +5,31 @@ block content
     - **Gutters with different vertical vs horizontal sizes**<br/>
       You don't always want exactly the same size gutters vertically as you have horizontally. You might want to have the vertical gutters that are more spaced out than the horizontal gutters. This upgrade will allow you to do that by defining 2 gutter widths when defining gutters instead of just 1.
 
+    ### v2.0.0 Breaking changes
+
+      - Reduced specificity in class names
+      - New format for assigning column break points
+
+    If upgrading, none of the class names have changed, however the reduced specificity will mean that you may need to update your styles to not conflict with the new grid system.
+
+    The new format to the column break points isn't much different to the original, it just has a colon in the middle of the 2 values now.
+
+    `````
+    (
+    //*2 column grid*/
+      600px: 100%
+    )
+    `````
+
+    instead of
+
+    `````
+    (
+    //*2 column grid*/
+      600px 100%
+    )
+    `````
+
     ### Previous and current version updates
 
     - **v2.0.0**<br/>
