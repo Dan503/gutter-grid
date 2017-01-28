@@ -313,7 +313,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		&--align {
 			&-left, &-center, &-right {
 				display: block;
-				> * { display: inline-block; }
+				> * {
+					display: inline-block;
+					float: none;
+					margin-right: -5px!important;
+				}
 			}
 			&-left {
 				text-align: left;
@@ -323,6 +327,18 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			}
 			&-right {
 				text-align: right;
+			}
+		}
+
+		&--space {
+			&-between, &-around {
+				display: block;
+				text-align: center;
+				> * {
+					display: inline-block;
+					float: none;
+					margin-right: -5px!important;
+				}
 			}
 		}
 

@@ -167,37 +167,51 @@
 	}
 
 	//quick access to left,center and right alignments
-	@if ($align) {
+	@if ($align or $space) {
 		> * {
 			flex-grow: 0;
+		}
 
-			.no-flexbox & {
-				display: inline-block;
+		@if ($align){
+			@if ($align == 'left') {
+				justify-content: flex-start;
+			} @else if ($align == 'center') {
+				justify-content: center;
+			} @else if ($align == 'right') {
+				justify-content: flex-end;
+			} @else {
+				@warn 'invalid value for $align: "#{$align}". Valid values: left, center, right.'
 			}
 		}
 
-		@if ($align == 'left') {
-			justify-content: flex-start;
+		//quick access to space-between and space-around
+		@if ($space) {
+			> * { flex-grow: 0; }
 
-			.no-flexbox & {
-				text-align: left;
+			@if ($space == 'between') {
+				justify-content: space-between;
+			} @else if ($space == 'around') {
+				justify-content: space-around;
+			} @else {
+				@warn 'invalid value for $space: "#{$space}". Valid values: between, around.'
 			}
-		} @else if ($align == 'center') {
-			justify-content: center;
+		}
 
-			.no-flexbox & {
+		.no-flexbox & {
+			display: block;
+			@if ($align == 'left') {
+				text-align: left;
+			} @else if ($align == 'right') {
+				text-align: right;
+			} @else {
 				text-align: center;
 			}
-		} @else if ($align == 'right') {
-			justify-content: flex-end;
-
-			.no-flexbox & {
-				text-align: right;
+			> * {
+				display: inline-block;
+				float: none;
+				margin-right: -5px!important;//removes space bar space
 			}
-		} @else {
-			@warn 'invalid value for $align: "#{$align}". Valid values: left, center, right.'
 		}
-
 	}
 
 	//vertical alignment of cells
@@ -210,19 +224,6 @@
 			align-items: flex-end;
 		} @else {
 			@warn 'invalid value for $vAlign: "#{$vAlign}". Valid values: top, center, bottom.'
-		}
-	}
-
-	//quick access to space-between and space-around
-	@if ($space) {
-		> * { flex-grow: 0; }
-
-		@if ($space == 'between') {
-			justify-content: space-between;
-		} @else if ($space == 'around') {
-			justify-content: space-around;
-		} @else {
-			@warn 'invalid value for $space: "#{$space}". Valid values: between, around.'
 		}
 	}
 
