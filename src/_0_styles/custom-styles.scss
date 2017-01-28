@@ -178,3 +178,9 @@ p.tagline { padding: 15px 20px; margin: 0; }
 		}
 	}
 }
+
+.no-csstransforms {
+	.blc, .trc {
+		display: none;
+	}
+}

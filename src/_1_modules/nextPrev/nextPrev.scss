@@ -8,10 +8,14 @@
 	}
 	&__link {
 		.-next & {
-			padding-right: 50px;
+			.csstransforms & {
+				padding-right: 50px;
+			}
 		}
 		.-prev & {
-			padding-left: 50px;
+			.csstransforms & {
+				padding-left: 50px;
+			}
 		}
 		&:hover, &:focus {
 			background-color: #f0f0f0;
@@ -43,6 +47,10 @@
 			&:before {
 				@include MG-chevron('left',#000, 15px, 1px);
 			}
+		}
+
+		.no-csstransforms & {
+			display: none;
 		}
 	}
 }

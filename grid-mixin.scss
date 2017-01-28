@@ -107,15 +107,24 @@
 				}
 			}
 		}
+
+		//grid__inner styling
+		> * {
+			box-sizing: border-box;
+		}
 	}
 
 	//tabular backup for IE9 and below
 	.no-flexbox & {
 		display: table !important;
-		width: 100%;
+		@if (not $mini){
+			width: 100%;
+		}
 		> * {
 			display: table-cell;
 			vertical-align: top;
+			float: if($ieFloat == true or $wrap == true, left, none);
+
 			@if ($inners){
 				> * { display: block; }
 			}
@@ -153,8 +162,8 @@
 	}
 
 	//allows IE to use floats instead of display table without affecting modern browsers
-	@if ($ieFloat) {
-		@include M-ieFloat;
+	@if ($ieFloat == true or $grow == false or $resize == false) {
+		@include ieFloat;
 	}
 
 	//quick access to left,center and right alignments
@@ -163,7 +172,7 @@
 			flex-grow: 0;
 
 			.no-flexbox & {
-				display: inline-block !important;
+				display: inline-block;
 			}
 		}
 

@@ -18,12 +18,12 @@ mixin demo__tab(demoMarkup)
 			!=html
 
 	if isObj
-		.demo__grid.grid(class=`grid--cols-${countKeys(demoMarkup, {maxDepth: 1})}`)
+		.demo__grid.grid.grid--ieFloat(class=`grid--cols-${countKeys(demoMarkup, {maxDepth: 1})}`)
 			each markup, type in demoMarkup
 				- markup = type === 'html' ? html : markup;
-				.demo__markup.demo__segment.grid__cell(class=type)
-					pre
-						code(class=type)= markup
+				.grid__cell.demo__markup.demo__segment(class=type)
+						pre
+							code(class=type)= markup
 	else
 		.demo__markup.demo__segment
 			pre

@@ -163,7 +163,7 @@
 	}
 
 	&-39 {
-  	@include grid($wrap: true);
+  	@include grid($wrap: false);
 	}
 
 	&-40 {

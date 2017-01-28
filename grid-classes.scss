@@ -225,7 +225,9 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	}
 
 	&--noGrowth {
-		> * { flex-grow: 0; }
+		> * {
+			flex-grow: 0;
+		}
 	}
 	&--noShrink {
 		> * { flex-shrink: 0; }
@@ -334,10 +336,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				width: 100%;
 			}
 		}
+
 	}
 
 	//allows IE to use floats instead of display table without affecting modern browsers
-	&--ieFloat {
+	&--ieFloat, &--noGrowth, &--noResize {
 		@include ieFloat;
 	}
 
