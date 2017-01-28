@@ -1,24 +1,40 @@
 block content
   :marked
-    A note on the examples. Any class that doesn't feature `grid` at the start of it's name is not part of the grid system. The minimum 100px height on grid cells is not part of the grid system either.
+    Please select weather you would prefer to use the class based system or the mixin based system (This sets which version is shown by default in the documentation examples)
 
-    The grid system classes follow a pattern based on the BEM naming convention with the exception that it uses camelCase when necessary to retain clear grouping:
+  +tabs({
+    links: ['Classes', 'Mixin'],
+    attr: {id:'#JS-tabs__defaultSelector'}
+  })
+    +tabs__content()
+      :marked
+        The class based system is designed so that you can control the grid layout primarily through the html markup
 
-    - **`grid`** initiallizes the grid functionality and acts as the grid module declaration
+        Any class that doesn't feature `grid` at the start of it's name is not part of the grid system. The minimum 100px height on grid cells is not part of the grid system either.
 
-    - **`grid__elementName`** double underscores in a class name represent an element of the grid. Each element of a grid always goes in the same position relative to it's relevent `grid` class.
+        The grid system classes follow a pattern based on the BEM naming convention with the exception that it uses camelCase when necessary to retain clear grouping:
 
-    - **`grid--settingName`** grid settings are represented with double dashes before the setting name. Grid settings alter the functionality of how the whole grid behaves.
+        - **`grid`** initializes the grid functionality and acts as the grid module declaration
 
-    - **`grid--settingName-specifierName`** If a setting has a specifier, the setting name defines what setting is being set. The specifier sets the value of the setting and is represented by a single dash before the specifier name.
+        - **`grid__elementName`** double underscores in a class name represent an element of the grid. Each element of a grid always goes in the same position relative to it's relevant `grid` class.
 
-    - **`grid__elementName--settingName`** a setting name after a grid element name is a setting that applies only to that grid element.
+        - **`grid--settingName`** grid settings are represented with double dashes before the setting name. Grid settings alter the functionality of how the whole grid behaves.
 
-    - **`grid__elementName--settingName-specifierName`** cell based settings can have specifiers as well.
+        - **`grid--settingName-specifierName`** If a setting has a specifier, the setting name defines what setting is being set. The specifier sets the value of the setting and is represented by a single dash before the specifier name.
 
-    The `grid__cell` classes may seem uneccessary but they help keep specificity down, they are needed for compatibility with older browsers, and they are also needed for some of the more advanced functionality in the grid system. `grid__cell` classes must always be direct decendents of a parent `grid` class.
+        - **`grid__elementName--settingName`** a setting name after a grid element name is a setting that applies only to that grid element.
 
-    If the naming convention looks daunting, don't worry. The classes are actually quite simple when you start looking through the examples.
+        - **`grid__elementName--settingName-specifierName`** cell based settings can have specifiers as well.
+
+        If the naming convention looks daunting, don't worry. The classes are actually quite simple when you start looking through the examples.
+
+    +tabs__content()
+      :marked
+        The mixin based system is designed so that you can control the grid layout primarily through SCSS stylesheets.
+
+        While it does require a specific HTML structure to work, it does not require any specific HTML classes to be added to elements. This makes the mixin version ideal for CMS's like Drupal that do not give very much control over the markup that is output.
+
+        The classes used in the examples feature names like `mixin__cell` and `mixin__inner` to make the examples clearer. These classes are not part of the actual system though and do not need to be used in your project.
 
 
   +demo({
