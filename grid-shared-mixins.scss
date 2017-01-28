@@ -18,9 +18,9 @@
 //Generates the grid cell gutters
 @mixin generate-gutters ($format, $gutter, $outerGutters: false){
 	margin: -$gutter;
-	border-width: 0 $gutter $gutter 0;
+	border-width: $gutter $gutter 0 0;
 	> * {
-		border-width: $gutter 0 0 $gutter;
+		border-width: 0 0 $gutter $gutter;
 	}
 
 	.lt-ie9 & {
