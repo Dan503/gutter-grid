@@ -77,7 +77,7 @@ head
 		link(rel='stylesheet', href=basePath+'/assets/styles/main.css')
 		<!--<![endif]-->
 
-		<!--[if lte IE8]>
+		<!--[if lt IE 9]>
 		link(rel='stylesheet', href=basePath+'/assets/styles/noMQs-main.css')
 		<![endif]-->
 
@@ -90,7 +90,7 @@ body
 		include ../../tmp/svg-symbols.svg
 
 	//- appears in IE <= 9
-	<!--[if lte IE9]>
+	<!--[if lt IE 9]>
 	+alert({type:'error'})
 		p You are using an #[strong outdated] browser. Please #[a(href="http://browsehappy.com/") upgrade your browser] to improve your experience.
 	<![endif]-->
@@ -153,11 +153,18 @@ body
 					small
 						| theme by #[a(href='https://twitter.com/jonrohan/') Jon Rohan] (although lots of alterations have been made to it)
 
+
 	script(src=basePath+'/assets/scripts/plugins/highlight.pack.js')
 	script(type='text/javascript').
 		hljs.initHighlightingOnLoad();
 
 	script(src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous")
-	script(src=basePath+'/assets/scripts/main.js')
+	<!--[if lt IE 9]>
+	//I couldn't get main.js to work in IE so it get's it's on version
+	script(src=basePath+'/assets/scripts/ie8-main.js')
+	<![endif]-->
 
+	<!--[if gt IE 8]><!-->
+	script(src=basePath+'/assets/scripts/main.js')
+	<!--<![endif]-->
 </html>

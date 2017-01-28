@@ -98,10 +98,14 @@
     "clean-deps": "rimraf node_modules"
   },
   "browserify": {
-    "transform": [ "browserify-shim" ]
+    "transform": [
+      "browserify-shim"
+    ]
   },
   "browserify-shim": {
-    "jquery": { "exports": "global:$" }
+    "jquery": {
+      "exports": "global:$"
+    }
   },
   "engines": {
     "node": ">=0.12.0"

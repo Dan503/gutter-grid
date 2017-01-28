@@ -34,7 +34,7 @@ class tabs {
 		if (typeof window.localStorage.activeTab !== 'undefined'){
 			this.switchTab(window.localStorage.activeTab);
 		} else {
-			this.$content.filter(':first-child').show();
+			this.switchTab(0);
 		}
 
 		if (!this.is_defaultSwitcher){
@@ -48,11 +48,9 @@ class tabs {
 	switchTab(tab){
 
 		if ($.isNumeric(tab)){
-			console.log(this.$triggers, tab);
 			tab = this.$triggers.eq(tab);
 		}
 
-		console.log(tab);
 		const pos = tab.parent().index();
 
 
