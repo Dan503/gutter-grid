@@ -56,12 +56,9 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		//Applies the media queries for the break points
 		&:not(.#{$fullPrefix}grid--noMQs) {
 			@if ($breaks != false) {
-				@for $y from 1 through length($breaks) {
-					$MQ-breakData : nth($breaks, $y);
-					$MQ-screenWidth : nth($MQ-breakData, 1);
-					$MQ-columnWidth : nth($MQ-breakData, 2);
-					@include mq(max, $MQ-screenWidth){
-						> * { width: $MQ-columnWidth; }
+				@each $BP-deviceWidth, $V-columnWidth in $breaks {
+					@include mq(max, $BP-deviceWidth){
+						> * { width: $V-columnWidth; }
 					}
 				}
 			}

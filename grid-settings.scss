@@ -25,25 +25,25 @@ $grid-break-points: (
 		false
 	), (
 	//*2 column grid*/
-		600px 100%,//* At the "mobile" screen size, make the columns 100% width */
+		600px: 100%,//* At the "mobile" screen size, make the columns 100% width */
 	), (
 	//*3 column grid*/
-		960px 50%,
-		600px 100%,
+		960px: 50%,
+		600px: 100%,
 	), (
 	//*4 column grid*/
-		960px 50%,
-		480px 100%,
+		960px: 50%,
+		480px: 100%,
 	), (
 	//*5 column grid*/
-		960px 33.33%,
-		600px 50%,
-		480px 100%,
+		960px: 33.33%,
+		600px: 50%,
+		480px: 100%,
 	), (
 	//*6 column grid*/
-		960px 33.33%,
-		600px 50%,
-		480px 100%,
+		960px: 33.33%,
+		600px: 50%,
+		480px: 100%,
 	)
 ) !default;
 
