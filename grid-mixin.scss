@@ -239,6 +239,10 @@
 			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
 		}
 
+		@if (type-of($gutter) == 'string' and $gutter != 'mq'){
+			$gutter: map-get($grid-cell-gutters, $gutter);
+		}
+
 		@if (nth($gutter,1) == 'mq') {
 			@each $value in nth($gutter,2) {
 				@if (length($value) > 1){

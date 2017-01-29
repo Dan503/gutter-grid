@@ -50,7 +50,7 @@
 	}
 
 	&-12 {
-		 @include grid(3, $gutter: 20px 30px, $wrap: true);
+		 @include grid(3, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-13 {
