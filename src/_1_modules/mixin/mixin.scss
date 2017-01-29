@@ -54,54 +54,47 @@
 	}
 
 	&-13 {
-
-		$mq-gutter: mq (
-			50px, //*default gutter width*/
-			(30px 20px) (max, 800px), //*gutter width at 800px and below*/
-			10px (max, 700px) //*gutter width at 700px and below*/
-		);
-
-		@include grid(3, $gutter: $mq-gutter, $wrap: true, $MQs: false);
+		@include grid(3, $gutter: 'mediaQueryGutter', $wrap: true, $MQs: false);
 	}
 
 	&-14 {
-		 @include grid(3, $outerGutters: true, $gutter: 20px, $wrap: true);
+		 @include grid(3, $outerGutters: true, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-15 {
-		@include grid(3, $outerGutters: h, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: h, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-16 {
-		@include grid(3, $outerGutters: v, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: v, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-17 {
-		@include grid(3, $outerGutters: top, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: top, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-18 {
-		@include grid(3, $outerGutters: bottom, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: bottom, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-19 {
-		@include grid(3, $outerGutters: left, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: left, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-20 {
-		@include grid(3, $outerGutters: right, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: right, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-21 {
-		@include grid(3, $outerGutters: h-delayed, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: h-delayed, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-22 {
-		@include grid(3, $outerGutters: left-delayed, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: left-delayed, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-23 {
-		@include grid(3, $outerGutters: right-delayed, $gutter: 20px, $wrap: true);
+		@include grid(3, $outerGutters: right-delayed, $gutter: 'moduleName', $wrap: true);
 	}
 
 	&-24 {
@@ -109,7 +102,7 @@
 	}
 
 	&-25 {
-		@include grid(2, $inners: true, $gutter: 20px);
+		@include grid(2, $inners: true, $gutter: 'moduleName');
 	}
 
 	&-26 {
@@ -141,7 +134,7 @@
 	}
 
 	&-33 {
-		@include grid($vertical: true, $gutter: 20px);
+		@include grid($vertical: true, $gutter: 'moduleName');
 	}
 
 	&-34 {
@@ -157,11 +150,11 @@
 	}
 
 	&-37 {
-		@include grid($vAlign: center, $inners: true, $gutter: 20px);
+		@include grid($vAlign: center, $inners: true, $gutter: 'moduleName');
 	}
 
 	&-38 {
-		@include grid(3, $inners: true, $gutter: 20px);
+		@include grid(3, $inners: true, $gutter: 'moduleName');
 	}
 
 	&-39 {
@@ -192,6 +185,10 @@
 
 	&-45 {
 		@include grid(3, $ieFloat: true);
+	}
+
+	&-46 {
+  	@include grid(3, $gutter: 'mixedSizeGutter', $wrap: true);
 	}
 
 	&__cellSpan {
