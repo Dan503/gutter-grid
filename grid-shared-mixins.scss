@@ -21,26 +21,7 @@
 	$gutterCount: length($gutter);
 
 	$g1: 1;
-	$g2: 1;
-	$g3: 1;
-	$g4: 1;
-
-	@if ($gutterCount > 1){
-		$g2: 2;
-		$g3: 2;
-		$g4: 2;
-	}
-
-	@if ($gutterCount > 2){
-		$g3: 3;
-		$g4: 3;
-	}
-
-	@if ($gutterCount > 3){
-		$g4: 4;
-	}
-
-	@debug $gutterCount;
+	$g2: if($gutterCount > 1, 2, 1);
 
 	$gutterSet: map-get((
 		1: (
@@ -55,18 +36,6 @@
 			bottom: nth($gutter, $g1),
 			left: nth($gutter, $g2),
 		),
-		3: (
-			top: nth($gutter, $g1),
-			right: nth($gutter, $g2),
-			bottom: nth($gutter, $g3),
-			left: nth($gutter, $g2),
-		),
-		4: (
-			top: nth($gutter, $g1),
-			right: nth($gutter, $g2),
-			bottom: nth($gutter, $g3),
-			left: nth($gutter, $g4),
-		)
 	), $gutterCount);
 
 	$gutter-top: map-get($gutterSet, top);
@@ -75,10 +44,8 @@
 	$gutter-left: map-get($gutterSet, left);
 
 	$margin: map-get((
-		1: -$gutter,
+		1: -$gutter-top,
 		2: (-$gutter-top) (-$gutter-right),
-		3: (-$gutter-top) (-$gutter-right) (-$gutter-bottom),
-		4: (-$gutter-top) (-$gutter-right) (-$gutter-bottom) (-$gutter-left),
 	), $gutterCount);
 
 	margin: $margin;
@@ -94,10 +61,11 @@
 		}
 	}
 
+	$mq-width: $grid-page-width + $gutter-left + $gutter-right;
+
 	@if ($format == 'classes'){
 		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
 		&.#{$fullPrefix}grid--outerGutters {
-			$mq-width: $grid-page-width + $gutter-left + $gutter-right;
 			@include mq(max, ($mq-width)){
 				&-h-delayed {
 					margin-left: 0;
@@ -127,7 +95,7 @@
 	} @else if ($format == 'mixin') {
 		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
 		@if($outerGutters){
-			@include mq(max, ($grid-page-width + ($gutter * 2))){
+			@include mq(max, $mq-width){
 				@if($outerGutters == 'h-delayed'){
 					margin-left: 0;
 					margin-right: 0;

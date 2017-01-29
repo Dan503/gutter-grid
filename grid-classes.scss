@@ -139,16 +139,17 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 	@each $class, $gutter in $grid-cell-gutters {
 		&--gutter-#{$class} {
-			@if (type-of($gutter) == 'list') {
-				@each $value in $gutter {
+			@if (nth($gutter,1) == 'mq') {
+				@each $value in nth($gutter,2) {
 					@if (length($value) > 1){
 						$gutterSize: nth($value,1);
 						$mediaQuery: nth($value,2);
+
 						@include mq($mediaQuery){
 							@include generate-gutters('classes', $gutterSize);
 						}
 					} @else {
-						@include generate-gutters('classes', $value);
+					 	@include generate-gutters('classes', $value);
 					}
 				}
 			} @else {
