@@ -95,7 +95,7 @@
 			width: $columnWidth;
 
 			//Applies the media queries for the break points
-			@if($MQs) {
+			@if($MQs or $breakpoints != default) {
 				@include generate-column-breakpoints($breaks);
 			}
 			@if ($wrap == true) {
