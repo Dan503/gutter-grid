@@ -97,8 +97,10 @@
 			//Applies the media queries for the break points
 			@if($MQs) {
 				@if ($breaks != false) {
-					@each $BP-deviceWidth, $V-columnWidth in $breaks {
-						@include mq(max, $BP-deviceWidth){
+					@each $V-columnWidth, $BP-deviceWidth in $breaks {
+						//media query defaults to max-width if only a pixel value is given
+						$mq: if(length($BP-deviceWidth) > 1, $BP-deviceWidth, (max, $BP-deviceWidth));
+						@include mq($mq){
 							width: $V-columnWidth;
 						}
 					}
