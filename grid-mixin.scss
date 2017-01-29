@@ -239,8 +239,12 @@
 			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
 		}
 
-		@if (type-of($gutter) == 'string' and $gutter != 'mq'){
-			$gutter: map-get($grid-cell-gutters, $gutter);
+		@if (type-of($gutter) == 'string') {
+			@if (map-get($grid-cell-gutters, $gutter)){
+				$gutter: map-get($grid-cell-gutters, $gutter);
+			} @else {
+				@warn '"#{$gutter}" was not found in the $grid-cell-gutters variable';
+			}
 		}
 
 		@if (nth($gutter,1) == 'mq') {
