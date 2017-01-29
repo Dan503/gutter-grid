@@ -41,7 +41,7 @@ scss: `
 })
 
   :marked
-    To ensure that cells take up only 50% width each, add a `grid--cols-2` class to the same element as the `grid` class.
+    To ensure that cells take up only 50% width each, add a `grid--cols-2` class to the same element as the `grid` class if using the class system. If using the mixin system, add a `2` as the first parameter.
 
   +demo({
     classes: {
@@ -81,10 +81,10 @@ scss: `
     }
 })
     :marked
-      The previous example but adding the `grid--cols-2` class
+      The previous example but with the grid set to 2 columns
 
   :marked
-    The added bonus of using column classes is that there are baked in media queries for typical break points. This lets you build your site layout and not have to worry as much about making it mobile friendly.
+    The added bonus of assigning columns to a grid is that there are baked in media queries for typical break points. This lets you build your site layout and not have to worry as much about making it mobile friendly.
 
   +demo({
     classes: {
@@ -216,31 +216,32 @@ scss:`
 
   +demo({
 scss:`
+//These are the default breakpoints
 $grid-break-points: (
   (
   //*1 column grid*/
     false
   ), (
   //*2 column grid*/
-    600px: 100%,//* On a 600px wide screen, make the columns 100% width */
+    100%: 600px,//* At the "mobile" screen size, make the columns 100% width */
   ), (
   //*3 column grid*/
-    960px: 50%,
-    600px: 100%,
+    50% : (max, 600px),//you can use mq-scss syntax to define your own media queries
+    100% : (max, 600px),
   ), (
   //*4 column grid*/
-    960px: 50%,
-    480px: 100%,
+    50% : 960px,
+    100% : 480px,
   ), (
   //*5 column grid*/
-    960px: 33.33%,
-    600px: 50%,
-    480px: 100%,
+    33.33% : 960px,
+    50% : 600px,
+    100% : 480px,
   ), (
   //*6 column grid*/
-    960px: 33.33%,
-    600px: 50%,
-    480px: 100%,
+    33.33% : 960px,
+    50% : 600px,
+    100% : 480px,
   )
 );
 
@@ -251,6 +252,9 @@ $grid-break-points: (
 }, {hasTabs: false})
     :marked
       These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements.
+
+  :marked
+    Note that you can use [mq-scss](https://www.npmjs.com/package/mq-scss) syntax to define custom media queries. This means that you can define the column break points using just about any media query you like. Taking a mobile first `min-width` approach will break legacy browser support though unless you have [UnMQ](https://github.com/jonathantneal/postcss-unmq) integrated into your build process.
 
   +demo({
 scss:`
@@ -283,14 +287,17 @@ html:`
 scss:`
 .mixin-7 {
   @include grid(7, $breakpoints: (
-    960px: 25%, //On a 960px wide screen, the columns will be 25% wide
-    600px: 50%,
-    480px: 100%,
+    25% : 960px, //On a 960px wide screen or below, the columns will be 25% wide
+    50% : (max, 600px), //you can use mq-scss syntax here as well
+    100% : 480px,
   ));
 }`
 }, {hasTabs: false})
     :marked
       Assigning custom breakpoints to grids that contain more than 6 columns. (Mixin version only)
+
+  :marked
+    Note that you can use mq-scss syntax here if you like as well.
 
   :marked
     ### The ieFloat setting
