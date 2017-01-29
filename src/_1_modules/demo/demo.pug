@@ -11,11 +11,16 @@ include ../tabs/tabs
 mixin demo__tab(demoMarkup)
 	-var countKeys = require('count-keys');
 	-var isObj = typeof demoMarkup === 'object' && !Array.isArray(demoMarkup);
-	-var html = isObj ? render(demoMarkup.html) : render(demoMarkup);
+	-var markupString = isObj ? demoMarkup.html : demoMarkup;
+	-var html = render(markupString);
 
 	if isObj && demoMarkup.html || !isObj
 		.demo__result.demo__segment
 			!=html
+
+	//- I need to hide the TK-noDots class from users (hacky fix)
+	- markupString = markupString ? markupString.replace('.TK-noDots', '') : markupString;
+	- html = render(markupString);
 
 	if isObj
 		.demo__grid.grid.grid--ieFloat(class=`grid--cols-${countKeys(demoMarkup, {maxDepth: 1})}`)
