@@ -55,13 +55,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 		//Applies the media queries for the break points
 		&:not(.#{$fullPrefix}grid--noMQs) {
-			@if ($breaks != false) {
-				@each $BP-deviceWidth, $V-columnWidth in $breaks {
-					@include mq(max, $BP-deviceWidth){
-						> * { width: $V-columnWidth; }
-					}
-				}
-			}
+			@include generate-column-breakpoints($breaks);
 		}
 		.no-flexwrap &.#{$fullPrefix}grid--wrap > * {
 			@if ($i > 2) {

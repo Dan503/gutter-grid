@@ -8,12 +8,13 @@ To read the full documentation go to http://gutter-grid.net
 
 ## New in version 2.0.0
 
-  - Gutter Grid now comes in mixin flavour
+  - Gutter Grid now comes in mixin flavour!
   - Gutters can now have different vertical vs horizontal gutter widths
+  - Column media queries can now take [mq-scss](https://www.npmjs.com/package/mq-scss) syntax for defining completely custom breakpoints
   - Improved legacy browser support
   - Reduced specificity on class based selectors for easier overriding of styles
 
-## v2.0.0 breaking changes
+## v2.0.0 Breaking changes
 
 ### Reduced specificity in class names
 
@@ -21,21 +22,25 @@ If upgrading, none of the class names have changed, however the reduced specific
 
 ### New format for assigning column break points
 
-The new format to the column break points isn't much different to the original, it just has a colon in the middle of the 2 values now.
+The new format to the column break points is a bit different to the original. before it was a list of screen-sizes then column widths with a space in between each one.
 
 Version 1.x
 
 `````
 (
-  600px 100%
+  600px 100%,
 )
 `````
+
+Column width is now stated first, and screen width is stated second. By default, the screen width will be calculated as a `max-width` media query. However, you can now provide [mq-scss](https://www.npmjs.com/package/mq-scss) syntax as an alternative to stating a screen pixel value width. This means that you can define the column break points using just about any media queries you like. Taking a mobile first `min-width` approach will break legacy browser support though unless you have [UnMQ](https://github.com/jonathantneal/postcss-unmq) integrated into your build process.
 
 Version 2.x
 
 `````
 (
-  600px: 100%
+  100% : 600px, //stating a max-width pixel value
+  //or
+  100% : (max, 600px), //providing an mq-scss media query
 )
 `````
 
