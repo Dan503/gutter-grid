@@ -21,6 +21,8 @@ export default function(localModules){
 		let returnVal = '';
 		for (let variable in modules){
 			let path = modules[variable];
+			//removes any dashes that were in the file name from the variable name
+			variable = variable.replace(/-/g,'');
 
 			let code = {
 

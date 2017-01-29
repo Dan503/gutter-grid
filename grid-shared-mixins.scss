@@ -1,0 +1,136 @@
+
+//switches IE (and other non-flexbox friendly browsers) to using float mode
+@mixin ieFloat {
+	.no-flexwrap & {
+		display: block;
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		& > * {
+			float: left;
+			display: block;
+		}
+	}
+}
+
+@mixin generate-column-breakpoints ($breaks){
+	@if ($breaks != false) {
+		@each $V-columnWidth, $BP-deviceWidth in $breaks {
+			//media query defaults to max-width if only a pixel value is given
+			$mq: if(length($BP-deviceWidth) > 1, $BP-deviceWidth, (max, $BP-deviceWidth));
+			@include mq($mq){
+				width: $V-columnWidth;
+			}
+		}
+	}
+}
+
+//Generates the grid cell gutters
+@mixin generate-gutters ($format, $gutter, $outerGutters: false){
+
+	$gutterCount: length($gutter);
+
+	$g1: 1;
+	$g2: if($gutterCount > 1, 2, 1);
+
+	$gutterSet: map-get((
+		1: (
+			top: $gutter,
+			right: $gutter,
+			bottom: $gutter,
+			left: $gutter,
+		),
+		2: (
+			top: nth($gutter, $g1),
+			right: nth($gutter, $g2),
+			bottom: nth($gutter, $g1),
+			left: nth($gutter, $g2),
+		),
+	), $gutterCount);
+
+	$gutter-top: map-get($gutterSet, top);
+	$gutter-right: map-get($gutterSet, right);
+	$gutter-bottom: map-get($gutterSet, bottom);
+	$gutter-left: map-get($gutterSet, left);
+
+	$margin: map-get((
+		1: -$gutter-top,
+		2: (-$gutter-top) (-$gutter-right),
+	), $gutterCount);
+
+	margin: $margin;
+	border-width: $gutter-top $gutter-right 0 0;
+	> * {
+		border-width: 0 0 $gutter-bottom $gutter-left;
+	}
+
+	.lt-ie9 & {
+		border-right-width: 0;
+		&, > * {
+			border-color: $grid-gutter-ie-fallback;
+		}
+	}
+
+	$mq-width: $grid-page-width + $gutter-left + $gutter-right;
+
+	@if ($format == 'classes'){
+		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
+		&.#{$fullPrefix}grid--outerGutters {
+			@include mq(max, ($mq-width)){
+				&-h-delayed {
+					margin-left: 0;
+					margin-right: 0;
+				}
+				&-left-delayed {
+					margin-left: 0;
+				}
+				&-right-delayed {
+					margin-right: 0;
+				}
+
+				.lt-ie9 & {
+					&-h-delayed, &-left-delayed, &-right-delayed {
+						margin-left: -$gutter-left;
+					}
+				}
+			}
+
+			.lt-ie9 & {
+				&, &-h {
+					border-right-width: $gutter-right !important;
+				}
+			}
+		}
+
+	} @else if ($format == 'mixin') {
+		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
+		@if($outerGutters){
+			@include mq(max, $mq-width){
+				@if($outerGutters == 'h-delayed'){
+					margin-left: 0;
+					margin-right: 0;
+				} @else if ($outerGutters == 'left-delayed'){
+					margin-left: 0;
+				} @else if ($outerGutters == 'right-delayed'){
+					margin-right: 0;
+				}
+			}
+
+			.lt-ie9 & {
+				@if (
+					$outerGutters == 'h-delayed' or
+					$outerGutters == 'left-delayed' or
+					$outerGutters == 'right-delayed'
+				){
+					margin-left: -$gutter-left;
+				}
+
+				@if ($outerGutters == true or $outerGutters == 'h'){
+					border-right-width: $gutter-right !important;
+				}
+			}
+		}
+	}
+}

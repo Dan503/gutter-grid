@@ -27,7 +27,7 @@ export default function read_navMap(map, index, callback, settings = {}){
 	let preDefaults = navMap_pre_defaults(map, index, settings.parent);
 	applyDefaults(map, preDefaults);
 
-	var folderName = generateFolderName(map.title);
+	var folderName = generateFolderName(index, map.title);
 
 	var recursivePath = settings.basePath+folderName+'/';
 

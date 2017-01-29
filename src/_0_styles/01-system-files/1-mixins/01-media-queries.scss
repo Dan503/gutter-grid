@@ -4,7 +4,7 @@
 //*********************************/
 
 $BP-mobile: bp('mobile');
-$BP-tablet: bp('tablet');
+$BP-tablet: bp('page');
 
 @mixin MG-mobileOnly {
 	@include mq(min, $BP-mobile){

@@ -74,6 +74,10 @@ footer {
 		color: #315116;
 	}
 
+	h4 {
+		font-size: 16px;
+	}
+
 	blockquote {
 		margin: 50px 5%;
 		text-align: center;
@@ -100,11 +104,14 @@ footer {
 			font-size: 1em;
 		}
 	}
+	.no-flexbox & {
+		max-width: 780px;
+	}
 }
 
 .add {
 	&-border {
-		border: 2px solid red;
+		border: 2px solid red !important;
 	}
 	&-shadow {
 		box-shadow: 0 0 10px #000;
@@ -134,19 +141,6 @@ footer {
 	left: 0;
 }
 
-.owner {
-	&__shareCell {
-		padding-left: 70px;
-	}
-	p {
-		position: relative;
-		padding-left: 70px;
-		margin: 0;
-	}
-	footer & {
-		background-image: url(../images/pattern.png);
-	}
-}
 
 .title .small {
 	font-size: 14px;
@@ -176,5 +170,11 @@ p.tagline { padding: 15px 20px; margin: 0; }
 		&:hover, &:focus {
 			text-decoration: none;
 		}
+	}
+}
+
+.no-csstransforms {
+	.blc, .trc {
+		display: none;
 	}
 }

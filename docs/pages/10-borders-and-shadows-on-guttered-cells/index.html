@@ -1,0 +1,375 @@
+<!DOCTYPE html><!--[if lt IE 9]><html class='lt-ie10 lt-ie9 no-js' lang='en' xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#"><![endif]-->
+<!--[if IE 9]><html class='ie9 lt-ie10 no-js' lang='en' xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Borders and shadows on guttered cells | Gutter Grid</title>
+  <meta name="description" content="A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta property="og:site_name" content="Gutter Grid">
+  <meta property="og:title" content="Gutter Grid: Borders and shadows on guttered cells">
+  <meta property="og:description" content="A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://gutter-grid.net/assets/images/social-media.jpg">
+  <meta property="og:url" content="http://gutter-grid.net/pages/10-borders-and-shadows-on-guttered-cells/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@Daniel_Tonon">
+  <meta name="twitter:title" content="Gutter Grid: Borders and shadows on guttered cells">
+  <meta name="twitter:description" content="A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system">
+  <meta name="twitter:image" content="http://gutter-grid.net/assets/images/social-media.jpg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#63a52a">
+  <meta name="theme-color" content="#ffffff">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    //Unncomment these 2 lines and update the tracking code to enable google analytics tracking
+    ga('create', 'UA-90397907-1', 'auto');
+    ga('send', 'pageview');
+    
+  </script>
+  <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.css"><![endif]-->
+</head>
+<body>
+  <h1 class="TK-visHid">Borders and shadows on guttered cells</h1>
+  <!--holds the svg sprite-->
+  <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg"><symbol id="svg-facebook" viewBox="0 0 32 32"><title>facebook icon</title><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></symbol><symbol id="svg-gutter-grid-logo" viewBox="0 0 299 299"><title>Gutter Grid logo</title><rect class="logo__parent" x="12.5" y="12.5" width="274" height="274" rx="30.09" ry="30.09" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="25"/><g class="logo__cells"><rect x="162.45" y="41.91" width="94.99" height="94.99" rx="17" ry="17"/><rect x="162.45" y="162.74" width="94.99" height="94.99" rx="17" ry="17"/><rect x="41.89" y="162.74" width="94.99" height="94.99" rx="17" ry="17"/><rect x="41.89" y="41.91" width="94.99" height="94.99" rx="17" ry="17"/></g></symbol><symbol id="svg-linkedin" viewBox="0 0 32 32"><title>linkedin icon</title><path d="M12 12h5.535v2.837h.079c.77-1.381 2.655-2.837 5.464-2.837C28.92 12 30 15.637 30 20.367V30h-5.769v-8.54c0-2.037-.042-4.657-3.001-4.657-3.005 0-3.463 2.218-3.463 4.509V30H12V12zM2 12h6v18H2V12zM8 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></symbol><symbol id="svg-mail" viewBox="0 0 32 32"><title>mail icon</title><path d="M29 4H3C1.35 4 0 5.35 0 7v20c0 1.65 1.35 3 3 3h26c1.65 0 3-1.35 3-3V7c0-1.65-1.35-3-3-3zM12.461 17.199L4 23.789V8.113l8.461 9.086zM5.512 8h20.976L16 15.875 5.512 8zm7.278 9.553L16 21l3.21-3.447L25.79 26H6.211l6.58-8.447zm6.749-.354L28 8.113v15.676l-8.461-6.59z"/></symbol><symbol id="svg-twitter" viewBox="0 0 32 32"><title>twitter icon</title><path d="M32 7.075a12.941 12.941 0 0 1-3.769 1.031 6.601 6.601 0 0 0 2.887-3.631 13.21 13.21 0 0 1-4.169 1.594A6.565 6.565 0 0 0 22.155 4a6.563 6.563 0 0 0-6.563 6.563c0 .512.056 1.012.169 1.494A18.635 18.635 0 0 1 2.23 5.195a6.56 6.56 0 0 0-.887 3.3 6.557 6.557 0 0 0 2.919 5.463 6.565 6.565 0 0 1-2.975-.819v.081a6.565 6.565 0 0 0 5.269 6.437 6.574 6.574 0 0 1-2.968.112 6.588 6.588 0 0 0 6.131 4.563 13.17 13.17 0 0 1-9.725 2.719 18.568 18.568 0 0 0 10.069 2.95c12.075 0 18.681-10.006 18.681-18.681 0-.287-.006-.569-.019-.85A13.216 13.216 0 0 0 32 7.076z"/></symbol></svg></div><!--[if lt IE 9]>
+  <div class="alert alert--error ">
+    <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  </div><![endif]-->
+  <div class="alert alert--error alert--nojs TK-jsHide">
+    <p>Please <a href="http://www.enable-javascript.com/">enable javascript</a> to access the full functionality of this site</p>
+  </div>
+  <div class="siteContainer wrapper">
+    <div class="siteContainer__inner">
+      <div class="skipLinks"><a class="skipLinks__link TK-skipLink" href="#navigation">Skip to navigation</a><a class="skipLinks__link TK-skipLink" href="#content">Skip to content</a>
+      </div>
+      <header class="header">
+        <div class="pageLayout__buffer">
+          <div class="pageLayout__width">
+            <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
+                  <svg class="svg-gutter-grid-logo logo__svg grid__cell">
+                    <use xlink:href="#svg-gutter-grid-logo"></use>
+                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v1.0.1</code></span></span></span></p>
+            <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
+          </div>
+        </div>
+      </header>
+      <div class="mainArea TK-flexGrow">
+        <div class="pageLayout__buffer">
+          <div class="pageLayout__width">
+            <div id="container">
+              <p class="tagline">A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system</p>
+            </div>
+            <div id="main" role="main">
+              <div class="download-bar">
+                <div class="inner"><a class="download-button tar" href="https://github.com/Dan503/gutter-grid/tarball/master"><span>Download <span class="TK-visHid">tar</span></span></a><a class="download-button zip" href="https://github.com/Dan503/gutter-grid/zipball/master"><span>Download <span class="TK-visHid">zip</span></span></a><a class="code" href="https://github.com/Dan503/gutter-grid">View Gutter Grid on GitHub</a></div><span class="blc"></span><span class="trc"></span>
+              </div>
+              <div class="grid grid--gutter-body">
+                <nav class="nav grid__cell grid__cell--noResize" id="navigation">
+                  <h2 class="TK-visHid">Main navigation</h2>
+                  <div class="accordion JS-accordion">
+                    <a class="btn accordion__btn JS-accordion__toggle -light" href="#"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                    </a>
+                    <div class="accordion__revealer JS-accordion__revealer">
+                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters-top grid--hasInners grid--vertical">
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/09-nesting-grids/">Nesting grids</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/10-borders-and-shadows-on-guttered-cells/">Borders and shadows on guttered cells</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/11-horizontal-cell-alignments/">Horizontal cell alignments</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/12-vertical-cell-alignments/">Vertical cell alignments</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/13-controlling-cell-growth-and-shrinkage/">Controlling cell growth and shrinkage</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/14-change-log/">Change log</a></li>
+                      </ol>
+                    </div>
+                  </div>
+                </nav>
+                <div class="grid__cell">
+                  <article class="markdown-body" id="content">
+                    <p class="TK-nonDesktop"><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
+                    <div class="cmsContent">
+                      <h2>Borders and shadows on guttered cells</h2><p>The <code>grid__inner</code> technique can be used for more than just nesting grids. Whenever you want the child element of a grid cell to take up the same dimensions as the content area of that cell, you can use <code>grid__inner</code> / <code>$inners:true</code>.</p>
+<p>The most common use case for wanting to do this is when you want to apply either a border or a box shadow to each cell in a grid that also features a gutter between each cell. Gutters are made by adding invisible borders to each of the grid cells. So trying to add borders or box shadows directly to the grid cells doesn&#39;t work.</p>
+<p>Just note that the <code>mixin__cell</code> and <code>mixin__inner</code> class names aren&#39;t needed for the mixin version to work but the structure of the HTML <em>is</em> needed.</p>
+
+                      <aside class="demo">
+                        <div class="tabs JS-tabs">
+                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom">
+                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
+                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
+                          </div>
+                          <div class="tabs__contentWrap">
+                            <div class="tabs__content JS-tabs__content">
+                              <div class="demo__result demo__segment">
+<div class="grid grid--hasInners grid--gutter-moduleName grid--cols-2">
+  <div class="grid__cell">
+    <div class="grid__inner add-border add-shadow add-padding"><p>To give grid cells a border or padding as well as a gutter, you will need to use <code>grid__inner</code></p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.</p>
+
+    </div>
+  </div>
+  <div class="grid__cell">
+    <div class="grid__inner add-border add-shadow add-padding"></div>
+  </div>
+</div>
+                              </div>
+                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                <div class="grid__cell demo__markup demo__segment html">
+                                  <pre><code class="html">
+&lt;div class=&quot;grid grid--hasInners grid--gutter-moduleName grid--cols-2&quot;&gt;
+  &lt;div class=&quot;grid__cell&quot;&gt;
+    &lt;div class=&quot;grid__inner add-border add-shadow add-padding&quot;&gt;&lt;p&gt;To give grid cells a border or padding as well as a gutter, you will need to use &lt;code&gt;grid__inner&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.&lt;/p&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;grid__cell&quot;&gt;
+    &lt;div class=&quot;grid__inner add-border add-shadow add-padding&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="tabs__content JS-tabs__content">
+                              <div class="demo__result demo__segment">
+<div class="mixin-25">
+  <div class="mixin__cell">
+    <div class="mixin__inner add-border add-shadow add-padding"><p>To give grid cells a border or padding as well as a gutter, you will need to use <code>grid__inner</code></p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.</p>
+
+    </div>
+  </div>
+  <div class="mixin__cell">
+    <div class="mixin__inner add-border add-shadow add-padding"></div>
+  </div>
+</div>
+                              </div>
+                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                <div class="grid__cell demo__markup demo__segment html">
+                                  <pre><code class="html">
+&lt;div class=&quot;mixin-25&quot;&gt;
+  &lt;div class=&quot;mixin__cell&quot;&gt;
+    &lt;div class=&quot;mixin__inner add-border add-shadow add-padding&quot;&gt;&lt;p&gt;To give grid cells a border or padding as well as a gutter, you will need to use &lt;code&gt;grid__inner&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.&lt;/p&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;mixin__cell&quot;&gt;
+    &lt;div class=&quot;mixin__inner add-border add-shadow add-padding&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                </div>
+                                <div class="grid__cell demo__markup demo__segment scss">
+                                  <pre><code class="scss">
+.mixin-25 {
+  @include grid(2, $inners: true, $gutter: 20px);
+}
+</code></pre>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </aside><p>Unfortunatly, if you are adding shadows, you can&#39;t use the <code>grid__wrapper</code> element to prevent the spacing glitch from occuring like you normally would. <code>grid__wrapper</code> is just applying <code>overflow:hidden</code>. Using <code>overflow:hidden</code> will also hide the shadows though.</p>
+<p>You will need to find other ways to work around the browser glitch. One way is to add 1 pixel of padding to the parent element. It doesn&#39;t fix the problem outright but it at least makes the glitch far less obvious.</p>
+
+                      <aside class="demo">
+                        <div class="demo__summary demo__segment"><p>Using padding to mitigate the Chrome spacing glitch</p>
+
+                        </div>
+                        <div class="tabs JS-tabs">
+                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom">
+                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
+                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
+                          </div>
+                          <div class="tabs__contentWrap">
+                            <div class="tabs__content JS-tabs__content">
+                              <div class="demo__result demo__segment">
+<div style="padding-top: 1px">
+  <div class="grid grid--hasInners grid--gutter-moduleName grid--cols-2">
+    <div class="grid__cell">
+      <div class="grid__inner add-border add-shadow add-padding"><p>To give grid cells a border or padding as well as a gutter, you will need to use <code>grid__inner</code></p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.</p>
+
+      </div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-border add-shadow add-padding"></div>
+    </div>
+  </div>
+</div>
+                              </div>
+                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                <div class="grid__cell demo__markup demo__segment html">
+                                  <pre><code class="html">
+&lt;div style=&quot;padding-top: 1px&quot;&gt;
+  &lt;div class=&quot;grid grid--hasInners grid--gutter-moduleName grid--cols-2&quot;&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-border add-shadow add-padding&quot;&gt;&lt;p&gt;To give grid cells a border or padding as well as a gutter, you will need to use &lt;code&gt;grid__inner&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.&lt;/p&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-border add-shadow add-padding&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="tabs__content JS-tabs__content">
+                              <div class="demo__result demo__segment">
+<div class="mixin__paddingHack">
+  <div class="mixin-25">
+    <div class="mixin__cell">
+      <div class="mixin__inner add-border add-shadow add-padding"><p>To give grid cells a border or padding as well as a gutter, you will need to use <code>grid__inner</code></p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.</p>
+
+      </div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-border add-shadow add-padding"></div>
+    </div>
+  </div>
+</div>
+                              </div>
+                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                <div class="grid__cell demo__markup demo__segment html">
+                                  <pre><code class="html">
+&lt;div class=&quot;mixin__paddingHack&quot;&gt;
+  &lt;div class=&quot;mixin-25&quot;&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-border add-shadow add-padding&quot;&gt;&lt;p&gt;To give grid cells a border or padding as well as a gutter, you will need to use &lt;code&gt;grid__inner&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.&lt;/p&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-border add-shadow add-padding&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                </div>
+                                <div class="grid__cell demo__markup demo__segment scss">
+                                  <pre><code class="scss">
+.mixin-25 {
+  @include grid(2, $inners: true, $gutter: 20px);
+}
+
+.mixin__paddingHack {
+  padding-top: 1px;
+}
+</code></pre>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </aside>
+                    </div>
+                    <nav class="nextPrev">
+                      <ul class="grid grid--space-between">
+                        <li class="grid__cell -prev"><a class="nextPrev__link btn -light" href="/pages/09-nesting-grids/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Previous:</span><span class="nextPrev__title">Nesting grids</span></a></li>
+                        <li class="grid__cell -next"><a class="nextPrev__link btn -light" href="/pages/11-horizontal-cell-alignments/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Next:</span><span class="nextPrev__title">Horizontal cell alignments</span></a></li>
+                      </ul>
+                    </nav>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="pageLayout__buffer">
+          <div class="pageLayout__width">
+            <div class="owner">
+              <div class="owner__grid grid grid--space-between grid--vAlign-center">
+                <div class="owner__cell owner__userCell -left grid__cell">
+                  <p><a class="avatar" href="https://github.com/Dan503"><img src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=50&amp;default=retro" width="48" height="48"></a><a href="https://github.com/Dan503">Dan503</a> maintains <a href="https://github.com/Dan503/gutter-grid">gutter-grid</a></p>
+                </div>
+                <div class="owner__shareCell grid__cell">
+                  <div class="share grid__wrapper">
+                    <ul class="share__list grid grid--noWrap grid--space-between TK-noDots">
+                      <li class="share__option grid__cell">Share:</li>
+                      <li class="share__option grid__cell"><a class="share__link -mail JS-share__link" href="mailto:?subject=Share subject&body=Share body http://gutter-grid.net/pages/10-borders-and-shadows-on-guttered-cells/" title="Share via email">
+                          <svg class="svg-mail">
+                            <use xlink:href="#svg-mail"></use>
+                          </svg><span class="TK-visHid">Share via email</span></a></li>
+                      <li class="share__option grid__cell"><a class="share__link -facebook JS-share__link" href="http://www.facebook.com/sharer/sharer.php?u=http://gutter-grid.net/pages/10-borders-and-shadows-on-guttered-cells/&title=Gutter%20Grid:%20Borders%20and%20shadows%20on%20guttered%20cells" title="Share on Facebook">
+                          <svg class="svg-facebook">
+                            <use xlink:href="#svg-facebook"></use>
+                          </svg><span class="TK-visHid">Share on Facebook</span></a></li>
+                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/10-borders-and-shadows-on-guttered-cells/" title="Tweet this site">
+                          <svg class="svg-twitter">
+                            <use xlink:href="#svg-twitter"></use>
+                          </svg><span class="TK-visHid">Tweet this site</span></a></li>
+                      <li class="share__option grid__cell"><a class="share__link -linkedin JS-share__link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://gutter-grid.net/pages/10-borders-and-shadows-on-guttered-cells/&title=Gutter%20Grid:%20Borders%20and%20shadows%20on%20guttered%20cells" title="Share on LinkedIn">
+                          <svg class="svg-linkedin">
+                            <use xlink:href="#svg-linkedin"></use>
+                          </svg><span class="TK-visHid">Share on LinkedIn</span></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="creds"><small>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a> (although lots of alterations have been made to it)</small></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="/assets/scripts/plugins/highlight.pack.js"></script>
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    
+  </script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+  <!--I couldn't get main.js to work in IE so it get's it's on version-->
+  <script src="/assets/scripts/ie8-main.js"></script><![endif]-->
+<!--[if gt IE 8]><!------>
+  <script src="/assets/scripts/main.js"></script><!--<![endif]-->
+</body></html>

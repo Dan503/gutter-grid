@@ -1,0 +1,196 @@
+block content
+  :marked
+    Vertical alignment is just as easy. These are mostly just classes that hold `align-items` values though. They do not feature any Legacy browser backups. If you find the pure css way easier to use, feel free to use that instead.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--vAlign-top.add-border
+  - var heights = [100, 50, 75];
+  each height, i in heights
+    .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+`,
+},
+    mixin: {
+html:`
+.mixin-34.add-border
+  - var heights = [100, 50, 75];
+  each height, i in heights
+    .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+`,
+scss: `
+.mixin-34 {
+  @include grid($vAlign: top);
+}
+`
+    }
+}, {classes: '-noHeight'})
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--vAlign-bottom.add-border
+  - var heights = [100, 50, 75];
+  each height, i in heights
+    .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+`,
+},
+    mixin: {
+html:`
+.mixin-35.add-border
+  - var heights = [100, 50, 75];
+  each height, i in heights
+    .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+`,
+scss: `
+.mixin-35 {
+  @include grid($vAlign: bottom);
+}
+`
+    }
+}, {classes: '-noHeight'})
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--vAlign-center.add-border
+  - var heights = [100, 50, 75];
+  each height, i in heights
+    .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+`,
+},
+    mixin: {
+html:`
+.mixin-36.add-border
+  - var heights = [100, 50, 75];
+  each height, i in heights
+    .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+`,
+scss: `
+.mixin-36 {
+  @include grid($vAlign: center);
+}
+`
+    }
+}, {classes: '-noHeight'})
+
+
+  +demo({
+    classes: {
+html:`
+.grid__wrapper.add-shadow
+  .grid.grid--vAlign-center.grid--hasInners.grid--gutter-moduleName
+    - var heights = [100, 50, 75];
+    each height, i in heights
+      .grid__cell(style=["height: ",height,"px;"].join(''))
+        .grid__inner.add-border
+`,
+},
+    mixin: {
+html:`
+.mixin__wrapper.add-shadow
+  .mixin-37
+    - var heights = [100, 50, 75];
+    each height, i in heights
+      .mixin__cell(style=["height: ",height,"px;"].join(''))
+        .mixin__inner.add-border
+`,
+scss: `
+.mixin-37 {
+  @include grid($vAlign: center, $inners: true, $gutter: 20px);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`
+    }
+}, {classes: '-noHeight'})
+    :marked
+      Using vertical alignment with `grid__inner` elements and a gutter
+
+  +demo({
+    classes: {
+html:`
+.grid__wrapper
+  .grid.grid--hasInners.grid--cols-3.grid--gutter-moduleName
+    -
+      var heights = [
+        '<p>Videmusne ut pueri ne verberibus quidem a contemplandis rebus perquirendisque deterreantur? Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Tum Triarius: Posthac quidem, inquit, audacius.</p> <p> Qui non moveatur et offensione turpitudinis et comprobatione honestatis? Quae sequuntur igitur? Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Sed tamen est aliquid, quod nobis non liceat, liceat illis. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter.</p>',
+
+        '<p>At quicum ioca seria, ut dicitur, quicum arcana, quicum occulta omnia?</p>',
+
+        '<p>Duo Reges: constructio interrete. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Stulti autem malorum memoria torquentur, sapientes bona praeterita grata recordatione renovata delectant. A primo, ut opinor, animantium ortu petitur origo summi boni.</p>'
+      ];
+    each text in heights
+      .grid__cell
+        .grid__inner.grid.grid--vAlign-center.add-border
+          .grid__cell.add-padding
+            != text
+`,
+},
+    mixin: {
+html:`
+.mixin__wrapper
+  .mixin-38
+    -
+      var heights = [
+        '<p>Videmusne ut pueri ne verberibus quidem a contemplandis rebus perquirendisque deterreantur? Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Tum Triarius: Posthac quidem, inquit, audacius.</p> <p> Qui non moveatur et offensione turpitudinis et comprobatione honestatis? Quae sequuntur igitur? Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Sed tamen est aliquid, quod nobis non liceat, liceat illis. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter.</p>',
+
+        '<p>At quicum ioca seria, ut dicitur, quicum arcana, quicum occulta omnia?</p>',
+
+        '<p>Duo Reges: constructio interrete. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Stulti autem malorum memoria torquentur, sapientes bona praeterita grata recordatione renovata delectant. A primo, ut opinor, animantium ortu petitur origo summi boni.</p>'
+      ];
+    each text in heights
+      .mixin__cell
+        .mixin-36.mixin__inner.add-border
+          .mixin__cell.add-padding
+            != text
+`,
+scss: `
+.mixin-38 {
+  @include grid(3, $inners: true, $gutter: 20px);
+}
+
+.mixin-36 {
+  @include grid($vAlign: center);
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`
+    }
+}, {classes: '-noHeight'})
+    :marked
+      Using nested grids to vertically align text inside full sized grid cells
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--vAlign-bottom.add-border(style='height:100px;')
+  - var heights = [80, 25, 50, 75];
+  each height, i in heights
+    .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join('') + (i === 2 ? ' grid__cell--vAlign-top' : ''))
+`,
+},
+    mixin: {
+html:`
+.mixin-35.add-border(style='height:100px;')
+  - var heights = [80, 25, 50, 75];
+  each height, i in heights
+    .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join('') + (i === 2 ? ' mixin__oddOneOut' : ''))
+`,
+scss: `
+.mixin-35 {
+  @include grid($vAlign: bottom);
+}
+
+.mixin__oddOneOut {
+  align-self: flex-start;
+}
+`
+    }
+}, {classes: '-noHeight'})
+    :marked
+      Changing the vertical alignment of a single cell using `grid__cell--vAlign-xxx` classes (`xxx` being `top`, `bottom`, or `center`)... or you could just use the `align-self` css property.

@@ -1,0 +1,31 @@
+
+.owner {
+	background-image: url(../images/pattern.png);
+
+	.no-flexbox & {
+		&:after {
+			display: block;
+			content: '';
+			clear: both;
+		}
+	}
+
+	&__userCell {
+		.no-flexbox & {
+			float: left;
+		}
+	}
+
+	&__shareCell {
+		padding-left: 70px;
+		.no-flexbox & {
+			//can't be stuffed trying to make this bit to work
+			display: none;
+		}
+	}
+	p {
+		position: relative;
+		padding-left: 70px;
+		margin: 0;
+	}
+}

@@ -1,0 +1,29 @@
+block content
+  :marked
+    Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters. Even though it is powered by flexbox, it features `display:table`, `float:left` and `display:inline-block` backups for legacy browsers to prevent your site from blowing up when viewed in IE8 and 9.
+
+    Have you ever had to do a layout that looked something like this in a design?
+
+  .demo__result.demo__segment
+    .grid__wrapper.add-border
+      .grid.grid--cols-3.grid--gutter-moduleName.grid--wrap.grid--align-left
+        - var colors = [1,2,3,4,5,6,3,1,5];
+        each color in colors
+          .grid__cell(class=`-color-${color}`)
+
+  :marked
+    Looks simple enough right? Just three columns and some margin around each cell. How hard can that be?
+
+    Well you would be surprised. The problem comes from the edges of each cell needing to be hard up against the edges of its container.
+
+    ### Try the challenge for yourself
+
+    If you don't think it's that hard to do, try the challenge for yourself.
+
+    - Make a 3x3 grid
+    - 20px gutter inbetween each cell
+    - The cells must sit hard up against the edges of the parent element at all times
+    - On a 960px wide screen, the cell width changes to 50% width per cell with 2 cells per row except for the last one
+    - On a 600px wide screen, the cell width changes to 100% width per cell
+    - The cells should all be the exact same width at all times
+    - It needs to not completely break in IE 8 and 9 (it can look a bit different though)

@@ -10,6 +10,10 @@ mixin logo(spec)
 		span.logo__grid.grid.grid--noWrap.grid--align-center.grid--gutter-logo.grid--outerGutters-v
 			span.grid__cell.logo__cell.-imagery.grid__cell--noGrowth
 				+svg('gutter-grid-logo', {classes: 'logo__svg grid__cell'})
+				<!--[if lt IE 9]>
+				img.logo__backup(src='/android-chrome-192x192.png')
+				<![endif]-->
+
 			span.grid__cell.logo__cell.-text
 				span.logo__text.-gutter Gutter
 				span.logo__text.-grid Grid #[code.small= 'v'+pkg.version]

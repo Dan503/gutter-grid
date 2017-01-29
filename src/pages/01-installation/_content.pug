@@ -1,0 +1,52 @@
+block content
+  :marked
+    ```````
+    npm install gutter-grid --save
+    ```````
+
+    A dependency that Gutter Grid has is [mq-scss](https://www.npmjs.com/package/mq-scss). This is used for the media queries.
+
+    After npm installing Gutter Grid, add this to the top of your main Sass file:
+
+  +tabs({links: ['Classes', 'Mixin', 'Both']})
+    +tabs__content()
+      :marked
+        `````scss
+        @import '../node_modules/mq-scss/mq';
+        @import '../node_modules/gutter-grid/grid-classes';
+        `````
+    +tabs__content()
+      :marked
+        `````scss
+        @import '../node_modules/mq-scss/mq';
+        @import '../node_modules/gutter-grid/grid-mixin';
+        `````
+    +tabs__content()
+      :marked
+        `````scss
+        @import '../node_modules/mq-scss/mq';
+        @import '../node_modules/gutter-grid/grid-mixin';
+        @import '../node_modules/gutter-grid/grid-classes';
+        `````
+
+  :marked
+    Things to note:
+
+    - mq-scss will automatically install when installing Gutter Grid
+    - I've purposly not put the mq-scss include in the grid Sass file so that users will more likely see that mq-scss is available for them to use
+    - Make sure that the import paths are actually correct. They will differ depending on your folder structure.
+
+    At this point, you are able to use the grid system and it will work well in any browsers that have **full standards complient flexbox support**. There are many old browsers that don't feature that level of support though. If your site needs to support those older browsers, there are a few more steps you need to take.
+
+    > Read **[how to support legacy browsers](/pages/how-to-support-legacy-browsers/)** to get a run down on how to achieve maximum browser compatibility.
+
+    If using the class based system and there is a conflicts with another "grid" class, you can edit the `$grid-prefix` variable to resolve the conflict.
+
+    ``````scss
+    $grid-prefix: 'prefixName';
+
+    @import '../node_modules/mq-scss/mq';
+    @import '../node_modules/gutter-grid/grid-classes';
+    ``````
+
+    That will add `prefixName-` to the front of all the grid classes. So `.grid` will turn into `.prefixName-grid`. This will affect _all_ grid classes. for example `.grid__cell` will become `.prefixName-grid__cell`.

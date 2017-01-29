@@ -17,6 +17,7 @@ export default function() {
     //standard scss changes only trigger the sass:compile task to be as fast as possible
     gulp.watch([
       local + '/**/*.{scss,sass}',
+      '*.{scss,sass}',
       '!'+ local + dirs.icons + '/variables.scss'
     ], ['sass:compile']);
 

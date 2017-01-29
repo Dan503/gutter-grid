@@ -1,0 +1,121 @@
+block content
+  :marked
+    (For demonstration purposes, the grid cells have been given padding. Padding is not included as part of the grid system though)
+
+    When nesting a grid inside another grid, you would most likely want the nested grid to take up the full height of the parent grid. To do this, you can nest the grid like in the example shown below however it doesn't regress nicely in legacy browsers that don't support flexbox.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--cols-2
+  .grid__cell.grid.grid--cols-2.-color-1.add-padding
+    .grid__cell.-color-2.add-padding
+      :marked
+        lots and lots of text in this cell forces the other grid to grow.
+
+        This method doesn't regress nicely in legacy browsers though.
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+    .grid__cell.-color-3
+  .grid__cell.grid.grid--cols-2.-color-4.add-padding
+    .grid__cell.-color-5.add-padding
+      p not much text in this cell
+    .grid__cell.-color-6
+`
+    },
+
+    mixin: {
+html:`
+.mixin-2
+  .mixin-2.mixin__cell.-color-1.add-padding
+    .mixin__cell.-color-2.add-padding
+      :marked
+        lots and lots of text in this cell forces the other grid to grow.
+
+        This method doesn't regress nicely in legacy browsers though.
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+    .mixin__cell.-color-3
+  .mixin-2.mixin__cell.-color-4.add-padding
+    .mixin__cell.-color-5.add-padding
+      p not much text in this cell
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-2 {
+  @include grid(2);
+}
+`,
+    }
+})
+    :marked
+      This method is ok if you don't need to support browsers that don't support flexbox.
+
+  :marked
+    If you do need to support legacy browsers though, the following method is not quite as clean but it has much better legacy browser support built in.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--hasInners.grid--cols-2
+  .grid__cell.-color-1.add-padding
+    .grid__inner.grid.grid--cols-2
+      .grid__cell.-color-2.add-padding
+        :marked
+          Same as before but this time with much better legacy browser support.
+
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      .grid__cell.-color-3
+  .grid__cell.-color-4.add-padding
+    .grid__inner.grid.grid--cols-2
+      .grid__cell.-color-5.add-padding
+        p not much text in this cell
+      .grid__cell.-color-6
+`
+    },
+
+    mixin: {
+html:`
+.mixin-24
+  .mixin__cell.-color-1.add-padding
+    .mixin-2.mixin__inner
+      .mixin__cell.-color-2.add-padding
+        :marked
+          Same as before but this time with much better legacy browser support.
+
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      .mixin__cell.-color-3
+  .mixin__cell.-color-4.add-padding
+    .mixin-2.mixin__inner
+      .mixin__cell.-color-5.add-padding
+        p not much text in this cell
+      .mixin__cell.-color-6
+`,
+scss:`
+.mixin-2 {
+  @include grid(2);
+}
+
+.mixin-24 {
+  @include grid(2, $inners: true);
+}
+`,
+    }
+})
+    :marked
+      The prefered method when legacy browser support is required
+
+  :marked
+    The important things to note here are the `grid--hasInners` and the `grid__inner` classes in the class based system.
+
+    The `grid--hasInners` class tells the grid that the `grid__inner` inside each `grid__cell` should take up the full height and width of it's parent.
+
+    Each `grid__cell` can only contain one `grid__inner` and `grid__inner` must be a direct decendent of it's `grid__cell` parent.
+
+    In the mixin based system, the role of the `grid--hasInners` class is taken up by the `$inners:true` setting.
+
+    In legacy browsers, nested grids will not take up the full height of their parent grid. That is something that only flexbox or JavaScript can do.

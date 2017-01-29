@@ -1,0 +1,57 @@
+block content
+  :marked
+    ### Supporting browsers that support flexbox but not the latest syntax (IE10)
+
+    IE10 has support for flexbox however you will need to incorporate [Autoprefixer](https://github.com/postcss/autoprefixer) into your build process to support it's outdated flexbox syntax.
+
+    Also be aware of this [IE10 flexbox bug](http://stackoverflow.com/questions/16808815/ie10-flexbox-p-element-non-wrapping/33795089) which can cause problems in page layouts.
+
+    ### Supporting browsers that do not support flexbox (IE8 & 9)
+
+    Gutter Grid is powered mostly by flexbox. It has `display:table`, `float:left` and `display:inline-block` backups built into it for when `flexbox` is not supported. In general it will use `display:table` since tables act in a very similar way to how flexbox acts. However, when wrapping is involved and the browser does not support the `flex-wrap` css property, it will use `float:left` styling instead. The `display:inline-block` backups mostly come into play when horizontal cell alignment settings are used.
+
+    Please note that although there are fallbacks in place, they aren't able to perfectly repliate the behaviour of a browser that has full flexbox support. **The design in IE8 & 9 won't look 100% like the design on browsers that support flexbox**.
+
+    The fallbacks are mainly just there to help stop the layout from completly breaking on you when compared to using purely flexbox on it's own. You will likely need to do some extra custom styles but the fallbacks will most likely get you to about 80% or more of the way there.
+
+    In order to detect if the browser supports flexbox and flexwrap, Gutter Grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. The particular Modernizr properties that it is dependent on are `flexwrap` and `flexbox`. To add Modernizr to your site, you have two options. Option 1 is to [download a custom build](https://modernizr.com/download?setclasses&q=flex) from the Modernizr website that includes flexbox and flexwrap in it, then load the javascript file that Modernizr generated into your website. Option 2 is to incorporate [Customizr](https://www.npmjs.com/package/customizr) into your build process. I recommend taking the second option.
+
+    If taking the [Customizr](https://www.npmjs.com/package/customizr) route, you will likely need to force it to include `flexwrap` and `flexbox` tests since it won't look through the `node_modules` folder for Modernizr references (and for good reason!). You will also need to ensure that it is adding classes to the page. You can do this when defining the Customizr configuration settings like this:
+
+    ```````js
+    //Minimum customizr settings required for Gutter Grid to work
+    {
+      options: [
+        'setClasses',
+      ],
+      tests: [
+        'flexbox',
+        'flexwrap'
+      ]
+    }
+    ```````
+
+    ### Supporting IE8 specifically
+
+    In order to better support IE8, the HTML for your HTML element will need to look something like this:
+
+    ```````html
+    <!--[if lte IE 8]><html class="lt-ie9" lang="en"><![endif]-->
+    <!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+
+    ...
+
+    </html>
+    ```````
+
+    IE8 doesn't support the css `background-clip` property which is a key part of how the gutters are able to retain transparency. To get around this, Gutter Grid sets the colour of the gutters to whatever the `$grid-gutter-ie-fallback` setting is set to. The default setting for the variable is white so if your website has a white background then you won't need to do this step. If your site does not have a primarily white background, then you will need to set this variable to the primary background colour of your site.
+
+    ````scss
+    //Set what color gutters will be in IE8
+    //Defaults to white
+    $grid-gutter-ie-fallback: #fff;
+
+    @import '../node_modules/mq-scss/mq';
+    @import '../node_modules/gutter-grid/grid-mixin';
+    @import '../node_modules/gutter-grid/grid-classes';
+    ````

@@ -1,0 +1,277 @@
+block content
+  :marked
+    Another way of handling cell alignments is with grid cell growth and shrink settings. By default, grid cells will both grow and shrink as necessary but this can be overridden with the growth, shrink, and resize settings. These do not feature legacy browser support as they are features that are unique to flexbox. In saying that, these are primarily just alternate ways of assigning `flex-grow` and `flex-shrink` properties.
+
+  +tabs({links: ['Classes', 'Mixin']})
+    +tabs__content()
+      :marked
+        - **`grid--noGrowth`** will prevent all cells in the grid from growing
+        - **`grid__cell--noGrowth`** will prevent only the cell that it is applied to from growing
+        - **`grid--noShrink`** will prevent all cells in the grid from shrinking below their content width
+        - **`grid__cell--noShrink`** will prevent that specific cell from shrinking bellow it's content width
+        - **`grid--noResize`** a shortcut for applying both `grid--noGrowth` and `grid--noShrink` classes
+        - **`grid__cell--noResize`** a shortcut for applying both `grid__cell--noGrowth` and `grid__cell--noShrink` classes
+
+    +tabs__content()
+      :marked
+        - **`$grow: false`** will prevent all cells in the grid from growing
+        - **`$shrink: false`** will prevent all cells in the grid from shrinking below their content width
+        - **`$resize: false`** a shortcut for applying both `$grow: false` and `$shrink: false` settings at the same time
+        - To apply resize settings to specific cells, just use the `flex-grow` and `flex-shrink` css properties
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.-color-2
+    .thinBox.-color-4
+`,
+},
+    mixin: {
+html:`
+.mixin-39
+  .mixin__cell.-color-1
+    .wideBox.-color-3
+  .mixin__cell.-color-2
+    .thinBox.-color-4
+`,
+scss: `
+.mixin-39 {
+  @include grid($wrap: false);
+}
+`
+    }
+})
+    :marked
+      This is the control example to show how the grid setup behaves with minimal settings and a block of content at a fixed 500px by 50px size and a small 50px by 50px square.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--noGrowth.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.-color-2
+    .thinBox.-color-4
+`,
+},
+    mixin: {
+html:`
+.mixin-40
+  .mixin__cell.-color-1
+    .wideBox.-color-3
+  .mixin__cell.-color-2
+    .thinBox.-color-4
+`,
+scss: `
+.mixin-40 {
+  @include grid($grow: false, $wrap: false);
+}
+`
+    }
+})
+    :marked
+      If `grid--noGrowth` (`$grow: flase`) is applied, it is essentially the equivelent of using `grid--align-left` (`$align: left`)
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--noShrink.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.-color-2
+    .thinBox.-color-4
+`,
+},
+    mixin: {
+html:`
+.mixin-41
+  .mixin__cell.-color-1
+    .wideBox.-color-3
+  .mixin__cell.-color-2
+    .thinBox.-color-4
+`,
+scss: `
+.mixin-41 {
+  @include grid($shrink: false, $wrap: false);
+}
+`
+    }
+})
+    :marked
+      If `grid--noShrink` (`$shrink: false`) is applied, the grid cells will try their best not to shrink below the required width of the content inside them (you will need to resize your browser to a mobile sized view to see the difference)
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--noResize.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.-color-2
+    .thinBox.-color-4
+`,
+},
+    mixin: {
+html:`
+.mixin-42
+  .mixin__cell.-color-1
+    .wideBox.-color-3
+  .mixin__cell.-color-2
+    .thinBox.-color-4
+`,
+scss: `
+.mixin-42 {
+  @include grid($resize: false, $wrap: false);
+}
+`
+    }
+})
+    :marked
+      `grid--noResize` (`$resize: false`) is a shortcut for applying both `grid--noShrink` (`$shrink: false`) and `grid--noGrowth` (`$grow: false`) at the same time.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.grid__cell--noGrowth.-color-2
+    .thinBox.-color-4
+`,
+},
+    mixin: {
+html:`
+.mixin-39
+  .mixin__cell.-color-1
+    .wideBox.-color-3
+  .mixin__cell.mixin__noGrowth.-color-2
+    .thinBox.-color-4
+`,
+scss: `
+.mixin-39 {
+  @include grid($wrap: false);
+}
+
+.mixin__noGrowth {
+  flex-grow: 0;
+}
+`
+    }
+})
+    :marked
+      Applying `noGrowth` to only 1 of the grid cells
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.grid__cell--noShrink.-color-2
+    .thinBox.-color-4
+`,
+},
+    mixin: {
+html:`
+.mixin-39
+  .mixin__cell.-color-1
+    .wideBox.-color-3
+  .mixin__cell.mixin__noShrink.-color-2
+    .thinBox.-color-4
+`,
+scss: `
+.mixin-39 {
+  @include grid($wrap: false);
+}
+
+.mixin__noShrink {
+  flex-shrink: 0;
+}
+`
+    }
+})
+    :marked
+      Applying `noShrink` to only 1 of the grid cells (resize browser to see the effect)
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--noWrap
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.grid__cell--noResize.-color-2
+    .thinBox.-color-4
+`,
+},
+    mixin: {
+html:`
+.mixin-39
+  .mixin__cell.-color-1
+    .wideBox.-color-3
+  .mixin__cell.mixin__noResize.-color-2
+    .thinBox.-color-4
+`,
+scss: `
+.mixin-39 {
+  @include grid($wrap: false);
+}
+
+.mixin__noResize {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+`
+    }
+})
+    :marked
+      Applying `noResize` to prevent shrinking and growth in only 1 of the grid cells at the same time (very useful for listings with thumbnail images if you apply `noResize` to the thumbnail cell)
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--mini(style="width: 50%")
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+`,
+},
+    mixin: {
+html:`
+.mixin-43
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+`,
+scss: `
+.mixin-43 {
+  @include grid($mini: true);
+  width: 50%;
+}
+`
+    }
+})
+    :marked
+      Somewhat related. The `mini` setting allows a grid to take up less than 100% of it's parent's width.
+
+  +demo({
+    classes: {
+html:`
+.grid(style="width: 50%")
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+`,
+},
+    mixin: {
+html:`
+.mixin-44
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+`,
+scss: `
+.mixin-44 {
+  @include grid;
+  width: 50%;
+}
+`
+    }
+})

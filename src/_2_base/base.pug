@@ -11,7 +11,7 @@ include /_1_modules/0-cmsContent/cmsContent
 
 include /_1_modules/demo/demo
 
-include /_1_modules/share/share
+include /_1_modules/owner/owner
 include /_1_modules/logo/logo
 
 include /_1_modules/svg/svg
@@ -77,7 +77,7 @@ head
 		link(rel='stylesheet', href=basePath+'/assets/styles/main.css')
 		<!--<![endif]-->
 
-		<!--[if lte IE8]>
+		<!--[if lt IE 9]>
 		link(rel='stylesheet', href=basePath+'/assets/styles/noMQs-main.css')
 		<![endif]-->
 
@@ -90,7 +90,7 @@ body
 		include ../../tmp/svg-symbols.svg
 
 	//- appears in IE <= 9
-	<!--[if lte IE9]>
+	<!--[if lt IE 9]>
 	+alert({type:'error'})
 		p You are using an #[strong outdated] browser. Please #[a(href="http://browsehappy.com/") upgrade your browser] to improve your experience.
 	<![endif]-->
@@ -128,8 +128,8 @@ body
 							+nav({classes: 'grid__cell grid__cell--noResize'})
 							.grid__cell
 								article.markdown-body#content
-									:marked
-										_**This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.**_
+									p.TK-nonDesktop
+										strong: em This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.
 
 									+cmsContent()
 										h2= get.current.altTitle || get.current.title
@@ -137,27 +137,26 @@ body
 
 									+nextPrev()
 
-		footer
+		footer.footer
 			+pageLayout()
-				.owner
-					.grid.grid--space-between.grid--vAlign-center
-						.grid__cell
-							p
-								a.avatar(href='https://github.com/Dan503')
-									img(src='https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=50&default=retro', width='48', height='48')
-								| #[a(href='https://github.com/Dan503') Dan503] maintains #[a(href='https://github.com/Dan503/gutter-grid') gutter-grid]
-						.grid__cell.owner__shareCell
-							+share()
+				+owner()
 
 				.creds
 					small
 						| theme by #[a(href='https://twitter.com/jonrohan/') Jon Rohan] (although lots of alterations have been made to it)
+
 
 	script(src=basePath+'/assets/scripts/plugins/highlight.pack.js')
 	script(type='text/javascript').
 		hljs.initHighlightingOnLoad();
 
 	script(src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous")
-	script(src=basePath+'/assets/scripts/main.js')
+	<!--[if lt IE 9]>
+	//I couldn't get main.js to work in IE so it get's it's on version
+	script(src=basePath+'/assets/scripts/ie8-main.js')
+	<![endif]-->
 
+	<!--[if gt IE 8]><!-->
+	script(src=basePath+'/assets/scripts/main.js')
+	<!--<![endif]-->
 </html>

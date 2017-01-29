@@ -41,7 +41,7 @@ export default function() {
 
 		let siteData = generate_data();
 
-		var homeFolder = generateFolderName(siteData.navMap.subnav[0].title);
+		var homeFolder = generateFolderName(0, siteData.navMap.subnav[0].title);
 
 		var templates_not_in_nav = [];
 
@@ -128,7 +128,7 @@ export default function() {
 			//need to place the rest of the code here to ensure template list has been generated before continuing on
 
 			templateFiles.forEach((file,i) => {
-				let filePath = [basePath, dirs.pages, homeFolder, generateFolderName(templateNavItem.title), generateFolderName(file)].join('/')+'/';
+				let filePath = [basePath, dirs.pages, homeFolder, generateFolderName(i, templateNavItem.title), generateFolderName(i, file)].join('/')+'/';
 				templateMapList[file] = {
 					title : file.replace(/-+/g,' '),
 					template: file,

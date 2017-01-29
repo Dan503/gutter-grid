@@ -1,0 +1,383 @@
+block content
+  :marked
+    Without defining columns, a grid can easily end up looking like this:
+
+  +demo({
+    classes: {
+html:`
+.grid
+  .grid__cell.-color-1.add-padding
+    :marked
+      lots and lots and lots of text in this cell.
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .grid__cell.-color-2.add-padding
+    :marked
+      Barely any text in this cell`,
+},
+    mixin: {
+html:`
+.mixin-1
+  .mixin__cell.-color-1.add-padding
+    :marked
+      lots and lots and lots of text in this cell.
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .mixin__cell.-color-2.add-padding
+    :marked
+      Barely any text in this cell`,
+scss: `
+.mixin-1 {
+  @include grid;
+}
+`
+    }
+})
+
+  :marked
+    To ensure that cells take up only 50% width each, add a `grid--cols-2` class to the same element as the `grid` class if using the class system. If using the mixin system, add a `2` as the first parameter.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--cols-2
+  .grid__cell.-color-1.add-padding
+    :marked
+      lots and lots and lots of text in this cell.
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .grid__cell.-color-2.add-padding
+    :marked
+      Barely any text in this cell`,
+},
+    mixin: {
+html:`
+.mixin-2
+  .mixin__cell.-color-1.add-padding
+    :marked
+      lots and lots and lots of text in this cell.
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
+      Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
+      At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
+      Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+  .mixin__cell.-color-2.add-padding
+    :marked
+      Barely any text in this cell`,
+scss: `
+.mixin-2 {
+  @include grid(2);
+}
+`
+    }
+})
+    :marked
+      The previous example but with the grid set to 2 columns
+
+  :marked
+    The added bonus of assigning columns to a grid is that there are baked in media queries for typical break points. This lets you build your site layout and not have to worry as much about making it mobile friendly.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--cols-2
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+`
+    },
+    mixin: {
+html:`
+.mixin-2
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+`,
+scss:`
+.mixin-2 {
+  @include grid(2);
+}`
+    }
+})
+    :marked
+      Examples of all the default column widths. Resize your browser to watch the media queries take effect.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--cols-3
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+`
+    },
+    mixin: {
+html:`
+.mixin-3
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+`,
+scss:`
+.mixin-3 {
+  @include grid(3);
+}`
+    }
+})
+  +demo({
+    classes: {
+html:`
+.grid.grid--cols-4
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+`
+    },
+    mixin: {
+html:`
+.mixin-4
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+`,
+scss:`
+.mixin-4 {
+  @include grid(4);
+}`
+    }
+})
+  +demo({
+    classes: {
+html:`
+.grid.grid--cols-5
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+`
+    },
+    mixin: {
+html:`
+.mixin-5
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+`,
+scss:`
+.mixin-5 {
+  @include grid(5);
+}`
+    }
+})
+  +demo({
+    classes: {
+html:`
+.grid.grid--cols-6
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+  .grid__cell.-color-6
+`
+    },
+    mixin: {
+html:`
+.mixin-6
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+  .mixin__cell.-color-6
+`,
+scss:`
+.mixin-6 {
+  @include grid(6);
+}`
+    }
+})
+  :marked
+    ### Customising the columns and breakpoints
+
+    If you don't like the default breakpoints or you need more columns, you can easily edit them by altering the `$grid-break-points` variable.
+
+  +demo({
+scss:`
+//These are the default breakpoints
+$grid-break-points: (
+  (
+  //*1 column grid*/
+    false
+  ), (
+  //*2 column grid*/
+    100%: 600px,//* At the "mobile" screen size, make the columns 100% width */
+  ), (
+  //*3 column grid*/
+    50% : (max, 600px),//you can use mq-scss syntax to define your own media queries
+    100% : (max, 600px),
+  ), (
+  //*4 column grid*/
+    50% : 960px,
+    100% : 480px,
+  ), (
+  //*5 column grid*/
+    33.33% : 960px,
+    50% : 600px,
+    100% : 480px,
+  ), (
+  //*6 column grid*/
+    33.33% : 960px,
+    50% : 600px,
+    100% : 480px,
+  )
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-mixin';
+@import '../node_modules/gutter-grid/grid-classes';
+`
+}, {hasTabs: false})
+    :marked
+      These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements.
+
+  :marked
+    Note that you can use [mq-scss](https://www.npmjs.com/package/mq-scss) syntax to define custom media queries. This means that you can define the column break points using just about any media query you like. Taking a mobile first `min-width` approach will break legacy browser support though unless you have [UnMQ](https://github.com/jonathantneal/postcss-unmq) integrated into your build process.
+
+  +demo({
+scss:`
+//Disable all breakpoints
+$grid-break-points: false;
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-mixin';
+@import '../node_modules/gutter-grid/grid-classes';`
+}, {hasTabs: false})
+    :marked
+      You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns when using the class based grid system.
+
+  :marked
+    ### Mixin column breakpoints
+
+    One of the strengths of the mixin version is that it can accept any number of columns without the need for the global `$grid-break-points` variable to be updated. Using anything over 6 columns will not have any default breakpoints applied to it though. Fortunately, the mixin version also features the ability to assign it custom breakpoints using the `$breakpoints` setting.
+
+  +demo({
+html:`
+.mixin-7
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+  .mixin__cell.-color-6
+  .mixin__cell.-color-2
+`,
+scss:`
+.mixin-7 {
+  @include grid(7, $breakpoints: (
+    25% : 960px, //On a 960px wide screen or below, the columns will be 25% wide
+    50% : (max, 600px), //you can use mq-scss syntax here as well
+    100% : 480px,
+  ));
+}`
+}, {hasTabs: false})
+    :marked
+      Assigning custom breakpoints to a grid that contains more than 6 columns. (Mixin version only)
+
+  :marked
+    Note that you can use [mq-scss](https://www.npmjs.com/package/mq-scss) syntax here as well if you like.
+
+  :marked
+    ### The ieFloat setting
+
+    One common problem is that when grid cells have a large amount of content in them, the columns will grow outside their bounds even when you give them a column count.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--cols-3
+  .grid__cell.-color-1
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-2
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-3
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+`
+    },
+
+    mixin: {
+html:`
+.mixin-3
+  .mixin__cell.-color-1
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .mixin__cell.-color-2
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .mixin__cell.-color-3
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+`,
+scss:`
+.mixin-3 {
+  @include grid(3);
+}
+`,
+    }
+})
+    :marked
+      If you view this demo in IE8, you will see that the grid cells extend beyond the boundaries of the content area
+
+  :marked
+    The easiest way to fix this issue in most cases is to use the `ieFloat` setting. This setting forces the grid to use the `float:left` backup instead of the `display:table` backup when the browser doesn't support flexbox. `float:left` is much more obedient when it comes to setting column widths than `display:table`, so it often fixes the issue of content overflowing the page layout.
+
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--ieFloat.grid--cols-3
+  .grid__cell.-color-1
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-2
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .grid__cell.-color-3
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+`
+    },
+
+    mixin: {
+html:`
+.mixin-45
+  .mixin__cell.-color-1
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .mixin__cell.-color-2
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+
+  .mixin__cell.-color-3
+    pre || Lorem ipsum dolor sit amet. Et et enim.
+`,
+scss:`
+.mixin-45 {
+  @include grid(3, $ieFloat: true);
+}
+`,
+    }
+})
+    :marked
+      Same example again except this time with `ieFloat` turned on
