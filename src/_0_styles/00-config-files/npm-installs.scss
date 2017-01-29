@@ -25,4 +25,6 @@ $grid-cell-gutters: (
 //IE8 can't do transparent borders.
 //This defines what the default color for gutters is in IE.
 $grid-gutter-ie-fallback: $CF-body__bg;
+
+@import '../../../grid-mixin';
 @import '../../../grid-classes';
