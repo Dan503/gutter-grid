@@ -5,24 +5,27 @@
 //$mq-ems: true;
 @import '../../../node_modules/mq-scss/mq';
 
-//this grid system
+//Grid system global gutter sizes
 $grid-cell-gutters: (
 	'moduleName' : 20px,
+	'mixedSizeGutter' : 30px 10px,
 	'nav' : 10px,
 	'share' : 20px,
 	'body' : 30px,
 	'tabs' : 10px,
-	'logo' : (
+	'logo' : mq (
 		20px,
-		10px (max, bp('small'))
+		(10px 5px) (max, bp('small'))
 	),
-	'mediaQueryGutter' : (
+	'mediaQueryGutter' : mq (
 		50px, //*default*/
-		25px (max, 800px), //*affected by media query*/
+		(30px 10px) (max, 800px), //*affected by media query*/
 		10px (max, 700px) //*affected by media query*/
 	)
 );
 //IE8 can't do transparent borders.
 //This defines what the default color for gutters is in IE.
 $grid-gutter-ie-fallback: $CF-body__bg;
+
+@import '../../../grid-mixin';
 @import '../../../grid-classes';

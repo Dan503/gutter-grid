@@ -239,11 +239,20 @@
 			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
 		}
 
-		@if (type-of($gutter) == 'list') {
-			@each $value in $gutter {
+		@if (type-of($gutter) == 'string') {
+			@if (map-get($grid-cell-gutters, $gutter)){
+				$gutter: map-get($grid-cell-gutters, $gutter);
+			} @else {
+				@warn '"#{$gutter}" was not found in the $grid-cell-gutters variable';
+			}
+		}
+
+		@if (nth($gutter,1) == 'mq') {
+			@each $value in nth($gutter,2) {
 				@if (length($value) > 1){
 					$gutterSize: nth($value,1);
 					$mediaQuery: nth($value,2);
+
 					@include mq($mediaQuery){
 						@include generate-gutters('mixin', $gutterSize, $outerGutters);
 					}
