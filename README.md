@@ -32,7 +32,7 @@ Version 1.x
 )
 `````
 
-Column width is now stated first, and screen width is stated second. By default, the screen width will be calculated as a `max-width` media query. However, you can now provide [mq-scss](https://www.npmjs.com/package/mq-scss) syntax as an alternative to stating a screen pixel value width. This means that you can define the column break points using just about any media queries you like. Taking a mobile first `min-width` approach will break legacy browser support though unless you have [UnMQ](https://github.com/jonathantneal/postcss-unmq) integrated into your build process.
+Column width is now stated first, and screen width is stated second. By default, the screen width will be calculated as a `max-width` media query. However, you can now provide [mq-scss](https://www.npmjs.com/package/mq-scss) syntax as an alternative to stating a screen width pixel value. This means that you can define the column break points using just about any media query you like. Taking a mobile first `min-width` approach will break legacy browser support though unless you have [UnMQ](https://github.com/jonathantneal/postcss-unmq) integrated into your build process.
 
 Version 2.x
 
@@ -46,7 +46,7 @@ Version 2.x
 
 ### New format for assigning gutter break-points
 
-The new way of assigning breakpoints to gutters isn't much different different to the original method. The only incompatible difference being that now you need to write `mq` with a space after it (the space is vital) before the list of values.
+The new way of assigning breakpoints to gutters isn't much different different to the original method. The only incompatible difference being that now you need to write `mq` with a space after it before the list of values (the space is vital).
 
 Version 1.x
 

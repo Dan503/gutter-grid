@@ -123,7 +123,7 @@
 <pre><code>(
   600px 100%
 )
-</code></pre><p>Column width is now stated first, and screen width is stated second. By default, the screen width will be calculated as a <code>max-width</code> media query. However, you can now provide <a href="https://www.npmjs.com/package/mq-scss">mq-scss</a> syntax as an alternative to stating a screen pixel value width. This means that you can define the column break points using just about any media queries you like. Taking a mobile first <code>min-width</code> approach will break legacy browser support though unless you have <a href="https://github.com/jonathantneal/postcss-unmq">UnMQ</a> integrated into your build process.</p>
+</code></pre><p>Column width is now stated first, and screen width is stated second. By default, the screen width will be calculated as a <code>max-width</code> media query. However, you can now provide <a href="https://www.npmjs.com/package/mq-scss">mq-scss</a> syntax as an alternative to stating a screen width pixel value. This means that you can define the column break points using just about any media query you like. Taking a mobile first <code>min-width</code> approach will break legacy browser support though unless you have <a href="https://github.com/jonathantneal/postcss-unmq">UnMQ</a> integrated into your build process.</p>
 <p>Version 2.x</p>
 <pre><code>(
   100% : 600px, //state a max-width pixel value
@@ -131,7 +131,7 @@
   100% : (max, 600px), //provide a custom mq-scss media query
 )
 </code></pre><h4 id="new-format-for-assigning-gutter-break-points">New format for assigning gutter break-points</h4>
-<p>The new way of assigning breakpoints to gutters isn&#39;t much different different to the original method. The only incompatible difference being that now you need to write <code>mq</code> with a space after it (the space is vital) before the list of values.</p>
+<p>The new way of assigning breakpoints to gutters isn&#39;t much different different to the original method. The only incompatible difference being that now you need to write <code>mq</code> with a space after it before the list of values (the space is vital).</p>
 <p>Version 1.x</p>
 <pre><code class="lang-scss">$grid-cell-gutters: (
     &#39;mediaQueryGutter&#39; : (
