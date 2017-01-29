@@ -1,6 +1,6 @@
 block content
   :marked
-    By default, gutters will place the grid cells on the very edge of the content area as shown in this example by a red bounding box:
+    By default, Gutter Grid will place the grid cells on the very edge of the content area as shown in this example by a red bounding box:
 
   +demo({
     classes: {
@@ -48,7 +48,7 @@ scss:`
 })
 
   :marked
-    This isn't always the desired layout though. sometimes you want the gutters to also apply around the edges of the grid as well. This is when the `outerGutters` setting comes in.
+    This isn't always the desired layout though. Sometimes you want the gutters to also apply around the edges of the grid as well. This is when the `outerGutters` setting comes in.
 
   +demo({
     classes: {
@@ -98,7 +98,7 @@ scss:`
       Using the `outerGutters` setting to apply the gutter to the edges of the grid
 
   :marked
-    The class also comes in horizontal only, and vertical only variants as `grid--outerGutters-h` for horizontal only and `grid--outerGutters-v` for vertical only.
+    The setting also comes in horizontal only, and vertical only variants. For the class system, that comes in the form of these classes: `grid--outerGutters-h` for horizontal only and `grid--outerGutters-v` for vertical only. For the mixin version, set `$outerGutters: h` for horizontal or `$outerGutters: v` for vertical. The setting also comes in top, left, bottom, and right variant's as you will see in the examples below.
 
   +demo({
     classes: {
@@ -377,7 +377,7 @@ scss:`
 
 
   :marked
-    Also, there is a delayed variant for the horizontal classes. This is primarily for use with overarching page layouts. The idea with the delayed varient is that when the screen reaches the point where the edge of the screen would meet the edge of the grid + the gutter, horizontal outer gutters are applied to prevent the edges of the grid from touching the edges of the screen.
+    Also, there is a delayed variant for the horizontal classes. This is primarily for use with overarching page layouts. The idea with the delayed varient is that when the screen reaches the point where the edge of the screen would meet the edge of the grid (plus the gutter), horizontal outer gutters are applied to prevent the edges of the grid from touching the edges of the screen. The `$grid-page-width` global setting determines when the change occurs. Define this before the import statments to change it.
 
   +demo({
     classes: {
@@ -396,6 +396,9 @@ scss:`
 $grid-cell-gutters: (
   'moduleName' : 20px,
 );
+
+//Edit the screen size at which point the switch happens
+$grid-page-width: 1200px;
 
 @import '../node_modules/mq-scss/mq';
 @import '../node_modules/gutter-grid/grid-classes';`

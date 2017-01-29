@@ -1,6 +1,6 @@
 block content
   :marked
-    Wrapping isn't enabled by default on desktop sized screens mostly for the sake of legacy browser compatibility. To enable wrapping on desktop, a `grid--wrap` class needs to be added if using the class based system. If using the mixin based system, `$wrap` needs to be set to `true`. Without stating that the grid cells should wrap, if there are too many grid cells for the number of columns, it will squeeze them all together instead of wrapping them.
+    Wrapping is not enabled by default on desktop sized screens. To enable wrapping on desktop, a `grid--wrap` class needs to be added if using the class based system. If using the mixin based system, `$wrap` needs to be set to `true`. Without stating that the grid cells should wrap, if there are too many grid cells for the number of columns, it will squeeze them all together instead of wrapping them.
 
   +demo({
     classes: {
@@ -79,7 +79,7 @@ $grid-page-width: 1200px;
       Alter the screen size that grid wrapping becomes enabled by default at
 
   :marked
-    To just outright disable grid wrapping for all screen sizes, use the `grid--noWrap` class or set `$wrap` to `false`.
+    To just outright disable grid wrapping for all screen sizes, use the `grid--noWrap` class for the class based system or set `$wrap` to `false` if using the mixin.
 
   +demo({
     classes: {
@@ -111,3 +111,6 @@ scss:`
 })
     :marked
       Disable grid wrapping at all screen sizes (resize browser window to see the effect)
+
+  :marked
+     This is different from disabling the default media queries though. If you want to just prevent the default media queries from affecting the grid, it's better to just use the `grid--noMQs` class for the class based system or `$MQs: false` for the mixin. You will learn more about disabling media queries on the next page.

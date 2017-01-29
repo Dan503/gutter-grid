@@ -38,9 +38,9 @@ Version 2.x
 
 `````
 (
-  100% : 600px, //stating a max-width pixel value
+  100% : 600px, //state a max-width pixel value
   //or
-  100% : (max, 600px), //providing an mq-scss media query
+  100% : (max, 600px), //provide a custom mq-scss media query
 )
 `````
 

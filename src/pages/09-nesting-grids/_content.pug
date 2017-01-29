@@ -2,7 +2,7 @@ block content
   :marked
     (For demonstration purposes, the grid cells have been given padding. Padding is not included as part of the grid system though)
 
-    To nest a grid inside another grid and ensure that the nested grid takes up the full height of the parent grid, you could do this, however it doesn't regress as nicely in legacy browsers that don't support flexbox.
+    When nesting a grid inside another grid, you would most likely want the nested grid to take up the full height of the parent grid. To do this, you can nest the grid like in the example shown below however it doesn't regress nicely in legacy browsers that don't support flexbox.
 
   +demo({
     classes: {
@@ -117,3 +117,5 @@ scss:`
     Each `grid__cell` can only contain one `grid__inner` and `grid__inner` must be a direct decendent of it's `grid__cell` parent.
 
     In the mixin based system, the role of the `grid--hasInners` class is taken up by the `$inners:true` setting.
+
+    In legacy browsers, nested grids will not take up the full height of their parent grid. That is something that only flexbox or JavaScript can do.

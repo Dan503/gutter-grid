@@ -1,6 +1,6 @@
 block content
   :marked
-    Horizontal cell alignment is easy with Gutter Grid. These are mostly just classes that hold `align-items` values but they _do_ feature legacy browser backups. In old browsers, the `space` settings are outputted as center alignments instead.
+    Horizontal cell alignment is easy with Gutter Grid. These are mostly just classes that hold `align-items` values but they _do_ feature legacy browser backups so it's better to use these than the `align-items` property directly. In old browsers, the `space` settings are outputted as center alignments instead.
 
     By default, if there are not enough cells in the row to fill the specified number of columns, the cells will grow like this:
 
@@ -245,6 +245,6 @@ scss:`
 })
 
   :marked
-    Applying `grid--vertical` is simply adding `flex-direction: column`. This flips the grid around so that grid cells progressivly move down the page instead of across.
+    Applying `grid--vertical` (`$vertical: true` in the mixin) is simply adding `flex-direction: column`. This flips the grid around so that grid cells progressivly move down the page instead of across.
 
-    Using the `grid--vertical` class features a backup for legacy browsers though whereas applying `flex-direction: column` on it's own in your css does not.
+    Using the `vertical` setting features a backup for legacy browsers though whereas applying `flex-direction: column` on it's own does not.

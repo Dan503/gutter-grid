@@ -2,8 +2,8 @@
 //this module wraps around text spat out by a CMS editor.
 //Elements inside this module can't have classes attatched
 
-$C-numbers: brand(2);//$CB-blue-dim;
-$C-dots: $C-numbers;
+$C-numbers: brand(6);//$CB-blue-dim;
+$C-dots: brand(2);
 
 .cmsContent, .cmsContent td {
 	text-align: left;
@@ -15,7 +15,7 @@ $C-dots: $C-numbers;
 	strong, b { font-weight: $bold; }
 
 	//custom dot points do not appear in IE8 or print
-	aside:not(.demo) {
+	//aside:not(.demo) {
 		ul, ol {
 			ul, ol {
 				margin: 0;
@@ -59,7 +59,7 @@ $C-dots: $C-numbers;
 			}
 		}
 
-		> ul:not(.TK-noDots) {
+		ul:not(.TK-noDots) {
 			> li {
 				&:before {
 					@include MG-circle(fill, $C-dots, 6px);
@@ -112,7 +112,7 @@ $C-dots: $C-numbers;
 				}
 			}
 		}
-	}
+	//}
 
 	.externalLink-JS {
 		@include MG-icon('external', $CB-grey-dim, $pos:after){

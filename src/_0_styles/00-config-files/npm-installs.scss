@@ -23,6 +23,7 @@ $grid-cell-gutters: (
 		10px (max, 700px) //*affected by media query*/
 	)
 );
+
 //IE8 can't do transparent borders.
 //This defines what the default color for gutters is in IE.
 $grid-gutter-ie-fallback: $CF-body__bg;

@@ -40,7 +40,7 @@ block content
 
     > Read **[how to support legacy browsers](/pages/how-to-support-legacy-browsers/)** to get a run down on how to achieve maximum browser compatibility.
 
-    If there is a class that conflicts with the `.grid` class, you can edit the `$grid-prefix` variable to resolve the conflict.
+    If using the class based system and there is a conflicts with another "grid" class, you can edit the `$grid-prefix` variable to resolve the conflict.
 
     ``````scss
     $grid-prefix: 'prefixName';
@@ -49,4 +49,4 @@ block content
     @import '../node_modules/gutter-grid/grid-classes';
     ``````
 
-    That will add `prefixName-` to the front of all the grid classes. So `.grid` will turn into `.prefixName-grid`. This will affect all grid classes though so for example `.grid__cell` will become `.prefixName-grid__cell`.
+    That will add `prefixName-` to the front of all the grid classes. So `.grid` will turn into `.prefixName-grid`. This will affect _all_ grid classes. for example `.grid__cell` will become `.prefixName-grid__cell`.

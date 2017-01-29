@@ -2,7 +2,7 @@ block content
   :marked
     If using the class based system, cells can be made to take up more than just a single column width by using a `grid__cell--span-#` class. The `#` being the number of columns you wish for the cell to span.
 
-    Alternatively, if you are using the mixin based system, you need to use a seperate mixin to the main one. It's syntax is like this
+    Alternatively, if you are using the mixin based system, you can use the seperate `grid__cell--span` mixin to calculate the width for you. The syntax for it goes like this:
 
     ``````scss
     @include grid__cell--span(
@@ -12,7 +12,7 @@ block content
     );
     ``````
 
-    The first 2 parameters are required but the 3rd parameter is a completly optional parameter designed to add "!important" to the rule if you need to.
+    The first 2 parameters are required but the 3rd parameter is a completly optional parameter designed to add "!important" to the rule if you need to. The only think this mixin does is calculate the width for you so it's perfectly fine to write out the width manually if that's easier.
 
   +demo({
     classes: {
@@ -42,13 +42,17 @@ scss:`
 }
 
 .mixin__cellSpan {
+  //You can use the mixin to do the math for you
   @include grid__cell--span(3, 4);
+
+  //or you can just do the math yourself
+  width: 75%;
 }`,
     }
 })
 
   :marked
-    Grids that feature column spans often don't play nicely with the default media queries though. To work around this, it's usually best to simply disable the media queries on that particular grid and write your own custom styles with new media queries. To disable media queries on a grid, add the `grid--noMQs` class if using the class based system. Otherwise set the `$MQs` variable to `false` if using the mixin.
+    Grids that feature column spans often don't play nicely with the default media queries though. To work around this, it's usually best to simply disable the media queries on that particular grid and write your own custom styles with new media queries. To disable media queries on a grid, add the `grid--noMQs` class if using the class based system. If using the mixin, set the `$MQs` variable to `false`. Alternatively you may like to use the `$breakpoints` setting to [create new breakpoints](/pages/04-using-columns/#mixin-column-breakpoints) for the module instead, you will still likely need to style the cell that has column span specifically though.
 
   +demo({
     classes: {

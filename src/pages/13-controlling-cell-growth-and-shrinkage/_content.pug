@@ -73,7 +73,7 @@ scss: `
     }
 })
     :marked
-      If `grid--noGrowth` is applied, it is essentially the equivelent of using `grid--align-left`
+      If `grid--noGrowth` (`$grow: flase`) is applied, it is essentially the equivelent of using `grid--align-left` (`$align: left`)
 
   +demo({
     classes: {
@@ -101,7 +101,7 @@ scss: `
     }
 })
     :marked
-      If `grid--noShrink` is applied, the grid cells will try their best not to shrink below the required width of the content inside them (you will need to resize your browser to a mobile sized view to see the difference)
+      If `grid--noShrink` (`$shrink: false`) is applied, the grid cells will try their best not to shrink below the required width of the content inside them (you will need to resize your browser to a mobile sized view to see the difference)
 
   +demo({
     classes: {
@@ -129,7 +129,7 @@ scss: `
     }
 })
     :marked
-      `grid--noResize` and `$resize: false` are shortcuts for applying both `grid--noShrink` and `grid--noGrowth` at the same time.
+      `grid--noResize` (`$resize: false`) is a shortcut for applying both `grid--noShrink` (`$shrink: false`) and `grid--noGrowth` (`$grow: false`) at the same time.
 
   +demo({
     classes: {
@@ -193,7 +193,7 @@ scss: `
     }
 })
     :marked
-      Applying `noShrink` to only 1 of the grid cells (resize browser to see effect)
+      Applying `noShrink` to only 1 of the grid cells (resize browser to see the effect)
 
   +demo({
     classes: {

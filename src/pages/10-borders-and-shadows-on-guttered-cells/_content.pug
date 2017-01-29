@@ -4,7 +4,7 @@ block content
 
     The most common use case for wanting to do this is when you want to apply either a border or a box shadow to each cell in a grid that also features a gutter between each cell. Gutters are made by adding invisible borders to each of the grid cells. So trying to add borders or box shadows directly to the grid cells doesn't work.
 
-    Just note that the `mixin__cell` and `mixin__inner` class names aren't needed for the mixin version to work but the HTML structure is needed.
+    Just note that the `mixin__cell` and `mixin__inner` class names aren't needed for the mixin version to work but the structure of the HTML _is_ needed.
 
   +demo({
     classes: {
@@ -49,7 +49,7 @@ scss:`
   :marked
     Unfortunatly, if you are adding shadows, you can't use the `grid__wrapper` element to prevent the spacing glitch from occuring like you normally would. `grid__wrapper` is just applying `overflow:hidden`. Using `overflow:hidden` will also hide the shadows though.
 
-    You will need to find other ways to work around the browser glitch. One way is to add 1 pixel of padding to a parent element. It doesn't fix the problem outright but it at least makes the glitch far less obvious.
+    You will need to find other ways to work around the browser glitch. One way is to add 1 pixel of padding to the parent element. It doesn't fix the problem outright but it at least makes the glitch far less obvious.
 
   +demo({
     classes: {
