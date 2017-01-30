@@ -98,13 +98,6 @@
 			@if($MQs or $breakpoints != default) {
 				@include generate-column-breakpoints($breaks);
 			}
-			@if ($wrap == true) {
-				.no-flexwrap & {
-					@if ($cols > 2) {
-						&:nth-child(#{$cols}n+1) { clear: left; }
-					}
-				}
-			}
 		}
 
 		//grid__inner styling
