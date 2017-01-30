@@ -59,11 +59,6 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				@include generate-column-breakpoints($breaks);
 			}
 		}
-		.no-flexwrap &.#{$fullPrefix}grid--wrap > * {
-			@if ($i > 2) {
-				&:nth-child(#{$i}n+1) { clear: left; }
-			}
-		}
 	}
 }
 
