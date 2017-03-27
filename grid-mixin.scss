@@ -106,14 +106,14 @@
 		}
 	}
 
-	$checkDisplayMode: $ieFloat or $wrap == true;
+	$blockDisplayMode: $ieFloat or $wrap == true or $vertical or $align or $space;
 
 	//tabular backup for IE9 and below
 	.no-flexbox & {
-		display: if($checkDisplayMode, block, table) !important;
+		display: if($blockDisplayMode, block, table) !important;
 
 		> * {
-			display: if($checkDisplayMode, block, table-cell) !important;
+			display: if($blockDisplayMode, block, table-cell);
 			vertical-align: top;
 			float: if($ieFloat == true or $wrap == true, left, none);
 
@@ -133,7 +133,6 @@
 		}
 
 		@if($vertical){
-			display: block !important;
 			&:after {
 				content: '';
 				display: block;
@@ -190,7 +189,6 @@
 		}
 
 		.no-flexbox & {
-			display: block;
 			@if ($align == 'left') {
 				text-align: left;
 			} @else if ($align == 'right') {
