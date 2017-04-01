@@ -18,7 +18,7 @@ $grid-cell-gutters: (
 		(10px 5px) (max, bp('small'))
 	),
 	'mediaQueryGutter' : mq (
-		50px, //*default*/
+		(50px 30px), //*default*/
 		(30px 10px) (max, 800px), //*affected by media query*/
 		10px (max, 700px) //*affected by media query*/
 	)
