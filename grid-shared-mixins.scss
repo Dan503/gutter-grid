@@ -67,7 +67,6 @@
 	}
 
 	.lt-ie9 & {
-		border-right-width: 0;
 		&, > * {
 			border-color: $grid-gutter-ie-fallback;
 		}

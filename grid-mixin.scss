@@ -106,7 +106,8 @@
 		}
 	}
 
-	$blockDisplayMode: $ieFloat or $wrap == true or $vertical or $align or $space;
+	$colsIsSet: $cols != auto;
+	$blockDisplayMode: $ieFloat or $wrap == true or $vertical or $align or $space or $colsIsSet;
 
 	//tabular backup for IE9 and below
 	.no-flexbox & {
@@ -115,7 +116,7 @@
 		> * {
 			display: if($blockDisplayMode, block, table-cell);
 			vertical-align: top;
-			float: if($ieFloat == true or $wrap == true, left, none);
+			float: if($ieFloat == true or $wrap == true or $colsIsSet, left, none);
 
 			@if ($inners){
 				> * { display: block; }

@@ -287,6 +287,20 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		width: auto;
 		> * { display: table-cell; vertical-align: top; }
 
+		&--wrap, &[class*="grid--cols"] {
+			display: block;
+			> * {
+				display: block;
+				float: left;
+			}
+
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+		}
+
 		&--vAlign {
 			&-top {
 				> * { vertical-align: top; }
