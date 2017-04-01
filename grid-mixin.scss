@@ -44,6 +44,10 @@
 		min-width: 100%;
 	}
 
+	@if ($wrap == true){
+		flex-wrap: wrap;
+	}
+
 	@if ($grid-break-points != false){
 		@include mq(max, $grid-page-width){
 			@if ($MQs and $wrap == auto){
@@ -107,7 +111,7 @@
 	}
 
 	$colsAndGutter: $cols != auto and $gutter != false;
-	$blockDisplayMode: $ieFloat or $wrap == true or $vertical or $align or $space or $colsAndGutter;
+	$blockDisplayMode: $ieFloat == true or $grow == false or $resize == false or $vertical or $align or $space or $wrap == true or $colsAndGutter;
 
 	//tabular backup for IE9 and below
 	.no-flexbox & {
@@ -116,7 +120,6 @@
 		> * {
 			display: if($blockDisplayMode, block, table-cell);
 			vertical-align: top;
-			float: if($ieFloat == true or $wrap == true or $colsAndGutter, left, none);
 
 			@if ($inners){
 				> * { display: block; }
@@ -134,27 +137,14 @@
 		}
 
 		@if($vertical){
-			&:after {
-				content: '';
-				display: block;
-				clear: both;
-			}
-
 			> * {
-				float: left;
-				display: block;
 				width: 100%;
 			}
 		}
 	}
 
-	@if ($wrap == true){
-		@include ieFloat;
-		flex-wrap: wrap;
-	}
-
 	//allows IE to use floats instead of display table without affecting modern browsers
-	@if ($ieFloat == true or $grow == false or $resize == false) {
+	@if ($blockDisplayMode) {
 		@include ieFloat;
 	}
 
