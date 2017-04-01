@@ -322,7 +322,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				> * {
 					display: inline-block;
 					float: none;
-					margin-right: -4px!important;
+					margin-right: -4px;
 				}
 			}
 			&-left {
