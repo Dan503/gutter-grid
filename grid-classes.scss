@@ -284,7 +284,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	//tabular/float:left backup for IE9 and below
 	.no-flexbox & {
 		display: table;
-		width: 100%;
+		width: auto;
 		> * { display: table-cell; vertical-align: top; }
 
 		&--vAlign {
