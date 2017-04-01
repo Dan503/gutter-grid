@@ -60,7 +60,7 @@
             <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                   <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                     <use xlink:href="#svg-gutter-grid-logo"></use>
-                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v2.0.1</code></span></span></span></p>
+                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v2.0.3</code></span></span></span></p>
             <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
           </div>
         </div>
@@ -114,7 +114,7 @@
 
                         </div>
                         <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom">
+                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
                             <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
                             <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
                           </div>
@@ -233,7 +233,7 @@ $grid-cell-gutters: (
 
                         </div>
                         <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom">
+                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
                             <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
                             <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
                           </div>
@@ -328,7 +328,7 @@ $grid-cell-gutters: (
 
                         </div>
                         <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom">
+                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
                             <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
                             <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
                           </div>
@@ -365,7 +365,7 @@ $grid-cell-gutters: (
 $grid-cell-gutters: (
   'basicGutter' : 20px,
   'mediaQueryGutter' : mq (
-    50px, //*default gutter width of 50px*/
+    (50px 30px), //*default gutter width of 50px vertically and 30px horizontally*/
     (30px 10px) (max, 800px), //*gutter width is 30px vertically and 10px horizontally at 800px and below*/
     10px (max, 700px) //*gutter width of 10px at 700px and below*/
   )
@@ -407,7 +407,7 @@ $grid-cell-gutters: (
                                   <pre><code class="scss">
 .mixin-13 {
   @include grid(3, $wrap: true, $MQs: false, $gutter: mq (
-    50px, //*default gutter width of 50px*/
+    (50px 30px), //*default gutter width of 50px vertically and 30px horizontally*/
     (30px 10px) (max, 800px), //*gutter width is 30px vertically and 10px horizontally at 800px and below*/
     10px (max, 700px) //*gutter width of 10px at 700px and below*/
   ));
@@ -484,8 +484,7 @@ $grid-cell-gutters: (
     
   </script>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-  <!--I couldn't get main.js to work in IE so it get's it's on version-->
   <script src="/assets/scripts/ie8-main.js"></script><![endif]-->
-<!--[if gt IE 8]><!------>
+<!--[if gt IE 8]><!-->
   <script src="/assets/scripts/main.js"></script><!--<![endif]-->
 </body></html>
