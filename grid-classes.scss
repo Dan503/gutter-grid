@@ -314,12 +314,15 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		}
 
 		&--align {
-			&-left, &-center, &-right {
+			// need to overide the attribute selector
+			&-left.grid--align-left.grid--align-left,
+			&-center.grid--align-center.grid--align-center,
+			&-right.grid--align-right.grid--align-right {
 				display: block;
 				> * {
 					display: inline-block;
 					float: none;
-					margin-right: -5px!important;
+					margin-right: -4px!important;
 				}
 			}
 			&-left {
@@ -340,7 +343,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				> * {
 					display: inline-block;
 					float: none;
-					margin-right: -5px!important;
+					margin-right: -4px!important;
 				}
 			}
 		}
