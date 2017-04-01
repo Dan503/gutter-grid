@@ -154,7 +154,7 @@ scss:`
 $grid-cell-gutters: (
   'basicGutter' : 20px,
   'mediaQueryGutter' : mq (
-    50px, //*default gutter width of 50px*/
+    (50px 30px), //*default gutter width of 50px vertically and 30px horizontally*/
     (30px 10px) (max, 800px), //*gutter width is 30px vertically and 10px horizontally at 800px and below*/
     10px (max, 700px) //*gutter width of 10px at 700px and below*/
   )
@@ -178,7 +178,7 @@ html:`
 scss:`
 .mixin-13 {
   @include grid(3, $wrap: true, $MQs: false, $gutter: mq (
-    50px, //*default gutter width of 50px*/
+    (50px 30px), //*default gutter width of 50px vertically and 30px horizontally*/
     (30px 10px) (max, 800px), //*gutter width is 30px vertically and 10px horizontally at 800px and below*/
     10px (max, 700px) //*gutter width of 10px at 700px and below*/
   ));

@@ -130,22 +130,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 	@each $class, $gutter in $grid-cell-gutters {
 		&--gutter-#{$class} {
-			@if (nth($gutter,1) == 'mq') {
-				@each $value in nth($gutter,2) {
-					@if (length($value) > 1){
-						$gutterSize: nth($value,1);
-						$mediaQuery: nth($value,2);
-
-						@include mq($mediaQuery){
-							@include generate-gutters('classes', $gutterSize);
-						}
-					} @else {
-					 	@include generate-gutters('classes', $value);
-					}
-				}
-			} @else {
-				@include generate-gutters('classes', $gutter);
-			}
+			@include parse-gutter-data($gutter, 'classes');
 		}
 	}
 
@@ -284,8 +269,22 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	//tabular/float:left backup for IE9 and below
 	.no-flexbox & {
 		display: table;
-		width: 100%;
+		width: auto;
 		> * { display: table-cell; vertical-align: top; }
+
+		&--wrap, &[class*="grid--cols"][class*="grid--gutter"] {
+			display: block;
+			> * {
+				display: block;
+				float: left;
+			}
+
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+		}
 
 		&--vAlign {
 			&-top {
@@ -300,12 +299,15 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		}
 
 		&--align {
-			&-left, &-center, &-right {
+			// need to overide the attribute selector
+			&-left.grid--align-left.grid--align-left,
+			&-center.grid--align-center.grid--align-center,
+			&-right.grid--align-right.grid--align-right {
 				display: block;
 				> * {
 					display: inline-block;
 					float: none;
-					margin-right: -5px!important;
+					margin-right: -4px;
 				}
 			}
 			&-left {
@@ -326,7 +328,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				> * {
 					display: inline-block;
 					float: none;
-					margin-right: -5px!important;
+					margin-right: -4px!important;
 				}
 			}
 		}

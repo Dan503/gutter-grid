@@ -18,11 +18,13 @@ $grid-cell-gutters: (
 		(10px 5px) (max, bp('small'))
 	),
 	'mediaQueryGutter' : mq (
-		50px, //*default*/
+		(50px 30px), //*default*/
 		(30px 10px) (max, 800px), //*affected by media query*/
 		10px (max, 700px) //*affected by media query*/
 	)
 );
+
+$grid-page-width: bp('page');
 
 //IE8 can't do transparent borders.
 //This defines what the default color for gutters is in IE.

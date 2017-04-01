@@ -67,7 +67,6 @@
 	}
 
 	.lt-ie9 & {
-		border-right-width: 0;
 		&, > * {
 			border-color: $grid-gutter-ie-fallback;
 		}
@@ -132,5 +131,33 @@
 				}
 			}
 		}
+	}
+}
+
+@mixin parse-gutter-data($gutter, $systemType, $outerGutters: false){
+	@if (nth($gutter,1) == 'mq') {
+
+		$gutter_data: nth($gutter,2);
+
+		@for $i from 1 through length($gutter_data){
+			$gutter_value: nth($gutter_data, $i);
+			$gutter_is_mq: false;
+
+			@if (length($gutter_value) > 1){
+				$gutter_is_mq: type-of(nth(nth($gutter_value,2),1)) == 'string';
+			}
+
+			@if ($gutter_is_mq){
+				$gutterSize: nth($gutter_value,1);
+				$mediaQuery: nth($gutter_value,2);
+				@include mq($mediaQuery){
+					@include generate-gutters($systemType, $gutterSize, $outerGutters);
+				}
+			} @else {
+				@include generate-gutters($systemType, $gutter_value, $outerGutters);
+			}
+		}
+	} @else {
+		@include generate-gutters($systemType, $gutter, $outerGutters);
 	}
 }

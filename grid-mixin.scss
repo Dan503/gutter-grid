@@ -44,6 +44,10 @@
 		min-width: 100%;
 	}
 
+	@if ($wrap == true){
+		flex-wrap: wrap;
+	}
+
 	@if ($grid-break-points != false){
 		@include mq(max, $grid-page-width){
 			@if ($MQs and $wrap == auto){
@@ -106,7 +110,8 @@
 		}
 	}
 
-	$blockDisplayMode: $ieFloat or $wrap == true or $vertical or $align or $space;
+	$colsAndGutter: $cols != auto and $gutter != false;
+	$blockDisplayMode: $ieFloat == true or $grow == false or $resize == false or $vertical or $align or $space or $wrap == true or $colsAndGutter;
 
 	//tabular backup for IE9 and below
 	.no-flexbox & {
@@ -115,7 +120,6 @@
 		> * {
 			display: if($blockDisplayMode, block, table-cell);
 			vertical-align: top;
-			float: if($ieFloat == true or $wrap == true, left, none);
 
 			@if ($inners){
 				> * { display: block; }
@@ -133,27 +137,14 @@
 		}
 
 		@if($vertical){
-			&:after {
-				content: '';
-				display: block;
-				clear: both;
-			}
-
 			> * {
-				float: left;
-				display: block;
 				width: 100%;
 			}
 		}
 	}
 
-	@if ($wrap == true){
-		@include ieFloat;
-		flex-wrap: wrap;
-	}
-
 	//allows IE to use floats instead of display table without affecting modern browsers
-	@if ($ieFloat == true or $grow == false or $resize == false) {
+	@if ($blockDisplayMode) {
 		@include ieFloat;
 	}
 
@@ -199,7 +190,7 @@
 			> * {
 				display: inline-block;
 				float: none;
-				margin-right: -5px!important;//removes space bar space
+				margin-right: -4px;//removes space bar space
 			}
 		}
 	}
@@ -232,22 +223,8 @@
 			}
 		}
 
-		@if (nth($gutter,1) == 'mq') {
-			@each $value in nth($gutter,2) {
-				@if (length($value) > 1){
-					$gutterSize: nth($value,1);
-					$mediaQuery: nth($value,2);
+		@include parse-gutter-data($gutter, 'mixin', $outerGutters);
 
-					@include mq($mediaQuery){
-						@include generate-gutters('mixin', $gutterSize, $outerGutters);
-					}
-				} @else {
-					@include generate-gutters('mixin', $value, $outerGutters);
-				}
-			}
-		} @else {
-			@include generate-gutters('mixin', $gutter, $outerGutters);
-		}
 	}
 
 	//outer gutters
