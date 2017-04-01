@@ -17,7 +17,7 @@ $breakPoints: (
 	'phablet': 770px, //*essentially the maximum for iPads in portrait*/
 	'tablet': 960px, ///*!MAJOR BREAK POINT!*/ /*good place to switch to tablet view*/
 	'large': 1024px, //*maximum for iPads in landscape*/
-	'page': 1200px, ///*!MAJOR BREAK POINT!*//*Point at which the edge of the desktop design meets the edge of the screen*/
+	'page': 1119px, ///*!MAJOR BREAK POINT!*//*Point at which the edge of the desktop design meets the edge of the screen*/
 );
 
 @function bp($value){
