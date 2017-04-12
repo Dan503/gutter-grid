@@ -15,6 +15,10 @@
     "responsive",
     "fallback"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dan503/gutter-grid.git"
+  },
   "dependencies": {
     "mq-scss": "^1.1.2"
   },
