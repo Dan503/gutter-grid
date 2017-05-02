@@ -1,6 +1,6 @@
 {
   "name": "gutter-grid",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "yeosword-version": "2.8.2",
   "description": "A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system",
   "keywords": [
