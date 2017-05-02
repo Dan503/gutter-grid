@@ -117,6 +117,14 @@
 	.no-flexbox & {
 		display: if($blockDisplayMode, block, table) !important;
 
+		@if ($blockDisplayMode){
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+		}
+
 		> * {
 			display: if($blockDisplayMode, block, table-cell);
 			vertical-align: top;
