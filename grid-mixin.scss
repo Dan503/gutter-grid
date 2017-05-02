@@ -113,17 +113,14 @@
 	$colsAndGutter: $cols != auto and $gutter != false;
 	$blockDisplayMode: $ieFloat == true or $grow == false or $resize == false or $vertical or $align or $space or $wrap == true or $colsAndGutter;
 
-	//tabular backup for IE9 and below
-	.no-flexbox & {
-		display: if($blockDisplayMode, block, table) !important;
+	//allows IE to use floats instead of display table without affecting modern browsers
+	@if ($blockDisplayMode) {
+		@include ieFloat;
+	}
 
-		@if ($blockDisplayMode){
-			&:after {
-				content: '';
-				display: block;
-				clear: both;
-			}
-		}
+	//tabular backup for IE9 and below
+	.no-flexbox &, .no-flexwrap & {
+		display: if($blockDisplayMode, block, table) !important;
 
 		> * {
 			display: if($blockDisplayMode, block, table-cell);
@@ -149,11 +146,6 @@
 				width: 100%;
 			}
 		}
-	}
-
-	//allows IE to use floats instead of display table without affecting modern browsers
-	@if ($blockDisplayMode) {
-		@include ieFloat;
 	}
 
 	//quick access to left,center and right alignments
@@ -187,7 +179,7 @@
 			}
 		}
 
-		.no-flexbox & {
+		.no-flexbox &, .no-flexwrap & {
 			@if ($align == 'left') {
 				text-align: left;
 			} @else if ($align == 'right') {

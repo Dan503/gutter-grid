@@ -267,7 +267,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	}
 
 	//tabular/float:left backup for IE9 and below
-	.no-flexbox & {
+	.no-flexbox &, .no-flexwrap & {
 		display: table;
 		width: auto;
 		> * { display: table-cell; vertical-align: top; }

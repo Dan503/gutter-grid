@@ -1,7 +1,7 @@
 
 //switches IE (and other non-flexbox friendly browsers) to using float mode
 @mixin ieFloat {
-	.no-flexwrap & {
+	.no-flexbox &, .no-flexwrap & {
 		display: block;
 		&:after {
 			content: '';
