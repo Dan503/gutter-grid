@@ -60,7 +60,7 @@
             <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                   <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                     <use xlink:href="#svg-gutter-grid-logo"></use>
-                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v2.0.7</code></span></span></span></p>
+                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v3.0.0</code></span></span></span></p>
             <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
           </div>
         </div>
@@ -106,7 +106,13 @@
                   <article class="markdown-body" id="content">
                     <p class="TK-nonDesktop"><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                     <div class="cmsContent">
-                      <h2>Change log</h2><h3 id="new-in-version-2-0-0">New in version 2.0.0</h3>
+                      <h2>Change log</h2><h3 id="version-3-0-0">Version 3.0.0</h3>
+<ul>
+<li>Gutter Grid will now install whatever version of mq-scss is available (defaulting to the latest version)</li>
+<li><strong>Breaking change:</strong> You now need to set the <code>$grid-legacy-support</code> setting to <code>true</code> if you wish to support browsers that do not support flexbox natively. (Change made to drastically reduce the amount of bloat found in the output css).</li>
+</ul>
+<h3 id="version-2-0-0">Version 2.0.0</h3>
+<h4 id="what-s-new-">What&#39;s new?</h4>
 <ul>
 <li>Gutter Grid now comes in mixin flavour!</li>
 <li>Gutters can now have different vertical vs horizontal gutter widths</li>
@@ -114,10 +120,10 @@
 <li>Improved legacy browser support</li>
 <li>Reduced specificity on class based selectors for easier overriding of styles</li>
 </ul>
-<h3 id="v2-0-0-breaking-changes">v2.0.0 Breaking changes</h3>
-<h4 id="reduced-specificity-in-class-names">Reduced specificity in class names</h4>
+<h4 id="breaking-changes">Breaking changes</h4>
+<h5 id="reduced-specificity-in-class-names">Reduced specificity in class names</h5>
 <p>If upgrading, none of the class names have changed, however the reduced specificity will mean that you may need to update your styles to not conflict with the new grid system.</p>
-<h4 id="new-format-for-assigning-column-break-points">New format for assigning column break points</h4>
+<h5 id="new-format-for-assigning-column-break-points">New format for assigning column break points</h5>
 <p>The new format to the column break points is a bit different to the original. before it was a list of screen-sizes then column widths with a space in between each one.</p>
 <p>Version 1.x</p>
 <pre><code>(
@@ -130,8 +136,8 @@
   //or
   100% : (max, 600px), //provide a custom mq-scss media query
 )
-</code></pre><h4 id="new-format-for-assigning-gutter-break-points">New format for assigning gutter break-points</h4>
-<p>The new way of assigning breakpoints to gutters isn&#39;t much different different to the original method. The only incompatible difference being that now you need to write <code>mq</code> with a space after it before the list of values (the space is vital).</p>
+</code></pre><h5 id="new-format-for-assigning-gutter-break-points">New format for assigning gutter break-points</h5>
+<p>The new way of assigning breakpoints to gutters isn&#39;t much different to the original method. The only incompatible difference being that now you need to write <code>mq</code> with a space after it before the list of values (the space is vital).</p>
 <p>Version 1.x</p>
 <pre><code class="lang-scss">$grid-cell-gutters: (
     &#39;mediaQueryGutter&#39; : (
@@ -150,27 +156,6 @@
     )
 );
 </code></pre>
-<h3 id="changes">Changes</h3>
-<p><strong>v2.0.1</strong></p>
-<ul>
-<li>A fix for cell spans not behaving as expected in IE9</li>
-</ul>
-<p><strong>v2.0.0</strong></p>
-<ul>
-<li>Gutter Grid mixin introduced</li>
-<li>Gutters can have different vertical and horizontal widths</li>
-<li>Column media queries can take <a href="https://www.npmjs.com/package/mq-scss">mq-scss</a> syntax for defining completely custom breakpoints</li>
-<li>Improved legacy browser support</li>
-<li>Reduced specificity on class based selectors for easier overriding of styles</li>
-</ul>
-<p><strong>v1.0.1</strong></p>
-<ul>
-<li>Readme update</li>
-</ul>
-<p><strong>v1.0.0</strong></p>
-<ul>
-<li>Initial release</li>
-</ul>
 
                     </div>
                     <nav class="nextPrev">

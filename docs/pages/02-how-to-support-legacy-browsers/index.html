@@ -60,7 +60,7 @@
             <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                   <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                     <use xlink:href="#svg-gutter-grid-logo"></use>
-                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v2.0.7</code></span></span></span></p>
+                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v3.0.0</code></span></span></span></p>
             <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
           </div>
         </div>
@@ -109,8 +109,13 @@
                       <h2>How to support legacy browsers</h2><h3 id="supporting-browsers-that-support-flexbox-but-not-the-latest-syntax-ie10-">Supporting browsers that support flexbox but not the latest syntax (IE10)</h3>
 <p>IE10 has support for flexbox however you will need to incorporate <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> into your build process to support it&#39;s outdated flexbox syntax.</p>
 <p>Also be aware of this <a href="http://stackoverflow.com/questions/16808815/ie10-flexbox-p-element-non-wrapping/33795089">IE10 flexbox bug</a> which can cause problems in page layouts.</p>
-<h3 id="supporting-browsers-that-do-not-support-flexbox-ie8-9-">Supporting browsers that do not support flexbox (IE8 &amp; 9)</h3>
-<p>Gutter Grid is powered mostly by flexbox. It has <code>display:table</code>, <code>float:left</code> and <code>display:inline-block</code> backups built into it for when <code>flexbox</code> is not supported. In general it will use <code>display:table</code> since tables act in a very similar way to how flexbox acts. However, when wrapping is involved and the browser does not support the <code>flex-wrap</code> css property, it will use <code>float:left</code> styling instead. The <code>display:inline-block</code> backups mostly come into play when horizontal cell alignment settings are used.</p>
+<h3 id="supporting-browsers-that-do-not-support-flexbox-_at-all_-ie8-9-">Supporting browsers that do not support flexbox <em>at all</em> (IE8 &amp; 9)</h3>
+<p>Gutter Grid is powered mostly by flexbox. When legacy support is enabled, it adds <code>display:table</code>, <code>float:left</code> and <code>display:inline-block</code> backups for when <code>flexbox</code> is not supported. In general it will use <code>display:table</code> since tables act in a very similar sort of way to how flexbox acts. However, when wrapping is involved and the browser does not support the <code>flex-wrap</code> css property, it will use <code>float:left</code> styling instead. The <code>display:inline-block</code> backups mostly come into play when horizontal cell alignment settings are used.</p>
+<p>To enable legacy support for browsers that don&#39;t support flexbox, you will need to set the <code>$grid-legacy-support</code> setting to <code>true</code> before the import statement.</p>
+<pre><code class="lang-scss">$grid-legacy-support: true;
+@import &#39;../node_modules/mq-scss/mq&#39;;
+@import &#39;../node_modules/gutter-grid/grid-mixin&#39;;
+</code></pre>
 <p>Please note that although there are fallbacks in place, they aren&#39;t able to perfectly repliate the behaviour of a browser that has full flexbox support. <strong>The design in IE8 &amp; 9 won&#39;t look 100% like the design on browsers that support flexbox</strong>.</p>
 <p>The fallbacks are mainly just there to help stop the layout from completly breaking on you when compared to using purely flexbox on it&#39;s own. You will likely need to do some extra custom styles but the fallbacks will most likely get you to about 80% or more of the way there.</p>
 <p>In order to detect if the browser supports flexbox and flexwrap, Gutter Grid is dependent on <a href="https://modernizr.com/">Modernizr</a> being a part of your build process. The particular Modernizr properties that it is dependent on are <code>flexwrap</code> and <code>flexbox</code>. To add Modernizr to your site, you have two options. Option 1 is to <a href="https://modernizr.com/download?setclasses&amp;q=flex">download a custom build</a> from the Modernizr website that includes flexbox and flexwrap in it, then load the javascript file that Modernizr generated into your website. Option 2 is to incorporate <a href="https://www.npmjs.com/package/customizr">Customizr</a> into your build process. I recommend taking the second option.</p>
