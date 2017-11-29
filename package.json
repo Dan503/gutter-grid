@@ -20,7 +20,7 @@
     "url": "git+https://github.com/Dan503/gutter-grid.git"
   },
   "dependencies": {
-    "mq-scss": "^1.1.2"
+    "mq-scss": "*"
   },
   "devDependencies": {
     "autoprefixer": "~6.3.1",
