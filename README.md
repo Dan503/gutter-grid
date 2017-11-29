@@ -2,9 +2,14 @@
 
     npm install gutter-grid --save
 
-Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters. Even though it is powered by flexbox, it features `display:table`, `float:left` and `display:inline-block` backups for legacy browsers to prevent your site from blowing up when viewed in IE8 and 9.
+Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters. Even though it is powered by flexbox, it features `display:table`, `float:left` and `display:inline-block` backups for legacy browsers when enabled to prevent your site's layout from blowing up even when viewed in IE8 and 9.
 
 To read the full documentation go to http://gutter-grid.net
+
+## Version 3.0.0
+
+  - Gutter Grid will now install whatever version of mq-scss is available (defaulting to the latest version)
+  - **Breaking change:** You now need to set the `$grid-legacy-support` setting to `true` if you wish to support browsers that do not support flexbox natively. (Change made to drastically reduce the amount of bloat found in the output css).
 
 ## New in version 2.0.0
 
