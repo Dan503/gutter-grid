@@ -12,6 +12,9 @@ $grid-page-width: 1200px !default;
 //This defines what the default color for gutters is in IE.
 $grid-gutter-ie-fallback: #fff !default;
 
+// Support for browsers that don't support flexbox is disabled by default
+$grid-legacy-support: false !default;
+
 //You can alter the available grid gutter sizes here
 //usage: class="grid grid--gutter-moduleName"
 $grid-cell-gutters: () !default;

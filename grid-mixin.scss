@@ -118,32 +118,34 @@
 		@include ieFloat;
 	}
 
-	//tabular backup for IE9 and below
-	.no-flexbox &, .no-flexwrap & {
-		display: if($blockDisplayMode, block, table) !important;
+	@if ($grid-legacy-support) {
+		//tabular backup for IE9 and below
+		.no-flexbox &, .no-flexwrap & {
+			display: if($blockDisplayMode, block, table) !important;
 
-		> * {
-			display: if($blockDisplayMode, block, table-cell);
-			vertical-align: top;
-
-			@if ($inners){
-				> * { display: block; }
-			}
-		}
-
-		@if ($vAlign){
-			@if ($vAlign == 'top'){
-				> * { vertical-align: top; }
-			} @else if ($vAlign == 'center') {
-				> * { vertical-align: middle; }
-			} @else if ($vAlign == 'bottom') {
-				> * { vertical-align: bottom; }
-			}
-		}
-
-		@if($vertical){
 			> * {
-				width: 100%;
+				display: if($blockDisplayMode, block, table-cell);
+				vertical-align: top;
+
+				@if ($inners){
+					> * { display: block; }
+				}
+			}
+
+			@if ($vAlign){
+				@if ($vAlign == 'top'){
+					> * { vertical-align: top; }
+				} @else if ($vAlign == 'center') {
+					> * { vertical-align: middle; }
+				} @else if ($vAlign == 'bottom') {
+					> * { vertical-align: bottom; }
+				}
+			}
+
+			@if($vertical){
+				> * {
+					width: 100%;
+				}
 			}
 		}
 	}
@@ -162,7 +164,7 @@
 			} @else if ($align == 'right') {
 				justify-content: flex-end;
 			} @else {
-				@warn 'invalid value for $align: "#{$align}". Valid values: left, center, right.'
+				@warn 'invalid value for $align: "#{$align}". Valid values: left, center, right.';
 			}
 		}
 
@@ -175,22 +177,24 @@
 			} @else if ($space == 'around') {
 				justify-content: space-around;
 			} @else {
-				@warn 'invalid value for $space: "#{$space}". Valid values: between, around.'
+				@warn 'invalid value for $space: "#{$space}". Valid values: between, around.';
 			}
 		}
 
-		.no-flexbox &, .no-flexwrap & {
-			@if ($align == 'left') {
-				text-align: left;
-			} @else if ($align == 'right') {
-				text-align: right;
-			} @else {
-				text-align: center;
-			}
-			> * {
-				display: inline-block;
-				float: none;
-				margin-right: -4px;//removes space bar space
+		@if ($grid-legacy-support) {
+			.no-flexbox &, .no-flexwrap & {
+				@if ($align == 'left') {
+					text-align: left;
+				} @else if ($align == 'right') {
+					text-align: right;
+				} @else {
+					text-align: center;
+				}
+				> * {
+					display: inline-block;
+					float: none;
+					margin-right: -4px;//removes space bar space
+				}
 			}
 		}
 	}
@@ -204,7 +208,7 @@
 		} @else if ($vAlign == 'bottom') {
 			align-items: flex-end;
 		} @else {
-			@warn 'invalid value for $vAlign: "#{$vAlign}". Valid values: top, center, bottom.'
+			@warn 'invalid value for $vAlign: "#{$vAlign}". Valid values: top, center, bottom.';
 		}
 	}
 
@@ -212,7 +216,9 @@
 	@if ($gutter != false){
 		border-style: solid;
 		> *, & {
-			.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
+			@if ($grid-legacy-support) {
+				.lt-ie9 & { border-color: $grid-gutter-ie-fallback; }
+			}
 		}
 
 		@if (type-of($gutter) == 'string') {
@@ -224,7 +230,6 @@
 		}
 
 		@include parse-gutter-data($gutter, 'mixin', $outerGutters);
-
 	}
 
 	//outer gutters
