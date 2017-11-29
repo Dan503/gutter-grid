@@ -158,9 +158,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			margin-right: 0;
 		}
 
-		.lt-ie9 & {
-			> *, & {
-				 border-color: $grid-gutter-ie-fallback;
+		@if ($grid-legacy-support) {
+			.lt-ie9 & {
+				> *, & {
+					border-color: $grid-gutter-ie-fallback;
+				}
 			}
 		}
 
@@ -267,86 +269,87 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	}
 
 	//tabular/float:left backup for IE9 and below
-	.no-flexbox &, .no-flexwrap & {
-		display: table;
-		width: auto;
-		> * { display: table-cell; vertical-align: top; }
+	@if ($grid-legacy-support) {
+		.no-flexbox &, .no-flexwrap & {
+			display: table;
+			width: auto;
+			> * { display: table-cell; vertical-align: top; }
 
-		&--wrap, &[class*="grid--cols"][class*="grid--gutter"] {
-			display: block;
-			> * {
-				display: block;
-				float: left;
-			}
-
-			&:after {
-				content: '';
-				display: block;
-				clear: both;
-			}
-		}
-
-		&--vAlign {
-			&-top {
-				> * { vertical-align: top; }
-			}
-			&-center {
-				> * { vertical-align: middle; }
-			}
-			&-bottom {
-				> * { vertical-align: bottom; }
-			}
-		}
-
-		&--align {
-			// need to overide the attribute selector
-			&-left.grid--align-left.grid--align-left,
-			&-center.grid--align-center.grid--align-center,
-			&-right.grid--align-right.grid--align-right {
+			&--wrap, &[class*="grid--cols"][class*="grid--gutter"] {
 				display: block;
 				> * {
-					display: inline-block;
-					float: none;
-					margin-right: -4px;
+					display: block;
+					float: left;
+				}
+
+				&:after {
+					content: '';
+					display: block;
+					clear: both;
 				}
 			}
-			&-left {
-				text-align: left;
-			}
-			&-center {
-				text-align: center;
-			}
-			&-right {
-				text-align: right;
-			}
-		}
 
-		&--space {
-			&-between, &-around {
+			&--vAlign {
+				&-top {
+					> * { vertical-align: top; }
+				}
+				&-center {
+					> * { vertical-align: middle; }
+				}
+				&-bottom {
+					> * { vertical-align: bottom; }
+				}
+			}
+
+			&--align {
+				// need to overide the attribute selector
+				&-left.grid--align-left.grid--align-left,
+				&-center.grid--align-center.grid--align-center,
+				&-right.grid--align-right.grid--align-right {
+					display: block;
+					> * {
+						display: inline-block;
+						float: none;
+						margin-right: -4px;
+					}
+				}
+				&-left {
+					text-align: left;
+				}
+				&-center {
+					text-align: center;
+				}
+				&-right {
+					text-align: right;
+				}
+			}
+
+			&--space {
+				&-between, &-around {
+					display: block;
+					text-align: center;
+					> * {
+						display: inline-block;
+						float: none;
+						margin-right: -4px!important;
+					}
+				}
+			}
+
+			&--vertical {
 				display: block;
-				text-align: center;
-				> * {
-					display: inline-block;
-					float: none;
-					margin-right: -4px!important;
+				&:after {
+					content: '';
+					display: block;
+					clear: both;
+				}
+				& > * {
+					float: left;
+					display: block;
+					width: 100%;
 				}
 			}
 		}
-
-		&--vertical {
-			display: block;
-			&:after {
-				content: '';
-				display: block;
-				clear: both;
-			}
-			& > * {
-				float: left;
-				display: block;
-				width: 100%;
-			}
-		}
-
 	}
 
 	//allows IE to use floats instead of display table without affecting modern browsers

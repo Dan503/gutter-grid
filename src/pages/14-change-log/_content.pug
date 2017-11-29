@@ -1,6 +1,13 @@
 block content
   :marked
-    ### New in version 2.0.0
+    ### Version 3.0.0
+
+      - Gutter Grid will now install whatever version of mq-scss is available (defaulting to the latest version)
+      - **Breaking change:** You now need to set the `$grid-legacy-support` setting to `true` if you wish to support browsers that do not support flexbox natively. (Change made to drastically reduce the amount of bloat found in the output css).
+
+    ### Version 2.0.0
+
+    #### What's new?
 
       - Gutter Grid now comes in mixin flavour!
       - Gutters can now have different vertical vs horizontal gutter widths
@@ -8,13 +15,13 @@ block content
       - Improved legacy browser support
       - Reduced specificity on class based selectors for easier overriding of styles
 
-    ### v2.0.0 Breaking changes
+    #### Breaking changes
 
-    #### Reduced specificity in class names
+    ##### Reduced specificity in class names
 
     If upgrading, none of the class names have changed, however the reduced specificity will mean that you may need to update your styles to not conflict with the new grid system.
 
-    #### New format for assigning column break points
+    ##### New format for assigning column break points
 
     The new format to the column break points is a bit different to the original. before it was a list of screen-sizes then column widths with a space in between each one.
 
@@ -38,9 +45,9 @@ block content
     )
     `````
 
-    #### New format for assigning gutter break-points
+    ##### New format for assigning gutter break-points
 
-    The new way of assigning breakpoints to gutters isn't much different different to the original method. The only incompatible difference being that now you need to write `mq` with a space after it before the list of values (the space is vital).
+    The new way of assigning breakpoints to gutters isn't much different to the original method. The only incompatible difference being that now you need to write `mq` with a space after it before the list of values (the space is vital).
 
     Version 1.x
 
@@ -65,25 +72,3 @@ block content
         )
     );
     `````
-
-    ### Changes
-
-    **v2.0.1**
-
-    - A fix for cell spans not behaving as expected in IE9
-
-    **v2.0.0**
-
-    - Gutter Grid mixin introduced
-    - Gutters can have different vertical and horizontal widths
-    - Column media queries can take [mq-scss](https://www.npmjs.com/package/mq-scss) syntax for defining completely custom breakpoints
-    - Improved legacy browser support
-    - Reduced specificity on class based selectors for easier overriding of styles
-
-    **v1.0.1**
-
-    - Readme update
-
-    **v1.0.0**
-
-    - Initial release

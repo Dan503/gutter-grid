@@ -1,16 +1,18 @@
 
 //switches IE (and other non-flexbox friendly browsers) to using float mode
 @mixin ieFloat {
-	.no-flexbox &, .no-flexwrap & {
-		display: block;
-		&:after {
-			content: '';
+	@if ($grid-legacy-support) {
+		.no-flexbox &, .no-flexwrap & {
 			display: block;
-			clear: both;
-		}
-		& > * {
-			float: left;
-			display: block;
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+			& > * {
+				float: left;
+				display: block;
+			}
 		}
 	}
 }
@@ -66,9 +68,11 @@
 		border-width: 0 0 $gutter-bottom $gutter-left;
 	}
 
-	.lt-ie9 & {
-		&, > * {
-			border-color: $grid-gutter-ie-fallback;
+	@if ($grid-legacy-support) {
+		.lt-ie9 & {
+			&, > * {
+				border-color: $grid-gutter-ie-fallback;
+			}
 		}
 	}
 
@@ -89,16 +93,20 @@
 					margin-right: 0;
 				}
 
-				.lt-ie9 & {
-					&-h-delayed, &-left-delayed, &-right-delayed {
-						margin-left: -$gutter-left;
+				@if ($grid-legacy-support) {
+					.lt-ie9 & {
+						&-h-delayed, &-left-delayed, &-right-delayed {
+							margin-left: -$gutter-left;
+						}
 					}
 				}
 			}
 
-			.lt-ie9 & {
-				&, &-h {
-					border-right-width: $gutter-right !important;
+			@if ($grid-legacy-support) {
+				.lt-ie9 & {
+					&, &-h {
+						border-right-width: $gutter-right !important;
+					}
 				}
 			}
 		}
@@ -117,17 +125,19 @@
 				}
 			}
 
-			.lt-ie9 & {
-				@if (
-					$outerGutters == 'h-delayed' or
-					$outerGutters == 'left-delayed' or
-					$outerGutters == 'right-delayed'
-				){
-					margin-left: -$gutter-left;
-				}
+			@if ($grid-legacy-support) {
+				.lt-ie9 & {
+					@if (
+						$outerGutters == 'h-delayed' or
+						$outerGutters == 'left-delayed' or
+						$outerGutters == 'right-delayed'
+					){
+						margin-left: -$gutter-left;
+					}
 
-				@if ($outerGutters == true or $outerGutters == 'h'){
-					border-right-width: $gutter-right !important;
+					@if ($outerGutters == true or $outerGutters == 'h'){
+						border-right-width: $gutter-right !important;
+					}
 				}
 			}
 		}

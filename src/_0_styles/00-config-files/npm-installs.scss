@@ -30,5 +30,8 @@ $grid-page-width: bp('page');
 //This defines what the default color for gutters is in IE.
 $grid-gutter-ie-fallback: $CF-body__bg;
 
+//Adds support for browsers that don't support flexbox
+$grid-legacy-support: true;
+
 @import '../../../grid-mixin';
 @import '../../../grid-classes';
