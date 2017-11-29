@@ -1,8 +1,10 @@
 [![Gutter Grid logo](http://gutter-grid.net/assets/images/social-media.jpg)](http://gutter-grid.net)
 
-    npm install gutter-grid --save
+``````
+npm install gutter-grid --save
+``````
 
-Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters. Even though it is powered by flexbox, it features `display:table`, `float:left` and `display:inline-block` backups for legacy browsers when enabled to prevent your site's layout from blowing up even when viewed in IE8 and 9.
+Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters. Even though it is powered by flexbox, it features `display:table`, `float:left` and `display:inline-block` backups for legacy browsers (when enabled) to prevent your site's layout from blowing up even when viewed in IE8 and 9.
 
 To read the full documentation go to http://gutter-grid.net
 
@@ -11,7 +13,9 @@ To read the full documentation go to http://gutter-grid.net
   - Gutter Grid will now install whatever version of mq-scss is available (defaulting to the latest version)
   - **Breaking change:** You now need to set the `$grid-legacy-support` setting to `true` if you wish to support browsers that do not support flexbox natively. (Change made to drastically reduce the amount of bloat found in the output css).
 
-## New in version 2.0.0
+## Version 2.0.0
+
+### What's new?
 
   - Gutter Grid now comes in mixin flavour!
   - Gutters can now have different vertical vs horizontal gutter widths
@@ -19,13 +23,13 @@ To read the full documentation go to http://gutter-grid.net
   - Improved legacy browser support
   - Reduced specificity on class based selectors for easier overriding of styles
 
-## v2.0.0 Breaking changes
+### v2.0.0 Breaking changes
 
-### Reduced specificity in class names
+#### Reduced specificity in class names
 
 If upgrading, none of the class names have changed, however the reduced specificity will mean that you may need to update your styles to not conflict with the new grid system.
 
-### New format for assigning column break points
+#### New format for assigning column break points
 
 The new format to the column break points is a bit different to the original. before it was a list of screen-sizes then column widths with a space in between each one.
 
@@ -49,7 +53,7 @@ Version 2.x
 )
 `````
 
-### New format for assigning gutter break-points
+#### New format for assigning gutter break-points
 
 The new way of assigning breakpoints to gutters isn't much different different to the original method. The only incompatible difference being that now you need to write `mq` with a space after it before the list of values (the space is vital).
 
