@@ -102,7 +102,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			flex-grow: 1;
 		} @else {
 			//If no columns set, grid cells will stretch
-			#{$grid}:not([class*="--cols"]) > & {
+			#{$grid}:not([class*="--cols"]):not([class*="--noStretch"]) > & {
 				flex-grow: 1;
 			}
 		}
