@@ -74,12 +74,12 @@ head
 	script(src=basePath+'/assets/scripts/modernizr.min.js')
 
 	block stylesheets
-		<!--[if gt IE 8]><!-->
+		<!--[if gt IE 9]><!-->
 		link(rel='stylesheet', href=basePath+'/assets/styles/main.css')
 		<!--<![endif]-->
 
-		<!--[if lt IE 9]>
-		link(rel='stylesheet', href=basePath+'/assets/styles/noMQs-main.css')
+		<!--[if lt IE 10]>
+		link(rel='stylesheet', href=basePath+'/assets/styles/main.legacy.css')
 		<![endif]-->
 
 body

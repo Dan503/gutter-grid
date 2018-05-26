@@ -52,6 +52,7 @@ export default function() {
 		//Primary css file compilation
 		gulp.src([
 			path.join(dirs.source, dirs.styles, entries.css),
+			path.join(dirs.source, dirs.styles, 'main.legacy.scss'),
 			path.join(dirs.source, dirs.protoOnly, entries.protoOnly.css),
 		])
 			.pipe(plugins.plumber((error)=>{
