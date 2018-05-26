@@ -130,7 +130,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		&--stretch {
 			flex-grow: 1;
 		}
-		&--noGrowth {
+		&--noStretch {
 			flex-grow: 0;
 		}
 		&--noShrink {
@@ -223,7 +223,12 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		flex-direction: column;
 	}
 
-	&--noGrowth {
+	&--stretch {
+		> * {
+			flex-grow: 1;
+		}
+	}
+	&--noStretch {
 		> * {
 			flex-grow: 0;
 		}
@@ -235,11 +240,6 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		> * {
 			flex-shrink: 0;
 			flex-grow: 0;
-		}
-	}
-	&--stretch {
-		> * {
-			flex-grow: 1;
 		}
 	}
 
