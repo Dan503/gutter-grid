@@ -27,7 +27,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 	$ieFloat: false,
 	$mini: false,
 	$vertical: false,
-	$grow: true,
+	$stretch: false,
 	$shrink: true,
 	$resize: default,
 	$breakpoints: default
@@ -42,7 +42,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 
 	//By default grids will stretch unless there is a column setting
 	@if ($align-default == left and $align == left and $cols == auto){
-		$align: stretch;
+		$stretch: true;
 	}
 
 	//By default grids will not wrap unless there is a column setting
@@ -92,7 +92,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 		background-clip: padding-box!important;
 		border: 0 solid transparent;
 
-		$canGrow: $resize == true or ($grow == true and $resize == default);
+		$canGrow: $resize == true or $align == stretch or ($stretch == true and $resize == default);
 		$canShrink: $resize == true or ($shrink == true and $resize == default);
 		flex-grow: if($canGrow, 1, 0);
 		flex-shrink: if($canShrink, 1, 0);
@@ -123,7 +123,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 	}
 
 	$colsAndGutter: $cols != auto and $gutter != false;
-	$blockDisplayMode: $ieFloat == true or $grow == false or $resize == false or $vertical or $align != 'stretch' or $space or $wrap == true or $colsAndGutter;
+	$blockDisplayMode: $ieFloat == true or $stretch == false or $resize == false or $vertical or $align != 'stretch' or $space or $wrap == true or $colsAndGutter;
 
 	//allows IE to use floats instead of display table without affecting modern browsers
 	@if ($blockDisplayMode) {
@@ -163,12 +163,12 @@ $wrap-default: if($grid-legacy-support, auto, true);
 	}
 
 	//quick access to left,center and right alignments
-	@if ($align != 'stretch' or $space) {
+	@if (($align != 'stretch' and $stretch == false) or $space) {
 		> * {
 			flex-grow: 0;
 		}
 
-		@if ($align != 'stretch'){
+		@if ($align != 'stretch' and $stretch == false){
 			@if ($align == 'left') {
 				justify-content: flex-start;
 			} @else if ($align == 'center') {

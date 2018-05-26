@@ -169,7 +169,7 @@
 	}
 
 	&-40 {
-		@include grid($grow: false, $wrap: false);
+		@include grid($stretch: false, $wrap: false);
 	}
 
 	&-41 {
