@@ -32,6 +32,13 @@
 			100% : 480px,
 		));
 	}
+	&-7B {
+		@include grid(7, $breakpoints: (
+			4 : 960px,
+			2 : (max, 600px),
+			1 : 480px,
+		));
+	}
 
 	&-8 {
 		@include grid(3, $wrap: true);

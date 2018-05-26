@@ -100,8 +100,6 @@ $wrap-default: if($grid-legacy-support, auto, true);
 		//column widths
 		@if(type-of($cols) == number){
 
-			$columnWidth: percentage(1/$cols);
-
 			$breaks: '';
 
 			@if ($breakpoints == default){
@@ -110,7 +108,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 				$breaks: $breakpoints;
 			}
 
-			width: $columnWidth;
+			width: column-width($cols);
 
 			//Applies the media queries for the break points
 			@if($MQs or $breakpoints != default) {

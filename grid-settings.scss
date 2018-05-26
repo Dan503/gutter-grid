@@ -15,6 +15,9 @@ $grid-gutter-ie-fallback: #fff !default;
 // Support for browsers that don't support flexbox is disabled by default
 $grid-legacy-support: false !default;
 
+// Support for browsers that support calc() is enabled by default
+$grid-calc-support: not $grid-legacy-support !default;
+
 //You can alter the available grid gutter sizes here
 //usage: class="grid grid--gutter-moduleName"
 $grid-cell-gutters: () !default;

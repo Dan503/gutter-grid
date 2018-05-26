@@ -1,3 +1,10 @@
+@function is-percentage($value) {
+  @return is-number($value) and unit($value) == '%';
+}
+
+@function column-width($col-count){
+	@return if($grid-calc-support, calc(100% / #{$col-count}), percentage(1/$col-count));
+}
 
 //switches IE (and other non-flexbox friendly browsers) to using float mode
 @mixin ieFloat {
@@ -20,10 +27,14 @@
 @mixin generate-column-breakpoints ($breaks){
 	@if ($breaks != false) {
 		@each $V-columnWidth, $BP-deviceWidth in $breaks {
+			$col-width: $V-columnWidth;
+			@if (not is-percentage($V-columnWidth)){
+				$col-width: column-width($V-columnWidth);
+			}
 			//media query defaults to max-width if only a pixel value is given
 			$mq: if(length($BP-deviceWidth) > 1, $BP-deviceWidth, (max, $BP-deviceWidth));
 			@include mq($mq){
-				width: $V-columnWidth;
+				width: $col-width;
 			}
 		}
 	}
