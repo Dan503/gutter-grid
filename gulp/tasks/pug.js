@@ -359,6 +359,7 @@ export default function() {
 				pretty: true,
 				basedir: './'+[dirs.source].join('/'),
 				locals: {
+					args,
 					require,
 					config,
 					pugFilters,
