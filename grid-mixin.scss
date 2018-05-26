@@ -40,6 +40,11 @@ $wrap-default: if($grid-legacy-support, auto, true);
 	align-content: stretch;
 	border-color: transparent;
 
+	//By default grids will not wrap unless there is a column setting
+	@if ($wrap-default == true and $wrap == true and $cols == auto){
+		$wrap: false;
+	}
+
 	@if ($vertical){
 		flex-direction: column;
 	}

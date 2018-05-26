@@ -73,6 +73,13 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	display: flex;
 	align-content: stretch;
 
+	@if (not $grid-legacy-support){
+		//By default grids will not wrap unless there is a column setting
+		&[class*="--cols"]:not(.#{$fullPrefix}grid--noWrap){
+			flex-wrap: wrap;
+		}
+	}
+
 	//grid__wrapper styling... really only necessary for use with grid--gutter-#
 	&__wrapper {
 		overflow: hidden;
