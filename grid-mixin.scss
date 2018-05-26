@@ -16,6 +16,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 @mixin grid(
 	$cols: auto,
 	$gutter: false,
+	$breakpoints: default,
 	$inners: false,
 	$vAlign: false,
 	$align: $align-default,
@@ -29,8 +30,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 	$vertical: false,
 	$stretch: false,
 	$shrink: true,
-	$resize: default,
-	$breakpoints: default
+	$resize: default
 ){
 	box-sizing: border-box;
 	list-style: none;
