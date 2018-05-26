@@ -9,14 +9,18 @@
 	width: (percentage(1/$totalCols) * $span) $important;
 }
 
+// legacy support has different defaults
+$align-default: if($grid-legacy-support, stretch, left);
+$wrap-default: if($grid-legacy-support, auto, true);
+
 @mixin grid(
 	$cols: auto,
 	$gutter: false,
 	$inners: false,
 	$vAlign: false,
-	$align: false,
+	$align: $align-default,
 	$space: false,
-	$wrap: auto,
+	$wrap: $wrap-default,
 	$MQs: true,
 	$outerGutters: false,
 	$cellSpan: false,
@@ -111,7 +115,7 @@
 	}
 
 	$colsAndGutter: $cols != auto and $gutter != false;
-	$blockDisplayMode: $ieFloat == true or $grow == false or $resize == false or $vertical or $align or $space or $wrap == true or $colsAndGutter;
+	$blockDisplayMode: $ieFloat == true or $grow == false or $resize == false or $vertical or $align != 'stretch' or $space or $wrap == true or $colsAndGutter;
 
 	//allows IE to use floats instead of display table without affecting modern browsers
 	@if ($blockDisplayMode) {
@@ -151,12 +155,12 @@
 	}
 
 	//quick access to left,center and right alignments
-	@if ($align or $space) {
+	@if ($align != 'stretch' or $space) {
 		> * {
 			flex-grow: 0;
 		}
 
-		@if ($align){
+		@if ($align != 'stretch'){
 			@if ($align == 'left') {
 				justify-content: flex-start;
 			} @else if ($align == 'center') {
@@ -170,8 +174,6 @@
 
 		//quick access to space-between and space-around
 		@if ($space) {
-			> * { flex-grow: 0; }
-
 			@if ($space == 'between') {
 				justify-content: space-between;
 			} @else if ($space == 'around') {
