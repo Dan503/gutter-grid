@@ -48,6 +48,8 @@
 		@include grid(6, $wrap: false);
 	}
 
+	// $wrap: true; isn't needed in most of these examples in modern browsers.
+	// I'm keeping it in for the sake of IE 8 and 9 running in legacy mode
 	&-10 {
 		@include grid(4, $wrap: true);
 	}
