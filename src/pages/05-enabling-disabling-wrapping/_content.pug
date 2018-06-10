@@ -1,6 +1,13 @@
 block content
   :marked
-    Wrapping is not enabled by default on desktop sized screens. To enable wrapping on desktop, a `grid--wrap` class needs to be added if using the class based system. If using the mixin based system, `$wrap` needs to be set to `true`. Without stating that the grid cells should wrap, if there are too many grid cells for the number of columns, it will squeeze them all together instead of wrapping them.
+    Prior to version 4, wrapping was not enabled by default on desktop sized screens. To enable wrapping on desktop, a `grid--wrap` class needed to be added if using the class based system. If using the mixin based system, `$wrap` needed to be set to `true`. Without stating that the grid cells should wrap, if there were too many grid cells for the number of columns, it would squeeze them all together instead of wrapping them.
+
+    In version 4, this was changed. Wrapping will automatically be enabled by default under the following circumstances:
+    - A column count has been defined
+    - It has been explicitly enabled using `$wrap: true` in the mixin or `.grid--wrap` in the class system
+    - The screen width is less than the `$grid-page-width` setting which is 1200px by default (more on that a bit later)
+
+    Note that if `$grid-legacy-support` is enabled in version 4, it reverts back to the version 3 behaviour of needing the `$wrap` setting to be explicitly enabled (or `grid--wrap` class applied) before it will wrap. This was a limitation that came from trying to provide the best possible fallback code for IE 8 and 9.
 
   +demo({
     classes: {
@@ -31,7 +38,7 @@ scss:`
     }
 })
     :marked
-      6 cells in a 3 column grid with desktop wrapping **disabled**
+      6 cells in a 3 column grid. In modern browsers (and IE 10 & 11) this will wrap so that it has 3 cells per row. IE 8 and 9 are loading a different style sheet with legacy mode enabled. They should be displaying these grid cells all in a single row if the screen size is larger than 1200px.
 
   +demo({
     classes: {
@@ -62,10 +69,10 @@ scss:`
     }
 })
     :marked
-      6 cells in a 3 column grid with desktop wrapping **enabled**
+      When `$grid-legacy-support` is enabled, the `$wrap: true` setting or `grid--wrap` class needs to be applied for the cells to wrap on desktop (view in IE 8/9).
 
   :marked
-    When the browser reaches a certain screen size, wrapping becomes enabled by default so that the content in the grid is able to adapt to the smaller screen sizes. The setting that determines at what point `grid--wrap` enables itself is `$grid-page-width`. It is named "page-width" since it is meant to be the screen width at which the edge of the desktop design meets the edge of the screen.
+    When the browser window is less than the width defined by the `$grid-page-width` setting, wrapping becomes enabled by default. This is so that the content in the grid is able to adapt to the smaller screen sizes. This behaviour is consistent across both versions 3 and 4. It is named `$grid-page-width` since it is meant to be the screen width at which the edge of the desktop design meets the edge of the screen.
 
   +demo({
 scss:`
@@ -76,7 +83,7 @@ $grid-page-width: 1200px;
 @import '../node_modules/gutter-grid/grid-classes';`
 }, {hasTabs: false})
     :marked
-      Alter the screen size that grid wrapping becomes enabled by default at
+      Alter the screen size that grid wrapping automatically enables itself at by editing the `$grid-page-width` setting.
 
   :marked
     To just outright disable grid wrapping for all screen sizes, use the `grid--noWrap` class for the class based system or set `$wrap` to `false` if using the mixin.
@@ -110,7 +117,7 @@ scss:`
     }
 })
     :marked
-      Disable grid wrapping at all screen sizes (resize browser window to see the effect)
+      Disable grid wrapping at all screen sizes
 
   :marked
-     This is different from disabling the default media queries though. If you want to just prevent the default media queries from affecting the grid, it's better to just use the `grid--noMQs` class for the class based system or `$MQs: false` for the mixin. You will learn more about disabling media queries on the next page.
+     This is different from disabling the default media queries though. If you want to just prevent the default media queries from affecting the grid, it's better to use the `grid--noMQs` class for the class based system or the `$MQs: false` setting if using the mixin. You will learn more about disabling media queries on the next page.
