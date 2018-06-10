@@ -77,7 +77,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 	@if (not $grid-legacy-support){
 		//By default grids will not wrap unless there is a column setting
-		&[class*="--cols"]:not(#{$grid}--noWrap){
+		&[class*="grid--cols"]:not(#{$grid}--noWrap){
 			flex-wrap: wrap;
 		}
 	}
@@ -102,7 +102,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			flex-grow: 1;
 		} @else {
 			//If no columns set, grid cells will stretch
-			#{$grid}:not([class*="grid--cols"]):not(.grid--noStretch):not([class*="grid--align-"]) > &:not(.grid__cell--noStretch) {
+			#{$grid}:not([class*="grid--cols"]):not(#{$grid}--noStretch):not([class*="grid--align-"]) > &:not(#{$grid}__cell--noStretch) {
 				flex-grow: 1;
 			}
 		}
