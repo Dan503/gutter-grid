@@ -1,6 +1,6 @@
 block content
   :marked
-    Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters. Even though it is powered by flexbox, it features `display:table`, `float:left` and `display:inline-block` backups for legacy browsers to prevent your site from blowing up when viewed in IE8 and 9.
+    Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters. Even though it is powered by flexbox, it features a legacy mode that adds `display:table`, `float:left` and `display:inline-block` backups that legacy browsers can fall back on. This will help prevent your site from blowing up even when viewed in IE8 and 9.
 
     Have you ever had to do a layout that looked something like this in a design?
 
@@ -18,10 +18,9 @@ block content
 
     ### Try the challenge for yourself
 
-    If you don't think it's that hard to do, try the challenge for yourself.
-
     - Make a 3x3 grid
     - 20px gutter inbetween each cell
+    - No CSS grid allowed (needs to work in IE in a way that supports auto-placement)
     - The cells must sit hard up against the edges of the parent element at all times
     - On a 960px wide screen, the cell width changes to 50% width per cell with 2 cells per row except for the last one
     - On a 600px wide screen, the cell width changes to 100% width per cell
