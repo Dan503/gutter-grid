@@ -27,8 +27,8 @@
 
 	&-7 {
 		@include grid(7, $breakpoints: (
-			25% : 960px,
-			50% : (max, 600px),
+			4 : 960px,
+			2 : (max, 600px),
 			100% : 480px,
 		));
 	}
