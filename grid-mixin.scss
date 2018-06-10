@@ -6,7 +6,11 @@
 
 //make cells take up multiple columns worth of width
 @mixin grid__cell--span($span, $totalCols, $important: ()){
-	width: (percentage(1/$totalCols) * $span) $important;
+	@if ($grid-calc-support) {
+		width: calc(#{$span} / #{$totalCols} * 100%) $important;
+	} @else {
+		width: (percentage(1/$totalCols) * $span) $important;
+	}
 }
 
 // legacy support has different defaults
