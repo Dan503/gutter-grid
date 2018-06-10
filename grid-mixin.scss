@@ -103,7 +103,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 			$breaks: '';
 
 			@if ($breakpoints == default){
-				$breaks: if(length($grid-bp-list) < $cols, false, nth($grid-bp-list, $cols));
+				$breaks: if(length($grid-bp-list) < $cols, false, map-get($grid-bp-list, $cols));
 			} @else {
 				$breaks: $breakpoints;
 			}

@@ -26,30 +26,35 @@ $grid-cell-gutters: () !default;
 //position 1: the screen size the new width is applied to
 //position 2: the new width of the columns at the specified screen size
 $grid-break-points: (
-	(
-	//*1 column grid*/
-		false
-	), (
 	//*2 column grid*/
-		100%: 600px,//* At the "mobile" screen size, make the columns 100% width */
-	), (
+	2: (
+		1: 600px,//* At 600px wide screen and below, make it a 1 column grid */
+	),
+
 	//*3 column grid*/
-		50% : (max, 960px),
-		100% : (max, 600px),
-	), (
+	3: (
+		2 : (max, 960px),//* Use mq-scss syntax if preferred */
+		1 : (max, 600px),
+	),
+
 	//*4 column grid*/
-		50% : 960px,
-		100% : 480px,
-	), (
+	4: (
+		2 : 960px,
+		1 : 480px,
+	),
+
 	//*5 column grid*/
-		33.33% : 960px,
-		50% : 600px,
-		100% : 480px,
-	), (
+	5: (
+		3 : 960px,
+		2 : 600px,
+		1 : 480px,
+	),
+
 	//*6 column grid*/
-		33.33% : 960px,
-		50% : 600px,
-		100% : 480px,
+	6: (
+		3 : 960px,
+		2 : 600px,
+		1 : 480px,
 	)
 ) !default;
 

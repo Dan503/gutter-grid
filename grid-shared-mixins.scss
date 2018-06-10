@@ -1,3 +1,15 @@
+@function fill-blank-columns($bp-list){
+	$i: 0;
+	@while ($i < length($bp-list)) {
+		@if (not map-has-key($bp-list, $i) and $i > 0) {
+			$bp-list: map-merge($bp-list, ($i: false));
+		}
+		$i: $i + 1;
+	}
+	@return $bp-list;
+}
+$grid-bp-list: fill-blank-columns($grid-bp-list);
+
 @function is-percentage($value) {
   @return is-number($value) and unit($value) == '%';
 }

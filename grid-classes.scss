@@ -38,7 +38,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 @for $i from 1 through length($grid-bp-list) {
 	$columnWidth: column-width($i);
-	$breaks: nth($grid-bp-list, $i);
+	$breaks: map-get($grid-bp-list, $i);
 
 	//sets the default grid__cell widths
 	.#{$fullPrefix}grid--cols-#{$i} {
