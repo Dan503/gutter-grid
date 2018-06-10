@@ -7,6 +7,8 @@
 
 //Grid system global gutter sizes
 $grid-cell-gutters: (
+	20 : 20px,
+	'10-30' : 10px 30px,
 	'moduleName' : 20px,
 	'mixedSizeGutter' : 30px 10px,
 	'nav' : 10px,

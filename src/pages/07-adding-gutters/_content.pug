@@ -1,14 +1,14 @@
 block content
   :marked
-    One of the hardest things to do well in css that is very common in web design is when you have multiple columns on multiple rows with gutters inbetween each item. The content in the outer columns need to line up with the edges of the other content on the page though.
+    If you have no access to CSS grid, one of the hardest things to do well in css that is also very common in web design is having multiple columns on multiple rows with gutters between each item. The content in the outer columns need to line up with the edges of the other content on the page though.
 
-    This is difficult to do manually but it's easy with Gutter Grid.
+    With no access to CSS grid, this is difficult to do manually but it's easy with Gutter Grid.
 
   +demo({
     classes: {
 html:`
 .grid__wrapper
-  .grid.grid--gutter-moduleName.grid--cols-3.grid--wrap
+  .grid.grid--gutter-moduleName.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -47,7 +47,11 @@ scss:`
 // -- Local gutter --
 
 .mixin-12 {
-  @include grid(3, $gutter: 20px, $wrap: true);
+  // Short hand:
+  @include grid(3, 20px);
+
+  // Long hand:
+  @include grid($cols: 3, $gutter: 20px);
 }
 
 // ---- Option 2 -----
@@ -74,21 +78,14 @@ $grid-cell-gutters: (
       Defining a basic gutter size
 
   :marked
-    The `grid__wrapper` element is to help contain the grid inside it's bounding box when gutters are applied to it. There is a glitch in Chrome that often ignores the top negative margin rules that make the grid cells sit hard up against the boundries of the grid. `grid__wrapper` prevents this glitch from being an issue.
+    The `grid__wrapper` element is to help contain the grid inside it's bounding box when gutters are applied to it. There is a bug in Chrome that often ignores the top and bottom negative margin rules that make the grid cells sit hard up against the boundaries of the grid. `grid__wrapper` prevents this bug from being an issue. It fixes the issue by applying `overflow: hidden`. If overflow needs to be visible, try adding 1px of padding to `.grid__wrapper` as suggested in the [documentation for adding borders and shadows](http://localhost:3000/pages/10-borders-and-shadows-on-guttered-cells/) instead of using `overflow: hidden`.
 
-    In the class based system, I name the grid gutters based on the module name that the gutter is being applied to rather than a specific number like `grid--gutter-20`. While this can lead to multiple grid gutters having the same values, this improves maintainability by making gutter widths controllable entirely through the css without having to make changes across multiple html files. If you disagree, nothing is stopping you from naming the gutters however you want.
-
-    In the mixin based system, there are two ways you can go about applying gutters to the grid. The first option is an inline sort of format where you define the gutter size directly in the `$gutter` setting when calling the mixin. This makes it easy to keep all the styles for a module in the one place. The second option is more for global gutter sizes. You define them in the `$grid-cell-gutters` variable in the same way as you would for the class based system. You then use the gutter name in the `$gutter` setting when calling the mixin. For the sake of brevity, I'll only use the inline format for the mixin version from now on. Just know that **the global format is available to you for all the gutter examples** if you wish to use it.
-
-    ### Unequal vertical and horizontal gutters
-
-    If you have a design where the spacing between cells is different vertically to the horizontal spacing, your in luck. Gutter Grid also caters to unequal horizontal/vertical gutter sizes. This is done by providing a second pixel value. The vertical value goes first and the horizontal value goes second. This is to replicate how the short hand of setting margin and padding with 2 values goes vertical first then horizontal.
+    In the class based system, I name the grid gutters based on the module name that the gutter is being applied to rather than a specific number like `grid--gutter-20`. While this can lead to multiple grid gutters having the same values, this improves maintainability by making gutter widths controllable entirely through the css without having to make changes across multiple html files. If you disagree, nothing is stopping you from naming the gutters using numbers instead.
 
   +demo({
-    classes: {
 html:`
 .grid__wrapper
-  .grid.grid--gutter-mixedSizeGutter.grid--cols-3.grid--wrap
+  .grid.grid--gutter-20.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -99,7 +96,53 @@ html:`
 scss:`
 //Define gutter sizes like this
 $grid-cell-gutters: (
-  'mixedSizeGutter' : 30px 10px,
+  20 : 20px,
+  30 : 30px,
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';
+`
+  }, {hasTabs: false})
+    :marked
+      If using the class based system, you can use numbers as the names of the gutters instead if you prefer.
+
+  :marked
+    In the mixin based system, there are two ways you can go about applying gutters to the grid. The first option is an inline sort of format where you define the gutter size directly in the `$gutter` setting when calling the mixin. This makes it easy to keep all the styles for a module in the one place. The second option is more for global gutter sizes. You define them in the `$grid-cell-gutters` variable in the same way as you would for the class based system. You then use the gutter name in the `$gutter` setting when calling the mixin. For the sake of brevity, I'll only use the inline format for the mixin version from now on. Just know that **the global format is available to you for all the gutter examples** if you wish to use it.
+
+    ### Unequal vertical and horizontal gutters
+
+    If you have a design where the spacing between cells is different vertically to the horizontal spacing, your in luck. Gutter Grid also caters to unequal horizontal/vertical gutter sizes. This is done by providing a second pixel value. The vertical value goes first and the horizontal value goes second. This is to replicate how the short hand of setting margin and padding with 2 values goes vertical first then horizontal.
+
+  +demo({
+    classes: {
+html:`
+p (using a name)
+.grid__wrapper
+  .grid.grid--gutter-mixedSizeGutter.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+br
+hr
+p (using numbers)
+.grid__wrapper
+  .grid.grid--gutter-10-30.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`,
+scss:`
+//Define gutter sizes like this
+$grid-cell-gutters: (
+  'mixedSizeGutter' : 30px 10px, // Using a name
+  '10-30' : 10px 30px, // Using numbers
 );
 
 @import '../node_modules/mq-scss/mq';
@@ -124,7 +167,7 @@ scss:`
 }
 
 .mixin-46 {
-  @include grid(3, $gutter: 30px 10px, $wrap: true);
+  @include grid(3, 30px 10px);
 }
 `,
     }
@@ -142,7 +185,7 @@ scss:`
     classes: {
 html:`
 .grid__wrapper
-  .grid.grid--gutter-mediaQueryGutter.grid--cols-3.grid--wrap.grid--noMQs
+  .grid.grid--gutter-mediaQueryGutter.grid--cols-3.grid--noMQs
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -177,7 +220,7 @@ html:`
 `,
 scss:`
 .mixin-13 {
-  @include grid(3, $wrap: true, $MQs: false, $gutter: mq (
+  @include grid(3, $MQs: false, $gutter: mq (
     (50px 30px), //*default gutter width of 50px vertically and 30px horizontally*/
     (30px 10px) (max, 800px), //*gutter width is 30px vertically and 10px horizontally at 800px and below*/
     10px (max, 700px) //*gutter width of 10px at 700px and below*/
@@ -194,7 +237,7 @@ scss:`
       Applying gutters that are affected by media queries
 
   :marked
-    Unlike a basic gutter which is just 1 or 2 pixel values, a media query gutter is a list of pixel values with an optional media query attached to them. When defining a gutter that contains media queries, you need to start with `mq [space]` then list the values. It is _vitally important_ that you include the space after `mq`, otherwise it will break the system. You can also assign unequal vertical and horizontal gutter by wrapping 2 values in brackets where you would normally just place one value. The vertical value is first and the horizontal value goes second.
+    Unlike a basic gutter which is just 1 or 2 pixel values, a media query gutter is a list of pixel values with an optional media query attached to them. When defining a gutter that contains media queries, you need to start with `mq [space]` then list the values. It is _**vitally important**_ that you include the space after `mq`, otherwise it will break the system. You can also assign unequal vertical and horizontal gutters by wrapping 2 values in brackets where you would normally just place one value. The vertical value is first and the horizontal value goes second.
 
-    You may have noticed that the media queries are not written in the standard css media query syntax. They are actually written in the [mq-scss](https://www.npmjs.com/package/mq-scss) syntax. To learn more about how to write media queries using the mq-scss syntax, see the [mq-scss documentation](https://www.npmjs.com/package/mq-scss).
+    The media queries are written in [mq-scss](https://www.npmjs.com/package/mq-scss) syntax. To learn more about how to write media queries using the mq-scss syntax, see the [mq-scss documentation](https://www.npmjs.com/package/mq-scss).
 
