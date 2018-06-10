@@ -26,6 +26,61 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
 - The `grid--noGrowth` class has been renamed `grid--noStretch` to align with the new `grid--stretch` class. (a breaking change for **everyone**)
 - The `$grow` setting in the mixin has been renamed to `$stretch`. (a breaking change for **everyone**)
 - `$breakpoints` parameter in the mixin has been moved to the 3rd slot. (a breaking change for **everyone**)
+- `$grid-break-points` setting now has new syntax that makes it easier to tell what column count a particular set of breakpoints is for. Below is an impracticle example showing the new format:
+
+  **Version 3.x**
+
+  ````scss
+  $grid-break-points: (
+    // No media queries for 1 column grid
+    (false),
+
+    // 2 column grid breakpoints
+    (
+      // At 600px wide screen and below, make columns 100% wide
+      100%: 600px,
+    ),
+
+    // No media queries for 3 column grid
+    (false),
+
+    // 4 column grid breakpoints
+    (
+      50% : 960px,
+      100% : 600px,
+    )
+
+    // No media queries for a 5 column grid
+    false,
+  )
+  ````
+
+  **Version 4.0.0**
+
+  ````scss
+  $grid-break-points: (
+    // No need to mention a 1 column grid
+
+    // 2 column grid breakpoints
+    2: (
+      // At 600px wide screen and below, make it a 1 column grid
+      // (using percentages here instead of column count still works)
+      1: 600px,
+    ),
+
+    // No need to mention a 3 column grid
+
+    // 4 column grid breakpoints
+    4: (
+      2 : 960px,
+      1 : 600px,
+    )
+
+    // No media queries for 5 column grid
+    // Only needed if using the class system
+    5: false,
+  )
+  ````
 
 #### New features:
 
@@ -35,8 +90,10 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
 
   ````scss
   @include grid(7, $breakpoints: (
-    25% : 960px, //On a 960px wide screen or below, the columns will be 25% wide
-    50% : (max, 600px), //you can use mq-scss syntax here as well
+    // On a 960px wide screen or below, the columns will be 25% wide
+    25% : 960px,
+    // You can use mq-scss syntax here as well
+    50% : (max, 600px),
     100% : 480px,
   ));
   ````
@@ -45,8 +102,10 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
 
   ````scss
   @include grid(7, $breakpoints: (
-    4 : 960px, //On a 960px wide screen or below, there will be 4 columns
-    2 : (max, 600px), //you can use mq-scss syntax here as well
+    //On a 960px wide screen or below, there will be 4 columns
+    4 : 960px,
+    // You can still use mq-scss syntax here as well
+    2 : (max, 600px),
     1 : 480px,
   ));
   ````
