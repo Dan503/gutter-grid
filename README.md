@@ -22,6 +22,7 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
 - New default settings
   - For the mixin `$align` now defaults to `left` and `$wrap` defaults to `true` but only if columns have been defined.
   - If using the classes system, in order to make the grid stretch like it did in v3.0.0 a `grid--stretch` class needs to be added to the `.grid` element. This is only necessary if columns have been defined.
+  - Grids with a column count setting will now wrap by default unless if wrapping is explicitly disabled or `$grid-legacy-support` is enabled.
 - The `grid--noGrowth` class has been renamed `grid--noStretch` to align with the new `grid--stretch` class. (a breaking change for **everyone**)
 - The `$grow` setting in the mixin has been renamed to `$stretch`. (a breaking change for **everyone**)
 - `$breakpoints` parameter in the mixin has been moved to the 3rd slot. (a breaking change for **everyone**)
