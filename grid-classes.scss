@@ -49,13 +49,19 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		//.grid__cell--span-# styling
 		@if ($i > 1){
 			@for $x from 2 through $i {
-				> .#{$fullPrefix}grid__cell--span-#{$x} { width: column-width($x); }
+				> .#{$fullPrefix}grid__cell--span-#{$x} {
+					@if ($grid-calc-support) {
+						width: calc(#{$x} / #{$i} * 100%);
+					} @else {
+						width: $x / $i * 100%;
+					}
+				}
 			}
 		}
 
 		//Applies the media queries for the break points
 		&:not(.#{$fullPrefix}grid--noMQs) {
-			> * {
+			> *:not([class*="cell--span-"]) {
 				@include generate-column-breakpoints($breaks);
 			}
 		}
@@ -103,9 +109,13 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		} @else {
 			//If no columns set, grid cells will stretch
 			#{$grid}:not([class*="grid--cols"]):not(#{$grid}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"])
-			 > &:not(#{$grid}__cell--noStretch) {
+			> &:not(#{$grid}__cell--noStretch) {
 				flex-grow: 1;
 			}
+		}
+
+		&[class*="cell--span-"] {
+			flex-grow: 1;
 		}
 
 		//cell vertical alignment
