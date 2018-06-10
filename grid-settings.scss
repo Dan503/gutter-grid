@@ -23,44 +23,42 @@ $grid-calc-support: not $grid-legacy-support !default;
 $grid-cell-gutters: () !default;
 
 //Set the points at which columns change widths
-//position 1: the screen size the new width is applied to
-//position 2: the new width of the columns at the specified screen size
 $grid-break-points: (
-	//*2 column grid*/
-	2: (
-		1: 600px,//* At 600px wide screen and below, make it a 1 column grid */
-	),
+  //*2 column grid*/
+  2: (
+    1: 600px,//* At 600px wide screen and below, make it a 1 column grid */
+  ),
 
-	//*3 column grid*/
-	3: (
-		2 : (max, 960px),//* Use mq-scss syntax if preferred */
-		1 : (max, 600px),
-	),
+  //*3 column grid*/
+  3: (
+    2 : (max, 960px),//* Use mq-scss syntax if preferred */
+    1 : (max, 600px),
+  ),
 
-	//*4 column grid*/
-	4: (
-		2 : 960px,
-		1 : 480px,
-	),
+  //*4 column grid*/
+  4: (
+    2 : 960px,
+    1 : 480px,
+  ),
 
-	//*5 column grid*/
-	5: (
-		3 : 960px,
-		2 : 600px,
-		1 : 480px,
-	),
+  //*5 column grid*/
+  5: (
+    3 : 960px,
+    2 : 600px,
+    1 : 480px,
+  ),
 
-	//*6 column grid*/
-	6: (
-		3 : 960px,
-		2 : 600px,
-		1 : 480px,
-	)
+  //*6 column grid*/
+  6: (
+    3 : 960px,
+    2 : 600px,
+    1 : 480px,
+  )
 ) !default;
 
 //if $grid-bp-list is set to "false", it creates a set of 6 "false" statements so grid system can have 6 columns
 $grid-bp-list: if(
-	$grid-break-points == false,
-	false false false false false false,
-	$grid-break-points
+  $grid-break-points == false,
+  false false false false false false,
+  $grid-break-points
 );
