@@ -114,7 +114,10 @@
                   <article class="markdown-body" id="content">
                     <p class="TK-nonDesktop"><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                     <div class="cmsContent">
-                      <h2>Why use Gutter Grid?</h2><p>Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters. Even though it is powered by flexbox, it features a legacy mode that adds <code>display:table</code>, <code>float:left</code> and <code>display:inline-block</code> backups that legacy browsers can fall back on. This will help prevent your site from blowing up even when viewed in IE8 and 9.</p>
+                      <h2>Why use Gutter Grid?</h2><p>CSS Grid is now implemented in all the modern browsers making all of our layout dreams come true... well almost all of them. Unfortunately IE11 still holds a fairly significant market share and it doesn&#39;t support the modern implementation of CSS Grid. It can be difficult to get people on board with the idea of allowing IE to look different compared to modern browsers. That is especially the case if the site you are building is an intranet with a 90% IE11 user base.</p>
+<p><a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> is able to help out a lot in terms of getting IE11&#39;s version of CSS Grid to behave almost like modern browsers do. Unfortunately we are still stuck with IE11 not supporting CSS Grid auto-placement. That is a major pain point for this industry and Gutter Grid sets out to fix that.</p>
+<p>Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters that are reminiscent of the CSS Grid <code>grid-gap</code> property. Since this grid system is powered by flexbox and not CSS Grid, it works perfectly in IE11. With Gutter Grid IE11 essentially has access to simple auto-placement grids with gaps (albeit with a different syntax). It even comes with a default set of media queries. You may not have to worry about writting media queries for mobile devices.</p>
+<p>Even though Gutter Grid is powered by flexbox, it features a legacy mode that, when enabled, adds <code>display:table</code>, <code>float:left</code> and <code>display:inline-block</code> backups that legacy browsers can fall back on. This will help prevent your site from blowing up even when viewed in those decrepit old IE8 and 9 browsers!</p>
 <p>Have you ever had to do a layout that looked something like this in a design?</p>
 
                       <div class="demo__result demo__segment">
@@ -133,7 +136,23 @@
                         </div>
                       </div><p>Looks simple enough right? Just three columns and some margin around each cell. How hard can that be?</p>
 <p>Well you would be surprised. The problem comes from the edges of each cell needing to be hard up against the edges of its container.</p>
+<p>With Gutter Grid installed, this is all the code you need to write to generate the layout styles for that grid:</p>
+<pre><code class="lang-scss">.grid__wrapper { overflow: hidden; }
+// Display a 3 column grid with a 20px gutter
+.grid { @include grid(3, 20px); }
+</code></pre>
+<p>If you wanted more control over the grids breakpoints, the above grid would be the equivalent of writing this:</p>
+<pre><code class="lang-scss">.grid__wrapper { overflow: hidden; }
+// Display a 3 column grid with a 20px gutter by default
+.grid { @include grid(3, 20px, (
+  2: 960px, // #1
+  1: 600px // #2
+)); }
+// #1) display 2 columns on a 960px wide screen and below
+// #2) display 1 column on a 600px wide screen and below
+</code></pre>
 <h3 id="try-the-challenge-for-yourself">Try the challenge for yourself</h3>
+<p>See how much work it takes to make a grid that follows these rules <em>without</em> using Gutter Grid:</p>
 <ul>
 <li>Make a 3x3 grid</li>
 <li>20px gutter inbetween each cell</li>
