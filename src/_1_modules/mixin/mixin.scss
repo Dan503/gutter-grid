@@ -123,7 +123,7 @@
 	}
 
 	&-27 {
-		@include grid(3, $align: left, $wrap: true);
+		@include grid(3, $stretch: true, $wrap: true);
 	}
 
 	&-28 {
@@ -151,23 +151,31 @@
 	}
 
 	&-34 {
-		@include grid($vAlign:top);
+		@include grid(3, $vAlign:top);
 	}
 
 	&-35 {
-		@include grid($vAlign:bottom);
+		@include grid(3, $vAlign:bottom);
 	}
 
 	&-36 {
-		@include grid($vAlign:center);
+		@include grid(3, $vAlign:center);
 	}
 
 	&-37 {
-		@include grid($vAlign: center, $inners: true, $gutter: 'moduleName');
+		@include grid(3, 20px, $vAlign: center, $inners: true);
 	}
 
 	&-38 {
-		@include grid(3, $inners: true, $gutter: 'moduleName');
+		@include grid(3, 20px, $inners: true);
+	}
+
+	&-38B {
+		@include grid($vAlign:center);
+	}
+
+	&-38C {
+		@include grid($vAlign:bottom);
 	}
 
 	&-39 {
