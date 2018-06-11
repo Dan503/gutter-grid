@@ -195,12 +195,12 @@
 	}
 
 	&-43 {
-		@include grid($mini: true);
+		@include grid;
 		width: 50%;
 	}
 
 	&-44 {
-		@include grid;
+		@include grid($mini: true);
 		width: 50%;
 	}
 

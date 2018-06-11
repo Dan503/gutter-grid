@@ -1,22 +1,24 @@
 block content
   :marked
-    Another way of handling cell alignments is with grid cell growth and shrink settings. By default, grid cells will both grow and shrink as necessary but this can be overridden with the growth, shrink, and resize settings. These do not feature legacy browser support as they are features that are unique to flexbox. In saying that, these are primarily just alternate ways of assigning `flex-grow` and `flex-shrink` properties.
+    Another way of handling cell alignments is with grid cell stretch and shrink settings. By default, grid cells will both stretch and shrink as necessary but this can be overridden with the stretch, shrink, and resize settings. These do not feature legacy browser support as they are features that are unique to flexbox. In saying that, these are primarily just alternate ways of assigning `flex-grow` and `flex-shrink` properties.
+
+    In version 3 `stretch` was named `grow`. The name was changed to `stretch` in version 4 to align with the naming of CSS Grid's `justify-items: stretch` and `justify-self: stretch` properties.
 
   +tabs({links: ['Classes', 'Mixin']})
     +tabs__content()
       :marked
-        - **`grid--noGrowth`** will prevent all cells in the grid from growing
-        - **`grid__cell--noGrowth`** will prevent only the cell that it is applied to from growing
-        - **`grid--noShrink`** will prevent all cells in the grid from shrinking below their content width
-        - **`grid__cell--noShrink`** will prevent that specific cell from shrinking bellow it's content width
-        - **`grid--noResize`** a shortcut for applying both `grid--noGrowth` and `grid--noShrink` classes
-        - **`grid__cell--noResize`** a shortcut for applying both `grid__cell--noGrowth` and `grid__cell--noShrink` classes
+        - `grid--noStretch` will prevent all cells in the grid from stretching
+        - `grid__cell--noStretch` will prevent only the cell that it is applied to from stretching
+        - `grid--noShrink` will prevent all cells in the grid from shrinking below their `min-content` width
+        - `grid__cell--noShrink` will prevent that specific cell from shrinking bellow it's `min-content` width
+        - `grid--noResize` a shortcut for applying both `grid--noStretch` and `grid--noShrink` classes
+        - `grid__cell--noResize` a shortcut for applying both `grid__cell--noStretch` and `grid__cell--noShrink` classes
 
     +tabs__content()
       :marked
-        - **`$grow: false`** will prevent all cells in the grid from growing
-        - **`$shrink: false`** will prevent all cells in the grid from shrinking below their content width
-        - **`$resize: false`** a shortcut for applying both `$grow: false` and `$shrink: false` settings at the same time
+        - `$stretch: false` will prevent all cells in the grid from growing
+        - `$shrink: false` will prevent all cells in the grid from shrinking below their content width
+        - `$resize: false` a shortcut for applying both `$grow: false` and `$shrink: false` settings at the same time
         - To apply resize settings to specific cells, just use the `flex-grow` and `flex-shrink` css properties
 
   +demo({
@@ -50,7 +52,7 @@ scss: `
   +demo({
     classes: {
 html:`
-.grid.grid--noGrowth.grid--noWrap
+.grid.grid--noStretch.grid--noWrap
   .grid__cell.-color-1
     .wideBox.-color-3
   .grid__cell.-color-2
@@ -67,13 +69,13 @@ html:`
 `,
 scss: `
 .mixin-40 {
-  @include grid($grow: false, $wrap: false);
+  @include grid($stretch: false, $wrap: false);
 }
 `
     }
 })
     :marked
-      If `grid--noGrowth` (`$grow: flase`) is applied, it is essentially the equivelent of using `grid--align-left` (`$align: left`)
+      If `grid--noStretch` (`$stretch: false`) is applied, it is essentially the equivalent of using `grid--align-left` (`$align: left`)
 
   +demo({
     classes: {
@@ -129,7 +131,7 @@ scss: `
     }
 })
     :marked
-      `grid--noResize` (`$resize: false`) is a shortcut for applying both `grid--noShrink` (`$shrink: false`) and `grid--noGrowth` (`$grow: false`) at the same time.
+      `grid--noResize` (`$resize: false`) is a shortcut for applying both `grid--noShrink` (`$shrink: false`) and `grid--noStretch` (`$stretch: false`) at the same time.
 
   +demo({
     classes: {
@@ -137,7 +139,7 @@ html:`
 .grid.grid--noWrap
   .grid__cell.-color-1
     .wideBox.-color-3
-  .grid__cell.grid__cell--noGrowth.-color-2
+  .grid__cell.grid__cell--noStretch.-color-2
     .thinBox.-color-4
 `,
 },
@@ -161,7 +163,7 @@ scss: `
     }
 })
     :marked
-      Applying `noGrowth` to only 1 of the grid cells
+      Applying `noStretch` to only 1 of the grid cells
 
   +demo({
     classes: {
@@ -228,9 +230,20 @@ scss: `
     :marked
       Applying `noResize` to prevent shrinking and growth in only 1 of the grid cells at the same time (very useful for listings with thumbnail images if you apply `noResize` to the thumbnail cell)
 
+  :marked
+    ### Mini grids
+
+    In order to function correctly most of the time, Gutter Grid assumes that the width of the grid is the full width of it's container. It enforces this behaviour with a `min-width: 100%` setting. To use Gutter Grid on elements that do not take up 100% of their parent's with, a `mini` setting needs to be enabled on the grid.
+
   +demo({
     classes: {
 html:`
+p (Default grid set to 50% width)
+.grid(style="width: 50%")
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+hr
+p (Mini setting applied on a grid set to 50% width)
 .grid.grid--mini(style="width: 50%")
   .grid__cell.-color-1
   .grid__cell.-color-2
@@ -238,12 +251,22 @@ html:`
 },
     mixin: {
 html:`
+p (Default grid set to 50% width)
 .mixin-43
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+hr
+p (Mini setting applied on a grid set to 50% width)
+.mixin-44
   .mixin__cell.-color-1
   .mixin__cell.-color-2
 `,
 scss: `
 .mixin-43 {
+  @include grid;
+  width: 50%;
+}
+.mixin-44 {
   @include grid($mini: true);
   width: 50%;
 }
@@ -252,26 +275,3 @@ scss: `
 })
     :marked
       Somewhat related. The `mini` setting allows a grid to take up less than 100% of it's parent's width.
-
-  +demo({
-    classes: {
-html:`
-.grid(style="width: 50%")
-  .grid__cell.-color-1
-  .grid__cell.-color-2
-`,
-},
-    mixin: {
-html:`
-.mixin-44
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
-`,
-scss: `
-.mixin-44 {
-  @include grid;
-  width: 50%;
-}
-`
-    }
-})
