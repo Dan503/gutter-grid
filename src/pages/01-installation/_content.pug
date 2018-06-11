@@ -36,11 +36,13 @@ block content
     - I've purposly not put the mq-scss include in the grid Sass file so that users will more likely see that mq-scss is available for them to use
     - Make sure that the import paths are actually correct. They will differ depending on your folder structure.
 
-    At this point, you are able to use the grid system and it will work well in any browsers that have **full standards complient flexbox support**. There are many old browsers that don't feature that level of support though. If your site needs to support those older browsers, there are a few more steps you need to take.
+    At this point, you are able to use the grid system and it will work well in all modern browsers and also in IE 11. Browsers that are most likely to cause you issues are IE10 and below, Opera Mini, and Android 4 browser. Check [caniuse.com](https://caniuse.com/#feat=flexbox) and the browser statistics for your site to see if you need to support any of those browsers.
 
-    > Read **[how to support legacy browsers](/pages/how-to-support-legacy-browsers/)** to get a run down on how to achieve maximum browser compatibility.
+    If your site needs to support any of those old browsers, there are a few more steps that you need to take.
 
-    If using the class based system and there is a conflicts with another "grid" class, you can edit the `$grid-prefix` variable to resolve the conflict.
+    > Read **[how to support legacy browsers](/pages/02-how-to-support-legacy-browsers/)** to get a run down on how to achieve maximum browser compatibility.
+
+    If using the class based system and there is a conflict with another `grid` class, you can edit the `$grid-prefix` variable to resolve the conflict.
 
     ``````scss
     $grid-prefix: 'prefixName';

@@ -1,12 +1,14 @@
 block content
   :marked
+    Check [caniuse.com](https://caniuse.com/#feat=flexbox) and the browser statistics for your site to see if you need to bother taking any of these extra steps. You most likely can skip this whole page. Browsers to be concerned about are IE10 and bellow, Opera Mini, and Android 4 browser. Gutter Grid doesn't support any lower than IE8.
+
     ### Supporting browsers that support flexbox but not the latest syntax (IE10)
 
     IE10 has support for flexbox however you will need to incorporate [Autoprefixer](https://github.com/postcss/autoprefixer) into your build process to support it's outdated flexbox syntax.
 
     Also be aware of this [IE10 flexbox bug](http://stackoverflow.com/questions/16808815/ie10-flexbox-p-element-non-wrapping/33795089) which can cause problems in page layouts.
 
-    ### Supporting browsers that do not support flexbox _at all_ (IE8 & 9)
+    ### Supporting browsers that do not support flexbox at all (IE8 & 9)
 
     Gutter Grid is powered mostly by flexbox. When legacy support is enabled, it adds `display:table`, `float:left` and `display:inline-block` backups for when `flexbox` is not supported. In general it will use `display:table` since tables act in a very similar sort of way to how flexbox acts. However, when wrapping is involved and the browser does not support the `flex-wrap` css property, it will use `float:left` styling instead. The `display:inline-block` backups mostly come into play when horizontal cell alignment settings are used.
 
@@ -69,12 +71,12 @@ block content
     @import '../node_modules/gutter-grid/grid-classes';
     ````
 
-    ### Supporting Opera Mini
+    ### Supporting Opera Mini and Android 4
 
-    Opera Mini is a bit different. Accordion to caniuse.com, it [supports flexbox](https://caniuse.com/#feat=flexbox) but does not [support the `calc` css function](https://caniuse.com/#feat=calc). By default (from version 4) Gutter Grid uses `calc` to calculate column widths unless the `$grid-legacy-support` setting is enabled. If you do not want to support legacy browsers though then enabling legacy-support will cause Gutter Grid to output far more styles than are actually needed. Instead set `$grid-calc-support` to `false` which will force Gutter Grid to output pre-calculated percentage values rather than `calc` values.
+    Opera Mini and Android 4 are a bit different. Accordion to caniuse.com, they [support flexbox](https://caniuse.com/#feat=flexbox) but they do not [support the `calc` css function](https://caniuse.com/#feat=calc) (or at least not completely in Android's case). By default (starting from version 4) Gutter Grid uses `calc` to calculate column widths unless the `$grid-legacy-support` setting is enabled. If you do not want to support IE 8 and 9, then enabling legacy-support will cause Gutter Grid to output mountains of extra fallback code that you don't actually need. Instead set `$grid-calc-support` to `false` which will force Gutter Grid to output pre-calculated percentage values rather than `calc` values whilst avoiding the mountains of IE 8 and 9 fallback code that the `$grid-legacy-support` setting brings with it.
 
     ````scss
-    //Output pre-calculated percentage units rather than calc functions
+    // Output pre-calculated percentage units rather than calc functions
     $grid-calc-support: false;
 
     @import '../node_modules/mq-scss/mq';
