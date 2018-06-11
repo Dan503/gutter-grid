@@ -2,7 +2,7 @@ block content
   :marked
     (For demonstration purposes, the grid cells have been given padding. Padding is not included as part of the grid system though)
 
-    When nesting a grid inside another grid, you would most likely want the nested grid to take up the full height of the parent grid. To do this, you can nest the grid like in the example shown below however it doesn't regress nicely in legacy browsers that don't support flexbox.
+    When nesting a grid inside another grid, you would most likely want the nested grid to take up the full height of the parent grid. To do this, you can nest the grid like in the example shown below however it doesn't regress nicely in legacy browsers that don't support flexbox (IE 8 and 9).
 
   +demo({
     classes: {
@@ -51,7 +51,7 @@ scss:`
     }
 })
     :marked
-      This method is ok if you don't need to support browsers that don't support flexbox.
+      This method is ok if you don't need to support browsers that don't support flexbox (IE 8 and 9).
 
   :marked
     If you do need to support legacy browsers though, the following method is not quite as clean but it has much better legacy browser support built in.
