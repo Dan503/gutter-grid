@@ -8,25 +8,28 @@ Gutter Grid is a flexbox based grid system for building fully responsive grid la
 
 To read the full documentation go to http://gutter-grid.net
 
+## Change Log
+
 ### Version 4.0.0
+
+This is a big update. CSS Grid is killing off almost all need for Gutter Grid. IE 11 is essentially the only reason why Gutter Grid is still at all worth using right now.
+With IE 8 and 9 essentially dead, it doesn't make sense to hamper the experience of IE11 developers for the sake of these dead browsers.
+I'm optimising the code to make the experience as enjoyable as possible for IE11 devs. Unfortunately it means the defaults will be different depending on if `$grid-legacy-support` is enabled or not.
+If the legacy setting is turned on then Gutter Grid will behave in mostly the same way as it did in version 3.x.
 
 #### Breaking changes:
 
 Note: these breaking changes mostly apply only when the `$grid-legacy-support` is set to `false` (the default setting).
 
-CSS Grid is going to kill off almost all need for Gutter Grid soon. IE 11 is essentially the only reason Gutter Grid is still useful right now.
-With IE 8 and 9 essentially dead, it doesn't make sense to hamper the experience of IE11 developers for the sake of these dead browsers.
-I'm optimising the code to make the experience as enjoyable as possible for IE11 devs. Unfortunately it means the defaults will be different depending on if the legacy setting is turned on or not.
-If the legacy setting is turned on then Gutter Grid will behave in mostly the same way it did in version 3.0.0.
-
 - New default settings
-  - For the mixin `$align` now defaults to `left` and `$wrap` defaults to `true` but only if columns have been defined.
-  - If using the classes system, in order to make the grid stretch like it did in v3.0.0 a `grid--stretch` class needs to be added to the `.grid` element. This is only necessary if columns have been defined.
+  - `$align` in the mixin now defaults to `left`.
+  - `$wrap` in the mixin now defaults to `true` but only if `$cols` has been defined.
+  - Grids no longer stretch by default. In order to make the grid stretch like it did in v3.x, if using the classes system, a `grid--stretch` class needs to be added to the `.grid` element. If using the mixin system, a `$stretch: true` setting needs to be called in the mixin. This is only necessary if columns have been defined.
   - Grids with a column count setting will now wrap by default unless if wrapping is explicitly disabled or `$grid-legacy-support` is enabled.
-- The `grid--noGrowth` class has been renamed `grid--noStretch` to align with the new `grid--stretch` class. (a breaking change for **everyone**)
-- The `$grow` setting in the mixin has been renamed to `$stretch`. (a breaking change for **everyone**)
-- Multi-spanning cells now flex-grow by default.
-- `$breakpoints` parameter in the mixin has been moved to the 3rd slot. (a breaking change for **everyone**)
+- The `grid--noGrowth` class has been renamed `grid--noStretch` to align with the new `grid--stretch` class. (A breaking change for **everyone**).
+- The `$grow` setting in the mixin has been renamed to `$stretch`. (A breaking change for **everyone**).
+- Multi-spanning cells now flex-grow by default. (A breaking change for **everyone**).
+- `$breakpoints` parameter in the mixin has been moved to the 3rd slot. (A breaking change for **everyone**).
 - `$grid-break-points` setting now has new syntax that makes it easier to tell what column count a particular set of breakpoints is for. Below is an impracticle example showing the new format:
 
   **Version 3.x**
@@ -99,7 +102,7 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
   ));
   ````
 
-  **Version 4 +**
+  **Version 4.x**
 
   ````scss
   @include grid(7, $breakpoints: (
@@ -111,9 +114,9 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
   ));
   ````
 
-- `calc` is now used by default to determine column widths. So instead of seeing `width: 33.3333%;` in your styles, you will see `width: calc(100% / 3);`. This makes it clear from the styles how many columns are being generated. For example it is much clearer that `width: calc(100% / 7);` equals 7 columns rather than `width: 14.2857%;`.
+- `calc` is now used by default to determine column widths. So instead of seeing `width: 33.33%;` in your styles, you will see `width: calc(100% / 3);`. This makes it clear from the styles how many columns are being generated. For example it is much clearer that `width: calc(100% / 7);` equals 7 columns rather than `width: 14.2857%;`.
 
-- New config variable `$grid-calc-support` has been introduced. Since `calc` isn't supported in every browser (thanks Opera Mini) a new `$grid-calc-support` setting has been added. This defaults to whatever the opposite of the `$grid-legacy-support` setting is. This means that if legacy support is needed then `$grid-calc-support` will automatically be disabled. If you need to support Opera Mini (or you prefer seeing percentages in your styles), set `$grid-calc-support` to false.
+- New config variable `$grid-calc-support` has been introduced. Since `calc` [isn't supported in every browser](https://caniuse.com/#feat=calc) (thanks Opera Mini and Android 4) a new `$grid-calc-support` setting has been added. This defaults to whatever the opposite of the `$grid-legacy-support` setting is. This means that if legacy support is needed then `$grid-calc-support` will automatically be disabled. If you need to support Opera Mini (or you prefer seeing percentages in your styles), set `$grid-calc-support` to false.
 
 
 ## Version 3.0.0
