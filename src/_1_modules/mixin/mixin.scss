@@ -111,7 +111,11 @@
 	}
 
 	&-25 {
-		@include grid(2, $inners: true, $gutter: 'moduleName');
+		@include grid(2, 20px, $inners: true);
+	}
+
+	&-25B {
+		@include grid(2, 20px);
 	}
 
 	&-26 {
@@ -209,7 +213,7 @@
 	}
 
 	&__paddingHack {
-		padding-top: 1px;
+		padding: 1px 0;
 	}
 
 	&__oddOneOut {
