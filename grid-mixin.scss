@@ -33,7 +33,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 	$ieFloat: false,
 	$mini: false,
 	$vertical: false,
-	$stretch: false,
+	$stretch: default,
 	$shrink: true,
 	$resize: default
 ){
@@ -45,9 +45,9 @@ $wrap-default: if($grid-legacy-support, auto, true);
 	align-content: stretch;
 	border-color: transparent;
 
-	//By default grids will stretch unless there is a column setting
-	@if ($align-default == left and $align == left and $cols == auto and $space == false){
-		$stretch: true;
+	//By default grids will stretch unless there is a column or alignment setting
+	@if ($stretch == default) {
+		$stretch: $align-default == left and $align == left and $cols == auto and $space == false;
 	}
 
 	//By default grids will not wrap unless there is a column setting
