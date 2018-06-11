@@ -48,11 +48,13 @@ footer {
 .markdown-body {
 
 	p, li {
-		code {
-			background-color: #C5C7CC;
-			//color: #abb2bf;
-			padding: 3px 4px;
+		> code {
+			background-color: #e4e6ec;
+			border: 1px solid #a9abaf;
+			border-radius: 3px;
+			padding: 2px 3px;
 			font-size: 0.85em;
+			white-space: nowrap;
 		}
 	}
 
@@ -107,6 +109,10 @@ footer {
 	.no-flexbox & {
 		max-width: 780px;
 	}
+
+	hr {
+		margin: 1.5em 0;
+	}
 }
 
 .add {
@@ -118,6 +124,9 @@ footer {
 	}
 	&-padding {
 		padding: 15px !important;
+	}
+	&-fakeBorder {
+		box-shadow: inset 0 0 0 2px red;
 	}
 }
 

@@ -6,27 +6,36 @@
 
 //make cells take up multiple columns worth of width
 @mixin grid__cell--span($span, $totalCols, $important: ()){
-	width: (percentage(1/$totalCols) * $span) $important;
+	flex-grow: 1;
+	@if ($grid-calc-support) {
+		width: calc(#{$span} / #{$totalCols} * 100%) $important;
+	} @else {
+		width: ($span / $totalCols * 100%) $important;
+	}
 }
+
+// legacy support has different defaults
+$align-default: if($grid-legacy-support, stretch, left);
+$wrap-default: if($grid-legacy-support, auto, true);
 
 @mixin grid(
 	$cols: auto,
 	$gutter: false,
+	$breakpoints: default,
 	$inners: false,
 	$vAlign: false,
-	$align: false,
+	$align: $align-default,
 	$space: false,
-	$wrap: auto,
+	$wrap: $wrap-default,
 	$MQs: true,
 	$outerGutters: false,
 	$cellSpan: false,
 	$ieFloat: false,
 	$mini: false,
 	$vertical: false,
-	$grow: true,
+	$stretch: default,
 	$shrink: true,
-	$resize: default,
-	$breakpoints: default
+	$resize: default
 ){
 	box-sizing: border-box;
 	list-style: none;
@@ -35,6 +44,16 @@
 	display: flex !important;
 	align-content: stretch;
 	border-color: transparent;
+
+	//By default grids will stretch unless there is a column or alignment setting
+	@if ($stretch == default) {
+		$stretch: $align-default == left and $align == left and $cols == auto and $space == false;
+	}
+
+	//By default grids will not wrap unless there is a column setting
+	@if ($wrap-default == true and $wrap == true and $cols == auto){
+		$wrap: false;
+	}
 
 	@if ($vertical){
 		flex-direction: column;
@@ -78,7 +97,7 @@
 		background-clip: padding-box!important;
 		border: 0 solid transparent;
 
-		$canGrow: $resize == true or ($grow == true and $resize == default);
+		$canGrow: $resize == true or $align == stretch or ($stretch == true and $resize == default);
 		$canShrink: $resize == true or ($shrink == true and $resize == default);
 		flex-grow: if($canGrow, 1, 0);
 		flex-shrink: if($canShrink, 1, 0);
@@ -86,17 +105,15 @@
 		//column widths
 		@if(type-of($cols) == number){
 
-			$columnWidth: percentage(1/$cols);
-
 			$breaks: '';
 
 			@if ($breakpoints == default){
-				$breaks: if(length($grid-bp-list) < $cols, false, nth($grid-bp-list, $cols));
+				$breaks: if(length($grid-bp-list) < $cols, false, map-get($grid-bp-list, $cols));
 			} @else {
 				$breaks: $breakpoints;
 			}
 
-			width: $columnWidth;
+			width: column-width($cols);
 
 			//Applies the media queries for the break points
 			@if($MQs or $breakpoints != default) {
@@ -111,7 +128,7 @@
 	}
 
 	$colsAndGutter: $cols != auto and $gutter != false;
-	$blockDisplayMode: $ieFloat == true or $grow == false or $resize == false or $vertical or $align or $space or $wrap == true or $colsAndGutter;
+	$blockDisplayMode: $ieFloat == true or $stretch == false or $resize == false or $vertical or $align != 'stretch' or $space or $wrap == true or $colsAndGutter;
 
 	//allows IE to use floats instead of display table without affecting modern browsers
 	@if ($blockDisplayMode) {
@@ -151,12 +168,12 @@
 	}
 
 	//quick access to left,center and right alignments
-	@if ($align or $space) {
+	@if (($align != 'stretch' and $stretch == false) or $space) {
 		> * {
 			flex-grow: 0;
 		}
 
-		@if ($align){
+		@if ($align != 'stretch' and $stretch == false){
 			@if ($align == 'left') {
 				justify-content: flex-start;
 			} @else if ($align == 'center') {
@@ -170,8 +187,6 @@
 
 		//quick access to space-between and space-around
 		@if ($space) {
-			> * { flex-grow: 0; }
-
 			@if ($space == 'between') {
 				justify-content: space-between;
 			} @else if ($space == 'around') {

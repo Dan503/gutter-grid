@@ -75,7 +75,11 @@ html:`
       Barely any text in this cell`,
 scss: `
 .mixin-2 {
+  // Short hand:
   @include grid(2);
+
+  // Long hand:
+  @include grid($cols: 2);
 }
 `
     }
@@ -214,31 +218,88 @@ scss:`
 
     If you don't like the default breakpoints or you need more columns, you can easily edit them by altering the `$grid-break-points` variable.
 
+    Note that you can use [mq-scss](https://www.npmjs.com/package/mq-scss) syntax to define custom media queries. This means that you can define the column break points using just about any media query you like. Gutter Grid was designed to work Desktop first for better legacy browser support. It is unwise to try and take a mobile first `min-width` approach on these settings. Also, if there is a need for supprting legacy browsers (IE 8 & 9), taking a `min-width` approach will certainly break Gutter Grid's legacy support unless [UnMQ](https://github.com/jonathantneal/postcss-unmq) has been integrated into your build process.
+
   +demo({
 scss:`
 //These are the default breakpoints
 $grid-break-points: (
-  (
-  //*1 column grid*/
-    false
-  ), (
-  //*2 column grid*/
-    100%: 600px,//* At the "mobile" screen size, make the columns 100% width */
-  ), (
-  //*3 column grid*/
-    50% : (max, 600px),//you can use mq-scss syntax to define your own media queries
+
+  // 2 column grid
+  2: (
+    // At 600px wide screen and below, make it a 1 column grid
+    1: 600px,
+  ),
+
+  // 3 column grid
+  3: (
+    // Use mq-scss syntax if preferred
+    2 : (max, 960px),
+    1 : (max, 600px),
+  ),
+
+  // 4 column grid
+  4: (
+    2 : 960px,
+    1 : 480px,
+  ),
+
+  // 5 column grid
+  5: (
+    3 : 960px,
+    2 : 600px,
+    1 : 480px,
+  ),
+
+  // 6 column grid
+  6: (
+    3 : 960px,
+    2 : 600px,
+    1 : 480px,
+  )
+);
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-mixin';
+@import '../node_modules/gutter-grid/grid-classes';
+`
+}, {hasTabs: false})
+    :marked
+      These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements. The index of each set of values represents the default column count for that set of values. `false` = no media queries. The numbers on the left represent column count. The values on the right dictate when the column count will take effect.
+
+  +demo({
+scss:`
+// Percentage widths can be used on the breakpoint values instead if prefered.
+
+$grid-break-points: (
+  // 2 column grid
+  2: (
+    // At 600px wide screen and below, columns are 100% wide
+    100% : 600px,
+  ),
+
+  // 3 column grid
+  3: (
+    // Use mq-scss syntax if preferred
+    50% : (max, 960px),
     100% : (max, 600px),
-  ), (
-  //*4 column grid*/
+  ),
+
+  // 4 column grid
+  4: (
     50% : 960px,
     100% : 480px,
-  ), (
-  //*5 column grid*/
+  ),
+
+  // 5 column grid
+  5: (
     33.33% : 960px,
     50% : 600px,
     100% : 480px,
-  ), (
-  //*6 column grid*/
+  ),
+
+  // 6 column grid
+  6: (
     33.33% : 960px,
     50% : 600px,
     100% : 480px,
@@ -251,10 +312,7 @@ $grid-break-points: (
 `
 }, {hasTabs: false})
     :marked
-      These are the default settings. Edit them by placing a `$grid-break-points` variable before the import statements.
-
-  :marked
-    Note that you can use [mq-scss](https://www.npmjs.com/package/mq-scss) syntax to define custom media queries. This means that you can define the column break points using just about any media query you like. Taking a mobile first `min-width` approach will break legacy browser support though unless you have [UnMQ](https://github.com/jonathantneal/postcss-unmq) integrated into your build process.
+      If you prefer, you can specify percentage column widths instead of column counts on the breakpoint values.
 
   +demo({
 scss:`
@@ -266,7 +324,7 @@ $grid-break-points: false;
 @import '../node_modules/gutter-grid/grid-classes';`
 }, {hasTabs: false})
     :marked
-      You can disable all break points by setting `$grid-break-points` to false. This will allow you to have up to 6 columns when using the class based grid system.
+      You can disable all break points by setting `$grid-break-points` to `false`. This will allow you to have up to 6 columns when using the class based grid system.
 
   :marked
     ### Mixin column breakpoints
@@ -287,8 +345,15 @@ html:`
 scss:`
 .mixin-7 {
   @include grid(7, $breakpoints: (
-    25% : 960px, //On a 960px wide screen or below, the columns will be 25% wide
-    50% : (max, 600px), //you can use mq-scss syntax here as well
+    // On a 960px wide screen or below,
+    // there will be 4 columns
+    4 : 960px,
+
+    //you can use mq-scss syntax here as well
+    2 : (max, 600px),
+
+    // You can use percentage column widths
+    // instead of column counts if prefered
     100% : 480px,
   ));
 }`
@@ -297,7 +362,7 @@ scss:`
       Assigning custom breakpoints to a grid that contains more than 6 columns. (Mixin version only)
 
   :marked
-    Note that you can use [mq-scss](https://www.npmjs.com/package/mq-scss) syntax here as well if you like.
+    Note that you can use [mq-scss](https://www.npmjs.com/package/mq-scss) syntax here as well if you like. You can also use percentages instead of column counts.
 
   :marked
     ### The ieFloat setting

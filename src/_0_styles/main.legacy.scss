@@ -1,0 +1,46 @@
+
+//Adds support for browsers that don't support flexbox
+$grid-legacy-support: true;
+
+
+//imports the converted icon names sass map
+@import '../../tmp/icon-names.scss';
+
+//System alteration functions (do not edit these)
+@import '01-system-files/0-functions/alteration/**/*.scss';
+
+//System filtering functions (do not edit these)
+@import '01-system-files/0-functions/filtering/**/*.scss';
+
+//variables and settings for this project
+//also includes npm installed mixins (edit the npm-installs file)
+@import '00-config-files/**/*.scss';
+
+//System mixins (do not edit these)
+@import '01-system-files/1-mixins/**/*.scss';
+
+//Global mixins specific to this project (Basically user created mixins)
+@import '02-mixins[user]/**/*.scss';
+
+//icomoon generated stuff
+$icomoon-font-path: "/assets/icomoon/fonts";
+@import '../_icomoon/style.scss';
+
+//3rd party plugin styles
+@import '03-plugins/**/*.scss';
+
+//loads the project specific foundation styles
+@import '04-base-styles/**/*.scss';
+
+//system base styles (Do not edit these)
+@import '01-system-files/2-base-styles/**/*.scss';
+
+//styles mainly for altering the default styles
+@import 'custom-styles.scss';
+
+//loads project specific module css
+@import '../_1_modules/**/*.scss';
+
+
+//do not place any actual styles in this file
+//this file is only for stitching together the output css

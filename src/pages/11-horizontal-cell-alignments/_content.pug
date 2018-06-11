@@ -1,13 +1,13 @@
 block content
   :marked
-    Horizontal cell alignment is easy with Gutter Grid. These are mostly just classes that hold `align-items` values but they _do_ feature legacy browser backups so it's better to use these than the `align-items` property directly. In old browsers, the `space` settings are outputted as center alignments instead.
+    Horizontal cell alignment is easy with Gutter Grid. These are mostly just classes that hold `justify-content` values but they *do* feature legacy browser backups so it's better to use these than the `justify-content` property directly if legacy support is important to you. In old browsers, the `space` settings are outputted as center alignments instead. It's impossible to replicate the flexbox `space` alignments in browsers that don't support flexbox.
 
-    By default, if there are not enough cells in the row to fill the specified number of columns, the cells will grow like this:
+    By default, if there are not enough cells in the row to fill the specified number of columns, the cells will align to the left similar to how CSS Grid behaves. This default functionality was introduced in version 4 to better align with how CSS Grid works. In version 3, the left over grid cells would grow to fill the remaining space left over in the grid by default. To replicate the version 4 default functionality in version 3, use `$align: left` or the `grid--align-left` class.
 
   +demo({
     classes: {
 html:`
-.grid.grid--cols-3.grid--wrap
+.grid.grid--cols-3
   .grid__cell.-color-1
   .grid__cell.-color-2
   .grid__cell.-color-3
@@ -27,7 +27,7 @@ html:`
 `,
 scss:`
 .mixin-26 {
-  @include grid(3, $wrap: true);
+  @include grid(3);
 }
 `,
     }
@@ -41,7 +41,7 @@ scss:`
   +demo({
     classes: {
 html:`
-.grid.grid--align-left.grid--cols-3.grid--wrap
+.grid.grid--stretch.grid--cols-3
   .grid__cell.-color-1
   .grid__cell.-color-2
   .grid__cell.-color-3
@@ -61,18 +61,43 @@ html:`
 `,
 scss:`
 .mixin-27 {
-  @include grid(3, $align: left, $wrap: true);
+  @include grid(3, $stretch: true);
 }
 `,
     }
 })
     :marked
-      Alternate cell alignment options
+      Stretch the grid cells to fill remaining space (this is the default functionality in version 3)
 
   +demo({
     classes: {
 html:`
-.grid.grid--align-right.grid--cols-3.grid--wrap
+p (Align right)
+.grid.grid--align-right.grid--cols-3
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+hr
+p (Align center)
+.grid.grid--align-center.grid--cols-3
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+hr
+p (Space between)
+.grid.grid--space-between.grid--cols-3
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+hr
+p (Space around)
+.grid.grid--space-around.grid--cols-3
   .grid__cell.-color-1
   .grid__cell.-color-2
   .grid__cell.-color-3
@@ -83,107 +108,58 @@ html:`
 
     mixin: {
 html:`
+p (Align right)
 .mixin-28
   .mixin__cell.-color-1
   .mixin__cell.-color-2
   .mixin__cell.-color-3
   .mixin__cell.-color-4
   .mixin__cell.-color-5
-`,
-scss:`
-.mixin-28 {
-  @include grid(3, $align: right, $wrap: true);
-}
-`,
-    }
-})
-
-  +demo({
-    classes: {
-html:`
-.grid.grid--align-center.grid--cols-3.grid--wrap
-  .grid__cell.-color-1
-  .grid__cell.-color-2
-  .grid__cell.-color-3
-  .grid__cell.-color-4
-  .grid__cell.-color-5
-`
-    },
-
-    mixin: {
-html:`
+hr
+p (Align center)
 .mixin-29
   .mixin__cell.-color-1
   .mixin__cell.-color-2
   .mixin__cell.-color-3
   .mixin__cell.-color-4
   .mixin__cell.-color-5
-`,
-scss:`
-.mixin-29 {
-  @include grid(3, $align: center, $wrap: true);
-}
-`,
-    }
-})
-
-  +demo({
-    classes: {
-html:`
-.grid.grid--space-between.grid--cols-3.grid--wrap
-  .grid__cell.-color-1
-  .grid__cell.-color-2
-  .grid__cell.-color-3
-  .grid__cell.-color-4
-  .grid__cell.-color-5
-`
-    },
-
-    mixin: {
-html:`
+hr
+p (Space between)
 .mixin-30
   .mixin__cell.-color-1
   .mixin__cell.-color-2
   .mixin__cell.-color-3
   .mixin__cell.-color-4
   .mixin__cell.-color-5
-`,
-scss:`
-.mixin-30 {
-  @include grid(3, $space: between, $wrap: true);
-}
-`,
-    }
-})
-
-  +demo({
-    classes: {
-html:`
-.grid.grid--space-around.grid--cols-3.grid--wrap
-  .grid__cell.-color-1
-  .grid__cell.-color-2
-  .grid__cell.-color-3
-  .grid__cell.-color-4
-  .grid__cell.-color-5
-`
-    },
-
-    mixin: {
-html:`
+hr
+p (Space around)
 .mixin-31
   .mixin__cell.-color-1
   .mixin__cell.-color-2
   .mixin__cell.-color-3
   .mixin__cell.-color-4
   .mixin__cell.-color-5
+
 `,
 scss:`
-.mixin-31 {
-  @include grid(3, $space: around, $wrap: true);
+.mixin-28 {
+  @include grid(3, $align: right);
 }
+.mixin-29 {
+  @include grid(3, $align: center);
+}
+.mixin-30 {
+  @include grid(3, $space: between);
+}
+.mixin-31 {
+  @include grid(3, $space: around);
+}
+
 `,
     }
 })
+    :marked
+      Other alignment options
 
   :marked
     Of coarse, you can use alignment in more circumstances than just how the grid handles not having enough cells to fill a row. A good example is pagination that uses `grid--space-around` to space out the pagination cells:
@@ -195,7 +171,7 @@ ol.grid.grid--space-around.grid--hasInners.add-border.add-padding.TK-noDots
   - var i = 0
   while i < 5
     li.grid__cell
-      a.grid__inner.add-shadow.add-padding= i + 1
+      a.grid__inner.add-shadow.add-padding(href="#")= i + 1
     - i++;
 `
     },
@@ -206,7 +182,7 @@ ol.mixin-32.add-border.add-padding.TK-noDots
   - var i = 0
   while i < 5
     li.mixin__cell
-      a.mixin__inner.add-shadow.add-padding= i + 1
+      a.mixin__inner.add-shadow.add-padding(href="#")= i + 1
     - i++;
 `,
 scss:`
@@ -216,35 +192,3 @@ scss:`
 `,
     }
 }, {classes: '-noHeight'})
-
-  +demo({
-    classes: {
-html:`
-.grid__wrapper.add-border
-  .grid.grid--vertical.grid--gutter-moduleName
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-`
-    },
-
-    mixin: {
-html:`
-.mixin__wrapper.add-border
-  .mixin-33
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-`,
-scss:`
-.mixin-33 {
-  @include grid($vertical: true, $gutter: 20px);
-}
-`,
-    }
-})
-
-  :marked
-    Applying `grid--vertical` (`$vertical: true` in the mixin) is simply adding `flex-direction: column`. This flips the grid around so that grid cells progressivly move down the page instead of across.
-
-    Using the `vertical` setting features a backup for legacy browsers though whereas applying `flex-direction: column` on it's own does not.

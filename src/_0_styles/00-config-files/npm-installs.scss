@@ -7,7 +7,10 @@
 
 //Grid system global gutter sizes
 $grid-cell-gutters: (
+	20 : 20px,
+	'10-30' : 10px 30px,
 	'moduleName' : 20px,
+	'gutterName' : 20px,
 	'mixedSizeGutter' : 30px 10px,
 	'nav' : 10px,
 	'share' : 20px,
@@ -29,9 +32,6 @@ $grid-page-width: bp('page');
 //IE8 can't do transparent borders.
 //This defines what the default color for gutters is in IE.
 $grid-gutter-ie-fallback: $CF-body__bg;
-
-//Adds support for browsers that don't support flexbox
-$grid-legacy-support: true;
 
 @import '../../../grid-mixin';
 @import '../../../grid-classes';

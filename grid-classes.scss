@@ -37,8 +37,8 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 //================================================*/
 
 @for $i from 1 through length($grid-bp-list) {
-	$columnWidth: percentage(1/$i);
-	$breaks: nth($grid-bp-list, $i);
+	$columnWidth: column-width($i);
+	$breaks: map-get($grid-bp-list, $i);
 
 	//sets the default grid__cell widths
 	.#{$fullPrefix}grid--cols-#{$i} {
@@ -49,13 +49,19 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		//.grid__cell--span-# styling
 		@if ($i > 1){
 			@for $x from 2 through $i {
-				> .#{$fullPrefix}grid__cell--span-#{$x} { width: $columnWidth * $x; }
+				> .#{$fullPrefix}grid__cell--span-#{$x} {
+					@if ($grid-calc-support) {
+						width: calc(#{$x} / #{$i} * 100%);
+					} @else {
+						width: $x / $i * 100%;
+					}
+				}
 			}
 		}
 
 		//Applies the media queries for the break points
 		&:not(.#{$fullPrefix}grid--noMQs) {
-			> * {
+			> *:not([class*="cell--span-"]) {
 				@include generate-column-breakpoints($breaks);
 			}
 		}
@@ -64,6 +70,8 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 //base grid styling
 .#{$fullPrefix}grid {
+	$grid: &;
+
 	box-sizing: border-box;
 	list-style: none;
 	margin: 0;
@@ -72,6 +80,13 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	border: 0 solid transparent;
 	display: flex;
 	align-content: stretch;
+
+	@if (not $grid-legacy-support){
+		//By default grids will not wrap unless there is a column setting
+		&[class*="grid--cols"]:not(#{$grid}--noWrap){
+			flex-wrap: wrap;
+		}
+	}
 
 	//grid__wrapper styling... really only necessary for use with grid--gutter-#
 	&__wrapper {
@@ -88,7 +103,20 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		margin: 0;
 		background-clip: padding-box!important;
 		border: 0 solid transparent;
-		flex-grow: 1;
+
+		@if ($grid-legacy-support){
+			flex-grow: 1;
+		} @else {
+			//If no columns set and no alignment properties set, grid cells will stretch
+			#{$grid}:not([class*="grid--cols"]):not(#{$grid}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(#{$grid}--noResize)
+			> &:not(#{$grid}__cell--noStretch):not(#{$grid}__cell--noResize) {
+				flex-grow: 1;
+			}
+		}
+
+		&[class*="cell--span-"] {
+			flex-grow: 1;
+		}
 
 		//cell vertical alignment
 		&--vAlign {
@@ -110,7 +138,10 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			flex-shrink: 1;
 		}
 
-		&--noGrowth {
+		&--stretch {
+			flex-grow: 1;
+		}
+		&--noStretch {
 			flex-grow: 0;
 		}
 		&--noShrink {
@@ -203,7 +234,12 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		flex-direction: column;
 	}
 
-	&--noGrowth {
+	&--stretch {
+		> * {
+			flex-grow: 1;
+		}
+	}
+	&--noStretch {
 		> * {
 			flex-grow: 0;
 		}

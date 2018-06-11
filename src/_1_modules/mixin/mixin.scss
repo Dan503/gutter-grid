@@ -27,9 +27,16 @@
 
 	&-7 {
 		@include grid(7, $breakpoints: (
-			25% : 960px,
-			50% : (max, 600px),
+			4 : 960px,
+			2 : (max, 600px),
 			100% : 480px,
+		));
+	}
+	&-7B {
+		@include grid(7, $breakpoints: (
+			4 : 960px,
+			2 : (max, 600px),
+			1 : 480px,
 		));
 	}
 
@@ -41,6 +48,8 @@
 		@include grid(6, $wrap: false);
 	}
 
+	// $wrap: true; isn't needed in most of these examples in modern browsers.
+	// I'm keeping it in for the sake of IE 8 and 9 running in legacy mode
 	&-10 {
 		@include grid(4, $wrap: true);
 	}
@@ -50,51 +59,58 @@
 	}
 
 	&-12 {
-		 @include grid(3, $gutter: 'moduleName', $wrap: true);
+		 @include grid(3, 20px, $wrap: true);
 	}
 
 	&-13 {
-		@include grid(3, $gutter: 'mediaQueryGutter', $wrap: true, $MQs: false);
+		@include grid(3, $gutter: 'mediaQueryGutter', $MQs: false, $wrap: true);
+	}
+	&-13B {
+		@include grid(6, 20px, (
+			3 : 960px,
+			2 : 600px,
+			1 : 480px,
+		));
 	}
 
 	&-14 {
-		 @include grid(3, $outerGutters: true, $gutter: 'moduleName', $wrap: true);
+		 @include grid(3, 20px, $outerGutters: true, $wrap: true);
 	}
 
 	&-15 {
-		@include grid(3, $outerGutters: h, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: h, $wrap: true);
 	}
 
 	&-16 {
-		@include grid(3, $outerGutters: v, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: v, $wrap: true);
 	}
 
 	&-17 {
-		@include grid(3, $outerGutters: top, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: top, $wrap: true);
 	}
 
 	&-18 {
-		@include grid(3, $outerGutters: bottom, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: bottom, $wrap: true);
 	}
 
 	&-19 {
-		@include grid(3, $outerGutters: left, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: left, $wrap: true);
 	}
 
 	&-20 {
-		@include grid(3, $outerGutters: right, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: right, $wrap: true);
 	}
 
 	&-21 {
-		@include grid(3, $outerGutters: h-delayed, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: h-delayed, $wrap: true);
 	}
 
 	&-22 {
-		@include grid(3, $outerGutters: left-delayed, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: left-delayed, $wrap: true);
 	}
 
 	&-23 {
-		@include grid(3, $outerGutters: right-delayed, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: right-delayed, $wrap: true);
 	}
 
 	&-24 {
@@ -102,7 +118,11 @@
 	}
 
 	&-25 {
-		@include grid(2, $inners: true, $gutter: 'moduleName');
+		@include grid(2, 20px, $inners: true);
+	}
+
+	&-25B {
+		@include grid(2, 20px);
 	}
 
 	&-26 {
@@ -110,7 +130,7 @@
 	}
 
 	&-27 {
-		@include grid(3, $align: left, $wrap: true);
+		@include grid(3, $stretch: true, $wrap: true);
 	}
 
 	&-28 {
@@ -138,23 +158,31 @@
 	}
 
 	&-34 {
-		@include grid($vAlign:top);
+		@include grid(3, $vAlign:top);
 	}
 
 	&-35 {
-		@include grid($vAlign:bottom);
+		@include grid(3, $vAlign:bottom);
 	}
 
 	&-36 {
-		@include grid($vAlign:center);
+		@include grid(3, $vAlign:center);
 	}
 
 	&-37 {
-		@include grid($vAlign: center, $inners: true, $gutter: 'moduleName');
+		@include grid(3, 20px, $vAlign: center, $inners: true);
 	}
 
 	&-38 {
-		@include grid(3, $inners: true, $gutter: 'moduleName');
+		@include grid(3, 20px, $inners: true);
+	}
+
+	&-38B {
+		@include grid($vAlign:center);
+	}
+
+	&-38C {
+		@include grid($vAlign:bottom);
 	}
 
 	&-39 {
@@ -162,7 +190,7 @@
 	}
 
 	&-40 {
-		@include grid($grow: false, $wrap: false);
+		@include grid($stretch: false, $wrap: false);
 	}
 
 	&-41 {
@@ -174,12 +202,12 @@
 	}
 
 	&-43 {
-		@include grid($mini: true);
+		@include grid;
 		width: 50%;
 	}
 
 	&-44 {
-		@include grid;
+		@include grid($mini: true);
 		width: 50%;
 	}
 
@@ -200,7 +228,7 @@
 	}
 
 	&__paddingHack {
-		padding-top: 1px;
+		padding: 1px 0;
 	}
 
 	&__oddOneOut {
