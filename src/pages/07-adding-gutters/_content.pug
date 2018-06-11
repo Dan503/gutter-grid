@@ -7,8 +7,19 @@ block content
   +demo({
     classes: {
 html:`
+p (using a number)
 .grid__wrapper
-  .grid.grid--gutter-moduleName.grid--cols-3
+  .grid.grid--gutter-20.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+hr
+p (using a gutter name)
+.grid__wrapper
+  .grid.grid--gutter-gutterName.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -19,7 +30,8 @@ html:`
 scss:`
 //Define gutter sizes like this
 $grid-cell-gutters: (
-  'moduleName' : 20px,
+  20 : 20px, // Using a number
+  'gutterName' : 20px,  // Using a gutter name
 );
 
 @import '../node_modules/mq-scss/mq';
@@ -57,7 +69,7 @@ scss:`
 // ---- Option 2 -----
 // -- Global gutter --
 
-//Define the global gutter sizes like this
+//Define global gutter sizes like this
 $grid-cell-gutters: (
   'gutterName' : 20px,
 );
@@ -68,7 +80,7 @@ $grid-cell-gutters: (
 
 // Then state the gutter name when calling the mixin
 .mixin-12 {
-  @include grid(3, $gutter: 'gutterName', $wrap: true);
+  @include grid(3, $gutter: 'gutterName');
 }
 
 `,
@@ -80,35 +92,15 @@ $grid-cell-gutters: (
   :marked
     The `grid__wrapper` element is to help contain the grid inside it's bounding box when gutters are applied to it. There is a bug in Chrome that often ignores the top and bottom negative margin rules that make the grid cells sit hard up against the boundaries of the grid. `grid__wrapper` prevents this bug from being an issue. It fixes the issue by applying `overflow: hidden`. If overflow needs to be visible, try adding 1px of padding to `.grid__wrapper` as suggested in the [documentation for adding borders and shadows](http://localhost:3000/pages/10-borders-and-shadows-on-guttered-cells/) instead of using `overflow: hidden`.
 
-    In the class based system, I name the grid gutters based on the module name that the gutter is being applied to rather than a specific number like `grid--gutter-20`. While this can lead to multiple grid gutters having the same values, this improves maintainability by making gutter widths controllable entirely through the css without having to make changes across multiple html files. If you disagree, nothing is stopping you from naming the gutters using numbers instead.
+    In the class based system, you can name the gutters either with a number (`grid--gutter-20`) or an actual name (`grid--gutter-gutterName`).
 
-  +demo({
-html:`
-.grid__wrapper
-  .grid.grid--gutter-20.grid--cols-3
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-`,
-scss:`
-//Define gutter sizes like this
-$grid-cell-gutters: (
-  20 : 20px,
-  30 : 30px,
-);
+    By using gutter numbers, you can see directly in the HTML what the gutter value is. If this value ever needs to be globally changed though, everywhere it has been used would need to be manually updated in the HTML.
 
-@import '../node_modules/mq-scss/mq';
-@import '../node_modules/gutter-grid/grid-classes';
-`
-  }, {hasTabs: false})
-    :marked
-      If using the class based system, you can use numbers as the names of the gutters instead if you prefer.
+    By using gutter names, if the value of the gutter ever needs to change, the value can be changed once in the style sheet and it will be updated across the whole site. Gutter names don't allow you to see the value of the gutter directly in the HTML though and, depending on how you name your gutters, it can lead to multiple gutter classes having identical gutter values. Coming up with meaningful names for your gutters is also more difficult than simply naming the gutters based on their values.
 
-  :marked
-    In the mixin based system, there are two ways you can go about applying gutters to the grid. The first option is an inline sort of format where you define the gutter size directly in the `$gutter` setting when calling the mixin. This makes it easy to keep all the styles for a module in the one place. The second option is more for global gutter sizes. You define them in the `$grid-cell-gutters` variable in the same way as you would for the class based system. You then use the gutter name in the `$gutter` setting when calling the mixin. For the sake of brevity, I'll only use the inline format for the mixin version from now on. Just know that **the global format is available to you for all the gutter examples** if you wish to use it.
+    Gutter names are a bit more hassle to begin with but they also lead to better maintainability in the long run. It is up to you and your team to decide on what the best approach for your project is.
+
+    That is only relevant if using the class system though. In the mixin based system, there are two ways you can go about applying gutters to the grid. The first option is an inline sort of format where you define the gutter size directly in the `$gutter` setting when calling the mixin. This makes it easy to keep all the styles for a module in the one place. The second option is more for global gutter sizes. You define them in the `$grid-cell-gutters` variable in the same way as you would for the class based system. You then use the gutter name in the `$gutter` setting when calling the mixin. For the sake of brevity, I'll only use the inline format for the mixin version from now on. Just know that the global format is available to you for all the gutter examples if you wish to use it.
 
     ### Unequal vertical and horizontal gutters
 
@@ -126,7 +118,6 @@ p (using a name)
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
-br
 hr
 p (using numbers)
 .grid__wrapper

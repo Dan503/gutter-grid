@@ -6,7 +6,7 @@ block content
     classes: {
 html:`
 .add-border.grid__wrapper
-  .grid.grid--gutter-moduleName.grid--cols-3.grid--wrap
+  .grid.grid--gutter-20.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -17,7 +17,7 @@ html:`
 scss:`
 //Define gutter sizes like this
 $grid-cell-gutters: (
-  'moduleName' : 20px,
+  20 : 20px,
 );
 
 @import '../node_modules/mq-scss/mq';
@@ -37,7 +37,7 @@ html:`
 `,
 scss:`
 .mixin-12 {
-  @include grid(3, $gutter: 20px, $wrap: true);
+  @include grid(3, 20px);
 }
 
 .mixin__wrapper {
@@ -54,7 +54,7 @@ scss:`
     classes: {
 html:`
 .add-border.grid__wrapper
-  .grid.grid--outerGutters.grid--gutter-moduleName.grid--cols-3.grid--wrap
+  .grid.grid--outerGutters.grid--gutter-20.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -65,7 +65,7 @@ html:`
 scss:`
 //Define gutter sizes like this
 $grid-cell-gutters: (
-  'moduleName' : 20px,
+  20 : 20px,
 );
 
 @import '../node_modules/mq-scss/mq';
@@ -85,7 +85,7 @@ html:`
 `,
 scss:`
 .mixin-14 {
-  @include grid(3, $outerGutters: true, $gutter: 20px, $wrap: true);
+  @include grid(3, 20px, $outerGutters: true);
 }
 
 .mixin__wrapper {
@@ -103,8 +103,19 @@ scss:`
   +demo({
     classes: {
 html:`
+p (Horizontal)
 .add-border.grid__wrapper
-  .grid.grid--outerGutters-h.grid--gutter-moduleName.grid--cols-3.grid--wrap
+  .grid.grid--outerGutters-h.grid--gutter-20.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+hr
+p (Vertical)
+.add-border.grid__wrapper
+  .grid.grid--outerGutters-v.grid--gutter-20.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -115,7 +126,7 @@ html:`
 scss:`
 //Define gutter sizes like this
 $grid-cell-gutters: (
-  'moduleName' : 20px,
+  20 : 20px,
 );
 
 @import '../node_modules/mq-scss/mq';
@@ -124,6 +135,7 @@ $grid-cell-gutters: (
 
     mixin: {
 html:`
+p (Horizontal)
 .mixin__wrapper.add-border
   .mixin-15
     .mixin__cell.-color-1
@@ -132,45 +144,8 @@ html:`
     .mixin__cell.-color-4
     .mixin__cell.-color-5
     .mixin__cell.-color-6
-`,
-scss:`
-.mixin-15 {
-  @include grid(3, $outerGutters: h, $gutter: 20px, $wrap: true);
-}
-
-.mixin__wrapper {
-  overflow: hidden;
-}
-`,
-    }
-})
-    :marked
-      Horizontal and vertical only variants of the `grid--outerGutters` class
-
-  +demo({
-    classes: {
-html:`
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-v.grid--gutter-moduleName.grid--cols-3.grid--wrap
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-`,
-scss:`
-//Define gutter sizes like this
-$grid-cell-gutters: (
-  'moduleName' : 20px,
-);
-
-@import '../node_modules/mq-scss/mq';
-@import '../node_modules/gutter-grid/grid-classes';`
-    },
-
-    mixin: {
-html:`
+hr
+p (Vertical)
 .mixin__wrapper.add-border
   .mixin-16
     .mixin__cell.-color-1
@@ -181,8 +156,12 @@ html:`
     .mixin__cell.-color-6
 `,
 scss:`
+.mixin-15 {
+  @include grid(3, 20px, $outerGutters: h);
+}
+
 .mixin-16 {
-  @include grid(3, $outerGutters: v, $gutter: 20px, $wrap: true);
+  @include grid(3, 20px, $outerGutters: v);
 }
 
 .mixin__wrapper {
@@ -191,23 +170,57 @@ scss:`
 `,
     }
 })
+    :marked
+      Horizontal and vertical only variants
 
   +demo({
     classes: {
 html:`
+p (Top)
 .add-border.grid__wrapper
-  .grid.grid--outerGutters-top.grid--gutter-moduleName.grid--cols-3.grid--wrap
+  .grid.grid--outerGutters-top.grid--gutter-20.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
     .grid__cell.-color-4
     .grid__cell.-color-5
     .grid__cell.-color-6
+hr
+p (Bottom)
+.add-border.grid__wrapper
+  .grid.grid--outerGutters-bottom.grid--gutter-20.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+hr
+p (Left)
+.add-border.grid__wrapper
+  .grid.grid--outerGutters-left.grid--gutter-20.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+hr
+p (Right)
+.add-border.grid__wrapper
+  .grid.grid--outerGutters-right.grid--gutter-20.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+
 `,
 scss:`
 //Define gutter sizes like this
 $grid-cell-gutters: (
-  'moduleName' : 20px,
+  20 : 20px,
 );
 
 @import '../node_modules/mq-scss/mq';
@@ -216,6 +229,7 @@ $grid-cell-gutters: (
 
     mixin: {
 html:`
+p (Top)
 .mixin__wrapper.add-border
   .mixin-17
     .mixin__cell.-color-1
@@ -224,10 +238,53 @@ html:`
     .mixin__cell.-color-4
     .mixin__cell.-color-5
     .mixin__cell.-color-6
+hr
+p (Bottom)
+.mixin__wrapper.add-border
+  .mixin-18
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+hr
+p (Left)
+.mixin__wrapper.add-border
+  .mixin-19
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+hr
+p (Right)
+.mixin__wrapper.add-border
+  .mixin-20
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+
 `,
 scss:`
 .mixin-17 {
-  @include grid(3, $outerGutters: top, $gutter: 20px, $wrap: true);
+  @include grid(3, 20px, $outerGutters: top);
+}
+
+.mixin-18 {
+  @include grid(3, 20px, $outerGutters: bottom);
+}
+
+.mixin-19 {
+  @include grid(3, 20px, $outerGutters: left);
+}
+
+.mixin-20 {
+  @include grid(3, 20px, $outerGutters: right);
 }
 
 .mixin__wrapper {
@@ -239,151 +296,35 @@ scss:`
     :marked
       Top, bottom, left and right only variants
 
-  +demo({
-    classes: {
-html:`
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-bottom.grid--gutter-moduleName.grid--cols-3.grid--wrap
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-`,
-scss:`
-//Define gutter sizes like this
-$grid-cell-gutters: (
-  'moduleName' : 20px,
-);
-
-@import '../node_modules/mq-scss/mq';
-@import '../node_modules/gutter-grid/grid-classes';`
-    },
-
-    mixin: {
-html:`
-.mixin__wrapper.add-border
-  .mixin-18
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
-`,
-scss:`
-.mixin-18 {
-  @include grid(3, $outerGutters: bottom, $gutter: 20px, $wrap: true);
-}
-
-.mixin__wrapper {
-  overflow: hidden;
-}
-`,
-    }
-})
-
-  +demo({
-    classes: {
-html:`
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-left.grid--gutter-moduleName.grid--cols-3.grid--wrap
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-`,
-scss:`
-//Define gutter sizes like this
-$grid-cell-gutters: (
-  'moduleName' : 20px,
-);
-
-@import '../node_modules/mq-scss/mq';
-@import '../node_modules/gutter-grid/grid-classes';`
-    },
-
-    mixin: {
-html:`
-.mixin__wrapper.add-border
-  .mixin-19
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
-`,
-scss:`
-.mixin-19 {
-  @include grid(3, $outerGutters: left, $gutter: 20px, $wrap: true);
-}
-
-.mixin__wrapper {
-  overflow: hidden;
-}
-`,
-    }
-})
-
-  +demo({
-    classes: {
-html:`
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-right.grid--gutter-moduleName.grid--cols-3.grid--wrap
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-`,
-scss:`
-//Define gutter sizes like this
-$grid-cell-gutters: (
-  'moduleName' : 20px,
-);
-
-@import '../node_modules/mq-scss/mq';
-@import '../node_modules/gutter-grid/grid-classes';`
-    },
-
-    mixin: {
-html:`
-.mixin__wrapper.add-border
-  .mixin-20
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
-`,
-scss:`
-.mixin-20 {
-  @include grid(3, $outerGutters: right, $gutter: 20px, $wrap: true);
-}
-
-.mixin__wrapper {
-  overflow: hidden;
-}
-`,
-    }
-})
-
-
-
   :marked
-    Also, there is a delayed variant for the horizontal classes. This is primarily for use with overarching page layouts. The idea with the delayed varient is that when the screen reaches the point where the edge of the screen would meet the edge of the grid (plus the gutter), horizontal outer gutters are applied to prevent the edges of the grid from touching the edges of the screen. The `$grid-page-width` global setting determines when the change occurs. Define this before the import statments to change it.
+    Also, there is a delayed variant for the horizontal classes. This is primarily for use with overarching page layouts. The idea with the delayed variant is that when the screen reaches the point where the edge of the screen would meet the edge of the grid (plus the gutter), horizontal outer gutters are applied to prevent the edges of the grid from touching the edges of the screen. The `$grid-page-width` global setting determines when the change occurs. Define this before the import statements to change it.
 
   +demo({
     classes: {
 html:`
+p (Horizontal both sides delayed)
 .add-border.grid__wrapper
-  .grid.grid--outerGutters-h-delayed.grid--gutter-moduleName.grid--cols-3.grid--wrap
+  .grid.grid--outerGutters-h-delayed.grid--gutter-20.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+hr
+p (Left side delayed)
+.add-border.grid__wrapper
+  .grid.grid--outerGutters-left-delayed.grid--gutter-20.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+hr
+p (Right side delayed)
+.add-border.grid__wrapper
+  .grid.grid--outerGutters-right-delayed.grid--gutter-20.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -394,7 +335,7 @@ html:`
 scss:`
 //Define gutter sizes like this
 $grid-cell-gutters: (
-  'moduleName' : 20px,
+  20 : 20px,
 );
 
 //Edit the screen size at which point the switch happens
@@ -406,6 +347,7 @@ $grid-page-width: 1200px;
 
     mixin: {
 html:`
+p (Horizontal both sides delayed)
 .mixin__wrapper.add-border
   .mixin-21
     .mixin__cell.-color-1
@@ -414,45 +356,8 @@ html:`
     .mixin__cell.-color-4
     .mixin__cell.-color-5
     .mixin__cell.-color-6
-`,
-scss:`
-.mixin-21 {
-  @include grid(3, $outerGutters: h-delayed, $gutter: 20px, $wrap: true);
-}
-
-.mixin__wrapper {
-  overflow: hidden;
-}
-`,
-    }
-})
-    :marked
-      Delayed horizontal, left and right gutter varients (resize browser to see it take effect).
-
-  +demo({
-    classes: {
-html:`
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-left-delayed.grid--gutter-moduleName.grid--cols-3.grid--wrap
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-`,
-scss:`
-//Define gutter sizes like this
-$grid-cell-gutters: (
-  'moduleName' : 20px,
-);
-
-@import '../node_modules/mq-scss/mq';
-@import '../node_modules/gutter-grid/grid-classes';`
-    },
-
-    mixin: {
-html:`
+hr
+p (Left side delayed)
 .mixin__wrapper.add-border
   .mixin-22
     .mixin__cell.-color-1
@@ -461,43 +366,8 @@ html:`
     .mixin__cell.-color-4
     .mixin__cell.-color-5
     .mixin__cell.-color-6
-`,
-scss:`
-.mixin-22 {
-  @include grid(3, $outerGutters: left-delayed, $gutter: 20px, $wrap: true);
-}
-
-.mixin__wrapper {
-  overflow: hidden;
-}
-`,
-    }
-})
-
-  +demo({
-    classes: {
-html:`
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-right-delayed.grid--gutter-moduleName.grid--cols-3.grid--wrap
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-`,
-scss:`
-//Define gutter sizes like this
-$grid-cell-gutters: (
-  'moduleName' : 20px,
-);
-
-@import '../node_modules/mq-scss/mq';
-@import '../node_modules/gutter-grid/grid-classes';`
-    },
-
-    mixin: {
-html:`
+hr
+p (Right side delayed)
 .mixin__wrapper.add-border
   .mixin-23
     .mixin__cell.-color-1
@@ -508,8 +378,16 @@ html:`
     .mixin__cell.-color-6
 `,
 scss:`
+.mixin-21 {
+  @include grid(3, 20px, $outerGutters: h-delayed);
+}
+
+.mixin-22 {
+  @include grid(3, 20px, $outerGutters: left-delayed);
+}
+
 .mixin-23 {
-  @include grid(3, $outerGutters: right-delayed, $gutter: 20px, $wrap: true);
+  @include grid(3, 20px, $outerGutters: right-delayed);
 }
 
 .mixin__wrapper {
@@ -518,3 +396,5 @@ scss:`
 `,
     }
 })
+    :marked
+      Delayed horizontal, left and right gutter variants (resize browser to see it take effect). There are no vertical variants. I have purposely made the design of the site less than 1200px to clearly demonstrate this delay effect.

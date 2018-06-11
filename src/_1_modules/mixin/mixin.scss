@@ -59,51 +59,51 @@
 	}
 
 	&-12 {
-		 @include grid(3, $gutter: 'moduleName', $wrap: true);
+		 @include grid(3, 20px, $wrap: true);
 	}
 
 	&-13 {
-		@include grid(3, $gutter: 'mediaQueryGutter', $wrap: true, $MQs: false);
+		@include grid(3, $gutter: 'mediaQueryGutter', $MQs: false, $wrap: true);
 	}
 
 	&-14 {
-		 @include grid(3, $outerGutters: true, $gutter: 'moduleName', $wrap: true);
+		 @include grid(3, 20px, $outerGutters: true, $wrap: true);
 	}
 
 	&-15 {
-		@include grid(3, $outerGutters: h, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: h, $wrap: true);
 	}
 
 	&-16 {
-		@include grid(3, $outerGutters: v, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: v, $wrap: true);
 	}
 
 	&-17 {
-		@include grid(3, $outerGutters: top, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: top, $wrap: true);
 	}
 
 	&-18 {
-		@include grid(3, $outerGutters: bottom, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: bottom, $wrap: true);
 	}
 
 	&-19 {
-		@include grid(3, $outerGutters: left, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: left, $wrap: true);
 	}
 
 	&-20 {
-		@include grid(3, $outerGutters: right, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: right, $wrap: true);
 	}
 
 	&-21 {
-		@include grid(3, $outerGutters: h-delayed, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: h-delayed, $wrap: true);
 	}
 
 	&-22 {
-		@include grid(3, $outerGutters: left-delayed, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: left-delayed, $wrap: true);
 	}
 
 	&-23 {
-		@include grid(3, $outerGutters: right-delayed, $gutter: 'moduleName', $wrap: true);
+		@include grid(3, 20px, $outerGutters: right-delayed, $wrap: true);
 	}
 
 	&-24 {
