@@ -16,13 +16,14 @@ export default function() {
 	    }))
 
 			//minify the svg if in production mode
-			.pipe(plugins.if(args.production, plugins.imagemin({
-				progressive: true,
-				svgoPlugins: [
-					{removeViewBox: false},
-					{cleanupIDs: false},
-				],
-			})))
+			// .pipe(plugins.if(args.production, plugins.imagemin({
+			// 	progressive: true,
+			// 	svgoPlugins: [
+			// 		{removeViewBox: false},
+			// 		{cleanupIDs: false},
+			// 		{removeUselessDefs: false},
+			// 	],
+			// })))
 			.pipe(gulp.dest(dirs.temporary));
 
     //letting the user know what is going on
