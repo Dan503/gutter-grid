@@ -65,6 +65,13 @@
 	&-13 {
 		@include grid(3, $gutter: 'mediaQueryGutter', $MQs: false, $wrap: true);
 	}
+	&-13B {
+		@include grid(6, 20px, (
+			3 : 960px,
+			2 : 600px,
+			1 : 480px,
+		));
+	}
 
 	&-14 {
 		 @include grid(3, 20px, $outerGutters: true, $wrap: true);

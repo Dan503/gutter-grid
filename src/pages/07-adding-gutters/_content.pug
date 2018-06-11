@@ -232,3 +232,36 @@ scss:`
 
     The media queries are written in [mq-scss](https://www.npmjs.com/package/mq-scss) syntax. To learn more about how to write media queries using the mq-scss syntax, see the [mq-scss documentation](https://www.npmjs.com/package/mq-scss).
 
+  :marked
+
+    ### Gutters and custom breakpoints shorthand
+
+    The breakpoints setting is the 3rd Gutter Grid mixin parameter so it's possible to specify a column count, gutter size, and custom breakpoints in the mixin like so:
+
+  +demo({
+html:`
+.mixin__wrapper
+  .mixin-13B
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-13B {
+  @include grid(6, 20px, (
+    3 : 960px,
+    2 : 600px,
+    1 : 480px,
+  ));
+}
+
+.mixin__wrapper {
+  overflow: hidden;
+}
+`,
+}, {hasTabs: false})
+    :marked
+      Column count, gutter width, breakpoints mixin shorthand. Resize the browser window to see the effect.
