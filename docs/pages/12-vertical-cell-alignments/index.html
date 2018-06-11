@@ -35,15 +35,22 @@
     ga('send', 'pageview');
     
   </script>
-  <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 8]><!-->
+  <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 9]><!-->
   <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
-<!--[if lt IE 9]>
-  <link rel="stylesheet" href="/assets/styles/noMQs-main.css"><![endif]-->
+<!--[if lt IE 10]>
+  <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
 </head>
 <body>
   <h1 class="TK-visHid">Vertical cell alignments</h1>
   <!--holds the svg sprite-->
-  <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg"><symbol id="svg-facebook" viewBox="0 0 32 32"><title>facebook icon</title><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></symbol><symbol id="svg-gutter-grid-logo" viewBox="0 0 299 299"><title>Gutter Grid logo</title><rect class="logo__parent" x="12.5" y="12.5" width="274" height="274" rx="30.09" ry="30.09" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="25"/><g class="logo__cells"><rect x="162.45" y="41.91" width="94.99" height="94.99" rx="17" ry="17"/><rect x="162.45" y="162.74" width="94.99" height="94.99" rx="17" ry="17"/><rect x="41.89" y="162.74" width="94.99" height="94.99" rx="17" ry="17"/><rect x="41.89" y="41.91" width="94.99" height="94.99" rx="17" ry="17"/></g></symbol><symbol id="svg-linkedin" viewBox="0 0 32 32"><title>linkedin icon</title><path d="M12 12h5.535v2.837h.079c.77-1.381 2.655-2.837 5.464-2.837C28.92 12 30 15.637 30 20.367V30h-5.769v-8.54c0-2.037-.042-4.657-3.001-4.657-3.005 0-3.463 2.218-3.463 4.509V30H12V12zM2 12h6v18H2V12zM8 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></symbol><symbol id="svg-mail" viewBox="0 0 32 32"><title>mail icon</title><path d="M29 4H3C1.35 4 0 5.35 0 7v20c0 1.65 1.35 3 3 3h26c1.65 0 3-1.35 3-3V7c0-1.65-1.35-3-3-3zM12.461 17.199L4 23.789V8.113l8.461 9.086zM5.512 8h20.976L16 15.875 5.512 8zm7.278 9.553L16 21l3.21-3.447L25.79 26H6.211l6.58-8.447zm6.749-.354L28 8.113v15.676l-8.461-6.59z"/></symbol><symbol id="svg-twitter" viewBox="0 0 32 32"><title>twitter icon</title><path d="M32 7.075a12.941 12.941 0 0 1-3.769 1.031 6.601 6.601 0 0 0 2.887-3.631 13.21 13.21 0 0 1-4.169 1.594A6.565 6.565 0 0 0 22.155 4a6.563 6.563 0 0 0-6.563 6.563c0 .512.056 1.012.169 1.494A18.635 18.635 0 0 1 2.23 5.195a6.56 6.56 0 0 0-.887 3.3 6.557 6.557 0 0 0 2.919 5.463 6.565 6.565 0 0 1-2.975-.819v.081a6.565 6.565 0 0 0 5.269 6.437 6.574 6.574 0 0 1-2.968.112 6.588 6.588 0 0 0 6.131 4.563 13.17 13.17 0 0 1-9.725 2.719 18.568 18.568 0 0 0 10.069 2.95c12.075 0 18.681-10.006 18.681-18.681 0-.287-.006-.569-.019-.85A13.216 13.216 0 0 0 32 7.076z"/></symbol></svg></div><!--[if lt IE 9]>
+  <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
+<symbol id="svg-facebook" viewBox="0 0 32 32"><title>facebook icon</title> <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"/> </symbol>
+<symbol id="svg-gutter-grid-logo" viewBox="0 0 299 299"> <title>Gutter Grid logo</title> <rect class="logo__parent" x="12.5" y="12.5" width="274" height="274" rx="30.09" ry="30.09" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="25"/> <g class="logo__cells"> <rect x="162.45" y="41.91" width="94.99" height="94.99" rx="17" ry="17"/> <rect x="162.45" y="162.74" width="94.99" height="94.99" rx="17" ry="17"/> <rect x="41.89" y="162.74" width="94.99" height="94.99" rx="17" ry="17"/> <rect x="41.89" y="41.91" width="94.99" height="94.99" rx="17" ry="17"/> </g> </symbol>
+<symbol id="svg-linkedin" viewBox="0 0 32 32"><title>linkedin icon</title> <path d="M12 12h5.535v2.837h0.079c0.77-1.381 2.655-2.837 5.464-2.837 5.842 0 6.922 3.637 6.922 8.367v9.633h-5.769v-8.54c0-2.037-0.042-4.657-3.001-4.657-3.005 0-3.463 2.218-3.463 4.509v8.688h-5.767v-18z"/> <path d="M2 12h6v18h-6v-18z"/> <path d="M8 7c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"/> </symbol>
+<symbol id="svg-mail" viewBox="0 0 32 32"><title>mail icon</title> <path d="M29 4h-26c-1.65 0-3 1.35-3 3v20c0 1.65 1.35 3 3 3h26c1.65 0 3-1.35 3-3v-20c0-1.65-1.35-3-3-3zM12.461 17.199l-8.461 6.59v-15.676l8.461 9.086zM5.512 8h20.976l-10.488 7.875-10.488-7.875zM12.79 17.553l3.21 3.447 3.21-3.447 6.58 8.447h-19.579l6.58-8.447zM19.539 17.199l8.461-9.086v15.676l-8.461-6.59z"/> </symbol>
+<symbol id="svg-twitter" viewBox="0 0 32 32"><title>twitter icon</title> <path d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"/> </symbol>
+</svg>
+  </div><!--[if lt IE 9]>
   <div class="alert alert--error ">
     <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   </div><![endif]-->
@@ -60,7 +67,7 @@
             <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                   <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                     <use xlink:href="#svg-gutter-grid-logo"></use>
-                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v3.0.0</code></span></span></span></p>
+                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.0.0</code></span></span></span></p>
             <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
           </div>
         </div>
@@ -97,7 +104,8 @@
                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/11-horizontal-cell-alignments/">Horizontal cell alignments</a></li>
                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/12-vertical-cell-alignments/">Vertical cell alignments</a></li>
                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/13-controlling-cell-growth-and-shrinkage/">Controlling cell growth and shrinkage</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/14-change-log/">Change log</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/14-full-example-config/">Full example config</a></li>
+                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/15-change-log/">Change log</a></li>
                       </ol>
                     </div>
                   </div>
@@ -106,9 +114,12 @@
                   <article class="markdown-body" id="content">
                     <p class="TK-nonDesktop"><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                     <div class="cmsContent">
-                      <h2>Vertical cell alignments</h2><p>Vertical alignment is just as easy. These are mostly just classes that hold <code>align-items</code> values though. They do not feature any Legacy browser backups. If you find the pure css way easier to use, feel free to use that instead.</p>
+                      <h2>Vertical cell alignments</h2><p>Vertical alignment is just as easy. These are mostly just classes that hold the <code>align-items</code> values though. They do not feature any Legacy browser backups. If you find the pure css method easier to use, feel free to use that instead.</p>
 
                       <aside class="demo -noHeight">
+                        <div class="demo__summary demo__segment"><p>Vertical alignments</p>
+
+                        </div>
                         <div class="tabs JS-tabs">
                           <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
                             <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
@@ -117,152 +128,144 @@
                           <div class="tabs__contentWrap">
                             <div class="tabs__content JS-tabs__content">
                               <div class="demo__result demo__segment">
-<div class="grid grid--vAlign-top add-border">
-  <div class="grid__cell -color-1" style="height: 100px"></div>
-  <div class="grid__cell -color-2" style="height: 50px"></div>
-  <div class="grid__cell -color-3" style="height: 75px"></div>
+<p>(top align)</p>
+<div class="grid grid--vAlign-top grid--cols-3 add-border">
+  <div class="grid__cell -color-1" style="height: 100px;"></div>
+  <div class="grid__cell -color-2" style="height: 50px;"></div>
+  <div class="grid__cell -color-3" style="height: 75px;"></div>
+  <div class="grid__cell -color-4" style="height: 50px;"></div>
+  <div class="grid__cell -color-5" style="height: 75px;"></div>
+  <div class="grid__cell -color-6" style="height: 100px;"></div>
+</div>
+<hr>
+<p>(bottom align)</p>
+<div class="grid grid--vAlign-bottom grid--cols-3 add-border">
+  <div class="grid__cell -color-1" style="height: 100px;"></div>
+  <div class="grid__cell -color-2" style="height: 50px;"></div>
+  <div class="grid__cell -color-3" style="height: 75px;"></div>
+  <div class="grid__cell -color-4" style="height: 50px;"></div>
+  <div class="grid__cell -color-5" style="height: 75px;"></div>
+  <div class="grid__cell -color-6" style="height: 100px;"></div>
+</div>
+<hr>
+<p>(center align)</p>
+<div class="grid grid--vAlign-center grid--cols-3 add-border">
+  <div class="grid__cell -color-1" style="height: 100px;"></div>
+  <div class="grid__cell -color-2" style="height: 50px;"></div>
+  <div class="grid__cell -color-3" style="height: 75px;"></div>
+  <div class="grid__cell -color-4" style="height: 50px;"></div>
+  <div class="grid__cell -color-5" style="height: 75px;"></div>
+  <div class="grid__cell -color-6" style="height: 100px;"></div>
 </div>
                               </div>
                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                 <div class="grid__cell demo__markup demo__segment html">
                                   <pre><code class="html">
-&lt;div class=&quot;grid grid--vAlign-top add-border&quot;&gt;
-  &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 100px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 50px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-3&quot; style=&quot;height: 75px&quot;&gt;&lt;/div&gt;
+&lt;p&gt;(top align)&lt;/p&gt;
+&lt;div class=&quot;grid grid--vAlign-top grid--cols-3 add-border&quot;&gt;
+  &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-3&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-4&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-5&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-6&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+&lt;p&gt;(bottom align)&lt;/p&gt;
+&lt;div class=&quot;grid grid--vAlign-bottom grid--cols-3 add-border&quot;&gt;
+  &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-3&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-4&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-5&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-6&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+&lt;p&gt;(center align)&lt;/p&gt;
+&lt;div class=&quot;grid grid--vAlign-center grid--cols-3 add-border&quot;&gt;
+  &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-3&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-4&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-5&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-6&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                                 </div>
                               </div>
                             </div>
                             <div class="tabs__content JS-tabs__content">
                               <div class="demo__result demo__segment">
+<p>(top align)</p>
 <div class="mixin-34 add-border">
-  <div class="mixin__cell -color-1" style="height: 100px"></div>
-  <div class="mixin__cell -color-2" style="height: 50px"></div>
-  <div class="mixin__cell -color-3" style="height: 75px"></div>
+  <div class="mixin__cell -color-1" style="height: 100px;"></div>
+  <div class="mixin__cell -color-2" style="height: 50px;"></div>
+  <div class="mixin__cell -color-3" style="height: 75px;"></div>
+  <div class="mixin__cell -color-4" style="height: 50px;"></div>
+  <div class="mixin__cell -color-5" style="height: 75px;"></div>
+  <div class="mixin__cell -color-6" style="height: 100px;"></div>
+</div>
+<hr>
+<p>(bottom align)</p>
+<div class="mixin-35 add-border">
+  <div class="mixin__cell -color-1" style="height: 100px;"></div>
+  <div class="mixin__cell -color-2" style="height: 50px;"></div>
+  <div class="mixin__cell -color-3" style="height: 75px;"></div>
+  <div class="mixin__cell -color-4" style="height: 50px;"></div>
+  <div class="mixin__cell -color-5" style="height: 75px;"></div>
+  <div class="mixin__cell -color-6" style="height: 100px;"></div>
+</div>
+<hr>
+<p>(center align)</p>
+<div class="mixin-36 add-border">
+  <div class="mixin__cell -color-1" style="height: 100px;"></div>
+  <div class="mixin__cell -color-2" style="height: 50px;"></div>
+  <div class="mixin__cell -color-3" style="height: 75px;"></div>
+  <div class="mixin__cell -color-4" style="height: 50px;"></div>
+  <div class="mixin__cell -color-5" style="height: 75px;"></div>
+  <div class="mixin__cell -color-6" style="height: 100px;"></div>
 </div>
                               </div>
                               <div class="demo__grid grid grid--ieFloat grid--cols-2">
                                 <div class="grid__cell demo__markup demo__segment html">
                                   <pre><code class="html">
+&lt;p&gt;(top align)&lt;/p&gt;
 &lt;div class=&quot;mixin-34 add-border&quot;&gt;
-  &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 100px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 50px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-3&quot; style=&quot;height: 75px&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-3&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-4&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-5&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-6&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+&lt;p&gt;(bottom align)&lt;/p&gt;
+&lt;div class=&quot;mixin-35 add-border&quot;&gt;
+  &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-3&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-4&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-5&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-6&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr/&gt;
+&lt;p&gt;(center align)&lt;/p&gt;
+&lt;div class=&quot;mixin-36 add-border&quot;&gt;
+  &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-3&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-4&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-5&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-6&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                                 </div>
                                 <div class="grid__cell demo__markup demo__segment scss">
                                   <pre><code class="scss">
 .mixin-34 {
-  @include grid($vAlign: top);
+  @include grid(3, $vAlign: top);
 }
-</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </aside>
-                      <aside class="demo -noHeight">
-                        <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
-                          </div>
-                          <div class="tabs__contentWrap">
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
-<div class="grid grid--vAlign-bottom add-border">
-  <div class="grid__cell -color-1" style="height: 100px"></div>
-  <div class="grid__cell -color-2" style="height: 50px"></div>
-  <div class="grid__cell -color-3" style="height: 75px"></div>
-</div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
-&lt;div class=&quot;grid grid--vAlign-bottom add-border&quot;&gt;
-  &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 100px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 50px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-3&quot; style=&quot;height: 75px&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
-<div class="mixin-35 add-border">
-  <div class="mixin__cell -color-1" style="height: 100px"></div>
-  <div class="mixin__cell -color-2" style="height: 50px"></div>
-  <div class="mixin__cell -color-3" style="height: 75px"></div>
-</div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
-&lt;div class=&quot;mixin-35 add-border&quot;&gt;
-  &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 100px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 50px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-3&quot; style=&quot;height: 75px&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                                </div>
-                                <div class="grid__cell demo__markup demo__segment scss">
-                                  <pre><code class="scss">
 .mixin-35 {
   @include grid($vAlign: bottom);
 }
-</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </aside>
-                      <aside class="demo -noHeight">
-                        <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
-                          </div>
-                          <div class="tabs__contentWrap">
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
-<div class="grid grid--vAlign-center add-border">
-  <div class="grid__cell -color-1" style="height: 100px"></div>
-  <div class="grid__cell -color-2" style="height: 50px"></div>
-  <div class="grid__cell -color-3" style="height: 75px"></div>
-</div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
-&lt;div class=&quot;grid grid--vAlign-center add-border&quot;&gt;
-  &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 100px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 50px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-3&quot; style=&quot;height: 75px&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
-<div class="mixin-36 add-border">
-  <div class="mixin__cell -color-1" style="height: 100px"></div>
-  <div class="mixin__cell -color-2" style="height: 50px"></div>
-  <div class="mixin__cell -color-3" style="height: 75px"></div>
-</div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
-&lt;div class=&quot;mixin-36 add-border&quot;&gt;
-  &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 100px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 50px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-3&quot; style=&quot;height: 75px&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                                </div>
-                                <div class="grid__cell demo__markup demo__segment scss">
-                                  <pre><code class="scss">
 .mixin-36 {
   @include grid($vAlign: center);
 }
@@ -286,14 +289,23 @@
                             <div class="tabs__content JS-tabs__content">
                               <div class="demo__result demo__segment">
 <div class="grid__wrapper add-shadow">
-  <div class="grid grid--vAlign-center grid--hasInners grid--gutter-moduleName">
-    <div class="grid__cell" style="height: 100px">
+  <div class="grid grid--vAlign-center grid--hasInners grid--gutter-20 grid--cols-3">
+    <div class="grid__cell" style="height: 75px;">
       <div class="grid__inner add-border"></div>
     </div>
-    <div class="grid__cell" style="height: 50px">
+    <div class="grid__cell" style="height: 50px;">
       <div class="grid__inner add-border"></div>
     </div>
-    <div class="grid__cell" style="height: 75px">
+    <div class="grid__cell" style="height: 100px;">
+      <div class="grid__inner add-border"></div>
+    </div>
+    <div class="grid__cell" style="height: 50px;">
+      <div class="grid__inner add-border"></div>
+    </div>
+    <div class="grid__cell" style="height: 75px;">
+      <div class="grid__inner add-border"></div>
+    </div>
+    <div class="grid__cell" style="height: 100px;">
       <div class="grid__inner add-border"></div>
     </div>
   </div>
@@ -303,14 +315,23 @@
                                 <div class="grid__cell demo__markup demo__segment html">
                                   <pre><code class="html">
 &lt;div class=&quot;grid__wrapper add-shadow&quot;&gt;
-  &lt;div class=&quot;grid grid--vAlign-center grid--hasInners grid--gutter-moduleName&quot;&gt;
-    &lt;div class=&quot;grid__cell&quot; style=&quot;height: 100px&quot;&gt;
+  &lt;div class=&quot;grid grid--vAlign-center grid--hasInners grid--gutter-20 grid--cols-3&quot;&gt;
+    &lt;div class=&quot;grid__cell&quot; style=&quot;height: 75px;&quot;&gt;
       &lt;div class=&quot;grid__inner add-border&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;grid__cell&quot; style=&quot;height: 50px&quot;&gt;
+    &lt;div class=&quot;grid__cell&quot; style=&quot;height: 50px;&quot;&gt;
       &lt;div class=&quot;grid__inner add-border&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;grid__cell&quot; style=&quot;height: 75px&quot;&gt;
+    &lt;div class=&quot;grid__cell&quot; style=&quot;height: 100px;&quot;&gt;
+      &lt;div class=&quot;grid__inner add-border&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot; style=&quot;height: 50px;&quot;&gt;
+      &lt;div class=&quot;grid__inner add-border&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot; style=&quot;height: 75px;&quot;&gt;
+      &lt;div class=&quot;grid__inner add-border&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot; style=&quot;height: 100px;&quot;&gt;
       &lt;div class=&quot;grid__inner add-border&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -322,13 +343,22 @@
                               <div class="demo__result demo__segment">
 <div class="mixin__wrapper add-shadow">
   <div class="mixin-37">
-    <div class="mixin__cell" style="height: 100px">
+    <div class="mixin__cell" style="height: 75px;">
       <div class="mixin__inner add-border"></div>
     </div>
-    <div class="mixin__cell" style="height: 50px">
+    <div class="mixin__cell" style="height: 50px;">
       <div class="mixin__inner add-border"></div>
     </div>
-    <div class="mixin__cell" style="height: 75px">
+    <div class="mixin__cell" style="height: 100px;">
+      <div class="mixin__inner add-border"></div>
+    </div>
+    <div class="mixin__cell" style="height: 50px;">
+      <div class="mixin__inner add-border"></div>
+    </div>
+    <div class="mixin__cell" style="height: 75px;">
+      <div class="mixin__inner add-border"></div>
+    </div>
+    <div class="mixin__cell" style="height: 100px;">
       <div class="mixin__inner add-border"></div>
     </div>
   </div>
@@ -339,13 +369,22 @@
                                   <pre><code class="html">
 &lt;div class=&quot;mixin__wrapper add-shadow&quot;&gt;
   &lt;div class=&quot;mixin-37&quot;&gt;
-    &lt;div class=&quot;mixin__cell&quot; style=&quot;height: 100px&quot;&gt;
+    &lt;div class=&quot;mixin__cell&quot; style=&quot;height: 75px;&quot;&gt;
       &lt;div class=&quot;mixin__inner add-border&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;mixin__cell&quot; style=&quot;height: 50px&quot;&gt;
+    &lt;div class=&quot;mixin__cell&quot; style=&quot;height: 50px;&quot;&gt;
       &lt;div class=&quot;mixin__inner add-border&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;mixin__cell&quot; style=&quot;height: 75px&quot;&gt;
+    &lt;div class=&quot;mixin__cell&quot; style=&quot;height: 100px;&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-border&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot; style=&quot;height: 50px;&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-border&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot; style=&quot;height: 75px;&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-border&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot; style=&quot;height: 100px;&quot;&gt;
       &lt;div class=&quot;mixin__inner add-border&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -354,7 +393,7 @@
                                 <div class="grid__cell demo__markup demo__segment scss">
                                   <pre><code class="scss">
 .mixin-37 {
-  @include grid($vAlign: center, $inners: true, $gutter: 20px);
+  @include grid(3, 20px, $vAlign: center, $inners: true);
 }
 
 .mixin__wrapper {
@@ -380,7 +419,7 @@
                             <div class="tabs__content JS-tabs__content">
                               <div class="demo__result demo__segment">
 <div class="grid__wrapper">
-  <div class="grid grid--hasInners grid--cols-3 grid--gutter-moduleName">
+  <div class="grid grid--hasInners grid--cols-3 grid--gutter-20">
     <div class="grid__cell">
       <div class="grid__inner grid grid--vAlign-center add-border">
         <div class="grid__cell add-padding"><p>Videmusne ut pueri ne verberibus quidem a contemplandis rebus perquirendisque deterreantur? Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Tum Triarius: Posthac quidem, inquit, audacius.</p> <p> Qui non moveatur et offensione turpitudinis et comprobatione honestatis? Quae sequuntur igitur? Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Sed tamen est aliquid, quod nobis non liceat, liceat illis. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter.</p>
@@ -406,7 +445,7 @@
                                 <div class="grid__cell demo__markup demo__segment html">
                                   <pre><code class="html">
 &lt;div class=&quot;grid__wrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--hasInners grid--cols-3 grid--gutter-moduleName&quot;&gt;
+  &lt;div class=&quot;grid grid--hasInners grid--cols-3 grid--gutter-20&quot;&gt;
     &lt;div class=&quot;grid__cell&quot;&gt;
       &lt;div class=&quot;grid__inner grid grid--vAlign-center add-border&quot;&gt;
         &lt;div class=&quot;grid__cell add-padding&quot;&gt;&lt;p&gt;Videmusne ut pueri ne verberibus quidem a contemplandis rebus perquirendisque deterreantur? Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Tum Triarius: Posthac quidem, inquit, audacius.&lt;/p&gt; &lt;p&gt; Qui non moveatur et offensione turpitudinis et comprobatione honestatis? Quae sequuntur igitur? Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Sed tamen est aliquid, quod nobis non liceat, liceat illis. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter.&lt;/p&gt;
@@ -435,19 +474,19 @@
 <div class="mixin__wrapper">
   <div class="mixin-38">
     <div class="mixin__cell">
-      <div class="mixin-36 mixin__inner add-border">
+      <div class="mixin-38B mixin__inner add-border">
         <div class="mixin__cell add-padding"><p>Videmusne ut pueri ne verberibus quidem a contemplandis rebus perquirendisque deterreantur? Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Tum Triarius: Posthac quidem, inquit, audacius.</p> <p> Qui non moveatur et offensione turpitudinis et comprobatione honestatis? Quae sequuntur igitur? Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Sed tamen est aliquid, quod nobis non liceat, liceat illis. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter.</p>
         </div>
       </div>
     </div>
     <div class="mixin__cell">
-      <div class="mixin-36 mixin__inner add-border">
+      <div class="mixin-38B mixin__inner add-border">
         <div class="mixin__cell add-padding"><p>At quicum ioca seria, ut dicitur, quicum arcana, quicum occulta omnia?</p>
         </div>
       </div>
     </div>
     <div class="mixin__cell">
-      <div class="mixin-36 mixin__inner add-border">
+      <div class="mixin-38B mixin__inner add-border">
         <div class="mixin__cell add-padding"><p>Duo Reges: constructio interrete. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Stulti autem malorum memoria torquentur, sapientes bona praeterita grata recordatione renovata delectant. A primo, ut opinor, animantium ortu petitur origo summi boni.</p>
         </div>
       </div>
@@ -461,19 +500,19 @@
 &lt;div class=&quot;mixin__wrapper&quot;&gt;
   &lt;div class=&quot;mixin-38&quot;&gt;
     &lt;div class=&quot;mixin__cell&quot;&gt;
-      &lt;div class=&quot;mixin-36 mixin__inner add-border&quot;&gt;
+      &lt;div class=&quot;mixin-38B mixin__inner add-border&quot;&gt;
         &lt;div class=&quot;mixin__cell add-padding&quot;&gt;&lt;p&gt;Videmusne ut pueri ne verberibus quidem a contemplandis rebus perquirendisque deterreantur? Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Tum Triarius: Posthac quidem, inquit, audacius.&lt;/p&gt; &lt;p&gt; Qui non moveatur et offensione turpitudinis et comprobatione honestatis? Quae sequuntur igitur? Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Sed tamen est aliquid, quod nobis non liceat, liceat illis. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter.&lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class=&quot;mixin__cell&quot;&gt;
-      &lt;div class=&quot;mixin-36 mixin__inner add-border&quot;&gt;
+      &lt;div class=&quot;mixin-38B mixin__inner add-border&quot;&gt;
         &lt;div class=&quot;mixin__cell add-padding&quot;&gt;&lt;p&gt;At quicum ioca seria, ut dicitur, quicum arcana, quicum occulta omnia?&lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class=&quot;mixin__cell&quot;&gt;
-      &lt;div class=&quot;mixin-36 mixin__inner add-border&quot;&gt;
+      &lt;div class=&quot;mixin-38B mixin__inner add-border&quot;&gt;
         &lt;div class=&quot;mixin__cell add-padding&quot;&gt;&lt;p&gt;Duo Reges: constructio interrete. Nam Pyrrho, Aristo, Erillus iam diu abiecti. Stulti autem malorum memoria torquentur, sapientes bona praeterita grata recordatione renovata delectant. A primo, ut opinor, animantium ortu petitur origo summi boni.&lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -484,10 +523,10 @@
                                 <div class="grid__cell demo__markup demo__segment scss">
                                   <pre><code class="scss">
 .mixin-38 {
-  @include grid(3, $inners: true, $gutter: 20px);
+  @include grid(3, 20px, $inners: true);
 }
 
-.mixin-36 {
+.mixin-38B {
   @include grid($vAlign: center);
 }
 
@@ -513,52 +552,121 @@
                           <div class="tabs__contentWrap">
                             <div class="tabs__content JS-tabs__content">
                               <div class="demo__result demo__segment">
-<div class="grid grid--vAlign-bottom add-border" style="height:100px">
-  <div class="grid__cell -color-1" style="height: 80px"></div>
-  <div class="grid__cell -color-2" style="height: 25px"></div>
-  <div class="grid__cell -color-3 grid__cell--vAlign-top" style="height: 50px"></div>
-  <div class="grid__cell -color-4" style="height: 75px"></div>
+<div class="grid grid--vAlign-bottom add-border" style="height:100px;">
+  <div class="grid__cell -color-1" style="height: 80px;"></div>
+  <div class="grid__cell -color-2" style="height: 25px;"></div>
+  <div class="grid__cell -color-3 grid__cell--vAlign-top" style="height: 50px;"></div>
+  <div class="grid__cell -color-4" style="height: 75px;"></div>
 </div>
                               </div>
                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                 <div class="grid__cell demo__markup demo__segment html">
                                   <pre><code class="html">
-&lt;div class=&quot;grid grid--vAlign-bottom add-border&quot; style=&quot;height:100px&quot;&gt;
-  &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 80px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 25px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-3 grid__cell--vAlign-top&quot; style=&quot;height: 50px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-4&quot; style=&quot;height: 75px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;grid grid--vAlign-bottom add-border&quot; style=&quot;height:100px;&quot;&gt;
+  &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 80px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 25px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-3 grid__cell--vAlign-top&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-4&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                                 </div>
                               </div>
                             </div>
                             <div class="tabs__content JS-tabs__content">
                               <div class="demo__result demo__segment">
-<div class="mixin-35 add-border" style="height:100px">
-  <div class="mixin__cell -color-1" style="height: 80px"></div>
-  <div class="mixin__cell -color-2" style="height: 25px"></div>
-  <div class="mixin__cell -color-3 mixin__oddOneOut" style="height: 50px"></div>
-  <div class="mixin__cell -color-4" style="height: 75px"></div>
+<div class="mixin-38C add-border" style="height:100px;">
+  <div class="mixin__cell -color-1" style="height: 80px;"></div>
+  <div class="mixin__cell -color-2" style="height: 25px;"></div>
+  <div class="mixin__cell -color-3 mixin__oddOneOut" style="height: 50px;"></div>
+  <div class="mixin__cell -color-4" style="height: 75px;"></div>
 </div>
                               </div>
                               <div class="demo__grid grid grid--ieFloat grid--cols-2">
                                 <div class="grid__cell demo__markup demo__segment html">
                                   <pre><code class="html">
-&lt;div class=&quot;mixin-35 add-border&quot; style=&quot;height:100px&quot;&gt;
-  &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 80px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 25px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-3 mixin__oddOneOut&quot; style=&quot;height: 50px&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-4&quot; style=&quot;height: 75px&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;mixin-38C add-border&quot; style=&quot;height:100px;&quot;&gt;
+  &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 80px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 25px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-3 mixin__oddOneOut&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-4&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                                 </div>
                                 <div class="grid__cell demo__markup demo__segment scss">
                                   <pre><code class="scss">
-.mixin-35 {
+.mixin-38C {
   @include grid($vAlign: bottom);
 }
 
 .mixin__oddOneOut {
   align-self: flex-start;
+}
+</code></pre>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </aside><h3 id="vertical-flow">Vertical flow</h3>
+<p>Applying <code>grid--vertical</code> (<code>$vertical: true</code> in the mixin) is simply adding <code>flex-direction: column</code>. This flips the grid around so that grid cells progressively move down the page instead of across.</p>
+<p>Using the <code>vertical</code> setting features a backup for legacy browsers though whereas applying <code>flex-direction: column</code> on it&#39;s own does not.</p>
+
+                      <aside class="demo">
+                        <div class="demo__summary demo__segment"><p>Applying a vertical grid flow.</p>
+
+                        </div>
+                        <div class="tabs JS-tabs">
+                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
+                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
+                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
+                          </div>
+                          <div class="tabs__contentWrap">
+                            <div class="tabs__content JS-tabs__content">
+                              <div class="demo__result demo__segment">
+<div class="grid__wrapper add-border">
+  <div class="grid grid--vertical grid--gutter-20">
+    <div class="grid__cell -color-1"></div>
+    <div class="grid__cell -color-2"></div>
+    <div class="grid__cell -color-3"></div>
+  </div>
+</div>
+                              </div>
+                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                <div class="grid__cell demo__markup demo__segment html">
+                                  <pre><code class="html">
+&lt;div class=&quot;grid__wrapper add-border&quot;&gt;
+  &lt;div class=&quot;grid grid--vertical grid--gutter-20&quot;&gt;
+    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="tabs__content JS-tabs__content">
+                              <div class="demo__result demo__segment">
+<div class="mixin__wrapper add-border">
+  <div class="mixin-33">
+    <div class="mixin__cell -color-1"></div>
+    <div class="mixin__cell -color-2"></div>
+    <div class="mixin__cell -color-3"></div>
+  </div>
+</div>
+                              </div>
+                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                <div class="grid__cell demo__markup demo__segment html">
+                                  <pre><code class="html">
+&lt;div class=&quot;mixin__wrapper add-border&quot;&gt;
+  &lt;div class=&quot;mixin-33&quot;&gt;
+    &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-3&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                </div>
+                                <div class="grid__cell demo__markup demo__segment scss">
+                                  <pre><code class="scss">
+.mixin-33 {
+  @include grid($gutter: 20px, $vertical: true);
 }
 </code></pre>
                                 </div>
