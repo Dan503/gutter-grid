@@ -107,9 +107,9 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		@if ($grid-legacy-support){
 			flex-grow: 1;
 		} @else {
-			//If no columns set, grid cells will stretch
-			#{$grid}:not([class*="grid--cols"]):not(#{$grid}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"])
-			> &:not(#{$grid}__cell--noStretch) {
+			//If no columns set and no alignment properties set, grid cells will stretch
+			#{$grid}:not([class*="grid--cols"]):not(#{$grid}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(#{$grid}--noResize)
+			> &:not(#{$grid}__cell--noStretch):not(#{$grid}__cell--noResize) {
 				flex-grow: 1;
 			}
 		}
