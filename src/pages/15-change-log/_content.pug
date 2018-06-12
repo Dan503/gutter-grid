@@ -1,5 +1,11 @@
 block content
   :marked
+    ### Version 4.1.0
+
+    This release is all about trying to mitigate the Chrome negative margin bug as much as possible. Gutter Grid now tries it's best to avoid combining a negative top margin with a top gutter height. Instead Gutter Grid just doesn't output a top outer gutter unless the user has explicitly asked for one. If there is no outer gutter then there is no need to cancel it out with a negative margin which means no Chrome bug.
+
+    The Chrome bug is still an issue for bottom outer gutters though. The bottom negative margin cannot be removed. To combat this I've added a new class to the class system. The `grid__paddedWrapper` class adds `padding-bottom: 1px` instead of `overflow: hidden`. It is designed to be a replacement for the `grid__wrapper` class when overflow is needed. If using the mixin system `padding-bottom: 1px` needs to be added yourself to an element wrapping around the grid.
+
     ### Version 4.0.0
 
     This is a big update. CSS Grid is killing off almost all need for Gutter Grid. IE 11 is essentially the only reason why Gutter Grid is still at all worth using right now.
