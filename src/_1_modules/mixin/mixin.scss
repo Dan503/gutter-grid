@@ -227,8 +227,8 @@
 		overflow: hidden;
 	}
 
-	&__paddingHack {
-		padding: 1px 0;
+	&__paddedWrapper {
+		padding-bottom: 1px;
 	}
 
 	&__oddOneOut {
