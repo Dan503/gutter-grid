@@ -85,8 +85,14 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 		2: (-$gutter-top) (-$gutter-right),
 	), $gutterCount);
 
-	margin: $margin;
-	border-width: $gutter-top $gutter-right 0 0;
+	@if ($format == 'mixin' and ($outerGutters == 'v' or $outerGutters == 'top' or $outerGutters == true)) {
+		margin: $margin;
+		border-width: $gutter-top $gutter-right 0 0;
+	} @else {
+		margin: 0 (-$gutter-right) (-$gutter-bottom) (-$gutter-left);
+		border-width: 0 $gutter-right 0 0;
+	}
+
 	> * {
 		border-width: 0 0 $gutter-bottom $gutter-left;
 	}
@@ -104,6 +110,11 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 	@if ($format == 'classes'){
 		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
 		&.#{$fullPrefix}grid--outerGutters {
+
+			&, &-v, &-top {
+				border-top-width: $gutter-top;
+			}
+
 			@include mq(max, ($mq-width)){
 				&-h-delayed {
 					margin-left: 0;
