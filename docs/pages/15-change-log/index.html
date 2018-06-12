@@ -67,7 +67,7 @@
             <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                   <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                     <use xlink:href="#svg-gutter-grid-logo"></use>
-                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.0.0</code></span></span></span></p>
+                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
             <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
           </div>
         </div>
@@ -114,7 +114,10 @@
                   <article class="markdown-body" id="content">
                     <p class="TK-nonDesktop"><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                     <div class="cmsContent">
-                      <h2>Change log</h2><h3 id="version-4-0-0">Version 4.0.0</h3>
+                      <h2>Change log</h2><h3 id="version-4-1-0">Version 4.1.0</h3>
+<p>This release is all about trying to mitigate the Chrome negative margin bug as much as possible. Gutter Grid now tries it&#39;s best to avoid combining a negative top margin with a top gutter height. Instead Gutter Grid just doesn&#39;t output a top outer gutter unless the user has explicitly asked for one. If there is no outer gutter then there is no need to cancel it out with a negative margin which means no Chrome bug.</p>
+<p>The Chrome bug is still an issue for bottom outer gutters though. The bottom negative margin cannot be removed. To combat this I&#39;ve added a new class to the class system. The <code>grid__paddedWrapper</code> class adds <code>padding-bottom: 1px</code> instead of <code>overflow: hidden</code>. It is designed to be a replacement for the <code>grid__wrapper</code> class when overflow is needed. If using the mixin system <code>padding-bottom: 1px</code> needs to be added yourself to an element wrapping around the grid.</p>
+<h3 id="version-4-0-0">Version 4.0.0</h3>
 <p>This is a big update. CSS Grid is killing off almost all need for Gutter Grid. IE 11 is essentially the only reason why Gutter Grid is still at all worth using right now.
 With IE 8 and 9 essentially dead, it doesn&#39;t make sense to hamper the experience of IE11 developers for the sake of these dead browsers.
 I&#39;m optimising the code to make the experience as enjoyable as possible for IE11 devs. Unfortunately it means the defaults will be different depending on if <code>$grid-legacy-support</code> is enabled or not.

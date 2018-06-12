@@ -67,7 +67,7 @@
             <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                   <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                     <use xlink:href="#svg-gutter-grid-logo"></use>
-                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.0.0</code></span></span></span></p>
+                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
             <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
           </div>
         </div>
@@ -139,8 +139,10 @@
 <p>Well you would be surprised. The problem comes from the edges of each cell needing to be hard up against the edges of its container.</p>
 <p>With Gutter Grid installed, this is all the code you need to write to generate the layout styles for that grid:</p>
 <pre><code class="lang-scss">.grid__wrapper { overflow: hidden; }
-// Display a 3 column grid with a 20px gutter
-.grid { @include grid(3, 20px); }
+.grid {
+  // Display a 3 column grid with a 20px gutter
+  @include grid(3, 20px);
+}
 </code></pre>
 <p>If you wanted more control over the grids breakpoints, the above grid would be the equivalent of writing this:</p>
 <pre><code class="lang-scss">.grid__wrapper { overflow: hidden; }
