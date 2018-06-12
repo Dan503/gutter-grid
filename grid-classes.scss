@@ -93,6 +93,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		overflow: hidden;
 	}
 
+	//For when overflow needs to be visible
+	&__paddedWrapper {
+		padding-bottom: 1px;
+	}
+
 	//base grid__cell styling
 	&__cell {
 		box-sizing: border-box;

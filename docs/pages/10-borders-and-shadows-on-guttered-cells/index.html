@@ -67,7 +67,7 @@
             <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                   <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                     <use xlink:href="#svg-gutter-grid-logo"></use>
-                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.0.0</code></span></span></span></p>
+                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
             <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
           </div>
         </div>
@@ -116,7 +116,8 @@
                     <div class="cmsContent">
                       <h2>Borders and shadows on guttered cells</h2><p>The <code>grid__inner</code> technique can be used for more than just nesting grids. Whenever you want the child element of a grid cell to take up the same dimensions as the content area of that cell, you can use <code>grid__inner</code> / <code>$inners:true</code>.</p>
 <p>The most common use case for wanting to do this is when you want to apply either a border or a box shadow to each cell in a grid that also features a gutter between each cell. Gutters are made by adding invisible borders to each of the grid cells. So trying to add borders or box shadows directly to the grid cells doesn&#39;t work.</p>
-<p>Just note that the <code>mixin__cell</code> and <code>mixin__inner</code> class names aren&#39;t needed for the mixin version to work but the structure of the HTML <em>is</em> needed.</p>
+<p>The <code>mixin__cell</code> and <code>mixin__inner</code> class names aren&#39;t needed for the mixin version to work but the structure of the HTML <em>is</em> needed.</p>
+<p>The <code>add-xxx</code> classes are not part of Gutter Grid, I am just using them as a shortcut.</p>
 
                       <aside class="demo">
                         <div class="tabs JS-tabs">
@@ -226,14 +227,19 @@
 .mixin-25 {
   @include grid(2, 20px, $inners: true);
 }
+
+// These are not part of Gutter Grid
+.add-border { border: 2px solid red !important; }
+.add-shadow { box-shadow: 0 0 10px #000; }
+.add-padding { padding: 15px !important; }
 </code></pre>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </aside><p>Unfortunately, if you are adding shadows, you can&#39;t use the <code>grid__wrapper</code> element to prevent the spacing bug in Chrome from occurring like you normally would. <code>grid__wrapper</code> is just applying <code>overflow:hidden</code>. Using <code>overflow:hidden</code> will also hide the shadows though.</p>
-<p>You will need to find other ways to work around the bug. One way I have found is adding 1 pixel to the top and bottom padding of the parent element. It doesn&#39;t fix the problem outright but it at least makes the bug far less obvious.</p>
+                      </aside><p>Unfortunately, if you are adding shadows, you can&#39;t use the <code>grid__wrapper</code> class (using the class system) to prevent the spacing bug in Chrome from occurring like you normally would. <code>grid__wrapper</code> is applying <code>overflow:hidden</code> and using <code>overflow:hidden</code> will also hide the shadows.</p>
+<p>Instead (if using the class system) use a <code>grid__paddedWrapper</code> class on the wrapping element. This class adds <code>padding-bottom: 1px</code> to the wrapper. This will prevent the Chrome bug from occurring and allow for a visible overflow. However it will leave a 1px gap at the bottom of the grid. This gap is generally very difficult to notice though. If using the mixin system, you will need to add your own 1px of bottom padding to a wrapper element.</p>
 
                       <aside class="demo">
                         <div class="demo__summary demo__segment"><p>Using padding to mitigate the Chrome spacing bug</p>
@@ -247,7 +253,7 @@
                           <div class="tabs__contentWrap">
                             <div class="tabs__content JS-tabs__content">
                               <div class="demo__result demo__segment">
-<div style="padding: 1px 0;">
+<div class="grid__paddedWrapper">
   <div class="grid grid--hasInners grid--gutter-moduleName grid--cols-2">
     <div class="grid__cell">
       <div class="grid__inner add-border add-shadow add-padding">
@@ -273,7 +279,7 @@
                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                 <div class="grid__cell demo__markup demo__segment html">
                                   <pre><code class="html">
-&lt;div style=&quot;padding: 1px 0;&quot;&gt;
+&lt;div class=&quot;grid__paddedWrapper&quot;&gt;
   &lt;div class=&quot;grid grid--hasInners grid--gutter-moduleName grid--cols-2&quot;&gt;
     &lt;div class=&quot;grid__cell&quot;&gt;
       &lt;div class=&quot;grid__inner add-border add-shadow add-padding&quot;&gt;
@@ -300,7 +306,7 @@
                             </div>
                             <div class="tabs__content JS-tabs__content">
                               <div class="demo__result demo__segment">
-<div class="mixin__paddingHack">
+<div class="mixin__paddedWrapper">
   <div class="mixin-25">
     <div class="mixin__cell">
       <div class="mixin__inner add-border add-shadow add-padding">
@@ -326,7 +332,7 @@
                               <div class="demo__grid grid grid--ieFloat grid--cols-2">
                                 <div class="grid__cell demo__markup demo__segment html">
                                   <pre><code class="html">
-&lt;div class=&quot;mixin__paddingHack&quot;&gt;
+&lt;div class=&quot;mixin__paddedWrapper&quot;&gt;
   &lt;div class=&quot;mixin-25&quot;&gt;
     &lt;div class=&quot;mixin__cell&quot;&gt;
       &lt;div class=&quot;mixin__inner add-border add-shadow add-padding&quot;&gt;
@@ -352,11 +358,11 @@
                                 <div class="grid__cell demo__markup demo__segment scss">
                                   <pre><code class="scss">
 .mixin-25 {
-  @include grid(2, $inners: true, $gutter: 20px);
+  @include grid(2, 20px, $inners: true);
 }
 
-.mixin__paddingHack {
-  padding: 1px 0;
+.mixin__paddedWrapper {
+  padding-bottom: 1px;
 }
 </code></pre>
                                 </div>

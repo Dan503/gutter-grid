@@ -27,8 +27,10 @@ block content
 
     ```scss
     .grid__wrapper { overflow: hidden; }
-    // Display a 3 column grid with a 20px gutter
-    .grid { @include grid(3, 20px); }
+    .grid {
+      // Display a 3 column grid with a 20px gutter
+      @include grid(3, 20px);
+    }
     ```
 
     If you wanted more control over the grids breakpoints, the above grid would be the equivalent of writing this:

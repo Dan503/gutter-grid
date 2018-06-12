@@ -90,7 +90,7 @@ $grid-cell-gutters: (
       Defining a basic gutter size
 
   :marked
-    The `grid__wrapper` element is to help contain the grid inside it's bounding box when gutters are applied to it. There is a bug in Chrome that often ignores the top and bottom negative margin rules that make the grid cells sit hard up against the boundaries of the grid. `grid__wrapper` prevents this bug from being an issue. It fixes the issue by applying `overflow: hidden`. If overflow needs to be visible, try adding 1px of padding to `.grid__wrapper` as suggested in the [documentation for adding borders and shadows](http://localhost:3000/pages/10-borders-and-shadows-on-guttered-cells/) instead of using `overflow: hidden`.
+    The `grid__wrapper` element helps contain the grid inside it's bounding box using `overflow: hidden`. There is a bug in Chrome that ignores top and bottom negative margin rules that have been applied to an element whose parent has `overflow` set to `visible`. Gutter Grid tries to avoid using a top gutter + negative margin combination as much as possible. Unfortunately a bottom gutter + negative margin combo is unavoidable. Using `overflow: hidden;` on the wrapper element avoids the issue but it also means that the grid can't have any visible overflowing content. If overflow needs to be visible, you can replace `overflow: hidden` on the wrapper element with `padding-bottom: 1px` instead. This will result in an extra 1px of space under the grid but this tends to be barely noticeable.
 
     In the class based system, you can name the gutters either with a number (`grid--gutter-20`) or an actual name (`grid--gutter-gutterName`).
 
