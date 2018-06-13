@@ -1,0 +1,12 @@
+
+mixin systemSwitch(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	.systemSwitch(class=spec.classes)&attributes(attributes)
+		if block
+			block
+		else
+			p This is an example paragraph for the systemSwitch module
