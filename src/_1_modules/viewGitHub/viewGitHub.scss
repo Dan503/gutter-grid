@@ -1,0 +1,40 @@
+
+.viewGitHub {
+	display: flex;
+	align-items: center;
+
+	&__icon {
+		color: #fff;
+		height: 15px;
+		// width: 50px;
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-right: 10px;
+
+		&::before, &::after {
+			content: '';
+			display: inline-block;
+			border: 3px solid transparent;
+			height: 7px;
+			width: 7px;
+			transform: rotate(45deg);
+		}
+
+		&::before {
+			border-color: transparent transparent #fff #fff;
+		}
+		&::after {
+			border-color: #fff #fff transparent transparent;
+		}
+	}
+
+	&__iconSlash {
+		display: inline-block;
+		transform: skew(-20deg);
+		height: 100%;
+		width: 3px;
+		background: #fff;
+		margin: 0;
+	}
+}

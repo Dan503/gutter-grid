@@ -1,4 +1,6 @@
 
+
+
 mixin toolbar(spec)
 	-
 		spec = defaultTo(spec, {
@@ -6,7 +8,5 @@ mixin toolbar(spec)
 		});
 
 	.toolbar(class=spec.classes)&attributes(attributes)
-		if block
-			block
-		else
-			p This is an example paragraph for the toolbar module
+		+viewGitHub()
+		+systemSwitch()
