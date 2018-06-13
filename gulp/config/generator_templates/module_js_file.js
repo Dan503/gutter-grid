@@ -11,30 +11,26 @@ import $ from 'jquery';
 //module imports
 //import { example } from 'example/example';
 
-const //hooks
-	_module =  $('.JS-${moduleName}'),
-	_target = $('.JS-${moduleName}__target'),
-	_trigger = $('.JS-${moduleName}__trigger');
-
-const //classes
-	open_ = '-${moduleName}--open';
-
 //module functionality
 class ${moduleName} {
 	constructor(elem){
 		const This = this;
 		this.elem = elem;
 		this.$elem = $(elem);
+		this.$trigger = this.$elem.find('.JS-${moduleName}__trigger');
+		this.$target = this.$elem.find('.JS-${moduleName}__target');
 
-		this.$elem.find(_trigger).click(function(e){
+		this.openClass = '-open';
+
+		this.$trigger.click(function(e){
 			e.preventDefault();
-			//This.exampleMethod($(this));
+			//This.exampleMethod();
 		})
 	}
 
 	//Description for example function
-	exampleMethod(_this){
-		//_this.doStuff();
+	exampleMethod(){
+		//this.$target.doStuff();
 	}
 }
 
@@ -42,7 +38,7 @@ class ${moduleName} {
 export default function() {
 	console.log('The ${moduleName} module javascript has loaded');
 
-	_module.each(function(e){
+	$('.JS-${moduleName}').each(function(e){
 		new ${moduleName}(this);
 	})
 }
