@@ -8,5 +8,8 @@ mixin toolbar(spec)
 		});
 
 	.toolbar(class=spec.classes)&attributes(attributes)
-		+viewGitHub()
-		+systemSwitch()
+		.grid.grid--space-between
+			.grid__cell
+				+viewGitHub()
+			.grid__cell
+				+systemSwitch()
