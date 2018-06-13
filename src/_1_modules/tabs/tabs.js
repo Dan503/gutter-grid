@@ -3,18 +3,45 @@
 
 //npm imports
 import $ from 'jquery';
-import PubSub from 'pubsub-js';
+import Emitter from 'tiny-emitter/instance';
 
-//module imports
-//import { example } from 'example/example';
+class tabs__trigger {
+	constructor({trigger, index, tabs}){
+		this.index = index;
+		this.tabs = tabs;
+		this.activeClass = '-active';
 
-const //hooks
-	_module =  $('.JS-tabs'),
-	_content = $('.JS-tabs__content'),
-	_triggers = $('.JS-tabs__trigger');
+		this.$trigger = $(trigger);
+		this.$content = this.tabs.$content.eq(index);
 
-const //classes
-	active_ = '-active';
+		this.name = this.$trigger.text().toLowerCase();
+
+		this.$trigger.click((e)=>{
+			e.preventDefault();
+			this.activate();
+
+			if (this.tabs.is_defaultSwitcher) {
+				Emitter.emit('systemSwitch--external', this.name);
+			}
+		});
+	}
+	activate(){
+		this.deactivate_others();
+		this.$trigger.addClass(this.activeClass);
+		this.$content.show();
+	}
+	deactivate(){
+		this.$trigger.removeClass(this.activeClass);
+		this.$content.hide();
+	}
+	deactivate_others(){
+		$.each(this.tabs.triggers, (i, trigger) => {
+			if (trigger !== this) {
+				trigger.deactivate();
+			}
+		})
+	}
+}
 
 //module functionality
 class tabs {
@@ -22,54 +49,42 @@ class tabs {
 		const This = this;
 		this.elem = elem;
 		this.$elem = $(elem);
-		this.$triggers = this.$elem.find(_triggers);
-		this.$content = this.$elem.find(_content);
+		this.$triggers = this.$elem.find('.JS-tabs__trigger');
+		this.$content = this.$elem.find('.JS-tabs__content');
 		this.is_defaultSwitcher = this.$elem.is('#JS-tabs__defaultSelector');
 
-		this.$triggers.click(function(e){
-			e.preventDefault();
-			This.switchTab($(this));
-		});
+		this.triggers = [];
+		this.$triggers.each((i,v)=>{
+			this.triggers.push(new tabs__trigger({
+				trigger: v,
+				index: i,
+				tabs: this
+			}));
+		})
 
-		if (typeof window.localStorage.activeTab !== 'undefined'){
-			this.switchTab(window.localStorage.activeTab);
-		} else {
-			this.switchTab(0);
-		}
+		Emitter.on('systemSwitch', name => this.switchTo(name));
 
-		if (!this.is_defaultSwitcher){
-			PubSub.subscribe('defaultSwitch', (msg,index)=>{
-				this.switchTab(index);
-			})
-		}
 	}
 
 	//Switches to the defined tab
-	switchTab(tab){
+	switchTo(name){
 
-		if ($.isNumeric(tab)){
-			tab = this.$triggers.eq(tab);
-		}
+		$.each(this.triggers, (i, trigger) => {
+			if (trigger.name === name) {
+				trigger.activate();
+			}
+		})
 
-		const pos = tab.parent().index();
-
-
-		this.$triggers.filter('.'+active_).removeClass(active_);
-		tab.addClass(active_);
-
-		this.$content.hide();
-		this.$content.eq(pos).show();
-
-		if (this.is_defaultSwitcher){
-			window.localStorage.activeTab = pos;
-			PubSub.publish('defaultSwitch', pos);
-		}
+		// if (this.is_defaultSwitcher){
+		// 	window.localStorage.activeTab = pos;
+		// 	Emitter.emit('defaultSwitch', pos);
+		// }
 	}
 }
 
 //This function is called on page load unless the name of this file starts with an underscore
 export default function() {
-	_module.each(function(e){
+	$('.JS-tabs').each(function(e){
 		new tabs(this);
 	})
 }
