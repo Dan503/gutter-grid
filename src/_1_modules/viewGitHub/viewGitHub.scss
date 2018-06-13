@@ -1,5 +1,7 @@
 
 .viewGitHub {
+	$this: &;
+
 	display: flex;
 	align-items: center;
 
@@ -19,6 +21,7 @@
 			height: 7px;
 			width: 7px;
 			transform: rotate(45deg);
+			transition: 0.5s;
 		}
 
 		&::before {
@@ -36,5 +39,23 @@
 		width: 3px;
 		background: #fff;
 		margin: 0;
+		transition: 0.5s;
+	}
+
+	&:hover, &:focus {
+		#{$this} {
+			&__icon {
+				$shift: 3px;
+				&::before {
+					transform: rotate(45deg) translateX(-$shift) translateY($shift) scale(0.8);
+				}
+				&::after {
+					transform: rotate(45deg) translateX($shift) translateY(-$shift) scale(0.8);
+				}
+			}
+			&__iconSlash {
+				transform: skew(25deg) scale(0.7);
+			}
+		}
 	}
 }
