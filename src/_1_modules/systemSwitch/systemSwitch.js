@@ -16,8 +16,11 @@ export default function() {
 			this.$trigger = $(trigger);
 			this.name = this.$trigger.siblings().text().toLowerCase();
 
-			if (this.isChecked()){
-				this.signal();
+			if (
+				this.getStorage() === this.name ||
+				this.isChecked() && !this.getStorage()
+			){
+				this.activate();
 			}
 
 			this.$trigger.change(()=> {
@@ -26,6 +29,7 @@ export default function() {
 		}
 
 		signal(){
+			this.setStorage();
 			Emitter.emit('systemSwitch',this.name);
 		}
 
@@ -36,6 +40,13 @@ export default function() {
 
 		isChecked(){
 			return this.$trigger[0].checked;
+		}
+
+		getStorage(){
+			return localStorage.getItem('activeTab');
+		}
+		setStorage(){
+			localStorage.setItem('activeTab', this.name);
 		}
 	}
 

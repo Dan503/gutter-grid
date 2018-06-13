@@ -21,7 +21,7 @@ class tabs__trigger {
 			this.activate();
 
 			if (this.tabs.is_defaultSwitcher) {
-				Emitter.emit('systemSwitch--external', this.name);
+				this.signal();
 			}
 		});
 	}
@@ -29,6 +29,10 @@ class tabs__trigger {
 		this.deactivate_others();
 		this.$trigger.addClass(this.activeClass);
 		this.$content.show();
+
+		if (!this.getStorage()){
+			this.signal();
+		}
 	}
 	deactivate(){
 		this.$trigger.removeClass(this.activeClass);
@@ -40,6 +44,12 @@ class tabs__trigger {
 				trigger.deactivate();
 			}
 		})
+	}
+	signal(){
+		Emitter.emit('systemSwitch--external', this.name);
+	}
+	getStorage(){
+		return localStorage.getItem('activeTab');
 	}
 }
 
@@ -75,10 +85,6 @@ class tabs {
 			}
 		})
 
-		// if (this.is_defaultSwitcher){
-		// 	window.localStorage.activeTab = pos;
-		// 	Emitter.emit('defaultSwitch', pos);
-		// }
 	}
 }
 
