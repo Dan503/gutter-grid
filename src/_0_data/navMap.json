@@ -15,8 +15,7 @@
     	"title": "How to support legacy browsers"
     },
     {
-      "title": "Basic usage",
-      "generate": "exclusive"
+      "title": "Basic usage"
     },
     {
       "title": "Using columns"
