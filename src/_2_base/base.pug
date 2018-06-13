@@ -8,6 +8,8 @@ include /_1_modules/pageLayout/pageLayout
 include /_1_modules/nav/nav
 include /_1_modules/nextPrev/nextPrev
 include /_1_modules/0-cmsContent/cmsContent
+include /_1_modules/systemSwitch/systemSwitch
+include /_1_modules/toolbar/toolbar
 
 include /_1_modules/demo/demo
 
@@ -116,6 +118,7 @@ body
 					#container
 						p.tagline=pkg.description
 					#main(role='main')
+						+toolbar()
 						.download-bar
 							.inner
 								a.download-button.tar(href='https://github.com/Dan503/gutter-grid/tarball/master')
