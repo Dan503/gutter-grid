@@ -82,9 +82,13 @@ class tabs {
 	}
 }
 
+let tabsList = [];
+
 //This function is called on page load unless the name of this file starts with an underscore
-export default function() {
+function tabs_on_page_load () {
 	$('.JS-tabs').each(function(e){
-		new tabs(this);
+		tabsList.push(new tabs(this))
 	})
 }
+
+export { tabsList, tabs_on_page_load };
