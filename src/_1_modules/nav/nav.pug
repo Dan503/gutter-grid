@@ -9,7 +9,7 @@ mixin nav(spec)
 	nav#navigation.nav(class=spec.classes)&attributes(attributes)
 		h2.TK-visHid Main navigation
 		+accordion()
-			ol.nav__list.grid.grid--gutter-nav.grid--outerGutters-top.grid--hasInners.grid--vertical
+			ol.nav__list.grid.grid--gutter-nav.grid--outerGutters-top.grid--hasInners.grid--vertical.grid--noShrink
 				each item in navMap.subnav
 					- var activeClass = isActive(item) ? '-active' : '';
 					li.nav__item.grid__cell

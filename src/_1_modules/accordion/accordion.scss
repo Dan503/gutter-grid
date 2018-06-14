@@ -7,6 +7,7 @@
 		}
 	}
 	&__btn {
+		background: #fff;
 		text-decoration: none !important;
 		width: 100%;
 		padding: 15px;
@@ -22,7 +23,7 @@
 		}
 
 		&:hover, &:focus {
-			background-color: rgba(#000,0.05);
+			background-color: #eeeeee;
 		}
 	}
 		&__icon {

@@ -3,13 +3,38 @@ $MQ-nav--is-horizontal: (max, bp('page'));
 $MQ-nav--not-horizontal: (min, bp('page'));
 $MQ-nav--is-33width: (max, bp('tablet'));
 $MQ-nav--is-100width: (max, bp('mobile'));
+$MQ-bigNav--is-sticky: (min, bp('page')) plus (min-height, 55rem);
+$MQ-littleNav--is-sticky: (max, bp('page'));
 
 .nav {
 	width: 300px;
-		@include mq($MQ-nav--is-horizontal){
-			width: 100%;
+	position: relative;
+	z-index: 5;
+
+	@include mq($MQ-littleNav--is-sticky){
+		position: sticky;
+		top: 0px;
+	}
+
+	@include mq($MQ-nav--is-horizontal){
+		width: 100%;
+	}
+
+	.accordion {
+		@include mq($MQ-bigNav--is-sticky){
+			position: sticky;
+			top: 10px;
 		}
+	}
+
 	&__list {
+		background: #fff;
+
+		@include mq($MQ-littleNav--is-sticky or $MQ-bigNav--is-sticky){
+			max-height: calc(100vh - 5.5rem);
+			overflow: auto;
+		}
+
 		@include mq($MQ-nav--not-horizontal){
 			border-top: 0;
 		}
@@ -17,6 +42,7 @@ $MQ-nav--is-100width: (max, bp('mobile'));
 			flex-direction: row;
 		}
 	}
+
 	&__item {
 		@include mq($MQ-nav--is-horizontal){
 			width: 25%;
