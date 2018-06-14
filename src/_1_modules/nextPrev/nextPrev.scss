@@ -6,6 +6,11 @@
 		font-size: 0.8em;
 		display: block;
 	}
+	&__gridCell {
+		@include mq(max, bp('phablet')) {
+			flex-grow: 1;
+		}
+	}
 	&__link {
 		.-next & {
 			.csstransforms & {

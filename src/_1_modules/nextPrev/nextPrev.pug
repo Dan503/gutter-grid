@@ -6,15 +6,15 @@ mixin nextPrev(spec)
 
 	nav.nextPrev(class=spec.classes)&attributes(attributes)
 		h2.TK-visHid Page turner
-		ul.grid.grid--space-between(class=(!get.prev)?'grid--align-right':'')
+		ul.nextPrev__grid.grid.grid--gutter-10.grid--space-between(class=(!get.prev)?'grid--align-right':'')
 			if get.prev
-				li.grid__cell.-prev
+				li.nextPrev__gridCell.grid__cell.-prev
 					a.nextPrev__link.btn.-light(href=get.prev.link)
 						span.nextPrev__arrow
 						span.nextPrev__tag Previous:
 						span.nextPrev__title= get.prev.altTitle || get.prev.title
 			if get.next
-				li.grid__cell.-next
+				li.nextPrev__gridCell.grid__cell.-next
 					a.nextPrev__link.btn.-light(href=get.next.link)
 						span.nextPrev__arrow
 						span.nextPrev__tag Next:
