@@ -2,8 +2,11 @@
 	margin: 25px 0 35px;
 	&__segment {
 		position: relative;
-		margin-top: 35px;
+		margin-top: 40px;
+		margin-top: 4rem;
 		margin-bottom: 10px;
+		margin-bottom: 1rem;
+
 		&:last-child, &.grid__cell {
 			margin-bottom: 0;
 		}
