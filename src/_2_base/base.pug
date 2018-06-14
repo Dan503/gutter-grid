@@ -87,54 +87,61 @@ head
 		<![endif]-->
 
 body
-
-	h1.TK-visHid= pageTitle
-
 	//holds the svg sprite
 	div.svgSprite(style="display:none")
 		include ../../tmp/svg-symbols.svg
 
-	//- appears in IE <= 9
-	<!--[if lt IE 9]>
-	+alert({type:'error'})
-		p You are using an #[strong outdated] browser. Please #[a(href="http://browsehappy.com/") upgrade your browser] to improve your experience.
-	<![endif]-->
-
-	//- I've found the <noscript> tag to not always work properly
-	+alert({type:'nojs'})
-		p Please #[a(href="http://www.enable-javascript.com/") enable javascript] to access the full functionality of this site
-
 	+siteContainer({classes:{outer:'wrapper'}})
+		header
+			h1.TK-visHid= pageTitle
+			+skipLinks()
 
-		+skipLinks()
+			//- appears in IE <= 9
+			<!--[if lt IE 9]>
+			+alert({type:'error'})
+				p You are using an #[strong outdated] browser. Please #[a(href="http://browsehappy.com/") upgrade your browser] to improve your experience.
+			<![endif]-->
 
-		header.header
-			+pageLayout()
-				+logo({classes: 'title', elem: 'p'})
+			//- I've found the <noscript> tag to not always work properly
+			+alert({type:'nojs'})
+				p Please #[a(href="http://www.enable-javascript.com/") enable javascript] to access the full functionality of this site
 
-				pre.header__npm: code npm install gutter-grid --save
+			.header
+				h2.TK-visHid Site header
+				+pageLayout()
+					+logo({classes: 'title', elem: 'p'})
+
+					pre.header__npm: code npm install gutter-grid --save
+
+					#container
+						h3.TK-visHid Tag line
+						p.tagline=pkg.description
+
+				+toolbar()
 
 		block mainArea
 			.mainArea.TK-flexGrow
 				+pageLayout()
-					#container
-						p.tagline=pkg.description
-					#main(role='main')
-						+toolbar()
-						.grid.grid--gutter-body
+					#main
+						.grid.grid--gutter-body.grid--outerGutters
 							+nav({classes: 'grid__cell grid__cell--noResize'})
-							.grid__cell
+							main.grid__cell
 								article.markdown-body#content
-									p.TK-nonDesktop
-										strong: em This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.
 
 									+cmsContent()
-										h2= get.current.altTitle || get.current.title
+										header
+											h2
+												span.TK-visHid Body:
+												= get.current.altTitle || get.current.title
+											p.TK-nonDesktop
+												strong: em This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.
+
 										block content
 
-									+nextPrev()
+								+nextPrev()
 
 		footer.footer
+			h2.TK-visHid Site footer
 			+pageLayout()
 				+owner()
 

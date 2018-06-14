@@ -5,6 +5,7 @@ mixin nextPrev(spec)
 		});
 
 	nav.nextPrev(class=spec.classes)&attributes(attributes)
+		h2.TK-visHid Page turner
 		ul.grid.grid--space-between(class=(!get.prev)?'grid--align-right':'')
 			if get.prev
 				li.grid__cell.-prev
