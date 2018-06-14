@@ -7,6 +7,10 @@
 	margin: 0 5px;
 	position: relative;
 
+	@include mq(max, 400px){
+		padding: 10px;
+	}
+
 	&::before, &::after {
 		content: '';
 		display: block;

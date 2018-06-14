@@ -13,6 +13,7 @@ include /_1_modules/viewGitHub/viewGitHub
 include /_1_modules/systemSwitch/systemSwitch
 include /_1_modules/share/share
 include /_1_modules/ribbon/ribbon
+include /_1_modules/footer/footer
 
 include /_1_modules/demo/demo
 
@@ -142,19 +143,7 @@ body
 
 								+nextPrev()
 
-		footer.footer
-			h2.TK-visHid Site footer
-			+ribbon()(class="-pattern -down")
-				.grid.grid--space-between.grid--vAlign-center
-					.grid__cell
-						+owner
-					.grid__cell
-						+share()
-
-			+pageLayout()
-				.creds
-					small
-						| Original theme by #[a(href='https://twitter.com/jonrohan/') Jon Rohan] (although lots of alterations have been made to it)
+		+footer()
 
 
 	script(src=basePath+'/assets/scripts/plugins/highlight.pack.js')
