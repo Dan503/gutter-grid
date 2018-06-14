@@ -67,6 +67,18 @@
 				content: 'Not Gutter Grid'
 			}
 		}
+
+		figure {
+			margin: 25px;
+			border: 1px solid #000;
+			background: #f3f3f3;
+		}
+		figcaption {
+			padding: 0.25em 0.5em;
+			background-color: #CDDEC4;
+			color: #000;
+		}
+
 		.grid {
 			padding: 0;
 		}
