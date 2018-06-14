@@ -57,8 +57,11 @@
 		}
 	}
 	&__result {
+		border: 1px solid #000;
+
 		&:before {
 			content: 'Example';
+			margin-left: -1px;
 
 			.-false & {
 				content: 'Not Gutter Grid'
