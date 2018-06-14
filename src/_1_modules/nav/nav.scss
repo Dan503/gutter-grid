@@ -10,8 +10,10 @@ $MQ-littleNav--is-sticky: (max, bp('page'));
 	width: 300px;
 	position: relative;
 	z-index: 5;
+	--buttonSize: 0;
 
 	@include mq($MQ-littleNav--is-sticky){
+		--buttonSize: 5.5rem;
 		position: sticky;
 		top: 0px;
 	}
@@ -31,7 +33,7 @@ $MQ-littleNav--is-sticky: (max, bp('page'));
 		background: #fff;
 
 		@include mq($MQ-littleNav--is-sticky or $MQ-bigNav--is-sticky){
-			max-height: calc(100vh - 5.5rem);
+			max-height: calc(100vh - var(--buttonSize));
 			overflow: auto;
 		}
 
