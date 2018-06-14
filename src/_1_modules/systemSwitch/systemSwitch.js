@@ -4,6 +4,7 @@
 //npm imports
 import $ from 'jquery';
 import Emitter from 'tiny-emitter/instance';
+import track from '../../_0_scripts/_functions/GA_trackEvent';
 
 //forcing tabs code to initialise before systemSwitch code
 import { tabs_on_page_load } from '../tabs/_tabs';
@@ -46,7 +47,10 @@ export default function() {
 			return localStorage.getItem('activeTab');
 		}
 		setStorage(){
-			localStorage.setItem('activeTab', this.name);
+			if (this.getStorage() !== this.name) {
+				track('Preferred system', this.name);
+				localStorage.setItem('activeTab', this.name);
+			}
 		}
 	}
 
