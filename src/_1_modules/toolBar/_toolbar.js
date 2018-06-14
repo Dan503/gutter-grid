@@ -1,8 +1,4 @@
 
-//This file controls what goes into the moduleName.js files that are generated from using the "gulp new:module --moduleName" command
-
-export default function(moduleName){
-	return `
 'use strict';
 
 //npm imports
@@ -12,13 +8,13 @@ import $ from 'jquery';
 //import { example } from 'example/example';
 
 //module functionality
-class ${moduleName} {
+class toolbar {
 	constructor(elem){
 		const This = this;
 		this.elem = elem;
 		this.$elem = $(elem);
-		this.$trigger = this.$elem.find('.JS-${moduleName}__trigger');
-		this.$target = this.$elem.find('.JS-${moduleName}__target');
+		this.$trigger = this.$elem.find('.JS-toolbar__trigger');
+		this.$target = this.$elem.find('.JS-toolbar__target');
 
 		this.openClass = '-open';
 
@@ -36,11 +32,9 @@ class ${moduleName} {
 
 //This function is called on page load unless the name of this file starts with an underscore
 export default function() {
-	console.log('The ${moduleName} module javascript has loaded');
+	console.log('The toolbar module javascript has loaded');
 
-	$('.JS-${moduleName}').each(function(e){
-		new ${moduleName}(this);
+	$('.JS-toolbar').each(function(e){
+		new toolbar(this);
 	})
-}
-`;
 }

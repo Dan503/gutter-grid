@@ -1,0 +1,11 @@
+
+mixin viewGitHub(spec)
+	-
+		spec = Object.assign({
+			classes : '',
+		}, spec);
+
+	a.viewGitHub(class=spec.classes href='https://github.com/Dan503/gutter-grid')&attributes(attributes)
+		span.viewGitHub__icon(aria-hidden="true")
+			span.viewGitHub__iconSlash
+		span.viewGitHub__text View Gutter Grid on GitHub

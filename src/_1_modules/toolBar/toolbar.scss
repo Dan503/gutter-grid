@@ -1,0 +1,31 @@
+
+.toolbar {
+	background: hsl(0, 0%, 10%);
+	color: #fff;
+	border: 5px solid #444;
+	padding: 10px;
+	margin: 0 -35px 20px;
+	position: relative;
+
+	&::before, &::after {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 0;
+		height: 0;
+		transform: rotate(45deg);
+		border: 10px solid transparent;
+	}
+
+	&::before {
+    border-bottom-color: black;
+    bottom: -15px;
+    left: 0;
+	}
+
+	&::after {
+		border-top-color: black;
+		top: -15px;
+		right: 0;
+	}
+}

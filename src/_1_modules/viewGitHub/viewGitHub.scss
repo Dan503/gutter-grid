@@ -1,0 +1,61 @@
+
+.viewGitHub {
+	$this: &;
+
+	display: flex;
+	align-items: center;
+
+	&__icon {
+		color: #fff;
+		height: 15px;
+		// width: 50px;
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-right: 10px;
+
+		&::before, &::after {
+			content: '';
+			display: inline-block;
+			border: 3px solid transparent;
+			height: 7px;
+			width: 7px;
+			transform: rotate(45deg);
+			transition: 0.5s;
+		}
+
+		&::before {
+			border-color: transparent transparent #fff #fff;
+		}
+		&::after {
+			border-color: #fff #fff transparent transparent;
+		}
+	}
+
+	&__iconSlash {
+		display: inline-block;
+		transform: skew(-20deg);
+		height: 100%;
+		width: 3px;
+		background: #fff;
+		margin: 0;
+		transition: 0.5s;
+	}
+
+	&:hover, &:focus {
+		#{$this} {
+			&__icon {
+				$shift: 3px;
+				&::before {
+					transform: rotate(45deg) translateX(-$shift) translateY($shift) scale(0.8);
+				}
+				&::after {
+					transform: rotate(45deg) translateX($shift) translateY(-$shift) scale(0.8);
+				}
+			}
+			&__iconSlash {
+				transform: skew(25deg) scale(0.7);
+			}
+		}
+	}
+}

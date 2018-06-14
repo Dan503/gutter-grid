@@ -79,8 +79,26 @@
               <p class="tagline">A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system</p>
             </div>
             <div id="main" role="main">
-              <div class="download-bar">
-                <div class="inner"><a class="download-button tar" href="https://github.com/Dan503/gutter-grid/tarball/master"><span>Download <span class="TK-visHid">tar</span></span></a><a class="download-button zip" href="https://github.com/Dan503/gutter-grid/zipball/master"><span>Download <span class="TK-visHid">zip</span></span></a><a class="code" href="https://github.com/Dan503/gutter-grid">View Gutter Grid on GitHub</a></div><span class="blc"></span><span class="trc"></span>
+              <div class="toolbar">
+                <div class="grid grid--cols-2 grid--gutter-10 grid--vAlign-center">
+                  <div class="grid__cell"><a class="viewGitHub" href="https://github.com/Dan503/gutter-grid"><span class="viewGitHub__icon" aria-hidden="true"><span class="viewGitHub__iconSlash"></span></span><span class="viewGitHub__text">View Gutter Grid on GitHub</span></a>
+                  </div>
+                  <div class="grid__cell">
+                    <form class="systemSwitch JS-systemSwitch">
+                      <fieldset class="systemSwitch__fieldset">
+                        <legend class="systemSwitch__legend">Preferred system:</legend>
+                        <div class="systemSwitch__grid grid grid--noWrap grid--mini grid--hasInners">
+                          <label class="systemSwitch__label grid__cell">
+                            <input class="JS-systemSwitch__trigger -classes TK-visHid systemSwitch__radio" type="radio" name="PreferredSystem"><span class="systemSwitch__text">Classes</span>
+                          </label>
+                          <label class="systemSwitch__label grid__cell">
+                            <input class="JS-systemSwitch__trigger -mixins TK-visHid systemSwitch__radio" type="radio" name="PreferredSystem"><span class="systemSwitch__text">Mixin</span>
+                          </label>
+                        </div>
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
               </div>
               <div class="grid grid--gutter-body">
                 <nav class="nav grid__cell grid__cell--noResize" id="navigation">
