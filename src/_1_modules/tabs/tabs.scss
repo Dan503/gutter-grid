@@ -1,6 +1,13 @@
 
 .tabs {
 	padding-top: 1px;
+
+	&__links {
+		.no-js & {
+			display: none;
+		}
+	}
+
 	&__link {
 		text-align: center;
 		text-transform: capitalize;
