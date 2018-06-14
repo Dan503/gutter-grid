@@ -474,7 +474,7 @@ p.tagline {
 
 #main {
   margin-top: 20px;
-  padding-bottom: 5em;
+  padding-bottom: 1em;
   background-color: #fff;
 }
 
@@ -601,42 +601,17 @@ footer {
   padding-bottom: 60px;
 }
 
-.owner {
-  background: #222;
-  border: 5px solid #444;
-  padding: 5px 15px;
-  margin: -67px -10px 35px;
-  color: #d6d6d6;
+.creds {
+  background: #fff;
+  text-align: right;
+  padding: 0.7em;
+  padding-bottom: 1em;
+  line-height: 1;
 }
-
 .creds small {
-  float: right;
-  font-size: 10px;
+  font-size: 0.7em;
   text-align: right;
   margin-left: 15px;
-}
-
-.owner .avatar {
-  background-color: #666;
-  display: block;
-  margin: -19px 10px 0 0;
-  width: 60px;
-  float: left;
-}
-
-.owner img {
-  display: block;
-  border: 1px solid #2a2a2a;
-  margin: 5px;
-}
-
-.owner p {
-  font-family:Georgia, serif;
-}
-
-.owner p a {
-  font-size: 16px;
-  font-style: italic;
 }
 
 /* Markdown */

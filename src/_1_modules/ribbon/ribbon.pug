@@ -1,0 +1,12 @@
+
+
+
+mixin ribbon(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	.ribbon(class=spec.classes)&attributes(attributes)
+		if block
+			block

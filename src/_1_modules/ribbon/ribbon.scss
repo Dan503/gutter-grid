@@ -1,0 +1,55 @@
+
+.ribbon {
+	background-color: hsl(0, 0%, 10%);
+	color: #fff;
+	border: 5px solid #444;
+	padding: 10px 40px;
+	margin: 0 5px;
+	position: relative;
+
+	&::before, &::after {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 0;
+		height: 0;
+		transform: rotate(45deg);
+		border: 10px solid transparent;
+	}
+
+	&::before {
+		left: 0;
+		right: auto;
+	}
+
+	&::after {
+		left: auto;
+		right: 0;
+	}
+
+	&::before, &.-up::after {
+		border-top-color: transparent;
+		border-bottom-color: black;
+		bottom: -15px;
+		top: auto;
+	}
+	&.-up::after {
+		border-bottom-color: transparent;
+		border-right-color: black;
+	}
+
+	&::after, &.-down::before {
+		border-top-color: black;
+		border-bottom-color: transparent;
+		bottom: auto;
+		top: -15px;
+	}
+	&.-down::before {
+		border-top-color: transparent;
+		border-left-color: black;
+	}
+
+	&.-pattern {
+		background-image: url(../images/pattern.png);
+	}
+}
