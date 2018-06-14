@@ -1,0 +1,19 @@
+
+mixin systemSwitch(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	form.systemSwitch.JS-systemSwitch(class=spec.classes)&attributes(attributes)
+		fieldset.systemSwitch__fieldset
+			legend.systemSwitch__legend Preferred system:
+
+			.systemSwitch__grid.grid.grid--noWrap.grid--mini.grid--hasInners
+				label.systemSwitch__label.grid__cell
+					input.JS-systemSwitch__trigger.-classes.TK-visHid(type="radio" name="PreferredSystem").systemSwitch__radio
+					span.systemSwitch__text Classes
+
+				label.systemSwitch__label.grid__cell
+					input.JS-systemSwitch__trigger.-mixins.TK-visHid(type="radio" name="PreferredSystem").systemSwitch__radio
+					span.systemSwitch__text Mixin

@@ -1,12 +1,20 @@
-//Code for tracking Google Analytics events
-export default function GA_trackEvent(category,action,label) {
-	//".replace(/(\r\n|\n|\r)/gm,"")" removes any line breaks
-	var eventCat = category.replace(/(\r\n|\n|\r)/gm,"").trim();
-	var eventAct = action.replace(/(\r\n|\n|\r)/gm,"").trim().toLowerCase();
-	var eventLabel = label.replace(/(\r\n|\n|\r)/gm,"").trim();
+import $ from 'jquery';
 
-	try {
-		ga('send', 'event', eventCat, eventAct, eventLabel); //Uncomment when Google Analytics has been incorporated into the site
-		//console.log("GA event =", {category: eventCat, action: eventAct, label: eventLabel});
-	} catch(err){}
+//Code for tracking Google Analytics events
+export default function GA_trackEvent(...values) {
+	//".replace(/(\r\n|\n|\r)/gm,"")" removes any line breaks
+	const trim = value => value.replace(/(\r\n|\n|\r)/gm," ").trim();
+	const trimmed = $.map(values, value => trim(value));
+
+	if (typeof ga !== 'undefined') {
+		ga('send', 'event', ...trimmed);
+	} else {
+		const types = [ '*category', '*action', 'label', 'value' ];
+		let objectified = {};
+		$.each(types, (i, type)=> {
+			objectified[type] = trimmed[i];
+		})
+
+		console.log("GA event =", objectified, '* = required');
+	}
 }

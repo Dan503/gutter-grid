@@ -1,0 +1,15 @@
+
+
+
+mixin toolbar(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	.toolbar(class=spec.classes)&attributes(attributes)
+		.grid.grid--cols-2.grid--gutter-10.grid--vAlign-center
+			.grid__cell
+				+viewGitHub()
+			.grid__cell
+				+systemSwitch()

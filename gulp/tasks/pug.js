@@ -33,7 +33,7 @@ export default function() {
 	let freshCompile = false;
 
 	// generates all the pages that are in the site using the navMap
-	gulp.task('pug:generate-pages', ['get-content'], () => {
+	gulp.task('pug:generate-pages', () => {
 
 		freshCompile = true;
 
@@ -214,7 +214,7 @@ export default function() {
 			siteData.navMap.subnav[0].subnav = homeSubnav;
 
 			//waits for the content.json file to be created before going any further
-			waitForFile(path.join(navMapDest, 'content.json'), ()=> {
+			// waitForFile(path.join(navMapDest, 'content.json'), ()=> {
 
 				//2nd read of the nav map
 				siteData.navMap.subnav.forEach((map, index) => {
@@ -311,7 +311,7 @@ export default function() {
 
 					gulp.start('pug:compile');
 				});
-			});
+			// });
 		});
 	});
 
