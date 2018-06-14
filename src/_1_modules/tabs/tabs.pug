@@ -26,7 +26,7 @@ mixin tabs(spec)
 		.tabs__links.grid.grid--hasInners.grid--noMQs.grid--gutter-tabs.grid--outerGutters-bottom(class=`grid--cols-${spec.links.length}`)
 			each link, i in spec.links
 				.grid__cell
-					a.tabs__link.grid__inner.btn(href='#').JS-tabs__trigger= link
+					button.tabs__link.grid__inner.btn.JS-tabs__trigger= link
 		.tabs__contentWrap
 			if block
 				block
