@@ -96,98 +96,25 @@ html:`
 .grid.grid--cols-2
   .grid__cell.-color-1
   .grid__cell.-color-2
-`
-    },
-    mixin: {
-html:`
-.mixin-2
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
-`,
-scss:`
-.mixin-2 {
-  @include grid(2);
-}`
-    }
-})
-    :marked
-      Examples of all the default column widths. Resize your browser to watch the media queries take effect.
-
-  +demo({
-    classes: {
-html:`
+hr
 .grid.grid--cols-3
   .grid__cell.-color-1
   .grid__cell.-color-2
   .grid__cell.-color-3
-`
-    },
-    mixin: {
-html:`
-.mixin-3
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
-  .mixin__cell.-color-3
-`,
-scss:`
-.mixin-3 {
-  @include grid(3);
-}`
-    }
-})
-  +demo({
-    classes: {
-html:`
+hr
 .grid.grid--cols-4
   .grid__cell.-color-1
   .grid__cell.-color-2
   .grid__cell.-color-3
   .grid__cell.-color-4
-`
-    },
-    mixin: {
-html:`
-.mixin-4
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
-  .mixin__cell.-color-3
-  .mixin__cell.-color-4
-`,
-scss:`
-.mixin-4 {
-  @include grid(4);
-}`
-    }
-})
-  +demo({
-    classes: {
-html:`
+hr
 .grid.grid--cols-5
   .grid__cell.-color-1
   .grid__cell.-color-2
   .grid__cell.-color-3
   .grid__cell.-color-4
   .grid__cell.-color-5
-`
-    },
-    mixin: {
-html:`
-.mixin-5
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
-  .mixin__cell.-color-3
-  .mixin__cell.-color-4
-  .mixin__cell.-color-5
-`,
-scss:`
-.mixin-5 {
-  @include grid(5);
-}`
-    }
-})
-  +demo({
-    classes: {
-html:`
+hr
 .grid.grid--cols-6
   .grid__cell.-color-1
   .grid__cell.-color-2
@@ -195,10 +122,33 @@ html:`
   .grid__cell.-color-4
   .grid__cell.-color-5
   .grid__cell.-color-6
+
 `
     },
     mixin: {
 html:`
+.mixin-2
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+hr
+.mixin-3
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+hr
+.mixin-4
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+hr
+.mixin-5
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+hr
 .mixin-6
   .mixin__cell.-color-1
   .mixin__cell.-color-2
@@ -206,13 +156,34 @@ html:`
   .mixin__cell.-color-4
   .mixin__cell.-color-5
   .mixin__cell.-color-6
+
 `,
 scss:`
+.mixin-2 {
+  @include grid(2);
+}
+
+.mixin-3 {
+  @include grid(3);
+}
+
+.mixin-4 {
+  @include grid(4);
+}
+
+.mixin-5 {
+  @include grid(5);
+}
+
 .mixin-6 {
   @include grid(6);
-}`
+}
+`
     }
 })
+    :marked
+      Examples of all the default column widths. Resize your browser to watch the media queries take effect.
+
   :marked
     ### Customising the columns and breakpoints
 
