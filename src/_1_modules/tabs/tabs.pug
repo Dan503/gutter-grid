@@ -1,12 +1,14 @@
 
-mixin tabs__content(spec)
+mixin tabs__content(tabName, spec)
 	-
 		spec = defaultTo(spec, {
 			classes : '',
 			attr: {},
 		});
 
-	.tabs__content(class=spec.classes)&attributes(spec.attr).JS-tabs__content
+	figure.tabs__content(class=spec.classes)&attributes(spec.attr).JS-tabs__content
+		if tabName
+			figcaption.tabs__title= tabName
 		if block
 			block
 		else

@@ -22,16 +22,26 @@
 		}
 	}
 	&__summary {
-		background-color: #CDDEC4;
-		padding: 20px;
-		margin-bottom: 10px;
-		margin-top: 60px;
-		&:before {
-			content: 'Summary';
-		}
+		.markdown-body & {
+			background-color: #CDDEC4;
+			padding: 20px;
+			margin-bottom: 10px;
+			margin-top: 60px;
+			color: #000;
+			font-family: Arial, Helvetica, sans-serif;
+			font-style: normal;
+			font-size: 1em;
 
-		+ .demo__result {
-			margin-top: 45px;
+			&:before {
+				content: 'Summary';
+				font-family: Georgia, serif;
+				font-style: italic;
+				font-size: 1.2em;
+			}
+	
+			+ .demo__result {
+				margin-top: 45px;
+			}
 		}
 	}
 	&__result {

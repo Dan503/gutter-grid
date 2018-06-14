@@ -13,14 +13,10 @@
 	}
 	&__link {
 		.-next & {
-			.csstransforms & {
-				padding-right: 50px;
-			}
+			padding-right: 50px;
 		}
 		.-prev & {
-			.csstransforms & {
-				padding-left: 50px;
-			}
+			padding-left: 50px;
 		}
 		&:hover, &:focus {
 			background-color: #f0f0f0;
@@ -31,6 +27,7 @@
 			}
 		}
 	}
+
 	&__arrow {
 		display: block;
 		@include MG-centered('v');
@@ -52,10 +49,6 @@
 			&:before {
 				@include MG-chevron('left',#000, 15px, 1px);
 			}
-		}
-
-		.no-csstransforms & {
-			display: none;
 		}
 	}
 }
