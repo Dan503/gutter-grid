@@ -9,11 +9,23 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		background: brand(2);
-		color: brand(2, 'text');
+		background: brand(1);
+		color: brand(1, 'text');
+		font-weight: bold;
 		text-decoration: underline;
 		z-index: 99999999;
 		text-align: center;
 		padding: 10px;
+	}
+
+	&__target {
+		outline: none;
+
+		&::before {
+			content: '';
+			display: block;
+			height: 10rem;
+			margin-top: -10rem;
+		}
 	}
 }

@@ -130,11 +130,11 @@ body
 						.grid.grid--gutter-body.grid--outerGutters
 							+nav({classes: 'grid__cell grid__cell--noResize'})
 							main.grid__cell
-								article.markdown-body#content
+								article.markdown-body
 
 									+cmsContent()
 										header
-											h2
+											h2.skipLinks__target#content(tabindex="-1")
 												span.TK-visHid Body:
 												= get.current.altTitle || get.current.title
 											aside.TK-nonDesktop

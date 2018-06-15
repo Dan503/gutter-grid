@@ -6,8 +6,9 @@ mixin nav(spec)
 			classes : '',
 		});
 
-	nav#navigation.nav(class=spec.classes)&attributes(attributes)
-		h2.TK-visHid Main navigation
+	nav.nav(class=spec.classes)&attributes(attributes)
+		#navigation.skipLinks__target(tabindex="-1")
+			h2.TK-visHid Main navigation
 		+accordion()
 			ol.nav__list.grid.grid--gutter-nav.grid--outerGutters-top.grid--hasInners.grid--vertical.grid--noShrink
 				each item in navMap.subnav
