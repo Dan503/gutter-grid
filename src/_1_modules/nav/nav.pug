@@ -12,5 +12,6 @@ mixin nav(spec)
 			ol.nav__list.grid.grid--gutter-nav.grid--outerGutters-top.grid--hasInners.grid--vertical.grid--noShrink
 				each item in navMap.subnav
 					- var activeClass = isActive(item) ? '-active' : '';
+					- var currentPage = isActive(item) ? 'page' : false;
 					li.nav__item.grid__cell
-						a.nav__link.btn.grid__inner(href=item.link, class=activeClass)= item.altTitle || item.title
+						a.nav__link.btn.grid__inner(href=item.link, class=activeClass, aria-current=currentPage)= item.altTitle || item.title
