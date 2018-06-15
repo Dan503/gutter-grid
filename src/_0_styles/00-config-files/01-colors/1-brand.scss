@@ -5,10 +5,10 @@ $V-hoverModifier: 60%;
 //Greys do not belong in this list unless it is a MAJOR brand color
 $brand: (
 	//*Main color*/
-	color: #63a52a,
+	color: $CB-green-mid,
 
 	// the color this turns into on hover
-	hover: #90D355,
+	hover: $CB-green-light,
 
 	//*if set as a background color, the text inside will most likely be this color*/
 	text: #000,

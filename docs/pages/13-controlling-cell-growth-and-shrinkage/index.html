@@ -41,7 +41,9 @@
   <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
 </head>
 <body>
-  <h1 class="TK-visHid">Controlling cell growth and shrinkage</h1>
+  <div class="moduleLoaded TK-hide">
+    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+  </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
 <symbol id="svg-facebook" viewBox="0 0 32 32"><title>facebook icon</title> <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"/> </symbol>
@@ -50,98 +52,122 @@
 <symbol id="svg-mail" viewBox="0 0 32 32"><title>mail icon</title> <path d="M29 4h-26c-1.65 0-3 1.35-3 3v20c0 1.65 1.35 3 3 3h26c1.65 0 3-1.35 3-3v-20c0-1.65-1.35-3-3-3zM12.461 17.199l-8.461 6.59v-15.676l8.461 9.086zM5.512 8h20.976l-10.488 7.875-10.488-7.875zM12.79 17.553l3.21 3.447 3.21-3.447 6.58 8.447h-19.579l6.58-8.447zM19.539 17.199l8.461-9.086v15.676l-8.461-6.59z"/> </symbol>
 <symbol id="svg-twitter" viewBox="0 0 32 32"><title>twitter icon</title> <path d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"/> </symbol>
 </svg>
-  </div><!--[if lt IE 9]>
-  <div class="alert alert--error ">
-    <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  </div><![endif]-->
-  <div class="alert alert--error alert--nojs TK-jsHide">
-    <p>Please <a href="http://www.enable-javascript.com/">enable javascript</a> to access the full functionality of this site</p>
   </div>
-  <div class="siteContainer wrapper">
-    <div class="siteContainer__inner">
-      <div class="skipLinks"><a class="skipLinks__link TK-skipLink" href="#navigation">Skip to navigation</a><a class="skipLinks__link TK-skipLink" href="#content">Skip to content</a>
-      </div>
-      <header class="header">
-        <div class="pageLayout__buffer">
-          <div class="pageLayout__width">
-            <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
-                  <svg class="svg-gutter-grid-logo logo__svg grid__cell">
-                    <use xlink:href="#svg-gutter-grid-logo"></use>
-                  </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"/><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
-            <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
-          </div>
-        </div>
-      </header>
-      <div class="mainArea TK-flexGrow">
-        <div class="pageLayout__buffer">
-          <div class="pageLayout__width">
-            <div id="container">
-              <p class="tagline">A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system</p>
-            </div>
-            <div id="main" role="main">
-              <div class="toolbar">
-                <div class="grid grid--cols-2 grid--gutter-10 grid--vAlign-center">
-                  <div class="grid__cell"><a class="viewGitHub" href="https://github.com/Dan503/gutter-grid"><span class="viewGitHub__icon" aria-hidden="true"><span class="viewGitHub__iconSlash"></span></span><span class="viewGitHub__text">View Gutter Grid on GitHub</span></a>
-                  </div>
-                  <div class="grid__cell">
-                    <form class="systemSwitch JS-systemSwitch">
-                      <fieldset class="systemSwitch__fieldset">
-                        <legend class="systemSwitch__legend">Preferred system:</legend>
-                        <div class="systemSwitch__grid grid grid--noWrap grid--mini grid--hasInners">
-                          <label class="systemSwitch__label grid__cell">
-                            <input class="JS-systemSwitch__trigger -classes TK-visHid systemSwitch__radio" type="radio" name="PreferredSystem"><span class="systemSwitch__text">Classes</span>
-                          </label>
-                          <label class="systemSwitch__label grid__cell">
-                            <input class="JS-systemSwitch__trigger -mixins TK-visHid systemSwitch__radio" type="radio" name="PreferredSystem"><span class="systemSwitch__text">Mixin</span>
-                          </label>
-                        </div>
-                      </fieldset>
-                    </form>
-                  </div>
+      <div class="siteContainer wrapper">
+        <div class="siteContainer__inner">
+          <header>
+            <h1 class="TK-visHid">Controlling cell growth and shrinkage</h1>
+                <div class="skipLinks"><a class="skipLinks__link TK-skipLink" href="#navigation">Skip to navigation</a><a class="skipLinks__link TK-skipLink" href="#content">Skip to content</a>
+                </div><!--[if lt IE 9]>
+                <div class="alert alert--error ">
+                  <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+                </div><![endif]-->
+                <div class="alert alert--error alert--nojs TK-jsHide">
+                  <p>Please <a href="http://www.enable-javascript.com/">enable javascript</a> to access the full functionality of this site</p>
                 </div>
-              </div>
-              <div class="grid grid--gutter-body">
-                <nav class="nav grid__cell grid__cell--noResize" id="navigation">
-                  <h2 class="TK-visHid">Main navigation</h2>
-                  <div class="accordion JS-accordion">
-                    <a class="btn accordion__btn JS-accordion__toggle -light" href="#"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
-                    </a>
-                    <div class="accordion__revealer JS-accordion__revealer">
-                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters-top grid--hasInners grid--vertical">
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/09-nesting-grids/">Nesting grids</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/10-borders-and-shadows-on-guttered-cells/">Borders and shadows on guttered cells</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/11-horizontal-cell-alignments/">Horizontal cell alignments</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/12-vertical-cell-alignments/">Vertical cell alignments</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/13-controlling-cell-growth-and-shrinkage/">Controlling cell growth and shrinkage</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/14-full-example-config/">Full example config</a></li>
-                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/15-change-log/">Change log</a></li>
-                      </ol>
+            <div class="header">
+              <h2 class="TK-visHid">Site header</h2>
+                  <div class="pageLayout__buffer">
+                    <div class="pageLayout__width">
+                          <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
+                                    <svg class="svg-gutter-grid-logo logo__svg grid__cell">
+                                      <use xlink:href="#svg-gutter-grid-logo"></use>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
+                      <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
+                      <div id="container">
+                        <h3 class="TK-visHid">Tag line</h3>
+                        <p class="tagline">A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system</p>
+                      </div>
                     </div>
                   </div>
-                </nav>
-                <div class="grid__cell">
-                  <article class="markdown-body" id="content">
-                    <p class="TK-nonDesktop"><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
-                    <div class="cmsContent">
-                      <h2>Controlling cell growth and shrinkage</h2><p>Another way of handling cell alignments is with grid cell stretch and shrink settings. By default, grid cells will both stretch and shrink as necessary but this can be overridden with the stretch, shrink, and resize settings. These do not feature legacy browser support as they are features that are unique to flexbox. In saying that, these are primarily just alternate ways of assigning <code>flex-grow</code> and <code>flex-shrink</code> properties.</p>
+            </div>
+          </header>
+              <section class="toolbar">
+                    <div class="ribbon -up">
+                      <h3 class="TK-visHid">Toolbar</h3>
+                      <div class="grid grid--cols-2 grid--gutter-10 grid--vAlign-center">
+                        <div class="grid__cell"><a class="viewGitHub" href="https://github.com/Dan503/gutter-grid"><span class="viewGitHub__icon" aria-hidden="true"><span class="viewGitHub__iconSlash"></span></span><span class="viewGitHub__text">View Gutter Grid on GitHub</span></a>
+                        </div>
+                        <div class="grid__cell">
+                              <form class="systemSwitch JS-systemSwitch">
+                                <fieldset class="systemSwitch__fieldset">
+                                  <legend class="systemSwitch__legend">Preferred system:</legend>
+                                  <div class="systemSwitch__grid grid grid--noWrap grid--mini grid--hasInners">
+                                    <label class="systemSwitch__label grid__cell">
+                                      <input class="JS-systemSwitch__trigger -classes TK-visHid systemSwitch__radio" type="radio" name="PreferredSystem"><span class="systemSwitch__text">Classes</span>
+                                    </label>
+                                    <label class="systemSwitch__label grid__cell">
+                                      <input class="JS-systemSwitch__trigger -mixins TK-visHid systemSwitch__radio" type="radio" name="PreferredSystem"><span class="systemSwitch__text">Mixin</span>
+                                    </label>
+                                  </div>
+                                </fieldset>
+                              </form>
+                        </div>
+                      </div>
+                    </div>
+              </section>
+          <div class="mainArea TK-flexGrow">
+                <div class="pageLayout__buffer">
+                  <div class="pageLayout__width">
+                    <div id="main">
+                      <div class="grid grid--gutter-body grid--outerGutters">
+                            <nav class="nav grid__cell grid__cell--noResize">
+                              <div class="skipLinks__target" id="navigation" tabindex="-1">
+                                <h2 class="TK-visHid">Main navigation</h2>
+                              </div>
+                                  <div class="accordion JS-accordion">
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        </button>
+                                    <div class="accordion__revealer JS-accordion__revealer">
+                                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/09-nesting-grids/">Nesting grids</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/10-borders-and-shadows-on-guttered-cells/">Borders and shadows on guttered cells</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/11-horizontal-cell-alignments/">Horizontal cell alignments</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/12-vertical-cell-alignments/">Vertical cell alignments</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/13-controlling-cell-growth-and-shrinkage/" aria-current="page">Controlling cell growth and shrinkage</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/14-full-example-config/">Full example config</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/15-change-log/">Change log</a></li>
+                                      </ol>
+                                    </div>
+                                  </div>
+                            </nav>
+                        <main class="grid__cell">
+                          <article class="markdown-body">
+                                <div class="cmsContent">
+                                  <header>
+                                    <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Controlling cell growth and shrinkage
+                                    </h2>
+                                    <aside class="TK-nonDesktop">
+                                      <h3 class="TK-visHid">Mobile warning</h3>
+                                      <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
+                                    </aside>
+                                  </header><p>Another way of handling cell alignments is with grid cell stretch and shrink settings. By default, grid cells will both stretch and shrink as necessary but this can be overridden with the stretch, shrink, and resize settings. These do not feature legacy browser support as they are features that are unique to flexbox. In saying that, these are primarily just alternate ways of assigning <code>flex-grow</code> and <code>flex-shrink</code> properties.</p>
 <p>In version 3 <code>stretch</code> was named <code>grow</code>. The name was changed to <code>stretch</code> in version 4 to align with the naming of CSS Grid&#39;s <code>justify-items: stretch</code> and <code>justify-self: stretch</code> properties.</p>
 
-                      <div class="tabs JS-tabs">
-                        <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                          <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">Classes</a></div>
-                          <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">Mixin</a></div>
-                        </div>
-                        <div class="tabs__contentWrap">
-                          <div class="tabs__content JS-tabs__content"><ul>
+                                      <div class="tabs JS-tabs">
+                                        <div class="tabs__links">
+                                          <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                            <div class="grid__cell">
+                                              <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">Classes</button>
+                                            </div>
+                                            <div class="grid__cell">
+                                              <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">Mixin</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="tabs__contentWrap">
+                                              <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                <figure>
+                                                  <figcaption class="tabs__title">Classes for controlling cell growth</figcaption><ul>
 <li><code>grid--noStretch</code> will prevent all cells in the grid from stretching</li>
 <li><code>grid__cell--noStretch</code> will prevent only the cell that it is applied to from stretching</li>
 <li><code>grid--noShrink</code> will prevent all cells in the grid from shrinking below their <code>min-content</code> width</li>
@@ -150,29 +176,42 @@
 <li><code>grid__cell--noResize</code> a shortcut for applying both <code>grid__cell--noStretch</code> and <code>grid__cell--noShrink</code> classes</li>
 </ul>
 
-                          </div>
-                          <div class="tabs__content JS-tabs__content"><ul>
+                                                </figure>
+                                              </div>
+                                              <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                <figure>
+                                                  <figcaption class="tabs__title">Mixin properties for controlling cell growth</figcaption><ul>
 <li><code>$stretch: false</code> will prevent all cells in the grid from growing</li>
 <li><code>$shrink: false</code> will prevent all cells in the grid from shrinking below their content width</li>
 <li><code>$resize: false</code> a shortcut for applying both <code>$grow: false</code> and <code>$shrink: false</code> settings at the same time</li>
 <li>To apply resize settings to specific cells, just use the <code>flex-grow</code> and <code>flex-shrink</code> css properties</li>
 </ul>
 
-                          </div>
-                        </div>
-                      </div>
-                      <aside class="demo">
-                        <div class="demo__summary demo__segment"><p>This is the control example to show how the grid setup behaves with minimal settings and a block of content at a fixed 500px by 50px size and a small 50px by 50px square.</p>
+                                                </figure>
+                                              </div>
+                                        </div>
+                                      </div>
+                                      <figure class="demo" role="group">
+                                        <figcaption class="demo__summary demo__segment"><p>This is the control example to show how the grid setup behaves with minimal settings and a block of content at a fixed 500px by 50px size and a small 50px by 50px square.</p>
 
-                        </div>
-                        <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
-                          </div>
-                          <div class="tabs__contentWrap">
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="grid grid--noWrap">
   <div class="grid__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -181,10 +220,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;grid grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -193,11 +232,14 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="mixin-39">
   <div class="mixin__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -206,10 +248,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;mixin-39&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -218,31 +260,42 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                                <div class="grid__cell demo__markup demo__segment scss">
-                                  <pre><code class="scss">
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
 .mixin-39 {
   @include grid($wrap: false);
 }
 </code></pre>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </aside>
-                      <aside class="demo">
-                        <div class="demo__summary demo__segment"><p>If <code>grid--noStretch</code> (<code>$stretch: false</code>) is applied, it is essentially the equivalent of using <code>grid--align-left</code> (<code>$align: left</code>)</p>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure>
+                                      <figure class="demo" role="group">
+                                        <figcaption class="demo__summary demo__segment"><p>If <code>grid--noStretch</code> (<code>$stretch: false</code>) is applied, it is essentially the equivalent of using <code>grid--align-left</code> (<code>$align: left</code>)</p>
 
-                        </div>
-                        <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
-                          </div>
-                          <div class="tabs__contentWrap">
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="grid grid--noStretch grid--noWrap">
   <div class="grid__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -251,10 +304,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;grid grid--noStretch grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -263,11 +316,14 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="mixin-40">
   <div class="mixin__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -276,10 +332,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;mixin-40&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -288,31 +344,42 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                                <div class="grid__cell demo__markup demo__segment scss">
-                                  <pre><code class="scss">
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
 .mixin-40 {
   @include grid($stretch: false, $wrap: false);
 }
 </code></pre>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </aside>
-                      <aside class="demo">
-                        <div class="demo__summary demo__segment"><p>If <code>grid--noShrink</code> (<code>$shrink: false</code>) is applied, the grid cells will try their best not to shrink below the required width of the content inside them (you will need to resize your browser to a mobile sized view to see the difference)</p>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure>
+                                      <figure class="demo" role="group">
+                                        <figcaption class="demo__summary demo__segment"><p>If <code>grid--noShrink</code> (<code>$shrink: false</code>) is applied, the grid cells will try their best not to shrink below the required width of the content inside them (you will need to resize your browser to a mobile sized view to see the difference)</p>
 
-                        </div>
-                        <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
-                          </div>
-                          <div class="tabs__contentWrap">
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="grid grid--noShrink grid--noWrap">
   <div class="grid__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -321,10 +388,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;grid grid--noShrink grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -333,11 +400,14 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="mixin-41">
   <div class="mixin__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -346,10 +416,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;mixin-41&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -358,31 +428,42 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                                <div class="grid__cell demo__markup demo__segment scss">
-                                  <pre><code class="scss">
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
 .mixin-41 {
   @include grid($shrink: false, $wrap: false);
 }
 </code></pre>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </aside>
-                      <aside class="demo">
-                        <div class="demo__summary demo__segment"><p><code>grid--noResize</code> (<code>$resize: false</code>) is a shortcut for applying both <code>grid--noShrink</code> (<code>$shrink: false</code>) and <code>grid--noStretch</code> (<code>$stretch: false</code>) at the same time.</p>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure>
+                                      <figure class="demo" role="group">
+                                        <figcaption class="demo__summary demo__segment"><p><code>grid--noResize</code> (<code>$resize: false</code>) is a shortcut for applying both <code>grid--noShrink</code> (<code>$shrink: false</code>) and <code>grid--noStretch</code> (<code>$stretch: false</code>) at the same time.</p>
 
-                        </div>
-                        <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
-                          </div>
-                          <div class="tabs__contentWrap">
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="grid grid--noResize grid--noWrap">
   <div class="grid__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -391,10 +472,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;grid grid--noResize grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -403,11 +484,14 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="mixin-42">
   <div class="mixin__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -416,10 +500,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;mixin-42&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -428,31 +512,42 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                                <div class="grid__cell demo__markup demo__segment scss">
-                                  <pre><code class="scss">
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
 .mixin-42 {
   @include grid($resize: false, $wrap: false);
 }
 </code></pre>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </aside>
-                      <aside class="demo">
-                        <div class="demo__summary demo__segment"><p>Applying <code>noStretch</code> to only 1 of the grid cells</p>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure>
+                                      <figure class="demo" role="group">
+                                        <figcaption class="demo__summary demo__segment"><p>Applying <code>noStretch</code> to only 1 of the grid cells</p>
 
-                        </div>
-                        <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
-                          </div>
-                          <div class="tabs__contentWrap">
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="grid grid--noWrap">
   <div class="grid__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -461,10 +556,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;grid grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -473,11 +568,14 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="mixin-39">
   <div class="mixin__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -486,10 +584,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;mixin-39&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -498,9 +596,9 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                                <div class="grid__cell demo__markup demo__segment scss">
-                                  <pre><code class="scss">
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
 .mixin-39 {
   @include grid($wrap: false);
 }
@@ -509,24 +607,35 @@
   flex-grow: 0;
 }
 </code></pre>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </aside>
-                      <aside class="demo">
-                        <div class="demo__summary demo__segment"><p>Applying <code>noShrink</code> to only 1 of the grid cells (resize browser to see the effect)</p>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure>
+                                      <figure class="demo" role="group">
+                                        <figcaption class="demo__summary demo__segment"><p>Applying <code>noShrink</code> to only 1 of the grid cells (resize browser to see the effect)</p>
 
-                        </div>
-                        <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
-                          </div>
-                          <div class="tabs__contentWrap">
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="grid grid--noWrap">
   <div class="grid__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -535,10 +644,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;grid grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -547,11 +656,14 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="mixin-39">
   <div class="mixin__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -560,10 +672,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;mixin-39&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -572,9 +684,9 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                                <div class="grid__cell demo__markup demo__segment scss">
-                                  <pre><code class="scss">
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
 .mixin-39 {
   @include grid($wrap: false);
 }
@@ -583,24 +695,35 @@
   flex-shrink: 0;
 }
 </code></pre>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </aside>
-                      <aside class="demo">
-                        <div class="demo__summary demo__segment"><p>Applying <code>noResize</code> to prevent shrinking and growth in only 1 of the grid cells at the same time (very useful for listings with thumbnail images if you apply <code>noResize</code> to the thumbnail cell)</p>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure>
+                                      <figure class="demo" role="group">
+                                        <figcaption class="demo__summary demo__segment"><p>Applying <code>noResize</code> to prevent shrinking and growth in only 1 of the grid cells at the same time (very useful for listings with thumbnail images if you apply <code>noResize</code> to the thumbnail cell)</p>
 
-                        </div>
-                        <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
-                          </div>
-                          <div class="tabs__contentWrap">
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="grid grid--noWrap">
   <div class="grid__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -609,10 +732,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;grid grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -621,11 +744,14 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
 <div class="mixin-39">
   <div class="mixin__cell -color-1">
     <div class="wideBox -color-3"></div>
@@ -634,10 +760,10 @@
     <div class="thinBox -color-4"></div>
   </div>
 </div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
 &lt;div class=&quot;mixin-39&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
     &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
@@ -646,9 +772,9 @@
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                                </div>
-                                <div class="grid__cell demo__markup demo__segment scss">
-                                  <pre><code class="scss">
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
 .mixin-39 {
   @include grid($wrap: false);
 }
@@ -658,86 +784,112 @@
   flex-shrink: 0;
 }
 </code></pre>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </aside><h3 id="mini-grids">Mini grids</h3>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure><h3 id="mini-grids">Mini grids</h3>
 <p>In order to function correctly most of the time, Gutter Grid assumes that the width of the grid is the full width of it&#39;s container. It enforces this behaviour with a <code>min-width: 100%</code> setting. To use Gutter Grid on elements that do not take up 100% of their parent&#39;s with, a <code>mini</code> setting needs to be enabled on the grid.</p>
 
-                      <aside class="demo">
-                        <div class="demo__summary demo__segment"><p>Somewhat related. The <code>mini</code> setting allows a grid to take up less than 100% of it&#39;s parent&#39;s width.</p>
+                                      <figure class="demo" role="group">
+                                        <figcaption class="demo__summary demo__segment"><p>The <code>mini</code> setting allows a grid to take up less than 100% of it&#39;s parent&#39;s width.</p>
 
-                        </div>
-                        <div class="tabs JS-tabs">
-                          <div class="tabs__links grid grid--hasInners grid--noMQs grid--gutter-tabs grid--outerGutters-bottom grid--cols-2">
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">classes</a></div>
-                            <div class="grid__cell"><a class="tabs__link grid__inner btn JS-tabs__trigger" href="#">mixin</a></div>
-                          </div>
-                          <div class="tabs__contentWrap">
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
-<p>(Default grid set to 50% width)</p>
-<div class="grid" style="width: 50%">
-  <div class="grid__cell -color-1"></div>
-  <div class="grid__cell -color-2"></div>
-</div>
-<hr>
-<p>(Mini setting applied on a grid set to 50% width)</p>
-<div class="grid grid--mini" style="width: 50%">
-  <div class="grid__cell -color-1"></div>
-  <div class="grid__cell -color-2"></div>
-</div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
-&lt;p&gt;(Default grid set to 50% width)&lt;/p&gt;
-&lt;div class=&quot;grid&quot; style=&quot;width: 50%&quot;&gt;
-  &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;hr/&gt;
-&lt;p&gt;(Mini setting applied on a grid set to 50% width)&lt;/p&gt;
-&lt;div class=&quot;grid grid--mini&quot; style=&quot;width: 50%&quot;&gt;
-  &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="tabs__content JS-tabs__content">
-                              <div class="demo__result demo__segment">
-<p>(Default grid set to 50% width)</p>
-<div class="mixin-43">
-  <div class="mixin__cell -color-1"></div>
-  <div class="mixin__cell -color-2"></div>
-</div>
-<hr>
-<p>(Mini setting applied on a grid set to 50% width)</p>
-<div class="mixin-44">
-  <div class="mixin__cell -color-1"></div>
-  <div class="mixin__cell -color-2"></div>
-</div>
-                              </div>
-                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                <div class="grid__cell demo__markup demo__segment html">
-                                  <pre><code class="html">
-&lt;p&gt;(Default grid set to 50% width)&lt;/p&gt;
-&lt;div class=&quot;mixin-43&quot;&gt;
-  &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;hr/&gt;
-&lt;p&gt;(Mini setting applied on a grid set to 50% width)&lt;/p&gt;
-&lt;div class=&quot;mixin-44&quot;&gt;
-  &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                                </div>
-                                <div class="grid__cell demo__markup demo__segment scss">
-                                  <pre><code class="scss">
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<figure>
+  <figcaption>Default grid set to 50% width</figcaption>
+  <div class="grid" style="width: 50%">
+    <div class="grid__cell -color-1"></div>
+    <div class="grid__cell -color-2"></div>
+  </div>
+</figure>
+<figure>
+  <figcaption>Mini setting applied on a grid set to 50% width</figcaption>
+  <div class="grid grid--mini" style="width: 50%">
+    <div class="grid__cell -color-1"></div>
+    <div class="grid__cell -color-2"></div>
+  </div>
+</figure>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;figure&gt;
+  &lt;figcaption&gt;Default grid set to 50% width&lt;/figcaption&gt;
+  &lt;div class=&quot;grid&quot; style=&quot;width: 50%&quot;&gt;
+    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Mini setting applied on a grid set to 50% width&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--mini&quot; style=&quot;width: 50%&quot;&gt;
+    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<figure>
+  <figcaption>Default grid set to 50% width</figcaption>
+  <div class="mixin-43">
+    <div class="mixin__cell -color-1"></div>
+    <div class="mixin__cell -color-2"></div>
+  </div>
+</figure>
+<figure>
+  <figcaption>Mini setting applied on a grid set to 50% width</figcaption>
+  <div class="mixin-44">
+    <div class="mixin__cell -color-1"></div>
+    <div class="mixin__cell -color-2"></div>
+  </div>
+</figure>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;figure&gt;
+  &lt;figcaption&gt;Default grid set to 50% width&lt;/figcaption&gt;
+  &lt;div class=&quot;mixin-43&quot;&gt;
+    &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Mini setting applied on a grid set to 50% width&lt;/figcaption&gt;
+  &lt;div class=&quot;mixin-44&quot;&gt;
+    &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;</code></pre>
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
 .mixin-43 {
   @include grid;
   width: 50%;
@@ -747,65 +899,78 @@
   width: 50%;
 }
 </code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure>
                                 </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </aside>
+                          </article>
+                              <nav class="nextPrev">
+                                <h2 class="TK-visHid">Page turner</h2>
+                                <ul class="nextPrev__grid grid grid--gutter-10 grid--space-between">
+                                  <li class="nextPrev__gridCell grid__cell -prev"><a class="nextPrev__link btn -light" href="/pages/12-vertical-cell-alignments/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Previous:</span><span class="nextPrev__title">Vertical cell alignments</span></a></li>
+                                  <li class="nextPrev__gridCell grid__cell -next"><a class="nextPrev__link btn -light" href="/pages/14-full-example-config/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Next:</span><span class="nextPrev__title">Full example config</span></a></li>
+                                </ul>
+                              </nav>
+                        </main>
+                      </div>
                     </div>
-                    <nav class="nextPrev">
-                      <ul class="grid grid--space-between">
-                        <li class="grid__cell -prev"><a class="nextPrev__link btn -light" href="/pages/12-vertical-cell-alignments/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Previous:</span><span class="nextPrev__title">Vertical cell alignments</span></a></li>
-                        <li class="grid__cell -next"><a class="nextPrev__link btn -light" href="/pages/14-full-example-config/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Next:</span><span class="nextPrev__title">Full example config</span></a></li>
-                      </ul>
-                    </nav>
-                  </article>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer class="footer">
-        <div class="pageLayout__buffer">
-          <div class="pageLayout__width">
-            <div class="owner">
-              <div class="owner__grid grid grid--space-between grid--vAlign-center">
-                <div class="owner__cell owner__userCell -left grid__cell">
-                  <p><a class="avatar" href="https://github.com/Dan503"><img src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=50&amp;default=retro" width="48" height="48"></a><a href="https://github.com/Dan503">Dan503</a> maintains <a href="https://github.com/Dan503/gutter-grid">gutter-grid</a></p>
-                </div>
-                <div class="owner__shareCell grid__cell">
-                  <div class="share grid__wrapper">
-                    <ul class="share__list grid grid--noWrap grid--space-between TK-noDots">
-                      <li class="share__option grid__cell">Share:</li>
-                      <li class="share__option grid__cell"><a class="share__link -mail JS-share__link" href="mailto:?subject=Share subject&body=Share body http://gutter-grid.net/pages/13-controlling-cell-growth-and-shrinkage/" title="Share via email">
-                          <svg class="svg-mail">
-                            <use xlink:href="#svg-mail"></use>
-                          </svg><span class="TK-visHid">Share via email</span></a></li>
-                      <li class="share__option grid__cell"><a class="share__link -facebook JS-share__link" href="http://www.facebook.com/sharer/sharer.php?u=http://gutter-grid.net/pages/13-controlling-cell-growth-and-shrinkage/&title=Gutter%20Grid:%20Controlling%20cell%20growth%20and%20shrinkage" title="Share on Facebook">
-                          <svg class="svg-facebook">
-                            <use xlink:href="#svg-facebook"></use>
-                          </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/13-controlling-cell-growth-and-shrinkage/" title="Tweet this site">
-                          <svg class="svg-twitter">
-                            <use xlink:href="#svg-twitter"></use>
-                          </svg><span class="TK-visHid">Tweet this site</span></a></li>
-                      <li class="share__option grid__cell"><a class="share__link -linkedin JS-share__link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://gutter-grid.net/pages/13-controlling-cell-growth-and-shrinkage/&title=Gutter%20Grid:%20Controlling%20cell%20growth%20and%20shrinkage" title="Share on LinkedIn">
-                          <svg class="svg-linkedin">
-                            <use xlink:href="#svg-linkedin"></use>
-                          </svg><span class="TK-visHid">Share on LinkedIn</span></a></li>
-                    </ul>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="creds"><small>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a> (although lots of alterations have been made to it)</small></div>
           </div>
+              <footer class="footer">
+                <h2 class="TK-visHid">Site footer</h2>
+                    <div class="ribbon -pattern -down">
+                      <div class="grid grid--space-between grid--vAlign-center">
+                        <div class="footer__owner grid__cell">
+                              <div class="owner">
+                                <h3 class="TK-visHid">Owner</h3>
+                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=75&amp;default=retro" alt="Dan503" width="75" height="75"></a>
+                                  <p class="owner__text grid__cell"><a href="https://github.com/Dan503">Daniel Tonon</a> maintains <a href="https://github.com/Dan503/gutter-grid">Gutter Grid</a></p>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="footer__share grid__cell">
+                              <div class="share grid__wrapper">
+                                <div class="grid grid--vAlign">
+                                  <h3 class="share__heading grid__cell"> Share:</h3>
+                                  <div class="grid__cell">
+                                    <ul class="share__list grid grid--noWrap grid--space-between TK-noDots">
+                                      <li class="share__option grid__cell"><a class="share__link -mail JS-share__link" href="mailto:?subject=Share subject&body=Share body http://gutter-grid.net/pages/13-controlling-cell-growth-and-shrinkage/" title="Share via email">
+                                              <svg class="svg-mail">
+                                                <use xlink:href="#svg-mail"></use>
+                                              </svg><span class="TK-visHid">Share via email</span></a></li>
+                                      <li class="share__option grid__cell"><a class="share__link -facebook JS-share__link" href="http://www.facebook.com/sharer/sharer.php?u=http://gutter-grid.net/pages/13-controlling-cell-growth-and-shrinkage/&title=Gutter%20Grid:%20Controlling%20cell%20growth%20and%20shrinkage" title="Share on Facebook">
+                                              <svg class="svg-facebook">
+                                                <use xlink:href="#svg-facebook"></use>
+                                              </svg><span class="TK-visHid">Share on Facebook</span></a></li>
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/13-controlling-cell-growth-and-shrinkage/" title="Tweet this site">
+                                              <svg class="svg-twitter">
+                                                <use xlink:href="#svg-twitter"></use>
+                                              </svg><span class="TK-visHid">Tweet this site</span></a></li>
+                                      <li class="share__option grid__cell"><a class="share__link -linkedin JS-share__link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://gutter-grid.net/pages/13-controlling-cell-growth-and-shrinkage/&title=Gutter%20Grid:%20Controlling%20cell%20growth%20and%20shrinkage" title="Share on LinkedIn">
+                                              <svg class="svg-linkedin">
+                                                <use xlink:href="#svg-linkedin"></use>
+                                              </svg><span class="TK-visHid">Share on LinkedIn</span></a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pageLayout__buffer">
+                      <div class="pageLayout__width">
+                        <div class="creds">&nbsp;</div>
+                      </div>
+                    </div>
+              </footer>
         </div>
-      </footer>
-    </div>
-  </div>
+      </div>
   <script src="/assets/scripts/plugins/highlight.pack.js"></script>
   <script type="text/javascript">
     hljs.initHighlightingOnLoad();

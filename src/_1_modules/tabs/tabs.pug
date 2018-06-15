@@ -1,16 +1,21 @@
+//- loaded in a hidden div at the top of the page
+p#arrow-keys-tip Left and right arrow keys to navigate
 
-mixin tabs__content(spec)
+mixin tabs__content(tabName, spec)
 	-
 		spec = defaultTo(spec, {
 			classes : '',
 			attr: {},
 		});
 
-	.tabs__content(class=spec.classes)&attributes(spec.attr).JS-tabs__content
-		if block
-			block
-		else
-			p This is an example paragraph for the tab module
+	.tabs__content(class=spec.classes, role="tabpanel")&attributes(spec.attr).JS-tabs__content
+		figure
+			if tabName
+				figcaption.tabs__title= tabName
+			if block
+				block
+			else
+				p This is an example paragraph for the tab module
 
 mixin tabs(spec)
 	-
@@ -21,10 +26,11 @@ mixin tabs(spec)
 		});
 
 	.tabs(class=spec.classes)&attributes(spec.attr).JS-tabs
-		.tabs__links.grid.grid--hasInners.grid--noMQs.grid--gutter-tabs.grid--outerGutters-bottom(class=`grid--cols-${spec.links.length}`)
-			each link, i in spec.links
-				.grid__cell
-					a.tabs__link.grid__inner.btn(href='#').JS-tabs__trigger= link
+		.tabs__links
+			.tabs__linksGrid.grid.grid--hasInners.grid--noMQs.grid--gutter-tabs(class=`grid--cols-${spec.links.length}`, role="tablist", aria-describedby="arrow-keys-tip")
+				each link, i in spec.links
+					.grid__cell
+						button.tabs__link.grid__inner.btn(role="tab", tabindex="-1").JS-tabs__trigger= link
 		.tabs__contentWrap
 			if block
 				block

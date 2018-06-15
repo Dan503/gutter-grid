@@ -6,11 +6,13 @@ mixin nav(spec)
 			classes : '',
 		});
 
-	nav#navigation.nav(class=spec.classes)&attributes(attributes)
-		h2.TK-visHid Main navigation
+	nav.nav(class=spec.classes)&attributes(attributes)
+		#navigation.skipLinks__target(tabindex="-1")
+			h2.TK-visHid Main navigation
 		+accordion()
-			ol.nav__list.grid.grid--gutter-nav.grid--outerGutters-top.grid--hasInners.grid--vertical
+			ol.nav__list.grid.grid--gutter-nav.grid--outerGutters.grid--hasInners.grid--vertical.grid--noShrink
 				each item in navMap.subnav
 					- var activeClass = isActive(item) ? '-active' : '';
+					- var currentPage = isActive(item) ? 'page' : false;
 					li.nav__item.grid__cell
-						a.nav__link.btn.grid__inner(href=item.link, class=activeClass)= item.altTitle || item.title
+						a.nav__link.btn.grid__inner(href=item.link, class=activeClass, aria-current=currentPage)= item.altTitle || item.title

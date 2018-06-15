@@ -1,9 +1,20 @@
 .demo {
-	margin: 25px 0 35px;
+	margin: 35px 0;
+	margin: 3.5rem 0;
+
+	&__content {
+		padding: 10px;
+		border: 1px solid #315116;
+		// background: #CDDEC4;
+	}
+
 	&__segment {
 		position: relative;
-		margin-top: 35px;
+		margin-top: 40px;
+		margin-top: 4rem;
 		margin-bottom: 10px;
+		margin-bottom: 1rem;
+
 		&:last-child, &.grid__cell {
 			margin-bottom: 0;
 		}
@@ -18,27 +29,58 @@
 			border-radius: 5px 5px 0 0;
 		}
 	}
-	&__summary {
-		background-color: #CDDEC4;
-		padding: 20px;
-		margin-bottom: 10px;
-		margin-top: 60px;
-		&:before {
-			content: 'Summary';
-		}
 
-		+ .demo__result {
-			margin-top: 45px;
+	&__summary {
+		.markdown-body & {
+			background-color: #CDDEC4;
+			padding: 20px;
+			margin-top: 70px;
+			margin-top: 7rem;
+			margin-bottom: 5px;
+			color: #000;
+			font-family: Arial, Helvetica, sans-serif;
+			font-style: normal;
+			font-size: 1em;
+			border: 1px solid #315116;
+
+			&:before {
+				content: 'Summary';
+				font-family: Georgia, serif;
+				font-style: italic;
+				font-size: 1.2em;
+				margin-left: -1px;
+			}
+	
+			+ .demo__result {
+				margin-top: 45px;
+			}
 		}
 	}
 	&__result {
+		border: 1px solid #000;
+
 		&:before {
 			content: 'Example';
+			margin-left: -1px;
 
 			.-false & {
 				content: 'Not Gutter Grid'
 			}
 		}
+
+		figure {
+			margin: 25px;
+			border: 1px solid #000;
+			background: #f3f3f3;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+		figcaption {
+			padding: 0.25em 0.5em;
+			background-color: #CDDEC4;
+			color: #000;
+		}
+
 		.grid {
 			padding: 0;
 		}

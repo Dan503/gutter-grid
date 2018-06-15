@@ -1,0 +1,10 @@
+
+.footer {
+	&__share {
+		padding-left: 95px;
+
+		@include mq(max, 750px){
+			margin-top: 10px;
+		}
+	}
+}

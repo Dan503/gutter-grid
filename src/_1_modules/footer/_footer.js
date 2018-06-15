@@ -8,13 +8,13 @@ import $ from 'jquery';
 //import { example } from 'example/example';
 
 //module functionality
-class toolbar {
+class footer {
 	constructor(elem){
 		const This = this;
 		this.elem = elem;
 		this.$elem = $(elem);
-		this.$trigger = this.$elem.find('.JS-toolbar__trigger');
-		this.$target = this.$elem.find('.JS-toolbar__target');
+		this.$trigger = this.$elem.find('.JS-footer__trigger');
+		this.$target = this.$elem.find('.JS-footer__target');
 
 		this.openClass = '-open';
 
@@ -32,9 +32,9 @@ class toolbar {
 
 //This function is called on page load unless the name of this file starts with an underscore
 export default function() {
-	console.log('The toolbar module javascript has loaded');
+	console.log('The footer module javascript has loaded');
 
-	$('.JS-toolbar').each(function(e){
-		new toolbar(this);
+	$('.JS-footer').each(function(e){
+		new footer(this);
 	})
 }

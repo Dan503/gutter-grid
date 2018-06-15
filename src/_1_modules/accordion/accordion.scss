@@ -1,5 +1,7 @@
 
 .accordion {
+	$this: &;
+
 	&__revealer {
 		display: none;
 		@include mq(min, bp('page')){
@@ -7,7 +9,9 @@
 		}
 	}
 	&__btn {
+		background: #fff;
 		text-decoration: none !important;
+		width: 100%;
 		padding: 15px;
 		display: flex;
 		justify-content: flex-start;
@@ -19,14 +23,29 @@
 		span {
 			display: block;
 		}
-	}
-		&__icon {
-			@include MG-menuIcon(#000);
-			margin-right: 10px;
-			margin-left: 0;
 
-			.-accordion--open & {
-				@include MG-menuIcon('cross');
+		&:hover, &:focus {
+			// background-color: #eeeeee;
+
+			#{$this}__icon {
+				&, &::before, &::after {
+					background-color: $CB-green-pale;
+
+				}
+				.-accordion--open & {
+					background: transparent;
+				}
 			}
 		}
+	}
+
+	&__icon {
+		@include MG-menuIcon($CB-green-dark);
+		margin-right: 10px;
+		margin-left: 0;
+
+		.-accordion--open & {
+			@include MG-menuIcon('cross');
+		}
+	}
 }
