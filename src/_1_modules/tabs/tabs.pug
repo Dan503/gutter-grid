@@ -26,10 +26,11 @@ mixin tabs(spec)
 		});
 
 	.tabs(class=spec.classes)&attributes(spec.attr).JS-tabs
-		.tabs__links.grid.grid--hasInners.grid--noMQs.grid--gutter-tabs.grid--outerGutters-bottom(class=`grid--cols-${spec.links.length}`, role="tablist", aria-describedby="arrow-keys-tip")
-			each link, i in spec.links
-				.grid__cell
-					button.tabs__link.grid__inner.btn(role="tab", tabindex="-1").JS-tabs__trigger= link
+		.tabs__links
+			.tabs__linksGrid.grid.grid--hasInners.grid--noMQs.grid--gutter-tabs(class=`grid--cols-${spec.links.length}`, role="tablist", aria-describedby="arrow-keys-tip")
+				each link, i in spec.links
+					.grid__cell
+						button.tabs__link.grid__inner.btn(role="tab", tabindex="-1").JS-tabs__trigger= link
 		.tabs__contentWrap
 			if block
 				block

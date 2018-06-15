@@ -1,5 +1,7 @@
 
 .accordion {
+	$this: &;
+
 	&__revealer {
 		display: none;
 		@include mq(min, bp('page')){
@@ -23,16 +25,27 @@
 		}
 
 		&:hover, &:focus {
-			background-color: #eeeeee;
-		}
-	}
-		&__icon {
-			@include MG-menuIcon(#000);
-			margin-right: 10px;
-			margin-left: 0;
+			// background-color: #eeeeee;
 
-			.-accordion--open & {
-				@include MG-menuIcon('cross');
+			#{$this}__icon {
+				&, &::before, &::after {
+					background-color: $CB-green-pale;
+
+				}
+				.-accordion--open & {
+					background: transparent;
+				}
 			}
 		}
+	}
+
+	&__icon {
+		@include MG-menuIcon($CB-green-dark);
+		margin-right: 10px;
+		margin-left: 0;
+
+		.-accordion--open & {
+			@include MG-menuIcon('cross');
+		}
+	}
 }

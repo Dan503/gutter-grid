@@ -56,4 +56,13 @@
 	&.-pattern {
 		background-image: url(../images/pattern.png);
 	}
+
+	a {
+		color: $CB-green-light;
+		transition: color 0.3s;
+
+		&:hover, &:focus {
+			background: transparent;
+		}
+	}
 }

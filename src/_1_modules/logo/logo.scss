@@ -2,6 +2,8 @@
 $MQ-text--is-small: (max, bp('small'));
 
 .logo {
+	margin: 0;
+
 	&__parent {
 		fill: brand(1);
 	}

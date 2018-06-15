@@ -3,37 +3,52 @@ $MQ-text--is-small: (max, bp('mobile'));
 .btn {
 	font-size: 1em;
 	//background-color: brand(1);
-	background: #000 url(../images/pattern.png);
-	color: #fff;
-	@include MG-animate;
-	padding: 5px 10px;
+	background: darken($CB-green-pale, 15%);
+	color: #000;
+	box-shadow: inset 0 0 5px 2px $CB-green-dark, 0 0;
+	border-radius: 2px;
+	border: 0;
+	transition: 0.3s;
+	padding: 5px 15px;
 	display: block;
 	transition: all 0.25s ease-in-out;
 	position: relative;
 	text-align: left;
-	border: 5px solid #444;
+	outline: none;
+	border: 1px solid $CB-green-dark;
+	font-family: Georgia, serif;
+	font-style: italic;
+	outline: 2px dashed transparent;
+	outline-offset: 2px;
+
+	&:hover, &:focus {
+		text-decoration: none;
+		box-shadow: inset 0 0 5px 2px $CB-green-light, 0 0;
+	}
 
 	&:not(.-active) {
 		&:focus, &:hover {
-			text-decoration: underline;
-			border-color: #467320;
+			color: #fff;
+			background: #191a1a;
 		}
 	}
 
 	@include mq($MQ-text--is-small){
-		font-size: 0.75em;
+		font-size: 0.9em;
 	}
 
 	&.-active {
-		background: brand(1);
+		background: $CB-green-light;
+		color: #000;
 		font-weight: bold;
 		text-decoration: none;
 		cursor: default;
-		color: brand(1, 'text');
+		box-shadow: inset 0 0 5px 2px #000;
 
 		&:focus {
-			text-decoration: underline;
-			background-color: brand(1, 'hover');
+			outline-color: $CB-green-mid;
+			// background-color: $CB-green-mid;
+			// background-color: lighten($CB-green-light, 30%);
 		}
 	}
 
