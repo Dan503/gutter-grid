@@ -3,6 +3,8 @@ $MQ-text--is-small: (max, bp('small'));
 
 .logo {
 	margin: 0;
+	filter: drop-shadow(0 0 20px #fff);
+	text-shadow: 0 0 5px #fff;
 
 	&__parent {
 		fill: brand(1);
