@@ -5,7 +5,7 @@ block content
     In version 3 `stretch` was named `grow`. The name was changed to `stretch` in version 4 to align with the naming of CSS Grid's `justify-items: stretch` and `justify-self: stretch` properties.
 
   +tabs({links: ['Classes', 'Mixin']})
-    +tabs__content()
+    +tabs__content('Classes for controlling cell growth')
       :marked
         - `grid--noStretch` will prevent all cells in the grid from stretching
         - `grid__cell--noStretch` will prevent only the cell that it is applied to from stretching
@@ -14,7 +14,7 @@ block content
         - `grid--noResize` a shortcut for applying both `grid--noStretch` and `grid--noShrink` classes
         - `grid__cell--noResize` a shortcut for applying both `grid__cell--noStretch` and `grid__cell--noShrink` classes
 
-    +tabs__content()
+    +tabs__content('Mixin properties for controlling cell growth')
       :marked
         - `$stretch: false` will prevent all cells in the grid from growing
         - `$shrink: false` will prevent all cells in the grid from shrinking below their content width
@@ -238,28 +238,30 @@ scss: `
   +demo({
     classes: {
 html:`
-p (Default grid set to 50% width)
-.grid(style="width: 50%")
-  .grid__cell.-color-1
-  .grid__cell.-color-2
-hr
-p (Mini setting applied on a grid set to 50% width)
-.grid.grid--mini(style="width: 50%")
-  .grid__cell.-color-1
-  .grid__cell.-color-2
+figure
+  figcaption Default grid set to 50% width
+  .grid(style="width: 50%")
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+figure
+  figcaption Mini setting applied on a grid set to 50% width
+  .grid.grid--mini(style="width: 50%")
+    .grid__cell.-color-1
+    .grid__cell.-color-2
 `,
 },
     mixin: {
 html:`
-p (Default grid set to 50% width)
-.mixin-43
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
-hr
-p (Mini setting applied on a grid set to 50% width)
-.mixin-44
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
+figure
+  figcaption Default grid set to 50% width
+  .mixin-43
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+figure
+  figcaption Mini setting applied on a grid set to 50% width
+  .mixin-44
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
 `,
 scss: `
 .mixin-43 {
@@ -274,4 +276,4 @@ scss: `
     }
 })
     :marked
-      Somewhat related. The `mini` setting allows a grid to take up less than 100% of it's parent's width.
+      The `mini` setting allows a grid to take up less than 100% of it's parent's width.
