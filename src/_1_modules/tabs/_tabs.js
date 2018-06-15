@@ -16,26 +16,48 @@ class tabs__trigger {
 
 		this.name = this.$trigger.text().toLowerCase();
 
-		this.$trigger.click((e)=>{
-			e.preventDefault();
-			this.activate();
+		this.$trigger.keyup(key => {
+			const isKey = keys => keys.indexOf(key.which) > -1;
+			const isNext = isKey([39]);
+			const isPrev = isKey([37]);
 
-			if (this.tabs.is_defaultSwitcher) {
-				this.signal();
+			if (isNext){
+				this.tabs.switchTo(this.index + 1, false);
+			} else if (isPrev) {
+				this.tabs.switchTo(this.index - 1, false);
 			}
-		});
+		})
+
+		// this.$trigger.click((e)=>{
+		// 	e.preventDefault();
+		// 	this.activate();
+
+		// 	if (this.tabs.is_defaultSwitcher) {
+		// 		this.signal();
+		// 	}
+		// });
 	}
-	activate(){
+	activate(isRemote = true){
 		this.deactivate_others();
-		this.$trigger.addClass(this.activeClass);
+		this.$trigger
+			.addClass(this.activeClass)
+			.attr('tabindex', 0)
+			.attr('aria-selected', 'true');
 		this.$content.show();
 
-		if (!this.getStorage()){
+		if (!isRemote){
+			this.$trigger.focus();
+		}
+
+		if (!this.getStorage() || this.tabs.is_defaultSwitcher){
 			this.signal();
 		}
 	}
 	deactivate(){
-		this.$trigger.removeClass(this.activeClass);
+		this.$trigger
+			.removeClass(this.activeClass)
+			.attr('tabindex',-1)
+			.attr('aria-selected', 'false');
 		this.$content.hide();
 	}
 	deactivate_others(){
@@ -50,6 +72,12 @@ class tabs__trigger {
 	}
 	getStorage(){
 		return localStorage.getItem('activeTab');
+	}
+	getNext(){
+		return this.tabs[this.index + 1];;
+	}
+	getPrev(){
+		return this.tabs[this.index - 1];
 	}
 }
 
@@ -70,18 +98,21 @@ class tabs {
 				index: i,
 				tabs: this
 			}));
-		})
+		});
 
 		Emitter.on('systemSwitch', name => this.switchTo(name));
 
 	}
 
 	//Switches to the defined tab
-	switchTo(name){
+	switchTo(nameOrIndex, isRemote = true){
 
 		$.each(this.triggers, (i, trigger) => {
-			if (trigger.name === name) {
-				trigger.activate();
+			if (
+				trigger.name === nameOrIndex ||
+				trigger.index === nameOrIndex
+			) {
+				trigger.activate(isRemote);
 			}
 		})
 

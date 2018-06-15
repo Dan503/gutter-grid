@@ -1,28 +1,6 @@
 
 include ../_pugFunctions/config/config-loader.pug
 
-include /_1_modules/alert/alert
-include /_1_modules/skipLinks/skipLinks
-include /_1_modules/siteContainer/siteContainer
-include /_1_modules/pageLayout/pageLayout
-include /_1_modules/nav/nav
-include /_1_modules/nextPrev/nextPrev
-include /_1_modules/0-cmsContent/cmsContent
-include /_1_modules/toolbar/toolbar
-include /_1_modules/viewGitHub/viewGitHub
-include /_1_modules/systemSwitch/systemSwitch
-include /_1_modules/share/share
-include /_1_modules/ribbon/ribbon
-include /_1_modules/footer/footer
-
-include /_1_modules/demo/demo
-
-
-include /_1_modules/owner/owner
-include /_1_modules/logo/logo
-
-include /_1_modules/svg/svg
-
 //- console.log(location)
 //- console.log(layout)
 //- console.log(get.current.title)
@@ -90,6 +68,29 @@ head
 		<![endif]-->
 
 body
+	div.moduleLoaded.TK-hide
+		include /_1_modules/alert/alert
+		include /_1_modules/skipLinks/skipLinks
+		include /_1_modules/siteContainer/siteContainer
+		include /_1_modules/pageLayout/pageLayout
+		include /_1_modules/nav/nav
+		include /_1_modules/nextPrev/nextPrev
+		include /_1_modules/0-cmsContent/cmsContent
+		include /_1_modules/toolbar/toolbar
+		include /_1_modules/viewGitHub/viewGitHub
+		include /_1_modules/systemSwitch/systemSwitch
+		include /_1_modules/share/share
+		include /_1_modules/ribbon/ribbon
+		include /_1_modules/footer/footer
+
+		include /_1_modules/demo/demo
+
+
+		include /_1_modules/owner/owner
+		include /_1_modules/logo/logo
+
+		include /_1_modules/svg/svg
+
 	//holds the svg sprite
 	div.svgSprite(style="display:none")
 		include ../../tmp/svg-symbols.svg
