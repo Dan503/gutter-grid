@@ -20,29 +20,47 @@
 		white-space: nowrap;
 		margin: 2px;
 		cursor: pointer;
+		font-family: Georgia, serif;
+		font-style: italic;
 	}
 
 	&__text {
 		text-align: center;
+		transition: 0.3s;
+		display: flex;
+		align-items: center;
+
+		&::before, &::after {
+			content: '';
+			display: block;
+			height: 1px;
+			background: $CB-green-dark;
+			flex-grow: 1;
+			margin: 0 10px;
+			opacity: 0;
+		}
 
 		input:checked ~ & {
 			font-weight: bold;
 			// box-shadow: inset 0 0 0 2px #4E4B40;
 			box-shadow: inset 0 0 5px #000;
-			background: brand(1);
+			background: $CB-green-light;
 			color: brand(1, text);
 			border-radius: 3px;
 			cursor: default;
 		}
 
 		input:focus ~ & {
-			background: lighten(brand(1), 10%);
+			// background: $CB-green-light;
+			&::before, &::after {
+				opacity: 1;
+			}
 		}
 
 		input:not(:checked) ~ &:hover {
-			text-decoration: underline;
-			box-shadow: inset 0 0 5px #fff;
-			box-shadow: inset 0 0 5px rgba(#fff,0.5);
+			background: $CB-green-pale;
+			box-shadow: inset 0 0 3px 2px $CB-green-dark;
+			color: #000;
 		}
 	}
 }

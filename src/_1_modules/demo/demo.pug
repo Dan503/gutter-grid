@@ -41,15 +41,16 @@ mixin demo(demoMarkup, spec)
 			hasTabs: true,
 		})
 
-	aside.demo(class=spec.classes)
+	figure.demo(class=spec.classes, role="group")
 		if block
-			.demo__summary.demo__segment
+			figcaption.demo__summary.demo__segment
 				block
-		if spec.hasTabs
-			+tabs({links: Object.keys(demoMarkup)})
-				+tabs__content()
-					+demo__tab(demoMarkup.classes)
-				+tabs__content()
-					+demo__tab(demoMarkup.mixin)
-		else
-			+demo__tab(demoMarkup)
+		.demo__content
+			if spec.hasTabs
+				+tabs({links: Object.keys(demoMarkup)})
+					+tabs__content('Classes format')
+						+demo__tab(demoMarkup.classes)
+					+tabs__content('Mixin format')
+						+demo__tab(demoMarkup.mixin)
+			else
+				+demo__tab(demoMarkup)

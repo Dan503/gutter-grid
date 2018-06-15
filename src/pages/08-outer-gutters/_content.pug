@@ -5,7 +5,7 @@ block content
   +demo({
     classes: {
 html:`
-.add-border.grid__wrapper
+.grid__wrapper
   .grid.grid--gutter-20.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -26,7 +26,7 @@ $grid-cell-gutters: (
 
     mixin: {
 html:`
-.mixin__wrapper.add-border
+.mixin__wrapper
   .mixin-12
     .mixin__cell.-color-1
     .mixin__cell.-color-2
@@ -53,7 +53,7 @@ scss:`
   +demo({
     classes: {
 html:`
-.add-border.grid__wrapper
+.grid__wrapper
   .grid.grid--outerGutters.grid--gutter-20.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -74,7 +74,7 @@ $grid-cell-gutters: (
 
     mixin: {
 html:`
-.mixin__wrapper.add-border
+.mixin__wrapper
   .mixin-14
     .mixin__cell.-color-1
     .mixin__cell.-color-2
@@ -103,25 +103,27 @@ scss:`
   +demo({
     classes: {
 html:`
-p (Horizontal)
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-h.grid--gutter-20.grid--cols-3
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-hr
-p (Vertical)
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-v.grid--gutter-20.grid--cols-3
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
+figure
+  figcaption Horizontal outer gutter
+  .grid__wrapper
+    .grid.grid--outerGutters-h.grid--gutter-20.grid--cols-3
+      .grid__cell.-color-1
+      .grid__cell.-color-2
+      .grid__cell.-color-3
+      .grid__cell.-color-4
+      .grid__cell.-color-5
+      .grid__cell.-color-6
+
+figure
+  figcaption Vertical outer gutter
+  .grid__wrapper
+    .grid.grid--outerGutters-v.grid--gutter-20.grid--cols-3
+      .grid__cell.-color-1
+      .grid__cell.-color-2
+      .grid__cell.-color-3
+      .grid__cell.-color-4
+      .grid__cell.-color-5
+      .grid__cell.-color-6
 `,
 scss:`
 //Define gutter sizes like this
@@ -135,25 +137,27 @@ $grid-cell-gutters: (
 
     mixin: {
 html:`
-p (Horizontal)
-.mixin__wrapper.add-border
-  .mixin-15
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
-hr
-p (Vertical)
-.mixin__wrapper.add-border
-  .mixin-16
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
+figure
+  figcaption Horizontal outer gutter
+  .mixin__wrapper
+    .mixin-15
+      .mixin__cell.-color-1
+      .mixin__cell.-color-2
+      .mixin__cell.-color-3
+      .mixin__cell.-color-4
+      .mixin__cell.-color-5
+      .mixin__cell.-color-6
+
+figure
+  figcaption Vertical outer gutter
+  .mixin__wrapper
+    .mixin-16
+      .mixin__cell.-color-1
+      .mixin__cell.-color-2
+      .mixin__cell.-color-3
+      .mixin__cell.-color-4
+      .mixin__cell.-color-5
+      .mixin__cell.-color-6
 `,
 scss:`
 .mixin-15 {
@@ -176,45 +180,49 @@ scss:`
   +demo({
     classes: {
 html:`
-p (Top)
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-top.grid--gutter-20.grid--cols-3
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-hr
-p (Bottom)
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-bottom.grid--gutter-20.grid--cols-3
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-hr
-p (Left)
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-left.grid--gutter-20.grid--cols-3
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-hr
-p (Right)
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-right.grid--gutter-20.grid--cols-3
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
+figure
+  figcaption Top outer gutter
+  .grid__wrapper
+    .grid.grid--outerGutters-top.grid--gutter-20.grid--cols-3
+      .grid__cell.-color-1
+      .grid__cell.-color-2
+      .grid__cell.-color-3
+      .grid__cell.-color-4
+      .grid__cell.-color-5
+      .grid__cell.-color-6
+
+figure
+  figcaption Bottom outer gutter
+  .grid__wrapper
+    .grid.grid--outerGutters-bottom.grid--gutter-20.grid--cols-3
+      .grid__cell.-color-1
+      .grid__cell.-color-2
+      .grid__cell.-color-3
+      .grid__cell.-color-4
+      .grid__cell.-color-5
+      .grid__cell.-color-6
+
+figure
+  figcaption Left outer gutter
+  .grid__wrapper
+    .grid.grid--outerGutters-left.grid--gutter-20.grid--cols-3
+      .grid__cell.-color-1
+      .grid__cell.-color-2
+      .grid__cell.-color-3
+      .grid__cell.-color-4
+      .grid__cell.-color-5
+      .grid__cell.-color-6
+
+figure
+  figcaption Right outer gutter
+  .grid__wrapper
+    .grid.grid--outerGutters-right.grid--gutter-20.grid--cols-3
+      .grid__cell.-color-1
+      .grid__cell.-color-2
+      .grid__cell.-color-3
+      .grid__cell.-color-4
+      .grid__cell.-color-5
+      .grid__cell.-color-6
 
 `,
 scss:`
@@ -229,45 +237,49 @@ $grid-cell-gutters: (
 
     mixin: {
 html:`
-p (Top)
-.mixin__wrapper.add-border
-  .mixin-17
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
-hr
-p (Bottom)
-.mixin__wrapper.add-border
-  .mixin-18
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
-hr
-p (Left)
-.mixin__wrapper.add-border
-  .mixin-19
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
-hr
-p (Right)
-.mixin__wrapper.add-border
-  .mixin-20
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
+figure
+  figcaption Top outer gutter
+  .mixin__wrapper
+    .mixin-17
+      .mixin__cell.-color-1
+      .mixin__cell.-color-2
+      .mixin__cell.-color-3
+      .mixin__cell.-color-4
+      .mixin__cell.-color-5
+      .mixin__cell.-color-6
+
+figure
+  figcaption Bottom outer gutter
+  .mixin__wrapper
+    .mixin-18
+      .mixin__cell.-color-1
+      .mixin__cell.-color-2
+      .mixin__cell.-color-3
+      .mixin__cell.-color-4
+      .mixin__cell.-color-5
+      .mixin__cell.-color-6
+
+figure
+  figcaption Left outer gutter
+  .mixin__wrapper
+    .mixin-19
+      .mixin__cell.-color-1
+      .mixin__cell.-color-2
+      .mixin__cell.-color-3
+      .mixin__cell.-color-4
+      .mixin__cell.-color-5
+      .mixin__cell.-color-6
+
+figure
+  figcaption Right outer gutter
+  .mixin__wrapper
+    .mixin-20
+      .mixin__cell.-color-1
+      .mixin__cell.-color-2
+      .mixin__cell.-color-3
+      .mixin__cell.-color-4
+      .mixin__cell.-color-5
+      .mixin__cell.-color-6
 
 `,
 scss:`
@@ -302,35 +314,38 @@ scss:`
   +demo({
     classes: {
 html:`
-p (Horizontal both sides delayed)
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-h-delayed.grid--gutter-20.grid--cols-3
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-hr
-p (Left side delayed)
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-left-delayed.grid--gutter-20.grid--cols-3
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
-hr
-p (Right side delayed)
-.add-border.grid__wrapper
-  .grid.grid--outerGutters-right-delayed.grid--gutter-20.grid--cols-3
-    .grid__cell.-color-1
-    .grid__cell.-color-2
-    .grid__cell.-color-3
-    .grid__cell.-color-4
-    .grid__cell.-color-5
-    .grid__cell.-color-6
+figure
+  figcaption Horizontal outer gutter both sides delayed
+  .grid__wrapper
+    .grid.grid--outerGutters-h-delayed.grid--gutter-20.grid--cols-3
+      .grid__cell.-color-1
+      .grid__cell.-color-2
+      .grid__cell.-color-3
+      .grid__cell.-color-4
+      .grid__cell.-color-5
+      .grid__cell.-color-6
+
+figure
+  figcaption Left outer gutter delayed
+  .grid__wrapper
+    .grid.grid--outerGutters-left-delayed.grid--gutter-20.grid--cols-3
+      .grid__cell.-color-1
+      .grid__cell.-color-2
+      .grid__cell.-color-3
+      .grid__cell.-color-4
+      .grid__cell.-color-5
+      .grid__cell.-color-6
+
+figure
+  figcaption Right outer gutter delayed
+  .grid__wrapper
+    .grid.grid--outerGutters-right-delayed.grid--gutter-20.grid--cols-3
+      .grid__cell.-color-1
+      .grid__cell.-color-2
+      .grid__cell.-color-3
+      .grid__cell.-color-4
+      .grid__cell.-color-5
+      .grid__cell.-color-6
 `,
 scss:`
 //Define gutter sizes like this
@@ -347,35 +362,38 @@ $grid-page-width: 1200px;
 
     mixin: {
 html:`
-p (Horizontal both sides delayed)
-.mixin__wrapper.add-border
-  .mixin-21
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
-hr
-p (Left side delayed)
-.mixin__wrapper.add-border
-  .mixin-22
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
-hr
-p (Right side delayed)
-.mixin__wrapper.add-border
-  .mixin-23
-    .mixin__cell.-color-1
-    .mixin__cell.-color-2
-    .mixin__cell.-color-3
-    .mixin__cell.-color-4
-    .mixin__cell.-color-5
-    .mixin__cell.-color-6
+figure
+  figcaption Horizontal outer gutter, both sides delayed
+  .mixin__wrapper
+    .mixin-21
+      .mixin__cell.-color-1
+      .mixin__cell.-color-2
+      .mixin__cell.-color-3
+      .mixin__cell.-color-4
+      .mixin__cell.-color-5
+      .mixin__cell.-color-6
+
+figure
+  figcaption Left outer gutter delayed
+  .mixin__wrapper
+    .mixin-22
+      .mixin__cell.-color-1
+      .mixin__cell.-color-2
+      .mixin__cell.-color-3
+      .mixin__cell.-color-4
+      .mixin__cell.-color-5
+      .mixin__cell.-color-6
+
+figure
+  figcaption Right outer gutter delayed
+  .mixin__wrapper
+    .mixin-23
+      .mixin__cell.-color-1
+      .mixin__cell.-color-2
+      .mixin__cell.-color-3
+      .mixin__cell.-color-4
+      .mixin__cell.-color-5
+      .mixin__cell.-color-6
 `,
 scss:`
 .mixin-21 {

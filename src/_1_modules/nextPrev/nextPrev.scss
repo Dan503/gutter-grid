@@ -1,36 +1,49 @@
 
 .nextPrev {
+	$this: &;
 	margin-top: 50px;
+
 	&__tag {
-		color: #4d7f22;
+		color: $CB-green-dark;
 		font-size: 0.8em;
 		display: block;
+		transition: color 0.3s;
+	}
+	&__gridCell {
+		@include mq(max, bp('phablet')) {
+			flex-grow: 1;
+		}
 	}
 	&__link {
+		padding: 10px 20px;
+
 		.-next & {
-			.csstransforms & {
-				padding-right: 50px;
-			}
+			padding-right: 50px;
 		}
 		.-prev & {
-			.csstransforms & {
-				padding-left: 50px;
-			}
+			padding-left: 50px;
 		}
+
 		&:hover, &:focus {
-			background-color: #f0f0f0;
-			.nextPrev {
-				&__title {
-					//text-decoration: underline;
+		#{$this} {
+				&__tag {
+					color: $CB-green-light;
+				}
+				&__arrow {
+					&::before {
+						border-color: $CB-green-light;
+					}
 				}
 			}
 		}
 	}
+
 	&__arrow {
 		display: block;
 		@include MG-centered('v');
 		height: 20px;
 		width: 15px;
+
 		&:before {
 			content: '';
 			display: block;
@@ -39,18 +52,14 @@
 			right: 15px;
 			top: -9px;
 			&:before {
-				@include MG-chevron('right',#000, 15px, 1px);
+				@include MG-chevron('right', $CB-green-dark, 15px, 1px);
 			}
 		}
 		.-prev & {
 			left: 15px;
 			&:before {
-				@include MG-chevron('left',#000, 15px, 1px);
+				@include MG-chevron('left', $CB-green-dark, 15px, 1px);
 			}
-		}
-
-		.no-csstransforms & {
-			display: none;
 		}
 	}
 }

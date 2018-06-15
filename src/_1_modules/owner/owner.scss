@@ -1,31 +1,34 @@
 
 .owner {
-	background-image: url(../images/pattern.png);
+	&__avatar#{&}__avatar {
+		background-color: #666;
+		display: block;
+		margin: -40px 0;
+		margin-right: 10px;
+		transition: background-color 0.3s;
 
-	.no-flexbox & {
-		&:after {
-			display: block;
-			content: '';
-			clear: both;
+		@include mq(max, 750px){
+			margin-top: -5px;
+		}
+
+		&:hover, &:focus {
+			background-color: $CB-green-mid;
 		}
 	}
 
-	&__userCell {
-		.no-flexbox & {
-			float: left;
-		}
+	&__img {
+		display: block;
+		border: 1px solid #2a2a2a;
+		margin: 5px;
 	}
 
-	&__shareCell {
-		padding-left: 70px;
-		.no-flexbox & {
-			//can't be stuffed trying to make this bit to work
-			display: none;
+	&__text {
+		font-family:Georgia, serif;
+
+		a {
+			font-size: 16px;
+			font-style: italic;
+			white-space: nowrap;
 		}
-	}
-	p {
-		position: relative;
-		padding-left: 70px;
-		margin: 0;
 	}
 }

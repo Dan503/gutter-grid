@@ -1,6 +1,19 @@
 
 .tabs {
-	padding-top: 1px;
+
+	&__links {
+		background: $CB-green-pale;
+		padding: 5px;
+		// padding-bottom: 1px;
+		margin-bottom: 9px;
+		border: 1px solid $CB-green-dark;
+		border-radius: 3px;
+
+		.no-js & {
+			display: none;
+		}
+	}
+
 	&__link {
 		text-align: center;
 		text-transform: capitalize;

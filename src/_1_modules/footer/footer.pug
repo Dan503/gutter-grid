@@ -1,0 +1,18 @@
+
+mixin footer(spec)
+	-
+		spec = defaultTo(spec, {
+			classes : '',
+		});
+
+	footer.footer(class=spec.classes)&attributes(attributes)
+		h2.TK-visHid Site footer
+		+ribbon()(class="-pattern -down")
+			.grid.grid--space-between.grid--vAlign-center
+				.footer__owner.grid__cell
+					+owner
+				.footer__share.grid__cell
+					+share()
+
+		+pageLayout()
+			.creds &nbsp;

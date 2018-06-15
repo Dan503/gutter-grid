@@ -72,74 +72,75 @@ scss:`
   +demo({
     classes: {
 html:`
-p (Align right)
-.grid.grid--align-right.grid--cols-3
-  .grid__cell.-color-1
-  .grid__cell.-color-2
-  .grid__cell.-color-3
-  .grid__cell.-color-4
-  .grid__cell.-color-5
-hr
-p (Align center)
-.grid.grid--align-center.grid--cols-3
-  .grid__cell.-color-1
-  .grid__cell.-color-2
-  .grid__cell.-color-3
-  .grid__cell.-color-4
-  .grid__cell.-color-5
-hr
-p (Space between)
-.grid.grid--space-between.grid--cols-3
-  .grid__cell.-color-1
-  .grid__cell.-color-2
-  .grid__cell.-color-3
-  .grid__cell.-color-4
-  .grid__cell.-color-5
-hr
-p (Space around)
-.grid.grid--space-around.grid--cols-3
-  .grid__cell.-color-1
-  .grid__cell.-color-2
-  .grid__cell.-color-3
-  .grid__cell.-color-4
-  .grid__cell.-color-5
+figure
+  figcaption Align right
+  .grid.grid--align-right.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+figure
+  figcaption Align center
+  .grid.grid--align-center.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+figure
+  figcaption Space between
+  .grid.grid--space-between.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+figure
+  figcaption Space around
+  .grid.grid--space-around.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
 `
     },
 
     mixin: {
 html:`
-p (Align right)
-.mixin-28
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
-  .mixin__cell.-color-3
-  .mixin__cell.-color-4
-  .mixin__cell.-color-5
-hr
-p (Align center)
-.mixin-29
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
-  .mixin__cell.-color-3
-  .mixin__cell.-color-4
-  .mixin__cell.-color-5
-hr
-p (Space between)
-.mixin-30
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
-  .mixin__cell.-color-3
-  .mixin__cell.-color-4
-  .mixin__cell.-color-5
-hr
-p (Space around)
-.mixin-31
-  .mixin__cell.-color-1
-  .mixin__cell.-color-2
-  .mixin__cell.-color-3
-  .mixin__cell.-color-4
-  .mixin__cell.-color-5
-
+figure
+  figcaption Align right
+  .mixin-28
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+figure
+  figcaption Align center
+  .mixin-29
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+figure
+  figcaption Space between
+  .mixin-30
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+figure
+  figcaption Space around
+  .mixin-31
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
 `,
 scss:`
 .mixin-28 {
@@ -167,7 +168,7 @@ scss:`
   +demo({
     classes: {
 html:`
-ol.grid.grid--space-around.grid--hasInners.add-border.add-padding.TK-noDots
+ol.grid.grid--space-around.grid--hasInners.add-padding.TK-noDots
   - var i = 0
   while i < 5
     li.grid__cell
@@ -178,7 +179,7 @@ ol.grid.grid--space-around.grid--hasInners.add-border.add-padding.TK-noDots
 
     mixin: {
 html:`
-ol.mixin-32.add-border.add-padding.TK-noDots
+ol.mixin-32.add-padding.TK-noDots
   - var i = 0
   while i < 5
     li.mixin__cell

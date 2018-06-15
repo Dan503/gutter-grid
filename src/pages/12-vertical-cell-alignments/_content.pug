@@ -6,41 +6,42 @@ block content
     classes: {
 html:`
 - var heights = [100, 50, 75, 50, 75, 100];
-
-p (top align)
-.grid.grid--vAlign-top.grid--cols-3.add-border
-  each height, i in heights
-    .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
-hr
-p (bottom align)
-.grid.grid--vAlign-bottom.grid--cols-3.add-border
-  each height, i in heights
-    .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
-hr
-p (center align)
-.grid.grid--vAlign-center.grid--cols-3.add-border
-  each height, i in heights
-    .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+figure
+  figcaption Top align
+  .grid.grid--vAlign-top.grid--cols-3
+    each height, i in heights
+      .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+figure
+  figcaption Bottom align
+  .grid.grid--vAlign-bottom.grid--cols-3
+    each height, i in heights
+      .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+figure
+  figcaption Center align
+  .grid.grid--vAlign-center.grid--cols-3
+    each height, i in heights
+      .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 `,
 },
     mixin: {
 html:`
 - var heights = [100, 50, 75, 50, 75, 100];
 
-p (top align)
-.mixin-34.add-border
-  each height, i in heights
-    .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
-hr
-p (bottom align)
-.mixin-35.add-border
-  each height, i in heights
-    .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
-hr
-p (center align)
-.mixin-36.add-border
-  each height, i in heights
-    .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+figure
+  figcaption Top align
+  .mixin-34
+    each height, i in heights
+      .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+figure
+  figcaption Bottom align
+  .mixin-35
+    each height, i in heights
+      .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
+figure
+  figcaption Center align
+  .mixin-36
+    each height, i in heights
+      .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 `,
 scss: `
 .mixin-34 {
@@ -154,7 +155,7 @@ scss: `
   +demo({
     classes: {
 html:`
-.grid.grid--vAlign-bottom.add-border(style='height:100px;')
+.grid.grid--vAlign-bottom(style='height:100px;')
   - var heights = [80, 25, 50, 75];
   each height, i in heights
     .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join('') + (i === 2 ? ' grid__cell--vAlign-top' : ''))
@@ -162,7 +163,7 @@ html:`
 },
     mixin: {
 html:`
-.mixin-38C.add-border(style='height:100px;')
+.mixin-38C(style='height:100px;')
   - var heights = [80, 25, 50, 75];
   each height, i in heights
     .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join('') + (i === 2 ? ' mixin__oddOneOut' : ''))
@@ -191,7 +192,7 @@ scss: `
   +demo({
     classes: {
 html:`
-.grid__wrapper.add-border
+.grid__wrapper
   .grid.grid--vertical.grid--gutter-20
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -201,7 +202,7 @@ html:`
 
     mixin: {
 html:`
-.mixin__wrapper.add-border
+.mixin__wrapper
   .mixin-33
     .mixin__cell.-color-1
     .mixin__cell.-color-2

@@ -1,25 +1,6 @@
 
 include ../_pugFunctions/config/config-loader.pug
 
-include /_1_modules/alert/alert
-include /_1_modules/skipLinks/skipLinks
-include /_1_modules/siteContainer/siteContainer
-include /_1_modules/pageLayout/pageLayout
-include /_1_modules/nav/nav
-include /_1_modules/nextPrev/nextPrev
-include /_1_modules/0-cmsContent/cmsContent
-include /_1_modules/toolbar/toolbar
-include /_1_modules/viewGitHub/viewGitHub
-include /_1_modules/systemSwitch/systemSwitch
-
-include /_1_modules/demo/demo
-
-
-include /_1_modules/owner/owner
-include /_1_modules/logo/logo
-
-include /_1_modules/svg/svg
-
 //- console.log(location)
 //- console.log(layout)
 //- console.log(get.current.title)
@@ -87,60 +68,84 @@ head
 		<![endif]-->
 
 body
+	div.moduleLoaded.TK-hide
+		include /_1_modules/alert/alert
+		include /_1_modules/skipLinks/skipLinks
+		include /_1_modules/siteContainer/siteContainer
+		include /_1_modules/pageLayout/pageLayout
+		include /_1_modules/nav/nav
+		include /_1_modules/nextPrev/nextPrev
+		include /_1_modules/0-cmsContent/cmsContent
+		include /_1_modules/toolbar/toolbar
+		include /_1_modules/viewGitHub/viewGitHub
+		include /_1_modules/systemSwitch/systemSwitch
+		include /_1_modules/share/share
+		include /_1_modules/ribbon/ribbon
+		include /_1_modules/footer/footer
 
-	h1.TK-visHid= pageTitle
+		include /_1_modules/demo/demo
+
+
+		include /_1_modules/owner/owner
+		include /_1_modules/logo/logo
+
+		include /_1_modules/svg/svg
 
 	//holds the svg sprite
 	div.svgSprite(style="display:none")
 		include ../../tmp/svg-symbols.svg
 
-	//- appears in IE <= 9
-	<!--[if lt IE 9]>
-	+alert({type:'error'})
-		p You are using an #[strong outdated] browser. Please #[a(href="http://browsehappy.com/") upgrade your browser] to improve your experience.
-	<![endif]-->
-
-	//- I've found the <noscript> tag to not always work properly
-	+alert({type:'nojs'})
-		p Please #[a(href="http://www.enable-javascript.com/") enable javascript] to access the full functionality of this site
-
 	+siteContainer({classes:{outer:'wrapper'}})
+		header
+			h1.TK-visHid= pageTitle
+			+skipLinks()
 
-		+skipLinks()
+			//- appears in IE <= 9
+			<!--[if lt IE 9]>
+			+alert({type:'error'})
+				p You are using an #[strong outdated] browser. Please #[a(href="http://browsehappy.com/") upgrade your browser] to improve your experience.
+			<![endif]-->
 
-		header.header
-			+pageLayout()
-				+logo({classes: 'title', elem: 'p'})
+			//- I've found the <noscript> tag to not always work properly
+			+alert({type:'nojs'})
+				p Please #[a(href="http://www.enable-javascript.com/") enable javascript] to access the full functionality of this site
 
-				pre.header__npm: code npm install gutter-grid --save
+			.header
+				h2.TK-visHid Site header
+				+pageLayout()
+					+logo({classes: 'title', elem: 'p'})
+
+					pre.header__npm: code npm install gutter-grid --save
+
+					#container
+						h3.TK-visHid Tag line
+						p.tagline=pkg.description
+
+		+toolbar()
 
 		block mainArea
 			.mainArea.TK-flexGrow
 				+pageLayout()
-					#container
-						p.tagline=pkg.description
-					#main(role='main')
-						+toolbar()
-						.grid.grid--gutter-body
+					#main
+						.grid.grid--gutter-body.grid--outerGutters
 							+nav({classes: 'grid__cell grid__cell--noResize'})
-							.grid__cell
-								article.markdown-body#content
-									p.TK-nonDesktop
-										strong: em This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.
+							main.grid__cell
+								article.markdown-body
 
 									+cmsContent()
-										h2= get.current.altTitle || get.current.title
+										header
+											h2.skipLinks__target#content(tabindex="-1")
+												span.TK-visHid Body:
+												= get.current.altTitle || get.current.title
+											aside.TK-nonDesktop
+												h3.TK-visHid Mobile warning
+												p: strong: em This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.
+
 										block content
 
-									+nextPrev()
+								+nextPrev()
 
-		footer.footer
-			+pageLayout()
-				+owner()
-
-				.creds
-					small
-						| theme by #[a(href='https://twitter.com/jonrohan/') Jon Rohan] (although lots of alterations have been made to it)
+		+footer()
 
 
 	script(src=basePath+'/assets/scripts/plugins/highlight.pack.js')

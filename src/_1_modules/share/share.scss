@@ -3,8 +3,14 @@
 	width: 100%;
 	max-width: 350px;
 	margin: 0 auto;
+
+	&__heading {
+		font-weight: normal;
+		font-size: 15px;
+	}
+
 	&__link {
-		margin-left: 20px;
+		margin-left: 15px;
 		display: block;
 		svg {
 			transition: 0.3s;
