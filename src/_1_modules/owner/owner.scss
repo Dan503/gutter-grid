@@ -1,13 +1,18 @@
 
 .owner {
-	&__avatar {
+	&__avatar#{&}__avatar {
 		background-color: #666;
 		display: block;
 		margin: -40px 0;
 		margin-right: 10px;
+		transition: background-color 0.3s;
 
 		@include mq(max, 750px){
 			margin-top: -5px;
+		}
+
+		&:hover, &:focus {
+			background-color: $CB-green-mid;
 		}
 	}
 
