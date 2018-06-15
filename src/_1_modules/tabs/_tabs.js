@@ -28,14 +28,14 @@ class tabs__trigger {
 			}
 		})
 
-		// this.$trigger.click((e)=>{
-		// 	e.preventDefault();
-		// 	this.activate();
+		this.$trigger.click((e)=>{
+			e.preventDefault();
+			this.activate();
 
-		// 	if (this.tabs.is_defaultSwitcher) {
-		// 		this.signal();
-		// 	}
-		// });
+			if (this.tabs.is_defaultSwitcher) {
+				this.signal();
+			}
+		});
 	}
 	activate(isRemote = true){
 		this.deactivate_others();
