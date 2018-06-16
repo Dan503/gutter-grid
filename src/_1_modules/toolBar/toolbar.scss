@@ -3,4 +3,10 @@
 	position: sticky;
 	top: 0;
 	z-index: 5;
+
+	.lt-ie9 & {
+		.grid, .grid__cell {
+			border-color: #1a1a1a;
+		}
+	}
 }
