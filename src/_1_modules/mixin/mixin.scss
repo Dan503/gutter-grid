@@ -141,6 +141,10 @@
 		@include grid(3, $align: center, $wrap: true);
 	}
 
+	&-29B {
+		@include grid(3, $align: stretch, $wrap: true);
+	}
+
 	&-30 {
 		@include grid(3, $space: between, $wrap: true);
 	}
