@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Enabling/disabling wrapping | Gutter Grid</title>
+  <title>Control wrapping | Gutter Grid</title>
   <meta name="description" content="A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta property="og:site_name" content="Gutter Grid">
-  <meta property="og:title" content="Gutter Grid: Enabling/disabling wrapping">
+  <meta property="og:title" content="Gutter Grid: Control wrapping">
   <meta property="og:description" content="A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system">
   <meta property="og:type" content="article">
   <meta property="og:image" content="http://gutter-grid.net/assets/images/social-media.jpg">
-  <meta property="og:url" content="http://gutter-grid.net/pages/05-enabling-disabling-wrapping/">
+  <meta property="og:url" content="http://gutter-grid.net/pages/05-control-wrapping/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@Daniel_Tonon">
-  <meta name="twitter:title" content="Gutter Grid: Enabling/disabling wrapping">
+  <meta name="twitter:title" content="Gutter Grid: Control wrapping">
   <meta name="twitter:description" content="A Sass flexbox based grid system with backups for legacy browsers featuring a robust gutter system">
   <meta name="twitter:image" content="http://gutter-grid.net/assets/images/social-media.jpg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -38,7 +38,7 @@
   <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 9]><!-->
   <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
 <!--[if lt IE 10]>
-  <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
 <body>
   <div class="moduleLoaded TK-hide">
@@ -56,7 +56,7 @@
       <div class="siteContainer wrapper">
         <div class="siteContainer__inner">
           <header>
-            <h1 class="TK-visHid">Enabling/disabling wrapping</h1>
+            <h1 class="TK-visHid">Control wrapping</h1>
                 <div class="skipLinks"><a class="skipLinks__link TK-skipLink" href="#navigation">Skip to navigation</a><a class="skipLinks__link TK-skipLink" href="#content">Skip to content</a>
                 </div><!--[if lt IE 9]>
                 <div class="alert alert--error ">
@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v5.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -119,13 +119,13 @@
                                         <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
-                                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
+                                      <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
-                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/05-enabling-disabling-wrapping/" aria-current="page">Enabling/disabling wrapping</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/05-control-wrapping/" aria-current="page">Control wrapping</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
@@ -144,7 +144,7 @@
                           <article class="markdown-body">
                                 <div class="cmsContent">
                                   <header>
-                                    <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Enabling/disabling wrapping
+                                    <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Control wrapping
                                     </h2>
                                     <aside class="TK-nonDesktop">
                                       <h3 class="TK-visHid">Mobile warning</h3>
@@ -157,10 +157,10 @@
 <li>It has been explicitly enabled using <code>$wrap: true</code> in the mixin or <code>.grid--wrap</code> in the class system</li>
 <li>The screen width is less than the <code>$grid-page-width</code> setting which is 1200px by default (more on that a bit later)</li>
 </ul>
-<p>Note that if <code>$grid-legacy-support</code> is enabled in version 4, it reverts back to the version 3 behaviour of needing the <code>$wrap</code> setting to be explicitly enabled (or <code>grid--wrap</code> class applied) before it will wrap. This was a limitation that came from trying to provide the best possible fallback code for IE 8 and 9.</p>
+<p>Note that if <code>$grid-legacy-support</code> is enabled in version 4+, it reverts back to the version 3 behaviour of needing the <code>$wrap</code> setting to be explicitly enabled (or <code>grid--wrap</code> class applied) before it will wrap. This was a limitation that came from trying to provide the best possible fallback code for IE 8 and 9.</p>
 
                                       <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>6 cells in a 3 column grid. In modern browsers (and IE 10 &amp; 11) this will wrap so that it has 3 cells per row. IE 8 and 9 are loading a different style sheet with legacy mode enabled. They should be displaying these grid cells all in a single row if the screen size is larger than 1200px.</p>
+                                        <figcaption class="demo__summary demo__segment"><p>6 cells in a 3 column grid. In modern browsers (and IE 10 &amp; 11) this will wrap so that it has 3 cells per row. IE 8 and 9 are loading a different style sheet with legacy mode enabled. They will try to fit the grid cells all in a single row (and they don&#39;t do a very good job of it).</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -243,7 +243,7 @@
                                         </div>
                                       </figure>
                                       <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>When <code>$grid-legacy-support</code> is enabled, the <code>$wrap: true</code> setting or <code>grid--wrap</code> class needs to be applied for the cells to wrap on desktop (view in IE 8/9).</p>
+                                        <figcaption class="demo__summary demo__segment"><p>When <code>$grid-legacy-support</code> is enabled, the <code>$wrap: true</code> setting or <code>grid--wrap</code> class needs to be applied for the cells to wrap on desktop (compare with the first example in IE 8/9).</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -345,7 +345,7 @@ $grid-page-width: 1200px;
                                       </figure><p>To just outright disable grid wrapping for all screen sizes, use the <code>grid--noWrap</code> class for the class based system or set <code>$wrap</code> to <code>false</code> if using the mixin.</p>
 
                                       <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Disable grid wrapping at all screen sizes</p>
+                                        <figcaption class="demo__summary demo__segment"><p>Disable grid wrapping at all screen sizes. Modern browsers will try and squeeze all of the grid cells down into a single row. This can lead to more columns being generated than you intended. In IE 8 and 9, this will appear the same as the first example.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -365,7 +365,7 @@ $grid-page-width: 1200px;
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="grid grid--cols-6 grid--noWrap">
+<div class="grid grid--cols-3 grid--noWrap">
   <div class="grid__cell -color-1"></div>
   <div class="grid__cell -color-2"></div>
   <div class="grid__cell -color-3"></div>
@@ -377,7 +377,7 @@ $grid-page-width: 1200px;
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;grid grid--cols-6 grid--noWrap&quot;&gt;
+&lt;div class=&quot;grid grid--cols-3 grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -417,7 +417,7 @@ $grid-page-width: 1200px;
                                                                 <div class="grid__cell demo__markup demo__segment scss">
                                                                   <pre><code class="scss">
 .mixin-9 {
-  @include grid(6, $wrap: false);
+  @include grid(3, $wrap: false);
 }</code></pre>
                                                                 </div>
                                                               </div>
@@ -427,7 +427,6 @@ $grid-page-width: 1200px;
                                               </div>
                                         </div>
                                       </figure><p>This is different from disabling the default media queries though. If you want to just prevent the default media queries from affecting the grid, it&#39;s better to use the <code>grid--noMQs</code> class for the class based system or the <code>$MQs: false</code> setting if using the mixin. You will learn more about disabling media queries on the next page.</p>
-<p><strong>Note:</strong> documentation examples from this point forward are written in the non-legacy version 4+ syntax unless otherwise stated.</p>
 
                                 </div>
                           </article>
@@ -451,7 +450,7 @@ $grid-page-width: 1200px;
                         <div class="footer__owner grid__cell">
                               <div class="owner">
                                 <h3 class="TK-visHid">Owner</h3>
-                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=75&amp;default=retro" alt="Dan503" width="75" height="75"></a>
+                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=150&amp;default=retro" alt="Dan503" width="75" height="75"></a>
                                   <p class="owner__text grid__cell"><a href="https://github.com/Dan503">Daniel Tonon</a> maintains <a href="https://github.com/Dan503/gutter-grid">Gutter Grid</a></p>
                                 </div>
                               </div>
@@ -462,19 +461,19 @@ $grid-page-width: 1200px;
                                   <h3 class="share__heading grid__cell"> Share:</h3>
                                   <div class="grid__cell">
                                     <ul class="share__list grid grid--noWrap grid--space-between TK-noDots">
-                                      <li class="share__option grid__cell"><a class="share__link -mail JS-share__link" href="mailto:?subject=Share subject&body=Share body http://gutter-grid.net/pages/05-enabling-disabling-wrapping/" title="Share via email">
+                                      <li class="share__option grid__cell"><a class="share__link -mail JS-share__link" href="mailto:?subject=Share subject&body=Share body http://gutter-grid.net/pages/05-control-wrapping/" title="Share via email">
                                               <svg class="svg-mail">
                                                 <use xlink:href="#svg-mail"></use>
                                               </svg><span class="TK-visHid">Share via email</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -facebook JS-share__link" href="http://www.facebook.com/sharer/sharer.php?u=http://gutter-grid.net/pages/05-enabling-disabling-wrapping/&title=Gutter%20Grid:%20Enabling/disabling%20wrapping" title="Share on Facebook">
+                                      <li class="share__option grid__cell"><a class="share__link -facebook JS-share__link" href="http://www.facebook.com/sharer/sharer.php?u=http://gutter-grid.net/pages/05-control-wrapping/&title=Gutter%20Grid:%20Control%20wrapping" title="Share on Facebook">
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/05-enabling-disabling-wrapping/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/05-control-wrapping/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -linkedin JS-share__link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://gutter-grid.net/pages/05-enabling-disabling-wrapping/&title=Gutter%20Grid:%20Enabling/disabling%20wrapping" title="Share on LinkedIn">
+                                      <li class="share__option grid__cell"><a class="share__link -linkedin JS-share__link" href="https://www.linkedin.com/shareArticle?mini=true&url=http://gutter-grid.net/pages/05-control-wrapping/&title=Gutter%20Grid:%20Control%20wrapping" title="Share on LinkedIn">
                                               <svg class="svg-linkedin">
                                                 <use xlink:href="#svg-linkedin"></use>
                                               </svg><span class="TK-visHid">Share on LinkedIn</span></a></li>

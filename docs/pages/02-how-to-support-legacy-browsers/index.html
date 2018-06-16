@@ -38,7 +38,7 @@
   <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 9]><!-->
   <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
 <!--[if lt IE 10]>
-  <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
 <body>
   <div class="moduleLoaded TK-hide">
@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v5.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -119,13 +119,13 @@
                                         <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
-                                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
+                                      <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/02-how-to-support-legacy-browsers/" aria-current="page">How to support legacy browsers</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
-                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-control-wrapping/">Control wrapping</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
@@ -150,23 +150,33 @@
                                       <h3 class="TK-visHid">Mobile warning</h3>
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
-                                  </header><p>Check <a href="https://caniuse.com/#feat=flexbox">caniuse.com</a> and the browser statistics for your site to see if you need to bother taking any of these extra steps. You most likely can skip this whole page. Browsers to be concerned about are IE10 and bellow, Opera Mini, and Android 4 browser. Gutter Grid doesn&#39;t support any lower than IE8.</p>
-<h3 id="supporting-browsers-that-support-flexbox-but-not-the-latest-syntax-ie10-">Supporting browsers that support flexbox but not the latest syntax (IE10)</h3>
+                                  </header>
+                                  <blockquote>
+                                    <p>If you do not need to support IE10 and bellow, Opera Mini, or Android 4 browser <a href="/pages/03-basic-usage/"><strong>Skip this section!</strong></a></p>
+                                  </blockquote>
+                                  <p>Check <a href="https://caniuse.com/#feat=flexbox">caniuse.com</a> and the browser statistics for your site to see if you need to bother taking any of these extra steps. You most likely can just <a href="/pages/03-basic-usage/">skip this whole page</a> since the browsers it caters to have extremely low usage. Browsers to be concerned about are IE10 and bellow, Opera Mini, and Android 4 browser. Gutter Grid doesn't support any lower than IE8 though.</p><h3 id="supporting-browsers-that-support-flexbox-but-not-the-latest-syntax-ie10-">Supporting browsers that support flexbox but not the latest syntax (IE10)</h3>
 <p>IE10 has support for flexbox however you will need to incorporate <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> into your build process to support it&#39;s outdated flexbox syntax.</p>
 <p>Also be aware of this <a href="http://stackoverflow.com/questions/16808815/ie10-flexbox-p-element-non-wrapping/33795089">IE10 flexbox bug</a> which can cause problems in page layouts.</p>
 <h3 id="supporting-browsers-that-do-not-support-flexbox-at-all-ie8-9-">Supporting browsers that do not support flexbox at all (IE8 &amp; 9)</h3>
 <p>Gutter Grid is powered mostly by flexbox. When legacy support is enabled, it adds <code>display:table</code>, <code>float:left</code> and <code>display:inline-block</code> backups for when <code>flexbox</code> is not supported. In general it will use <code>display:table</code> since tables act in a very similar sort of way to how flexbox acts. However, when wrapping is involved and the browser does not support the <code>flex-wrap</code> css property, it will use <code>float:left</code> styling instead. The <code>display:inline-block</code> backups mostly come into play when horizontal cell alignment settings are used.</p>
-<p>To enable legacy support for browsers that don&#39;t support flexbox, you will need to set the <code>$grid-legacy-support</code> setting to <code>true</code> before the import statement.</p>
+<h4 id="enable-legacy-mode">Enable legacy mode</h4>
+<p>To enable legacy support for browsers that don&#39;t support flexbox, you will need to set the <code>$grid-legacy-support</code> setting to <code>true</code> before the import statements.</p>
 <pre><code class="lang-scss">$grid-legacy-support: true;
 @import &#39;../node_modules/mq-scss/mq&#39;;
 @import &#39;../node_modules/gutter-grid/grid-mixin&#39;;
+@import &#39;../node_modules/gutter-grid/grid-classes&#39;;
 </code></pre>
-<p>Please note that although there are fallbacks in place, they aren&#39;t able to perfectly repliate the behaviour of a browser that has full flexbox support. <strong>The design in IE8 &amp; 9 won&#39;t look 100% like the design on browsers that support flexbox</strong>.</p>
+<p>Please note that although there are fallbacks in place, they aren&#39;t able to perfectly replicate the behaviour of a browser that has full flexbox support. <strong>The design in IE8 &amp; 9 won&#39;t look 100% like the design on browsers that support flexbox</strong>.</p>
 <p>The fallbacks are mainly just there to help stop the layout from completly breaking on you when compared to using purely flexbox on it&#39;s own. You will likely need to do some extra custom styles but the fallbacks will most likely get you to about 80% or more of the way there.</p>
-<p><strong>Warning:</strong> The default settings are different when <code>$grid-legacy-support</code> is enabled. Notes will be provided throughout the documentation where default settings differ.</p>
+<h5 id="legacy-mode-does-not-wrap-by-default">Legacy mode does not wrap by default</h5>
+<p>In the modern version of Gutter Grid, grids will wrap by default if a column count has been defined. This is not the case when <code>$grid-legacy-support</code> is enabled.</p>
+<p>Not wrapping by default allows legacy browsers to use table layout as a fallback for flexbox. Table layout forces the table cells to take up the full height of their parent element just like flexbox does. The downside to table layout is that it can&#39;t wrap. I wanted to use table layout as the primary fallback for Gutter Grid so I couldn&#39;t make wrapping the default behaviour in legacy mode.</p>
+<p>Unless otherwise stated, I&#39;ve written all the examples in the documentation assuming that Gutter Grid is <strong>not</strong> being run in legacy mode. If viewing examples in IE 8 or 9, view the mixin tab. The mixin tab has <code>$wrap: true</code> secretly applied to the examples in the real SCSS code. This allows the mixin examples to look more like what they are supposed to look like in IE 8/9. <code>$wrap: true</code> is not displayed in the example code since it is not necessary when running Gutter Grid in modern mode. The classes tab is an accurate portrayal of what Gutter Grid will output in IE 8/9 if you use exactly what is written in the example code.</p>
+<p>Remember, if you want wrapping in legacy mode you always need to either add <code>$wrap: true</code> if using the mixin or <code>.grid--wrap</code> if using the class system.</p>
+<h4 id="install-modernizr">Install Modernizr</h4>
 <p>In order to detect if the browser supports flexbox and flexwrap, Gutter Grid is dependent on <a href="https://modernizr.com/">Modernizr</a> being a part of your build process. Gutter Grid cannot use feature queries to detect flexbox support due to IE10 and 11 supporting flexbox but not supporting feature queries. The particular Modernizr properties that it is dependent on are <code>flexwrap</code> and <code>flexbox</code>. To add Modernizr to your site, you have two options.</p>
 <ol>
-<li><a href="https://modernizr.com/download?setclasses&amp;q=flex">download a custom build</a> from the Modernizr website that includes flexbox and flexwrap in it, then load the javascript file that Modernizr generated into your website.</li>
+<li><a href="https://modernizr.com/download?setclasses&amp;q=flex">Download a custom build</a> from the Modernizr website that includes flexbox and flexwrap in it, then load the javascript file that Modernizr generated into your website.</li>
 <li>Incorporate <a href="https://www.npmjs.com/package/customizr">Customizr</a> into your build process. I recommend taking the second option.</li>
 </ol>
 <p>If taking the <a href="https://www.npmjs.com/package/customizr">Customizr</a> route, you will likely need to force it to include <code>flexwrap</code> and <code>flexbox</code> tests since it won&#39;t look through the <code>node_modules</code> folder for Modernizr references (and for good reason!). You will also need to ensure that it is adding classes to the page. You can do this when defining the Customizr configuration settings like this:</p>
@@ -181,7 +191,7 @@
   ]
 }
 </code></pre>
-<h3 id="supporting-ie8-specifically">Supporting IE8 specifically</h3>
+<h4 id="supporting-ie8-specifically">Supporting IE8 specifically</h4>
 <p>In order to better support IE8, the HTML for your HTML element will need to look something like this:</p>
 <pre><code class="lang-html">&lt;!--[if lte IE 8]&gt;&lt;html class=&quot;lt-ie9&quot; lang=&quot;en&quot;&gt;&lt;![endif]--&gt;
 &lt;!--[if gt IE 8]&gt;&lt;!--&gt;&lt;html lang=&quot;en&quot;&gt;&lt;!--&lt;![endif]--&gt;
@@ -195,6 +205,7 @@
 //Defaults to white
 $grid-gutter-ie-fallback: #fff;
 
+$grid-legacy-support: true;
 @import &#39;../node_modules/mq-scss/mq&#39;;
 @import &#39;../node_modules/gutter-grid/grid-mixin&#39;;
 @import &#39;../node_modules/gutter-grid/grid-classes&#39;;
@@ -231,7 +242,7 @@ $grid-calc-support: false;
                         <div class="footer__owner grid__cell">
                               <div class="owner">
                                 <h3 class="TK-visHid">Owner</h3>
-                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=75&amp;default=retro" alt="Dan503" width="75" height="75"></a>
+                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=150&amp;default=retro" alt="Dan503" width="75" height="75"></a>
                                   <p class="owner__text grid__cell"><a href="https://github.com/Dan503">Daniel Tonon</a> maintains <a href="https://github.com/Dan503/gutter-grid">Gutter Grid</a></p>
                                 </div>
                               </div>
