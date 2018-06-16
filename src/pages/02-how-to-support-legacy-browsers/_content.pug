@@ -17,7 +17,7 @@ block content
 
     #### Enable legacy mode
 
-    To enable legacy support for browsers that don't support flexbox, you will need to set the `$grid-legacy-support` setting to `true` before the import statement.
+    To enable legacy support for browsers that don't support flexbox, you will need to set the `$grid-legacy-support` setting to `true` before the import statements.
 
     ``````scss
     $grid-legacy-support: true;
@@ -36,7 +36,7 @@ block content
 
     Not wrapping by default allows legacy browsers to use table layout as a fallback for flexbox. Table layout forces the table cells to take up the full height of their parent element just like flexbox does. The downside to table layout is that it can't wrap. I wanted to use table layout as the primary fallback for Gutter Grid so I couldn't make wrapping the default behaviour in legacy mode.
 
-    Unless otherwise stated, I've written all the examples in the documentation assuming that Gutter Grid is **not** being run in legacy mode. If viewing examples in IE 8 or 9, view the mixin tab. The mixin tab has `$wrap: true` secretly applied to the examples in the real SCSS code so that the examples that need it look more like what they are intended to in IE 8/9. `$wrap: true` is not displayed in the example code since it is not necessary when running in modern mode. The classes tab is an accurate portrayal of what Gutter Grid will output in IE 8/9 if you use exactly what is written in the example code.
+    Unless otherwise stated, I've written all the examples in the documentation assuming that Gutter Grid is **not** being run in legacy mode. If viewing examples in IE 8 or 9, view the mixin tab. The mixin tab has `$wrap: true` secretly applied to the examples in the real SCSS code. This allows the mixin examples to look more like what they are supposed to look like in IE 8/9. `$wrap: true` is not displayed in the example code since it is not necessary when running Gutter Grid in modern mode. The classes tab is an accurate portrayal of what Gutter Grid will output in IE 8/9 if you use exactly what is written in the example code.
 
     Remember, if you want wrapping in legacy mode you always need to either add `$wrap: true` if using the mixin or `.grid--wrap` if using the class system.
 
