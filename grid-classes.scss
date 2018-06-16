@@ -304,6 +304,9 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		&-right {
 			justify-content: flex-end;
 		}
+		&-stretch {
+			> * { flex-grow: 1; }
+		}
 	}
 
 	//tabular/float:left backup for IE9 and below
