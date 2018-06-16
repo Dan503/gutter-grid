@@ -18,7 +18,7 @@ block content
     classes: {
 html:`
 .grid.grid--cols-4
-  .grid__cell.grid__cell--span-3.-color-1
+  .grid__cell.-color-1.grid__cell--span-3
   .grid__cell.-color-2
   .grid__cell.-color-3
   .grid__cell.-color-4
@@ -29,7 +29,7 @@ html:`
     mixin: {
 html:`
 .mixin-10
-  .mixin__cell.mixin__cellSpan.-color-1
+  .mixin__cell.-color-1.mixin__cellSpan
   .mixin__cell.-color-2
   .mixin__cell.-color-3
   .mixin__cell.-color-4
@@ -67,8 +67,8 @@ scss:`
   +demo({
     classes: {
 html:`
-.grid.grid--noMQs.grid--cols-4
-  .grid__cell.grid__cell--span-3.-color-1
+.grid.grid--cols-4.grid--noMQs
+  .grid__cell.-color-1.grid__cell--span-3
   .grid__cell.-color-2
   .grid__cell.-color-3
   .grid__cell.-color-4
@@ -79,7 +79,7 @@ html:`
     mixin: {
 html:`
 .mixin-11
-  .mixin__cell.mixin__cellSpan.-color-1
+  .mixin__cell.-color-1.mixin__cellSpan
   .mixin__cell.-color-2
   .mixin__cell.-color-3
   .mixin__cell.-color-4

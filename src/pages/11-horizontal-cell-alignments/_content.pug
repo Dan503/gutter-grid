@@ -41,7 +41,7 @@ scss:`
   +demo({
     classes: {
 html:`
-.grid.grid--stretch.grid--cols-3
+.grid.grid--cols-3.grid--stretch
   .grid__cell.-color-1
   .grid__cell.-color-2
   .grid__cell.-color-3
@@ -74,7 +74,7 @@ scss:`
 html:`
 figure
   figcaption Align right: #[code grid--align-right]
-  .grid.grid--align-right.grid--cols-3
+  .grid.grid--cols-3.grid--align-right
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -82,7 +82,7 @@ figure
     .grid__cell.-color-5
 figure
   figcaption Align center: #[code grid--align-center]
-  .grid.grid--align-center.grid--cols-3
+  .grid.grid--cols-3.grid--align-center
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -90,7 +90,7 @@ figure
     .grid__cell.-color-5
 figure
   figcaption Align center: #[code grid--align-stretch]
-  .grid.grid--align-stretch.grid--cols-3
+  .grid.grid--cols-3.grid--align-stretch
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -98,7 +98,7 @@ figure
     .grid__cell.-color-5
 figure
   figcaption Space between: #[code grid--space-between]
-  .grid.grid--space-between.grid--cols-3
+  .grid.grid--cols-3.grid--space-between
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -106,7 +106,7 @@ figure
     .grid__cell.-color-5
 figure
   figcaption Space around: #[code grid--space-around]
-  .grid.grid--space-around.grid--cols-3
+  .grid.grid--cols-3.grid--space-around
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -187,7 +187,7 @@ scss:`
   +demo({
     classes: {
 html:`
-ol.grid.grid--space-around.grid--hasInners.add-padding.TK-noDots
+ol.grid.grid--hasInners.grid--space-around.add-padding.TK-noDots
   - var i = 0
   while i < 5
     li.grid__cell
