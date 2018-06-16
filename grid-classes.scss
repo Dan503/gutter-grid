@@ -120,38 +120,12 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			flex-grow: 1;
 		}
 
-		//cell vertical alignment
-		&--vAlign {
-			&-center {
-				align-self: center;
-			}
-			&-top {
-				align-self: flex-start;
-			}
-			&-bottom {
-				align-self: flex-end;
-			}
-		}
-
 		&.#{$fullPrefix}grid { display: flex; }
+
 		&, * > {
 			//helps fix IE10 word-wrap bug (elements need to not be display:inline for the fix to work though)
 			max-width: 100%;
 			flex-shrink: 1;
-		}
-
-		&--stretch {
-			flex-grow: 1;
-		}
-		&--noStretch {
-			flex-grow: 0;
-		}
-		&--noShrink {
-			flex-shrink: 0;
-		}
-		&--noResize {
-			flex-shrink: 0;
-			flex-grow: 0;
 		}
 	}
 
@@ -306,6 +280,36 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		}
 		&-stretch {
 			> * { flex-grow: 1; }
+		}
+	}
+
+	&__cell {
+		//cell vertical alignment
+		&--vAlign {
+			&-center {
+				align-self: center;
+			}
+			&-top {
+				align-self: flex-start;
+			}
+			&-bottom {
+				align-self: flex-end;
+			}
+		}
+
+		//Stretch and shrink
+		&--stretch {
+			flex-grow: 1;
+		}
+		&--noStretch {
+			flex-grow: 0;
+		}
+		&--noShrink {
+			flex-shrink: 0;
+		}
+		&--noResize {
+			flex-shrink: 0;
+			flex-grow: 0;
 		}
 	}
 
