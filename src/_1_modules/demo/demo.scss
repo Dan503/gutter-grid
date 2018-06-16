@@ -75,6 +75,11 @@
 			background: #f3f3f3;
 			border-radius: 5px;
 			overflow: hidden;
+
+			@include mq(max, bp('mobile')) {
+				margin-left: 10px;
+				margin-right: 10px;
+			}
 		}
 		figcaption {
 			padding: 0.25em 0.5em;
