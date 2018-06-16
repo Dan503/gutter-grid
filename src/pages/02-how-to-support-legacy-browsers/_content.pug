@@ -1,7 +1,10 @@
 block content
-  :marked
-    Check [caniuse.com](https://caniuse.com/#feat=flexbox) and the browser statistics for your site to see if you need to bother taking any of these extra steps. You most likely can skip this whole page. Browsers to be concerned about are IE10 and bellow, Opera Mini, and Android 4 browser. Gutter Grid doesn't support any lower than IE8.
+  blockquote
+    p If you do not need to support IE10 and bellow, Opera Mini, or Android 4 browser #[a(href=get.next.link): strong Skip this section!]
 
+  p Check #[a(href='https://caniuse.com/#feat=flexbox') caniuse.com] and the browser statistics for your site to see if you need to bother taking any of these extra steps. You most likely can just #[a(href=get.next.link) skip this whole page] since the browsers it caters to have extremely low usage. Browsers to be concerned about are IE10 and bellow, Opera Mini, and Android 4 browser. Gutter Grid doesn't support any lower than IE8 though.
+
+  :marked
     ### Supporting browsers that support flexbox but not the latest syntax (IE10)
 
     IE10 has support for flexbox however you will need to incorporate [Autoprefixer](https://github.com/postcss/autoprefixer) into your build process to support it's outdated flexbox syntax.
@@ -12,23 +15,54 @@ block content
 
     Gutter Grid is powered mostly by flexbox. When legacy support is enabled, it adds `display:table`, `float:left` and `display:inline-block` backups for when `flexbox` is not supported. In general it will use `display:table` since tables act in a very similar sort of way to how flexbox acts. However, when wrapping is involved and the browser does not support the `flex-wrap` css property, it will use `float:left` styling instead. The `display:inline-block` backups mostly come into play when horizontal cell alignment settings are used.
 
+    #### Enable legacy mode
+
     To enable legacy support for browsers that don't support flexbox, you will need to set the `$grid-legacy-support` setting to `true` before the import statement.
 
     ``````scss
     $grid-legacy-support: true;
     @import '../node_modules/mq-scss/mq';
     @import '../node_modules/gutter-grid/grid-mixin';
+    @import '../node_modules/gutter-grid/grid-classes';
     ``````
 
-    Please note that although there are fallbacks in place, they aren't able to perfectly repliate the behaviour of a browser that has full flexbox support. **The design in IE8 & 9 won't look 100% like the design on browsers that support flexbox**.
+    Please note that although there are fallbacks in place, they aren't able to perfectly replicate the behaviour of a browser that has full flexbox support. **The design in IE8 & 9 won't look 100% like the design on browsers that support flexbox**.
 
     The fallbacks are mainly just there to help stop the layout from completly breaking on you when compared to using purely flexbox on it's own. You will likely need to do some extra custom styles but the fallbacks will most likely get you to about 80% or more of the way there.
 
-    **Warning:** The default settings are different when `$grid-legacy-support` is enabled. Notes will be provided throughout the documentation where default settings differ.
+    #### Legacy mode differences
+
+    The default settings are different when `$grid-legacy-support` is enabled. Notes will be provided throughout the documentation where default settings differ but there are two core differences between legacy and non-legacy modes.
+
+    ##### Legacy mode does not wrap by default
+
+    In the modern version of Gutter Grid, grids will wrap by default if a column count has been defined. This is not the case in legacy mode.
+
+    Not wrapping by default allows legacy browsers to use table layout as a fallback for flexbox. Table layout forces the table cells to take up the full height of their parent element just like flexbox does. The downside to table layout is that it can't wrap. I wanted to use table layout as the primary fallback for Gutter Grid so I couldn't make wrapping the default behaviour in legacy mode.
+
+    Unless otherwise stated, I've written all the examples in the documentation assuming that Gutter Grid is **not** being run in legacy mode. If viewing examples in IE 8 or 9, view the mixin tab. The mixin tab has `$wrap: true` secretly applied to the examples in the real SCSS code so that the examples that need it look more like what they are intended to in IE 8/9. `$wrap: true` is not displayed in the example code since it is not necessary when running in modern mode. The classes tab is an accurate portrayal of what Gutter Grid will output in IE 8/9 if you use exactly what is written in the example code.
+
+    Remember, if you want wrapping in legacy mode you always need to either add `$wrap: true` if using the mixin or `.grid--wrap` if using the class system.
+
+    ##### Legacy mode stretches by default when wrapping
+
+    Version 4 will still stretch by default in modern mode if an alignment hasn't been set and _no columns have been defined_.
+
+    Legacy mode, won't stretch if an alignment has been set but it **will** stretch if columns have been defined.
+
+    This one may have been a mistake :/
+
+    I enjoyed having the boxes stretch by default in version 3. I turned off wrap and column stretching by default in version 4 (modern mode) to better reflect how CSS Grid works. I left stretching on by default in version 4 legacy mode though.
+
+    The idea was that Legacy mode could be used as a way of transitioning from version 3 to version 4 more easily. I made other breaking changes in the version 4 release that makes this a mute point though. I will probably switch to not stretching legacy mode by default in version 5 to match up with modern mode (if I release a version 5 that is). Upvote [this GitHub issue](https://github.com/Dan503/gutter-grid/issues/1) if you would like to see this change.
+
+    Anyway, the point is that currently legacy mode stretches by default. If you don't want it to stretch in legacy mode you will need to add `$stretch: false` to the mixin or a `grid--noStretch` class to the grid. You can also do it through alignment with `$align: left` in the mixin or `grid--align-left` if using classes.
+
+    #### Install Modernizr
 
     In order to detect if the browser supports flexbox and flexwrap, Gutter Grid is dependent on [Modernizr](https://modernizr.com/) being a part of your build process. Gutter Grid cannot use feature queries to detect flexbox support due to IE10 and 11 supporting flexbox but not supporting feature queries. The particular Modernizr properties that it is dependent on are `flexwrap` and `flexbox`. To add Modernizr to your site, you have two options.
 
-    1. [download a custom build](https://modernizr.com/download?setclasses&q=flex) from the Modernizr website that includes flexbox and flexwrap in it, then load the javascript file that Modernizr generated into your website.
+    1. [Download a custom build](https://modernizr.com/download?setclasses&q=flex) from the Modernizr website that includes flexbox and flexwrap in it, then load the javascript file that Modernizr generated into your website.
     2. Incorporate [Customizr](https://www.npmjs.com/package/customizr) into your build process. I recommend taking the second option.
 
     If taking the [Customizr](https://www.npmjs.com/package/customizr) route, you will likely need to force it to include `flexwrap` and `flexbox` tests since it won't look through the `node_modules` folder for Modernizr references (and for good reason!). You will also need to ensure that it is adding classes to the page. You can do this when defining the Customizr configuration settings like this:
@@ -46,7 +80,7 @@ block content
     }
     ```````
 
-    ### Supporting IE8 specifically
+    #### Supporting IE8 specifically
 
     In order to better support IE8, the HTML for your HTML element will need to look something like this:
 
@@ -66,6 +100,7 @@ block content
     //Defaults to white
     $grid-gutter-ie-fallback: #fff;
 
+    $grid-legacy-support: true;
     @import '../node_modules/mq-scss/mq';
     @import '../node_modules/gutter-grid/grid-mixin';
     @import '../node_modules/gutter-grid/grid-classes';
