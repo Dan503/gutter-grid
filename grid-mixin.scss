@@ -62,9 +62,15 @@
 			($align == default or $align == stretch);
 	}
 
-	//By default grids will not wrap unless there is a column setting
 	@if ($wrap == default){
-		$wrap: if($grid-legacy-support, auto, true);
+		@if ($grid-legacy-support){
+			// Legacy mode will not wrap unless it is explicitly set to true
+			// (or if the screen sizer is small)
+			$wrap: auto;
+		} @else {
+			//By default grids will not wrap unless there is a column setting
+			$wrap: if($cols == auto, auto, true);
+		}
 	}
 
 	@if ($vertical){
