@@ -4,13 +4,19 @@ block content
 
     Alternatively, if you are using the mixin based system, you can use the seperate `grid__cell--span` mixin to calculate the width for you. The syntax for it goes like this:
 
-    ``````scss
-    @include grid__cell--span(
-      [No. columns to span],
-      [total No. of columns],
-      [optional place to add "!important" if you need it]
-    );
-    ``````
+  +demo({
+    scss: `
+@include grid__cell--span(
+  [Number of columns to span],
+  [Total number of columns],
+  [Optional place to add "!important" if you need it]
+);
+`
+  }, {hasTabs: false})
+    :marked
+      Syntax for the `grid__cell--span` mixin.
+
+  :marked
 
     The first 2 parameters are required but the 3rd parameter is a completely optional parameter designed to add `!important` to the rule if you need to. The only think this mixin does is calculate the width for you so it's perfectly fine to write out the width manually if that's easier.
 
