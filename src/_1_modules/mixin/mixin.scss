@@ -45,7 +45,7 @@
 	}
 
 	&-9 {
-		@include grid(6, $wrap: false);
+		@include grid(3, $wrap: false);
 	}
 
 	// $wrap: true; isn't needed in most of these examples in modern browsers.
