@@ -1,6 +1,11 @@
 .siteContainer {
 	min-width: bp('minimum');//prevent site from shrinking bellow the minimum width
 
+	//If the site doesn't support flexbox then I'm not going to allow responsive design
+	.no-flexbox & {
+		width: bp('page');
+	}
+
 	//ensures that the site will always take the full height of the browser
 	//header will be at the top
 	//footer will be at the bottom (even if very little content and a tall screen)

@@ -7,6 +7,10 @@
 		display: none;
 	}
 
+	.lt-ie10 & {
+		float: right;
+	}
+
 	&__fieldset {
 		border: 0;
 		padding: 0;

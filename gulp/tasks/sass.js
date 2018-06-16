@@ -51,9 +51,7 @@ export default function() {
 
 		//Primary css file compilation
 		gulp.src([
-			path.join(dirs.source, dirs.styles, entries.css),
-			path.join(dirs.source, dirs.styles, 'main.legacy.scss'),
-			path.join(dirs.source, dirs.protoOnly, entries.protoOnly.css),
+			path.join(dirs.source, dirs.styles, entries.css)
 		])
 			.pipe(plugins.plumber((error)=>{
 				if(a === 0) {
@@ -93,8 +91,7 @@ export default function() {
 
 		//stripped out MQs version
 		gulp.src([
-			path.join(dirs.source, dirs.styles, entries.css),
-			path.join(dirs.source, dirs.protoOnly, entries.protoOnly.css),
+			path.join(dirs.source, dirs.styles, 'main.legacy.scss'),
 		])
 			.pipe(plugins.plumber())
 			.pipe(plugins.sassGlob())
