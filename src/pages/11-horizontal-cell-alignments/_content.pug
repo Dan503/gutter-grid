@@ -73,7 +73,7 @@ scss:`
     classes: {
 html:`
 figure
-  figcaption Align right
+  figcaption Align right: #[code grid--align-right]
   .grid.grid--align-right.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -81,7 +81,7 @@ figure
     .grid__cell.-color-4
     .grid__cell.-color-5
 figure
-  figcaption Align center
+  figcaption Align center: #[code grid--align-center]
   .grid.grid--align-center.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -89,7 +89,15 @@ figure
     .grid__cell.-color-4
     .grid__cell.-color-5
 figure
-  figcaption Space between
+  figcaption Align center: #[code grid--align-stretch]
+  .grid.grid--align-stretch.grid--cols-3
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+figure
+  figcaption Space between: #[code grid--space-between]
   .grid.grid--space-between.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -97,7 +105,7 @@ figure
     .grid__cell.-color-4
     .grid__cell.-color-5
 figure
-  figcaption Space around
+  figcaption Space around: #[code grid--space-around]
   .grid.grid--space-around.grid--cols-3
     .grid__cell.-color-1
     .grid__cell.-color-2
@@ -110,7 +118,7 @@ figure
     mixin: {
 html:`
 figure
-  figcaption Align right
+  figcaption Align right: #[code $align: right]
   .mixin-28
     .mixin__cell.-color-1
     .mixin__cell.-color-2
@@ -118,7 +126,7 @@ figure
     .mixin__cell.-color-4
     .mixin__cell.-color-5
 figure
-  figcaption Align center
+  figcaption Align center: #[code $align: center]
   .mixin-29
     .mixin__cell.-color-1
     .mixin__cell.-color-2
@@ -126,7 +134,15 @@ figure
     .mixin__cell.-color-4
     .mixin__cell.-color-5
 figure
-  figcaption Space between
+  figcaption Align stretch: #[code $align: stretch]
+  .mixin-29B
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+figure
+  figcaption Space between: #[code $space: between]
   .mixin-30
     .mixin__cell.-color-1
     .mixin__cell.-color-2
@@ -134,7 +150,7 @@ figure
     .mixin__cell.-color-4
     .mixin__cell.-color-5
 figure
-  figcaption Space around
+  figcaption Space around: #[code $space: around]
   .mixin-31
     .mixin__cell.-color-1
     .mixin__cell.-color-2
@@ -148,6 +164,9 @@ scss:`
 }
 .mixin-29 {
   @include grid(3, $align: center);
+}
+.mixin-29B {
+  @include grid(3, $align: stretch);
 }
 .mixin-30 {
   @include grid(3, $space: between);

@@ -7,17 +7,17 @@ block content
 html:`
 - var heights = [100, 50, 75, 50, 75, 100];
 figure
-  figcaption Top align
+  figcaption Top align: #[code grid--vAlign-top]
   .grid.grid--vAlign-top.grid--cols-3
     each height, i in heights
       .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 figure
-  figcaption Bottom align
+  figcaption Bottom align: #[code grid--vAlign-bottom]
   .grid.grid--vAlign-bottom.grid--cols-3
     each height, i in heights
       .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 figure
-  figcaption Center align
+  figcaption Center align: #[code grid--vAlign-center]
   .grid.grid--vAlign-center.grid--cols-3
     each height, i in heights
       .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
@@ -28,17 +28,17 @@ html:`
 - var heights = [100, 50, 75, 50, 75, 100];
 
 figure
-  figcaption Top align
+  figcaption Top align: #[code $vAlign: top]
   .mixin-34
     each height, i in heights
       .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 figure
-  figcaption Bottom align
+  figcaption Bottom align: #[code $vAlign: bottom]
   .mixin-35
     each height, i in heights
       .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 figure
-  figcaption Center align
+  figcaption Center align: #[code $vAlign: center]
   .mixin-36
     each height, i in heights
       .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
