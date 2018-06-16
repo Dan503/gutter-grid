@@ -30,33 +30,15 @@ block content
 
     The fallbacks are mainly just there to help stop the layout from completly breaking on you when compared to using purely flexbox on it's own. You will likely need to do some extra custom styles but the fallbacks will most likely get you to about 80% or more of the way there.
 
-    #### Legacy mode differences
-
-    The default settings are different when `$grid-legacy-support` is enabled. Notes will be provided throughout the documentation where default settings differ but there are two core differences between legacy and non-legacy modes.
-
     ##### Legacy mode does not wrap by default
 
-    In the modern version of Gutter Grid, grids will wrap by default if a column count has been defined. This is not the case in legacy mode.
+    In the modern version of Gutter Grid, grids will wrap by default if a column count has been defined. This is not the case when `$grid-legacy-support` is enabled.
 
     Not wrapping by default allows legacy browsers to use table layout as a fallback for flexbox. Table layout forces the table cells to take up the full height of their parent element just like flexbox does. The downside to table layout is that it can't wrap. I wanted to use table layout as the primary fallback for Gutter Grid so I couldn't make wrapping the default behaviour in legacy mode.
 
     Unless otherwise stated, I've written all the examples in the documentation assuming that Gutter Grid is **not** being run in legacy mode. If viewing examples in IE 8 or 9, view the mixin tab. The mixin tab has `$wrap: true` secretly applied to the examples in the real SCSS code so that the examples that need it look more like what they are intended to in IE 8/9. `$wrap: true` is not displayed in the example code since it is not necessary when running in modern mode. The classes tab is an accurate portrayal of what Gutter Grid will output in IE 8/9 if you use exactly what is written in the example code.
 
     Remember, if you want wrapping in legacy mode you always need to either add `$wrap: true` if using the mixin or `.grid--wrap` if using the class system.
-
-    ##### Legacy mode stretches by default when wrapping
-
-    Version 4 will still stretch by default in modern mode if an alignment hasn't been set and _no columns have been defined_.
-
-    Legacy mode, won't stretch if an alignment has been set but it **will** stretch if columns have been defined.
-
-    This one may have been a mistake :/
-
-    I enjoyed having the boxes stretch by default in version 3. I turned off wrap and column stretching by default in version 4 (modern mode) to better reflect how CSS Grid works. I left stretching on by default in version 4 legacy mode though.
-
-    The idea was that Legacy mode could be used as a way of transitioning from version 3 to version 4 more easily. I made other breaking changes in the version 4 release that makes this a mute point though. I will probably switch to not stretching legacy mode by default in version 5 to match up with modern mode (if I release a version 5 that is). Upvote [this GitHub issue](https://github.com/Dan503/gutter-grid/issues/1) if you would like to see this change.
-
-    Anyway, the point is that currently legacy mode stretches by default. If you don't want it to stretch in legacy mode you will need to add `$stretch: false` to the mixin or a `grid--noStretch` class to the grid. You can also do it through alignment with `$align: left` in the mixin or `grid--align-left` if using classes.
 
     #### Install Modernizr
 
