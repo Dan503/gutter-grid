@@ -32,7 +32,12 @@ $(document).ready(function(){
 
 		function switchTab(tab) {
 
-			if ($.isNumeric(tab)) {
+			var isString = typeof tab === 'string';
+
+			if ($.isNumeric(tab) || isString) {
+				if (isString) {
+					tab = ['classes','mixin','both'].indexOf(tab);
+				}
 				tab = This.$triggers.eq(tab);
 			}
 
