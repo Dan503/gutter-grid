@@ -81,7 +81,7 @@ footer {
 		}
 	}
 
-	h2, h3, h4, figcaption {
+	h2, h3, h4, h5, figcaption {
 		font-family: Georgia, serif;
 		font-style: italic;
 		color: $CB-green-dark;
@@ -102,6 +102,7 @@ footer {
 
 	h5 {
 		font-size: 15px;
+		color: #000;
 	}
 
 	figcaption {
