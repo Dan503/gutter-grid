@@ -14,19 +14,15 @@
 	}
 }
 
-// legacy support has different defaults
-$align-default: if($grid-legacy-support, stretch, left);
-$wrap-default: if($grid-legacy-support, auto, true);
-
 @mixin grid(
 	$cols: auto,
 	$gutter: false,
 	$breakpoints: default,
 	$inners: false,
 	$vAlign: false,
-	$align: $align-default,
+	$align: default,
 	$space: false,
-	$wrap: $wrap-default,
+	$wrap: default,
 	$MQs: true,
 	$outerGutters: false,
 	$cellSpan: false,
@@ -45,14 +41,30 @@ $wrap-default: if($grid-legacy-support, auto, true);
 	align-content: stretch;
 	border-color: transparent;
 
+	// $blockDisplayMode__sharedCircumstances:
+		// $align != 'stretch' or // TO DO: CHECK HORIZONTAL ALIGNMENT
+		// $space != false;
+
+	// Only relevant to Legacy users
+	$blockDisplayMode:
+		$wrap == true or
+		$stretch == false or
+		$resize == false or
+		$vertical or
+		$ieFloat == true or
+		$align != default;
+
 	//By default grids will stretch unless there is a column or alignment setting
 	@if ($stretch == default) {
-		$stretch: $align-default == left and $align == left and $cols == auto and $space == false;
+		$stretch:
+			$cols == auto and
+			$space == false and
+			($align == default or $align == stretch);
 	}
 
 	//By default grids will not wrap unless there is a column setting
-	@if ($wrap-default == true and $wrap == true and $cols == auto){
-		$wrap: false;
+	@if ($wrap == default){
+		$wrap: if($grid-legacy-support, auto, true);
 	}
 
 	@if ($vertical){
@@ -127,9 +139,6 @@ $wrap-default: if($grid-legacy-support, auto, true);
 		}
 	}
 
-	$colsAndGutter: $cols != auto and $gutter != false;
-	$blockDisplayMode: $ieFloat == true or $stretch == false or $resize == false or $vertical or $align != 'stretch' or $space or $wrap == true or $colsAndGutter;
-
 	//allows IE to use floats instead of display table without affecting modern browsers
 	@if ($blockDisplayMode) {
 		@include ieFloat;
@@ -173,7 +182,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 			flex-grow: 0;
 		}
 
-		@if ($align != 'stretch' and $stretch == false){
+		@if ($align != 'default' and $align != 'stretch' and $stretch == false){
 			@if ($align == 'left') {
 				justify-content: flex-start;
 			} @else if ($align == 'center') {
@@ -181,7 +190,7 @@ $wrap-default: if($grid-legacy-support, auto, true);
 			} @else if ($align == 'right') {
 				justify-content: flex-end;
 			} @else {
-				@warn 'invalid value for $align: "#{$align}". Valid values: left, center, right.';
+				@warn 'invalid value for $align: "#{$align}". Valid values: left, center, right, stretch.';
 			}
 		}
 
@@ -198,12 +207,12 @@ $wrap-default: if($grid-legacy-support, auto, true);
 
 		@if ($grid-legacy-support) {
 			.no-flexbox &, .no-flexwrap & {
-				@if ($align == 'left') {
-					text-align: left;
+				@if ($space or $align =='center') {
+					text-align: center;
 				} @else if ($align == 'right') {
 					text-align: right;
 				} @else {
-					text-align: center;
+					text-align: left;
 				}
 				> * {
 					display: inline-block;
