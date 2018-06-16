@@ -7,30 +7,33 @@ html {
 body {
 	padding: 0;
 	position: relative;
-	background: radial-gradient(ellipse at top, lighten($CB-green-light, 20%), #fff);
 
-	&::before {
-		opacity: 0.4;
-		z-index: -1;
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
+	html:not(.lt-ie10) & {
+		background: radial-gradient(ellipse at top, lighten($CB-green-light, 20%), #fff);
 
-		//Carbon background pattern
-		//http://lea.verou.me/css3patterns/#carbon
-		background:
-		linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-		linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-		linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-		linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-		linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-		linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-		background-color: #131313;
-		background-size: 20px 20px;
+		&::before {
+			opacity: 0.4;
+			z-index: -1;
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+	
+			//Carbon background pattern
+			//http://lea.verou.me/css3patterns/#carbon
+			background:
+			linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+			linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+			linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+			linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+			linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+			linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+			background-color: #131313;
+			background-size: 20px 20px;
+		}
 	}
 }
 
