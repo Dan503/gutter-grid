@@ -38,7 +38,7 @@ scss:`
     }
 })
     :marked
-      6 cells in a 3 column grid. In modern browsers (and IE 10 & 11) this will wrap so that it has 3 cells per row. IE 8 and 9 are loading a different style sheet with legacy mode enabled. They should be displaying these grid cells all in a single row if the screen size is larger than 1200px.
+      6 cells in a 3 column grid. In modern browsers (and IE 10 & 11) this will wrap so that it has 3 cells per row. IE 8 and 9 are loading a different style sheet with legacy mode enabled. They will try to fit the grid cells all in a single row (and they don't do a very good job of it).
 
   +demo({
     classes: {
@@ -69,7 +69,7 @@ scss:`
     }
 })
     :marked
-      When `$grid-legacy-support` is enabled, the `$wrap: true` setting or `grid--wrap` class needs to be applied for the cells to wrap on desktop (view in IE 8/9).
+      When `$grid-legacy-support` is enabled, the `$wrap: true` setting or `grid--wrap` class needs to be applied for the cells to wrap on desktop (compare with the first example in IE 8/9).
 
   :marked
     When the browser window is less than the width defined by the `$grid-page-width` setting, wrapping becomes enabled by default. This is so that the content in the grid is able to adapt to the smaller screen sizes. This behaviour is consistent across both versions 3 and 4. It is named `$grid-page-width` since it is meant to be the screen width at which the edge of the desktop design meets the edge of the screen.
@@ -91,7 +91,7 @@ $grid-page-width: 1200px;
   +demo({
     classes: {
 html:`
-.grid.grid--cols-6.grid--noWrap
+.grid.grid--cols-3.grid--noWrap
   .grid__cell.-color-1
   .grid__cell.-color-2
   .grid__cell.-color-3
@@ -112,14 +112,12 @@ html:`
 `,
 scss:`
 .mixin-9 {
-  @include grid(6, $wrap: false);
+  @include grid(3, $wrap: false);
 }`
     }
 })
     :marked
-      Disable grid wrapping at all screen sizes
+      Disable grid wrapping at all screen sizes. Modern browsers will try and squeeze all of the grid cells down into a single row. This can lead to more columns being generated than you intended. In IE 8 and 9, this will appear the same as the first example.
 
   :marked
      This is different from disabling the default media queries though. If you want to just prevent the default media queries from affecting the grid, it's better to use the `grid--noMQs` class for the class based system or the `$MQs: false` setting if using the mixin. You will learn more about disabling media queries on the next page.
-
-     **Note:** documentation examples from this point forward are written in the non-legacy version 4+ syntax unless otherwise stated.
