@@ -114,6 +114,9 @@
 		&.scss:before {
 			content: 'Sass';
 		}
+		&.js:before {
+			content: 'JS';
+		}
 
 		pre {
 			display: flex;

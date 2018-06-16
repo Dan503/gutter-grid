@@ -120,6 +120,16 @@ footer {
 		&:before {
 			display: none;
 		}
+		ul {
+			padding: 0;
+			list-style: none;
+			li {
+				padding: 0;
+				&:before {
+					display: none;
+				}
+			}
+		}
 	}
 
 	pre {

@@ -1,6 +1,13 @@
 block content
   blockquote
-    p If you do not need to support IE10 and bellow, Opera Mini, or Android 4 browser #[a(href=get.next.link): strong Skip this section!]
+    p Do you need to support any of the following browsers?
+    ul.TK-noDots
+      li IE8
+      li IE9
+      li IE10
+      li Opera Mini
+      li Android 4
+    p If not, #[a(href=get.next.link): strong Skip this section!]
 
   p Check #[a(href='https://caniuse.com/#feat=flexbox') caniuse.com] and the browser statistics for your site to see if you need to bother taking any of these extra steps. You most likely can just #[a(href=get.next.link) skip this whole page] since the browsers it caters to have extremely low usage. Browsers to be concerned about are IE10 and bellow, Opera Mini, and Android 4 browser. Gutter Grid doesn't support any lower than IE8 though.
 
@@ -18,14 +25,19 @@ block content
     #### Enable legacy mode
 
     To enable legacy support for browsers that don't support flexbox, you will need to set the `$grid-legacy-support` setting to `true` before the import statements.
+  +demo({
+    scss: `
+$grid-legacy-support: true;
 
-    ``````scss
-    $grid-legacy-support: true;
-    @import '../node_modules/mq-scss/mq';
-    @import '../node_modules/gutter-grid/grid-mixin';
-    @import '../node_modules/gutter-grid/grid-classes';
-    ``````
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-mixin';
+@import '../node_modules/gutter-grid/grid-classes';
+`
+  }, {hasTabs: false})
+    :marked
+      Enable legacy mode to use Gutter Grid in browsers that don't support flexbox.
 
+  :marked
     Please note that although there are fallbacks in place, they aren't able to perfectly replicate the behaviour of a browser that has full flexbox support. **The design in IE8 & 9 won't look 100% like the design on browsers that support flexbox**.
 
     The fallbacks are mainly just there to help stop the layout from completly breaking on you when compared to using purely flexbox on it's own. You will likely need to do some extra custom styles but the fallbacks will most likely get you to about 80% or more of the way there.
@@ -49,8 +61,8 @@ block content
 
     If taking the [Customizr](https://www.npmjs.com/package/customizr) route, you will likely need to force it to include `flexwrap` and `flexbox` tests since it won't look through the `node_modules` folder for Modernizr references (and for good reason!). You will also need to ensure that it is adding classes to the page. You can do this when defining the Customizr configuration settings like this:
 
-    ```````js
-    //Minimum customizr settings required for Gutter Grid to work
+    ```js
+    // Minimum Customizr settings required for Gutter Grid to work.
     {
       options: [
         'setClasses',
@@ -60,8 +72,9 @@ block content
         'flexwrap'
       ]
     }
-    ```````
+    ```
 
+  :marked
     #### Supporting IE8 specifically
 
     In order to better support IE8, the HTML for your HTML element will need to look something like this:
@@ -77,26 +90,34 @@ block content
 
     IE8 doesn't support the css `background-clip` property which is a key part of how the gutters are able to retain transparency. To get around this, Gutter Grid sets the colour of the gutters to whatever the `$grid-gutter-ie-fallback` setting is set to. The default setting for the variable is white so if your website has a white background then you won't need to do this step. If your site does not have a primarily white background, then you will need to set this variable to the primary background colour of your site.
 
-    ````scss
-    //Set what color gutters will be in IE8
-    //Defaults to white
-    $grid-gutter-ie-fallback: #fff;
+  +demo({
+    scss: `
+//Defaults to white
+$grid-gutter-ie-fallback: #fff;
 
-    $grid-legacy-support: true;
-    @import '../node_modules/mq-scss/mq';
-    @import '../node_modules/gutter-grid/grid-mixin';
-    @import '../node_modules/gutter-grid/grid-classes';
-    ````
+$grid-legacy-support: true;
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-mixin';
+@import '../node_modules/gutter-grid/grid-classes';
+`
+  }, {hasTabs: false})
+    :marked
+      Set what color gutters will be in IE8.
 
+  :marked
     ### Supporting Opera Mini and Android 4
 
     Opera Mini and Android 4 are a bit different. Accordion to caniuse.com, they [support flexbox](https://caniuse.com/#feat=flexbox) but they do not [support the `calc` css function](https://caniuse.com/#feat=calc) (or at least not completely in Android's case). By default (starting from version 4) Gutter Grid uses `calc` to calculate column widths unless the `$grid-legacy-support` setting is enabled. If you do not want to support IE 8 and 9, then enabling legacy-support will cause Gutter Grid to output mountains of extra fallback code that you don't actually need. Instead set `$grid-calc-support` to `false` which will force Gutter Grid to output pre-calculated percentage values rather than `calc` values whilst avoiding the mountains of IE 8 and 9 fallback code that the `$grid-legacy-support` setting brings with it.
 
-    ````scss
-    // Output pre-calculated percentage units rather than calc functions
-    $grid-calc-support: false;
+  +demo({
+    scss: `
+// Produces 50% rather than calc(100% / 2);
+$grid-calc-support: false;
 
-    @import '../node_modules/mq-scss/mq';
-    @import '../node_modules/gutter-grid/grid-mixin';
-    @import '../node_modules/gutter-grid/grid-classes';
-    ````
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-mixin';
+@import '../node_modules/gutter-grid/grid-classes';
+`
+  }, {hasTabs: false})
+    :marked
+      Output pre-calculated percentage units rather than calc functions.
