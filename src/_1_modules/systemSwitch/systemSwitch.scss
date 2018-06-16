@@ -1,5 +1,12 @@
 
 .systemSwitch {
+
+	// Functionality doesn't work in IE8
+	// Hiding since functionality is not available
+	.lt-ie9 & {
+		display: none;
+	}
+
 	&__fieldset {
 		border: 0;
 		padding: 0;
