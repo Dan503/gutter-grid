@@ -8,17 +8,21 @@ block content
     +tabs__content('Classes for controlling cell growth')
       :marked
         - `grid--noStretch` will prevent all cells in the grid from stretching
+        - `grid--stretch` identical to `grid--align-stretch` (stretches all grid cells)
         - `grid__cell--noStretch` will prevent only the cell that it is applied to from stretching
+        - `grid__cell--stretch` will allow a specific grid cell to stretch
         - `grid--noShrink` will prevent all cells in the grid from shrinking below their `min-content` width
         - `grid__cell--noShrink` will prevent that specific cell from shrinking bellow it's `min-content` width
+        - `grid__cell--shrink` will allow a specific grid cell to shrink
         - `grid--noResize` a shortcut for applying both `grid--noStretch` and `grid--noShrink` classes
         - `grid__cell--noResize` a shortcut for applying both `grid__cell--noStretch` and `grid__cell--noShrink` classes
 
     +tabs__content('Mixin properties for controlling cell growth')
       :marked
-        - `$stretch: false` will prevent all cells in the grid from growing
+        - `$stretch: true` will allow all grid cells to stretch
+        - `$stretch: false` will prevent all cells in the grid from stretching
         - `$shrink: false` will prevent all cells in the grid from shrinking below their content width
-        - `$resize: false` a shortcut for applying both `$grow: false` and `$shrink: false` settings at the same time
+        - `$resize: false` a shortcut for applying both `$grow: false` and `$shrink: false` settings at the same time to all grid cells
         - To apply resize settings to specific cells, just use the `flex-grow` and `flex-shrink` css properties
 
   +demo({
@@ -76,6 +80,37 @@ scss: `
 })
     :marked
       If `grid--noStretch` (`$stretch: false`) is applied, it is essentially the equivalent of using `grid--align-left` (`$align: left`)
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--noWrap.grid--noStretch
+  .grid__cell.-color-1
+    .wideBox.-color-3
+  .grid__cell.-color-2.grid__cell--stretch
+    .thinBox.-color-4
+`,
+},
+    mixin: {
+html:`
+.mixin-40
+  .mixin__cell.-color-1
+    .wideBox.-color-3
+  .mixin__cell.-color-2.mixin__cell--stretch
+    .thinBox.-color-4
+`,
+scss: `
+.mixin-40 {
+  @include grid($stretch: false, $wrap: false);
+}
+.mixin__cell--stretch {
+  flex-grow: 1;
+}
+`
+    }
+})
+    :marked
+      If `grid__cell--stretch` is applied, it will stretch only that grid cell. The mixin needs to be stretched manually with `flex-grow: 1;`.
 
   +demo({
     classes: {

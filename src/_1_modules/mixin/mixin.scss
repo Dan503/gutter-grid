@@ -251,4 +251,10 @@
 	&__noShrink {
 		flex-shrink: 0;
 	}
+
+	&__cell {
+		&--stretch {
+			flex-grow: 1;
+		}
+	}
 }
