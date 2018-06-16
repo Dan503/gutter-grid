@@ -109,14 +109,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		background-clip: padding-box!important;
 		border: 0 solid transparent;
 
-		@if ($grid-legacy-support){
+		$stretch-grid-parameters: '#{$grid}:not([class*="grid--cols"]):not(#{$grid}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(#{$grid}--noResize)';
+		$stretch-cell-parameters: '#{$grid}__cell:not(#{$grid}__cell--noStretch):not(#{$grid}__cell--noResize)';
+
+		#{$stretch-grid-parameters} > #{$stretch-cell-parameters} {
 			flex-grow: 1;
-		} @else {
-			//If no columns set and no alignment properties set, grid cells will stretch
-			#{$grid}:not([class*="grid--cols"]):not(#{$grid}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(#{$grid}--noResize)
-			> &:not(#{$grid}__cell--noStretch):not(#{$grid}__cell--noResize) {
-				flex-grow: 1;
-			}
 		}
 
 		&[class*="cell--span-"] {
