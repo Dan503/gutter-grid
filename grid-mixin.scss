@@ -52,7 +52,8 @@
 		$resize == false or
 		$vertical or
 		$ieFloat == true or
-		$align != default;
+		$align != default or
+		($vAlign and $cols != auto);
 
 	//By default grids will stretch unless there is a column or alignment setting
 	@if ($stretch == default) {
@@ -146,7 +147,7 @@
 	}
 
 	//allows IE to use floats instead of display table without affecting modern browsers
-	@if ($blockDisplayMode) {
+	@if ($blockDisplayMode and not $vAlign) {
 		@include ieFloat;
 	}
 
@@ -156,8 +157,12 @@
 			display: if($blockDisplayMode, block, table) !important;
 
 			> * {
-				display: if($blockDisplayMode, block, table-cell);
+				display: if($blockDisplayMode, if($vAlign, inline-block, block), table-cell);
 				vertical-align: top;
+
+				@if ($vAlign){
+					margin-right: -4px;
+				}
 
 				@if ($inners){
 					> * { display: block; }
