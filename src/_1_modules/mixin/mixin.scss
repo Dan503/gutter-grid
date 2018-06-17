@@ -162,19 +162,19 @@
 	}
 
 	&-34 {
-		@include grid(3, $vAlign:top);
+		@include grid(3, $vAlign:top, $wrap: true);
 	}
 
 	&-35 {
-		@include grid(3, $vAlign:bottom);
+		@include grid(3, $vAlign:bottom, $wrap: true);
 	}
 
 	&-36 {
-		@include grid(3, $vAlign:center);
+		@include grid(3, $vAlign:center, $wrap: true);
 	}
 
 	&-37 {
-		@include grid(3, 20px, $vAlign: center, $inners: true);
+		@include grid(3, 20px, $vAlign: center, $inners: true, $wrap: true);
 	}
 
 	&-38 {
@@ -186,7 +186,7 @@
 	}
 
 	&-38C {
-		@include grid($vAlign:bottom);
+		@include grid(3, $vAlign:bottom, $wrap: true);
 	}
 
 	&-39 {
@@ -236,6 +236,7 @@
 	}
 
 	&__oddOneOut {
+		vertical-align: top !important;
 		align-self: flex-start;
 	}
 
