@@ -320,7 +320,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			width: auto;
 			> * { display: table-cell; vertical-align: top; }
 
-			&--wrap, &[class*="grid--cols"][class*="grid--gutter"] {
+			&--wrap:not([class*="grid--vAlign"]), &[class*="grid--cols"][class*="grid--gutter"] {
 				display: block;
 				> * {
 					display: block;
@@ -334,7 +334,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				}
 			}
 
-			&--wrap[class*='--vAlign-'][class*='--cols-'] {
+			&--wrap[class*='grid--vAlign'][class*='grid--cols'] {
 				> * {
 					display: inline-block;
 					margin-right: -4px;
@@ -350,6 +350,13 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				}
 				&-bottom {
 					> * { vertical-align: bottom; }
+				}
+			}
+			&__cell {
+				&--vAlign {
+					&-top { vertical-align: top; }
+					&-center { vertical-align: middle; }
+					&-bottom { vertical-align: bottom; }
 				}
 			}
 
