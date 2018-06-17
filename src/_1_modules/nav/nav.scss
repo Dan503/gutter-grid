@@ -43,7 +43,8 @@ $MQ-nav--visible: (min, bp('page'));
 
 	+ * {
 		.no-flexbox & {
-			max-width: 930px;
+			max-width: 710px;
+			width: auto;
 		}
 	}
 }
