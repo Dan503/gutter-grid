@@ -18,7 +18,7 @@ block content
 
     Also be aware of this [IE10 flexbox bug](http://stackoverflow.com/questions/16808815/ie10-flexbox-p-element-non-wrapping/33795089) which can cause problems in page layouts.
 
-    ### Supporting browsers that do not support flexbox at all (IE8 & 9)
+    ### Supporting browsers that do not support flexbox at all (IE8&nbsp;&&nbsp;9)
 
     Gutter Grid is powered mostly by flexbox. When legacy support is enabled, it adds `display:table`, `float:left` and `display:inline-block` backups for when `flexbox` is not supported. In general it will use `display:table` since tables act in a very similar sort of way to how flexbox acts. However, when wrapping is involved and the browser does not support the `flex-wrap` css property, it will use `float:left` styling instead. The `display:inline-block` backups mostly come into play when horizontal cell alignment settings are used.
 
@@ -106,7 +106,7 @@ $grid-legacy-support: true;
       Set what color gutters will be in IE8.
 
   :marked
-    ### Supporting Opera Mini and Android 4
+    ### Browsers that don't support `calc()` (Opera Mini and Android 4)
 
     Opera Mini and Android 4 are a bit different. Accordion to caniuse.com, they [support flexbox](https://caniuse.com/#feat=flexbox) but they do not [support the `calc` css function](https://caniuse.com/#feat=calc) (or at least not completely in Android's case). By default (starting from version 4) Gutter Grid uses `calc` to calculate column widths unless the `$grid-legacy-support` setting is enabled. If you do not want to support IE 8 and 9, then enabling legacy-support will cause Gutter Grid to output mountains of extra fallback code that you don't actually need. Instead set `$grid-calc-support` to `false` which will force Gutter Grid to output pre-calculated percentage values rather than `calc` values whilst avoiding the mountains of IE 8 and 9 fallback code that the `$grid-legacy-support` setting brings with it.
 
