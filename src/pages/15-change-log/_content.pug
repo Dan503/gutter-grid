@@ -8,9 +8,10 @@ block content
 
     Grids that have a set of columns defined would previously stretch while wrapping in legacy mode. This was inconsistent behavior to modern mode. In modern mode, grid cells would remain at their column width setting while wrapping. Legacy mode grids now behave consistently with modern mode grids with the exception of wrapping (legacy mode grids will not wrap unless explicitly told to).
 
-    #### New feature
+    #### New features
 
-    You can now use `$align: stretch` or `.grid--align-stretch` to apply grid cell stretching instead of `$stretch: true` and the `.grid--stretch` class. Don't worry, you can still use `$stretch: true` and `.grid--stretch`, it's just an extra option you have available to you now.
+    - You can now use `$align: stretch` or `.grid--align-stretch` to apply grid cell stretching instead of `$stretch: true` and the `.grid--stretch` class. Don't worry, you can still use `$stretch: true` and `.grid--stretch`, it's just an extra option you have available to you now.
+    - Added legacy mode backups for vertical cell alignment. These backups will only come into effect though if wrapping is enabled and a column count has been defined.
 
     ### Version 4.1.0
 
