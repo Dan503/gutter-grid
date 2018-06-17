@@ -334,6 +334,13 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				}
 			}
 
+			&[class*='--vAlign-'][class*='--cols-'] {
+				> * {
+					display: inline-block;
+					margin-right: -4px;
+				}
+			}
+
 			&--vAlign {
 				&-top {
 					> * { vertical-align: top; }
