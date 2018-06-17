@@ -183,7 +183,7 @@
 	}
 
 	//quick access to left,center and right alignments
-	@if (($align != 'stretch' and $stretch == false) or $space) {
+	@if (($align != 'default' and $align != 'stretch' and $stretch == false) or $space) {
 		> * {
 			flex-grow: 0;
 		}
