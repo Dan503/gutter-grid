@@ -334,7 +334,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				}
 			}
 
-			&[class*='--vAlign-'][class*='--cols-'] {
+			&--wrap[class*='--vAlign-'][class*='--cols-'] {
 				> * {
 					display: inline-block;
 					margin-right: -4px;
