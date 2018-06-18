@@ -27,6 +27,8 @@
 	}
 
 	&__content {
+		outline: none;
+
 		.js & {
 			display: none;
 		}

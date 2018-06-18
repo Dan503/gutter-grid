@@ -20,11 +20,15 @@ class tabs__trigger {
 			const isKey = keys => keys.indexOf(key.which) > -1;
 			const isNext = isKey([39]);
 			const isPrev = isKey([37]);
+			const isEnter = isKey([13]);
 
 			if (isNext){
-				this.tabs.switchTo(this.index + 1, false);
+				this.tabs.switch_to(this.index + 1, false);
 			} else if (isPrev) {
-				this.tabs.switchTo(this.index - 1, false);
+				this.tabs.switch_to(this.index - 1, false);
+			} else if (isEnter) {
+				key.preventDefault();
+				this.set_focus();
 			}
 		})
 
@@ -38,7 +42,7 @@ class tabs__trigger {
 		});
 	}
 	activate(isRemote = true){
-		this.deactivate_others();
+		this.tabs.deactivate_triggers();
 		this.$trigger
 			.addClass(this.activeClass)
 			.attr('tabindex', 0)
@@ -49,7 +53,7 @@ class tabs__trigger {
 			this.$trigger.focus();
 		}
 
-		if (!this.getStorage() || this.tabs.is_defaultSwitcher){
+		if (!this.get_storage() || this.tabs.is_defaultSwitcher){
 			this.signal();
 		}
 	}
@@ -60,24 +64,14 @@ class tabs__trigger {
 			.attr('aria-selected', 'false');
 		this.$content.hide();
 	}
-	deactivate_others(){
-		$.each(this.tabs.triggers, (i, trigger) => {
-			if (trigger !== this) {
-				trigger.deactivate();
-			}
-		})
-	}
 	signal(){
 		Emitter.emit('systemSwitch--external', this.name);
 	}
-	getStorage(){
+	get_storage(){
 		return localStorage.getItem('activeTab');
 	}
-	getNext(){
-		return this.tabs[this.index + 1];;
-	}
-	getPrev(){
-		return this.tabs[this.index - 1];
+	set_focus(){
+		this.$content.focus();
 	}
 }
 
@@ -100,22 +94,34 @@ class tabs {
 			}));
 		});
 
-		Emitter.on('systemSwitch', name => this.switchTo(name));
+		Emitter.on('systemSwitch', name => this.switch_to(name));
 
 	}
 
-	//Switches to the defined tab
-	switchTo(nameOrIndex, isRemote = true){
-
+	find_desired_trigger(nameOrIndex, cb){
 		$.each(this.triggers, (i, trigger) => {
 			if (
 				trigger.name === nameOrIndex ||
 				trigger.index === nameOrIndex
 			) {
-				trigger.activate(isRemote);
+				cb.call(this, trigger, i);
 			}
 		})
+	}
 
+	//Switches to the defined tab
+	switch_to(nameOrIndex, isRemote = true){
+		this.find_desired_trigger(nameOrIndex, trigger => {
+			trigger.activate(isRemote);
+		})
+	}
+
+	deactivate_triggers(){
+		$.each(this.triggers, (i, trigger) => {
+			if (trigger !== this) {
+				trigger.deactivate();
+			}
+		})
 	}
 }
 
