@@ -12,11 +12,10 @@ class DemoCode {
 		this.$wrapper = $(elem);
 		this.type = this.get_type();
 		this.format = get_format(this.$wrapper);
-		console.log(this);
 		if (this.type === 'html' && this.format === 'classes'){
 			this.add_html_class();
 		} else if (this.type === 'scss' && this.format === 'mixin') {
-			this.add_mixin_setting();
+			this.add_mixin_wrap_setting();
 		}
 	}
 
@@ -30,7 +29,11 @@ class DemoCode {
 		waitForElement('.hljs-string').then(()=>{
 			const $hljsStrings = this.$wrapper.find('.hljs-string');
 			const $filtered = $hljsStrings.filter((i,elem) => {
-				return $(elem).text().indexOf('grid ') > -1;
+				const text = $(elem).text();
+				const isInitialiser = text.indexOf('grid ') > -1;
+				const hasColumns = text.indexOf('grid--cols-') > -1;
+				const isVertical = text.indexOf('grid--vertical') > -1;
+				return isInitialiser && hasColumns && !isVertical;
 			})
 			$filtered.each(function(){
 				const text = $(this).text();
@@ -40,8 +43,16 @@ class DemoCode {
 		})
 	}
 
-	add_mixin_setting(){
-		const $hljsStrings = this.$wrapper.find('.hljs-string');
+	add_mixin_wrap_setting(){
+		const html = this.$wrapper.html();
+		if (html.indexOf('<span class="hljs-variable">$wrap</span>: false') === -1){
+			let newHTML = html.replace(/include<\/span> grid\(<span class="hljs-number">(.+)\)/gi, 'include</span> grid(<span class="hljs-number">$1, <span class="hljs-variable">$wrap</span>: true)');
+			if (html.indexOf('.mixin-13</span>') > -1){
+				const prevHTML = '@<span class="hljs-keyword">include</span> grid(<span class="hljs-number">3</span>, <span class="hljs-variable">$MQs</span>: false';
+				newHTML = html.replace(prevHTML, prevHTML+', <span class="hljs-variable">$wrap</span>: true');
+			}
+			this.$wrapper.html(newHTML);
+		}
 	}
 }
 
@@ -56,13 +67,14 @@ class DemoResult {
 	}
 
 	add_wrap_class(){
-		const $grids = this.$result.find('> * > .grid, > .grid');
+		const $grids = this.$result.find('> * > .grid, > .grid, > figure > * > .grid');
 
 		const $wraps = $grids.filter(function(){
-			return $(this).attr('class').indexOf('grid--cols') > -1;
+			const hasCols = $(this).attr('class').indexOf('grid--cols') > -1;
+			return hasCols;
 		})
 
-		$wraps.not('.grid--noWrap').addClass('grid--wrap');
+		$wraps.not('.grid--noWrap').not('grid--vertical').addClass('grid--wrap');
 	}
 }
 
@@ -71,8 +83,16 @@ class Demo {
 		this.$demo = $(demoElem);
 		this.$results = this.$demo.find('.demo__result');
 		this.$codeBlocks = this.$demo.find('.demo__markup');
-		this.results =  this.gather_classes(this.$results, DemoResult);
-		this.codeBlocks = this.gather_classes(this.$codeBlocks, DemoCode);
+		this.$summary = this.$demo.find('.demo__summary');
+
+		if (this.can_modify()) {
+			this.results =  this.gather_classes(this.$results, DemoResult);
+			this.codeBlocks = this.gather_classes(this.$codeBlocks, DemoCode);
+		}
+	}
+
+	can_modify(){
+		return this.$summary.text().trim() != 'Using nested grids to vertically align text inside full sized grid cells';
 	}
 
 	gather_classes($elem, Cls){
@@ -88,9 +108,16 @@ class Demo {
 }
 
 export default function(){
+	const excludedPages = [
+		'/pages/04-using-columns/',
+		'/pages/05-control-wrapping/',
+		'/pages/09-nesting-grids/',
+		'/pages/10-borders-and-shadows-on-guttered-cells/',
+	];
+
 	if (
 		!Modernizr.flexbox &&
-		window.location.pathname !== '/pages/05-control-wrapping/'
+		excludedPages.indexOf(window.location.pathname) === -1
 	){
 		$('.demo').each(function(){
 			new Demo(this);
