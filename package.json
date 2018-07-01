@@ -94,6 +94,7 @@
     "tiny-emitter": "^2.0.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
+    "wait-for-element": "^1.0.2",
     "watchify": "^3.11.0",
     "wrench": "^1.5.9"
   },

@@ -28,7 +28,7 @@ export default function(localModules){
 
 				import : `import ${variable} from '${path}';`,
 
-				call : `${variable}();`,
+				call : `		${variable}();`,
 			}
 
 			returnVal = `${returnVal}\n${code[type]}`;
@@ -51,17 +51,25 @@ ${generateCode( 'import', manualImports)}
 //import modules
 ${generateCode( 'import', localModules)}
 
-$(() => {
+if (!window.Promise) {
+	$.getScript('https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js', run_code);
+} else {
+	run_code();
+}
 
-//run manual Imports
+function run_code(){
+	$(() => {
+
+		//run manual Imports
 ${generateCode( 'call', manualImports)}
 
-//run modules
+		//run modules
 ${generateCode( 'call', localModules)}
 
-$('html').addClass('js-loaded');
+		$('html').addClass('js-loaded');
 
-});
+	});
+}
 
 `;
 
