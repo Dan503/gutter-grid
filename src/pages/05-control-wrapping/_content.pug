@@ -72,7 +72,7 @@ scss:`
       When `$grid-legacy-support` is enabled, the `$wrap: true` setting or `grid--wrap` class needs to be applied for the cells to wrap on desktop (compare with the first example in IE 8/9).
 
   :marked
-    When the browser window is less than the width defined by the `$grid-page-width` setting, wrapping becomes enabled by default. This is so that the content in the grid is able to adapt to the smaller screen sizes. This behaviour is consistent across both versions 3 and 4. It is named `$grid-page-width` since it is meant to be the screen width at which the edge of the desktop design meets the edge of the screen.
+    In legacy mode, when the browser window is less than the width defined by the `$grid-page-width` setting, wrapping becomes enabled by default. This is so that the content in the grid is able to adapt to the smaller screen sizes. This behavior is consistent across both versions 3 and 4. It is named `$grid-page-width` since it is meant to be the screen width at which the edge of the desktop design meets the edge of the screen.
 
   +demo({
 scss:`
@@ -83,10 +83,10 @@ $grid-page-width: 1200px;
 @import '../node_modules/gutter-grid/grid-classes';`
 }, {hasTabs: false})
     :marked
-      Alter the screen size that grid wrapping automatically enables itself at by editing the `$grid-page-width` setting.
+      When `$grid-legacy-support` is enabled, alter the screen size that grid wrapping automatically enables itself at by editing the `$grid-page-width` setting.
 
   :marked
-    To just outright disable grid wrapping for all screen sizes, use the `grid--noWrap` class for the class based system or set `$wrap` to `false` if using the mixin.
+    To just outright disable grid wrapping for all screen sizes, use the `grid--noWrap` class for the class based system or set `$wrap` to `false` if using the mixin. Modern browsers will try and squeeze all of the grid cells down into a single row. This can lead to more columns being generated than you intended.
 
   +demo({
     classes: {
@@ -117,7 +117,7 @@ scss:`
     }
 })
     :marked
-      Disable grid wrapping at all screen sizes. Modern browsers will try and squeeze all of the grid cells down into a single row. This can lead to more columns being generated than you intended. In IE 8 and 9, this will appear the same as the first example.
+      Disable grid wrapping at all screen sizes using the `grid--noWrap` class or the `$wrap: false` setting. In IE 8 and 9, this will appear the same as the first example.
 
   :marked
      This is different from disabling the default media queries though. If you want to just prevent the default media queries from affecting the grid, it's better to use the `grid--noMQs` class for the class based system or the `$MQs: false` setting if using the mixin. You will learn more about disabling media queries on the next page.
