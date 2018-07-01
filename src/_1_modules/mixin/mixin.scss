@@ -153,6 +153,10 @@
 		@include grid(3, $space: around, $wrap: true);
 	}
 
+	&-31B {
+		@include grid(3, $space: evenly, $wrap: true);
+	}
+
 	&-32 {
 		@include grid($space: around, $inners: true);
 	}

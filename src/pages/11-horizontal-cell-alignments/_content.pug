@@ -112,6 +112,14 @@ figure
     .grid__cell.-color-3
     .grid__cell.-color-4
     .grid__cell.-color-5
+figure
+  figcaption Space evenly: #[code grid--space-evenly] (includes #[code space-around] backup)
+  .grid.grid--cols-3.grid--space-evenly
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
 `
     },
 
@@ -157,6 +165,14 @@ figure
     .mixin__cell.-color-3
     .mixin__cell.-color-4
     .mixin__cell.-color-5
+figure
+  figcaption Space evenly: #[code $space: evenly] (includes #[code space-around] backup)
+  .mixin-31B
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
 `,
 scss:`
 .mixin-28 {
@@ -174,7 +190,9 @@ scss:`
 .mixin-31 {
   @include grid(3, $space: around);
 }
-
+.mixin-31B {
+  @include grid(3, $space: evenly);
+}
 `,
     }
 })

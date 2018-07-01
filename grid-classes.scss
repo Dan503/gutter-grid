@@ -262,6 +262,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		&-around {
 			justify-content: space-around;
 		}
+		&-evenly {
+			//backup for browsers that don't support "space-evenly"
+			justify-content: space-around;
+			justify-content: space-evenly;
+		}
 	}
 
 	//quick access to left,center and right alignments
@@ -390,7 +395,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			}
 
 			&--space {
-				&-between, &-around {
+				&-between, &-around, &-evenly {
 					display: block;
 					text-align: center;
 					> * {

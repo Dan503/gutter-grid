@@ -211,6 +211,10 @@
 				justify-content: space-between;
 			} @else if ($space == 'around') {
 				justify-content: space-around;
+			} @else if ($space == 'evenly') {
+				//backup for browsers that don't support "space-evenly"
+				justify-content: space-around;
+				justify-content: space-evenly;
 			} @else {
 				@warn 'invalid value for $space: "#{$space}". Valid values: between, around.';
 			}

@@ -12,6 +12,7 @@ block content
 
     - You can now use `$align: stretch` or `.grid--align-stretch` to apply grid cell stretching instead of `$stretch: true` and the `.grid--stretch` class. Don't worry, you can still use `$stretch: true` and `.grid--stretch`, it's just an extra option you have available to you now.
     - Added legacy mode backups for vertical cell alignment. These backups will only come into effect though if wrapping is enabled and a column count has been defined.
+    - Added a new `grid--space-evenly` class to the class system and `$space: evenly` setting to the mixin system. This is the equivalent of `justify-content: space-evenly`. It features a `justify-content: space-around` backup for browsers that don't support evenly yet and features an extra center alignment backup when running in legacy mode on browsers that don't support flexbox.
 
     ### Version 4.1.0
 
