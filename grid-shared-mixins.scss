@@ -28,7 +28,7 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 				display: block;
 				clear: both;
 			}
-			&:not([class*="grid--vAlign"]) > * {
+			> * {
 				float: left;
 				display: block;
 			}

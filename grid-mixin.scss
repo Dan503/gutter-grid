@@ -147,7 +147,7 @@
 	}
 
 	//allows IE to use floats instead of display table without affecting modern browsers
-	@if ($blockDisplayMode and not $vAlign) {
+	@if ($blockDisplayMode and ($align == default or $align == stretch)  and not $vAlign and not $space) {
 		@include ieFloat;
 	}
 
