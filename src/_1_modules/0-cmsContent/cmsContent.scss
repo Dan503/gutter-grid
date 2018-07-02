@@ -96,6 +96,10 @@ $C-dots: brand(2);
 					left: 0;
 					font-weight: $bold;
 					color: $C-numbers;
+					font-family: $font-secondary;
+					font-size: 1.2em;
+					font-style: italic;
+					line-height: 1;
 				}
 				ol li {
 					&:before {
