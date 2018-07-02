@@ -134,8 +134,11 @@
 	}
 
 	// Horizontal Alignment grids
+	&-28A {
+		@include grid(3, $align: left);
+	}
 
-	&-28 {
+	&-28B {
 		@include grid(3, $align: right);
 	}
 
