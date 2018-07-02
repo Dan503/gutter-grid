@@ -95,7 +95,6 @@ class Demo {
 	can_modify(){
 		const excluded_ids = [
 			'11-horizontal-cell-alignments-3',
-			'12-vertical-cell-alignments-3',
 		];
 		const canModify = excluded_ids.indexOf(this.id) < 0;
 		return canModify;
@@ -119,6 +118,7 @@ export default function(){
 		'/pages/05-control-wrapping/',
 		'/pages/09-nesting-grids/',
 		'/pages/10-borders-and-shadows-on-guttered-cells/',
+		'/pages/12-vertical-cell-alignments/',
 	];
 
 	if (

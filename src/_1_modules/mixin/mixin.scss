@@ -173,19 +173,19 @@
 	}
 
 	&-34 {
-		@include grid(3, $vAlign:top, $wrap: true);
+		@include grid(3, $vAlign:top);
 	}
 
 	&-35 {
-		@include grid(3, $vAlign:bottom, $wrap: true);
+		@include grid(3, $vAlign:bottom);
 	}
 
 	&-36 {
-		@include grid(3, $vAlign:center, $wrap: true);
+		@include grid(3, $vAlign:center);
 	}
 
 	&-37 {
-		@include grid(3, 20px, $vAlign: center, $inners: true, $wrap: true);
+		@include grid(3, 20px, $vAlign: center, $inners: true);
 	}
 
 	&-38 {
@@ -197,7 +197,7 @@
 	}
 
 	&-38C {
-		@include grid(3, $vAlign:bottom, $wrap: true);
+		@include grid(3, $vAlign:bottom);
 	}
 
 	&-39 {

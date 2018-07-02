@@ -1,6 +1,6 @@
 block content
   :marked
-    Vertical alignment is just as easy. These mostly just hold values for the `align-items` property. They **do** mostly feature legacy browser backups when run in legacy mode though. These backups come in the form of `display: inline-block` and `vertical-align` combinations. So it's better to use these settings if you need legacy browser support (IE 8 & 9). The backups only take effect if a column count has been defined though.
+    Vertical alignment is just as easy. These mostly just hold values for the `align-items` property. They **do** feature legacy browser backups when run in legacy mode though. These backups come in the form of `display: inline-block` and `vertical-align` combinations. So it's better to use these settings if you need legacy browser support (IE 8 & 9). The backups only take effect if a column count has been defined though. Like with the `align` properties, the `vAlign` properties will also auto-enable wrapping in legacy mode when applied (if a column count has been defined).
 
   +demo({
     classes: {
@@ -8,17 +8,17 @@ html:`
 - var heights = [100, 50, 75, 50, 75, 100];
 figure
   figcaption Top align: #[code grid--vAlign-top]
-  .grid.grid--cols-3.grid--vAlign-top.grid--wrap
+  .grid.grid--cols-3.grid--vAlign-top
     each height, i in heights
       .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 figure
   figcaption Bottom align: #[code grid--vAlign-bottom]
-  .grid.grid--cols-3.grid--vAlign-bottom.grid--wrap
+  .grid.grid--cols-3.grid--vAlign-bottom
     each height, i in heights
       .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 figure
   figcaption Center align: #[code grid--vAlign-center]
-  .grid.grid--cols-3.grid--vAlign-center.grid--wrap
+  .grid.grid--cols-3.grid--vAlign-center
     each height, i in heights
       .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 `,
@@ -57,7 +57,7 @@ scss: `
     }
 }, {classes: '-noHeight'})
     :marked
-      Vertical alignments
+      Vertical alignments. These will all enable wrapping in legacy mode when a column count has also been applied.
 
 
   +demo({
@@ -155,7 +155,7 @@ scss: `
   +demo({
     classes: {
 html:`
-.grid.grid--wrap.grid--cols-3.grid--vAlign-bottom(style='height:100px;')
+.grid.grid--cols-3.grid--vAlign-bottom
   - var heights = [80, 25, 50, 30, 40, 75];
   each height, i in heights
     .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join('') + (i === 2 ? ' grid__cell--vAlign-top' : ''))
