@@ -368,9 +368,9 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 			&--align {
 				// need to overide the attribute selector
-				&-left.grid--align-left.grid--align-left,
-				&-center.grid--align-center.grid--align-center,
-				&-right.grid--align-right.grid--align-right {
+				&-left#{$grid}--align-left#{$grid}--align-left,
+				&-center#{$grid}--align-center#{$grid}--align-center,
+				&-right#{$grid}--align-right#{$grid}--align-right {
 					display: block;
 					> * {
 						display: inline-block;
