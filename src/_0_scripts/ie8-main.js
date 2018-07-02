@@ -142,11 +142,16 @@ $(document).ready(function(){
 		this.$demo = $(demoElem);
 		this.$results = this.$demo.find('.demo__result');
 		this.$codeBlocks = this.$demo.find('.demo__markup');
-		this.$summary = this.$demo.find('.demo__summary');
+		this.id = this.$demo.attr('id');
 
 		this.can_modify = function(){
-			return $.trim(this.$summary.text()) != 'Using nested grids to vertically align text inside full sized grid cells';
-		}
+			var excluded_ids = [
+				'11-horizontal-cell-alignments-3',
+				'12-vertical-cell-alignments-3',
+			];
+			var canModify = excluded_ids.indexOf(this.id) < 0;
+			return canModify;
+			}
 
 		this.gather_classes = function($elem, Cls){
 			var classArray = [];

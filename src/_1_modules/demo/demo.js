@@ -84,6 +84,7 @@ class Demo {
 		this.$results = this.$demo.find('.demo__result');
 		this.$codeBlocks = this.$demo.find('.demo__markup');
 		this.$summary = this.$demo.find('.demo__summary');
+		this.id = this.$demo.attr('id');
 
 		if (this.can_modify()) {
 			this.results =  this.gather_classes(this.$results, DemoResult);
@@ -92,7 +93,12 @@ class Demo {
 	}
 
 	can_modify(){
-		return this.$summary.text().trim() != 'Using nested grids to vertically align text inside full sized grid cells';
+		const excluded_ids = [
+			'11-horizontal-cell-alignments-3',
+			'12-vertical-cell-alignments-3',
+		];
+		const canModify = excluded_ids.indexOf(this.id) < 0;
+		return canModify;
 	}
 
 	gather_classes($elem, Cls){
