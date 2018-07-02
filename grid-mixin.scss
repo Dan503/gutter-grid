@@ -82,7 +82,7 @@
 		min-width: 100%;
 	}
 
-	@if ($wrap == true){
+	@if ($wrap == true or $align != default or $space != false){
 		flex-wrap: wrap;
 	}
 
