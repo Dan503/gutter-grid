@@ -63,7 +63,10 @@
 			($align == default or $align == stretch);
 	}
 
-	@if ($wrap == true or ($grid-legacy-support and $wrap != false and ($align != default or $space != false or ($vAlign != false and $cols != auto))) ){
+	@if (
+		(not $grid-legacy-support and ($wrap == true or ($cols != auto and $wrap == default))) or
+		($grid-legacy-support and $wrap != false and ($align != default or $space != false or ($vAlign != false and $cols != auto))) )
+	{
 		flex-wrap: wrap;
 	}
 
