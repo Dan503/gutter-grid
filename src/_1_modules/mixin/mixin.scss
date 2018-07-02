@@ -133,29 +133,33 @@
 		@include grid(3, $stretch: true, $wrap: true);
 	}
 
+	// Horizontal Alignment grids
+
 	&-28 {
-		@include grid(3, $align: right, $wrap: true);
+		@include grid(3, $align: right);
 	}
 
 	&-29 {
-		@include grid(3, $align: center, $wrap: true);
+		@include grid(3, $align: center);
 	}
 
 	&-29B {
-		@include grid(3, $align: stretch, $wrap: true);
+		@include grid(3, $align: stretch);
 	}
 
 	&-30 {
-		@include grid(3, $space: between, $wrap: true);
+		@include grid(3, $space: between);
 	}
 
 	&-31 {
-		@include grid(3, $space: around, $wrap: true);
+		@include grid(3, $space: around);
 	}
 
 	&-31B {
-		@include grid(3, $space: evenly, $wrap: true);
+		@include grid(3, $space: evenly);
 	}
+
+	// End horizontal alignments
 
 	&-32 {
 		@include grid($space: around, $inners: true);
