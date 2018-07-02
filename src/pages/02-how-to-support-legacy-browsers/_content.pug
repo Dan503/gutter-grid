@@ -78,7 +78,9 @@ $grid-legacy-support: true;
   :marked
     #### Supporting IE8 specifically
 
-    In order to better support IE8, the HTML for your HTML element will need to look something like this:
+    IE 8 does not support the CSS `:not()` selector syntax. The Gutter Grid class system relies heavily on this `:not()` syntax for it's if/else logic. This means that the class system, while still usable in IE8, will not function properly. The mixin system handles all of its logic through real if/else statements so it doesn't need to lean on the `:not()` selector at all. If you need to make the site work in IE8, I recommend going with the mixin system.
+
+    Also, in order to better support IE8, the HTML for your HTML element will need to look something like this:
 
     ```````html
     <!--[if lte IE 8]><html class="lt-ie9" lang="en"><![endif]-->

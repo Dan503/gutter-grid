@@ -377,7 +377,7 @@ scss:`
     }
 })
     :marked
-      If you view this demo in IE8, you will see that the grid cells extend beyond the boundaries of the content area
+      If you view this demo in IE8 or 9, you will see that the grid cells extend beyond the boundaries of the available grid area.
 
   :marked
     The easiest way to fix this issue in most cases is to use the `ieFloat` setting. This setting forces the grid to use the `float:left` backup instead of the `display:table` backup when the browser doesn't support flexbox. `float:left` is much more obedient when it comes to setting column widths than `display:table`, so it often fixes the issue of content overflowing the page layout.
