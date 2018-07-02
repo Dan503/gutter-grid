@@ -321,7 +321,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	//tabular/float:left backup for IE9 and below
 	@if ($grid-legacy-support) {
 
-		&[class*="grid--align"], &[class*="grid--space"], &[class*="grid--vAlign"] {
+		&[class*="grid--align"], &[class*="grid--space"], &[class*="grid--vAlign"][class*="grid--cols"] {
 			flex-wrap: wrap;
 		}
 

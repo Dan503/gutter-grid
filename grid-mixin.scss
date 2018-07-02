@@ -63,6 +63,10 @@
 			($align == default or $align == stretch);
 	}
 
+	@if ($wrap == true or ($grid-legacy-support and $wrap != false and ($align != default or $space != false or ($vAlign != false and $cols != auto))) ){
+		flex-wrap: wrap;
+	}
+
 	@if ($wrap == default){
 		@if ($grid-legacy-support){
 			// Legacy mode will not wrap unless it is explicitly set to true
@@ -80,10 +84,6 @@
 
 	@if (not $mini){
 		min-width: 100%;
-	}
-
-	@if ($wrap == true or $align != default or $space != false or $vAlign != false){
-		flex-wrap: wrap;
 	}
 
 	@if ($grid-break-points != false){
