@@ -321,11 +321,6 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	//tabular/float:left backup for IE9 and below
 	@if ($grid-legacy-support) {
 
-		//allows IE to use floats instead of display table without affecting modern browsers
-		&--ieFloat, &--noStretch, &--noResize {
-			@include ieFloat;
-		}
-
 		.no-flexbox &, .no-flexwrap & {
 			display: table;
 			width: auto;
@@ -419,6 +414,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 					width: 100%;
 				}
 			}
+		}
+
+		//allows IE to use floats instead of display table without affecting modern browsers
+		&--ieFloat {
+			@include ieFloat;
 		}
 	}
 
