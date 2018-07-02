@@ -53,7 +53,7 @@
 		$vertical or
 		$ieFloat == true or
 		$align != default or
-		($vAlign and $cols != auto and $wrap == true);
+		($vAlign and $cols != auto);
 
 	//By default grids will stretch unless there is a column or alignment setting
 	@if ($stretch == default) {

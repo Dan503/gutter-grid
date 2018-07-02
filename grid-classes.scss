@@ -344,7 +344,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				}
 			}
 
-			&--wrap[class*='grid--vAlign'][class*='grid--cols'] {
+			&[class*='grid--vAlign'][class*='grid--cols'] {
 				> * {
 					display: inline-block;
 					margin-right: -4px;
