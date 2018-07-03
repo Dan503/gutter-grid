@@ -148,9 +148,8 @@ $(document).ready(function(){
 			var excluded_ids = [
 				'11-horizontal-cell-alignments-3',
 			];
-			var canModify = excluded_ids.indexOf(this.id) < 0;
-			return canModify;
-			}
+			return !isExcluded(excluded_ids, this.id);
+		}
 
 		this.gather_classes = function($elem, Cls){
 			var classArray = [];
@@ -180,7 +179,7 @@ $(document).ready(function(){
 
 	if (
 		!Modernizr.flexbox &&
-		excludedPages.indexOf(window.location.pathname) === -1
+		!isExcluded(excludedPages, window.location.pathname)
 	){
 
 		$('.demo').each(function () {
@@ -189,3 +188,12 @@ $(document).ready(function(){
 	}
 
 });
+
+function isExcluded(exclusionsArray, pathname) {
+	for (var i = 0; i < exclusionsArray.length; i++) {
+		if (exclusionsArray[i] === pathname) {
+			return true;
+		}
+	}
+	return false;
+}
