@@ -98,7 +98,11 @@ $(document).ready(function(){
 		this.add_mixin_wrap_setting = function(){
 			var html = this.$wrapper.html();
 			if (html.indexOf('$wrap: false') === -1) {
+				//short hand version
 				var newHTML = html.replace(/include grid\((.+)\)/gi, 'include grid($1, $wrap: true)');
+				//long hand version
+				newHTML = newHTML.replace(/include grid\(\$cols: ([0-9]+?),  \$gutter: ([0-9A-z]+?)(.*)\)/gi, 'include grid($cols: $1, $gutter: $2, $3, $wrap: true)');
+
 				if (html.indexOf('.mixin-13 ') > -1) {
 					var prevHTML = '@include grid(3, $MQs: false';
 					newHTML = html.replace(prevHTML, prevHTML + ', $wrap: true');

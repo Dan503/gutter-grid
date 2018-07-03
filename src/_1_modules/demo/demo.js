@@ -46,7 +46,12 @@ class DemoCode {
 	add_mixin_wrap_setting(){
 		const html = this.$wrapper.html();
 		if (html.indexOf('<span class="hljs-variable">$wrap</span>: false') === -1){
+			//short hand version
 			let newHTML = html.replace(/include<\/span> grid\(<span class="hljs-number">(.+)\)/gi, 'include</span> grid(<span class="hljs-number">$1, <span class="hljs-variable">$wrap</span>: true)');
+
+			//long hand version
+			newHTML = newHTML.replace(/include<\/span> grid\(<span class="hljs-variable">\$cols<\/span>: (.+)\)/gi, 'include</span> grid(<span class="hljs-variable">$cols</span>: $1, <span class="hljs-variable">$wrap</span>: true)');
+
 			if (html.indexOf('.mixin-13</span>') > -1){
 				const prevHTML = '@<span class="hljs-keyword">include</span> grid(<span class="hljs-number">3</span>, <span class="hljs-variable">$MQs</span>: false';
 				newHTML = html.replace(prevHTML, prevHTML+', <span class="hljs-variable">$wrap</span>: true');
