@@ -7,6 +7,7 @@ html {
 body {
 	padding: 0;
 	position: relative;
+	color: $CF-body__text;
 
 	html:not(.lt-ie10) & {
 		background: radial-gradient(ellipse at top, lighten($CB-green-light, 20%), #fff);
