@@ -58,7 +58,11 @@
 		}
 	}
 	&__result {
-		border: 1px solid #000;
+		box-shadow: 0 0 0 1px #000;
+
+		.lt-ie9 & {
+			outline: 1px solid #000;
+		}
 
 		&:before {
 			content: 'Example';

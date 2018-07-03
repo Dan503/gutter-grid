@@ -1,120 +1,216 @@
 block content
   :marked
-    The `grid__inner` technique can be used for more than just nesting grids. Whenever you want the child element of a grid cell to take up the same dimensions as the content area of that cell, you can use `grid__inner` / `$inners:true`.
-
-    The most common use case for wanting to do this is when you want to apply either a border or a box shadow to each cell in a grid that also features a gutter between each cell. Gutters are made by adding invisible borders to each of the grid cells. So trying to add borders or box shadows directly to the grid cells doesn't work.
-
-    The `mixin__cell` and `mixin__inner` class names aren't needed for the mixin version to work but the structure of the HTML *is* needed.
-
-    The `add-xxx` classes are not part of Gutter Grid, I am just using them as a shortcut.
+    If a grid has gaps, trying to add borders or shadows to it directly won't work
 
   +demo({
     classes: {
 html:`
-.grid.grid--gutter-moduleName.grid--cols-2.grid--hasInners
-  .grid__cell
-    .grid__inner.add-border.add-shadow.add-padding
-      p.
-        To give grid cells a border or shadow as well as a gutter, you will need to use <code>grid__inner</code>
-
-  .grid__cell
-    .grid__inner.add-border.add-shadow.add-padding
-      p.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-        At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-        Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+.grid__wrapper
+  .grid.grid--gutter-20.grid--cols-3.grid--hasInners
+    .grid__cell.demonstrate-shadow-border
+    .grid__cell.demonstrate-shadow-border
+    .grid__cell.demonstrate-shadow-border
+    .grid__cell.demonstrate-shadow-border
+    .grid__cell.demonstrate-shadow-border
+    .grid__cell.demonstrate-shadow-border
 `
     },
 
     mixin: {
 html:`
-.mixin-25
-  .mixin__cell
-    .mixin__inner.add-border.add-shadow.add-padding
-      p.
-        To give grid cells a border or shadow as well as a gutter, you will need to use <code>grid__inner</code>
-
-  .mixin__cell
-    .mixin__inner.add-border.add-shadow.add-padding
-      p.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-        At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-        Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+.mixin__wrapper
+  .mixin-shadows-example
+    .mixin__cell.demonstrate-shadow-border
+    .mixin__cell.demonstrate-shadow-border
+    .mixin__cell.demonstrate-shadow-border
+    .mixin__cell.demonstrate-shadow-border
+    .mixin__cell.demonstrate-shadow-border
+    .mixin__cell.demonstrate-shadow-border
 `,
 scss:`
-.mixin-25 {
-  @include grid(2, 20px, $inners: true);
+.mixin-bad-shadows-example {
+  @include grid(3, 20px);
 }
 
 // These are not part of Gutter Grid
-.add-border { border: 2px solid red !important; }
-.add-shadow { box-shadow: 0 0 10px #000; }
-.add-padding { padding: 15px !important; }
+.mixin__wrapper { overflow: hidden }
+.demonstrate-shadow-border { box-shadow: inset 0 0 0 2px red, 0 0 10px #000; }
 `,
     }
 })
-  :marked
-    Unfortunately, if you are adding shadows, you can't use the `grid__wrapper` class (using the class system) to prevent the spacing bug in Chrome from occurring like you normally would. `grid__wrapper` is applying `overflow:hidden` and using `overflow:hidden` will also hide the shadows.
+     :marked
+        A failed attempt at adding shadows to the grid cells. The shadows are out of alignment.
 
-    Instead (if using the class system) use a `grid__paddedWrapper` class on the wrapping element. This class adds `padding-bottom: 1px` to the wrapper. This will prevent the Chrome bug from occurring and allow for a visible overflow. However it will leave a 1px gap at the bottom of the grid. This gap is generally very difficult to notice though. If using the mixin system, you will need to add your own 1px of bottom padding to a wrapper element.
+  :marked
+    The reason it doesn't look right is because Gutter Grid uses invisible borders to create the gaps. When you add shadows to the grid cells, the shadows also have to wrap around the gaps.
+
+    The `grid__inner` technique can be used to help with this problem. Whenever you want the child element of a grid cell to take up the same dimensions as the content area of that cell, you can use `grid__inner` / `$inners:true`.
+
+    However if you add a wrapper element with overflow hidden like we have been doing so far, the cell shadows will get cut off.
+
+  +demo({
+    classes: {
+html:`
+.grid__wrapper
+  .grid.grid--gutter-20.grid--cols-3.grid--hasInners
+    .grid__cell
+      .grid__inner.add-shadow
+    .grid__cell
+      .grid__inner.add-shadow
+    .grid__cell
+      .grid__inner.add-shadow
+    .grid__cell
+      .grid__inner.add-shadow
+    .grid__cell
+      .grid__inner.add-shadow
+    .grid__cell
+      .grid__inner.add-shadow
+`
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper
+  .mixin-shadows-example
+    .mixin__cell
+      .mixin__inner.add-shadow
+    .mixin__cell
+      .mixin__inner.add-shadow
+    .mixin__cell
+      .mixin__inner.add-shadow
+    .mixin__cell
+      .mixin__inner.add-shadow
+    .mixin__cell
+      .mixin__inner.add-shadow
+    .mixin__cell
+      .mixin__inner.add-shadow
+`,
+scss:`
+.mixin-shadows-example {
+  @include grid(3, 20px, $inners: true);
+}
+
+// These are not part of Gutter Grid
+.mixin__wrapper { overflow: hidden }
+.add-shadow { box-shadow: 0 0 10px #000; }
+`,
+    }
+})
+     :marked
+        A failed attempt at adding shadows to the grid cells. The shadows get cut off.
+
+  :marked
+    If you leaving off the wrapper though, it will causes a common browser bug that leaves unwanted space at the bottom of the grid in Chrome and Firefox.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--gutter-20.grid--cols-3.grid--hasInners
+  .grid__cell
+    .grid__inner.add-shadow
+  .grid__cell
+    .grid__inner.add-shadow
+  .grid__cell
+    .grid__inner.add-shadow
+  .grid__cell
+    .grid__inner.add-shadow
+  .grid__cell
+    .grid__inner.add-shadow
+  .grid__cell
+    .grid__inner.add-shadow
+`
+    },
+
+    mixin: {
+html:`
+.mixin-shadows-example
+  .mixin__cell
+    .mixin__inner.add-shadow
+  .mixin__cell
+    .mixin__inner.add-shadow
+  .mixin__cell
+    .mixin__inner.add-shadow
+  .mixin__cell
+    .mixin__inner.add-shadow
+  .mixin__cell
+    .mixin__inner.add-shadow
+  .mixin__cell
+    .mixin__inner.add-shadow
+`,
+scss:`
+.mixin-shadows-example {
+  @include grid(3, 20px, $inners: true);
+}
+
+// These are not part of Gutter Grid
+.add-shadow { box-shadow: 0 0 10px #000; }
+`,
+    }
+})
+      :marked
+        View in Chrome or Firefox to see unwanted space caused by leaving off `overflow: hidden` wrapper element.
+
+  :marked
+    Instead (if using the class system) use a `grid__paddedWrapper` class on the wrapping element. This class adds `padding-bottom: 1px` to the wrapper. This will prevent the browser bug from occurring and allow for a visible overflow. However it will leave a 1px gap at the bottom of the grid. This gap is generally very difficult to notice though. If using the mixin system, you will need to add your own 1px of bottom padding to a wrapper element.
 
   +demo({
     classes: {
 html:`
 .grid__paddedWrapper
-  .grid.grid--gutter-moduleName.grid--cols-2.grid--hasInners
+  .grid.grid--gutter-20.grid--cols-3.grid--hasInners
     .grid__cell
-      .grid__inner.add-border.add-shadow.add-padding
-        p.
-          To give grid cells a border or padding as well as a gutter, you will need to use <code>grid__inner</code>
-
+      .grid__inner.add-shadow.add-border
     .grid__cell
-      .grid__inner.add-border.add-shadow.add-padding
-        p.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-          At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-          Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+      .grid__inner.add-shadow.add-border
+    .grid__cell
+      .grid__inner.add-shadow.add-border
+    .grid__cell
+      .grid__inner.add-shadow.add-border
+    .grid__cell
+      .grid__inner.add-shadow.add-border
+    .grid__cell
+      .grid__inner.add-shadow.add-border
 `
     },
 
     mixin: {
 html:`
 .mixin__paddedWrapper
-  .mixin-25
+  .mixin-shadows-example
     .mixin__cell
-      .mixin__inner.add-border.add-shadow.add-padding
-        p.
-          To give grid cells a border or padding as well as a gutter, you will need to use <code>grid__inner</code>
-
+      .mixin__inner.add-shadow.add-border
     .mixin__cell
-      .mixin__inner.add-border.add-shadow.add-padding
-        p.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-          At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-          Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
+      .mixin__inner.add-shadow.add-border
+    .mixin__cell
+      .mixin__inner.add-shadow.add-border
+    .mixin__cell
+      .mixin__inner.add-shadow.add-border
+    .mixin__cell
+      .mixin__inner.add-shadow.add-border
+    .mixin__cell
+      .mixin__inner.add-shadow.add-border
 `,
 scss:`
-.mixin-25 {
-  @include grid(2, 20px, $inners: true);
+.mixin-shadows-example {
+  @include grid(3, 20px, $inners: true);
 }
 
-.mixin__paddedWrapper {
-  padding-bottom: 1px;
-}
+// Add 1px bottom padding to fix browser bug
+.mixin__paddedWrapper { padding-bottom: 1px; }
+
+// These are not part of Gutter Grid
+.add-shadow { box-shadow: 0 0 10px #000; }
+.add-border { border: 2px solid red; }
 `,
     }
 })
     :marked
-      Using padding to mitigate the Chrome spacing bug
+      Adding 1px of bottom padding to fix browser bug.
 
   :marked
     ### Using box shadow as a fake border
 
-    If you want to add a border around each grid cell but can't (or don't want to) add an extra `inner` element, you can actually use an inset box-shadow on each cell to create the same effect.
+    You might have noticed in the first example that I was able to add something that looked a lot like a border to each grid cell without needing to user `inner` elements. The secret to that is using a solid _inset_ `box-shadow`.
 
   +demo({
     classes: {

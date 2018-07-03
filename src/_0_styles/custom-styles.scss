@@ -195,6 +195,10 @@ footer {
 	}
 }
 
+.demonstrate-shadow-border {
+	box-shadow: inset 0 0 0 2px red, 0 0 10px #000;
+}
+
 .wideBox {
 	height: 50px;
 	width: 500px;

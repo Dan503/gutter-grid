@@ -121,6 +121,10 @@
 		@include grid(2, 20px, $inners: true);
 	}
 
+	&-shadows-example {
+		@include grid(3, 20px, $inners: true, $wrap: true);
+	}
+
 	&-25B {
 		@include grid(2, 20px);
 	}
