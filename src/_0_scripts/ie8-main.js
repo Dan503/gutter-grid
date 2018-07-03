@@ -90,8 +90,8 @@ $(document).ready(function(){
 
 			var regex = /&lt;div class="grid grid--cols-([A-z0-9 -]*)"&gt;/gi;
 			var replacement = html.replace(regex, '&lt;div class="grid grid--cols-$1 grid--wrap"&gt;');
-			console.log('original', html);
-			console.log('replacement', replacement);
+			// console.log('original', html);
+			// console.log('replacement', replacement);
 			_this.$wrapper.html(replacement);
 		}
 
