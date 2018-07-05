@@ -371,11 +371,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			}
 
 			&--align {
-				// need to overide the attribute selector
-				&-stretch#{$grid}--align-stretch#{$grid}--align-stretch,
-				&-left#{$grid}--align-left#{$grid}--align-left,
-				&-center#{$grid}--align-center#{$grid}--align-center,
-				&-right#{$grid}--align-right#{$grid}--align-right {
+				&-stretch, &-left, &-center, &-right {
 					display: block;
 					> * {
 						display: inline-block;
