@@ -97,7 +97,7 @@
 
 		.grid__cell, .mixin__cell {
 			min-height: 100px;
-			margin: 0;
+			// margin: 0;
 
 			.-noHeight & {
 				min-height: 0;
