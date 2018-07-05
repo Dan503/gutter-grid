@@ -40,9 +40,9 @@
 <!--[if lt IE 10]>
   <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="outer-gutters">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,7 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
                                       <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Outer gutters
@@ -150,9 +150,9 @@
                                       <h3 class="TK-visHid">Mobile warning</h3>
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
-                                  </header><p>By default, Gutter Grid will place the grid cells on the very edge of the content area as shown in this example by a red bounding box:</p>
+                                  </header><p>By default, Gutter Grid will place the grid cells on the very edge of the content area as shown in this example:</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="08-outer-gutters-1">
                                         <div class="demo__content">
                                               <div class="tabs JS-tabs">
                                                 <div class="tabs__links">
@@ -166,7 +166,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -208,7 +208,7 @@ $grid-cell-gutters: (
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -256,7 +256,7 @@ $grid-cell-gutters: (
                                         </div>
                                       </figure><p>This isn&#39;t always the desired layout though. Sometimes you want the gutters to also apply around the edges of the grid as well. This is when the <code>outerGutters</code> setting comes in.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="08-outer-gutters-2">
                                         <figcaption class="demo__summary demo__segment"><p>Using the <code>outerGutters</code> setting to apply the gutter to the edges of the grid</p>
 
                                         </figcaption>
@@ -273,12 +273,12 @@ $grid-cell-gutters: (
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid__wrapper">
-  <div class="grid grid--outerGutters grid--gutter-20 grid--cols-3">
+  <div class="grid grid--gutter-20 grid--cols-3 grid--outerGutters">
     <div class="grid__cell -color-1"></div>
     <div class="grid__cell -color-2"></div>
     <div class="grid__cell -color-3"></div>
@@ -292,7 +292,7 @@ $grid-cell-gutters: (
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid__wrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--outerGutters grid--gutter-20 grid--cols-3&quot;&gt;
+  &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--outerGutters&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -315,7 +315,7 @@ $grid-cell-gutters: (
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -363,7 +363,7 @@ $grid-cell-gutters: (
                                         </div>
                                       </figure><p>The setting also comes in horizontal only, and vertical only variants. For the class system, that comes in the form of these classes: <code>grid--outerGutters-h</code> for horizontal only and <code>grid--outerGutters-v</code> for vertical only. For the mixin version, set <code>$outerGutters: h</code> for horizontal or <code>$outerGutters: v</code> for vertical. The setting also comes in top, left, bottom, and right variant&#39;s as you will see in the examples below.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="08-outer-gutters-3">
                                         <figcaption class="demo__summary demo__segment"><p>Horizontal and vertical only variants</p>
 
                                         </figcaption>
@@ -380,14 +380,14 @@ $grid-cell-gutters: (
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <figure>
-  <figcaption>Horizontal outer gutter</figcaption>
+  <figcaption>Horizontal outer gutter: <code>grid--outerGutters-h</code></figcaption>
   <div class="grid__wrapper">
-    <div class="grid grid--outerGutters-h grid--gutter-20 grid--cols-3">
+    <div class="grid grid--gutter-20 grid--cols-3 grid--outerGutters-h">
       <div class="grid__cell -color-1"></div>
       <div class="grid__cell -color-2"></div>
       <div class="grid__cell -color-3"></div>
@@ -398,9 +398,9 @@ $grid-cell-gutters: (
   </div>
 </figure>
 <figure>
-  <figcaption>Vertical outer gutter</figcaption>
+  <figcaption>Vertical outer gutter: <code>grid--outerGutters-v</code></figcaption>
   <div class="grid__wrapper">
-    <div class="grid grid--outerGutters-v grid--gutter-20 grid--cols-3">
+    <div class="grid grid--gutter-20 grid--cols-3 grid--outerGutters-v">
       <div class="grid__cell -color-1"></div>
       <div class="grid__cell -color-2"></div>
       <div class="grid__cell -color-3"></div>
@@ -415,9 +415,9 @@ $grid-cell-gutters: (
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;figure&gt;
-  &lt;figcaption&gt;Horizontal outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Horizontal outer gutter: &lt;code&gt;grid--outerGutters-h&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;grid__wrapper&quot;&gt;
-    &lt;div class=&quot;grid grid--outerGutters-h grid--gutter-20 grid--cols-3&quot;&gt;
+    &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--outerGutters-h&quot;&gt;
       &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -428,9 +428,9 @@ $grid-cell-gutters: (
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Vertical outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Vertical outer gutter: &lt;code&gt;grid--outerGutters-v&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;grid__wrapper&quot;&gt;
-    &lt;div class=&quot;grid grid--outerGutters-v grid--gutter-20 grid--cols-3&quot;&gt;
+    &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--outerGutters-v&quot;&gt;
       &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -454,12 +454,12 @@ $grid-cell-gutters: (
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <figure>
-  <figcaption>Horizontal outer gutter</figcaption>
+  <figcaption>Horizontal outer gutter: <code>$outerGutters: h</code></figcaption>
   <div class="mixin__wrapper">
     <div class="mixin-15">
       <div class="mixin__cell -color-1"></div>
@@ -472,7 +472,7 @@ $grid-cell-gutters: (
   </div>
 </figure>
 <figure>
-  <figcaption>Vertical outer gutter</figcaption>
+  <figcaption>Vertical outer gutter: <code>$outerGutters: v</code></figcaption>
   <div class="mixin__wrapper">
     <div class="mixin-16">
       <div class="mixin__cell -color-1"></div>
@@ -489,7 +489,7 @@ $grid-cell-gutters: (
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;figure&gt;
-  &lt;figcaption&gt;Horizontal outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Horizontal outer gutter: &lt;code&gt;$outerGutters: h&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin__wrapper&quot;&gt;
     &lt;div class=&quot;mixin-15&quot;&gt;
       &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
@@ -502,7 +502,7 @@ $grid-cell-gutters: (
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Vertical outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Vertical outer gutter: &lt;code&gt;$outerGutters: v&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin__wrapper&quot;&gt;
     &lt;div class=&quot;mixin-16&quot;&gt;
       &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
@@ -537,7 +537,7 @@ $grid-cell-gutters: (
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="08-outer-gutters-4">
                                         <figcaption class="demo__summary demo__segment"><p>Top, bottom, left and right only variants</p>
 
                                         </figcaption>
@@ -554,14 +554,14 @@ $grid-cell-gutters: (
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <figure>
-  <figcaption>Top outer gutter</figcaption>
+  <figcaption>Top outer gutter: <code>grid--outerGutters-top</code></figcaption>
   <div class="grid__wrapper">
-    <div class="grid grid--outerGutters-top grid--gutter-20 grid--cols-3">
+    <div class="grid grid--gutter-20 grid--cols-3 grid--outerGutters-top">
       <div class="grid__cell -color-1"></div>
       <div class="grid__cell -color-2"></div>
       <div class="grid__cell -color-3"></div>
@@ -572,9 +572,9 @@ $grid-cell-gutters: (
   </div>
 </figure>
 <figure>
-  <figcaption>Bottom outer gutter</figcaption>
+  <figcaption>Bottom outer gutter: <code>grid--outerGutters-bottom</code></figcaption>
   <div class="grid__wrapper">
-    <div class="grid grid--outerGutters-bottom grid--gutter-20 grid--cols-3">
+    <div class="grid grid--gutter-20 grid--cols-3 grid--outerGutters-bottom">
       <div class="grid__cell -color-1"></div>
       <div class="grid__cell -color-2"></div>
       <div class="grid__cell -color-3"></div>
@@ -585,9 +585,9 @@ $grid-cell-gutters: (
   </div>
 </figure>
 <figure>
-  <figcaption>Left outer gutter</figcaption>
+  <figcaption>Left outer gutter: <code>grid--outerGutters-left</code></figcaption>
   <div class="grid__wrapper">
-    <div class="grid grid--outerGutters-left grid--gutter-20 grid--cols-3">
+    <div class="grid grid--gutter-20 grid--cols-3 grid--outerGutters-left">
       <div class="grid__cell -color-1"></div>
       <div class="grid__cell -color-2"></div>
       <div class="grid__cell -color-3"></div>
@@ -598,9 +598,9 @@ $grid-cell-gutters: (
   </div>
 </figure>
 <figure>
-  <figcaption>Right outer gutter</figcaption>
+  <figcaption>Right outer gutter: <code>grid--outerGutters-right</code></figcaption>
   <div class="grid__wrapper">
-    <div class="grid grid--outerGutters-right grid--gutter-20 grid--cols-3">
+    <div class="grid grid--gutter-20 grid--cols-3 grid--outerGutters-right">
       <div class="grid__cell -color-1"></div>
       <div class="grid__cell -color-2"></div>
       <div class="grid__cell -color-3"></div>
@@ -615,9 +615,9 @@ $grid-cell-gutters: (
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;figure&gt;
-  &lt;figcaption&gt;Top outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Top outer gutter: &lt;code&gt;grid--outerGutters-top&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;grid__wrapper&quot;&gt;
-    &lt;div class=&quot;grid grid--outerGutters-top grid--gutter-20 grid--cols-3&quot;&gt;
+    &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--outerGutters-top&quot;&gt;
       &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -628,9 +628,9 @@ $grid-cell-gutters: (
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Bottom outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Bottom outer gutter: &lt;code&gt;grid--outerGutters-bottom&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;grid__wrapper&quot;&gt;
-    &lt;div class=&quot;grid grid--outerGutters-bottom grid--gutter-20 grid--cols-3&quot;&gt;
+    &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--outerGutters-bottom&quot;&gt;
       &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -641,9 +641,9 @@ $grid-cell-gutters: (
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Left outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Left outer gutter: &lt;code&gt;grid--outerGutters-left&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;grid__wrapper&quot;&gt;
-    &lt;div class=&quot;grid grid--outerGutters-left grid--gutter-20 grid--cols-3&quot;&gt;
+    &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--outerGutters-left&quot;&gt;
       &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -654,9 +654,9 @@ $grid-cell-gutters: (
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Right outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Right outer gutter: &lt;code&gt;grid--outerGutters-right&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;grid__wrapper&quot;&gt;
-    &lt;div class=&quot;grid grid--outerGutters-right grid--gutter-20 grid--cols-3&quot;&gt;
+    &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--outerGutters-right&quot;&gt;
       &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -680,12 +680,12 @@ $grid-cell-gutters: (
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <figure>
-  <figcaption>Top outer gutter</figcaption>
+  <figcaption>Top outer gutter: <code>$outerGutters: top</code></figcaption>
   <div class="mixin__wrapper">
     <div class="mixin-17">
       <div class="mixin__cell -color-1"></div>
@@ -698,7 +698,7 @@ $grid-cell-gutters: (
   </div>
 </figure>
 <figure>
-  <figcaption>Bottom outer gutter</figcaption>
+  <figcaption>Bottom outer gutter: <code>$outerGutters: bottom</code></figcaption>
   <div class="mixin__wrapper">
     <div class="mixin-18">
       <div class="mixin__cell -color-1"></div>
@@ -711,7 +711,7 @@ $grid-cell-gutters: (
   </div>
 </figure>
 <figure>
-  <figcaption>Left outer gutter</figcaption>
+  <figcaption>Left outer gutter: <code>$outerGutters: left</code></figcaption>
   <div class="mixin__wrapper">
     <div class="mixin-19">
       <div class="mixin__cell -color-1"></div>
@@ -724,7 +724,7 @@ $grid-cell-gutters: (
   </div>
 </figure>
 <figure>
-  <figcaption>Right outer gutter</figcaption>
+  <figcaption>Right outer gutter: <code>$outerGutters: right</code></figcaption>
   <div class="mixin__wrapper">
     <div class="mixin-20">
       <div class="mixin__cell -color-1"></div>
@@ -741,7 +741,7 @@ $grid-cell-gutters: (
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;figure&gt;
-  &lt;figcaption&gt;Top outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Top outer gutter: &lt;code&gt;$outerGutters: top&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin__wrapper&quot;&gt;
     &lt;div class=&quot;mixin-17&quot;&gt;
       &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
@@ -754,7 +754,7 @@ $grid-cell-gutters: (
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Bottom outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Bottom outer gutter: &lt;code&gt;$outerGutters: bottom&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin__wrapper&quot;&gt;
     &lt;div class=&quot;mixin-18&quot;&gt;
       &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
@@ -767,7 +767,7 @@ $grid-cell-gutters: (
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Left outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Left outer gutter: &lt;code&gt;$outerGutters: left&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin__wrapper&quot;&gt;
     &lt;div class=&quot;mixin-19&quot;&gt;
       &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
@@ -780,7 +780,7 @@ $grid-cell-gutters: (
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Right outer gutter&lt;/figcaption&gt;
+  &lt;figcaption&gt;Right outer gutter: &lt;code&gt;$outerGutters: right&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin__wrapper&quot;&gt;
     &lt;div class=&quot;mixin-20&quot;&gt;
       &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
@@ -824,7 +824,7 @@ $grid-cell-gutters: (
                                         </div>
                                       </figure><p>Also, there is a delayed variant for the horizontal classes. This is primarily for use with overarching page layouts. The idea with the delayed variant is that when the screen reaches the point where the edge of the screen would meet the edge of the grid (plus the gutter), horizontal outer gutters are applied to prevent the edges of the grid from touching the edges of the screen. The <code>$grid-page-width</code> global setting determines when the change occurs. Define this before the import statements to change it.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="08-outer-gutters-5">
                                         <figcaption class="demo__summary demo__segment"><p>Delayed horizontal, left and right gutter variants (resize browser to see it take effect). There are no vertical variants. I have purposely made the design of the site less than 1200px to clearly demonstrate this delay effect.</p>
 
                                         </figcaption>
@@ -841,14 +841,14 @@ $grid-cell-gutters: (
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <figure>
-  <figcaption>Horizontal outer gutter both sides delayed</figcaption>
+  <figcaption>Horizontal outer gutter both sides delayed: <code>grid--outerGutters-h-delayed</code></figcaption>
   <div class="grid__wrapper">
-    <div class="grid grid--outerGutters-h-delayed grid--gutter-20 grid--cols-3">
+    <div class="grid grid--gutter-20 grid--cols-3 grid--outerGutters-h-delayed">
       <div class="grid__cell -color-1"></div>
       <div class="grid__cell -color-2"></div>
       <div class="grid__cell -color-3"></div>
@@ -859,9 +859,9 @@ $grid-cell-gutters: (
   </div>
 </figure>
 <figure>
-  <figcaption>Left outer gutter delayed</figcaption>
+  <figcaption>Left outer gutter delayed: <code>grid--outerGutters-left-delayed</code></figcaption>
   <div class="grid__wrapper">
-    <div class="grid grid--outerGutters-left-delayed grid--gutter-20 grid--cols-3">
+    <div class="grid grid--gutter-20 grid--cols-3 grid--outerGutters-left-delayed">
       <div class="grid__cell -color-1"></div>
       <div class="grid__cell -color-2"></div>
       <div class="grid__cell -color-3"></div>
@@ -872,9 +872,9 @@ $grid-cell-gutters: (
   </div>
 </figure>
 <figure>
-  <figcaption>Right outer gutter delayed</figcaption>
+  <figcaption>Right outer gutter delayed: <code>grid--outerGutters-right-delayed</code></figcaption>
   <div class="grid__wrapper">
-    <div class="grid grid--outerGutters-right-delayed grid--gutter-20 grid--cols-3">
+    <div class="grid grid--gutter-20 grid--cols-3 grid--outerGutters-right-delayed">
       <div class="grid__cell -color-1"></div>
       <div class="grid__cell -color-2"></div>
       <div class="grid__cell -color-3"></div>
@@ -889,9 +889,9 @@ $grid-cell-gutters: (
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;figure&gt;
-  &lt;figcaption&gt;Horizontal outer gutter both sides delayed&lt;/figcaption&gt;
+  &lt;figcaption&gt;Horizontal outer gutter both sides delayed: &lt;code&gt;grid--outerGutters-h-delayed&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;grid__wrapper&quot;&gt;
-    &lt;div class=&quot;grid grid--outerGutters-h-delayed grid--gutter-20 grid--cols-3&quot;&gt;
+    &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--outerGutters-h-delayed&quot;&gt;
       &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -902,9 +902,9 @@ $grid-cell-gutters: (
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Left outer gutter delayed&lt;/figcaption&gt;
+  &lt;figcaption&gt;Left outer gutter delayed: &lt;code&gt;grid--outerGutters-left-delayed&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;grid__wrapper&quot;&gt;
-    &lt;div class=&quot;grid grid--outerGutters-left-delayed grid--gutter-20 grid--cols-3&quot;&gt;
+    &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--outerGutters-left-delayed&quot;&gt;
       &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -915,9 +915,9 @@ $grid-cell-gutters: (
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Right outer gutter delayed&lt;/figcaption&gt;
+  &lt;figcaption&gt;Right outer gutter delayed: &lt;code&gt;grid--outerGutters-right-delayed&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;grid__wrapper&quot;&gt;
-    &lt;div class=&quot;grid grid--outerGutters-right-delayed grid--gutter-20 grid--cols-3&quot;&gt;
+    &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--outerGutters-right-delayed&quot;&gt;
       &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -944,12 +944,12 @@ $grid-page-width: 1200px;
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <figure>
-  <figcaption>Horizontal outer gutter, both sides delayed</figcaption>
+  <figcaption>Horizontal outer gutter, both sides delayed: <code>$outerGutters: h-delayed</code></figcaption>
   <div class="mixin__wrapper">
     <div class="mixin-21">
       <div class="mixin__cell -color-1"></div>
@@ -962,7 +962,7 @@ $grid-page-width: 1200px;
   </div>
 </figure>
 <figure>
-  <figcaption>Left outer gutter delayed</figcaption>
+  <figcaption>Left outer gutter delayed: <code>$outerGutters: left-delayed</code></figcaption>
   <div class="mixin__wrapper">
     <div class="mixin-22">
       <div class="mixin__cell -color-1"></div>
@@ -975,7 +975,7 @@ $grid-page-width: 1200px;
   </div>
 </figure>
 <figure>
-  <figcaption>Right outer gutter delayed</figcaption>
+  <figcaption>Right outer gutter delayed: <code>$outerGutters: right-delayed</code></figcaption>
   <div class="mixin__wrapper">
     <div class="mixin-23">
       <div class="mixin__cell -color-1"></div>
@@ -992,7 +992,7 @@ $grid-page-width: 1200px;
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;figure&gt;
-  &lt;figcaption&gt;Horizontal outer gutter, both sides delayed&lt;/figcaption&gt;
+  &lt;figcaption&gt;Horizontal outer gutter, both sides delayed: &lt;code&gt;$outerGutters: h-delayed&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin__wrapper&quot;&gt;
     &lt;div class=&quot;mixin-21&quot;&gt;
       &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
@@ -1005,7 +1005,7 @@ $grid-page-width: 1200px;
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Left outer gutter delayed&lt;/figcaption&gt;
+  &lt;figcaption&gt;Left outer gutter delayed: &lt;code&gt;$outerGutters: left-delayed&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin__wrapper&quot;&gt;
     &lt;div class=&quot;mixin-22&quot;&gt;
       &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
@@ -1018,7 +1018,7 @@ $grid-page-width: 1200px;
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Right outer gutter delayed&lt;/figcaption&gt;
+  &lt;figcaption&gt;Right outer gutter delayed: &lt;code&gt;$outerGutters: right-delayed&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin__wrapper&quot;&gt;
     &lt;div class=&quot;mixin-23&quot;&gt;
       &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
@@ -1098,7 +1098,7 @@ $grid-page-width: 1200px;
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/08-outer-gutters/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/08-outer-gutters/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

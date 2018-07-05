@@ -40,9 +40,9 @@
 <!--[if lt IE 10]>
   <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="control-wrapping">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,7 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
                                       <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Control wrapping
@@ -159,7 +159,7 @@
 </ul>
 <p>Note that if <code>$grid-legacy-support</code> is enabled in version 4+, it reverts back to the version 3 behaviour of needing the <code>$wrap</code> setting to be explicitly enabled (or <code>grid--wrap</code> class applied) before it will wrap. This was a limitation that came from trying to provide the best possible fallback code for IE 8 and 9.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="05-control-wrapping-1">
                                         <figcaption class="demo__summary demo__segment"><p>6 cells in a 3 column grid. In modern browsers (and IE 10 &amp; 11) this will wrap so that it has 3 cells per row. IE 8 and 9 are loading a different style sheet with legacy mode enabled. They will try to fit the grid cells all in a single row (and they don&#39;t do a very good job of it).</p>
 
                                         </figcaption>
@@ -176,7 +176,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -204,7 +204,7 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -242,7 +242,7 @@
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="05-control-wrapping-2">
                                         <figcaption class="demo__summary demo__segment"><p>When <code>$grid-legacy-support</code> is enabled, the <code>$wrap: true</code> setting or <code>grid--wrap</code> class needs to be applied for the cells to wrap on desktop (compare with the first example in IE 8/9).</p>
 
                                         </figcaption>
@@ -259,7 +259,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -287,7 +287,7 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -324,10 +324,10 @@
                                                 </div>
                                               </div>
                                         </div>
-                                      </figure><p>When the browser window is less than the width defined by the <code>$grid-page-width</code> setting, wrapping becomes enabled by default. This is so that the content in the grid is able to adapt to the smaller screen sizes. This behaviour is consistent across both versions 3 and 4. It is named <code>$grid-page-width</code> since it is meant to be the screen width at which the edge of the desktop design meets the edge of the screen.</p>
+                                      </figure><p>In legacy mode, when the browser window is less than the width defined by the <code>$grid-page-width</code> setting, wrapping becomes enabled by default. This is so that the content in the grid is able to adapt to the smaller screen sizes. This behavior is consistent across both versions 3 and 4. It is named <code>$grid-page-width</code> since it is meant to be the screen width at which the edge of the desktop design meets the edge of the screen.</p>
 
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Alter the screen size that grid wrapping automatically enables itself at by editing the <code>$grid-page-width</code> setting.</p>
+                                      <figure class="demo" role="group" id="05-control-wrapping-3">
+                                        <figcaption class="demo__summary demo__segment"><p>When <code>$grid-legacy-support</code> is enabled, alter the screen size that grid wrapping automatically enables itself at by editing the <code>$grid-page-width</code> setting.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -342,10 +342,10 @@ $grid-page-width: 1200px;
                                                 </div>
                                               </div>
                                         </div>
-                                      </figure><p>To just outright disable grid wrapping for all screen sizes, use the <code>grid--noWrap</code> class for the class based system or set <code>$wrap</code> to <code>false</code> if using the mixin.</p>
+                                      </figure><p>To just outright disable grid wrapping for all screen sizes, use the <code>grid--noWrap</code> class for the class based system or set <code>$wrap</code> to <code>false</code> if using the mixin. Modern browsers will try and squeeze all of the grid cells down into a single row. This can lead to more columns being generated than you intended.</p>
 
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Disable grid wrapping at all screen sizes. Modern browsers will try and squeeze all of the grid cells down into a single row. This can lead to more columns being generated than you intended. In IE 8 and 9, this will appear the same as the first example.</p>
+                                      <figure class="demo" role="group" id="05-control-wrapping-4">
+                                        <figcaption class="demo__summary demo__segment"><p>Disable grid wrapping at all screen sizes using the <code>grid--noWrap</code> class or the <code>$wrap: false</code> setting. In IE 8 and 9, this will appear the same as the first example.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -361,7 +361,7 @@ $grid-page-width: 1200px;
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -389,7 +389,7 @@ $grid-page-width: 1200px;
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -469,7 +469,7 @@ $grid-page-width: 1200px;
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/05-control-wrapping/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/05-control-wrapping/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

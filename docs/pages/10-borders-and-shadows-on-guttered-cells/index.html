@@ -40,9 +40,9 @@
 <!--[if lt IE 10]>
   <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="borders-and-shadows-on-guttered-cells">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,7 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
                                       <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Borders and shadows on guttered cells
@@ -150,149 +150,11 @@
                                       <h3 class="TK-visHid">Mobile warning</h3>
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
-                                  </header><p>The <code>grid__inner</code> technique can be used for more than just nesting grids. Whenever you want the child element of a grid cell to take up the same dimensions as the content area of that cell, you can use <code>grid__inner</code> / <code>$inners:true</code>.</p>
-<p>The most common use case for wanting to do this is when you want to apply either a border or a box shadow to each cell in a grid that also features a gutter between each cell. Gutters are made by adding invisible borders to each of the grid cells. So trying to add borders or box shadows directly to the grid cells doesn&#39;t work.</p>
-<p>The <code>mixin__cell</code> and <code>mixin__inner</code> class names aren&#39;t needed for the mixin version to work but the structure of the HTML <em>is</em> needed.</p>
-<p>The <code>add-xxx</code> classes are not part of Gutter Grid, I am just using them as a shortcut.</p>
+                                  </header><p><em>The demos on this page will not display on IE8 due to IE8&#39;s lack of support for the <code>box-shadow</code> property.</em></p>
+<p>If a grid has gaps, trying to add borders or shadows to it directly won&#39;t work</p>
 
-                                      <figure class="demo" role="group">
-                                        <div class="demo__content">
-                                              <div class="tabs JS-tabs">
-                                                <div class="tabs__links">
-                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
-                                                    <div class="grid__cell">
-                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
-                                                    </div>
-                                                    <div class="grid__cell">
-                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                                <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
-                                                        <figure>
-                                                          <figcaption class="tabs__title">Classes format</figcaption>
-                                                              <div class="demo__result demo__segment">
-<div class="grid grid--hasInners grid--gutter-moduleName grid--cols-2">
-  <div class="grid__cell">
-    <div class="grid__inner add-border add-shadow add-padding">
-      <p>
-        To give grid cells a border or shadow as well as a gutter, you will need to use <code>grid__inner</code>
-        
-      </p>
-    </div>
-  </div>
-  <div class="grid__cell">
-    <div class="grid__inner add-border add-shadow add-padding">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-        At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-        Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-      </p>
-    </div>
-  </div>
-</div>
-                                                              </div>
-                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
-                                                                <div class="grid__cell demo__markup demo__segment html">
-                                                                  <pre><code class="html">
-&lt;div class=&quot;grid grid--hasInners grid--gutter-moduleName grid--cols-2&quot;&gt;
-  &lt;div class=&quot;grid__cell&quot;&gt;
-    &lt;div class=&quot;grid__inner add-border add-shadow add-padding&quot;&gt;
-      &lt;p&gt;
-        To give grid cells a border or shadow as well as a gutter, you will need to use &lt;code&gt;grid__inner&lt;/code&gt;
-        
-      &lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;grid__cell&quot;&gt;
-    &lt;div class=&quot;grid__inner add-border add-shadow add-padding&quot;&gt;
-      &lt;p&gt;
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-        At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-        Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-      &lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                                                                </div>
-                                                              </div>
-                                                        </figure>
-                                                      </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
-                                                        <figure>
-                                                          <figcaption class="tabs__title">Mixin format</figcaption>
-                                                              <div class="demo__result demo__segment">
-<div class="mixin-25">
-  <div class="mixin__cell">
-    <div class="mixin__inner add-border add-shadow add-padding">
-      <p>
-        To give grid cells a border or shadow as well as a gutter, you will need to use <code>grid__inner</code>
-        
-      </p>
-    </div>
-  </div>
-  <div class="mixin__cell">
-    <div class="mixin__inner add-border add-shadow add-padding">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-        At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-        Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-      </p>
-    </div>
-  </div>
-</div>
-                                                              </div>
-                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
-                                                                <div class="grid__cell demo__markup demo__segment html">
-                                                                  <pre><code class="html">
-&lt;div class=&quot;mixin-25&quot;&gt;
-  &lt;div class=&quot;mixin__cell&quot;&gt;
-    &lt;div class=&quot;mixin__inner add-border add-shadow add-padding&quot;&gt;
-      &lt;p&gt;
-        To give grid cells a border or shadow as well as a gutter, you will need to use &lt;code&gt;grid__inner&lt;/code&gt;
-        
-      &lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;mixin__cell&quot;&gt;
-    &lt;div class=&quot;mixin__inner add-border add-shadow add-padding&quot;&gt;
-      &lt;p&gt;
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-        Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-        At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-        Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-      &lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                                                                </div>
-                                                                <div class="grid__cell demo__markup demo__segment scss">
-                                                                  <pre><code class="scss">
-.mixin-25 {
-  @include grid(2, 20px, $inners: true);
-}
-
-// These are not part of Gutter Grid
-.add-border { border: 2px solid red !important; }
-.add-shadow { box-shadow: 0 0 10px #000; }
-.add-padding { padding: 15px !important; }
-</code></pre>
-                                                                </div>
-                                                              </div>
-                                                        </figure>
-                                                      </div>
-                                                </div>
-                                              </div>
-                                        </div>
-                                      </figure><p>Unfortunately, if you are adding shadows, you can&#39;t use the <code>grid__wrapper</code> class (using the class system) to prevent the spacing bug in Chrome from occurring like you normally would. <code>grid__wrapper</code> is applying <code>overflow:hidden</code> and using <code>overflow:hidden</code> will also hide the shadows.</p>
-<p>Instead (if using the class system) use a <code>grid__paddedWrapper</code> class on the wrapping element. This class adds <code>padding-bottom: 1px</code> to the wrapper. This will prevent the Chrome bug from occurring and allow for a visible overflow. However it will leave a 1px gap at the bottom of the grid. This gap is generally very difficult to notice though. If using the mixin system, you will need to add your own 1px of bottom padding to a wrapper element.</p>
-
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Using padding to mitigate the Chrome spacing bug</p>
+                                      <figure class="demo" role="group" id="10-borders-and-shadows-on-guttered-cells-1">
+                                        <figcaption class="demo__summary demo__segment"><p>A failed attempt at adding shadows to the grid cells. The shadows are out of alignment.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -308,124 +170,76 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="grid__paddedWrapper">
-  <div class="grid grid--hasInners grid--gutter-moduleName grid--cols-2">
-    <div class="grid__cell">
-      <div class="grid__inner add-border add-shadow add-padding">
-        <p>
-          To give grid cells a border or padding as well as a gutter, you will need to use <code>grid__inner</code>
-          
-        </p>
-      </div>
-    </div>
-    <div class="grid__cell">
-      <div class="grid__inner add-border add-shadow add-padding">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-          At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-          Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-        </p>
-      </div>
-    </div>
+<div class="grid__wrapper">
+  <div class="grid grid--cols-3 grid--gutter-20 grid--hasInners">
+    <div class="grid__cell demonstrate-shadow-border"></div>
+    <div class="grid__cell demonstrate-shadow-border"></div>
+    <div class="grid__cell demonstrate-shadow-border"></div>
+    <div class="grid__cell demonstrate-shadow-border"></div>
+    <div class="grid__cell demonstrate-shadow-border"></div>
+    <div class="grid__cell demonstrate-shadow-border"></div>
   </div>
 </div>
                                                               </div>
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;grid__paddedWrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--hasInners grid--gutter-moduleName grid--cols-2&quot;&gt;
-    &lt;div class=&quot;grid__cell&quot;&gt;
-      &lt;div class=&quot;grid__inner add-border add-shadow add-padding&quot;&gt;
-        &lt;p&gt;
-          To give grid cells a border or padding as well as a gutter, you will need to use &lt;code&gt;grid__inner&lt;/code&gt;
-          
-        &lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;grid__cell&quot;&gt;
-      &lt;div class=&quot;grid__inner add-border add-shadow add-padding&quot;&gt;
-        &lt;p&gt;
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-          At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-          Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-        &lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class=&quot;grid__wrapper&quot;&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--gutter-20 grid--hasInners&quot;&gt;
+    &lt;div class=&quot;grid__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                                                                 </div>
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="mixin__paddedWrapper">
-  <div class="mixin-25">
-    <div class="mixin__cell">
-      <div class="mixin__inner add-border add-shadow add-padding">
-        <p>
-          To give grid cells a border or padding as well as a gutter, you will need to use <code>grid__inner</code>
-          
-        </p>
-      </div>
-    </div>
-    <div class="mixin__cell">
-      <div class="mixin__inner add-border add-shadow add-padding">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-          At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-          Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-        </p>
-      </div>
-    </div>
+<div class="mixin__wrapper">
+  <div class="mixin-shadows-example">
+    <div class="mixin__cell demonstrate-shadow-border"></div>
+    <div class="mixin__cell demonstrate-shadow-border"></div>
+    <div class="mixin__cell demonstrate-shadow-border"></div>
+    <div class="mixin__cell demonstrate-shadow-border"></div>
+    <div class="mixin__cell demonstrate-shadow-border"></div>
+    <div class="mixin__cell demonstrate-shadow-border"></div>
   </div>
 </div>
                                                               </div>
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-2">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;mixin__paddedWrapper&quot;&gt;
-  &lt;div class=&quot;mixin-25&quot;&gt;
-    &lt;div class=&quot;mixin__cell&quot;&gt;
-      &lt;div class=&quot;mixin__inner add-border add-shadow add-padding&quot;&gt;
-        &lt;p&gt;
-          To give grid cells a border or padding as well as a gutter, you will need to use &lt;code&gt;grid__inner&lt;/code&gt;
-          
-        &lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;mixin__cell&quot;&gt;
-      &lt;div class=&quot;mixin__inner add-border add-shadow add-padding&quot;&gt;
-        &lt;p&gt;
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bonum incolumis acies: misera caecitas.
-          Cur, nisi quod turpis oratio est? Atque haec coniunctio confusioque virtutum tamen a philosophis ratione quadam distinguitur.
-          At ille pellit, qui permulcet sensum voluptate. Videamus igitur sententias eorum, tum ad verba redeamus.
-          Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis.
-        &lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
+&lt;div class=&quot;mixin__wrapper&quot;&gt;
+  &lt;div class=&quot;mixin-shadows-example&quot;&gt;
+    &lt;div class=&quot;mixin__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell demonstrate-shadow-border&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                                                                 </div>
                                                                 <div class="grid__cell demo__markup demo__segment scss">
                                                                   <pre><code class="scss">
-.mixin-25 {
-  @include grid(2, 20px, $inners: true);
+.mixin-bad-shadows-example {
+  @include grid(3, 20px);
 }
 
-.mixin__paddedWrapper {
-  padding-bottom: 1px;
-}
+// These are not part of Gutter Grid
+.mixin__wrapper { overflow: hidden }
+.demonstrate-shadow-border.add-padding Shadow cell { box-shadow: inset 0 0 0 2px red, 0 0 10px #000; }
 </code></pre>
                                                                 </div>
                                                               </div>
@@ -434,10 +248,14 @@
                                                 </div>
                                               </div>
                                         </div>
-                                      </figure><h3 id="using-box-shadow-as-a-fake-border">Using box shadow as a fake border</h3>
-<p>If you want to add a border around each grid cell but can&#39;t (or don&#39;t want to) add an extra <code>inner</code> element, you can actually use an inset box-shadow on each cell to create the same effect.</p>
+                                      </figure><p>The reason it doesn&#39;t look right is because Gutter Grid uses invisible borders to create the gaps. When you add shadows to the grid cells, the shadows also have to wrap around the gaps.</p>
+<p>The <code>grid__inner</code> technique can be used to help with this problem. Whenever you want the child element of a grid cell to take up the same dimensions as the content area of that cell, you can use <code>grid__inner</code> / <code>$inners:true</code>.</p>
+<p>However if you add a wrapper element with overflow hidden like we have been doing so far, the cell shadows will get cut off.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="10-borders-and-shadows-on-guttered-cells-2">
+                                        <figcaption class="demo__summary demo__segment"><p>A failed attempt at adding shadows to the grid cells. The shadows get cut off.</p>
+
+                                        </figcaption>
                                         <div class="demo__content">
                                               <div class="tabs JS-tabs">
                                                 <div class="tabs__links">
@@ -451,12 +269,442 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid__wrapper">
-  <div class="grid grid--gutter-20 grid--cols-2">
+  <div class="grid grid--gutter-20 grid--cols-3 grid--hasInners">
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+  </div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;grid__wrapper&quot;&gt;
+  &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--hasInners&quot;&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="mixin__wrapper">
+  <div class="mixin-shadows-example">
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+  </div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;mixin__wrapper&quot;&gt;
+  &lt;div class=&quot;mixin-shadows-example&quot;&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
+.mixin-shadows-example {
+  @include grid(3, 20px, $inners: true);
+}
+
+// These are not part of Gutter Grid
+.mixin__wrapper { overflow: hidden }
+.add-shadow.add-padding Shadow cell { box-shadow: 0 0 10px #000; }
+</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure><p>If you leaving off the wrapper though, it will causes unwanted space to appear at the bottom of the grid.</p>
+
+                                      <figure class="demo" role="group" id="10-borders-and-shadows-on-guttered-cells-3">
+                                        <figcaption class="demo__summary demo__segment"><p>Unwanted space caused by leaving off <code>overflow: hidden</code> wrapper element. The space can be seen extending the example area at the bottom of the grid.</p>
+
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="grid grid--gutter-20 grid--cols-3 grid--hasInners">
+  <div class="grid__cell">
+    <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+  <div class="grid__cell">
+    <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+  <div class="grid__cell">
+    <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+  <div class="grid__cell">
+    <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+  <div class="grid__cell">
+    <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+  <div class="grid__cell">
+    <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--hasInners&quot;&gt;
+  &lt;div class=&quot;grid__cell&quot;&gt;
+    &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;grid__cell&quot;&gt;
+    &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;grid__cell&quot;&gt;
+    &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;grid__cell&quot;&gt;
+    &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;grid__cell&quot;&gt;
+    &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;grid__cell&quot;&gt;
+    &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="mixin-shadows-example">
+  <div class="mixin__cell">
+    <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+  <div class="mixin__cell">
+    <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+  <div class="mixin__cell">
+    <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+  <div class="mixin__cell">
+    <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+  <div class="mixin__cell">
+    <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+  <div class="mixin__cell">
+    <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+  </div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;mixin-shadows-example&quot;&gt;
+  &lt;div class=&quot;mixin__cell&quot;&gt;
+    &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;mixin__cell&quot;&gt;
+    &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;mixin__cell&quot;&gt;
+    &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;mixin__cell&quot;&gt;
+    &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;mixin__cell&quot;&gt;
+    &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;mixin__cell&quot;&gt;
+    &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
+.mixin-shadows-example {
+  @include grid(3, 20px, $inners: true);
+}
+
+// These are not part of Gutter Grid
+.add-shadow.add-padding Shadow cell { box-shadow: 0 0 10px #000; }
+</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure><p>Instead (if using the class system) use a <code>grid__paddedWrapper</code> class on the wrapping element. This class adds <code>padding-bottom: 1px</code> to the wrapper. This will prevent the issue from occurring and allow for a visible overflow. The down side is that it will leave a 1px gap at the bottom of the grid. This gap is generally very difficult to notice though. If using the mixin system, you will need to add your own 1px of bottom padding to a wrapper element.</p>
+
+                                      <figure class="demo" role="group" id="10-borders-and-shadows-on-guttered-cells-4">
+                                        <figcaption class="demo__summary demo__segment"><p>Manually Adding 1px of bottom padding to the wrapper fixes the issue in the mixin system. Swapping out the the <code>grid__wrapper</code> class with a <code>grid__paddedWrapper</code> class will fix the issue in the class system.</p>
+
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="grid__paddedWrapper">
+  <div class="grid grid--gutter-20 grid--cols-3 grid--hasInners">
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="grid__cell">
+      <div class="grid__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+  </div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;grid__paddedWrapper&quot;&gt;
+  &lt;div class=&quot;grid grid--gutter-20 grid--cols-3 grid--hasInners&quot;&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid__cell&quot;&gt;
+      &lt;div class=&quot;grid__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="mixin__paddedWrapper">
+  <div class="mixin-shadows-example">
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+    <div class="mixin__cell">
+      <div class="mixin__inner add-shadow add-padding">Shadow cell</div>
+    </div>
+  </div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;mixin__paddedWrapper&quot;&gt;
+  &lt;div class=&quot;mixin-shadows-example&quot;&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;mixin__cell&quot;&gt;
+      &lt;div class=&quot;mixin__inner add-shadow add-padding&quot;&gt;Shadow cell&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
+.mixin-shadows-example {
+  @include grid(3, 20px, $inners: true);
+}
+
+// Add 1px bottom padding to fix browser bug
+.mixin__paddedWrapper { padding-bottom: 1px; }
+
+// These are not part of Gutter Grid
+.add-shadow.add-padding Shadow cell { box-shadow: 0 0 10px #000; }
+.add-border { border: 2px solid red; }
+</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure><h3 id="using-box-shadow-as-a-fake-border">Using box shadow as a fake border</h3>
+<p>You might have noticed in the first example that I was able to add something that looked a lot like a border to each grid cell without needing to user <code>inner</code> elements. The secret to that is using a solid <em>inset</em> <code>box-shadow</code>.</p>
+
+                                      <figure class="demo" role="group" id="10-borders-and-shadows-on-guttered-cells-5">
+                                        <figcaption class="demo__summary demo__segment"><p>Adding borders to each cell without having to use inner elements (doesn&#39;t work in IE8).</p>
+
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="grid__wrapper">
+  <div class="grid grid--cols-2 grid--gutter-20">
     <div class="grid__cell add-fakeBorder add-padding">
       <p>You can use <code>box-shadow</code> to add a solid fake border to grid cells without needing to use inner elements.</p>
     </div>
@@ -475,7 +723,7 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid__wrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--gutter-20 grid--cols-2&quot;&gt;
+  &lt;div class=&quot;grid grid--cols-2 grid--gutter-20&quot;&gt;
     &lt;div class=&quot;grid__cell add-fakeBorder add-padding&quot;&gt;
       &lt;p&gt;You can use &lt;code&gt;box-shadow&lt;/code&gt; to add a solid fake border to grid cells without needing to use inner elements.&lt;/p&gt;
     &lt;/div&gt;
@@ -508,7 +756,7 @@ $grid-cell-gutters: (
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -610,7 +858,7 @@ $grid-cell-gutters: (
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/10-borders-and-shadows-on-guttered-cells/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/10-borders-and-shadows-on-guttered-cells/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

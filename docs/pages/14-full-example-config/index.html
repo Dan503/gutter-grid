@@ -40,9 +40,9 @@
 <!--[if lt IE 10]>
   <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="full-example-config">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,7 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
                                       <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Full example config
@@ -151,18 +151,29 @@
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
                                   </header><p>It&#39;s going to be difficult figuring out what your final config should end up looking like. These are all the config settings and their default values. Copy/paste them into your project and edit it to fit your project needs.</p>
-<pre><code class="lang-scss">// Set a prefix that is applied in front of &quot;grid&quot; (eg. &quot;gutter&quot; =&gt; .gutter-grid__cell)
-$grid-prefix: &#39;&#39;;
+
+                                      <figure class="demo" role="group" id="14-full-example-config-1">
+                                        <figcaption class="demo__summary demo__segment"><p>All the config settings and their default values.</p>
+
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                  <pre><code class="scss">
+// Set a prefix that is applied in front of &quot;grid&quot;
+// (eg. &quot;gutter&quot; =&gt; .gutter-grid__cell)
+$grid-prefix: '';
 
 // Set this to the width at which auto-wrapping is enabled
 // Also sets the screen width that triggers outer gutter delays
 $grid-page-width: 1200px;
 
-//IE8 can&#39;t do transparent borders.
+//IE8 can't do transparent borders.
 //This defines what the default color for gutters is in IE.
 $grid-gutter-ie-fallback: #fff;
 
-// Support for browsers that don&#39;t support flexbox (IE 8 and 9) is disabled by default
+// Support for browsers that don't support flexbox (IE 8 and 9)
+// is disabled by default
 $grid-legacy-support: false;
 
 // Support for browsers that support calc() is enabled by default
@@ -176,7 +187,7 @@ $grid-break-points: (
 
   //*2 column grid*/
   2: (
-    1: 600px,//* On a 600px wide screen and below, make it a 1 column grid */
+    1: 600px,//* On a screen &lt;= 600px wide, make it a 1 column grid */
   ),
 
   //*3 column grid*/
@@ -207,24 +218,52 @@ $grid-break-points: (
 );
 
 
-@import &#39;../node_modules/mq-scss/mq&#39;;
-//pick to use mixins or classes, it&#39;s not advisable to use both
-@import &#39;../node_modules/gutter-grid/grid-mixin&#39;;
-@import &#39;../node_modules/gutter-grid/grid-classes&#39;;
+@import '../node_modules/mq-scss/mq';
+//pick to use mixins or classes, it's not advisable to use both
+@import '../node_modules/gutter-grid/grid-mixin';
+@import '../node_modules/gutter-grid/grid-classes';
 </code></pre>
-<p>Here is an example of how to configure the <code>$grid-cell-gutters</code> setting:</p>
-<pre><code class="lang-scss">$grid-cell-gutters: (
-  20 : 20px, // grid--gutter-20
-  &#39;10-30&#39; : 10px 30px, // grid--gutter-10-30
-  &#39;gutterName&#39; : 20px, // grid--gutter-gutterName
-  &#39;mediaQueryGutter&#39; : mq (
-    (50px 30px), // default 50px vertical, 30px horizontal gutters
-    (30px 10px) (max, 800px), // 30px vertical, 10px horizontal gutters on screens &lt;= 800px
-    10px (max, 700px) // 10px gutter on screens  &lt;= 700px
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure>
+                                      <figure class="demo" role="group" id="14-full-example-config-2">
+                                        <figcaption class="demo__summary demo__segment"><p>An example of how to configure the <code>$grid-cell-gutters</code> setting.</p>
+
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                  <pre><code class="scss">
+$grid-cell-gutters: (
+  // .grid--gutter-20
+  20 : 20px,
+
+  // .grid--gutter-10-30
+  '10-30' : 10px 30px,
+
+  // .grid--gutter-gutterName
+  'gutterName' : 20px,
+
+  // .grid--gutter-mediaQueryGutter
+  'mediaQueryGutter' : mq (
+
+    // default 50px vertical, 30px horizontal gutters
+    (50px 30px),
+
+    // 30px vertical, 10px horizontal gutters
+    // on screens &lt;= 800px and &gt; 600px
+    (30px 10px) (inside, 800px, 600px),
+
+    // 10px gutter on screens  &lt;= 400px
+    10px (max, 400px)
   )
 );
 </code></pre>
-
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure>
                                 </div>
                           </article>
                               <nav class="nextPrev">
@@ -266,7 +305,7 @@ $grid-break-points: (
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/14-full-example-config/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/14-full-example-config/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

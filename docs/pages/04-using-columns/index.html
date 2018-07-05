@@ -40,9 +40,9 @@
 <!--[if lt IE 10]>
   <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="using-columns">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,7 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
                                       <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Using columns
@@ -152,7 +152,7 @@
                                     </aside>
                                   </header><p>Without defining columns, a grid can easily end up looking like this:</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="04-using-columns-1">
                                         <figcaption class="demo__summary demo__segment"><p>A default grid that has no columns defined</p>
 
                                         </figcaption>
@@ -169,7 +169,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -205,7 +205,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -253,7 +253,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
                                         </div>
                                       </figure><p>To ensure that cells take up only 50% width each, add a <code>grid--cols-2</code> class to the same element as the <code>grid</code> class if using the class system. If using the mixin system, add a <code>2</code> as the first parameter.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="04-using-columns-2">
                                         <figcaption class="demo__summary demo__segment"><p>The previous example but with the grid set to 2 columns</p>
 
                                         </figcaption>
@@ -270,7 +270,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -306,7 +306,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -358,7 +358,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
                                         </div>
                                       </figure><p>The added bonus of assigning columns to a grid is that there are baked in media queries for typical break points. This lets you build your site layout and not have to worry as much about making it mobile friendly.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="04-using-columns-3">
                                         <figcaption class="demo__summary demo__segment"><p>Examples of all the default column widths. Resize your browser to watch the media queries take effect.</p>
 
                                         </figcaption>
@@ -375,7 +375,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -455,7 +455,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -565,7 +565,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
 <p>If you don&#39;t like the default breakpoints or you need more columns, you can easily edit them by altering the <code>$grid-break-points</code> variable.</p>
 <p>Note that you can use <a href="https://www.npmjs.com/package/mq-scss">mq-scss</a> syntax to define custom media queries. This means that you can define the column break points using just about any media query you like. Gutter Grid was designed to work Desktop first for better legacy browser support. It is unwise to try and take a mobile first <code>min-width</code> approach on these settings. Also, if there is a need for supprting legacy browsers (IE 8 &amp; 9), taking a <code>min-width</code> approach will certainly break Gutter Grid&#39;s legacy support unless <a href="https://github.com/jonathantneal/postcss-unmq">UnMQ</a> has been integrated into your build process.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="04-using-columns-4">
                                         <figcaption class="demo__summary demo__segment"><p>These are the default settings. Edit them by placing a <code>$grid-break-points</code> variable before the import statements. The index of each set of values represents the default column count for that set of values. <code>false</code> = no media queries. The numbers on the left represent column count. The values on the right dictate when the column count will take effect.</p>
 
                                         </figcaption>
@@ -618,7 +618,7 @@ $grid-break-points: (
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="04-using-columns-5">
                                         <figcaption class="demo__summary demo__segment"><p>If you prefer, you can specify percentage column widths instead of column counts on the breakpoint values.</p>
 
                                         </figcaption>
@@ -671,7 +671,7 @@ $grid-break-points: (
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="04-using-columns-6">
                                         <figcaption class="demo__summary demo__segment"><p>You can disable all break points by setting <code>$grid-break-points</code> to <code>false</code>. This will allow you to have up to 6 columns when using the class based grid system.</p>
 
                                         </figcaption>
@@ -691,7 +691,7 @@ $grid-break-points: false;
                                       </figure><h3 id="mixin-column-breakpoints">Mixin column breakpoints</h3>
 <p>One of the strengths of the mixin version is that it can accept any number of columns without the need for the global <code>$grid-break-points</code> variable to be updated. Using anything over 6 columns will not have any default breakpoints applied to it though. Fortunately, the mixin version also features the ability to assign it custom breakpoints using the <code>$breakpoints</code> setting.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="04-using-columns-7">
                                         <figcaption class="demo__summary demo__segment"><p>Assigning custom breakpoints to a grid that contains more than 6 columns. (Mixin version only)</p>
 
                                         </figcaption>
@@ -743,8 +743,8 @@ $grid-break-points: false;
                                   <h3 id="the-iefloat-setting">The ieFloat setting</h3>
 <p>One common problem is that when grid cells have a large amount of content in them, the columns will grow outside their bounds even when you give them a column count.</p>
 
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>If you view this demo in IE8, you will see that the grid cells extend beyond the boundaries of the content area</p>
+                                      <figure class="demo" role="group" id="04-using-columns-8">
+                                        <figcaption class="demo__summary demo__segment"><p>If you view this demo in IE8 or 9, you will see that the grid cells extend beyond the boundaries of the available grid area.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -760,7 +760,7 @@ $grid-break-points: false;
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -794,7 +794,7 @@ $grid-break-points: false;
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -840,7 +840,7 @@ $grid-break-points: false;
                                         </div>
                                       </figure><p>The easiest way to fix this issue in most cases is to use the <code>ieFloat</code> setting. This setting forces the grid to use the <code>float:left</code> backup instead of the <code>display:table</code> backup when the browser doesn&#39;t support flexbox. <code>float:left</code> is much more obedient when it comes to setting column widths than <code>display:table</code>, so it often fixes the issue of content overflowing the page layout.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="04-using-columns-9">
                                         <figcaption class="demo__summary demo__segment"><p>Same example again except this time with <code>ieFloat</code> turned on</p>
 
                                         </figcaption>
@@ -857,11 +857,11 @@ $grid-break-points: false;
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="grid grid--ieFloat grid--cols-3">
+<div class="grid grid--cols-3 grid--ieFloat">
   <div class="grid__cell -color-1">
     <pre>|| Lorem ipsum dolor sit amet. Et et enim.</pre>
   </div>
@@ -876,7 +876,7 @@ $grid-break-points: false;
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;grid grid--ieFloat grid--cols-3&quot;&gt;
+&lt;div class=&quot;grid grid--cols-3 grid--ieFloat&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
     &lt;pre&gt;|| Lorem ipsum dolor sit amet. Et et enim.&lt;/pre&gt;
   &lt;/div&gt;
@@ -891,7 +891,7 @@ $grid-break-points: false;
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -977,7 +977,7 @@ $grid-break-points: false;
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/04-using-columns/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/04-using-columns/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

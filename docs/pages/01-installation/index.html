@@ -40,9 +40,9 @@
 <!--[if lt IE 10]>
   <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="installation">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,7 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
                                       <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Installation
@@ -152,7 +152,7 @@
                                     </aside>
                                   </header><pre><code>npm install gutter-grid --save
 </code></pre><p>A dependency that Gutter Grid has is <a href="https://www.npmjs.com/package/mq-scss">mq-scss</a>. This is used for the media queries.</p>
-<p>After npm installing Gutter Grid, add this to the top of your main Sass file:</p>
+<p>After npm installing Gutter Grid, add the following code to the top of your main Sass file (Please select weather you would prefer to use the class based system, mixin based system, or both).</p>
 
                                       <div class="tabs JS-tabs">
                                         <div class="tabs__links">
@@ -169,21 +169,21 @@
                                           </div>
                                         </div>
                                         <div class="tabs__contentWrap">
-                                              <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                              <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                 <figure><pre><code class="lang-scss">@import &#39;../node_modules/mq-scss/mq&#39;;
 @import &#39;../node_modules/gutter-grid/grid-classes&#39;;
 </code></pre>
 
                                                 </figure>
                                               </div>
-                                              <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                              <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                 <figure><pre><code class="lang-scss">@import &#39;../node_modules/mq-scss/mq&#39;;
 @import &#39;../node_modules/gutter-grid/grid-mixin&#39;;
 </code></pre>
 
                                                 </figure>
                                               </div>
-                                              <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                              <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                 <figure><pre><code class="lang-scss">@import &#39;../node_modules/mq-scss/mq&#39;;
 @import &#39;../node_modules/gutter-grid/grid-mixin&#39;;
 @import &#39;../node_modules/gutter-grid/grid-classes&#39;;
@@ -204,12 +204,24 @@
 <p>Read <strong><a href="/pages/02-how-to-support-legacy-browsers/">how to support legacy browsers</a></strong> to get a run down on how to achieve maximum browser compatibility.</p>
 </blockquote>
 <p>If using the class based system and there is a conflict with another <code>grid</code> class, you can edit the <code>$grid-prefix</code> variable to resolve the conflict.</p>
-<pre><code class="lang-scss">$grid-prefix: &#39;prefixName&#39;;
 
-@import &#39;../node_modules/mq-scss/mq&#39;;
-@import &#39;../node_modules/gutter-grid/grid-classes&#39;;
+                                      <figure class="demo" role="group" id="01-installation-1">
+                                        <figcaption class="demo__summary demo__segment"><p>Alter the <code>$grid-prefix</code> setting to prevent class name conflicts.</p>
+
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                  <pre><code class="scss">
+$grid-prefix: 'gutter';
+
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';
 </code></pre>
-<p>That will add <code>prefixName-</code> to the front of all the grid classes. So <code>.grid</code> will turn into <code>.prefixName-grid</code>. This will affect <em>all</em> grid classes. for example <code>.grid__cell</code> will become <code>.prefixName-grid__cell</code>.</p>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure><p>That will add <code>gutter-</code> to the front of all the grid classes. So <code>.grid</code> will turn into <code>.gutter-grid</code>. This will affect <em>all</em> grid classes. for example <code>.grid__cell</code> will become <code>.gutter-grid__cell</code>.</p>
 
                                 </div>
                           </article>
@@ -252,7 +264,7 @@
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/01-installation/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/01-installation/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>
