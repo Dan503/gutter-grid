@@ -80,7 +80,7 @@ footer {
 	}
 
 	p, li, figcaption,h2,h3,h4,h5,h6 {
-		> code {
+		> code, > * > code {
 			background-color: #e4e6ec;
 			border: 1px solid #a9abaf;
 			border-radius: 3px;
