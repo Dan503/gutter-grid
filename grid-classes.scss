@@ -109,52 +109,23 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		background-clip: padding-box!important;
 		border: 0 solid transparent;
 
-		@if ($grid-legacy-support){
+		$stretch-grid-parameters: '#{$grid}:not([class*="grid--cols"]):not(#{$grid}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(#{$grid}--noResize)';
+		$stretch-cell-parameters: '#{$grid}__cell:not(#{$grid}__cell--noStretch):not(#{$grid}__cell--noResize)';
+
+		#{$stretch-grid-parameters} > #{$stretch-cell-parameters} {
 			flex-grow: 1;
-		} @else {
-			//If no columns set and no alignment properties set, grid cells will stretch
-			#{$grid}:not([class*="grid--cols"]):not(#{$grid}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(#{$grid}--noResize)
-			> &:not(#{$grid}__cell--noStretch):not(#{$grid}__cell--noResize) {
-				flex-grow: 1;
-			}
 		}
 
 		&[class*="cell--span-"] {
 			flex-grow: 1;
 		}
 
-		//cell vertical alignment
-		&--vAlign {
-			&-center {
-				align-self: center;
-			}
-			&-top {
-				align-self: flex-start;
-			}
-			&-bottom {
-				align-self: flex-end;
-			}
-		}
-
 		&.#{$fullPrefix}grid { display: flex; }
+
 		&, * > {
 			//helps fix IE10 word-wrap bug (elements need to not be display:inline for the fix to work though)
 			max-width: 100%;
 			flex-shrink: 1;
-		}
-
-		&--stretch {
-			flex-grow: 1;
-		}
-		&--noStretch {
-			flex-grow: 0;
-		}
-		&--noShrink {
-			flex-shrink: 0;
-		}
-		&--noResize {
-			flex-shrink: 0;
-			flex-grow: 0;
 		}
 	}
 
@@ -273,11 +244,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	//allows wrapping at all screen widths
 	&--wrap {
 		flex-wrap: wrap;
-		@include ieFloat;
+		// @include ieFloat;
 	}
 	//disables wrapping at all screen widths
 	&--noWrap {
-		flex-wrap: nowrap;
+		flex-wrap: if($grid-legacy-support, nowrap !important, nowrap);
 	}
 
 	//quick access to space-between and space-around
@@ -290,6 +261,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		}
 		&-around {
 			justify-content: space-around;
+		}
+		&-evenly {
+			//backup for browsers that don't support "space-evenly"
+			justify-content: space-around;
+			justify-content: space-evenly;
 		}
 	}
 
@@ -307,16 +283,54 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		&-right {
 			justify-content: flex-end;
 		}
+		&-stretch {
+			> * { flex-grow: 1; }
+		}
+	}
+
+	&__cell {
+		//cell vertical alignment
+		&--vAlign {
+			&-center {
+				align-self: center;
+			}
+			&-top {
+				align-self: flex-start;
+			}
+			&-bottom {
+				align-self: flex-end;
+			}
+		}
+
+		//Stretch and shrink
+		&--stretch {
+			flex-grow: 1;
+		}
+		&--noStretch {
+			flex-grow: 0;
+		}
+		&--noShrink {
+			flex-shrink: 0;
+		}
+		&--noResize {
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
 	}
 
 	//tabular/float:left backup for IE9 and below
 	@if ($grid-legacy-support) {
+
+		&[class*="grid--align"], &[class*="grid--space"], #{$grid}--noStretch, #{$grid}--noResize, &[class*="grid--vAlign"][class*="grid--cols"] {
+			flex-wrap: wrap;
+		}
+
 		.no-flexbox &, .no-flexwrap & {
 			display: table;
 			width: auto;
 			> * { display: table-cell; vertical-align: top; }
 
-			&--wrap, &[class*="grid--cols"][class*="grid--gutter"] {
+			&--wrap:not([class*="grid--vAlign"]):not([class*="grid--space-"]) {
 				display: block;
 				> * {
 					display: block;
@@ -327,6 +341,15 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 					content: '';
 					display: block;
 					clear: both;
+				}
+			}
+
+			&[class*='grid--vAlign'][class*='grid--cols'] {
+				display: block;
+
+				> * {
+					display: inline-block;
+					margin-right: -4px;
 				}
 			}
 
@@ -341,12 +364,16 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 					> * { vertical-align: bottom; }
 				}
 			}
+			&__cell {
+				&--vAlign {
+					&-top { vertical-align: top; }
+					&-center { vertical-align: middle; }
+					&-bottom { vertical-align: bottom; }
+				}
+			}
 
 			&--align {
-				// need to overide the attribute selector
-				&-left.grid--align-left.grid--align-left,
-				&-center.grid--align-center.grid--align-center,
-				&-right.grid--align-right.grid--align-right {
+				&-stretch, &-left, &-center, &-right {
 					display: block;
 					> * {
 						display: inline-block;
@@ -366,13 +393,13 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			}
 
 			&--space {
-				&-between, &-around {
+				&-between, &-around, &-evenly {
 					display: block;
 					text-align: center;
 					> * {
 						display: inline-block;
 						float: none;
-						margin-right: -4px!important;
+						margin-right: -4px;
 					}
 				}
 			}
@@ -391,11 +418,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 				}
 			}
 		}
-	}
 
-	//allows IE to use floats instead of display table without affecting modern browsers
-	&--ieFloat, &--noGrowth, &--noResize {
-		@include ieFloat;
+		//allows IE to use floats instead of display table without affecting modern browsers
+		&--ieFloat, &--noStretch, &--noResize {
+			@include ieFloat;
+		}
 	}
 
 }

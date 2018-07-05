@@ -1,15 +1,21 @@
 block content
   :marked
-    CSS Grid is now implemented in all the modern browsers making all of our layout dreams come true... well almost all of them. Unfortunately IE11 still holds a fairly significant market share and it doesn't support the modern implementation of CSS Grid. It can be difficult to get people on board with the idea of allowing IE to look different compared to modern browsers. That is especially the case if the site you are building is an intranet with a 90% IE11 user base.
+    ### The problem
+
+    CSS Grid is now implemented in all modern browsers. All of our layout dreams have come true! ... Well almost all of them.
+
+    Unfortunately IE11 still holds a fairly significant market share and it doesn't support the modern implementation of CSS Grid. It can be difficult to get people on board with the idea of allowing IE to look different to modern browsers. That is especially the case if the site you are building is an intranet with a 90% IE user base.
 
     [Autoprefixer](https://github.com/postcss/autoprefixer) is able to help out a lot in terms of getting IE11's version of CSS Grid to behave almost like modern browsers do. Unfortunately we are still stuck with IE11 not supporting CSS Grid auto-placement. That is a major pain point for this industry and Gutter Grid sets out to fix that.
 
-    Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters that are reminiscent of the CSS Grid `grid-gap` property. Since this grid system is powered by flexbox and not CSS Grid, it works perfectly in IE11. With Gutter Grid IE11 essentially has access to simple auto-placement grids with gaps (albeit with a different syntax). It even comes with a default set of media queries which could save you from having to write out some custom styles for mobile devices.
+    ### The solution
+
+    Gutter Grid is a flexbox based grid system for building fully responsive grid layouts with highly customisable gutters. These gutters are highly reminiscent of the CSS `grid-gap` property. So reminiscent in fact that that Gutter Grid gutters will line up perfectly with real CSS Grid gaps! Since this grid system is powered by flexbox and not CSS Grid, it works perfectly in IE11. Through Gutter Grid, IE11 has access to simple auto-placement grids with gaps (albeit with a different syntax). It even comes with a default set of media queries that may save you from having to write out some custom styles for mobile devices.
 
     Even though Gutter Grid is powered by flexbox, it features a legacy mode that, when enabled, adds `display:table`, `float:left` and `display:inline-block` backups that legacy browsers can fall back on. This will help prevent your site from blowing up even when viewed in those decrepit old IE8 and 9 browsers!
 
   :marked
-    Have you ever had to do a layout that looked something like this in a design?
+    Here is an example. Have you ever had to do a layout that looked something like this in a design?
 
   .demo__result.demo__segment
     .grid__wrapper

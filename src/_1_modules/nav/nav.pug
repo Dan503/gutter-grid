@@ -10,7 +10,7 @@ mixin nav(spec)
 		#navigation.skipLinks__target(tabindex="-1")
 			h2.TK-visHid Main navigation
 		+accordion()
-			ol.nav__list.grid.grid--gutter-nav.grid--outerGutters.grid--hasInners.grid--vertical.grid--noShrink
+			ol.nav__list.grid.grid--cols-4.grid--gutter-nav.grid--stretch.grid--outerGutters.grid--hasInners.grid--vertical.grid--noShrink
 				each item in navMap.subnav
 					- var activeClass = isActive(item) ? '-active' : '';
 					- var currentPage = isActive(item) ? 'page' : false;

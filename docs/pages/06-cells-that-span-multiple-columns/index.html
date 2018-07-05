@@ -38,11 +38,11 @@
   <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 9]><!-->
   <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
 <!--[if lt IE 10]>
-  <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="cells-that-span-multiple-columns">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v5.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -116,16 +116,16 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
-                                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
+                                      <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
-                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-control-wrapping/">Control wrapping</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/06-cells-that-span-multiple-columns/" aria-current="page">Cells that span multiple columns</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Cells that span multiple columns
@@ -152,15 +152,27 @@
                                     </aside>
                                   </header><p>If using the class based system, cells can be made to take up more than just a single column width by using a <code>grid__cell--span-#</code> class. The <code>#</code> being the number of columns you wish for the cell to span.</p>
 <p>Alternatively, if you are using the mixin based system, you can use the seperate <code>grid__cell--span</code> mixin to calculate the width for you. The syntax for it goes like this:</p>
-<pre><code class="lang-scss">@include grid__cell--span(
-  [No. columns to span],
-  [total No. of columns],
-  [optional place to add &quot;!important&quot; if you need it]
+
+                                      <figure class="demo" role="group" id="06-cells-that-span-multiple-columns-1">
+                                        <figcaption class="demo__summary demo__segment"><p>Syntax for the <code>grid__cell--span</code> mixin.</p>
+
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                  <pre><code class="scss">
+@include grid__cell--span(
+  [Number of columns to span],
+  [Total number of columns],
+  [Optional place to add &quot;!important&quot; if you need it]
 );
 </code></pre>
-<p>The first 2 parameters are required but the 3rd parameter is a completely optional parameter designed to add <code>!important</code> to the rule if you need to. The only think this mixin does is calculate the width for you so it&#39;s perfectly fine to write out the width manually if that&#39;s easier.</p>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure><p>The first 2 parameters are required but the 3rd parameter is a completely optional parameter designed to add <code>!important</code> to the rule if you need to. The only think this mixin does is calculate the width for you so it&#39;s perfectly fine to write out the width manually if that&#39;s easier.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="06-cells-that-span-multiple-columns-2">
                                         <figcaption class="demo__summary demo__segment"><p>A grid featuring it&#39;s first grid cell spanning 3 columns.</p>
 
                                         </figcaption>
@@ -177,12 +189,12 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid grid--cols-4">
-  <div class="grid__cell grid__cell--span-3 -color-1"></div>
+  <div class="grid__cell -color-1 grid__cell--span-3"></div>
   <div class="grid__cell -color-2"></div>
   <div class="grid__cell -color-3"></div>
   <div class="grid__cell -color-4"></div>
@@ -194,7 +206,7 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid grid--cols-4&quot;&gt;
-  &lt;div class=&quot;grid__cell grid__cell--span-3 -color-1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-1 grid__cell--span-3&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
@@ -205,12 +217,12 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="mixin-10">
-  <div class="mixin__cell mixin__cellSpan -color-1"></div>
+  <div class="mixin__cell -color-1 mixin__cellSpan"></div>
   <div class="mixin__cell -color-2"></div>
   <div class="mixin__cell -color-3"></div>
   <div class="mixin__cell -color-4"></div>
@@ -222,7 +234,7 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;div class=&quot;mixin-10&quot;&gt;
-  &lt;div class=&quot;mixin__cell mixin__cellSpan -color-1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-1 mixin__cellSpan&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-3&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-4&quot;&gt;&lt;/div&gt;
@@ -259,7 +271,7 @@
                                       </figure><p>Grids that feature column spans often don&#39;t play nicely with the default media queries. Applying <code>flex-grow: 1;</code> to the multi-spanning grid cell can help mitigate this issue. It is usually best to simply disable the media queries on that particular grid though and write your own custom styles with new media queries.</p>
 <p>To disable media queries on a grid, add the <code>grid--noMQs</code> class if using the class based system. If using the mixin, set the <code>$MQs</code> variable to <code>false</code>. Alternatively you may like to use the <code>$breakpoints</code> setting in the Gutter Grid mixin to <a href="/pages/04-using-columns/#mixin-column-breakpoints">create new breakpoints</a> for the module instead. You will likely still need to custom-style the multi-spanning grid cell though.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="06-cells-that-span-multiple-columns-3">
                                         <figcaption class="demo__summary demo__segment"><p>Same example as above except this time with the default media queries disabled. Resize your screen to see the difference.</p>
 
                                         </figcaption>
@@ -276,12 +288,12 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="grid grid--noMQs grid--cols-4">
-  <div class="grid__cell grid__cell--span-3 -color-1"></div>
+<div class="grid grid--cols-4 grid--noMQs">
+  <div class="grid__cell -color-1 grid__cell--span-3"></div>
   <div class="grid__cell -color-2"></div>
   <div class="grid__cell -color-3"></div>
   <div class="grid__cell -color-4"></div>
@@ -292,8 +304,8 @@
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;grid grid--noMQs grid--cols-4&quot;&gt;
-  &lt;div class=&quot;grid__cell grid__cell--span-3 -color-1&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;grid grid--cols-4 grid--noMQs&quot;&gt;
+  &lt;div class=&quot;grid__cell -color-1 grid__cell--span-3&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
@@ -304,12 +316,12 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="mixin-11">
-  <div class="mixin__cell mixin__cellSpan -color-1"></div>
+  <div class="mixin__cell -color-1 mixin__cellSpan"></div>
   <div class="mixin__cell -color-2"></div>
   <div class="mixin__cell -color-3"></div>
   <div class="mixin__cell -color-4"></div>
@@ -321,7 +333,7 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;div class=&quot;mixin-11&quot;&gt;
-  &lt;div class=&quot;mixin__cell mixin__cellSpan -color-1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-1 mixin__cellSpan&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-3&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-4&quot;&gt;&lt;/div&gt;
@@ -345,13 +357,14 @@
                                                 </div>
                                               </div>
                                         </div>
-                                      </figure>
+                                      </figure><p>Disabling media queries is also useful on small grids that have column counts defined. Grids are often used on components that do not take up the full width of the page. These sorts of grids will usually need their own custom media query widths applied.</p>
+
                                 </div>
                           </article>
                               <nav class="nextPrev">
                                 <h2 class="TK-visHid">Page turner</h2>
                                 <ul class="nextPrev__grid grid grid--gutter-10 grid--space-between">
-                                  <li class="nextPrev__gridCell grid__cell -prev"><a class="nextPrev__link btn -light" href="/pages/05-enabling-disabling-wrapping/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Previous:</span><span class="nextPrev__title">Enabling/disabling wrapping</span></a></li>
+                                  <li class="nextPrev__gridCell grid__cell -prev"><a class="nextPrev__link btn -light" href="/pages/05-control-wrapping/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Previous:</span><span class="nextPrev__title">Control wrapping</span></a></li>
                                   <li class="nextPrev__gridCell grid__cell -next"><a class="nextPrev__link btn -light" href="/pages/07-adding-gutters/"><span class="nextPrev__arrow"></span><span class="nextPrev__tag">Next:</span><span class="nextPrev__title">Adding Gutters</span></a></li>
                                 </ul>
                               </nav>
@@ -368,7 +381,7 @@
                         <div class="footer__owner grid__cell">
                               <div class="owner">
                                 <h3 class="TK-visHid">Owner</h3>
-                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=75&amp;default=retro" alt="Dan503" width="75" height="75"></a>
+                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=150&amp;default=retro" alt="Dan503" width="75" height="75"></a>
                                   <p class="owner__text grid__cell"><a href="https://github.com/Dan503">Daniel Tonon</a> maintains <a href="https://github.com/Dan503/gutter-grid">Gutter Grid</a></p>
                                 </div>
                               </div>
@@ -387,7 +400,7 @@
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/06-cells-that-span-multiple-columns/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/06-cells-that-span-multiple-columns/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

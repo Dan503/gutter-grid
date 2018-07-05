@@ -1,24 +1,24 @@
 block content
   :marked
-    Vertical alignment is just as easy. These are mostly just classes that hold the `align-items` values though. They do not feature any Legacy browser backups. If you find the pure css method easier to use, feel free to use that instead.
+    Vertical alignment is just as easy. These mostly just hold values for the `align-items` property. They **do** feature legacy browser backups when run in legacy mode though. These backups come in the form of `display: inline-block` and `vertical-align` combinations. So it's better to use these settings if you need legacy browser support (IE 8 & 9). The backups only take effect if a column count has been defined though. Like with the `align` properties, the `vAlign` properties will also auto-enable wrapping in legacy mode when applied (if a column count has been defined).
 
   +demo({
     classes: {
 html:`
 - var heights = [100, 50, 75, 50, 75, 100];
 figure
-  figcaption Top align
-  .grid.grid--vAlign-top.grid--cols-3
+  figcaption Top align: #[code grid--vAlign-top]
+  .grid.grid--cols-3.grid--vAlign-top
     each height, i in heights
       .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 figure
-  figcaption Bottom align
-  .grid.grid--vAlign-bottom.grid--cols-3
+  figcaption Bottom align: #[code grid--vAlign-bottom]
+  .grid.grid--cols-3.grid--vAlign-bottom
     each height, i in heights
       .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 figure
-  figcaption Center align
-  .grid.grid--vAlign-center.grid--cols-3
+  figcaption Center align: #[code grid--vAlign-center]
+  .grid.grid--cols-3.grid--vAlign-center
     each height, i in heights
       .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 `,
@@ -28,17 +28,17 @@ html:`
 - var heights = [100, 50, 75, 50, 75, 100];
 
 figure
-  figcaption Top align
+  figcaption Top align: #[code $vAlign: top]
   .mixin-34
     each height, i in heights
       .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 figure
-  figcaption Bottom align
+  figcaption Bottom align: #[code $vAlign: bottom]
   .mixin-35
     each height, i in heights
       .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
 figure
-  figcaption Center align
+  figcaption Center align: #[code $vAlign: center]
   .mixin-36
     each height, i in heights
       .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join(''))
@@ -48,16 +48,16 @@ scss: `
   @include grid(3, $vAlign: top);
 }
 .mixin-35 {
-  @include grid($vAlign: bottom);
+  @include grid(3, $vAlign: bottom);
 }
 .mixin-36 {
-  @include grid($vAlign: center);
+  @include grid(3, $vAlign: center);
 }
 `
     }
 }, {classes: '-noHeight'})
     :marked
-      Vertical alignments
+      Vertical alignments. These will all enable wrapping in legacy mode when a column count has also been applied.
 
 
   +demo({
@@ -66,7 +66,7 @@ html:`
 - var heights = [75, 50, 100, 50, 75, 100];
 
 .grid__wrapper.add-shadow
-  .grid.grid--vAlign-center.grid--hasInners.grid--gutter-20.grid--cols-3
+  .grid.grid--hasInners.grid--gutter-20.grid--cols-3.grid--vAlign-center
     each height, i in heights
       .grid__cell(style=["height: ",height,"px;"].join(''))
         .grid__inner.add-border
@@ -100,7 +100,7 @@ scss: `
     classes: {
 html:`
 .grid__wrapper
-  .grid.grid--hasInners.grid--cols-3.grid--gutter-20
+  .grid.grid--cols-3.grid--gutter-20.grid--hasInners
     -
       var heights = [
         '<p>Videmusne ut pueri ne verberibus quidem a contemplandis rebus perquirendisque deterreantur? Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Tum Triarius: Posthac quidem, inquit, audacius.</p> <p> Qui non moveatur et offensione turpitudinis et comprobatione honestatis? Quae sequuntur igitur? Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Sed tamen est aliquid, quod nobis non liceat, liceat illis. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter.</p>',
@@ -155,32 +155,35 @@ scss: `
   +demo({
     classes: {
 html:`
-.grid.grid--vAlign-bottom(style='height:100px;')
-  - var heights = [80, 25, 50, 75];
+.grid.grid--cols-3.grid--vAlign-bottom
+  - var heights = [80, 25, 50, 30, 40, 75];
   each height, i in heights
     .grid__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join('') + (i === 2 ? ' grid__cell--vAlign-top' : ''))
 `,
 },
     mixin: {
 html:`
-.mixin-38C(style='height:100px;')
-  - var heights = [80, 25, 50, 75];
+.mixin-38C
+  - var heights = [80, 25, 50, 30, 40, 75];
   each height, i in heights
     .mixin__cell(style=["height: ",height,"px;"].join(''), class=["-color-",i+1].join('') + (i === 2 ? ' mixin__oddOneOut' : ''))
 `,
 scss: `
 .mixin-38C {
-  @include grid($vAlign: bottom);
+  @include grid(3, $vAlign: bottom);
 }
 
 .mixin__oddOneOut {
   align-self: flex-start;
+
+  //IE 8/9 needs this if using legacy mode
+  vertical-align: top !important;
 }
 `
     }
 }, {classes: '-noHeight'})
     :marked
-      Changing the vertical alignment of a single cell using `grid__cell--vAlign-xxx` classes (`xxx` being `top`, `bottom`, or `center`)... or you could just use the `align-self` css property.
+      Changing the vertical alignment of a single cell using `grid__cell--vAlign-xxx` classes (`xxx` being `top`, `bottom`, or `center`). If using the mixin, use the `align-self` css property and also `vertical-align: xxx !important` if running legacy mode.
 
   :marked
     ### Vertical flow
@@ -193,7 +196,7 @@ scss: `
     classes: {
 html:`
 .grid__wrapper
-  .grid.grid--vertical.grid--gutter-20
+  .grid.grid--gutter-20.grid--vertical
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3

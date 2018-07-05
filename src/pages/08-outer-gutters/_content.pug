@@ -1,6 +1,6 @@
 block content
   :marked
-    By default, Gutter Grid will place the grid cells on the very edge of the content area as shown in this example by a red bounding box:
+    By default, Gutter Grid will place the grid cells on the very edge of the content area as shown in this example:
 
   +demo({
     classes: {
@@ -54,7 +54,7 @@ scss:`
     classes: {
 html:`
 .grid__wrapper
-  .grid.grid--outerGutters.grid--gutter-20.grid--cols-3
+  .grid.grid--gutter-20.grid--cols-3.grid--outerGutters
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -104,9 +104,9 @@ scss:`
     classes: {
 html:`
 figure
-  figcaption Horizontal outer gutter
+  figcaption Horizontal outer gutter: #[code grid--outerGutters-h]
   .grid__wrapper
-    .grid.grid--outerGutters-h.grid--gutter-20.grid--cols-3
+    .grid.grid--gutter-20.grid--cols-3.grid--outerGutters-h
       .grid__cell.-color-1
       .grid__cell.-color-2
       .grid__cell.-color-3
@@ -115,9 +115,9 @@ figure
       .grid__cell.-color-6
 
 figure
-  figcaption Vertical outer gutter
+  figcaption Vertical outer gutter: #[code grid--outerGutters-v]
   .grid__wrapper
-    .grid.grid--outerGutters-v.grid--gutter-20.grid--cols-3
+    .grid.grid--gutter-20.grid--cols-3.grid--outerGutters-v
       .grid__cell.-color-1
       .grid__cell.-color-2
       .grid__cell.-color-3
@@ -138,7 +138,7 @@ $grid-cell-gutters: (
     mixin: {
 html:`
 figure
-  figcaption Horizontal outer gutter
+  figcaption Horizontal outer gutter: #[code $outerGutters: h]
   .mixin__wrapper
     .mixin-15
       .mixin__cell.-color-1
@@ -149,7 +149,7 @@ figure
       .mixin__cell.-color-6
 
 figure
-  figcaption Vertical outer gutter
+  figcaption Vertical outer gutter: #[code $outerGutters: v]
   .mixin__wrapper
     .mixin-16
       .mixin__cell.-color-1
@@ -181,9 +181,9 @@ scss:`
     classes: {
 html:`
 figure
-  figcaption Top outer gutter
+  figcaption Top outer gutter: #[code grid--outerGutters-top]
   .grid__wrapper
-    .grid.grid--outerGutters-top.grid--gutter-20.grid--cols-3
+    .grid.grid--gutter-20.grid--cols-3.grid--outerGutters-top
       .grid__cell.-color-1
       .grid__cell.-color-2
       .grid__cell.-color-3
@@ -192,9 +192,9 @@ figure
       .grid__cell.-color-6
 
 figure
-  figcaption Bottom outer gutter
+  figcaption Bottom outer gutter: #[code grid--outerGutters-bottom]
   .grid__wrapper
-    .grid.grid--outerGutters-bottom.grid--gutter-20.grid--cols-3
+    .grid.grid--gutter-20.grid--cols-3.grid--outerGutters-bottom
       .grid__cell.-color-1
       .grid__cell.-color-2
       .grid__cell.-color-3
@@ -203,9 +203,9 @@ figure
       .grid__cell.-color-6
 
 figure
-  figcaption Left outer gutter
+  figcaption Left outer gutter: #[code grid--outerGutters-left]
   .grid__wrapper
-    .grid.grid--outerGutters-left.grid--gutter-20.grid--cols-3
+    .grid.grid--gutter-20.grid--cols-3.grid--outerGutters-left
       .grid__cell.-color-1
       .grid__cell.-color-2
       .grid__cell.-color-3
@@ -214,9 +214,9 @@ figure
       .grid__cell.-color-6
 
 figure
-  figcaption Right outer gutter
+  figcaption Right outer gutter: #[code grid--outerGutters-right]
   .grid__wrapper
-    .grid.grid--outerGutters-right.grid--gutter-20.grid--cols-3
+    .grid.grid--gutter-20.grid--cols-3.grid--outerGutters-right
       .grid__cell.-color-1
       .grid__cell.-color-2
       .grid__cell.-color-3
@@ -238,7 +238,7 @@ $grid-cell-gutters: (
     mixin: {
 html:`
 figure
-  figcaption Top outer gutter
+  figcaption Top outer gutter: #[code $outerGutters: top]
   .mixin__wrapper
     .mixin-17
       .mixin__cell.-color-1
@@ -249,7 +249,7 @@ figure
       .mixin__cell.-color-6
 
 figure
-  figcaption Bottom outer gutter
+  figcaption Bottom outer gutter: #[code $outerGutters: bottom]
   .mixin__wrapper
     .mixin-18
       .mixin__cell.-color-1
@@ -260,7 +260,7 @@ figure
       .mixin__cell.-color-6
 
 figure
-  figcaption Left outer gutter
+  figcaption Left outer gutter: #[code $outerGutters: left]
   .mixin__wrapper
     .mixin-19
       .mixin__cell.-color-1
@@ -271,7 +271,7 @@ figure
       .mixin__cell.-color-6
 
 figure
-  figcaption Right outer gutter
+  figcaption Right outer gutter: #[code $outerGutters: right]
   .mixin__wrapper
     .mixin-20
       .mixin__cell.-color-1
@@ -315,9 +315,9 @@ scss:`
     classes: {
 html:`
 figure
-  figcaption Horizontal outer gutter both sides delayed
+  figcaption Horizontal outer gutter both sides delayed: #[code grid--outerGutters-h-delayed]
   .grid__wrapper
-    .grid.grid--outerGutters-h-delayed.grid--gutter-20.grid--cols-3
+    .grid.grid--gutter-20.grid--cols-3.grid--outerGutters-h-delayed
       .grid__cell.-color-1
       .grid__cell.-color-2
       .grid__cell.-color-3
@@ -326,9 +326,9 @@ figure
       .grid__cell.-color-6
 
 figure
-  figcaption Left outer gutter delayed
+  figcaption Left outer gutter delayed: #[code grid--outerGutters-left-delayed]
   .grid__wrapper
-    .grid.grid--outerGutters-left-delayed.grid--gutter-20.grid--cols-3
+    .grid.grid--gutter-20.grid--cols-3.grid--outerGutters-left-delayed
       .grid__cell.-color-1
       .grid__cell.-color-2
       .grid__cell.-color-3
@@ -337,9 +337,9 @@ figure
       .grid__cell.-color-6
 
 figure
-  figcaption Right outer gutter delayed
+  figcaption Right outer gutter delayed: #[code grid--outerGutters-right-delayed]
   .grid__wrapper
-    .grid.grid--outerGutters-right-delayed.grid--gutter-20.grid--cols-3
+    .grid.grid--gutter-20.grid--cols-3.grid--outerGutters-right-delayed
       .grid__cell.-color-1
       .grid__cell.-color-2
       .grid__cell.-color-3
@@ -363,7 +363,7 @@ $grid-page-width: 1200px;
     mixin: {
 html:`
 figure
-  figcaption Horizontal outer gutter, both sides delayed
+  figcaption Horizontal outer gutter, both sides delayed: #[code $outerGutters: h-delayed]
   .mixin__wrapper
     .mixin-21
       .mixin__cell.-color-1
@@ -374,7 +374,7 @@ figure
       .mixin__cell.-color-6
 
 figure
-  figcaption Left outer gutter delayed
+  figcaption Left outer gutter delayed: #[code $outerGutters: left-delayed]
   .mixin__wrapper
     .mixin-22
       .mixin__cell.-color-1
@@ -385,7 +385,7 @@ figure
       .mixin__cell.-color-6
 
 figure
-  figcaption Right outer gutter delayed
+  figcaption Right outer gutter delayed: #[code $outerGutters: right-delayed]
   .mixin__wrapper
     .mixin-23
       .mixin__cell.-color-1

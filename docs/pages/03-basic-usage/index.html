@@ -38,11 +38,11 @@
   <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 9]><!-->
   <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
 <!--[if lt IE 10]>
-  <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="basic-usage">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v5.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -116,16 +116,16 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
-                                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
+                                      <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/03-basic-usage/" aria-current="page">Basic usage</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
-                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-control-wrapping/">Control wrapping</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Basic usage
@@ -150,7 +150,7 @@
                                       <h3 class="TK-visHid">Mobile warning</h3>
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
-                                  </header><p>Please select weather you would prefer to use the class based system or the mixin based system (This sets which version is shown by default in the documentation examples)</p>
+                                  </header><p>Please select weather you would prefer to use the class based system or the mixin based system. This particular set of tabs will change which version is shown by default in the documentation examples. The buttons in the header will also change what documentation is shown by default.</p>
 
                                       <div class="tabs JS-tabs" id="JS-tabs__defaultSelector">
                                         <div class="tabs__links">
@@ -164,7 +164,7 @@
                                           </div>
                                         </div>
                                         <div class="tabs__contentWrap">
-                                              <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                              <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                 <figure><h3 id="classes-format-pros-and-cons">Classes format pros and cons</h3>
 <p>The class based system is designed so that you can control the grid layout primarily through the html markup.</p>
 <p>Any class that doesn&#39;t feature <code>grid</code> at the start of it&#39;s name is not part of the grid system. The minimum 100px height on grid cells is not part of the grid system either.</p>
@@ -199,11 +199,12 @@
 <li>Column breakpoints can only be defined in the global settings</li>
 <li>Gutter widths can only be defined in the global settings</li>
 <li>Generates a lot of extra css rules that you will probably never use</li>
+<li>Legacy mode does not work properly in IE8</li>
 </ol>
 
                                                 </figure>
                                               </div>
-                                              <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                              <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                 <figure><h3 id="mixin-format-pros-and-cons">Mixin format pros and cons</h3>
 <p>The mixin based system is designed so that you can control the grid layout primarily through SCSS stylesheets.</p>
 <p>While it does require a specific HTML structure to work, it does not require any specific HTML classes to be added to elements. This makes the mixin version ideal for CMS&#39;s that do not give very much control over the markup that is output.</p>
@@ -216,6 +217,7 @@
 <li>Columns can be given custom breakpoints on a case by case basis</li>
 <li>Gutters are defined in the same file as the module that the gutters are made for</li>
 <li>You will only generate styles that you are actually using</li>
+<li>Legacy mode works in IE8</li>
 </ol>
 <h4 id="mixin-system-downsides">Mixin system downsides</h4>
 <ol>
@@ -229,7 +231,8 @@
                                               </div>
                                         </div>
                                       </div>
-                                      <figure class="demo" role="group">
+                                  <h3>Using Gutter Grid</h3>
+                                      <figure class="demo" role="group" id="03-basic-usage-1">
                                         <figcaption class="demo__summary demo__segment"><p>The bare bones markup of what you need for Gutter Grid to work (excluding color classes)</p>
 
                                         </figcaption>
@@ -246,7 +249,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -266,7 +269,7 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -298,7 +301,7 @@
                                         </div>
                                       </figure><p>That example is a bit misleading though. Having 2 grid cells doesn&#39;t necessarily mean they will always be 50% width each</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="03-basic-usage-2">
                                         <figcaption class="demo__summary demo__segment"><p>The previous example, but one cell has a lot of text while the other barely has any</p>
 
                                         </figcaption>
@@ -315,7 +318,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -351,7 +354,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -420,7 +423,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
                         <div class="footer__owner grid__cell">
                               <div class="owner">
                                 <h3 class="TK-visHid">Owner</h3>
-                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=75&amp;default=retro" alt="Dan503" width="75" height="75"></a>
+                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=150&amp;default=retro" alt="Dan503" width="75" height="75"></a>
                                   <p class="owner__text grid__cell"><a href="https://github.com/Dan503">Daniel Tonon</a> maintains <a href="https://github.com/Dan503/gutter-grid">Gutter Grid</a></p>
                                 </div>
                               </div>
@@ -439,7 +442,7 @@ Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/03-basic-usage/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/03-basic-usage/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

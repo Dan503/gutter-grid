@@ -38,11 +38,11 @@
   <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 9]><!-->
   <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
 <!--[if lt IE 10]>
-  <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="change-log">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v5.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -116,16 +116,16 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
-                                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
+                                      <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
-                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-control-wrapping/">Control wrapping</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Change log
@@ -150,10 +150,23 @@
                                       <h3 class="TK-visHid">Mobile warning</h3>
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
-                                  </header><h3 id="version-4-1-0">Version 4.1.0</h3>
-<p>This release is all about trying to mitigate the Chrome negative margin bug as much as possible. Gutter Grid now tries it&#39;s best to avoid combining a negative top margin with a top gutter height. Instead Gutter Grid just doesn&#39;t output a top outer gutter unless the user has explicitly asked for one. If there is no outer gutter then there is no need to cancel it out with a negative margin which means no Chrome bug.</p>
-<p>The Chrome bug is still an issue for bottom outer gutters though. The bottom negative margin cannot be removed. To combat this I&#39;ve added a new class to the class system. The <code>grid__paddedWrapper</code> class adds <code>padding-bottom: 1px</code> instead of <code>overflow: hidden</code>. It is designed to be a replacement for the <code>grid__wrapper</code> class when overflow is needed. If using the mixin system <code>padding-bottom: 1px</code> needs to be added yourself to an element wrapping around the grid.</p>
-<h3 id="version-4-0-0">Version 4.0.0</h3>
+                                  </header><h3 id="version-5-0-0-legacy-mode-fixes">Version 5.0.0 - Legacy mode fixes</h3>
+<p>This is a small release compared to version 4. It primarily sets out to fix some issues that version 4 had with IE 8 and 9 compatibility. It also brings legacy mode more into alignment with how modern mode behaves.</p>
+<h4 id="breaking-changes">Breaking changes</h4>
+<ul>
+<li>Grids that have a set of columns defined would previously stretch while wrapping in legacy mode. This was inconsistent behavior to modern mode. In modern mode, grid cells would remain at their column width setting while wrapping. Legacy mode grids now behave consistently with modern mode grids with the exception of wrapping.</li>
+<li>In general, legacy mode grids will not wrap unless explicitly told to. The exceptions to this rule are grids that have <code>align</code>, <code>space</code>, or <code>vAlign</code> settings applied to them and also grids that have had stretch disabled (<code>grid--noStretch</code> / <code>$stretch: false</code> and <code>grid--noResize</code>/<code>$resize: false</code>). <code>vAlign</code>, <code>space</code> and <code>noStretch</code> will automatically enable wrapping in legacy mode. <code>vAlign</code> will only enable wrapping in legacy mode if a column count has also been set. Previously these exceptions were not consistent in legacy mode between legacy and modern browsers. Using <code>grid--noWrap</code>/<code>$wrap:false</code> can overide this implicit wrapping behaviour to force modern browsers to not wrap. This technique will not prevent IE8 and 9 from wrapping though.</li>
+</ul>
+<h4 id="new-features">New features</h4>
+<ul>
+<li>You can now use <code>$align: stretch</code> or <code>.grid--align-stretch</code> to apply grid cell stretching instead of <code>$stretch: true</code> and the <code>.grid--stretch</code> class. Don&#39;t worry, you can still use <code>$stretch: true</code> and <code>.grid--stretch</code>, it&#39;s just an extra option you have available to you now.</li>
+<li>Added legacy mode backups for vertical cell alignment. These backups will only come into effect though if wrapping is enabled and a column count has been defined.</li>
+<li>Added a new <code>grid--space-evenly</code> class to the class system and <code>$space: evenly</code> setting to the mixin system. This is the equivalent of <code>justify-content: space-evenly</code>. It features a <code>justify-content: space-around</code> backup for browsers that don&#39;t support evenly yet and features an extra center alignment backup when running in legacy mode on browsers that don&#39;t support flexbox.</li>
+</ul>
+<h3 id="version-4-1-0-mitigating-the-negative-margin-bug">Version 4.1.0 - Mitigating the negative margin bug</h3>
+<p>This release is all about trying to mitigate the common negative margin browser bug as much as possible. Gutter Grid now tries it&#39;s best to avoid combining a negative top margin with a top gutter height. Instead Gutter Grid just doesn&#39;t output a top outer gutter unless the user has explicitly asked for one. If there is no outer gutter then there is no need to cancel it out with a negative margin which means no margin bug.</p>
+<p>The bug is still an issue for bottom outer gutters though. The bottom negative margin cannot be removed. To combat this I&#39;ve added a new class to the class system. The <code>grid__paddedWrapper</code> class adds <code>padding-bottom: 1px</code> instead of <code>overflow: hidden</code>. It is designed to be a replacement for the <code>grid__wrapper</code> class when overflow is needed. If using the mixin system <code>padding-bottom: 1px</code> needs to be added yourself to an element wrapping around the grid.</p>
+<h3 id="version-4-0-0-making-gutter-grid-more-ie11-friendly">Version 4.0.0 - Making Gutter Grid more IE11 friendly</h3>
 <p>This is a big update. CSS Grid is killing off almost all need for Gutter Grid. IE 11 is essentially the only reason why Gutter Grid is still at all worth using right now.
 With IE 8 and 9 essentially dead, it doesn&#39;t make sense to hamper the experience of IE11 developers for the sake of these dead browsers.
 I&#39;m optimising the code to make the experience as enjoyable as possible for IE11 devs. Unfortunately it means the defaults will be different depending on if <code>$grid-legacy-support</code> is enabled or not.
@@ -173,7 +186,7 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
 <li>Multi-spanning cells now flex-grow by default. (A breaking change for <strong>everyone</strong>).</li>
 <li><code>$breakpoints</code> parameter in the mixin has been moved to the 3rd slot. (A breaking change for <strong>everyone</strong>).</li>
 <li><p><code>$grid-break-points</code> setting now has new syntax that makes it easier to tell what column count a particular set of breakpoints is for. Below is an impracticle example showing the new format:</p>
-<p><strong>Version 3.x</strong></p>
+<h5 id="version-3-x">Version 3.x</h5>
 <pre><code class="lang-scss">$grid-break-points: (
   // No media queries for 1 column grid
   (false),
@@ -197,7 +210,7 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
   false,
 )
 </code></pre>
-<p><strong>Version 4.0.0</strong></p>
+<h5 id="version-4-0-0">Version 4.0.0</h5>
 <pre><code class="lang-scss">$grid-break-points: (
   // No need to mention a 1 column grid
 
@@ -226,7 +239,7 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
 <h4 id="new-features-">New features:</h4>
 <ul>
 <li><p>Instead of listing percentage values as keys in the <code>$breakpoints</code> parameter key/value pairs, you can now simply list the number of columns that  the grid should have as the keys in the key/value pairs. The old method of using percentages as the key values will still work if that method is preferred.</p>
-<p><strong>Version 3.x (Still works in version 4)</strong></p>
+<h5 id="version-3-x-still-works-in-version-4-">Version 3.x (Still works in version 4)</h5>
 <pre><code class="lang-scss">@include grid(7, $breakpoints: (
   // On a 960px wide screen or below, the columns will be 25% wide
   25% : 960px,
@@ -235,7 +248,7 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
   100% : 480px,
 ));
 </code></pre>
-<p><strong>Version 4.x</strong></p>
+<h5 id="version-4-0-0">Version 4.0.0</h5>
 <pre><code class="lang-scss">@include grid(7, $breakpoints: (
   //On a 960px wide screen or below, there will be 4 columns
   4 : 960px,
@@ -250,12 +263,12 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
 <li><p>New config variable <code>$grid-calc-support</code> has been introduced. Since <code>calc</code> <a href="https://caniuse.com/#feat=calc">isn&#39;t supported in every browser</a> (thanks Opera Mini and Android 4) a new <code>$grid-calc-support</code> setting has been added. This defaults to whatever the opposite of the <code>$grid-legacy-support</code> setting is. This means that if legacy support is needed then <code>$grid-calc-support</code> will automatically be disabled. If you need to support Opera Mini (or you prefer seeing percentages in your styles), set <code>$grid-calc-support</code> to false.</p>
 </li>
 </ul>
-<h3 id="version-3-0-0">Version 3.0.0</h3>
+<h3 id="version-3-0-0-upgrading-mq-scss-and-legacy-support-is-no-longer-the-default">Version 3.0.0 - Upgrading mq-scss and legacy support is no longer the default</h3>
 <ul>
 <li>Gutter Grid will now install whatever version of mq-scss is available (defaulting to the latest version)</li>
 <li><strong>Breaking change:</strong> You now need to set the <code>$grid-legacy-support</code> setting to <code>true</code> if you wish to support browsers that do not support flexbox natively. (Change made to drastically reduce the amount of bloat found in the output css).</li>
 </ul>
-<h3 id="version-2-0-0">Version 2.0.0</h3>
+<h3 id="version-2-0-0-gutter-grid-now-in-mixin-flavor-">Version 2.0.0 - Gutter Grid now in mixin flavor!</h3>
 <h4 id="what-s-new-">What&#39;s new?</h4>
 <ul>
 <li>Gutter Grid now comes in mixin flavour!</li>
@@ -269,12 +282,12 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
 <p>If upgrading, none of the class names have changed, however the reduced specificity will mean that you may need to update your styles to not conflict with the new grid system.</p>
 <h5 id="new-format-for-assigning-column-break-points">New format for assigning column break points</h5>
 <p>The new format to the column break points is a bit different to the original. before it was a list of screen-sizes then column widths with a space in between each one.</p>
-<p>Version 1.x</p>
+<h6 id="version-1-x">Version 1.x</h6>
 <pre><code>(
   600px 100%
 )
 </code></pre><p>Column width is now stated first, and screen width is stated second. By default, the screen width will be calculated as a <code>max-width</code> media query. However, you can now provide <a href="https://www.npmjs.com/package/mq-scss">mq-scss</a> syntax as an alternative to stating a screen width pixel value. This means that you can define the column break points using just about any media query you like. Taking a mobile first <code>min-width</code> approach will break legacy browser support though unless you have <a href="https://github.com/jonathantneal/postcss-unmq">UnMQ</a> integrated into your build process.</p>
-<p>Version 2.x</p>
+<h6 id="version-2-x">Version 2.x</h6>
 <pre><code>(
   100% : 600px, //state a max-width pixel value
   //or
@@ -282,7 +295,7 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
 )
 </code></pre><h5 id="new-format-for-assigning-gutter-break-points">New format for assigning gutter break-points</h5>
 <p>The new way of assigning breakpoints to gutters isn&#39;t much different to the original method. The only incompatible difference being that now you need to write <code>mq</code> with a space after it before the list of values (the space is vital).</p>
-<p>Version 1.x</p>
+<h6 id="version-1-x">Version 1.x</h6>
 <pre><code class="lang-scss">$grid-cell-gutters: (
     &#39;mediaQueryGutter&#39; : (
         50px,
@@ -291,7 +304,7 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
     )
 );
 </code></pre>
-<p>Version 2.x</p>
+<h6 id="version-2-x">Version 2.x</h6>
 <pre><code class="lang-scss">$grid-cell-gutters: (
     &#39;mediaQueryGutter&#39; : mq (
         50px,
@@ -322,7 +335,7 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
                         <div class="footer__owner grid__cell">
                               <div class="owner">
                                 <h3 class="TK-visHid">Owner</h3>
-                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=75&amp;default=retro" alt="Dan503" width="75" height="75"></a>
+                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=150&amp;default=retro" alt="Dan503" width="75" height="75"></a>
                                   <p class="owner__text grid__cell"><a href="https://github.com/Dan503">Daniel Tonon</a> maintains <a href="https://github.com/Dan503/gutter-grid">Gutter Grid</a></p>
                                 </div>
                               </div>
@@ -341,7 +354,7 @@ If the legacy setting is turned on then Gutter Grid will behave in mostly the sa
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/15-change-log/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/15-change-log/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

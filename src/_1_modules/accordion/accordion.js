@@ -23,6 +23,7 @@ class accordion {
 		this.$elem = $(elem);
 		this.$toggle = this.$elem.find(_toggle);
 		this.$revealer = this.$elem.find(_revealer);
+		this.isOpen = false;
 
 		this.$toggle.click((e)=>{
 			e.preventDefault();
@@ -32,8 +33,10 @@ class accordion {
 
 	//toggles accordion open and closed
 	toggle(){
+		this.isOpen = !this.isOpen;
 		this.$revealer.slideToggle();
 		this.$elem.toggleClass(open_);
+		this.$toggle.attr('aria-expanded', this.isOpen);
 	}
 }
 

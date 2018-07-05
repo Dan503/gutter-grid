@@ -6,7 +6,7 @@ block content
 
     A dependency that Gutter Grid has is [mq-scss](https://www.npmjs.com/package/mq-scss). This is used for the media queries.
 
-    After npm installing Gutter Grid, add this to the top of your main Sass file:
+    After npm installing Gutter Grid, add the following code to the top of your main Sass file (Please select weather you would prefer to use the class based system, mixin based system, or both).
 
   +tabs({links: ['Classes', 'Mixin', 'Both']})
     +tabs__content()
@@ -44,11 +44,16 @@ block content
 
     If using the class based system and there is a conflict with another `grid` class, you can edit the `$grid-prefix` variable to resolve the conflict.
 
-    ``````scss
-    $grid-prefix: 'prefixName';
+  +demo({
+    scss: `
+$grid-prefix: 'gutter';
 
-    @import '../node_modules/mq-scss/mq';
-    @import '../node_modules/gutter-grid/grid-classes';
-    ``````
+@import '../node_modules/mq-scss/mq';
+@import '../node_modules/gutter-grid/grid-classes';
+`
+  }, {hasTabs: false})
+    :marked
+      Alter the `$grid-prefix` setting to prevent class name conflicts.
 
-    That will add `prefixName-` to the front of all the grid classes. So `.grid` will turn into `.prefixName-grid`. This will affect _all_ grid classes. for example `.grid__cell` will become `.prefixName-grid__cell`.
+  :marked
+    That will add `gutter-` to the front of all the grid classes. So `.grid` will turn into `.gutter-grid`. This will affect _all_ grid classes. for example `.grid__cell` will become `.gutter-grid__cell`.

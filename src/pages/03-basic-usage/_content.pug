@@ -1,6 +1,6 @@
 block content
   :marked
-    Please select weather you would prefer to use the class based system or the mixin based system (This sets which version is shown by default in the documentation examples)
+    Please select weather you would prefer to use the class based system or the mixin based system. This particular set of tabs will change which version is shown by default in the documentation examples. The buttons in the header will also change what documentation is shown by default.
 
   +tabs({
     links: ['Classes', 'Mixin'],
@@ -45,6 +45,7 @@ block content
         3. Column breakpoints can only be defined in the global settings
         4. Gutter widths can only be defined in the global settings
         5. Generates a lot of extra css rules that you will probably never use
+        8. Legacy mode does not work properly in IE8
 
     +tabs__content()
       :marked
@@ -63,6 +64,7 @@ block content
         4. Columns can be given custom breakpoints on a case by case basis
         6. Gutters are defined in the same file as the module that the gutters are made for
         7. You will only generate styles that you are actually using
+        8. Legacy mode works in IE8
 
         #### Mixin system downsides
 
@@ -70,6 +72,8 @@ block content
         2. Large bulks of Styles are repeated in the style sheet over and over again, gzipping should mitigate this problem though
         3. Unless you name things appropriately, it can be difficult to tell what elements are using the grid system and what elements are not
         4. Styles need to be assigned to an element through the style sheet rather than the html which can make creating layouts a little bit slower
+
+  h3 Using Gutter Grid
 
   +demo({
     classes: {

@@ -38,11 +38,11 @@
   <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 9]><!-->
   <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
 <!--[if lt IE 10]>
-  <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="vertical-cell-alignments">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v5.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -116,16 +116,16 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
-                                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
+                                      <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
-                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-control-wrapping/">Control wrapping</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Vertical cell alignments
@@ -150,10 +150,10 @@
                                       <h3 class="TK-visHid">Mobile warning</h3>
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
-                                  </header><p>Vertical alignment is just as easy. These are mostly just classes that hold the <code>align-items</code> values though. They do not feature any Legacy browser backups. If you find the pure css method easier to use, feel free to use that instead.</p>
+                                  </header><p>Vertical alignment is just as easy. These mostly just hold values for the <code>align-items</code> property. They <strong>do</strong> feature legacy browser backups when run in legacy mode though. These backups come in the form of <code>display: inline-block</code> and <code>vertical-align</code> combinations. So it&#39;s better to use these settings if you need legacy browser support (IE 8 &amp; 9). The backups only take effect if a column count has been defined though. Like with the <code>align</code> properties, the <code>vAlign</code> properties will also auto-enable wrapping in legacy mode when applied (if a column count has been defined).</p>
 
-                                      <figure class="demo -noHeight" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Vertical alignments</p>
+                                      <figure class="demo -noHeight" role="group" id="12-vertical-cell-alignments-1">
+                                        <figcaption class="demo__summary demo__segment"><p>Vertical alignments. These will all enable wrapping in legacy mode when a column count has also been applied.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -169,13 +169,13 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <figure>
-  <figcaption>Top align</figcaption>
-  <div class="grid grid--vAlign-top grid--cols-3">
+  <figcaption>Top align: <code>grid--vAlign-top</code></figcaption>
+  <div class="grid grid--cols-3 grid--vAlign-top">
     <div class="grid__cell -color-1" style="height: 100px;"></div>
     <div class="grid__cell -color-2" style="height: 50px;"></div>
     <div class="grid__cell -color-3" style="height: 75px;"></div>
@@ -185,8 +185,8 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Bottom align</figcaption>
-  <div class="grid grid--vAlign-bottom grid--cols-3">
+  <figcaption>Bottom align: <code>grid--vAlign-bottom</code></figcaption>
+  <div class="grid grid--cols-3 grid--vAlign-bottom">
     <div class="grid__cell -color-1" style="height: 100px;"></div>
     <div class="grid__cell -color-2" style="height: 50px;"></div>
     <div class="grid__cell -color-3" style="height: 75px;"></div>
@@ -196,8 +196,8 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Center align</figcaption>
-  <div class="grid grid--vAlign-center grid--cols-3">
+  <figcaption>Center align: <code>grid--vAlign-center</code></figcaption>
+  <div class="grid grid--cols-3 grid--vAlign-center">
     <div class="grid__cell -color-1" style="height: 100px;"></div>
     <div class="grid__cell -color-2" style="height: 50px;"></div>
     <div class="grid__cell -color-3" style="height: 75px;"></div>
@@ -211,8 +211,8 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;figure&gt;
-  &lt;figcaption&gt;Top align&lt;/figcaption&gt;
-  &lt;div class=&quot;grid grid--vAlign-top grid--cols-3&quot;&gt;
+  &lt;figcaption&gt;Top align: &lt;code&gt;grid--vAlign-top&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--vAlign-top&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-3&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
@@ -222,8 +222,8 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Bottom align&lt;/figcaption&gt;
-  &lt;div class=&quot;grid grid--vAlign-bottom grid--cols-3&quot;&gt;
+  &lt;figcaption&gt;Bottom align: &lt;code&gt;grid--vAlign-bottom&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--vAlign-bottom&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-3&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
@@ -233,8 +233,8 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Center align&lt;/figcaption&gt;
-  &lt;div class=&quot;grid grid--vAlign-center grid--cols-3&quot;&gt;
+  &lt;figcaption&gt;Center align: &lt;code&gt;grid--vAlign-center&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--vAlign-center&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-3&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
@@ -247,12 +247,12 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <figure>
-  <figcaption>Top align</figcaption>
+  <figcaption>Top align: <code>$vAlign: top</code></figcaption>
   <div class="mixin-34">
     <div class="mixin__cell -color-1" style="height: 100px;"></div>
     <div class="mixin__cell -color-2" style="height: 50px;"></div>
@@ -263,7 +263,7 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Bottom align</figcaption>
+  <figcaption>Bottom align: <code>$vAlign: bottom</code></figcaption>
   <div class="mixin-35">
     <div class="mixin__cell -color-1" style="height: 100px;"></div>
     <div class="mixin__cell -color-2" style="height: 50px;"></div>
@@ -274,7 +274,7 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Center align</figcaption>
+  <figcaption>Center align: <code>$vAlign: center</code></figcaption>
   <div class="mixin-36">
     <div class="mixin__cell -color-1" style="height: 100px;"></div>
     <div class="mixin__cell -color-2" style="height: 50px;"></div>
@@ -289,7 +289,7 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;figure&gt;
-  &lt;figcaption&gt;Top align&lt;/figcaption&gt;
+  &lt;figcaption&gt;Top align: &lt;code&gt;$vAlign: top&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin-34&quot;&gt;
     &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
@@ -300,7 +300,7 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Bottom align&lt;/figcaption&gt;
+  &lt;figcaption&gt;Bottom align: &lt;code&gt;$vAlign: bottom&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin-35&quot;&gt;
     &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
@@ -311,7 +311,7 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Center align&lt;/figcaption&gt;
+  &lt;figcaption&gt;Center align: &lt;code&gt;$vAlign: center&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin-36&quot;&gt;
     &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 100px;&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
@@ -328,10 +328,10 @@
   @include grid(3, $vAlign: top);
 }
 .mixin-35 {
-  @include grid($vAlign: bottom);
+  @include grid(3, $vAlign: bottom);
 }
 .mixin-36 {
-  @include grid($vAlign: center);
+  @include grid(3, $vAlign: center);
 }
 </code></pre>
                                                                 </div>
@@ -342,7 +342,7 @@
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo -noHeight" role="group">
+                                      <figure class="demo -noHeight" role="group" id="12-vertical-cell-alignments-2">
                                         <figcaption class="demo__summary demo__segment"><p>Using vertical alignment with <code>grid__inner</code> elements and a gutter</p>
 
                                         </figcaption>
@@ -359,12 +359,12 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid__wrapper add-shadow">
-  <div class="grid grid--vAlign-center grid--hasInners grid--gutter-20 grid--cols-3">
+  <div class="grid grid--hasInners grid--gutter-20 grid--cols-3 grid--vAlign-center">
     <div class="grid__cell" style="height: 75px;">
       <div class="grid__inner add-border"></div>
     </div>
@@ -390,7 +390,7 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid__wrapper add-shadow&quot;&gt;
-  &lt;div class=&quot;grid grid--vAlign-center grid--hasInners grid--gutter-20 grid--cols-3&quot;&gt;
+  &lt;div class=&quot;grid grid--hasInners grid--gutter-20 grid--cols-3 grid--vAlign-center&quot;&gt;
     &lt;div class=&quot;grid__cell&quot; style=&quot;height: 75px;&quot;&gt;
       &lt;div class=&quot;grid__inner add-border&quot;&gt;&lt;/div&gt;
     &lt;/div&gt;
@@ -415,7 +415,7 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -486,7 +486,7 @@
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo -noHeight" role="group">
+                                      <figure class="demo -noHeight" role="group" id="12-vertical-cell-alignments-3">
                                         <figcaption class="demo__summary demo__segment"><p>Using nested grids to vertically align text inside full sized grid cells</p>
 
                                         </figcaption>
@@ -503,12 +503,12 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid__wrapper">
-  <div class="grid grid--hasInners grid--cols-3 grid--gutter-20">
+  <div class="grid grid--cols-3 grid--gutter-20 grid--hasInners">
     <div class="grid__cell">
       <div class="grid__inner grid grid--vAlign-center add-border">
         <div class="grid__cell add-padding"><p>Videmusne ut pueri ne verberibus quidem a contemplandis rebus perquirendisque deterreantur? Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Tum Triarius: Posthac quidem, inquit, audacius.</p> <p> Qui non moveatur et offensione turpitudinis et comprobatione honestatis? Quae sequuntur igitur? Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Sed tamen est aliquid, quod nobis non liceat, liceat illis. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter.</p>
@@ -534,7 +534,7 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid__wrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--hasInners grid--cols-3 grid--gutter-20&quot;&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--gutter-20 grid--hasInners&quot;&gt;
     &lt;div class=&quot;grid__cell&quot;&gt;
       &lt;div class=&quot;grid__inner grid grid--vAlign-center add-border&quot;&gt;
         &lt;div class=&quot;grid__cell add-padding&quot;&gt;&lt;p&gt;Videmusne ut pueri ne verberibus quidem a contemplandis rebus perquirendisque deterreantur? Itaque primos congressus copulationesque et consuetudinum instituendarum voluntates fieri propter voluptatem; Tum Triarius: Posthac quidem, inquit, audacius.&lt;/p&gt; &lt;p&gt; Qui non moveatur et offensione turpitudinis et comprobatione honestatis? Quae sequuntur igitur? Iis igitur est difficilius satis facere, qui se Latina scripta dicunt contemnere. Sed tamen est aliquid, quod nobis non liceat, liceat illis. Sic, et quidem diligentius saepiusque ista loquemur inter nos agemusque communiter.&lt;/p&gt;
@@ -559,7 +559,7 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -634,8 +634,8 @@
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo -noHeight" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Changing the vertical alignment of a single cell using <code>grid__cell--vAlign-xxx</code> classes (<code>xxx</code> being <code>top</code>, <code>bottom</code>, or <code>center</code>)... or you could just use the <code>align-self</code> css property.</p>
+                                      <figure class="demo -noHeight" role="group" id="12-vertical-cell-alignments-4">
+                                        <figcaption class="demo__summary demo__segment"><p>Changing the vertical alignment of a single cell using <code>grid__cell--vAlign-xxx</code> classes (<code>xxx</code> being <code>top</code>, <code>bottom</code>, or <code>center</code>). If using the mixin, use the <code>align-self</code> css property and also <code>vertical-align: xxx !important</code> if running legacy mode.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -651,59 +651,70 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="grid grid--vAlign-bottom" style="height:100px;">
+<div class="grid grid--cols-3 grid--vAlign-bottom">
   <div class="grid__cell -color-1" style="height: 80px;"></div>
   <div class="grid__cell -color-2" style="height: 25px;"></div>
   <div class="grid__cell -color-3 grid__cell--vAlign-top" style="height: 50px;"></div>
-  <div class="grid__cell -color-4" style="height: 75px;"></div>
+  <div class="grid__cell -color-4" style="height: 30px;"></div>
+  <div class="grid__cell -color-5" style="height: 40px;"></div>
+  <div class="grid__cell -color-6" style="height: 75px;"></div>
 </div>
                                                               </div>
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;grid grid--vAlign-bottom&quot; style=&quot;height:100px;&quot;&gt;
+&lt;div class=&quot;grid grid--cols-3 grid--vAlign-bottom&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot; style=&quot;height: 80px;&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-2&quot; style=&quot;height: 25px;&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-3 grid__cell--vAlign-top&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;grid__cell -color-4&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-4&quot; style=&quot;height: 30px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-5&quot; style=&quot;height: 40px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-6&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                                                                 </div>
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="mixin-38C" style="height:100px;">
+<div class="mixin-38C">
   <div class="mixin__cell -color-1" style="height: 80px;"></div>
   <div class="mixin__cell -color-2" style="height: 25px;"></div>
   <div class="mixin__cell -color-3 mixin__oddOneOut" style="height: 50px;"></div>
-  <div class="mixin__cell -color-4" style="height: 75px;"></div>
+  <div class="mixin__cell -color-4" style="height: 30px;"></div>
+  <div class="mixin__cell -color-5" style="height: 40px;"></div>
+  <div class="mixin__cell -color-6" style="height: 75px;"></div>
 </div>
                                                               </div>
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-2">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;mixin-38C&quot; style=&quot;height:100px;&quot;&gt;
+&lt;div class=&quot;mixin-38C&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot; style=&quot;height: 80px;&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-2&quot; style=&quot;height: 25px;&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-3 mixin__oddOneOut&quot; style=&quot;height: 50px;&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;mixin__cell -color-4&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-4&quot; style=&quot;height: 30px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-5&quot; style=&quot;height: 40px;&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-6&quot; style=&quot;height: 75px;&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
                                                                 </div>
                                                                 <div class="grid__cell demo__markup demo__segment scss">
                                                                   <pre><code class="scss">
 .mixin-38C {
-  @include grid($vAlign: bottom);
+  @include grid(3, $vAlign: bottom);
 }
 
 .mixin__oddOneOut {
   align-self: flex-start;
+
+  //IE 8/9 needs this if using legacy mode
+  vertical-align: top !important;
 }
 </code></pre>
                                                                 </div>
@@ -717,7 +728,7 @@
 <p>Applying <code>grid--vertical</code> (<code>$vertical: true</code> in the mixin) is simply adding <code>flex-direction: column</code>. This flips the grid around so that grid cells progressively move down the page instead of across.</p>
 <p>Using the <code>vertical</code> setting features a backup for legacy browsers though whereas applying <code>flex-direction: column</code> on it&#39;s own does not.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="12-vertical-cell-alignments-5">
                                         <figcaption class="demo__summary demo__segment"><p>Applying a vertical grid flow.</p>
 
                                         </figcaption>
@@ -734,12 +745,12 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid__wrapper">
-  <div class="grid grid--vertical grid--gutter-20">
+  <div class="grid grid--gutter-20 grid--vertical">
     <div class="grid__cell -color-1"></div>
     <div class="grid__cell -color-2"></div>
     <div class="grid__cell -color-3"></div>
@@ -750,7 +761,7 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid__wrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--vertical grid--gutter-20&quot;&gt;
+  &lt;div class=&quot;grid grid--gutter-20 grid--vertical&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -760,7 +771,7 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -819,7 +830,7 @@
                         <div class="footer__owner grid__cell">
                               <div class="owner">
                                 <h3 class="TK-visHid">Owner</h3>
-                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=75&amp;default=retro" alt="Dan503" width="75" height="75"></a>
+                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=150&amp;default=retro" alt="Dan503" width="75" height="75"></a>
                                   <p class="owner__text grid__cell"><a href="https://github.com/Dan503">Daniel Tonon</a> maintains <a href="https://github.com/Dan503/gutter-grid">Gutter Grid</a></p>
                                 </div>
                               </div>
@@ -838,7 +849,7 @@
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/12-vertical-cell-alignments/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/12-vertical-cell-alignments/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

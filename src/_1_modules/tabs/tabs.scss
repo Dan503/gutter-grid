@@ -5,9 +5,16 @@
 		background: $CB-green-pale;
 		padding: 5px;
 		// padding-bottom: 1px;
-		margin-bottom: 9px;
+		margin-bottom: 2.5rem;
 		border: 1px solid $CB-green-dark;
 		border-radius: 3px;
+		overflow: hidden;
+
+		.lt-ie9 & {
+			.grid, .grid__cell {
+				border-color: $CB-green-pale;
+			}
+		}
 
 		.no-js & {
 			display: none;
@@ -20,12 +27,14 @@
 	}
 
 	&__content {
+		outline: none;
+
 		.js & {
 			display: none;
 		}
 	}
 
 	.no-flexbox & {
-		width: 780px;
+		width: 657px;
 	}
 }

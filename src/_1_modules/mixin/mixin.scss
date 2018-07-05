@@ -45,7 +45,7 @@
 	}
 
 	&-9 {
-		@include grid(6, $wrap: false);
+		@include grid(3, $wrap: false);
 	}
 
 	// $wrap: true; isn't needed in most of these examples in modern browsers.
@@ -121,6 +121,10 @@
 		@include grid(2, 20px, $inners: true);
 	}
 
+	&-shadows-example {
+		@include grid(3, 20px, $inners: true, $wrap: true);
+	}
+
 	&-25B {
 		@include grid(2, 20px);
 	}
@@ -133,21 +137,36 @@
 		@include grid(3, $stretch: true, $wrap: true);
 	}
 
-	&-28 {
-		@include grid(3, $align: right, $wrap: true);
+	// Horizontal Alignment grids
+	&-28A {
+		@include grid(3, $align: left);
+	}
+
+	&-28B {
+		@include grid(3, $align: right);
 	}
 
 	&-29 {
-		@include grid(3, $align: center, $wrap: true);
+		@include grid(3, $align: center);
+	}
+
+	&-29B {
+		@include grid(3, $align: stretch);
 	}
 
 	&-30 {
-		@include grid(3, $space: between, $wrap: true);
+		@include grid(3, $space: between);
 	}
 
 	&-31 {
-		@include grid(3, $space: around, $wrap: true);
+		@include grid(3, $space: around);
 	}
+
+	&-31B {
+		@include grid(3, $space: evenly);
+	}
+
+	// End horizontal alignments
 
 	&-32 {
 		@include grid($space: around, $inners: true);
@@ -182,7 +201,7 @@
 	}
 
 	&-38C {
-		@include grid($vAlign:bottom);
+		@include grid(3, $vAlign:bottom);
 	}
 
 	&-39 {
@@ -232,6 +251,7 @@
 	}
 
 	&__oddOneOut {
+		vertical-align: top !important;
 		align-self: flex-start;
 	}
 
@@ -246,5 +266,11 @@
 
 	&__noShrink {
 		flex-shrink: 0;
+	}
+
+	&__cell {
+		&--stretch {
+			flex-grow: 1;
+		}
 	}
 }

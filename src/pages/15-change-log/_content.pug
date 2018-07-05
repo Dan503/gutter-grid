@@ -1,12 +1,27 @@
 block content
   :marked
-    ### Version 4.1.0
+    ### Version 5.0.0 - Legacy mode fixes
 
-    This release is all about trying to mitigate the Chrome negative margin bug as much as possible. Gutter Grid now tries it's best to avoid combining a negative top margin with a top gutter height. Instead Gutter Grid just doesn't output a top outer gutter unless the user has explicitly asked for one. If there is no outer gutter then there is no need to cancel it out with a negative margin which means no Chrome bug.
+    This is a small release compared to version 4. It primarily sets out to fix some issues that version 4 had with IE 8 and 9 compatibility. It also brings legacy mode more into alignment with how modern mode behaves.
 
-    The Chrome bug is still an issue for bottom outer gutters though. The bottom negative margin cannot be removed. To combat this I've added a new class to the class system. The `grid__paddedWrapper` class adds `padding-bottom: 1px` instead of `overflow: hidden`. It is designed to be a replacement for the `grid__wrapper` class when overflow is needed. If using the mixin system `padding-bottom: 1px` needs to be added yourself to an element wrapping around the grid.
+    #### Breaking changes
 
-    ### Version 4.0.0
+    - Grids that have a set of columns defined would previously stretch while wrapping in legacy mode. This was inconsistent behavior to modern mode. In modern mode, grid cells would remain at their column width setting while wrapping. Legacy mode grids now behave consistently with modern mode grids with the exception of wrapping.
+    - In general, legacy mode grids will not wrap unless explicitly told to. The exceptions to this rule are grids that have `align`, `space`, or `vAlign` settings applied to them and also grids that have had stretch disabled (`grid--noStretch` / `$stretch: false` and `grid--noResize`/`$resize: false`). `vAlign`, `space` and `noStretch` will automatically enable wrapping in legacy mode. `vAlign` will only enable wrapping in legacy mode if a column count has also been set. Previously these exceptions were not consistent in legacy mode between legacy and modern browsers. Using `grid--noWrap`/`$wrap:false` can overide this implicit wrapping behaviour to force modern browsers to not wrap. This technique will not prevent IE8 and 9 from wrapping though.
+
+    #### New features
+
+    - You can now use `$align: stretch` or `.grid--align-stretch` to apply grid cell stretching instead of `$stretch: true` and the `.grid--stretch` class. Don't worry, you can still use `$stretch: true` and `.grid--stretch`, it's just an extra option you have available to you now.
+    - Added legacy mode backups for vertical cell alignment. These backups will only come into effect though if wrapping is enabled and a column count has been defined.
+    - Added a new `grid--space-evenly` class to the class system and `$space: evenly` setting to the mixin system. This is the equivalent of `justify-content: space-evenly`. It features a `justify-content: space-around` backup for browsers that don't support evenly yet and features an extra center alignment backup when running in legacy mode on browsers that don't support flexbox.
+
+    ### Version 4.1.0 - Mitigating the negative margin bug
+
+    This release is all about trying to mitigate the common negative margin browser bug as much as possible. Gutter Grid now tries it's best to avoid combining a negative top margin with a top gutter height. Instead Gutter Grid just doesn't output a top outer gutter unless the user has explicitly asked for one. If there is no outer gutter then there is no need to cancel it out with a negative margin which means no margin bug.
+
+    The bug is still an issue for bottom outer gutters though. The bottom negative margin cannot be removed. To combat this I've added a new class to the class system. The `grid__paddedWrapper` class adds `padding-bottom: 1px` instead of `overflow: hidden`. It is designed to be a replacement for the `grid__wrapper` class when overflow is needed. If using the mixin system `padding-bottom: 1px` needs to be added yourself to an element wrapping around the grid.
+
+    ### Version 4.0.0 - Making Gutter Grid more IE11 friendly
 
     This is a big update. CSS Grid is killing off almost all need for Gutter Grid. IE 11 is essentially the only reason why Gutter Grid is still at all worth using right now.
     With IE 8 and 9 essentially dead, it doesn't make sense to hamper the experience of IE11 developers for the sake of these dead browsers.
@@ -28,7 +43,7 @@ block content
     - `$breakpoints` parameter in the mixin has been moved to the 3rd slot. (A breaking change for **everyone**).
     - `$grid-break-points` setting now has new syntax that makes it easier to tell what column count a particular set of breakpoints is for. Below is an impracticle example showing the new format:
 
-      **Version 3.x**
+      ##### Version 3.x
 
       ````scss
       $grid-break-points: (
@@ -55,7 +70,7 @@ block content
       )
       ````
 
-      **Version 4.0.0**
+      ##### Version 4.0.0
 
       ````scss
       $grid-break-points: (
@@ -86,7 +101,7 @@ block content
 
     - Instead of listing percentage values as keys in the `$breakpoints` parameter key/value pairs, you can now simply list the number of columns that  the grid should have as the keys in the key/value pairs. The old method of using percentages as the key values will still work if that method is preferred.
 
-      **Version 3.x (Still works in version 4)**
+      ##### Version 3.x (Still works in version 4)
 
       ````scss
       @include grid(7, $breakpoints: (
@@ -98,7 +113,7 @@ block content
       ));
       ````
 
-      **Version 4.x**
+      ##### Version 4.0.0
 
       ````scss
       @include grid(7, $breakpoints: (
@@ -115,12 +130,12 @@ block content
     - New config variable `$grid-calc-support` has been introduced. Since `calc` [isn't supported in every browser](https://caniuse.com/#feat=calc) (thanks Opera Mini and Android 4) a new `$grid-calc-support` setting has been added. This defaults to whatever the opposite of the `$grid-legacy-support` setting is. This means that if legacy support is needed then `$grid-calc-support` will automatically be disabled. If you need to support Opera Mini (or you prefer seeing percentages in your styles), set `$grid-calc-support` to false.
 
 
-    ### Version 3.0.0
+    ### Version 3.0.0 - Upgrading mq-scss and legacy support is no longer the default
 
       - Gutter Grid will now install whatever version of mq-scss is available (defaulting to the latest version)
       - **Breaking change:** You now need to set the `$grid-legacy-support` setting to `true` if you wish to support browsers that do not support flexbox natively. (Change made to drastically reduce the amount of bloat found in the output css).
 
-    ### Version 2.0.0
+    ### Version 2.0.0 - Gutter Grid now in mixin flavor!
 
     #### What's new?
 
@@ -140,7 +155,7 @@ block content
 
     The new format to the column break points is a bit different to the original. before it was a list of screen-sizes then column widths with a space in between each one.
 
-    Version 1.x
+    ###### Version 1.x
 
     `````
     (
@@ -150,7 +165,7 @@ block content
 
     Column width is now stated first, and screen width is stated second. By default, the screen width will be calculated as a `max-width` media query. However, you can now provide [mq-scss](https://www.npmjs.com/package/mq-scss) syntax as an alternative to stating a screen width pixel value. This means that you can define the column break points using just about any media query you like. Taking a mobile first `min-width` approach will break legacy browser support though unless you have [UnMQ](https://github.com/jonathantneal/postcss-unmq) integrated into your build process.
 
-    Version 2.x
+    ###### Version 2.x
 
     `````
     (
@@ -164,7 +179,7 @@ block content
 
     The new way of assigning breakpoints to gutters isn't much different to the original method. The only incompatible difference being that now you need to write `mq` with a space after it before the list of values (the space is vital).
 
-    Version 1.x
+    ###### Version 1.x
 
     `````scss
     $grid-cell-gutters: (
@@ -176,7 +191,7 @@ block content
     );
     `````
 
-    Version 2.x
+    ###### Version 2.x
 
     `````scss
     $grid-cell-gutters: (

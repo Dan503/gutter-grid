@@ -32,6 +32,7 @@
 
 	&__summary {
 		.markdown-body & {
+			display: block;
 			background-color: #CDDEC4;
 			padding: 20px;
 			margin-top: 70px;
@@ -59,6 +60,16 @@
 	&__result {
 		border: 1px solid #000;
 
+		//The borders and shadows page demos can't have a real border
+		.borders-and-shadows-on-guttered-cells & {
+			box-shadow: 0 0 0 1px #000;
+			border: 0;
+		}
+
+		.lt-ie9 & {
+			outline: 1px solid #000;
+		}
+
 		&:before {
 			content: 'Example';
 			margin-left: -1px;
@@ -74,11 +85,17 @@
 			background: #f3f3f3;
 			border-radius: 5px;
 			overflow: hidden;
+
+			@include mq(max, bp('mobile')) {
+				margin-left: 10px;
+				margin-right: 10px;
+			}
 		}
 		figcaption {
 			padding: 0.25em 0.5em;
 			background-color: #CDDEC4;
 			color: #000;
+			margin-bottom: 0;
 		}
 
 		.grid {
@@ -87,7 +104,7 @@
 
 		.grid__cell, .mixin__cell {
 			min-height: 100px;
-			margin: 0;
+			// margin: 0;
 
 			.-noHeight & {
 				min-height: 0;
@@ -98,7 +115,7 @@
 		clear: both;
 	}
 	&__markup {
-		background-color: #17191a;
+		background-color: #19191b;
 		position: relative;
 		padding-left: 40px;
 		display: flex;
@@ -107,6 +124,9 @@
 		}
 		&.scss:before {
 			content: 'Sass';
+		}
+		&.js:before {
+			content: 'JS';
 		}
 
 		pre {

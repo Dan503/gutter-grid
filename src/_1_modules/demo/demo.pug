@@ -34,6 +34,8 @@ mixin demo__tab(demoMarkup)
 			pre
 				code.html= html
 
+- var i = 1;
+
 mixin demo(demoMarkup, spec)
 	-
 		spec = defaultTo(spec, {
@@ -41,7 +43,10 @@ mixin demo(demoMarkup, spec)
 			hasTabs: true,
 		})
 
-	figure.demo(class=spec.classes, role="group")
+		var page = get.current.link.replace(/\/pages\/([0-9A-z-]+?)\//, '$1')
+		var id = `${page}-${i++}`;
+
+	figure.demo(class=spec.classes, role="group", id=id)
 		if block
 			figcaption.demo__summary.demo__segment
 				block

@@ -2,7 +2,7 @@ block content
   :marked
     Horizontal cell alignment is easy with Gutter Grid. These are mostly just classes that hold `justify-content` values but they *do* feature legacy browser backups so it's better to use these than the `justify-content` property directly if legacy support is important to you. In old browsers, the `space` settings are outputted as center alignments instead. It's impossible to replicate the flexbox `space` alignments in browsers that don't support flexbox.
 
-    By default, if there are not enough cells in the row to fill the specified number of columns, the cells will align to the left similar to how CSS Grid behaves. This default functionality was introduced in version 4 to better align with how CSS Grid works. In version 3, the left over grid cells would grow to fill the remaining space left over in the grid by default. To replicate the version 4 default functionality in version 3, use `$align: left` or the `grid--align-left` class.
+    By default, if there are not enough cells in the row to fill the specified number of columns, the cells will align to the left, similar to how CSS Grid behaves. This default functionality was introduced in version 4 to better align with how CSS Grid works. In version 3, the left over grid cells would grow to fill the remaining space left over in the grid by default. To replicate the version 4 default functionality in version 3, use `$align: left` or the `grid--align-left` class.
 
   +demo({
     classes: {
@@ -36,12 +36,12 @@ scss:`
       Default cell alignment when there are not enough cells to fill the row
 
   :marked
-    If this isn't the effect you are after, you might want to use some of these other alignment options
+    If this isn't the effect you are after, you might want to use some of these other alignment options instead. Note that the `align` and `space` properties will also implicitly enable wrapping when running in legacy mode. Adding `grid--noWrap` or `$wrap: false` will prevent this implicit behaviour in modern browsers however IE8 and 9 will still wrap.
 
   +demo({
     classes: {
 html:`
-.grid.grid--stretch.grid--cols-3
+.grid.grid--cols-3.grid--stretch
   .grid__cell.-color-1
   .grid__cell.-color-2
   .grid__cell.-color-3
@@ -67,38 +67,62 @@ scss:`
     }
 })
     :marked
-      Stretch the grid cells to fill remaining space (this is the default functionality in version 3)
+      Stretch the grid cells to fill remaining space using `grid--stretch` or `$stretch: true` (this is the default functionality in version 3). This still requires adding `grid--wrap` or `$wrap: true` to enable wrapping in legacy mode.
 
   +demo({
     classes: {
 html:`
 figure
-  figcaption Align right
-  .grid.grid--align-right.grid--cols-3
+  figcaption Align left: #[code grid--align-left]
+  .grid.grid--cols-3.grid--align-left
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
     .grid__cell.-color-4
     .grid__cell.-color-5
 figure
-  figcaption Align center
-  .grid.grid--align-center.grid--cols-3
+  figcaption Align right: #[code grid--align-right]
+  .grid.grid--cols-3.grid--align-right
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
     .grid__cell.-color-4
     .grid__cell.-color-5
 figure
-  figcaption Space between
-  .grid.grid--space-between.grid--cols-3
+  figcaption Align center: #[code grid--align-center]
+  .grid.grid--cols-3.grid--align-center
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
     .grid__cell.-color-4
     .grid__cell.-color-5
 figure
-  figcaption Space around
-  .grid.grid--space-around.grid--cols-3
+  figcaption Align stretch: #[code grid--align-stretch] #[br] (Like #[code grid--stretch] but enables wrapping in legacy mode)
+  .grid.grid--cols-3.grid--align-stretch
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+figure
+  figcaption Space between: #[code grid--space-between]
+  .grid.grid--cols-3.grid--space-between
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+figure
+  figcaption Space around: #[code grid--space-around]
+  .grid.grid--cols-3.grid--space-around
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+figure
+  figcaption Space evenly: #[code grid--space-evenly] (includes #[code space-around] backup)
+  .grid.grid--cols-3.grid--space-evenly
     .grid__cell.-color-1
     .grid__cell.-color-2
     .grid__cell.-color-3
@@ -110,15 +134,23 @@ figure
     mixin: {
 html:`
 figure
-  figcaption Align right
-  .mixin-28
+  figcaption Align left: #[code $align: left]
+  .mixin-28A
     .mixin__cell.-color-1
     .mixin__cell.-color-2
     .mixin__cell.-color-3
     .mixin__cell.-color-4
     .mixin__cell.-color-5
 figure
-  figcaption Align center
+  figcaption Align right: #[code $align: right]
+  .mixin-28B
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+figure
+  figcaption Align center: #[code $align: center]
   .mixin-29
     .mixin__cell.-color-1
     .mixin__cell.-color-2
@@ -126,7 +158,15 @@ figure
     .mixin__cell.-color-4
     .mixin__cell.-color-5
 figure
-  figcaption Space between
+  figcaption Align stretch: #[code $align: stretch] #[br] (Like #[code $stretch: true] but enables wrapping in legacy mode)
+  .mixin-29B
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+figure
+  figcaption Space between: #[code $space: between]
   .mixin-30
     .mixin__cell.-color-1
     .mixin__cell.-color-2
@@ -134,8 +174,16 @@ figure
     .mixin__cell.-color-4
     .mixin__cell.-color-5
 figure
-  figcaption Space around
+  figcaption Space around: #[code $space: around]
   .mixin-31
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+figure
+  figcaption Space evenly: #[code $space: evenly] (includes #[code space-around] backup)
+  .mixin-31B
     .mixin__cell.-color-1
     .mixin__cell.-color-2
     .mixin__cell.-color-3
@@ -143,11 +191,17 @@ figure
     .mixin__cell.-color-5
 `,
 scss:`
-.mixin-28 {
+.mixin-28A {
+  @include grid(3, $align: left);
+}
+.mixin-28B {
   @include grid(3, $align: right);
 }
 .mixin-29 {
   @include grid(3, $align: center);
+}
+.mixin-29B {
+  @include grid(3, $align: stretch);
 }
 .mixin-30 {
   @include grid(3, $space: between);
@@ -155,12 +209,14 @@ scss:`
 .mixin-31 {
   @include grid(3, $space: around);
 }
-
+.mixin-31B {
+  @include grid(3, $space: evenly);
+}
 `,
     }
 })
     :marked
-      Other alignment options
+      Other alignment options. All of these will also enable wrapping in legacy mode.
 
   :marked
     Of coarse, you can use alignment in more circumstances than just how the grid handles not having enough cells to fill a row. A good example is pagination that uses `grid--space-around` to space out the pagination cells:
@@ -168,7 +224,7 @@ scss:`
   +demo({
     classes: {
 html:`
-ol.grid.grid--space-around.grid--hasInners.add-padding.TK-noDots
+ol.grid.grid--hasInners.grid--space-around.add-padding.TK-noDots
   - var i = 0
   while i < 5
     li.grid__cell

@@ -34,6 +34,11 @@ export default function() {
       './' + dirs.jsUtils + '/**/*.js',
     ], ['scripts']);
 
+    // JS
+    gulp.watch([
+      local + dirs.scripts + '/ie8-main.js',
+    ], ['copy:scripts']);
+
     // Pug file changes only compiles existing pug files
     gulp.watch([
       local + '**/*.pug',

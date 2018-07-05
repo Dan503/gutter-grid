@@ -7,30 +7,34 @@ html {
 body {
 	padding: 0;
 	position: relative;
-	background: radial-gradient(ellipse at top, lighten($CB-green-light, 20%), #fff);
+	color: $CF-body__text;
 
-	&::before {
-		opacity: 0.4;
-		z-index: -1;
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
+	html:not(.lt-ie10) & {
+		background: radial-gradient(ellipse at top, lighten($CB-green-light, 20%), #fff);
 
-		//Carbon background pattern
-		//http://lea.verou.me/css3patterns/#carbon
-		background:
-		linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-		linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-		linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-		linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-		linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-		linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-		background-color: #131313;
-		background-size: 20px 20px;
+		&::before {
+			opacity: 0.4;
+			z-index: -1;
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+	
+			//Carbon background pattern
+			//http://lea.verou.me/css3patterns/#carbon
+			background:
+			linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+			linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+			linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+			linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+			linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+			linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+			background-color: #131313;
+			background-size: 20px 20px;
+		}
 	}
 }
 
@@ -61,53 +65,105 @@ footer {
 }
 
 .markdown-body {
+	width: 100%;
 
-	h2,h3,h4,h5,h6,p,ul,ol{
+	p, ol, ul {
+		max-width: 600px;
+		max-width: 60rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	h2,h3,h4,h5,h6,p{
 		&:first-child { margin-top: 0; }
 		&:last-child { margin-bottom: 0; }
 	}
 
-	p, li {
-		> code {
+	p, li, figcaption,h2,h3,h4,h5,h6 {
+		> code, > * > code {
 			background-color: #e4e6ec;
 			border: 1px solid #a9abaf;
 			border-radius: 3px;
 			padding: 2px 3px;
 			font-size: 0.85em;
-			white-space: nowrap;
+
+			@include mq(min, bp('mobile')) {
+				white-space: nowrap;
+			}
 		}
 	}
 
-	h2, h3, h4, figcaption {
+	h2, h3, h4, h5, h6 {
+		max-width: 700px;
+		max-width: 70rem;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 0.5em;
+
+		+ p, + ul, + ol {
+			margin-top: 0;
+		}
+	}
+
+	h2, h3, h4, h5, figcaption {
 		font-family: Georgia, serif;
 		font-style: italic;
 		color: $CB-green-dark;
 	}
 
 	h2 {
-		font-size: 2em;
+		font-size: 28px;
 		padding-top: 50px;
 		&:first-child {
 			padding-top: 0px;
 		}
 	}
 
+	h3 {
+		font-size: 22px;
+	}
+
 	h4 {
+		font-size: 20px;
+		color: #000;
+		max-width: 64rem;
+	}
+
+	h5 {
 		font-size: 16px;
 		color: #000;
+		max-width: 62rem;
+	}
+
+	h6 {
+		font-size: 14px;
+		color: #000;
+		max-width: 61rem;
 	}
 
 	figcaption {
 		font-size: 1.2em;
 		border-bottom: 1px solid #315116;
 		color: #315116;
+		margin-bottom: 5.5rem;
 	}
 
 	blockquote {
-		margin: 50px 5%;
+		margin: 50px 0;
+		padding: 1.5em;
 		text-align: center;
 		&:before {
 			display: none;
+		}
+		ul {
+			padding: 0;
+			list-style: none;
+			li {
+				padding: 0;
+				&:before {
+					display: none;
+				}
+			}
 		}
 	}
 
@@ -153,14 +209,41 @@ footer {
 	}
 }
 
+.demonstrate-shadow-border {
+	box-shadow: inset 0 0 0 2px red, 0 0 10px #000;
+}
+
+.wideBox, .thinBox {
+	// height: 50px;
+	// display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px dashed #fff;
+	box-sizing: border-box;
+	padding: 10px;
+	opacity: 0.8;
+}
+
 .wideBox {
-	height: 50px;
-	width: 500px;
+	max-width: 400px;
+	min-width: 300px;
+	margin: 15px 0;
+
+	&:before {
+		white-space: pre-wrap;
+		content: 'max-width: 400px; \Amin-width: 300px; \A\Alorem ipsum Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant. Aliter enim explicari, quod quaeritur, non potest. Recte dicis; Nec tamen ullo modo summum pecudis bonum et hominis idem mihi videri potest. Sed eum qui audiebant, quoad poterant, defendebant sententiam suam. Semper enim ex eo, quod maximas partes continet latissimeque funditur, tota res appellatur. Cur tantas regiones barbarorum pedibus obiit, tot maria transmisit?';
+	}
 }
 
 .thinBox {
-	height: 50px;
-	width: 50px;
+	// width: 50px;
+	margin-top: 35px;
+	display: inline-block;
+
+	&:before {
+		content: 'content';
+		transform: rotate(-45deg);
+	}
 }
 
 #main {

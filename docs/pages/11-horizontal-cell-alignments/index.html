@@ -38,11 +38,11 @@
   <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 9]><!-->
   <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
 <!--[if lt IE 10]>
-  <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="horizontal-cell-alignments">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v5.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -116,16 +116,16 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
-                                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
+                                      <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
-                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-control-wrapping/">Control wrapping</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Horizontal cell alignments
@@ -151,9 +151,9 @@
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
                                   </header><p>Horizontal cell alignment is easy with Gutter Grid. These are mostly just classes that hold <code>justify-content</code> values but they <em>do</em> feature legacy browser backups so it&#39;s better to use these than the <code>justify-content</code> property directly if legacy support is important to you. In old browsers, the <code>space</code> settings are outputted as center alignments instead. It&#39;s impossible to replicate the flexbox <code>space</code> alignments in browsers that don&#39;t support flexbox.</p>
-<p>By default, if there are not enough cells in the row to fill the specified number of columns, the cells will align to the left similar to how CSS Grid behaves. This default functionality was introduced in version 4 to better align with how CSS Grid works. In version 3, the left over grid cells would grow to fill the remaining space left over in the grid by default. To replicate the version 4 default functionality in version 3, use <code>$align: left</code> or the <code>grid--align-left</code> class.</p>
+<p>By default, if there are not enough cells in the row to fill the specified number of columns, the cells will align to the left, similar to how CSS Grid behaves. This default functionality was introduced in version 4 to better align with how CSS Grid works. In version 3, the left over grid cells would grow to fill the remaining space left over in the grid by default. To replicate the version 4 default functionality in version 3, use <code>$align: left</code> or the <code>grid--align-left</code> class.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="11-horizontal-cell-alignments-1">
                                         <figcaption class="demo__summary demo__segment"><p>Default cell alignment when there are not enough cells to fill the row</p>
 
                                         </figcaption>
@@ -170,7 +170,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -196,7 +196,7 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -232,10 +232,10 @@
                                                 </div>
                                               </div>
                                         </div>
-                                      </figure><p>If this isn&#39;t the effect you are after, you might want to use some of these other alignment options</p>
+                                      </figure><p>If this isn&#39;t the effect you are after, you might want to use some of these other alignment options instead. Note that the <code>align</code> and <code>space</code> properties will also implicitly enable wrapping when running in legacy mode. Adding <code>grid--noWrap</code> or <code>$wrap: false</code> will prevent this implicit behaviour in modern browsers however IE8 and 9 will still wrap.</p>
 
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Stretch the grid cells to fill remaining space (this is the default functionality in version 3)</p>
+                                      <figure class="demo" role="group" id="11-horizontal-cell-alignments-2">
+                                        <figcaption class="demo__summary demo__segment"><p>Stretch the grid cells to fill remaining space using <code>grid--stretch</code> or <code>$stretch: true</code> (this is the default functionality in version 3). This still requires adding <code>grid--wrap</code> or <code>$wrap: true</code> to enable wrapping in legacy mode.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -251,11 +251,11 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="grid grid--stretch grid--cols-3">
+<div class="grid grid--cols-3 grid--stretch">
   <div class="grid__cell -color-1"></div>
   <div class="grid__cell -color-2"></div>
   <div class="grid__cell -color-3"></div>
@@ -266,7 +266,7 @@
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;grid grid--stretch grid--cols-3&quot;&gt;
+&lt;div class=&quot;grid grid--cols-3 grid--stretch&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -277,7 +277,7 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -314,8 +314,8 @@
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Other alignment options</p>
+                                      <figure class="demo" role="group" id="11-horizontal-cell-alignments-3">
+                                        <figcaption class="demo__summary demo__segment"><p>Other alignment options. All of these will also enable wrapping in legacy mode.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -331,13 +331,13 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <figure>
-  <figcaption>Align right</figcaption>
-  <div class="grid grid--align-right grid--cols-3">
+  <figcaption>Align left: <code>grid--align-left</code></figcaption>
+  <div class="grid grid--cols-3 grid--align-left">
     <div class="grid__cell -color-1"></div>
     <div class="grid__cell -color-2"></div>
     <div class="grid__cell -color-3"></div>
@@ -346,8 +346,8 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Align center</figcaption>
-  <div class="grid grid--align-center grid--cols-3">
+  <figcaption>Align right: <code>grid--align-right</code></figcaption>
+  <div class="grid grid--cols-3 grid--align-right">
     <div class="grid__cell -color-1"></div>
     <div class="grid__cell -color-2"></div>
     <div class="grid__cell -color-3"></div>
@@ -356,8 +356,8 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Space between</figcaption>
-  <div class="grid grid--space-between grid--cols-3">
+  <figcaption>Align center: <code>grid--align-center</code></figcaption>
+  <div class="grid grid--cols-3 grid--align-center">
     <div class="grid__cell -color-1"></div>
     <div class="grid__cell -color-2"></div>
     <div class="grid__cell -color-3"></div>
@@ -366,8 +366,38 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Space around</figcaption>
-  <div class="grid grid--space-around grid--cols-3">
+  <figcaption>Align stretch: <code>grid--align-stretch</code> <br> (Like <code>grid--stretch</code> but enables wrapping in legacy mode)</figcaption>
+  <div class="grid grid--cols-3 grid--align-stretch">
+    <div class="grid__cell -color-1"></div>
+    <div class="grid__cell -color-2"></div>
+    <div class="grid__cell -color-3"></div>
+    <div class="grid__cell -color-4"></div>
+    <div class="grid__cell -color-5"></div>
+  </div>
+</figure>
+<figure>
+  <figcaption>Space between: <code>grid--space-between</code></figcaption>
+  <div class="grid grid--cols-3 grid--space-between">
+    <div class="grid__cell -color-1"></div>
+    <div class="grid__cell -color-2"></div>
+    <div class="grid__cell -color-3"></div>
+    <div class="grid__cell -color-4"></div>
+    <div class="grid__cell -color-5"></div>
+  </div>
+</figure>
+<figure>
+  <figcaption>Space around: <code>grid--space-around</code></figcaption>
+  <div class="grid grid--cols-3 grid--space-around">
+    <div class="grid__cell -color-1"></div>
+    <div class="grid__cell -color-2"></div>
+    <div class="grid__cell -color-3"></div>
+    <div class="grid__cell -color-4"></div>
+    <div class="grid__cell -color-5"></div>
+  </div>
+</figure>
+<figure>
+  <figcaption>Space evenly: <code>grid--space-evenly</code> (includes <code>space-around</code> backup)</figcaption>
+  <div class="grid grid--cols-3 grid--space-evenly">
     <div class="grid__cell -color-1"></div>
     <div class="grid__cell -color-2"></div>
     <div class="grid__cell -color-3"></div>
@@ -380,8 +410,8 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;figure&gt;
-  &lt;figcaption&gt;Align right&lt;/figcaption&gt;
-  &lt;div class=&quot;grid grid--align-right grid--cols-3&quot;&gt;
+  &lt;figcaption&gt;Align left: &lt;code&gt;grid--align-left&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--align-left&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -390,8 +420,8 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Align center&lt;/figcaption&gt;
-  &lt;div class=&quot;grid grid--align-center grid--cols-3&quot;&gt;
+  &lt;figcaption&gt;Align right: &lt;code&gt;grid--align-right&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--align-right&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -400,8 +430,8 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Space between&lt;/figcaption&gt;
-  &lt;div class=&quot;grid grid--space-between grid--cols-3&quot;&gt;
+  &lt;figcaption&gt;Align center: &lt;code&gt;grid--align-center&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--align-center&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -410,8 +440,38 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Space around&lt;/figcaption&gt;
-  &lt;div class=&quot;grid grid--space-around grid--cols-3&quot;&gt;
+  &lt;figcaption&gt;Align stretch: &lt;code&gt;grid--align-stretch&lt;/code&gt; &lt;br/&gt; (Like &lt;code&gt;grid--stretch&lt;/code&gt; but enables wrapping in legacy mode)&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--align-stretch&quot;&gt;
+    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Space between: &lt;code&gt;grid--space-between&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--space-between&quot;&gt;
+    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Space around: &lt;code&gt;grid--space-around&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--space-around&quot;&gt;
+    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Space evenly: &lt;code&gt;grid--space-evenly&lt;/code&gt; (includes &lt;code&gt;space-around&lt;/code&gt; backup)&lt;/figcaption&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--space-evenly&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -423,13 +483,13 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <figure>
-  <figcaption>Align right</figcaption>
-  <div class="mixin-28">
+  <figcaption>Align left: <code>$align: left</code></figcaption>
+  <div class="mixin-28A">
     <div class="mixin__cell -color-1"></div>
     <div class="mixin__cell -color-2"></div>
     <div class="mixin__cell -color-3"></div>
@@ -438,7 +498,17 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Align center</figcaption>
+  <figcaption>Align right: <code>$align: right</code></figcaption>
+  <div class="mixin-28B">
+    <div class="mixin__cell -color-1"></div>
+    <div class="mixin__cell -color-2"></div>
+    <div class="mixin__cell -color-3"></div>
+    <div class="mixin__cell -color-4"></div>
+    <div class="mixin__cell -color-5"></div>
+  </div>
+</figure>
+<figure>
+  <figcaption>Align center: <code>$align: center</code></figcaption>
   <div class="mixin-29">
     <div class="mixin__cell -color-1"></div>
     <div class="mixin__cell -color-2"></div>
@@ -448,7 +518,17 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Space between</figcaption>
+  <figcaption>Align stretch: <code>$align: stretch</code> <br> (Like <code>$stretch: true</code> but enables wrapping in legacy mode)</figcaption>
+  <div class="mixin-29B">
+    <div class="mixin__cell -color-1"></div>
+    <div class="mixin__cell -color-2"></div>
+    <div class="mixin__cell -color-3"></div>
+    <div class="mixin__cell -color-4"></div>
+    <div class="mixin__cell -color-5"></div>
+  </div>
+</figure>
+<figure>
+  <figcaption>Space between: <code>$space: between</code></figcaption>
   <div class="mixin-30">
     <div class="mixin__cell -color-1"></div>
     <div class="mixin__cell -color-2"></div>
@@ -458,8 +538,18 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Space around</figcaption>
+  <figcaption>Space around: <code>$space: around</code></figcaption>
   <div class="mixin-31">
+    <div class="mixin__cell -color-1"></div>
+    <div class="mixin__cell -color-2"></div>
+    <div class="mixin__cell -color-3"></div>
+    <div class="mixin__cell -color-4"></div>
+    <div class="mixin__cell -color-5"></div>
+  </div>
+</figure>
+<figure>
+  <figcaption>Space evenly: <code>$space: evenly</code> (includes <code>space-around</code> backup)</figcaption>
+  <div class="mixin-31B">
     <div class="mixin__cell -color-1"></div>
     <div class="mixin__cell -color-2"></div>
     <div class="mixin__cell -color-3"></div>
@@ -472,8 +562,8 @@
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;figure&gt;
-  &lt;figcaption&gt;Align right&lt;/figcaption&gt;
-  &lt;div class=&quot;mixin-28&quot;&gt;
+  &lt;figcaption&gt;Align left: &lt;code&gt;$align: left&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;mixin-28A&quot;&gt;
     &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mixin__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -482,7 +572,17 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Align center&lt;/figcaption&gt;
+  &lt;figcaption&gt;Align right: &lt;code&gt;$align: right&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;mixin-28B&quot;&gt;
+    &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-4&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-5&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Align center: &lt;code&gt;$align: center&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin-29&quot;&gt;
     &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
@@ -492,7 +592,17 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Space between&lt;/figcaption&gt;
+  &lt;figcaption&gt;Align stretch: &lt;code&gt;$align: stretch&lt;/code&gt; &lt;br/&gt; (Like &lt;code&gt;$stretch: true&lt;/code&gt; but enables wrapping in legacy mode)&lt;/figcaption&gt;
+  &lt;div class=&quot;mixin-29B&quot;&gt;
+    &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-4&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-5&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Space between: &lt;code&gt;$space: between&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin-30&quot;&gt;
     &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
@@ -502,8 +612,18 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Space around&lt;/figcaption&gt;
+  &lt;figcaption&gt;Space around: &lt;code&gt;$space: around&lt;/code&gt;&lt;/figcaption&gt;
   &lt;div class=&quot;mixin-31&quot;&gt;
+    &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-4&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-5&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Space evenly: &lt;code&gt;$space: evenly&lt;/code&gt; (includes &lt;code&gt;space-around&lt;/code&gt; backup)&lt;/figcaption&gt;
+  &lt;div class=&quot;mixin-31B&quot;&gt;
     &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mixin__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -514,11 +634,17 @@
                                                                 </div>
                                                                 <div class="grid__cell demo__markup demo__segment scss">
                                                                   <pre><code class="scss">
-.mixin-28 {
+.mixin-28A {
+  @include grid(3, $align: left);
+}
+.mixin-28B {
   @include grid(3, $align: right);
 }
 .mixin-29 {
   @include grid(3, $align: center);
+}
+.mixin-29B {
+  @include grid(3, $align: stretch);
 }
 .mixin-30 {
   @include grid(3, $space: between);
@@ -526,7 +652,9 @@
 .mixin-31 {
   @include grid(3, $space: around);
 }
-
+.mixin-31B {
+  @include grid(3, $space: evenly);
+}
 </code></pre>
                                                                 </div>
                                                               </div>
@@ -537,7 +665,7 @@
                                         </div>
                                       </figure><p>Of coarse, you can use alignment in more circumstances than just how the grid handles not having enough cells to fill a row. A good example is pagination that uses <code>grid--space-around</code> to space out the pagination cells:</p>
 
-                                      <figure class="demo -noHeight" role="group">
+                                      <figure class="demo -noHeight" role="group" id="11-horizontal-cell-alignments-4">
                                         <div class="demo__content">
                                               <div class="tabs JS-tabs">
                                                 <div class="tabs__links">
@@ -551,11 +679,11 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<ol class="grid grid--space-around grid--hasInners add-padding TK-noDots">
+<ol class="grid grid--hasInners grid--space-around add-padding TK-noDots">
   <li class="grid__cell"><a class="grid__inner add-shadow add-padding" href="#">1</a></li>
   <li class="grid__cell"><a class="grid__inner add-shadow add-padding" href="#">2</a></li>
   <li class="grid__cell"><a class="grid__inner add-shadow add-padding" href="#">3</a></li>
@@ -566,7 +694,7 @@
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;ol class=&quot;grid grid--space-around grid--hasInners add-padding&quot;&gt;
+&lt;ol class=&quot;grid grid--hasInners grid--space-around add-padding&quot;&gt;
   &lt;li class=&quot;grid__cell&quot;&gt;&lt;a class=&quot;grid__inner add-shadow add-padding&quot; href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;grid__cell&quot;&gt;&lt;a class=&quot;grid__inner add-shadow add-padding&quot; href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;grid__cell&quot;&gt;&lt;a class=&quot;grid__inner add-shadow add-padding&quot; href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
@@ -577,7 +705,7 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -636,7 +764,7 @@
                         <div class="footer__owner grid__cell">
                               <div class="owner">
                                 <h3 class="TK-visHid">Owner</h3>
-                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=75&amp;default=retro" alt="Dan503" width="75" height="75"></a>
+                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=150&amp;default=retro" alt="Dan503" width="75" height="75"></a>
                                   <p class="owner__text grid__cell"><a href="https://github.com/Dan503">Daniel Tonon</a> maintains <a href="https://github.com/Dan503/gutter-grid">Gutter Grid</a></p>
                                 </div>
                               </div>
@@ -655,7 +783,7 @@
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/11-horizontal-cell-alignments/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/11-horizontal-cell-alignments/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

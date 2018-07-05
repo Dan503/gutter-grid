@@ -3,7 +3,7 @@
 //Elements inside this module can't have classes attatched
 
 $C-numbers: brand(6);//$CB-blue-dim;
-$C-dots: brand(2);
+$C-dots: brand(1);
 
 .cmsContent, .cmsContent td {
 	text-align: left;
@@ -18,7 +18,7 @@ $C-dots: brand(2);
 	//aside:not(.demo) {
 		ul, ol {
 			ul, ol {
-				margin: 0;
+				// margin: 0;
 			}
 			li {
 				margin-top: 10px;
@@ -27,9 +27,6 @@ $C-dots: brand(2);
 
 		> ul, > ol {
 			&:not(.TK-noDots) {
-				&:not(:first-child){
-					margin-top: $VG-p__spacing;
-				}
 				> li {
 					margin: 0;
 					padding-bottom: 11px;
@@ -63,18 +60,23 @@ $C-dots: brand(2);
 			> li {
 				&:before {
 					@include MG-circle(fill, $C-dots, 6px);
-					top: 6px;
+					top: 0.7rem;
 				}
 				> ul > li {
 					&:before {
-						@include MG-line(h, $C-dots, 10px, 2px);
-						top: 9px;
+						height: 2px;
+						width: 10px;
+						background: $C-dots;
+						clip-path: none;
+						border-radius: 5px;
+						top: 1.1rem;
 					}
 
 					> ul > li {
 						&:before {
-							@include MG-circle(stroke, $C-dots, 8px, 1px);
-							top: 5px;
+							@include MG-circle(stroke, $C-dots, 5px, 1px);
+							background: transparent;
+							top: 0.7rem;
 						}
 					}
 				}
@@ -96,6 +98,10 @@ $C-dots: brand(2);
 					left: 0;
 					font-weight: $bold;
 					color: $C-numbers;
+					font-family: $font-secondary;
+					font-size: 1.2em;
+					font-style: italic;
+					line-height: 1;
 				}
 				ol li {
 					&:before {
@@ -106,7 +112,7 @@ $C-dots: brand(2);
 							content:counter(li,lower-roman)'.';
 							left: auto;
 							right: 100%;
-							margin-right: -15px;
+							margin-right: -1.5rem;
 						}
 					}
 				}

@@ -38,11 +38,11 @@
   <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 9]><!-->
   <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
 <!--[if lt IE 10]>
-  <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="controlling-cell-growth-and-shrinkage">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v5.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -116,16 +116,16 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
-                                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
+                                      <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
-                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-control-wrapping/">Control wrapping</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/07-adding-gutters/">Adding Gutters</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Controlling cell growth and shrinkage
@@ -150,7 +150,7 @@
                                       <h3 class="TK-visHid">Mobile warning</h3>
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
-                                  </header><p>Another way of handling cell alignments is with grid cell stretch and shrink settings. By default, grid cells will both stretch and shrink as necessary but this can be overridden with the stretch, shrink, and resize settings. These do not feature legacy browser support as they are features that are unique to flexbox. In saying that, these are primarily just alternate ways of assigning <code>flex-grow</code> and <code>flex-shrink</code> properties.</p>
+                                  </header><p>Another way of handling cell alignments is with grid cell stretch and shrink settings. By default, grid cells will both stretch and shrink as necessary but this can be overridden with the stretch, shrink, and resize settings. With the exception of <code>grid--noStretch</code> / <code>$stretch: false</code>, these generally do not feature legacy browser backups as they are features that are unique to flexbox. The grid is either all stretching or not stretching at all in IE8 and 9. In saying that, these are primarily just alternate ways of assigning <code>flex-grow</code> and <code>flex-shrink</code> properties.</p>
 <p>In version 3 <code>stretch</code> was named <code>grow</code>. The name was changed to <code>stretch</code> in version 4 to align with the naming of CSS Grid&#39;s <code>justify-items: stretch</code> and <code>justify-self: stretch</code> properties.</p>
 
                                       <div class="tabs JS-tabs">
@@ -165,34 +165,50 @@
                                           </div>
                                         </div>
                                         <div class="tabs__contentWrap">
-                                              <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                              <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                 <figure>
                                                   <figcaption class="tabs__title">Classes for controlling cell growth</figcaption><ul>
-<li><code>grid--noStretch</code> will prevent all cells in the grid from stretching</li>
-<li><code>grid__cell--noStretch</code> will prevent only the cell that it is applied to from stretching</li>
-<li><code>grid--noShrink</code> will prevent all cells in the grid from shrinking below their <code>min-content</code> width</li>
-<li><code>grid__cell--noShrink</code> will prevent that specific cell from shrinking bellow it&#39;s <code>min-content</code> width</li>
-<li><code>grid--noResize</code> a shortcut for applying both <code>grid--noStretch</code> and <code>grid--noShrink</code> classes</li>
-<li><code>grid__cell--noResize</code> a shortcut for applying both <code>grid__cell--noStretch</code> and <code>grid__cell--noShrink</code> classes</li>
+<li><p><strong>Stretch classes</strong></p>
+<ul>
+<li><code>grid--noStretch</code> will prevent all cells in the grid from stretching.</li>
+<li><code>grid--stretch</code> identical to <code>grid--align-stretch</code> (stretches all grid cells).</li>
+<li><code>grid__cell--noStretch</code> will prevent only the cell that it is applied to from stretching.</li>
+<li><code>grid__cell--stretch</code> will allow a specific grid cell to stretch.</li>
+</ul>
+</li>
+<li><p><strong>Shrink classes</strong></p>
+<ul>
+<li><code>grid--noShrink</code> will prevent all cells in the grid from shrinking below their <code>min-content</code> width.</li>
+<li><code>grid__cell--noShrink</code> will prevent that specific cell from shrinking bellow it&#39;s <code>min-content</code> width.</li>
+<li><code>grid__cell--shrink</code> will allow a specific grid cell to shrink.</li>
+</ul>
+</li>
+<li><p><strong>Resize classes</strong></p>
+<ul>
+<li><code>grid--noResize</code> a shortcut for applying both <code>grid--noStretch</code> and <code>grid--noShrink</code> classes.</li>
+<li><code>grid__cell--noResize</code> a shortcut for applying both <code>grid__cell--noStretch</code> and <code>grid__cell--noShrink</code> classes.</li>
+</ul>
+</li>
 </ul>
 
                                                 </figure>
                                               </div>
-                                              <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                              <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                 <figure>
                                                   <figcaption class="tabs__title">Mixin properties for controlling cell growth</figcaption><ul>
-<li><code>$stretch: false</code> will prevent all cells in the grid from growing</li>
-<li><code>$shrink: false</code> will prevent all cells in the grid from shrinking below their content width</li>
-<li><code>$resize: false</code> a shortcut for applying both <code>$grow: false</code> and <code>$shrink: false</code> settings at the same time</li>
-<li>To apply resize settings to specific cells, just use the <code>flex-grow</code> and <code>flex-shrink</code> css properties</li>
+<li><code>$stretch: true</code> will allow all grid cells to stretch.</li>
+<li><code>$stretch: false</code> will prevent all cells in the grid from stretching.</li>
+<li><code>$shrink: false</code> will prevent all cells in the grid from shrinking below their content width.</li>
+<li><code>$resize: false</code> a shortcut for applying both <code>$grow: false</code> and <code>$shrink: false</code> settings at the same time to all grid cells.</li>
+<li>To apply resize settings to specific cells, just use the <code>flex-grow</code> and <code>flex-shrink</code> css properties.</li>
 </ul>
 
                                                 </figure>
                                               </div>
                                         </div>
                                       </div>
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>This is the control example to show how the grid setup behaves with minimal settings and a block of content at a fixed 500px by 50px size and a small 50px by 50px square.</p>
+                                      <figure class="demo" role="group" id="13-controlling-cell-growth-and-shrinkage-1">
+                                        <figcaption class="demo__summary demo__segment"><p>This is the control example to show how the grid setup behaves with minimal settings. It has a block of content with a maximum width of 400px and a minimum width of 300px. It also has a small block holding only a single word.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -208,13 +224,13 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid grid--noWrap">
   <div class="grid__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="grid__cell -color-2">
     <div class="thinBox -color-4"></div>
@@ -226,7 +242,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -236,13 +252,13 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="mixin-39">
   <div class="mixin__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="mixin__cell -color-2">
     <div class="thinBox -color-4"></div>
@@ -254,7 +270,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;mixin-39&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -274,9 +290,10 @@
                                                 </div>
                                               </div>
                                         </div>
-                                      </figure>
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>If <code>grid--noStretch</code> (<code>$stretch: false</code>) is applied, it is essentially the equivalent of using <code>grid--align-left</code> (<code>$align: left</code>)</p>
+                                      </figure><p>If <code>grid--noStretch</code> (<code>$stretch: false</code>) is applied, it is essentially the same as using <code>grid--align-left</code> (<code>$align: left</code>). In legacy mode, just like the align properties, turning stretching off also has the side effect of enabling wrapping. If you turn off wrapping explicitly using <code>grid--noWrap</code> or <code>$wrap: false</code>, modern browsers will stop wrapping however IE 8 and 9 will continue to wrap.</p>
+
+                                      <figure class="demo" role="group" id="13-controlling-cell-growth-and-shrinkage-2">
+                                        <figcaption class="demo__summary demo__segment"><p>Adding <code>grid--noStretch</code> (<code>$stretch: false</code>) is essentially the same as using <code>grid--align-left</code> (<code>$align: left</code>).</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -292,13 +309,13 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="grid grid--noStretch grid--noWrap">
+<div class="grid grid--noWrap grid--noStretch">
   <div class="grid__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="grid__cell -color-2">
     <div class="thinBox -color-4"></div>
@@ -308,9 +325,9 @@
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;grid grid--noStretch grid--noWrap&quot;&gt;
+&lt;div class=&quot;grid grid--noWrap grid--noStretch&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -320,13 +337,13 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="mixin-40">
   <div class="mixin__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="mixin__cell -color-2">
     <div class="thinBox -color-4"></div>
@@ -338,7 +355,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;mixin-40&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -359,7 +376,94 @@
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="13-controlling-cell-growth-and-shrinkage-3">
+                                        <figcaption class="demo__summary demo__segment"><p>If <code>grid__cell--stretch</code> is applied, it will stretch only that grid cell. The mixin needs to be stretched manually with <code>flex-grow: 1;</code>.</p>
+
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="grid grid--noWrap grid--noStretch">
+  <div class="grid__cell -color-1">
+    <div class="wideBox -color-3" lang="zxx"></div>
+  </div>
+  <div class="grid__cell -color-2 grid__cell--stretch">
+    <div class="thinBox -color-4"></div>
+  </div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;grid grid--noWrap grid--noStretch&quot;&gt;
+  &lt;div class=&quot;grid__cell -color-1&quot;&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-2 grid__cell--stretch&quot;&gt;
+    &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="mixin-40">
+  <div class="mixin__cell -color-1">
+    <div class="wideBox -color-3" lang="zxx"></div>
+  </div>
+  <div class="mixin__cell -color-2 mixin__cell--stretch">
+    <div class="thinBox -color-4"></div>
+  </div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;mixin-40&quot;&gt;
+  &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-2 mixin__cell--stretch&quot;&gt;
+    &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
+.mixin-40 {
+  @include grid($stretch: false, $wrap: false);
+}
+.mixin__cell--stretch {
+  flex-grow: 1;
+}
+</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure>
+                                      <figure class="demo" role="group" id="13-controlling-cell-growth-and-shrinkage-4">
                                         <figcaption class="demo__summary demo__segment"><p>If <code>grid--noShrink</code> (<code>$shrink: false</code>) is applied, the grid cells will try their best not to shrink below the required width of the content inside them (you will need to resize your browser to a mobile sized view to see the difference)</p>
 
                                         </figcaption>
@@ -376,13 +480,13 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="grid grid--noShrink grid--noWrap">
+<div class="grid grid--noWrap grid--noShrink">
   <div class="grid__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="grid__cell -color-2">
     <div class="thinBox -color-4"></div>
@@ -392,9 +496,9 @@
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;grid grid--noShrink grid--noWrap&quot;&gt;
+&lt;div class=&quot;grid grid--noWrap grid--noShrink&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -404,13 +508,13 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="mixin-41">
   <div class="mixin__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="mixin__cell -color-2">
     <div class="thinBox -color-4"></div>
@@ -422,7 +526,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;mixin-41&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -443,8 +547,8 @@
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p><code>grid--noResize</code> (<code>$resize: false</code>) is a shortcut for applying both <code>grid--noShrink</code> (<code>$shrink: false</code>) and <code>grid--noStretch</code> (<code>$stretch: false</code>) at the same time.</p>
+                                      <figure class="demo" role="group" id="13-controlling-cell-growth-and-shrinkage-5">
+                                        <figcaption class="demo__summary demo__segment"><p><code>grid--noResize</code> (<code>$resize: false</code>) is a shortcut for applying both <code>grid--noShrink</code> (<code>$shrink: false</code>) and <code>grid--noStretch</code> (<code>$stretch: false</code>) at the same time. This will turn on wrapping in legacy mode just like <code>grid--noStretch</code> will.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -460,13 +564,13 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<div class="grid grid--noResize grid--noWrap">
+<div class="grid grid--noWrap grid--noResize">
   <div class="grid__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="grid__cell -color-2">
     <div class="thinBox -color-4"></div>
@@ -476,9 +580,9 @@
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-1">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;div class=&quot;grid grid--noResize grid--noWrap&quot;&gt;
+&lt;div class=&quot;grid grid--noWrap grid--noResize&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;grid__cell -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -488,13 +592,13 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="mixin-42">
   <div class="mixin__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="mixin__cell -color-2">
     <div class="thinBox -color-4"></div>
@@ -506,7 +610,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;mixin-42&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;mixin__cell -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -527,8 +631,8 @@
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Applying <code>noStretch</code> to only 1 of the grid cells</p>
+                                      <figure class="demo" role="group" id="13-controlling-cell-growth-and-shrinkage-6">
+                                        <figcaption class="demo__summary demo__segment"><p>Applying the <code>grid__cell--noStretch</code> class to only 1 of the grid cells (apply <code>flex-grow: 0</code> manually if using the mixin system)</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -544,13 +648,13 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid grid--noWrap">
   <div class="grid__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="grid__cell grid__cell--noStretch -color-2">
     <div class="thinBox -color-4"></div>
@@ -562,7 +666,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;grid__cell grid__cell--noStretch -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -572,13 +676,13 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="mixin-39">
   <div class="mixin__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="mixin__cell mixin__noGrowth -color-2">
     <div class="thinBox -color-4"></div>
@@ -590,7 +694,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;mixin-39&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;mixin__cell mixin__noGrowth -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -615,8 +719,8 @@
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Applying <code>noShrink</code> to only 1 of the grid cells (resize browser to see the effect)</p>
+                                      <figure class="demo" role="group" id="13-controlling-cell-growth-and-shrinkage-7">
+                                        <figcaption class="demo__summary demo__segment"><p>Applying the <code>grid__cell--noShrink</code> class to only 1 of the grid cells (apply <code>flex-shrink: 0</code> manually if using the mixin system)</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -632,13 +736,13 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid grid--noWrap">
   <div class="grid__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="grid__cell grid__cell--noShrink -color-2">
     <div class="thinBox -color-4"></div>
@@ -650,7 +754,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;grid__cell grid__cell--noShrink -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -660,13 +764,13 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="mixin-39">
   <div class="mixin__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="mixin__cell mixin__noShrink -color-2">
     <div class="thinBox -color-4"></div>
@@ -678,7 +782,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;mixin-39&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;mixin__cell mixin__noShrink -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -703,8 +807,8 @@
                                               </div>
                                         </div>
                                       </figure>
-                                      <figure class="demo" role="group">
-                                        <figcaption class="demo__summary demo__segment"><p>Applying <code>noResize</code> to prevent shrinking and growth in only 1 of the grid cells at the same time (very useful for listings with thumbnail images if you apply <code>noResize</code> to the thumbnail cell)</p>
+                                      <figure class="demo" role="group" id="13-controlling-cell-growth-and-shrinkage-8">
+                                        <figcaption class="demo__summary demo__segment"><p>Applying the <code>grid__cell--noResize</code> class to one of the grid cells prevents that grid cell from shrinking and stretching (apply <code>flex-shrink: 0</code> and <code>flex-grow: 0</code> manually if using the mixin system). This is very useful for listings with thumbnail images if you apply <code>noResize</code> to the thumbnail grid cell.</p>
 
                                         </figcaption>
                                         <div class="demo__content">
@@ -720,13 +824,13 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid grid--noWrap">
   <div class="grid__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="grid__cell grid__cell--noResize -color-2">
     <div class="thinBox -color-4"></div>
@@ -738,7 +842,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid grid--noWrap&quot;&gt;
   &lt;div class=&quot;grid__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;grid__cell grid__cell--noResize -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -748,13 +852,13 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="mixin-39">
   <div class="mixin__cell -color-1">
-    <div class="wideBox -color-3"></div>
+    <div class="wideBox -color-3" lang="zxx"></div>
   </div>
   <div class="mixin__cell mixin__noResize -color-2">
     <div class="thinBox -color-4"></div>
@@ -766,7 +870,7 @@
                                                                   <pre><code class="html">
 &lt;div class=&quot;mixin-39&quot;&gt;
   &lt;div class=&quot;mixin__cell -color-1&quot;&gt;
-    &lt;div class=&quot;wideBox -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;wideBox -color-3&quot; lang=&quot;zxx&quot;&gt;&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;mixin__cell mixin__noResize -color-2&quot;&gt;
     &lt;div class=&quot;thinBox -color-4&quot;&gt;&lt;/div&gt;
@@ -792,9 +896,9 @@
                                               </div>
                                         </div>
                                       </figure><h3 id="mini-grids">Mini grids</h3>
-<p>In order to function correctly most of the time, Gutter Grid assumes that the width of the grid is the full width of it&#39;s container. It enforces this behaviour with a <code>min-width: 100%</code> setting. To use Gutter Grid on elements that do not take up 100% of their parent&#39;s with, a <code>mini</code> setting needs to be enabled on the grid.</p>
+<p>In order to function correctly most of the time, Gutter Grid assumes that the width of the grid is the full width of it&#39;s container. It enforces this behaviour with a <code>min-width: 100%</code> setting. To use Gutter Grid on elements that do not take up 100% of their parent&#39;s width, a <code>mini</code> setting needs to be enabled on the grid.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="13-controlling-cell-growth-and-shrinkage-9">
                                         <figcaption class="demo__summary demo__segment"><p>The <code>mini</code> setting allows a grid to take up less than 100% of it&#39;s parent&#39;s width.</p>
 
                                         </figcaption>
@@ -811,7 +915,7 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -823,7 +927,7 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Mini setting applied on a grid set to 50% width</figcaption>
+  <figcaption><code>grid--mini</code> class applied on a grid set to 50% width</figcaption>
   <div class="grid grid--mini" style="width: 50%">
     <div class="grid__cell -color-1"></div>
     <div class="grid__cell -color-2"></div>
@@ -841,7 +945,7 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Mini setting applied on a grid set to 50% width&lt;/figcaption&gt;
+  &lt;figcaption&gt;&lt;code&gt;grid--mini&lt;/code&gt; class applied on a grid set to 50% width&lt;/figcaption&gt;
   &lt;div class=&quot;grid grid--mini&quot; style=&quot;width: 50%&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
@@ -851,7 +955,7 @@
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -863,7 +967,7 @@
   </div>
 </figure>
 <figure>
-  <figcaption>Mini setting applied on a grid set to 50% width</figcaption>
+  <figcaption><code>$mini: true</code> setting applied on a grid set to 50% width</figcaption>
   <div class="mixin-44">
     <div class="mixin__cell -color-1"></div>
     <div class="mixin__cell -color-2"></div>
@@ -881,7 +985,7 @@
   &lt;/div&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;figcaption&gt;Mini setting applied on a grid set to 50% width&lt;/figcaption&gt;
+  &lt;figcaption&gt;&lt;code&gt;$mini: true&lt;/code&gt; setting applied on a grid set to 50% width&lt;/figcaption&gt;
   &lt;div class=&quot;mixin-44&quot;&gt;
     &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
@@ -929,7 +1033,7 @@
                         <div class="footer__owner grid__cell">
                               <div class="owner">
                                 <h3 class="TK-visHid">Owner</h3>
-                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=75&amp;default=retro" alt="Dan503" width="75" height="75"></a>
+                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=150&amp;default=retro" alt="Dan503" width="75" height="75"></a>
                                   <p class="owner__text grid__cell"><a href="https://github.com/Dan503">Daniel Tonon</a> maintains <a href="https://github.com/Dan503/gutter-grid">Gutter Grid</a></p>
                                 </div>
                               </div>
@@ -948,7 +1052,7 @@
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/13-controlling-cell-growth-and-shrinkage/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/13-controlling-cell-growth-and-shrinkage/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

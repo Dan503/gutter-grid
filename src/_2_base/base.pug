@@ -64,10 +64,12 @@ head
 		<!--<![endif]-->
 
 		<!--[if lt IE 10]>
-		link(rel='stylesheet', href=basePath+'/assets/styles/main.legacy.css')
+		link(rel='stylesheet', href=basePath+'/assets/styles/noMQs-main.legacy.css')
 		<![endif]-->
 
-body
+- var pageClass = get.current.link.replace(/\/pages\/[0-9-]+([A-z0-9-]+)\//,'$1').replace('/','home');
+
+body(class=pageClass)
 	div.moduleLoaded.TK-hide
 		include /_1_modules/alert/alert
 		include /_1_modules/skipLinks/skipLinks
@@ -129,8 +131,8 @@ body
 					#main
 						.grid.grid--gutter-body.grid--outerGutters
 							+nav({classes: 'grid__cell grid__cell--noResize'})
-							main.grid__cell
-								article.markdown-body
+							main.grid__cell.markdown-body
+								article
 
 									+cmsContent()
 										header

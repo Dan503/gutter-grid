@@ -15,7 +15,7 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 }
 
 @function column-width($col-count){
-	@return if($grid-calc-support, calc(100% / #{$col-count}), percentage(1/$col-count));
+	@return if($grid-calc-support, calc(99.9999% / #{$col-count}), percentage(1/$col-count));
 }
 
 //switches IE (and other non-flexbox friendly browsers) to using float mode
@@ -28,7 +28,7 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 				display: block;
 				clear: both;
 			}
-			& > * {
+			> * {
 				float: left;
 				display: block;
 			}

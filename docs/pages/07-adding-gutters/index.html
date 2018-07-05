@@ -38,11 +38,11 @@
   <script src="/assets/scripts/modernizr.min.js"></script><!--[if gt IE 9]><!-->
   <link rel="stylesheet" href="/assets/styles/main.css"><!--<![endif]-->
 <!--[if lt IE 10]>
-  <link rel="stylesheet" href="/assets/styles/main.legacy.css"><![endif]-->
+  <link rel="stylesheet" href="/assets/styles/noMQs-main.legacy.css"><![endif]-->
 </head>
-<body>
+<body class="adding-gutters">
   <div class="moduleLoaded TK-hide">
-    <p id="arrow-keys-tip">Left and right arrow keys to navigate</p>
+    <p id="arrow-keys-tip">Left and right arrow keys navigate. Enter jumps to content.</p>
   </div>
   <!--holds the svg sprite-->
   <div class="svgSprite" style="display:none"><svg xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v4.1.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v5.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -116,16 +116,16 @@
                                 <h2 class="TK-visHid">Main navigation</h2>
                               </div>
                                   <div class="accordion JS-accordion">
-                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
+                                        <button class="btn accordion__btn JS-accordion__toggle -light" type="button" aria-expanded="false"><span class="accordion__icon"></span><span class="accordion__btnText">Toggle Menu</span>
                                         </button>
                                     <div class="accordion__revealer JS-accordion__revealer">
-                                      <ol class="nav__list grid grid--gutter-nav grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
+                                      <ol class="nav__list grid grid--cols-4 grid--gutter-nav grid--stretch grid--outerGutters grid--hasInners grid--vertical grid--noShrink">
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/">Why use Gutter Grid?</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/01-installation/">Installation</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/02-how-to-support-legacy-browsers/">How to support legacy browsers</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/03-basic-usage/">Basic usage</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/04-using-columns/">Using columns</a></li>
-                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-enabling-disabling-wrapping/">Enabling/disabling wrapping</a></li>
+                                        <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/05-control-wrapping/">Control wrapping</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/06-cells-that-span-multiple-columns/">Cells that span multiple columns</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner -active" href="/pages/07-adding-gutters/" aria-current="page">Adding Gutters</a></li>
                                         <li class="nav__item grid__cell"><a class="nav__link btn grid__inner" href="/pages/08-outer-gutters/">Outer gutters</a></li>
@@ -140,8 +140,8 @@
                                     </div>
                                   </div>
                             </nav>
-                        <main class="grid__cell">
-                          <article class="markdown-body">
+                        <main class="grid__cell markdown-body">
+                          <article>
                                 <div class="cmsContent">
                                   <header>
                                     <h2 class="skipLinks__target" id="content" tabindex="-1"><span class="TK-visHid">Body:</span>Adding Gutters
@@ -153,7 +153,7 @@
                                   </header><p>If you have no access to CSS grid, one of the hardest things to do well in css that is also very common in web design is having multiple columns on multiple rows with gutters between each item. The content in the outer columns need to line up with the edges of the other content on the page though.</p>
 <p>With no access to CSS grid, this is difficult to do manually but it&#39;s easy with Gutter Grid.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="07-adding-gutters-1">
                                         <figcaption class="demo__summary demo__segment"><p>Defining a basic gutter size</p>
 
                                         </figcaption>
@@ -170,60 +170,66 @@
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<p>(using a number)</p>
-<div class="grid__wrapper">
-  <div class="grid grid--gutter-20 grid--cols-3">
-    <div class="grid__cell -color-1"></div>
-    <div class="grid__cell -color-2"></div>
-    <div class="grid__cell -color-3"></div>
-    <div class="grid__cell -color-4"></div>
-    <div class="grid__cell -color-5"></div>
-    <div class="grid__cell -color-6"></div>
+<figure>
+  <figcaption>Using a number: <code>grid--gutter-20</code></figcaption>
+  <div class="grid__wrapper">
+    <div class="grid grid--cols-3 grid--gutter-20">
+      <div class="grid__cell -color-1"></div>
+      <div class="grid__cell -color-2"></div>
+      <div class="grid__cell -color-3"></div>
+      <div class="grid__cell -color-4"></div>
+      <div class="grid__cell -color-5"></div>
+      <div class="grid__cell -color-6"></div>
+    </div>
   </div>
-</div>
-<hr>
-<p>(using a gutter name)</p>
-<div class="grid__wrapper">
-  <div class="grid grid--gutter-gutterName grid--cols-3">
-    <div class="grid__cell -color-1"></div>
-    <div class="grid__cell -color-2"></div>
-    <div class="grid__cell -color-3"></div>
-    <div class="grid__cell -color-4"></div>
-    <div class="grid__cell -color-5"></div>
-    <div class="grid__cell -color-6"></div>
+</figure>
+<figure>
+  <figcaption>Using a name: <code>grid--gutter-gutterName</code></figcaption>
+  <div class="grid__wrapper">
+    <div class="grid grid--cols-3 grid--gutter-gutterName">
+      <div class="grid__cell -color-1"></div>
+      <div class="grid__cell -color-2"></div>
+      <div class="grid__cell -color-3"></div>
+      <div class="grid__cell -color-4"></div>
+      <div class="grid__cell -color-5"></div>
+      <div class="grid__cell -color-6"></div>
+    </div>
   </div>
-</div>
+</figure>
                                                               </div>
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-2">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;p&gt;(using a number)&lt;/p&gt;
-&lt;div class=&quot;grid__wrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--gutter-20 grid--cols-3&quot;&gt;
-    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Using a number: &lt;code&gt;grid--gutter-20&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;grid__wrapper&quot;&gt;
+    &lt;div class=&quot;grid grid--cols-3 grid--gutter-20&quot;&gt;
+      &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-&lt;hr/&gt;
-&lt;p&gt;(using a gutter name)&lt;/p&gt;
-&lt;div class=&quot;grid__wrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--gutter-gutterName grid--cols-3&quot;&gt;
-    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Using a name: &lt;code&gt;grid--gutter-gutterName&lt;/code&gt;&lt;/figcaption&gt;
+  &lt;div class=&quot;grid__wrapper&quot;&gt;
+    &lt;div class=&quot;grid grid--cols-3 grid--gutter-gutterName&quot;&gt;
+      &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/figure&gt;</code></pre>
                                                                 </div>
                                                                 <div class="grid__cell demo__markup demo__segment scss">
                                                                   <pre><code class="scss">
@@ -240,7 +246,7 @@ $grid-cell-gutters: (
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -311,7 +317,7 @@ $grid-cell-gutters: (
                                                 </div>
                                               </div>
                                         </div>
-                                      </figure><p>The <code>grid__wrapper</code> element helps contain the grid inside it&#39;s bounding box using <code>overflow: hidden</code>. There is a bug in Chrome that ignores top and bottom negative margin rules that have been applied to an element whose parent has <code>overflow</code> set to <code>visible</code>. Gutter Grid tries to avoid using a top gutter + negative margin combination as much as possible. Unfortunately a bottom gutter + negative margin combo is unavoidable. Using <code>overflow: hidden;</code> on the wrapper element avoids the issue but it also means that the grid can&#39;t have any visible overflowing content. If overflow needs to be visible, you can replace <code>overflow: hidden</code> on the wrapper element with <code>padding-bottom: 1px</code> instead. This will result in an extra 1px of space under the grid but this tends to be barely noticeable.</p>
+                                      </figure><p>The <code>grid__wrapper</code> element helps contain the grid inside it&#39;s bounding box using <code>overflow: hidden</code>. There is a very common browser bug that ignores top and bottom negative margin rules. The bug takes effect when the parent of the element with negative margins has its <code>overflow</code> set to <code>visible</code>. Gutter Grid tries to avoid using a top gutter + negative margin combination as much as possible. Unfortunately a bottom gutter + negative margin combo is unavoidable. Using <code>overflow: hidden;</code> on the wrapper element avoids the issue but it also means that the grid can&#39;t have any visible overflowing content. If overflow needs to be visible, you can replace <code>overflow: hidden</code> on the wrapper element with <code>padding-bottom: 1px</code> instead. This will result in an extra 1px of space under the grid but this tends to be barely noticeable. More about this on the <a href="/pages/10-borders-and-shadows-on-guttered-cells/">borders and shadows page</a>.</p>
 <p>In the class based system, you can name the gutters either with a number (<code>grid--gutter-20</code>) or an actual name (<code>grid--gutter-gutterName</code>).</p>
 <p>By using gutter numbers, you can see directly in the HTML what the gutter value is. If this value ever needs to be globally changed though, everywhere it has been used would need to be manually updated in the HTML.</p>
 <p>By using gutter names, if the value of the gutter ever needs to change, the value can be changed once in the style sheet and it will be updated across the whole site. Gutter names don&#39;t allow you to see the value of the gutter directly in the HTML though and, depending on how you name your gutters, it can lead to multiple gutter classes having identical gutter values. Coming up with meaningful names for your gutters is also more difficult than simply naming the gutters based on their values.</p>
@@ -320,7 +326,7 @@ $grid-cell-gutters: (
 <h3 id="unequal-vertical-and-horizontal-gutters">Unequal vertical and horizontal gutters</h3>
 <p>If you have a design where the spacing between cells is different vertically to the horizontal spacing, your in luck. Gutter Grid also caters to unequal horizontal/vertical gutter sizes. This is done by providing a second pixel value. The vertical value goes first and the horizontal value goes second. This is to replicate how the short hand of setting margin and padding with 2 values goes vertical first then horizontal.</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="07-adding-gutters-2">
                                         <figcaption class="demo__summary demo__segment"><p>Applying a larger vertical gutter than horizontal gutter</p>
 
                                         </figcaption>
@@ -337,60 +343,74 @@ $grid-cell-gutters: (
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
-<p>(using a name)</p>
-<div class="grid__wrapper">
-  <div class="grid grid--gutter-mixedSizeGutter grid--cols-3">
-    <div class="grid__cell -color-1"></div>
-    <div class="grid__cell -color-2"></div>
-    <div class="grid__cell -color-3"></div>
-    <div class="grid__cell -color-4"></div>
-    <div class="grid__cell -color-5"></div>
-    <div class="grid__cell -color-6"></div>
+<figure>
+  <figcaption>Using numbers 
+    <grid--gutter-gutter-10-30></grid--gutter-gutter-10-30>
+  </figcaption>
+  <div class="grid__wrapper">
+    <div class="grid grid--cols-3 grid--gutter-10-30">
+      <div class="grid__cell -color-1"></div>
+      <div class="grid__cell -color-2"></div>
+      <div class="grid__cell -color-3"></div>
+      <div class="grid__cell -color-4"></div>
+      <div class="grid__cell -color-5"></div>
+      <div class="grid__cell -color-6"></div>
+    </div>
   </div>
-</div>
-<hr>
-<p>(using numbers)</p>
-<div class="grid__wrapper">
-  <div class="grid grid--gutter-10-30 grid--cols-3">
-    <div class="grid__cell -color-1"></div>
-    <div class="grid__cell -color-2"></div>
-    <div class="grid__cell -color-3"></div>
-    <div class="grid__cell -color-4"></div>
-    <div class="grid__cell -color-5"></div>
-    <div class="grid__cell -color-6"></div>
+</figure>
+<figure>
+  <figcaption>Using a name 
+    <grid--gutter-mixedsizegutter></grid--gutter-mixedsizegutter>
+  </figcaption>
+  <div class="grid__wrapper">
+    <div class="grid grid--cols-3 grid--gutter-mixedSizeGutter">
+      <div class="grid__cell -color-1"></div>
+      <div class="grid__cell -color-2"></div>
+      <div class="grid__cell -color-3"></div>
+      <div class="grid__cell -color-4"></div>
+      <div class="grid__cell -color-5"></div>
+      <div class="grid__cell -color-6"></div>
+    </div>
   </div>
-</div>
+</figure>
                                                               </div>
                                                               <div class="demo__grid grid grid--ieFloat grid--cols-2">
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
-&lt;p&gt;(using a name)&lt;/p&gt;
-&lt;div class=&quot;grid__wrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--gutter-mixedSizeGutter grid--cols-3&quot;&gt;
-    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Using numbers 
+    &lt;grid--gutter-gutter-10-30&gt;&lt;/grid--gutter-gutter-10-30&gt;
+  &lt;/figcaption&gt;
+  &lt;div class=&quot;grid__wrapper&quot;&gt;
+    &lt;div class=&quot;grid grid--cols-3 grid--gutter-10-30&quot;&gt;
+      &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;
-&lt;hr/&gt;
-&lt;p&gt;(using numbers)&lt;/p&gt;
-&lt;div class=&quot;grid__wrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--gutter-10-30 grid--cols-3&quot;&gt;
-    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
-    &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;figcaption&gt;Using a name 
+    &lt;grid--gutter-mixedSizeGutter&gt;&lt;/grid--gutter-mixedSizeGutter&gt;
+  &lt;/figcaption&gt;
+  &lt;div class=&quot;grid__wrapper&quot;&gt;
+    &lt;div class=&quot;grid grid--cols-3 grid--gutter-mixedSizeGutter&quot;&gt;
+      &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/figure&gt;</code></pre>
                                                                 </div>
                                                                 <div class="grid__cell demo__markup demo__segment scss">
                                                                   <pre><code class="scss">
@@ -407,7 +427,7 @@ $grid-cell-gutters: (
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -456,7 +476,7 @@ $grid-cell-gutters: (
                                       </figure><h3 id="media-query-gutters">Media query gutters</h3>
 <p>That is how to create fixed width gutters that are the same width for all screen sizes, but what if you have a very thick gutter on desktop? It won&#39;t work well having a 50px wide gutter on a tablet or mobile device, it would take up too much screen realestate. The solution is gutters that contain media queries. Here is how to do them:</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="07-adding-gutters-3">
                                         <figcaption class="demo__summary demo__segment"><p>Applying gutters that are affected by media queries</p>
 
                                         </figcaption>
@@ -473,12 +493,12 @@ $grid-cell-gutters: (
                                                   </div>
                                                 </div>
                                                 <div class="tabs__contentWrap">
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Classes format</figcaption>
                                                               <div class="demo__result demo__segment">
 <div class="grid__wrapper">
-  <div class="grid grid--gutter-mediaQueryGutter grid--cols-3 grid--noMQs">
+  <div class="grid grid--cols-3 grid--noMQs grid--gutter-mediaQueryGutter">
     <div class="grid__cell -color-1"></div>
     <div class="grid__cell -color-2"></div>
     <div class="grid__cell -color-3"></div>
@@ -492,7 +512,7 @@ $grid-cell-gutters: (
                                                                 <div class="grid__cell demo__markup demo__segment html">
                                                                   <pre><code class="html">
 &lt;div class=&quot;grid__wrapper&quot;&gt;
-  &lt;div class=&quot;grid grid--gutter-mediaQueryGutter grid--cols-3 grid--noMQs&quot;&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--noMQs grid--gutter-mediaQueryGutter&quot;&gt;
     &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
     &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
@@ -519,7 +539,7 @@ $grid-cell-gutters: (
                                                               </div>
                                                         </figure>
                                                       </div>
-                                                      <div class="tabs__content JS-tabs__content" role="tabpanel">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
                                                         <figure>
                                                           <figcaption class="tabs__title">Mixin format</figcaption>
                                                               <div class="demo__result demo__segment">
@@ -574,7 +594,7 @@ $grid-cell-gutters: (
                                   <h3 id="gutters-and-custom-breakpoints-shorthand">Gutters and custom breakpoints shorthand</h3>
 <p>The breakpoints setting is the 3rd Gutter Grid mixin parameter so it&#39;s possible to specify a column count, gutter size, and custom breakpoints in the mixin like so:</p>
 
-                                      <figure class="demo" role="group">
+                                      <figure class="demo" role="group" id="07-adding-gutters-4">
                                         <figcaption class="demo__summary demo__segment"><p>Column count, gutter width, breakpoints mixin shorthand. Resize the browser window to see the effect.</p>
 
                                         </figcaption>
@@ -645,7 +665,7 @@ $grid-cell-gutters: (
                         <div class="footer__owner grid__cell">
                               <div class="owner">
                                 <h3 class="TK-visHid">Owner</h3>
-                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=75&amp;default=retro" alt="Dan503" width="75" height="75"></a>
+                                <div class="owner__grid grid grid--vAlign-center grid--noWrap"><a class="owner__avatar grid__cell grid__cell--noResize" href="https://github.com/Dan503"><img class="owner__img" src="https://s.gravatar.com/avatar/9da9f1df8def9d7b554fa7e03307a7b2?size=150&amp;default=retro" alt="Dan503" width="75" height="75"></a>
                                   <p class="owner__text grid__cell"><a href="https://github.com/Dan503">Daniel Tonon</a> maintains <a href="https://github.com/Dan503/gutter-grid">Gutter Grid</a></p>
                                 </div>
                               </div>
@@ -664,7 +684,7 @@ $grid-cell-gutters: (
                                               <svg class="svg-facebook">
                                                 <use xlink:href="#svg-facebook"></use>
                                               </svg><span class="TK-visHid">Share on Facebook</span></a></li>
-                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+Gutter+Grid+out+http://gutter-grid.net/pages/07-adding-gutters/" title="Tweet this site">
+                                      <li class="share__option grid__cell"><a class="share__link -twitter JS-share__link" href="http://twitter.com/intent/tweet?status=Check+out+Gutter+Grid+by+@Daniel_Tonon+http://gutter-grid.net/pages/07-adding-gutters/" title="Tweet this site">
                                               <svg class="svg-twitter">
                                                 <use xlink:href="#svg-twitter"></use>
                                               </svg><span class="TK-visHid">Tweet this site</span></a></li>

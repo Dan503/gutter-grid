@@ -1,43 +1,36 @@
 
-$MQ-nav--is-horizontal: (max, bp('page'));
-$MQ-nav--not-horizontal: (min, bp('page'));
-$MQ-nav--is-33width: (max, bp('tablet'));
-$MQ-nav--is-100width: (max, bp('mobile'));
+$MQ-nav--hidden: (max, bp('page'));
+$MQ-nav--visible: (min, bp('page'));
 
 .nav {
 	width: 300px;
 
-	@include mq($MQ-nav--is-horizontal){
+	@include mq($MQ-nav--hidden){
 		width: 100%;
 	}
 
 	&__list {
 		background: $CB-green-pale;
 
-		@include mq($MQ-nav--not-horizontal){
-			// border-top: 0;
-		}
-		@include mq($MQ-nav--is-horizontal){
+		@include mq($MQ-nav--hidden){
 			flex-direction: row;
 		}
 	}
 
 	&__item {
-		@include mq($MQ-nav--is-horizontal){
-			width: 25%;
-		}
-		@include mq($MQ-nav--is-33width){
-			width: 33%;
-		}
-		@include mq($MQ-nav--is-100width){
+		@include mq($MQ-nav--visible){
 			width: 100%;
 		}
 	}
 	//need to overide the grid system
 	&__link.nav__link.nav__link {
-		display: flex;
-		align-items: center;
+		display: block;
 		padding: 10px 20px;
+
+		@supports (display: flex) {
+			display: flex;
+			align-items: center;
+		}
 
 		@include mq(min, bp('small')){
 			font-size: 1.2em;
@@ -50,7 +43,8 @@ $MQ-nav--is-100width: (max, bp('mobile'));
 
 	+ * {
 		.no-flexbox & {
-			max-width: 930px;
+			max-width: 710px;
+			width: auto;
 		}
 	}
 }

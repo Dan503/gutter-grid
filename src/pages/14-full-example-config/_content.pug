@@ -2,80 +2,102 @@ block content
   :marked
     It's going to be difficult figuring out what your final config should end up looking like. These are all the config settings and their default values. Copy/paste them into your project and edit it to fit your project needs.
 
-    ```scss
-    // Set a prefix that is applied in front of "grid" (eg. "gutter" => .gutter-grid__cell)
-    $grid-prefix: '';
+  +demo({
+    scss: `
+// Set a prefix that is applied in front of "grid"
+// (eg. "gutter" => .gutter-grid__cell)
+$grid-prefix: '';
 
-    // Set this to the width at which auto-wrapping is enabled
-    // Also sets the screen width that triggers outer gutter delays
-    $grid-page-width: 1200px;
+// Set this to the width at which auto-wrapping is enabled
+// Also sets the screen width that triggers outer gutter delays
+$grid-page-width: 1200px;
 
-    //IE8 can't do transparent borders.
-    //This defines what the default color for gutters is in IE.
-    $grid-gutter-ie-fallback: #fff;
+//IE8 can't do transparent borders.
+//This defines what the default color for gutters is in IE.
+$grid-gutter-ie-fallback: #fff;
 
-    // Support for browsers that don't support flexbox (IE 8 and 9) is disabled by default
-    $grid-legacy-support: false;
+// Support for browsers that don't support flexbox (IE 8 and 9)
+// is disabled by default
+$grid-legacy-support: false;
 
-    // Support for browsers that support calc() is enabled by default
-    $grid-calc-support: true;
+// Support for browsers that support calc() is enabled by default
+$grid-calc-support: true;
 
-    //You can alter the available grid gutter sizes here
-    $grid-cell-gutters: ();
+//You can alter the available grid gutter sizes here
+$grid-cell-gutters: ();
 
-    //Set the points at which columns change widths
-    $grid-break-points: (
+//Set the points at which columns change widths
+$grid-break-points: (
 
-      //*2 column grid*/
-      2: (
-        1: 600px,//* On a 600px wide screen and below, make it a 1 column grid */
-      ),
+  //*2 column grid*/
+  2: (
+    1: 600px,//* On a screen <= 600px wide, make it a 1 column grid */
+  ),
 
-      //*3 column grid*/
-      3: (
-        2 : (max, 960px),//* Use mq-scss syntax if preferred */
-        1 : (max, 600px),
-      ),
+  //*3 column grid*/
+  3: (
+    2 : (max, 960px),//* Use mq-scss syntax if preferred */
+    1 : (max, 600px),
+  ),
 
-      //*4 column grid*/
-      4: (
-        2 : 960px,
-        1 : 480px,
-      ),
+  //*4 column grid*/
+  4: (
+    2 : 960px,
+    1 : 480px,
+  ),
 
-      //*5 column grid*/
-      5: (
-        3 : 960px,
-        2 : 600px,
-        1 : 480px,
-      ),
+  //*5 column grid*/
+  5: (
+    3 : 960px,
+    2 : 600px,
+    1 : 480px,
+  ),
 
-      //*6 column grid*/
-      6: (
-        3 : 960px,
-        2 : 600px,
-        1 : 480px,
-      )
-    );
+  //*6 column grid*/
+  6: (
+    3 : 960px,
+    2 : 600px,
+    1 : 480px,
+  )
+);
 
 
-    @import '../node_modules/mq-scss/mq';
-    //pick to use mixins or classes, it's not advisable to use both
-    @import '../node_modules/gutter-grid/grid-mixin';
-    @import '../node_modules/gutter-grid/grid-classes';
-    ```
+@import '../node_modules/mq-scss/mq';
+//pick to use mixins or classes, it's not advisable to use both
+@import '../node_modules/gutter-grid/grid-mixin';
+@import '../node_modules/gutter-grid/grid-classes';
+`
+  }, {hasTabs: false})
+    :marked
+      All the config settings and their default values.
 
-    Here is an example of how to configure the `$grid-cell-gutters` setting:
+  +demo({
+    scss: `
+$grid-cell-gutters: (
+  // .grid--gutter-20
+  20 : 20px,
 
-    ```scss
-    $grid-cell-gutters: (
-      20 : 20px, // grid--gutter-20
-      '10-30' : 10px 30px, // grid--gutter-10-30
-      'gutterName' : 20px, // grid--gutter-gutterName
-      'mediaQueryGutter' : mq (
-        (50px 30px), // default 50px vertical, 30px horizontal gutters
-        (30px 10px) (max, 800px), // 30px vertical, 10px horizontal gutters on screens <= 800px
-        10px (max, 700px) // 10px gutter on screens  <= 700px
-      )
-    );
-    ```
+  // .grid--gutter-10-30
+  '10-30' : 10px 30px,
+
+  // .grid--gutter-gutterName
+  'gutterName' : 20px,
+
+  // .grid--gutter-mediaQueryGutter
+  'mediaQueryGutter' : mq (
+
+    // default 50px vertical, 30px horizontal gutters
+    (50px 30px),
+
+    // 30px vertical, 10px horizontal gutters
+    // on screens <= 800px and > 600px
+    (30px 10px) (inside, 800px, 600px),
+
+    // 10px gutter on screens  <= 400px
+    10px (max, 400px)
+  )
+);
+`
+  }, {hasTabs: false})
+    :marked
+      An example of how to configure the `$grid-cell-gutters` setting.

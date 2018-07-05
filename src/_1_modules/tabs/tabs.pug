@@ -1,5 +1,5 @@
 //- loaded in a hidden div at the top of the page
-p#arrow-keys-tip Left and right arrow keys to navigate
+p#arrow-keys-tip Left and right arrow keys navigate. Enter jumps to content.
 
 mixin tabs__content(tabName, spec)
 	-
@@ -8,7 +8,7 @@ mixin tabs__content(tabName, spec)
 			attr: {},
 		});
 
-	.tabs__content(class=spec.classes, role="tabpanel")&attributes(spec.attr).JS-tabs__content
+	.tabs__content(class=spec.classes, role="tabpanel", tabindex="-1")&attributes(spec.attr).JS-tabs__content
 		figure
 			if tabName
 				figcaption.tabs__title= tabName

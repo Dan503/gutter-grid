@@ -4,13 +4,19 @@ block content
 
     Alternatively, if you are using the mixin based system, you can use the seperate `grid__cell--span` mixin to calculate the width for you. The syntax for it goes like this:
 
-    ``````scss
-    @include grid__cell--span(
-      [No. columns to span],
-      [total No. of columns],
-      [optional place to add "!important" if you need it]
-    );
-    ``````
+  +demo({
+    scss: `
+@include grid__cell--span(
+  [Number of columns to span],
+  [Total number of columns],
+  [Optional place to add "!important" if you need it]
+);
+`
+  }, {hasTabs: false})
+    :marked
+      Syntax for the `grid__cell--span` mixin.
+
+  :marked
 
     The first 2 parameters are required but the 3rd parameter is a completely optional parameter designed to add `!important` to the rule if you need to. The only think this mixin does is calculate the width for you so it's perfectly fine to write out the width manually if that's easier.
 
@@ -18,7 +24,7 @@ block content
     classes: {
 html:`
 .grid.grid--cols-4
-  .grid__cell.grid__cell--span-3.-color-1
+  .grid__cell.-color-1.grid__cell--span-3
   .grid__cell.-color-2
   .grid__cell.-color-3
   .grid__cell.-color-4
@@ -29,7 +35,7 @@ html:`
     mixin: {
 html:`
 .mixin-10
-  .mixin__cell.mixin__cellSpan.-color-1
+  .mixin__cell.-color-1.mixin__cellSpan
   .mixin__cell.-color-2
   .mixin__cell.-color-3
   .mixin__cell.-color-4
@@ -67,8 +73,8 @@ scss:`
   +demo({
     classes: {
 html:`
-.grid.grid--noMQs.grid--cols-4
-  .grid__cell.grid__cell--span-3.-color-1
+.grid.grid--cols-4.grid--noMQs
+  .grid__cell.-color-1.grid__cell--span-3
   .grid__cell.-color-2
   .grid__cell.-color-3
   .grid__cell.-color-4
@@ -79,7 +85,7 @@ html:`
     mixin: {
 html:`
 .mixin-11
-  .mixin__cell.mixin__cellSpan.-color-1
+  .mixin__cell.-color-1.mixin__cellSpan
   .mixin__cell.-color-2
   .mixin__cell.-color-3
   .mixin__cell.-color-4
@@ -98,3 +104,6 @@ scss:`
 })
     :marked
       Same example as above except this time with the default media queries disabled. Resize your screen to see the difference.
+
+  :marked
+    Disabling media queries is also useful on small grids that have column counts defined. Grids are often used on components that do not take up the full width of the page. These sorts of grids will usually need their own custom media query widths applied.
