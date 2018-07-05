@@ -102,7 +102,7 @@ scss:`
         A failed attempt at adding shadows to the grid cells. The shadows get cut off.
 
   :marked
-    If you leaving off the wrapper though, it will causes a common browser bug that leaves unwanted space at the bottom of the grid in Chrome and Firefox.
+    If you leaving off the wrapper though, it will causes unwanted space to appear at the bottom of the grid.
 
   +demo({
     classes: {
@@ -150,10 +150,10 @@ scss:`
     }
 })
       :marked
-        View in Chrome or Firefox to see unwanted space caused by leaving off `overflow: hidden` wrapper element.
+        Unwanted space caused by leaving off `overflow: hidden` wrapper element. The space can be seen extending the example area at the bottom of the grid.
 
   :marked
-    Instead (if using the class system) use a `grid__paddedWrapper` class on the wrapping element. This class adds `padding-bottom: 1px` to the wrapper. This will prevent the browser bug from occurring and allow for a visible overflow. However it will leave a 1px gap at the bottom of the grid. This gap is generally very difficult to notice though. If using the mixin system, you will need to add your own 1px of bottom padding to a wrapper element.
+    Instead (if using the class system) use a `grid__paddedWrapper` class on the wrapping element. This class adds `padding-bottom: 1px` to the wrapper. This will prevent the issue from occurring and allow for a visible overflow. The down side is that it will leave a 1px gap at the bottom of the grid. This gap is generally very difficult to notice though. If using the mixin system, you will need to add your own 1px of bottom padding to a wrapper element.
 
   +demo({
     classes: {
@@ -207,7 +207,7 @@ scss:`
     }
 })
     :marked
-      Adding 1px of bottom padding to fix browser bug.
+      Manually Adding 1px of bottom padding to the wrapper fixes the issue in the mixin system. Swapping out the the `grid__wrapper` class with a `grid__paddedWrapper` class will fix the issue in the class system.
 
   :marked
     ### Using box shadow as a fake border
