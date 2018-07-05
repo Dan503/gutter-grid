@@ -67,7 +67,9 @@ head
 		link(rel='stylesheet', href=basePath+'/assets/styles/noMQs-main.legacy.css')
 		<![endif]-->
 
-body
+- var pageClass = get.current.link.replace(/\/pages\/[0-9-]+([A-z0-9-]+)\//,'$1').replace('/','home');
+
+body(class=pageClass)
 	div.moduleLoaded.TK-hide
 		include /_1_modules/alert/alert
 		include /_1_modules/skipLinks/skipLinks
