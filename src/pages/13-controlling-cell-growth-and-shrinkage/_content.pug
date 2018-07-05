@@ -206,7 +206,7 @@ scss: `
     }
 })
     :marked
-      Applying `noStretch` to only 1 of the grid cells
+      Applying the `grid__cell--noStretch` class to only 1 of the grid cells (apply `flex-grow: 0` manually if using the mixin system)
 
   +demo({
     classes: {
@@ -238,7 +238,7 @@ scss: `
     }
 })
     :marked
-      Applying `noShrink` to only 1 of the grid cells (resize browser to see the effect)
+      Applying the `grid__cell--noShrink` class to only 1 of the grid cells (apply `flex-shrink: 0` manually if using the mixin system)
 
   +demo({
     classes: {
@@ -271,7 +271,7 @@ scss: `
     }
 })
     :marked
-      Applying `noResize` to prevent shrinking and growth in only 1 of the grid cells at the same time (very useful for listings with thumbnail images if you apply `noResize` to the thumbnail cell)
+      Applying the `grid__cell--noResize` class to one of the grid cells prevents that grid cell from shrinking and stretching (apply `flex-shrink: 0` and `flex-grow: 0` manually if using the mixin system). This is very useful for listings with thumbnail images if you apply `noResize` to the thumbnail grid cell.
 
   :marked
     ### Mini grids
