@@ -1,36 +1,41 @@
 block content
   :marked
-    Another way of handling cell alignments is with grid cell stretch and shrink settings. By default, grid cells will both stretch and shrink as necessary but this can be overridden with the stretch, shrink, and resize settings. These do not feature legacy browser support as they are features that are unique to flexbox. In saying that, these are primarily just alternate ways of assigning `flex-grow` and `flex-shrink` properties.
+    Another way of handling cell alignments is with grid cell stretch and shrink settings. By default, grid cells will both stretch and shrink as necessary but this can be overridden with the stretch, shrink, and resize settings. With the exception of `grid--noStretch` / `$stretch: false`, these generally do not feature legacy browser backups as they are features that are unique to flexbox. The grid is either all stretching or not stretching at all in IE8 and 9. In saying that, these are primarily just alternate ways of assigning `flex-grow` and `flex-shrink` properties.
 
     In version 3 `stretch` was named `grow`. The name was changed to `stretch` in version 4 to align with the naming of CSS Grid's `justify-items: stretch` and `justify-self: stretch` properties.
 
   +tabs({links: ['Classes', 'Mixin']})
     +tabs__content('Classes for controlling cell growth')
       :marked
-        - `grid--noStretch` will prevent all cells in the grid from stretching
-        - `grid--stretch` identical to `grid--align-stretch` (stretches all grid cells)
-        - `grid__cell--noStretch` will prevent only the cell that it is applied to from stretching
-        - `grid__cell--stretch` will allow a specific grid cell to stretch
-        - `grid--noShrink` will prevent all cells in the grid from shrinking below their `min-content` width
-        - `grid__cell--noShrink` will prevent that specific cell from shrinking bellow it's `min-content` width
-        - `grid__cell--shrink` will allow a specific grid cell to shrink
-        - `grid--noResize` a shortcut for applying both `grid--noStretch` and `grid--noShrink` classes
-        - `grid__cell--noResize` a shortcut for applying both `grid__cell--noStretch` and `grid__cell--noShrink` classes
+        - **Stretch classes**
+          - `grid--noStretch` will prevent all cells in the grid from stretching.
+          - `grid--stretch` identical to `grid--align-stretch` (stretches all grid cells).
+          - `grid__cell--noStretch` will prevent only the cell that it is applied to from stretching.
+          - `grid__cell--stretch` will allow a specific grid cell to stretch.
+
+        - **Shrink classes**
+          - `grid--noShrink` will prevent all cells in the grid from shrinking below their `min-content` width.
+          - `grid__cell--noShrink` will prevent that specific cell from shrinking bellow it's `min-content` width.
+          - `grid__cell--shrink` will allow a specific grid cell to shrink.
+
+        - **Resize classes**
+          - `grid--noResize` a shortcut for applying both `grid--noStretch` and `grid--noShrink` classes.
+          - `grid__cell--noResize` a shortcut for applying both `grid__cell--noStretch` and `grid__cell--noShrink` classes.
 
     +tabs__content('Mixin properties for controlling cell growth')
       :marked
-        - `$stretch: true` will allow all grid cells to stretch
-        - `$stretch: false` will prevent all cells in the grid from stretching
-        - `$shrink: false` will prevent all cells in the grid from shrinking below their content width
-        - `$resize: false` a shortcut for applying both `$grow: false` and `$shrink: false` settings at the same time to all grid cells
-        - To apply resize settings to specific cells, just use the `flex-grow` and `flex-shrink` css properties
+        - `$stretch: true` will allow all grid cells to stretch.
+        - `$stretch: false` will prevent all cells in the grid from stretching.
+        - `$shrink: false` will prevent all cells in the grid from shrinking below their content width.
+        - `$resize: false` a shortcut for applying both `$grow: false` and `$shrink: false` settings at the same time to all grid cells.
+        - To apply resize settings to specific cells, just use the `flex-grow` and `flex-shrink` css properties.
 
   +demo({
     classes: {
 html:`
 .grid.grid--noWrap
   .grid__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .grid__cell.-color-2
     .thinBox.-color-4
 `,
@@ -39,7 +44,7 @@ html:`
 html:`
 .mixin-39
   .mixin__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .mixin__cell.-color-2
     .thinBox.-color-4
 `,
@@ -51,14 +56,17 @@ scss: `
     }
 })
     :marked
-      This is the control example to show how the grid setup behaves with minimal settings and a block of content at a fixed 500px by 50px size and a small 50px by 50px square.
+      This is the control example to show how the grid setup behaves with minimal settings. It has a block of content with a maximum width of 400px and a minimum width of 300px. It also has a small block holding only a single word.
+
+  :marked
+    If `grid--noStretch` (`$stretch: false`) is applied, it is essentially the same as using `grid--align-left` (`$align: left`). In legacy mode, just like the align properties, turning stretching off also has the side effect of enabling wrapping. If you turn off wrapping explicitly using `grid--noWrap` or `$wrap: false`, modern browsers will stop wrapping however IE 8 and 9 will continue to wrap.
 
   +demo({
     classes: {
 html:`
 .grid.grid--noWrap.grid--noStretch
   .grid__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .grid__cell.-color-2
     .thinBox.-color-4
 `,
@@ -67,7 +75,7 @@ html:`
 html:`
 .mixin-40
   .mixin__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .mixin__cell.-color-2
     .thinBox.-color-4
 `,
@@ -79,14 +87,14 @@ scss: `
     }
 })
     :marked
-      If `grid--noStretch` (`$stretch: false`) is applied, it is essentially the equivalent of using `grid--align-left` (`$align: left`)
+      Adding `grid--noStretch` (`$stretch: false`) is essentially the same as using `grid--align-left` (`$align: left`).
 
   +demo({
     classes: {
 html:`
 .grid.grid--noWrap.grid--noStretch
   .grid__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .grid__cell.-color-2.grid__cell--stretch
     .thinBox.-color-4
 `,
@@ -95,7 +103,7 @@ html:`
 html:`
 .mixin-40
   .mixin__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .mixin__cell.-color-2.mixin__cell--stretch
     .thinBox.-color-4
 `,
@@ -117,7 +125,7 @@ scss: `
 html:`
 .grid.grid--noWrap.grid--noShrink
   .grid__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .grid__cell.-color-2
     .thinBox.-color-4
 `,
@@ -126,7 +134,7 @@ html:`
 html:`
 .mixin-41
   .mixin__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .mixin__cell.-color-2
     .thinBox.-color-4
 `,
@@ -145,7 +153,7 @@ scss: `
 html:`
 .grid.grid--noWrap.grid--noResize
   .grid__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .grid__cell.-color-2
     .thinBox.-color-4
 `,
@@ -154,7 +162,7 @@ html:`
 html:`
 .mixin-42
   .mixin__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .mixin__cell.-color-2
     .thinBox.-color-4
 `,
@@ -166,14 +174,14 @@ scss: `
     }
 })
     :marked
-      `grid--noResize` (`$resize: false`) is a shortcut for applying both `grid--noShrink` (`$shrink: false`) and `grid--noStretch` (`$stretch: false`) at the same time.
+      `grid--noResize` (`$resize: false`) is a shortcut for applying both `grid--noShrink` (`$shrink: false`) and `grid--noStretch` (`$stretch: false`) at the same time. This will turn on wrapping in legacy mode just like `grid--noStretch` will.
 
   +demo({
     classes: {
 html:`
 .grid.grid--noWrap
   .grid__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .grid__cell.grid__cell--noStretch.-color-2
     .thinBox.-color-4
 `,
@@ -182,7 +190,7 @@ html:`
 html:`
 .mixin-39
   .mixin__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .mixin__cell.mixin__noGrowth.-color-2
     .thinBox.-color-4
 `,
@@ -205,7 +213,7 @@ scss: `
 html:`
 .grid.grid--noWrap
   .grid__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .grid__cell.grid__cell--noShrink.-color-2
     .thinBox.-color-4
 `,
@@ -214,7 +222,7 @@ html:`
 html:`
 .mixin-39
   .mixin__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .mixin__cell.mixin__noShrink.-color-2
     .thinBox.-color-4
 `,
@@ -237,7 +245,7 @@ scss: `
 html:`
 .grid.grid--noWrap
   .grid__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .grid__cell.grid__cell--noResize.-color-2
     .thinBox.-color-4
 `,
@@ -246,7 +254,7 @@ html:`
 html:`
 .mixin-39
   .mixin__cell.-color-1
-    .wideBox.-color-3
+    .wideBox(lang="zxx").-color-3
   .mixin__cell.mixin__noResize.-color-2
     .thinBox.-color-4
 `,

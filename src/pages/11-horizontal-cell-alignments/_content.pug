@@ -2,7 +2,7 @@ block content
   :marked
     Horizontal cell alignment is easy with Gutter Grid. These are mostly just classes that hold `justify-content` values but they *do* feature legacy browser backups so it's better to use these than the `justify-content` property directly if legacy support is important to you. In old browsers, the `space` settings are outputted as center alignments instead. It's impossible to replicate the flexbox `space` alignments in browsers that don't support flexbox.
 
-    By default, if there are not enough cells in the row to fill the specified number of columns, the cells will align to the left similar to how CSS Grid behaves. This default functionality was introduced in version 4 to better align with how CSS Grid works. In version 3, the left over grid cells would grow to fill the remaining space left over in the grid by default. To replicate the version 4 default functionality in version 3, use `$align: left` or the `grid--align-left` class.
+    By default, if there are not enough cells in the row to fill the specified number of columns, the cells will align to the left, similar to how CSS Grid behaves. This default functionality was introduced in version 4 to better align with how CSS Grid works. In version 3, the left over grid cells would grow to fill the remaining space left over in the grid by default. To replicate the version 4 default functionality in version 3, use `$align: left` or the `grid--align-left` class.
 
   +demo({
     classes: {
@@ -36,7 +36,7 @@ scss:`
       Default cell alignment when there are not enough cells to fill the row
 
   :marked
-    If this isn't the effect you are after, you might want to use some of these other alignment options instead. Note that the `align` and `space` properties will also implicitly enable wrapping in legacy mode.
+    If this isn't the effect you are after, you might want to use some of these other alignment options instead. Note that the `align` and `space` properties will also implicitly enable wrapping when running in legacy mode. Adding `grid--noWrap` or `$wrap: false` will prevent this implicit behaviour in modern browsers however IE8 and 9 will still wrap.
 
   +demo({
     classes: {

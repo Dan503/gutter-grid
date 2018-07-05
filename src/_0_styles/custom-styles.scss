@@ -207,14 +207,37 @@ footer {
 	box-shadow: inset 0 0 0 2px red, 0 0 10px #000;
 }
 
+.wideBox, .thinBox {
+	// height: 50px;
+	// display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px dashed #fff;
+	box-sizing: border-box;
+	padding: 10px;
+	opacity: 0.8;
+}
+
 .wideBox {
-	height: 50px;
-	width: 500px;
+	max-width: 400px;
+	min-width: 300px;
+	margin: 15px 0;
+
+	&:before {
+		white-space: pre-wrap;
+		content: 'max-width: 400px; \Amin-width: 300px; \A\Alorem ipsum Haec bene dicuntur, nec ego repugno, sed inter sese ipsa pugnant. Aliter enim explicari, quod quaeritur, non potest. Recte dicis; Nec tamen ullo modo summum pecudis bonum et hominis idem mihi videri potest. Sed eum qui audiebant, quoad poterant, defendebant sententiam suam. Semper enim ex eo, quod maximas partes continet latissimeque funditur, tota res appellatur. Cur tantas regiones barbarorum pedibus obiit, tot maria transmisit?';
+	}
 }
 
 .thinBox {
-	height: 50px;
-	width: 50px;
+	// width: 50px;
+	margin-top: 35px;
+	display: inline-block;
+
+	&:before {
+		content: 'content';
+		transform: rotate(-45deg);
+	}
 }
 
 #main {

@@ -7,7 +7,7 @@ block content
     #### Breaking changes
 
     - Grids that have a set of columns defined would previously stretch while wrapping in legacy mode. This was inconsistent behavior to modern mode. In modern mode, grid cells would remain at their column width setting while wrapping. Legacy mode grids now behave consistently with modern mode grids with the exception of wrapping.
-    - In general, legacy mode grids will not wrap unless explicitly told to. The exceptions to this rule are grids that have `align`, `space` or `vAlign` settings applied to them. `vAlign` and `space` settings will automatically enable wrapping in legacy mode. `vAlign` will only enable wrapping in legacy mode if a column count has also been set. Previously these exceptions were not consistent in legacy mode between legacy and modern browsers.
+    - In general, legacy mode grids will not wrap unless explicitly told to. The exceptions to this rule are grids that have `align`, `space`, or `vAlign` settings applied to them and also grids that have had stretch disabled (`grid--noStretch` / `$stretch: false`). `vAlign` and `space` and `noStretch` will automatically enable wrapping in legacy mode. `vAlign` will only enable wrapping in legacy mode if a column count has also been set. Previously these exceptions were not consistent in legacy mode between legacy and modern browsers.
 
     #### New features
 
