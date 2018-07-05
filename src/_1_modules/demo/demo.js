@@ -122,7 +122,6 @@ export default function(){
 		'/pages/04-using-columns/',
 		'/pages/05-control-wrapping/',
 		'/pages/09-nesting-grids/',
-		'/pages/10-borders-and-shadows-on-guttered-cells/',
 		'/pages/12-vertical-cell-alignments/',
 	];
 

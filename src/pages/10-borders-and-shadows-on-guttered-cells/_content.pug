@@ -1,12 +1,14 @@
 block content
   :marked
+    _The demos on this page will not display on IE8 due to IE8's lack of support for the `box-shadow` property._
+
     If a grid has gaps, trying to add borders or shadows to it directly won't work
 
   +demo({
     classes: {
 html:`
 .grid__wrapper
-  .grid.grid--gutter-20.grid--cols-3.grid--hasInners
+  .grid.grid--cols-3.grid--gutter-20.grid--hasInners
     .grid__cell.demonstrate-shadow-border
     .grid__cell.demonstrate-shadow-border
     .grid__cell.demonstrate-shadow-border
@@ -34,7 +36,7 @@ scss:`
 
 // These are not part of Gutter Grid
 .mixin__wrapper { overflow: hidden }
-.demonstrate-shadow-border { box-shadow: inset 0 0 0 2px red, 0 0 10px #000; }
+.demonstrate-shadow-border.add-padding Shadow cell { box-shadow: inset 0 0 0 2px red, 0 0 10px #000; }
 `,
     }
 })
@@ -54,17 +56,17 @@ html:`
 .grid__wrapper
   .grid.grid--gutter-20.grid--cols-3.grid--hasInners
     .grid__cell
-      .grid__inner.add-shadow
+      .grid__inner.add-shadow.add-padding Shadow cell
     .grid__cell
-      .grid__inner.add-shadow
+      .grid__inner.add-shadow.add-padding Shadow cell
     .grid__cell
-      .grid__inner.add-shadow
+      .grid__inner.add-shadow.add-padding Shadow cell
     .grid__cell
-      .grid__inner.add-shadow
+      .grid__inner.add-shadow.add-padding Shadow cell
     .grid__cell
-      .grid__inner.add-shadow
+      .grid__inner.add-shadow.add-padding Shadow cell
     .grid__cell
-      .grid__inner.add-shadow
+      .grid__inner.add-shadow.add-padding Shadow cell
 `
     },
 
@@ -73,17 +75,17 @@ html:`
 .mixin__wrapper
   .mixin-shadows-example
     .mixin__cell
-      .mixin__inner.add-shadow
+      .mixin__inner.add-shadow.add-padding Shadow cell
     .mixin__cell
-      .mixin__inner.add-shadow
+      .mixin__inner.add-shadow.add-padding Shadow cell
     .mixin__cell
-      .mixin__inner.add-shadow
+      .mixin__inner.add-shadow.add-padding Shadow cell
     .mixin__cell
-      .mixin__inner.add-shadow
+      .mixin__inner.add-shadow.add-padding Shadow cell
     .mixin__cell
-      .mixin__inner.add-shadow
+      .mixin__inner.add-shadow.add-padding Shadow cell
     .mixin__cell
-      .mixin__inner.add-shadow
+      .mixin__inner.add-shadow.add-padding Shadow cell
 `,
 scss:`
 .mixin-shadows-example {
@@ -92,7 +94,7 @@ scss:`
 
 // These are not part of Gutter Grid
 .mixin__wrapper { overflow: hidden }
-.add-shadow { box-shadow: 0 0 10px #000; }
+.add-shadow.add-padding Shadow cell { box-shadow: 0 0 10px #000; }
 `,
     }
 })
@@ -107,17 +109,17 @@ scss:`
 html:`
 .grid.grid--gutter-20.grid--cols-3.grid--hasInners
   .grid__cell
-    .grid__inner.add-shadow
+    .grid__inner.add-shadow.add-padding Shadow cell
   .grid__cell
-    .grid__inner.add-shadow
+    .grid__inner.add-shadow.add-padding Shadow cell
   .grid__cell
-    .grid__inner.add-shadow
+    .grid__inner.add-shadow.add-padding Shadow cell
   .grid__cell
-    .grid__inner.add-shadow
+    .grid__inner.add-shadow.add-padding Shadow cell
   .grid__cell
-    .grid__inner.add-shadow
+    .grid__inner.add-shadow.add-padding Shadow cell
   .grid__cell
-    .grid__inner.add-shadow
+    .grid__inner.add-shadow.add-padding Shadow cell
 `
     },
 
@@ -125,17 +127,17 @@ html:`
 html:`
 .mixin-shadows-example
   .mixin__cell
-    .mixin__inner.add-shadow
+    .mixin__inner.add-shadow.add-padding Shadow cell
   .mixin__cell
-    .mixin__inner.add-shadow
+    .mixin__inner.add-shadow.add-padding Shadow cell
   .mixin__cell
-    .mixin__inner.add-shadow
+    .mixin__inner.add-shadow.add-padding Shadow cell
   .mixin__cell
-    .mixin__inner.add-shadow
+    .mixin__inner.add-shadow.add-padding Shadow cell
   .mixin__cell
-    .mixin__inner.add-shadow
+    .mixin__inner.add-shadow.add-padding Shadow cell
   .mixin__cell
-    .mixin__inner.add-shadow
+    .mixin__inner.add-shadow.add-padding Shadow cell
 `,
 scss:`
 .mixin-shadows-example {
@@ -143,7 +145,7 @@ scss:`
 }
 
 // These are not part of Gutter Grid
-.add-shadow { box-shadow: 0 0 10px #000; }
+.add-shadow.add-padding Shadow cell { box-shadow: 0 0 10px #000; }
 `,
     }
 })
@@ -159,17 +161,17 @@ html:`
 .grid__paddedWrapper
   .grid.grid--gutter-20.grid--cols-3.grid--hasInners
     .grid__cell
-      .grid__inner.add-shadow.add-border
+      .grid__inner.add-shadow.add-padding Shadow cell
     .grid__cell
-      .grid__inner.add-shadow.add-border
+      .grid__inner.add-shadow.add-padding Shadow cell
     .grid__cell
-      .grid__inner.add-shadow.add-border
+      .grid__inner.add-shadow.add-padding Shadow cell
     .grid__cell
-      .grid__inner.add-shadow.add-border
+      .grid__inner.add-shadow.add-padding Shadow cell
     .grid__cell
-      .grid__inner.add-shadow.add-border
+      .grid__inner.add-shadow.add-padding Shadow cell
     .grid__cell
-      .grid__inner.add-shadow.add-border
+      .grid__inner.add-shadow.add-padding Shadow cell
 `
     },
 
@@ -178,17 +180,17 @@ html:`
 .mixin__paddedWrapper
   .mixin-shadows-example
     .mixin__cell
-      .mixin__inner.add-shadow.add-border
+      .mixin__inner.add-shadow.add-padding Shadow cell
     .mixin__cell
-      .mixin__inner.add-shadow.add-border
+      .mixin__inner.add-shadow.add-padding Shadow cell
     .mixin__cell
-      .mixin__inner.add-shadow.add-border
+      .mixin__inner.add-shadow.add-padding Shadow cell
     .mixin__cell
-      .mixin__inner.add-shadow.add-border
+      .mixin__inner.add-shadow.add-padding Shadow cell
     .mixin__cell
-      .mixin__inner.add-shadow.add-border
+      .mixin__inner.add-shadow.add-padding Shadow cell
     .mixin__cell
-      .mixin__inner.add-shadow.add-border
+      .mixin__inner.add-shadow.add-padding Shadow cell
 `,
 scss:`
 .mixin-shadows-example {
@@ -199,7 +201,7 @@ scss:`
 .mixin__paddedWrapper { padding-bottom: 1px; }
 
 // These are not part of Gutter Grid
-.add-shadow { box-shadow: 0 0 10px #000; }
+.add-shadow.add-padding Shadow cell { box-shadow: 0 0 10px #000; }
 .add-border { border: 2px solid red; }
 `,
     }
@@ -216,7 +218,7 @@ scss:`
     classes: {
 html:`
 .grid__wrapper
-  .grid.grid--gutter-20.grid--cols-2
+  .grid.grid--cols-2.grid--gutter-20
     .grid__cell.add-fakeBorder.add-padding
       p.
         You can use <code>box-shadow</code> to add a solid fake border to grid cells without needing to use inner elements.
