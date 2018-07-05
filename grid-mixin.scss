@@ -65,7 +65,7 @@
 
 	@if (
 		(not $grid-legacy-support and ($wrap == true or ($cols != auto and $wrap == default))) or
-		($grid-legacy-support and $wrap != false and ($align != default or $space != false or ($vAlign != false and $cols != auto))) )
+		($grid-legacy-support and $wrap != false and ($align != default or $space != false or $stretch == false or ($vAlign != false and $cols != auto))) )
 	{
 		flex-wrap: wrap;
 	}
