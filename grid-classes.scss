@@ -321,7 +321,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	//tabular/float:left backup for IE9 and below
 	@if ($grid-legacy-support) {
 
-		&[class*="grid--align"], &[class*="grid--space"], #{$grid}--noStretch, &[class*="grid--vAlign"][class*="grid--cols"] {
+		&[class*="grid--align"], &[class*="grid--space"], #{$grid}--noStretch, #{$grid}--noResize, &[class*="grid--vAlign"][class*="grid--cols"] {
 			flex-wrap: wrap;
 		}
 
@@ -418,7 +418,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		}
 
 		//allows IE to use floats instead of display table without affecting modern browsers
-		&--ieFloat, &--noStretch {
+		&--ieFloat, &--noStretch, &--noResize {
 			@include ieFloat;
 		}
 	}
