@@ -610,12 +610,14 @@ footer {
 /* Markdown */
 .markdown-body p,
 .markdown-body pre,
+.markdown-body aside,
 .markdown-body ul,
 .markdown-body ol,
 .markdown-body dl,
 .markdown-body table,
 .markdown-body blockquote {
   margin-bottom: 2em;
+  margin-top: 2em;
 }
 
 .markdown-body h1,
