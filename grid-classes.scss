@@ -248,7 +248,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	}
 	//disables wrapping at all screen widths
 	&--noWrap {
-		flex-wrap: nowrap;
+		flex-wrap: if($grid-legacy-support, nowrap !important, nowrap);
 	}
 
 	//quick access to space-between and space-around
