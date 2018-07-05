@@ -22,4 +22,4 @@ Even though Gutter Grid is powered by flexbox, it features a legacy mode that, w
 
 **To read the full documentation go to http://gutter-grid.net.**
 
-You can view the change log on the [GitHub releases page](https://github.com/Dan503/gutter-grid/releases).
+You can view the change log on the [GitHub releases page](https://github.com/Dan503/gutter-grid/releases) or the [Gutter Grid website](http://gutter-grid.net/pages/15-change-log/).
