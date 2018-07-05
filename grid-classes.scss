@@ -345,6 +345,8 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			}
 
 			&[class*='grid--vAlign'][class*='grid--cols'] {
+				display: block;
+
 				> * {
 					display: inline-block;
 					margin-right: -4px;
