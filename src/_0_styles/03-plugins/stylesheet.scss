@@ -608,12 +608,6 @@ footer {
 }
 
 /* Markdown */
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3,
-.markdown-body h4,
-.markdown-body h5,
-.markdown-body h6,
 .markdown-body p,
 .markdown-body pre,
 .markdown-body ul,
@@ -621,7 +615,7 @@ footer {
 .markdown-body dl,
 .markdown-body table,
 .markdown-body blockquote {
-  margin-bottom: 20px;
+  margin-bottom: 2em;
 }
 
 .markdown-body h1,

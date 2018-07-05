@@ -74,7 +74,7 @@ footer {
 		margin-right: auto;
 	}
 
-	h2,h3,h4,h5,h6,p,ul,ol{
+	h2,h3,h4,h5,h6,p{
 		&:first-child { margin-top: 0; }
 		&:last-child { margin-bottom: 0; }
 	}
@@ -98,6 +98,11 @@ footer {
 		max-width: 70rem;
 		margin-left: auto;
 		margin-right: auto;
+		margin-bottom: 0.5em;
+
+		+ p, + ul, + ol {
+			margin-top: 0;
+		}
 	}
 
 	h2, h3, h4, h5, figcaption {
