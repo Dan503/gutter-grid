@@ -19,6 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/Dan503/gutter-grid.git"
   },
+  "license": "MIT",
   "dependencies": {
     "mq-scss": "*"
   },
