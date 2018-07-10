@@ -5,18 +5,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Change log | Gutter Grid</title>
-  <meta name="description" content="A Sass flexbox based grid system that is able to replicate the CSS grid-gap property in IE11">
+  <meta name="description" content="A Sass flexbox based grid system that is able to replicate CSS grid-gap in IE11">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta property="og:site_name" content="Gutter Grid">
   <meta property="og:title" content="Gutter Grid: Change log">
-  <meta property="og:description" content="A Sass flexbox based grid system that is able to replicate the CSS grid-gap property in IE11">
+  <meta property="og:description" content="A Sass flexbox based grid system that is able to replicate CSS grid-gap in IE11">
   <meta property="og:type" content="article">
   <meta property="og:image" content="http://gutter-grid.net/assets/images/social-media.jpg">
   <meta property="og:url" content="http://gutter-grid.net/pages/15-change-log/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@Daniel_Tonon">
   <meta name="twitter:title" content="Gutter Grid: Change log">
-  <meta name="twitter:description" content="A Sass flexbox based grid system that is able to replicate the CSS grid-gap property in IE11">
+  <meta name="twitter:description" content="A Sass flexbox based grid system that is able to replicate CSS grid-gap in IE11">
   <meta name="twitter:image" content="http://gutter-grid.net/assets/images/social-media.jpg">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
@@ -72,11 +72,11 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v5.0.2</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v6.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
-                        <p class="tagline">A Sass flexbox based grid system that is able to replicate the CSS grid-gap property in IE11</p>
+                        <p class="tagline">A Sass flexbox based grid system that is able to replicate CSS grid-gap in IE11</p>
                       </div>
                     </div>
                   </div>
@@ -150,7 +150,27 @@
                                       <h3 class="TK-visHid">Mobile warning</h3>
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
-                                  </header><h3 id="version-5-0-0-legacy-mode-fixes">Version 5.0.0 - Legacy mode fixes</h3>
+                                  </header><h3 id="version-6-0-0-class-system-bug-fix">Version 6.0.0 - Class System Bug fix</h3>
+<p>I accidentally released a major bug in the Gutter Grid v5.0.0 class system. This release is only a bug fix but it will likely cause breakages in some peoples layouts so I&#39;m playing it safe and releasing it as a new major version.</p>
+<p>If you have version 5 and want to get the bug fix run this:</p>
+<pre><code>npm i gutter-grid@latest
+</code></pre><h4 id="breaking-change-the-bug-fix-">Breaking change (the bug fix)</h4>
+<p>v5.0.0 was outputting this selector because I accidentally nested the selector inside the <code>.grid__cell</code> class.</p>
+<pre><code class="lang-css">.grid__cell .grid:not([class*=&quot;grid--cols&quot;]):not(.grid--noStretch):not([class*=&quot;grid--align-&quot;]):not([class*=&quot;grid--space-&quot;]):not(.grid--noResize)
+&gt; .grid__cell:not(.grid__cell--noStretch):not(.grid__cell--noResize) {
+  flex-grow: 1;
+}
+</code></pre>
+<p>That means that the logic would only behave as intended if placed inside of a <code>.grid__cell</code> element. If placed outside of a <code>.grid__cell</code> element then the grid cells wouldn&#39;t grow.</p>
+<p>My demos were all nested inside a grid cell so I didn&#39;t pick up on it until now.</p>
+<p>This is what version 6.0.0 outputs:</p>
+<pre><code class="lang-css">.grid:not([class*=&quot;grid--cols&quot;]):not(.grid--noStretch):not([class*=&quot;grid--align-&quot;]):not([class*=&quot;grid--space-&quot;]):not(.grid--noResize)
+&gt; .grid__cell:not(.grid__cell--noStretch):not(.grid__cell--noResize) {
+  flex-grow: 1;
+}
+</code></pre>
+<p>Notice that there is no more <code>.grid__cell</code> class at the front.</p>
+<h3 id="version-5-0-0-legacy-mode-fixes">Version 5.0.0 - Legacy mode fixes</h3>
 <p>This is a small release compared to version 4. It primarily sets out to fix some issues that version 4 had with IE 8 and 9 compatibility. It also brings legacy mode more into alignment with how modern mode behaves.</p>
 <h4 id="breaking-changes">Breaking changes</h4>
 <ul>
