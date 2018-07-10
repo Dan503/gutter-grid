@@ -1,5 +1,41 @@
 block content
   :marked
+    ### Version 6.0.0 - Class System Bug fix
+
+    I accidentally released a major bug in the Gutter Grid v5.0.0 class system. This release is only a bug fix but it will likely cause breakages in some peoples layouts so I'm playing it safe and releasing it as a new major version.
+
+    If you have version 5 and want to get the bug fix run this:
+
+    ````
+    npm i gutter-grid@latest
+    ````
+
+    #### Breaking change (the bug fix)
+
+    v5.0.0 was outputting this selector because I accidentally nested the selector inside the `.grid__cell` class.
+
+    ````css
+    .grid__cell .grid:not([class*="grid--cols"]):not(.grid--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(.grid--noResize)
+    > .grid__cell:not(.grid__cell--noStretch):not(.grid__cell--noResize) {
+      flex-grow: 1;
+    }
+    ````
+
+    That means that the logic would only behave as intended if placed inside of a `.grid__cell` element. If placed outside of a `.grid__cell` element then the grid cells wouldn't grow.
+
+    My demos were all nested inside a grid cell so I didn't pick up on it until now.
+
+    This is what version 6.0.0 outputs:
+
+    ````css
+    .grid:not([class*="grid--cols"]):not(.grid--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(.grid--noResize)
+    > .grid__cell:not(.grid__cell--noStretch):not(.grid__cell--noResize) {
+      flex-grow: 1;
+    }
+    ````
+
+    Notice that there is no more `.grid__cell` class at the front.
+
     ### Version 5.0.0 - Legacy mode fixes
 
     This is a small release compared to version 4. It primarily sets out to fix some issues that version 4 had with IE 8 and 9 compatibility. It also brings legacy mode more into alignment with how modern mode behaves.

@@ -98,6 +98,13 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		padding-bottom: 1px;
 	}
 
+	$stretch-grid-parameters: ':not([class*="grid--cols"]):not(#{&}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(#{&}--noResize)';
+	$stretch-cell-parameters: '#{&}__cell:not(#{&}__cell--noStretch):not(#{&}__cell--noResize)';
+
+	&#{$stretch-grid-parameters} > #{$stretch-cell-parameters} {
+		flex-grow: 1;
+	}
+
 	//base grid__cell styling
 	&__cell {
 		box-sizing: border-box;
@@ -108,13 +115,6 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		margin: 0;
 		background-clip: padding-box!important;
 		border: 0 solid transparent;
-
-		$stretch-grid-parameters: '#{$grid}:not([class*="grid--cols"]):not(#{$grid}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(#{$grid}--noResize)';
-		$stretch-cell-parameters: '#{$grid}__cell:not(#{$grid}__cell--noStretch):not(#{$grid}__cell--noResize)';
-
-		#{$stretch-grid-parameters} > #{$stretch-cell-parameters} {
-			flex-grow: 1;
-		}
 
 		&[class*="cell--span-"] {
 			flex-grow: 1;
