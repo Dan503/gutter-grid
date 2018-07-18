@@ -53,7 +53,8 @@ html:`
 `,
 scss:`
 .mixin__wrapper {
-  overflow: hidden;
+  // prevent margin collapse quirk
+  padding-bottom: 0.1px;
 }
 
 // ---- Option 1 ----
@@ -91,17 +92,35 @@ $grid-cell-gutters: (
       Defining a basic gutter size
 
   :marked
-    The `grid__wrapper` element helps contain the grid inside it's bounding box using `overflow: hidden`. There is a very common browser bug that ignores top and bottom negative margin rules. The bug takes effect when the parent of the element with negative margins has its `overflow` set to `visible`. Gutter Grid tries to avoid using a top gutter + negative margin combination as much as possible. Unfortunately a bottom gutter + negative margin combo is unavoidable. Using `overflow: hidden;` on the wrapper element avoids the issue but it also means that the grid can't have any visible overflowing content. If overflow needs to be visible, you can replace `overflow: hidden` on the wrapper element with `padding-bottom: 1px` instead. This will result in an extra 1px of space under the grid but this tends to be barely noticeable. More about this on the [borders and shadows page](/pages/10-borders-and-shadows-on-guttered-cells/).
+    ### Avoiding the collapsing margin quirk
+
+    The `grid__wrapper` element helps contain the grid inside it's bounding box. CSS has a bit of a quirk built into it that ignores top and bottom negative margin rules. The quirk is due to margin-collapse. The quirk is noticable whenever the parent of the element with negative margins has its `overflow` set to `visible` and has no padding or border width. Gutter Grid tries to avoid using a top gutter + negative margin combination as much as possible. Unfortunately a bottom gutter + negative margin combo is unavoidable.
+
+    The `grid__wrapper` element in the class system prevents this odd behavior by using `padding-bottom: 0.1px`. A bottom padding of 0.1px is rounded down by browsers to a padding of 0px, however it still prevents margin collapse! What this means is that we can have the edges of our grids pressing hard up against the edges of our grid wrapper whilst still retaining a visible overflow.
+
+    If using the mixin system, `padding-bottom: 0.1px` needs to be added manually by you on a grid wrapper element.
+
+    **Note:** In versions prior to 7.0.0 the `grid__wrapper` class added `overflow: hidden` instead of `padding-bottom: 0.1px`.
+
+    ### Gutter numbers verse gutter names
+
+    #### Class system numbers verse names
 
     In the class based system, you can name the gutters either with a number (`grid--gutter-20`) or an actual name (`grid--gutter-gutterName`).
 
     By using gutter numbers, you can see directly in the HTML what the gutter value is. If this value ever needs to be globally changed though, everywhere it has been used would need to be manually updated in the HTML.
 
-    By using gutter names, if the value of the gutter ever needs to change, the value can be changed once in the style sheet and it will be updated across the whole site. Gutter names don't allow you to see the value of the gutter directly in the HTML though and, depending on how you name your gutters, it can lead to multiple gutter classes having identical gutter values. Coming up with meaningful names for your gutters is also more difficult than simply naming the gutters based on their values.
+    By using gutter names, if the value of the gutter ever needs to change, the value can be changed once in the style sheet and it will be updated across the whole site. Gutter names don't allow you to see the value of the gutter directly in the HTML though and, depending on how you name your gutters, it can lead to multiple gutter classes having identical gutter values (not necessarily a bad thing but it could urk some people). Coming up with meaningful names for your gutters is also more difficult than simply naming the gutters based on their values.
 
-    Gutter names are a bit more hassle to begin with but they also lead to better maintainability in the long run. It is up to you and your team to decide on what the best approach for your project is.
+    Gutter names are a bit more hassle to begin with but they also lead to arguably better maintainability in the long run. It is up to you and your team to decide on what the best approach for your project is.
 
-    That is only relevant if using the class system though. In the mixin based system, there are two ways you can go about applying gutters to the grid. The first option is an inline sort of format where you define the gutter size directly in the `$gutter` setting when calling the mixin. This makes it easy to keep all the styles for a module in the one place. The second option is more for global gutter sizes. You define them in the `$grid-cell-gutters` variable in the same way as you would for the class based system. You then use the gutter name in the `$gutter` setting when calling the mixin. For the sake of brevity, I'll only use the inline format for the mixin version from now on. Just know that the global format is available to you for all the gutter examples if you wish to use it.
+    #### Mixin system numbers verse names
+
+    That is only relevant if using the class system though. In the mixin based system, there are two ways you can go about applying gutters to the grid. The first option is an inline sort of format where you define the gutter size directly in the `$gutter` setting when calling the mixin. This makes it easy to keep all the styles for a module in the one place.
+
+    The second option is more for global gutter sizes. You define them in the `$grid-cell-gutters` variable in the same way as you would for the class based system. You then use the gutter name in the `$gutter` setting when calling the mixin. You can also use a sass variable for storing global gutter values and use that in place of a fixed pixel value.
+
+    For the sake of brevity and clarity, I'll only use the inline format for the mixin version from now on. Just know that the global format is available to you for all the gutter examples if you wish to use it.
 
     ### Unequal vertical and horizontal gutters
 
