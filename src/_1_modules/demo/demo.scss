@@ -58,13 +58,9 @@
 		}
 	}
 	&__result {
-		border: 1px solid #000;
-
-		//The borders and shadows page demos can't have a real border
-		.borders-and-shadows-on-guttered-cells & {
-			box-shadow: 0 0 0 1px #000;
-			border: 0;
-		}
+		// border: 1px solid #000;
+		box-shadow: 0 0 0 1px #000;
+		padding: 0.1px 0;
 
 		.lt-ie9 & {
 			outline: 1px solid #000;
