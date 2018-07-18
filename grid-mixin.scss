@@ -98,18 +98,6 @@
 		}
 	}
 
-	@if($inners) {
-		> * {
-			display: flex;
-			align-items: stretch;
-			> * {
-				-gutter-grid-: inner;
-				display: block;
-				width: 100%;
-			}
-		}
-	}
-
 	//grid cell styling
 	> * {
 		-gutter-grid-: cell;
@@ -126,6 +114,18 @@
 		$canShrink: $resize == true or ($shrink == true and $resize == default);
 		flex-grow: if($canGrow, 1, 0);
 		flex-shrink: if($canShrink, 1, 0);
+
+		@if($inners) {
+			align-items: stretch;
+
+			//grid inner styling
+			> * {
+				-gutter-grid-: inner;
+				display: block;
+				width: 100%;
+				box-sizing: border-box;
+			}
+		}
 
 		//column widths
 		@if(type-of($cols) == number){
@@ -145,12 +145,8 @@
 				@include generate-column-breakpoints($breaks);
 			}
 		}
-
-		//grid__inner styling
-		> * {
-			box-sizing: border-box;
-		}
 	}
+
 
 	//allows IE to use floats instead of display table without affecting modern browsers
 	@if ($blockDisplayMode and ($align == default or $align == stretch)  and not $vAlign and not $space) {
