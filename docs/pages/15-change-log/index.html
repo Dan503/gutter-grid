@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v6.0.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v7.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -150,7 +150,27 @@
                                       <h3 class="TK-visHid">Mobile warning</h3>
                                       <p><strong><em>This documentation is best read on a desktop/laptop computer for the sake of viewing the live demos at all screen sizes.</em></strong></p>
                                     </aside>
-                                  </header><h3 id="version-6-0-0-class-system-bug-fix">Version 6.0.0 - Class System Bug Fix</h3>
+                                  </header><h3 id="version-7-0-0-no-more-hidden-overflow-">Version 7.0.0 - No more hidden overflow!</h3>
+<p>In <a href="https://css-tricks.com/css-grid-in-ie-faking-an-auto-placement-grid-with-gaps/#comment-1648721">Lu Nelson&#39;s comment on CSS Tricks</a>, he suggested adding 0.01px of padding rather than using <code>overflow: hidden</code> or 1px of padding. The idea being that 0.01px of padding would get rounded down to 0px in browsers but it should still prevent margin collapse. I tried it out and 0.01px didn&#39;t work... but 0.1px did! 😁</p>
+<h4 id="breaking-changes">Breaking changes</h4>
+<p>In version 7.0.0, I&#39;m switching to using this 0.1px padding technique on the <code>grid__wrapper</code> element rather than using <code>overflow: hidden</code>. This means that <code>grid__wrapper</code> can now safely be used on elements that need overflow to be visible. This also means that the <code>grid__paddedWrapper</code> class that I added in version 4.1.0 has been made completely redundant.</p>
+<p><code>grid__paddedWrapper</code> hasn&#39;t been a part of Gutter Grid for very long so I&#39;m outright removing it in this version. If you have used it in your codebase already and want to update to version 7.0.0, find and replace all instances of <code>grid__paddedWrapper</code> with <code>grid__wrapper</code>.</p>
+<ul>
+<li>The <code>grid__wrapper</code> class now adds <code>padding-bottom: 0.1px;</code> rather than <code>overflow: hidden;</code></li>
+<li>The <code>grid__paddedWrapper</code> class has been removed from the class system.</li>
+</ul>
+<h4 id="new-bogus-css-properties-added">New bogus CSS properties added</h4>
+<p>In this release I have added the following CSS properties to the Gutter Grid elements:</p>
+<ul>
+<li><code>-gutter-grid-: grid;</code></li>
+<li><code>-gutter-grid-: cell;</code></li>
+<li><code>-gutter-grid-: inner;</code></li>
+</ul>
+<p>They are meaningless to browsers but they are designed to make it easier for developers to spot elements that are using the Gutter Grid to form their layout.</p>
+<p>One of the difficult parts of using the mixin version was trying to figure out what parts of the UI were using Gutter Grid and what parts weren&#39;t.</p>
+<p>Adding these bogus CSS properties should make it easier to identify elements that are being affected by the Gutter Grid mixin.</p>
+<p>I&#39;ve added the properties to the class system as well. It is a little bit redundant but I think that having the bogus properties on the class system makes it more explicit where the styling is coming from.</p>
+<h3 id="version-6-0-0-class-system-bug-fix">Version 6.0.0 - Class System Bug Fix</h3>
 <p>I accidentally released a major bug in the Gutter Grid v5.0.0 class system. This release is only a bug fix but it will likely cause breakages in some peoples layouts so I&#39;m playing it safe and releasing it as a new major version.</p>
 <p>If you have version 5 and want to get the bug fix run this:</p>
 <pre><code>npm i gutter-grid@latest
