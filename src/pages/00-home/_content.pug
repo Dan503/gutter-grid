@@ -32,7 +32,7 @@ block content
     With Gutter Grid installed, this is all the code you need to write to generate the layout styles for that grid:
 
     ```scss
-    .grid__wrapper { overflow: hidden; }
+    .grid__wrapper { padding-bottom: 0.1px; }
     .grid {
       // Display a 3 column grid with a 20px gutter
       @include grid(3, 20px);
@@ -42,7 +42,7 @@ block content
     If you wanted more control over the grids breakpoints, the above grid would be the equivalent of writing this:
 
     ```scss
-    .grid__wrapper { overflow: hidden; }
+    .grid__wrapper { padding-bottom: 0.1px; }
     .grid {
       // Display a 3 column grid with a 20px gutter by default
       @include grid(3, 20px, (
