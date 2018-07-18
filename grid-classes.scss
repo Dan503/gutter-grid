@@ -88,14 +88,10 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		}
 	}
 
-	//grid__wrapper styling... really only necessary for use with grid--gutter-#
+	// grid__wrapper styling... really only necessary for use with grid--gutter-#
+	// fixes
 	&__wrapper {
-		overflow: hidden;
-	}
-
-	//For when overflow needs to be visible
-	&__paddedWrapper {
-		padding-bottom: 1px;
+		padding-bottom: 0.1px;
 	}
 
 	$stretch-grid-parameters: ':not([class*="grid--cols"]):not(#{&}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(#{&}--noResize)';
