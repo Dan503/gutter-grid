@@ -1,6 +1,6 @@
 {
   "name": "gutter-grid",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "A Sass flexbox based grid system that is able to replicate CSS grid-gap in IE11",
   "keywords": [
     "grid",

@@ -8,7 +8,7 @@ block content
     classes: {
 html:`
 .grid__wrapper
-  .grid.grid--cols-3.grid--gutter-20.grid--hasInners
+  .grid.grid--cols-3.grid--gutter-20
     .grid__cell.demonstrate-shadow-border
     .grid__cell.demonstrate-shadow-border
     .grid__cell.demonstrate-shadow-border
@@ -35,7 +35,7 @@ scss:`
 }
 
 // These are not part of Gutter Grid
-.mixin__wrapper { overflow: hidden }
+.mixin__wrapper { padding-bottom: 0.1px; }
 .demonstrate-shadow-border.add-padding Shadow cell { box-shadow: inset 0 0 0 2px red, 0 0 10px #000; }
 `,
     }
@@ -47,8 +47,6 @@ scss:`
     The reason it doesn't look right is because Gutter Grid uses invisible borders to create the gaps. When you add shadows to the grid cells, the shadows also have to wrap around the gaps.
 
     The `grid__inner` technique can be used to help with this problem. Whenever you want the child element of a grid cell to take up the same dimensions as the content area of that cell, you can use `grid__inner` / `$inners:true`.
-
-    However if you add a wrapper element with overflow hidden like we have been doing so far, the cell shadows will get cut off.
 
   +demo({
     classes: {
@@ -93,121 +91,13 @@ scss:`
 }
 
 // These are not part of Gutter Grid
-.mixin__wrapper { overflow: hidden }
+.mixin__wrapper { padding-bottom: 0.1px; }
 .add-shadow.add-padding Shadow cell { box-shadow: 0 0 10px #000; }
 `,
     }
 })
      :marked
-        A failed attempt at adding shadows to the grid cells. The shadows get cut off.
-
-  :marked
-    If you leaving off the wrapper though, it will causes unwanted space to appear at the bottom of the grid.
-
-  +demo({
-    classes: {
-html:`
-.grid.grid--gutter-20.grid--cols-3.grid--hasInners
-  .grid__cell
-    .grid__inner.add-shadow.add-padding Shadow cell
-  .grid__cell
-    .grid__inner.add-shadow.add-padding Shadow cell
-  .grid__cell
-    .grid__inner.add-shadow.add-padding Shadow cell
-  .grid__cell
-    .grid__inner.add-shadow.add-padding Shadow cell
-  .grid__cell
-    .grid__inner.add-shadow.add-padding Shadow cell
-  .grid__cell
-    .grid__inner.add-shadow.add-padding Shadow cell
-`
-    },
-
-    mixin: {
-html:`
-.mixin-shadows-example
-  .mixin__cell
-    .mixin__inner.add-shadow.add-padding Shadow cell
-  .mixin__cell
-    .mixin__inner.add-shadow.add-padding Shadow cell
-  .mixin__cell
-    .mixin__inner.add-shadow.add-padding Shadow cell
-  .mixin__cell
-    .mixin__inner.add-shadow.add-padding Shadow cell
-  .mixin__cell
-    .mixin__inner.add-shadow.add-padding Shadow cell
-  .mixin__cell
-    .mixin__inner.add-shadow.add-padding Shadow cell
-`,
-scss:`
-.mixin-shadows-example {
-  @include grid(3, 20px, $inners: true);
-}
-
-// These are not part of Gutter Grid
-.add-shadow.add-padding Shadow cell { box-shadow: 0 0 10px #000; }
-`,
-    }
-})
-      :marked
-        Unwanted space caused by leaving off `overflow: hidden` wrapper element. The space can be seen extending the example area at the bottom of the grid.
-
-  :marked
-    Instead (if using the class system) use a `grid__paddedWrapper` class on the wrapping element. This class adds `padding-bottom: 1px` to the wrapper. This will prevent the issue from occurring and allow for a visible overflow. The down side is that it will leave a 1px gap at the bottom of the grid. This gap is generally very difficult to notice though. If using the mixin system, you will need to add your own 1px of bottom padding to a wrapper element.
-
-  +demo({
-    classes: {
-html:`
-.grid__paddedWrapper
-  .grid.grid--gutter-20.grid--cols-3.grid--hasInners
-    .grid__cell
-      .grid__inner.add-shadow.add-padding Shadow cell
-    .grid__cell
-      .grid__inner.add-shadow.add-padding Shadow cell
-    .grid__cell
-      .grid__inner.add-shadow.add-padding Shadow cell
-    .grid__cell
-      .grid__inner.add-shadow.add-padding Shadow cell
-    .grid__cell
-      .grid__inner.add-shadow.add-padding Shadow cell
-    .grid__cell
-      .grid__inner.add-shadow.add-padding Shadow cell
-`
-    },
-
-    mixin: {
-html:`
-.mixin__paddedWrapper
-  .mixin-shadows-example
-    .mixin__cell
-      .mixin__inner.add-shadow.add-padding Shadow cell
-    .mixin__cell
-      .mixin__inner.add-shadow.add-padding Shadow cell
-    .mixin__cell
-      .mixin__inner.add-shadow.add-padding Shadow cell
-    .mixin__cell
-      .mixin__inner.add-shadow.add-padding Shadow cell
-    .mixin__cell
-      .mixin__inner.add-shadow.add-padding Shadow cell
-    .mixin__cell
-      .mixin__inner.add-shadow.add-padding Shadow cell
-`,
-scss:`
-.mixin-shadows-example {
-  @include grid(3, 20px, $inners: true);
-}
-
-// Add 1px bottom padding to fix browser bug
-.mixin__paddedWrapper { padding-bottom: 1px; }
-
-// These are not part of Gutter Grid
-.add-shadow.add-padding Shadow cell { box-shadow: 0 0 10px #000; }
-.add-border { border: 2px solid red; }
-`,
-    }
-})
-    :marked
-      Manually Adding 1px of bottom padding to the wrapper fixes the issue in the mixin system. Swapping out the the `grid__wrapper` class with a `grid__paddedWrapper` class will fix the issue in the class system.
+        Using inner grid elements to add clean shadows to the grid cells.
 
   :marked
     ### Using box shadow as a fake border
@@ -260,7 +150,7 @@ html:`
 `,
 scss:`
 .mixin__wrapper {
-  overflow: hidden;
+  padding-bottom: 0.1px;
 }
 
 .mixin-25B {

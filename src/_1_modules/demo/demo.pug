@@ -15,7 +15,7 @@ mixin demo__tab(demoMarkup)
 	-var html = render(markupString);
 
 	if isObj && demoMarkup.html || !isObj
-		.demo__result.demo__segment
+		.demo__result.demo__segment&attributes(attributes)
 			!=html
 
 	//- I need to hide the TK-noDots class from users (hacky fix)
@@ -46,7 +46,7 @@ mixin demo(demoMarkup, spec)
 		var page = get.current.link.replace(/\/pages\/([0-9A-z-]+?)\//, '$1')
 		var id = `${page}-${i++}`;
 
-	figure.demo(class=spec.classes, role="group", id=id)
+	figure.demo(class=spec.classes, role="group", id=id)&attributes(attributes)
 		if block
 			figcaption.demo__summary.demo__segment
 				block

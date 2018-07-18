@@ -72,7 +72,7 @@
                           <p class="logo title"><span class="logo__grid grid grid--noWrap grid--align-center grid--gutter-logo grid--outerGutters-v"><span class="grid__cell logo__cell -imagery grid__cell--noGrowth">
                                     <svg class="svg-gutter-grid-logo logo__svg grid__cell">
                                       <use xlink:href="#svg-gutter-grid-logo"></use>
-                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v6.0.0</code></span></span></span></p>
+                                    </svg><!--[if lt IE 9]><img class="logo__backup" src="/android-chrome-192x192.png"><![endif]--></span><span class="grid__cell logo__cell -text"><span class="logo__text -gutter">Gutter</span><span class="logo__text -grid">Grid <code class="small">v7.0.0</code></span></span></span></p>
                       <pre class="header__npm"><code>npm install gutter-grid --save</code></pre>
                       <div id="container">
                         <h3 class="TK-visHid">Tag line</h3>
@@ -278,7 +278,8 @@ $grid-cell-gutters: (
                                                                 <div class="grid__cell demo__markup demo__segment scss">
                                                                   <pre><code class="scss">
 .mixin__wrapper {
-  overflow: hidden;
+  // prevent margin collapse quirk
+  padding-bottom: 0.1px;
 }
 
 // ---- Option 1 ----
@@ -317,16 +318,206 @@ $grid-cell-gutters: (
                                                 </div>
                                               </div>
                                         </div>
-                                      </figure><p>The <code>grid__wrapper</code> element helps contain the grid inside it&#39;s bounding box using <code>overflow: hidden</code>. There is a very common browser bug that ignores top and bottom negative margin rules. The bug takes effect when the parent of the element with negative margins has its <code>overflow</code> set to <code>visible</code>. Gutter Grid tries to avoid using a top gutter + negative margin combination as much as possible. Unfortunately a bottom gutter + negative margin combo is unavoidable. Using <code>overflow: hidden;</code> on the wrapper element avoids the issue but it also means that the grid can&#39;t have any visible overflowing content. If overflow needs to be visible, you can replace <code>overflow: hidden</code> on the wrapper element with <code>padding-bottom: 1px</code> instead. This will result in an extra 1px of space under the grid but this tends to be barely noticeable. More about this on the <a href="/pages/10-borders-and-shadows-on-guttered-cells/">borders and shadows page</a>.</p>
+                                      </figure><h3 id="avoiding-the-collapsing-margin-quirk">Avoiding the collapsing margin quirk</h3>
+<p>The <code>grid__wrapper</code> class in the class system helps contain the grid inside it&#39;s bounding box. CSS has a bit of a quirk built into it that ignores top and bottom negative margin rules. The quirk is due to margin-collapse. The quirk is noticeable whenever the parent of the element with negative margins has its <code>overflow</code> set to <code>visible</code> and has no padding or border width.</p>
+
+                                      <figure class="demo -allowMarginBug" role="group" id="07-adding-gutters-2">
+                                        <figcaption class="demo__summary demo__segment"><p>Use <code>padding-bottom: 0.1px</code> on a wrapping element (or a <code>grid__wrapper</code> class) to prevent the bottom of the grid from blowing out as shown in this figure.</p>
+
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="grid grid--cols-3 grid--gutter-20">
+  <div class="grid__cell -color-1"></div>
+  <div class="grid__cell -color-2"></div>
+  <div class="grid__cell -color-3"></div>
+  <div class="grid__cell -color-4"></div>
+  <div class="grid__cell -color-5"></div>
+  <div class="grid__cell -color-6"></div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;grid grid--cols-3 grid--gutter-20&quot;&gt;
+  &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="mixin-12">
+  <div class="mixin__cell -color-1"></div>
+  <div class="mixin__cell -color-2"></div>
+  <div class="mixin__cell -color-3"></div>
+  <div class="mixin__cell -color-4"></div>
+  <div class="mixin__cell -color-5"></div>
+  <div class="mixin__cell -color-6"></div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;mixin-12&quot;&gt;
+  &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-3&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-4&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-5&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;mixin__cell -color-6&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
+.mixin-12 {
+  @include grid(3, 20px);
+}
+</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure><p>Gutter Grid tries to avoid using a top gutter + negative margin combination as much as possible. Unfortunately a bottom gutter + negative margin combo is unavoidable.</p>
+<p>The <code>grid__wrapper</code> class prevents this odd behavior by using <code>padding-bottom: 0.1px</code>. A bottom padding of 0.1px is rounded down by browsers to a padding of 0px, however it still prevents margin collapse! What this means is that we can have the edges of our grids pressing hard up against the edges of our grid wrapper whilst still retaining a visible overflow.</p>
+<p>If using the mixin system, <code>padding-bottom: 0.1px</code> needs to be added manually by you on a grid wrapper element.</p>
+
+                                      <figure class="demo -allowMarginBug" role="group" id="07-adding-gutters-3">
+                                        <figcaption class="demo__summary demo__segment"><p>Fixing the margin-collapse issue using either <code>padding-bottom: 0.1px</code> manually or using a <code>grid__wrapper</code> class.</p>
+
+                                        </figcaption>
+                                        <div class="demo__content">
+                                              <div class="tabs JS-tabs">
+                                                <div class="tabs__links">
+                                                  <div class="tabs__linksGrid grid grid--hasInners grid--noMQs grid--gutter-tabs grid--cols-2" role="tablist" aria-describedby="arrow-keys-tip">
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">classes</button>
+                                                    </div>
+                                                    <div class="grid__cell">
+                                                      <button class="tabs__link grid__inner btn JS-tabs__trigger" role="tab" tabindex="-1">mixin</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="tabs__contentWrap">
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Classes format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="grid__wrapper">
+  <div class="grid grid--cols-3 grid--gutter-20">
+    <div class="grid__cell -color-1"></div>
+    <div class="grid__cell -color-2"></div>
+    <div class="grid__cell -color-3"></div>
+    <div class="grid__cell -color-4"></div>
+    <div class="grid__cell -color-5"></div>
+    <div class="grid__cell -color-6"></div>
+  </div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-1">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;grid__wrapper&quot;&gt;
+  &lt;div class=&quot;grid grid--cols-3 grid--gutter-20&quot;&gt;
+    &lt;div class=&quot;grid__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-4&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-5&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;grid__cell -color-6&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                      <div class="tabs__content JS-tabs__content" role="tabpanel" tabindex="-1">
+                                                        <figure>
+                                                          <figcaption class="tabs__title">Mixin format</figcaption>
+                                                              <div class="demo__result demo__segment">
+<div class="mixin__wrapper">
+  <div class="mixin-12">
+    <div class="mixin__cell -color-1"></div>
+    <div class="mixin__cell -color-2"></div>
+    <div class="mixin__cell -color-3"></div>
+    <div class="mixin__cell -color-4"></div>
+    <div class="mixin__cell -color-5"></div>
+    <div class="mixin__cell -color-6"></div>
+  </div>
+</div>
+                                                              </div>
+                                                              <div class="demo__grid grid grid--ieFloat grid--cols-2">
+                                                                <div class="grid__cell demo__markup demo__segment html">
+                                                                  <pre><code class="html">
+&lt;div class=&quot;mixin__wrapper&quot;&gt;
+  &lt;div class=&quot;mixin-12&quot;&gt;
+    &lt;div class=&quot;mixin__cell -color-1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-3&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-4&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-5&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mixin__cell -color-6&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                                                </div>
+                                                                <div class="grid__cell demo__markup demo__segment scss">
+                                                                  <pre><code class="scss">
+.mixin-12 {
+  @include grid(3, 20px);
+}
+.mixin__wrapper {
+  // Prevent the collapsing margin quirk
+  padding-bottom: 0.1px;
+}
+</code></pre>
+                                                                </div>
+                                                              </div>
+                                                        </figure>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                      </figure><p><strong>Note:</strong> In versions prior to 7.0.0 the <code>grid__wrapper</code> class added <code>overflow: hidden</code> instead of <code>padding-bottom: 0.1px</code>. In v4.1.0 a <code>grid__paddedWrapper</code> class was added that added 1px of bottom padding for when visible overflow was needed. The <code>grid__paddedWrapper</code> class was removed from the class system in version 7.0.0 due to it becoming redundant.</p>
+<h3 id="gutter-numbers-verse-gutter-names">Gutter numbers verse gutter names</h3>
+<h4 id="class-system-numbers-verse-names">Class system numbers verse names</h4>
 <p>In the class based system, you can name the gutters either with a number (<code>grid--gutter-20</code>) or an actual name (<code>grid--gutter-gutterName</code>).</p>
 <p>By using gutter numbers, you can see directly in the HTML what the gutter value is. If this value ever needs to be globally changed though, everywhere it has been used would need to be manually updated in the HTML.</p>
-<p>By using gutter names, if the value of the gutter ever needs to change, the value can be changed once in the style sheet and it will be updated across the whole site. Gutter names don&#39;t allow you to see the value of the gutter directly in the HTML though and, depending on how you name your gutters, it can lead to multiple gutter classes having identical gutter values. Coming up with meaningful names for your gutters is also more difficult than simply naming the gutters based on their values.</p>
-<p>Gutter names are a bit more hassle to begin with but they also lead to better maintainability in the long run. It is up to you and your team to decide on what the best approach for your project is.</p>
-<p>That is only relevant if using the class system though. In the mixin based system, there are two ways you can go about applying gutters to the grid. The first option is an inline sort of format where you define the gutter size directly in the <code>$gutter</code> setting when calling the mixin. This makes it easy to keep all the styles for a module in the one place. The second option is more for global gutter sizes. You define them in the <code>$grid-cell-gutters</code> variable in the same way as you would for the class based system. You then use the gutter name in the <code>$gutter</code> setting when calling the mixin. For the sake of brevity, I&#39;ll only use the inline format for the mixin version from now on. Just know that the global format is available to you for all the gutter examples if you wish to use it.</p>
+<p>By using gutter names, if the value of the gutter ever needs to change, the value can be changed once in the style sheet and it will be updated across the whole site. Gutter names don&#39;t allow you to see the value of the gutter directly in the HTML though and, depending on how you name your gutters, it can lead to multiple gutter classes having identical gutter values (not necessarily a bad thing but it could urk some people). Coming up with meaningful names for your gutters is also more difficult than simply naming the gutters based on their values.</p>
+<p>Gutter names are a bit more hassle to begin with but they also lead to arguably better maintainability in the long run. It is up to you and your team to decide on what the best approach for your project is.</p>
+<h4 id="mixin-system-numbers-verse-names">Mixin system numbers verse names</h4>
+<p>That is only relevant if using the class system though. In the mixin based system, there are two ways you can go about applying gutters to the grid. The first option is an inline sort of format where you define the gutter size directly in the <code>$gutter</code> setting when calling the mixin. This makes it easy to keep all the styles for a module in the one place.</p>
+<p>The second option is more for global gutter sizes. You define them in the <code>$grid-cell-gutters</code> variable in the same way as you would for the class based system. You then use the gutter name in the <code>$gutter</code> setting when calling the mixin. You can also use a sass variable for storing global gutter values and use that in place of a fixed pixel value.</p>
+<p>For the sake of brevity and clarity, I&#39;ll only use the inline format for the mixin version from now on. Just know that the global format is available to you for all the gutter examples if you wish to use it.</p>
 <h3 id="unequal-vertical-and-horizontal-gutters">Unequal vertical and horizontal gutters</h3>
 <p>If you have a design where the spacing between cells is different vertically to the horizontal spacing, your in luck. Gutter Grid also caters to unequal horizontal/vertical gutter sizes. This is done by providing a second pixel value. The vertical value goes first and the horizontal value goes second. This is to replicate how the short hand of setting margin and padding with 2 values goes vertical first then horizontal.</p>
 
-                                      <figure class="demo" role="group" id="07-adding-gutters-2">
+                                      <figure class="demo" role="group" id="07-adding-gutters-4">
                                         <figcaption class="demo__summary demo__segment"><p>Applying a larger vertical gutter than horizontal gutter</p>
 
                                         </figcaption>
@@ -459,7 +650,7 @@ $grid-cell-gutters: (
                                                                 <div class="grid__cell demo__markup demo__segment scss">
                                                                   <pre><code class="scss">
 .mixin__wrapper {
-  overflow: hidden;
+  padding-bottom: 0.1px;
 }
 
 .mixin-46 {
@@ -476,7 +667,7 @@ $grid-cell-gutters: (
                                       </figure><h3 id="media-query-gutters">Media query gutters</h3>
 <p>That is how to create fixed width gutters that are the same width for all screen sizes, but what if you have a very thick gutter on desktop? It won&#39;t work well having a 50px wide gutter on a tablet or mobile device, it would take up too much screen realestate. The solution is gutters that contain media queries. Here is how to do them:</p>
 
-                                      <figure class="demo" role="group" id="07-adding-gutters-3">
+                                      <figure class="demo" role="group" id="07-adding-gutters-5">
                                         <figcaption class="demo__summary demo__segment"><p>Applying gutters that are affected by media queries</p>
 
                                         </figcaption>
@@ -579,7 +770,7 @@ $grid-cell-gutters: (
 }
 
 .mixin__wrapper {
-  overflow: hidden;
+  padding-bottom: 0.1px;
 }
 </code></pre>
                                                                 </div>
@@ -594,7 +785,7 @@ $grid-cell-gutters: (
                                   <h3 id="gutters-and-custom-breakpoints-shorthand">Gutters and custom breakpoints shorthand</h3>
 <p>The breakpoints setting is the 3rd Gutter Grid mixin parameter so it&#39;s possible to specify a column count, gutter size, and custom breakpoints in the mixin like so:</p>
 
-                                      <figure class="demo" role="group" id="07-adding-gutters-4">
+                                      <figure class="demo" role="group" id="07-adding-gutters-6">
                                         <figcaption class="demo__summary demo__segment"><p>Column count, gutter width, breakpoints mixin shorthand. Resize the browser window to see the effect.</p>
 
                                         </figcaption>
@@ -636,7 +827,7 @@ $grid-cell-gutters: (
 }
 
 .mixin__wrapper {
-  overflow: hidden;
+  padding-bottom: 0.1px;
 }
 </code></pre>
                                                 </div>

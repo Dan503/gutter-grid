@@ -72,6 +72,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 .#{$fullPrefix}grid {
 	$grid: &;
 
+	-gutter-grid-: grid;
 	box-sizing: border-box;
 	list-style: none;
 	margin: 0;
@@ -88,14 +89,10 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		}
 	}
 
-	//grid__wrapper styling... really only necessary for use with grid--gutter-#
+	// grid__wrapper styling... really only necessary for use with grid--gutter-#
+	// fixes
 	&__wrapper {
-		overflow: hidden;
-	}
-
-	//For when overflow needs to be visible
-	&__paddedWrapper {
-		padding-bottom: 1px;
+		padding-bottom: 0.1px;
 	}
 
 	$stretch-grid-parameters: ':not([class*="grid--cols"]):not(#{&}--noStretch):not([class*="grid--align-"]):not([class*="grid--space-"]):not(#{&}--noResize)';
@@ -107,6 +104,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 	//base grid__cell styling
 	&__cell {
+		-gutter-grid-: cell;
 		box-sizing: border-box;
 		min-width: 0%;
 		max-width: 100%;
@@ -131,6 +129,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 	//base grid__inner styling
 	&__inner {
+		-gutter-grid-: inner;
 		display: block;
 		box-sizing: border-box;
 	}
