@@ -106,6 +106,10 @@
 				min-height: 0;
 			}
 		}
+
+		.-allowMarginBug & {
+			padding: 0;
+		}
 	}
 	&__grid {
 		clear: both;

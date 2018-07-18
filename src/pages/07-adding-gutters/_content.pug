@@ -94,13 +94,92 @@ $grid-cell-gutters: (
   :marked
     ### Avoiding the collapsing margin quirk
 
-    The `grid__wrapper` element helps contain the grid inside it's bounding box. CSS has a bit of a quirk built into it that ignores top and bottom negative margin rules. The quirk is due to margin-collapse. The quirk is noticable whenever the parent of the element with negative margins has its `overflow` set to `visible` and has no padding or border width. Gutter Grid tries to avoid using a top gutter + negative margin combination as much as possible. Unfortunately a bottom gutter + negative margin combo is unavoidable.
+    The `grid__wrapper` class in the class system helps contain the grid inside it's bounding box. CSS has a bit of a quirk built into it that ignores top and bottom negative margin rules. The quirk is due to margin-collapse. The quirk is noticeable whenever the parent of the element with negative margins has its `overflow` set to `visible` and has no padding or border width.
 
-    The `grid__wrapper` element in the class system prevents this odd behavior by using `padding-bottom: 0.1px`. A bottom padding of 0.1px is rounded down by browsers to a padding of 0px, however it still prevents margin collapse! What this means is that we can have the edges of our grids pressing hard up against the edges of our grid wrapper whilst still retaining a visible overflow.
+
+  +demo({
+    classes: {
+html:`
+.grid.grid--cols-3.grid--gutter-20
+  .grid__cell.-color-1
+  .grid__cell.-color-2
+  .grid__cell.-color-3
+  .grid__cell.-color-4
+  .grid__cell.-color-5
+  .grid__cell.-color-6
+`,
+    },
+
+    mixin: {
+html:`
+.mixin-12
+  .mixin__cell.-color-1
+  .mixin__cell.-color-2
+  .mixin__cell.-color-3
+  .mixin__cell.-color-4
+  .mixin__cell.-color-5
+  .mixin__cell.-color-6
+`,
+scss:`
+.mixin-12 {
+  @include grid(3, 20px);
+}
+`,
+    }
+})(class="-allowMarginBug")
+    :marked
+      Use `padding-bottom: 0.1px` on a wrapping element (or a `grid__wrapper` class) to prevent the bottom of the grid from blowing out as shown in this figure.
+
+  :marked
+    Gutter Grid tries to avoid using a top gutter + negative margin combination as much as possible. Unfortunately a bottom gutter + negative margin combo is unavoidable.
+
+    The `grid__wrapper` class prevents this odd behavior by using `padding-bottom: 0.1px`. A bottom padding of 0.1px is rounded down by browsers to a padding of 0px, however it still prevents margin collapse! What this means is that we can have the edges of our grids pressing hard up against the edges of our grid wrapper whilst still retaining a visible overflow.
 
     If using the mixin system, `padding-bottom: 0.1px` needs to be added manually by you on a grid wrapper element.
 
-    **Note:** In versions prior to 7.0.0 the `grid__wrapper` class added `overflow: hidden` instead of `padding-bottom: 0.1px`.
+
+
+  +demo({
+    classes: {
+html:`
+.grid__wrapper
+  .grid.grid--cols-3.grid--gutter-20
+    .grid__cell.-color-1
+    .grid__cell.-color-2
+    .grid__cell.-color-3
+    .grid__cell.-color-4
+    .grid__cell.-color-5
+    .grid__cell.-color-6
+`,
+    },
+
+    mixin: {
+html:`
+.mixin__wrapper
+  .mixin-12
+    .mixin__cell.-color-1
+    .mixin__cell.-color-2
+    .mixin__cell.-color-3
+    .mixin__cell.-color-4
+    .mixin__cell.-color-5
+    .mixin__cell.-color-6
+`,
+scss:`
+.mixin-12 {
+  @include grid(3, 20px);
+}
+.mixin__wrapper {
+  // Prevent the collapsing margin quirk
+  padding-bottom: 0.1px;
+}
+`,
+    }
+})(class="-allowMarginBug")
+    :marked
+      Fixing the margin-collapse issue using either `padding-bottom: 0.1px` manually or using a `grid__wrapper` class.
+
+  :marked
+    **Note:** In versions prior to 7.0.0 the `grid__wrapper` class added `overflow: hidden` instead of `padding-bottom: 0.1px`. In v4.1.0 a `grid__paddedWrapper` class was added that added 1px of bottom padding for when visible overflow was needed. The `grid__paddedWrapper` class was removed from the class system in version 7.0.0 due to it becoming redundant.
 
     ### Gutter numbers verse gutter names
 
