@@ -24,7 +24,30 @@ $grid-legacy-support: false;
 $grid-calc-support: true;
 
 //You can alter the available grid gutter sizes here
-$grid-cell-gutters: ();
+// Note: the default value = ()
+$grid-cell-gutters: (
+  // .grid--gutter-20
+  20 : 20px,
+
+  // .grid--gutter-10-30
+  '10-30' : 10px 30px,
+
+  // .grid--gutter-gutterName
+  'gutterName' : 20px,
+
+  // .grid--gutter-mediaQueryGutter
+  'mediaQueryGutter' : mq (
+
+    // Default: 50px vertical gutters, 30px horizontal gutters
+    (50px 30px),
+
+    // Screen size 800px and below: 30px vertical gutters, 10px horizontal gutters
+    (30px 10px) (max, 800px),
+
+    // Screen size 600px and below: 10px gutters both vertically and horizontaly
+    10px (max, 600px)
+  )
+);
 
 //Set the points at which columns change widths
 $grid-break-points: (
@@ -70,34 +93,3 @@ $grid-break-points: (
   }, {hasTabs: false})
     :marked
       All the config settings and their default values.
-
-  +demo({
-    scss: `
-$grid-cell-gutters: (
-  // .grid--gutter-20
-  20 : 20px,
-
-  // .grid--gutter-10-30
-  '10-30' : 10px 30px,
-
-  // .grid--gutter-gutterName
-  'gutterName' : 20px,
-
-  // .grid--gutter-mediaQueryGutter
-  'mediaQueryGutter' : mq (
-
-    // default 50px vertical, 30px horizontal gutters
-    (50px 30px),
-
-    // 30px vertical, 10px horizontal gutters
-    // on screens <= 800px and > 600px
-    (30px 10px) (inside, 800px, 600px),
-
-    // 10px gutter on screens  <= 400px
-    10px (max, 400px)
-  )
-);
-`
-  }, {hasTabs: false})
-    :marked
-      An example of how to configure the `$grid-cell-gutters` setting.
