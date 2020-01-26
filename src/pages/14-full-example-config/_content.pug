@@ -12,8 +12,8 @@ $grid-prefix: '';
 // Also sets the screen width that triggers outer gutter delays
 $grid-page-width: 1200px;
 
-//IE8 can't do transparent borders.
-//This defines what the default color for gutters is in IE.
+// IE8 can't do transparent borders.
+// This defines what the default color for gutters is in IE.
 $grid-gutter-ie-fallback: #fff;
 
 // Support for browsers that don't support flexbox (IE 8 and 9)
@@ -23,7 +23,7 @@ $grid-legacy-support: false;
 // Support for browsers that support calc() is enabled by default
 $grid-calc-support: true;
 
-//You can alter the available grid gutter sizes here
+// You can alter the available grid gutter sizes here
 // Note: the default value = ()
 $grid-cell-gutters: (
   // .grid--gutter-20
@@ -44,7 +44,7 @@ $grid-cell-gutters: (
     // Screen size 800px and below: 30px vertical gutters, 10px horizontal gutters
     (30px 10px) (max, 800px),
 
-    // Screen size 600px and below: 10px gutters both vertically and horizontaly
+    // Screen size 600px and below: 10px gutters both vertically and horizontally
     10px (max, 600px)
   )
 );
@@ -52,31 +52,33 @@ $grid-cell-gutters: (
 //Set the points at which columns change widths
 $grid-break-points: (
 
-  //*2 column grid*/
+  // 2 column grid
   2: (
-    1: 600px,//* On a screen <= 600px wide, make it a 1 column grid */
+    // On a screen <= 600px wide, make it a 1 column grid
+    1: 600px,
   ),
 
-  //*3 column grid*/
+  // 3 column grid
   3: (
-    2 : (max, 960px),//* Use mq-scss syntax if preferred */
+    // You can use mq-scss syntax if you prefer
+    2 : (max, 960px),
     1 : (max, 600px),
   ),
 
-  //*4 column grid*/
+  // 4 column grid
   4: (
     2 : 960px,
     1 : 480px,
   ),
 
-  //*5 column grid*/
+  // 5 column grid
   5: (
     3 : 960px,
     2 : 600px,
     1 : 480px,
   ),
 
-  //*6 column grid*/
+  // 6 column grid
   6: (
     3 : 960px,
     2 : 600px,
