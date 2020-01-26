@@ -10,16 +10,23 @@
 //browser spec min-supported width: 320px (iPhones)
 
 $breakPoints: (
-	'minimum': 320px, //*The smallest width that the site is able to shrink to */
-	'tiny': 350px, //*essentially iphones in portrait view only*/
+	// The smallest width that the site is able to shrink to
+		'minimum': 320px,
+	// essentially iphones in portrait view only
+		'tiny': 350px,
 	'small': 480px,
-	'mobile': 600px, ///*!MAJOR BREAK POINT!*//*Maximum for strict mobile view*/
-	'phablet': 770px, //*essentially the maximum for iPads in portrait*/
-	'tablet': 960px, ///*!MAJOR BREAK POINT!*/ /*good place to switch to tablet view*/
-	'large': 1024px, //*maximum for iPads in landscape*/
-	'page': 1119px, ///*!MAJOR BREAK POINT!*//*Point at which the edge of the desktop design meets the edge of the screen*/
+	//!MAJOR BREAK POINT! Maximum for strict mobile view
+		'mobile': 600px,
+	// essentially the maximum for iPads in portrait
+		'phablet': 770px,
+	//!MAJOR BREAK POINT! good place to switch to tablet view
+		'tablet': 960px,
+	// maximum for iPads in landscape
+		'large': 1024px,
+	//!MAJOR BREAK POINT!Point at which the edge of the desktop design meets the edge of the screen
+		'page': 1119px
 );
 
-@function bp($value){
+@function bp($value) {
 	@return map-get($breakPoints, $value);
 }
