@@ -1,10 +1,9 @@
-
 .accordion {
 	$this: &;
 
 	&__revealer {
 		display: none;
-		@include mq(min, bp('page')){
+		@include mq($MQG-nav--visible) {
 			display: block !important;
 		}
 	}
@@ -16,7 +15,8 @@
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		@include mq(min, bp('page')){
+
+		@include mq($MQG-nav--visible) {
 			display: none;
 		}
 
@@ -24,13 +24,15 @@
 			display: block;
 		}
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			// background-color: #eeeeee;
 
 			#{$this}__icon {
-				&, &::before, &::after {
+				&,
+				&::before,
+				&::after {
 					background-color: $CB-green-pale;
-
 				}
 				.-accordion--open & {
 					background: transparent;

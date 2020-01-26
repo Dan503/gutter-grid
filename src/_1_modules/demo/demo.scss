@@ -15,7 +15,8 @@
 		margin-bottom: 10px;
 		margin-bottom: 1rem;
 
-		&:last-child, &.grid__cell {
+		&:last-child,
+		&.grid__cell {
 			margin-bottom: 0;
 		}
 		&:before {
@@ -33,7 +34,7 @@
 	&__summary {
 		.markdown-body & {
 			display: block;
-			background-color: #CDDEC4;
+			background-color: #cddec4;
 			padding: 20px;
 			margin-top: 70px;
 			margin-top: 7rem;
@@ -51,9 +52,13 @@
 				font-size: 1.2em;
 				margin-left: -1px;
 			}
-	
+
 			+ .demo__result {
 				margin-top: 45px;
+			}
+
+			p {
+				max-width: 80rem;
 			}
 		}
 	}
@@ -71,7 +76,7 @@
 			margin-left: -1px;
 
 			.-false & {
-				content: 'Not Gutter Grid'
+				content: 'Not Gutter Grid';
 			}
 		}
 
@@ -89,7 +94,7 @@
 		}
 		figcaption {
 			padding: 0.25em 0.5em;
-			background-color: #CDDEC4;
+			background-color: #cddec4;
 			color: #000;
 			margin-bottom: 0;
 		}
@@ -98,7 +103,8 @@
 			padding: 0;
 		}
 
-		.grid__cell, .mixin__cell {
+		.grid__cell,
+		.mixin__cell {
 			min-height: 100px;
 			// margin: 0;
 
@@ -132,7 +138,8 @@
 		pre {
 			display: flex;
 			padding: 0;
-			&, &.lines {
+			&,
+			&.lines {
 				margin: 0;
 			}
 
@@ -148,7 +155,10 @@
 
 		code {
 			margin-top: -20px;
-			padding: {bottom: 10px; top: 10px; }
+			padding: {
+				bottom: 10px;
+				top: 10px;
+			}
 		}
 	}
 }

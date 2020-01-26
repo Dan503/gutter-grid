@@ -1,4 +1,3 @@
-
 //================================================*\
 //*	GRID STYLING FILE						*/
 //----------------------------------------------------
@@ -14,7 +13,7 @@
 
 @import 'grid-shared-mixins';
 
-$fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
+$fullPrefix: if($grid-prefix != '', $grid-prefix + '-', '');
 
 //================================================*\
 //*				GRID WIDTHS						*/
@@ -47,7 +46,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		}
 
 		//.grid__cell--span-# styling
-		@if ($i > 1){
+		@if ($i > 1) {
 			@for $x from 2 through $i {
 				> .#{$fullPrefix}grid__cell--span-#{$x} {
 					@if ($grid-calc-support) {
@@ -61,7 +60,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 		//Applies the media queries for the break points
 		&:not(.#{$fullPrefix}grid--noMQs) {
-			> *:not([class*="cell--span-"]) {
+			> *:not([class*='cell--span-']) {
 				@include generate-column-breakpoints($breaks);
 			}
 		}
@@ -82,9 +81,9 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	display: flex;
 	align-content: stretch;
 
-	@if (not $grid-legacy-support){
+	@if (not $grid-legacy-support) {
 		//By default grids will not wrap unless there is a column setting
-		&[class*="grid--cols"]:not(#{$grid}--noWrap){
+		&[class*='grid--cols']:not(#{$grid}--noWrap) {
 			flex-wrap: wrap;
 		}
 	}
@@ -111,16 +110,19 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		display: block;
 		padding: 0;
 		margin: 0;
-		background-clip: padding-box!important;
+		background-clip: padding-box !important;
 		border: 0 solid transparent;
 
-		&[class*="cell--span-"] {
+		&[class*='cell--span-'] {
 			flex-grow: 1;
 		}
 
-		&.#{$fullPrefix}grid { display: flex; }
+		&.#{$fullPrefix}grid {
+			display: flex;
+		}
 
-		&, * > {
+		&,
+		* > {
 			//helps fix IE10 word-wrap bug (elements need to not be display:inline for the fix to work though)
 			max-width: 100%;
 			flex-shrink: 1;
@@ -166,12 +168,12 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 		@if ($grid-legacy-support) {
 			.lt-ie9 & {
-				> *, & {
+				> *,
+				& {
 					border-color: $grid-gutter-ie-fallback;
 				}
 			}
 		}
-
 	}
 
 	//hasInners makes grid__inner elements take up the full height of the grid cell
@@ -220,7 +222,9 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		}
 	}
 	&--noShrink {
-		> * { flex-shrink: 0; }
+		> * {
+			flex-shrink: 0;
+		}
 	}
 	&--noResize {
 		> * {
@@ -235,7 +239,7 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 	}
 
 	//allows columns to wrap after screen hits the edge of the design
-	@include mq(max, $grid-page-width){
+	@include mq(max, $grid-page-width) {
 		flex-wrap: wrap;
 	}
 
@@ -252,8 +256,11 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 	//quick access to space-between and space-around
 	&--space {
-		&-between, &-around {
-			> * { flex-grow: 0; }
+		&-between,
+		&-around {
+			> * {
+				flex-grow: 0;
+			}
 		}
 		&-between {
 			justify-content: space-between;
@@ -270,8 +277,12 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 	//quick access to left,center and right alignments
 	&--align {
-		&-left, &-center, &-right {
-			> * { flex-grow: 0; }
+		&-left,
+		&-center,
+		&-right {
+			> * {
+				flex-grow: 0;
+			}
 		}
 		&-left {
 			justify-content: flex-start;
@@ -283,7 +294,9 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			justify-content: flex-end;
 		}
 		&-stretch {
-			> * { flex-grow: 1; }
+			> * {
+				flex-grow: 1;
+			}
 		}
 	}
 
@@ -319,17 +332,24 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 	//tabular/float:left backup for IE9 and below
 	@if ($grid-legacy-support) {
-
-		&[class*="grid--align"], &[class*="grid--space"], #{$grid}--noStretch, #{$grid}--noResize, &[class*="grid--vAlign"][class*="grid--cols"] {
+		&[class*='grid--align'],
+		&[class*='grid--space'],
+		#{$grid}--noStretch,
+		#{$grid}--noResize,
+		&[class*='grid--vAlign'][class*='grid--cols'] {
 			flex-wrap: wrap;
 		}
 
-		.no-flexbox &, .no-flexwrap & {
+		.no-flexbox &,
+		.no-flexwrap & {
 			display: table;
 			width: auto;
-			> * { display: table-cell; vertical-align: top; }
+			> * {
+				display: table-cell;
+				vertical-align: top;
+			}
 
-			&--wrap:not([class*="grid--vAlign"]):not([class*="grid--space-"]) {
+			&--wrap:not([class*='grid--vAlign']):not([class*='grid--space-']) {
 				display: block;
 				> * {
 					display: block;
@@ -354,25 +374,40 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 
 			&--vAlign {
 				&-top {
-					> * { vertical-align: top; }
+					> * {
+						vertical-align: top;
+					}
 				}
 				&-center {
-					> * { vertical-align: middle; }
+					> * {
+						vertical-align: middle;
+					}
 				}
 				&-bottom {
-					> * { vertical-align: bottom; }
+					> * {
+						vertical-align: bottom;
+					}
 				}
 			}
 			&__cell {
 				&--vAlign {
-					&-top { vertical-align: top; }
-					&-center { vertical-align: middle; }
-					&-bottom { vertical-align: bottom; }
+					&-top {
+						vertical-align: top;
+					}
+					&-center {
+						vertical-align: middle;
+					}
+					&-bottom {
+						vertical-align: bottom;
+					}
 				}
 			}
 
 			&--align {
-				&-stretch, &-left, &-center, &-right {
+				&-stretch,
+				&-left,
+				&-center,
+				&-right {
 					display: block;
 					> * {
 						display: inline-block;
@@ -392,7 +427,9 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 			}
 
 			&--space {
-				&-between, &-around, &-evenly {
+				&-between,
+				&-around,
+				&-evenly {
 					display: block;
 					text-align: center;
 					> * {
@@ -419,12 +456,10 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix+'-', '');
 		}
 
 		//allows IE to use floats instead of display table without affecting modern browsers
-		&--ieFloat, &--noStretch, &--noResize {
+		&--ieFloat,
+		&--noStretch,
+		&--noResize {
 			@include ieFloat;
 		}
 	}
-
 }
-
-
-

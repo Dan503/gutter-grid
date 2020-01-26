@@ -83,6 +83,7 @@
     "kf-animate": "^1.0.3",
     "lodash": "^4.17.10",
     "minimist": "^1.2.0",
+    "natives": "^1.1.6",
     "node-dir": "^0.1.17",
     "node-notifier": "^5.2.1",
     "node-sass": "^4.9.0",

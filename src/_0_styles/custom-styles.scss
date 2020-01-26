@@ -1,4 +1,3 @@
-
 html {
 	//Makes it easier to alter font size with rem's. 1.3rem = 13px
 	font-size: 62.5%;
@@ -10,7 +9,11 @@ body {
 	color: $CF-body__text;
 
 	html:not(.lt-ie10) & {
-		background: radial-gradient(ellipse at top, lighten($CB-green-light, 20%), #fff);
+		background: radial-gradient(
+			ellipse at top,
+			lighten($CB-green-light, 20%),
+			#fff
+		);
 
 		&::before {
 			opacity: 0.4;
@@ -22,27 +25,27 @@ body {
 			left: 0;
 			height: 100%;
 			width: 100%;
-	
+
 			//Carbon background pattern
 			//http://lea.verou.me/css3patterns/#carbon
-			background:
-			linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-			linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-			linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-			linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-			linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-			linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+			background: linear-gradient(27deg, #151515 5px, transparent 5px) 0
+					5px,
+				linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+				linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+				linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+				linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+				linear-gradient(
+					#1d1d1d 25%,
+					#1a1a1a 25%,
+					#1a1a1a 50%,
+					transparent 50%,
+					transparent 75%,
+					#242424 75%,
+					#242424
+				);
 			background-color: #131313;
 			background-size: 20px 20px;
 		}
-	}
-}
-
-.markdown-body nav {
-	ul, ol {
-		margin: 0;
-		padding: 0;
-		list-style: none;
 	}
 }
 
@@ -55,7 +58,7 @@ body {
 	padding: 0 20px;
 	box-sizing: border-box;
 
-	@include mq(max, bp('mobile')){
+	@include mq(max, bp('mobile')) {
 		padding: 0;
 	}
 }
@@ -67,20 +70,52 @@ footer {
 .markdown-body {
 	width: 100%;
 
-	p, ol, ul {
+	@include mq($MQG-nav--visible) {
+		width: calc(100% - #{$VG-nav__width});
+	}
+
+	nav {
+		ul,
+		ol {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	}
+
+	p,
+	ol,
+	ul {
 		max-width: 600px;
 		max-width: 60rem;
 		margin-left: auto;
 		margin-right: auto;
 	}
 
-	h2,h3,h4,h5,h6,p{
-		&:first-child { margin-top: 0; }
-		&:last-child { margin-bottom: 0; }
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p {
+		&:first-child {
+			margin-top: 0;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 
-	p, li, figcaption,h2,h3,h4,h5,h6 {
-		> code, > figcaption > code {
+	p,
+	li,
+	figcaption,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		> code,
+		> figcaption > code {
 			background-color: #e4e6ec;
 			border: 1px solid #a9abaf;
 			border-radius: 3px;
@@ -93,19 +128,29 @@ footer {
 		}
 	}
 
-	h2, h3, h4, h5, h6 {
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		max-width: 700px;
 		max-width: 70rem;
 		margin-left: auto;
 		margin-right: auto;
 		margin-bottom: 0.5em;
 
-		+ p, + ul, + ol {
+		+ p,
+		+ ul,
+		+ ol {
 			margin-top: 0;
 		}
 	}
 
-	h2, h3, h4, h5, figcaption {
+	h2,
+	h3,
+	h4,
+	h5,
+	figcaption {
 		font-family: Georgia, serif;
 		font-style: italic;
 		color: $CB-green-dark;
@@ -170,14 +215,21 @@ footer {
 	pre {
 		background-color: #282c34;
 		padding: 0;
-		&, &.lines {
+		&,
+		&.lines {
 			margin: 0;
-			padding:{left: 0; right: 0;}
+			padding: {
+				left: 0;
+				right: 0;
+			}
 		}
 		&.lines {
 			background-color: #000;
 			width: 40px;
-			padding: {left: 0; right: 0;}
+			padding: {
+				left: 0;
+				right: 0;
+			}
 			text-align: center;
 		}
 		code {
@@ -213,7 +265,8 @@ footer {
 	box-shadow: inset 0 0 0 2px red, 0 0 10px #000;
 }
 
-.wideBox, .thinBox {
+.wideBox,
+.thinBox {
 	// height: 50px;
 	// display: flex;
 	align-items: center;
@@ -255,12 +308,14 @@ footer {
 	left: 0;
 }
 
-
 .title .small {
 	font-size: 14px;
 }
 
-p.tagline { padding: 15px 20px; margin: 0; }
+p.tagline {
+	padding: 15px 20px;
+	margin: 0;
+}
 
 .header {
 	.lines {
@@ -271,7 +326,7 @@ p.tagline { padding: 15px 20px; margin: 0; }
 		code {
 			background-color: #000;
 			color: $CB-green-light;
-			padding: .5em;
+			padding: 0.5em;
 			display: block;
 		}
 	}
@@ -282,14 +337,16 @@ p.tagline { padding: 15px 20px; margin: 0; }
 
 	a {
 		text-decoration: underline;
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			text-decoration: none;
 		}
 	}
 }
 
 .no-csstransforms {
-	.blc, .trc {
+	.blc,
+	.trc {
 		display: none;
 	}
 }
