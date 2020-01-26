@@ -23,7 +23,6 @@
 	$align: default,
 	$space: false,
 	$wrap: default,
-	$noWrapAtScreenSize: false,
 	$MQs: true,
 	$outerGutters: false,
 	$cellSpan: false,
@@ -44,8 +43,8 @@
 	border-color: transparent;
 
 	// $blockDisplayMode__sharedCircumstances:
-	// $align != 'stretch' or // TO DO: CHECK HORIZONTAL ALIGNMENT
-	// $space != false;
+		// $align != 'stretch' or // TO DO: CHECK HORIZONTAL ALIGNMENT
+		// $space != false;
 
 	// Only relevant to Legacy users
 	$blockDisplayMode: $wrap == true or $stretch == false or $resize == false or
@@ -110,34 +109,6 @@
 		@include mq(max, $grid-page-width) {
 			@if ($MQs and $wrap == auto) {
 				flex-wrap: wrap;
-			}
-		}
-	}
-
-	@if ($noWrapAtScreenSize != false) {
-		@if (type-of($noWrapAtScreenSize) == 'string') {
-			@each $breakName, $BP-deviceWidth in $grid-no-wrap-at-screen-sizes {
-				@if ($breakName == $noWrapAtScreenSize) {
-					//media query defaults to min-width if only a pixel value is given
-					$mq: if(
-						length($BP-deviceWidth) > 1,
-						$BP-deviceWidth,
-						(min, $BP-deviceWidth)
-					);
-					@include mq($mq) {
-						flex-wrap: nowrap;
-					}
-				}
-			}
-		} @else {
-			//media query defaults to min-width if only a pixel value is given
-			$mq: if(
-				length($noWrapAtScreenSize) > 1,
-				$noWrapAtScreenSize,
-				(min, $noWrapAtScreenSize)
-			);
-			@include mq($mq) {
-				flex-wrap: nowrap;
 			}
 		}
 	}

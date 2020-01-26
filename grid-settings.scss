@@ -1,4 +1,4 @@
-﻿//================================================*\
+//================================================*\
 //*	gridS CONFIGURATION FILE						*/
 //----------------------------------------------------
 //	This file holds all the configurable aspects of
@@ -22,22 +22,20 @@ $grid-calc-support: not $grid-legacy-support !default;
 //usage: class="grid grid--gutter-moduleName"
 $grid-cell-gutters: () !default;
 
-$grid-no-wrap-at-screen-sizes: () !default;
-
 //Set the points at which columns change widths
 $grid-break-points: (
 	2: //2 column grid
 		(
 			// At 600px wide screen and below, make it a 1 column grid
 				1: 600px,
-		),
+  ),
 	3: //3 column grid
 		(
 			// Use mq-scss syntax if preferred
 				2: (max, 960px),
 			//
-				1: (max, 600px),
-		),
+			1: (max, 600px),
+  ),
 	4: //4 column grid
 		(
 			2: 960px,
@@ -48,18 +46,18 @@ $grid-break-points: (
 			3: 960px,
 			2: 600px,
 			1: 480px,
-		),
+  ),
 	6: //6 column grid
 		(
 			3: 960px,
 			2: 600px,
 			1: 480px,
-		),
+  ),
 ) !default;
 
 //if $grid-bp-list is set to "false", it creates a set of 6 "false" statements so grid system can have 6 columns
 $grid-bp-list: if(
-	$grid-break-points == false,
-	false false false false false false,
-	$grid-break-points
+  $grid-break-points == false,
+  false false false false false false,
+  $grid-break-points
 );

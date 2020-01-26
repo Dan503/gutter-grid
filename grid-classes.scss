@@ -86,20 +86,6 @@ $fullPrefix: if($grid-prefix != '', $grid-prefix + '-', '');
 		&[class*='grid--cols']:not(#{$grid}--noWrap) {
 			flex-wrap: wrap;
 		}
-
-		@each $className, $BP-deviceWidth in $grid-no-wrap-at-screen-sizes {
-			&#{$grid}--noWrapAtScreen-#{$className} {
-				//media query defaults to max-width if only a pixel value is given
-				$mq: if(
-					length($BP-deviceWidth) > 1,
-					$BP-deviceWidth,
-					(min, $BP-deviceWidth)
-				);
-				@include mq($mq) {
-					flex-wrap: nowrap !important;
-				}
-			}
-		}
 	}
 
 	// grid__wrapper styling... really only necessary for use with grid--gutter-#
