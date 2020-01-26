@@ -1,4 +1,3 @@
-
 .accordion {
 	$this: &;
 
@@ -24,13 +23,15 @@
 			display: block;
 		}
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			// background-color: #eeeeee;
 
 			#{$this}__icon {
-				&, &::before, &::after {
+				&,
+				&::before,
+				&::after {
 					background-color: $CB-green-pale;
-
 				}
 				.-accordion--open & {
 					background: transparent;

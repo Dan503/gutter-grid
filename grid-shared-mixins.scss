@@ -1,8 +1,13 @@
-@function fill-blank-columns($bp-list){
+@function fill-blank-columns($bp-list) {
 	$i: 0;
 	@while ($i < length($bp-list)) {
 		@if (not map-has-key($bp-list, $i) and $i > 0) {
-			$bp-list: map-merge($bp-list, ($i: false));
+			$bp-list: map-merge(
+				$bp-list,
+				(
+					$i: false,
+				)
+			);
 		}
 		$i: $i + 1;
 	}
@@ -11,17 +16,22 @@
 $grid-bp-list: fill-blank-columns($grid-bp-list);
 
 @function is-percentage($value) {
-  @return is-number($value) and unit($value) == '%';
+	@return is-number($value) and unit($value) == '%';
 }
 
-@function column-width($col-count){
-	@return if($grid-calc-support, calc(99.9999% / #{$col-count}), percentage(1/$col-count));
+@function column-width($col-count) {
+	@return if(
+		$grid-calc-support,
+		calc(99.9999% / #{$col-count}),
+		percentage(1 / $col-count)
+	);
 }
 
 //switches IE (and other non-flexbox friendly browsers) to using float mode
 @mixin ieFloat {
 	@if ($grid-legacy-support) {
-		.no-flexbox &, .no-flexwrap & {
+		.no-flexbox &,
+		.no-flexwrap & {
 			display: block;
 			&:after {
 				content: '';
@@ -36,16 +46,20 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 	}
 }
 
-@mixin generate-column-breakpoints ($breaks){
+@mixin generate-column-breakpoints($breaks) {
 	@if ($breaks != false) {
 		@each $V-columnWidth, $BP-deviceWidth in $breaks {
 			$col-width: $V-columnWidth;
-			@if (not is-percentage($V-columnWidth)){
+			@if (not is-percentage($V-columnWidth)) {
 				$col-width: column-width($V-columnWidth);
 			}
 			//media query defaults to max-width if only a pixel value is given
-			$mq: if(length($BP-deviceWidth) > 1, $BP-deviceWidth, (max, $BP-deviceWidth));
-			@include mq($mq){
+			$mq: if(
+				length($BP-deviceWidth) > 1,
+				$BP-deviceWidth,
+				(max, $BP-deviceWidth)
+			);
+			@include mq($mq) {
 				width: $col-width;
 			}
 		}
@@ -53,39 +67,60 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 }
 
 //Generates the grid cell gutters
-@mixin generate-gutters ($format, $gutter, $outerGutters: false){
-
+@mixin generate-gutters($format, $gutter, $outerGutters: false) {
 	$gutterCount: length($gutter);
 
 	$g1: 1;
 	$g2: if($gutterCount > 1, 2, 1);
 
-	$gutterSet: map-get((
-		1: (
-			top: $gutter,
-			right: $gutter,
-			bottom: $gutter,
-			left: $gutter,
+	$gutterSet: map-get(
+		(
+			1: (
+				top: $gutter,
+				right: $gutter,
+				bottom: $gutter,
+				left: $gutter,
+			),
+			2: (
+				top: nth($gutter, $g1),
+				right: nth($gutter, $g2),
+				bottom: nth($gutter, $g1),
+				left: nth($gutter, $g2),
+			),
 		),
-		2: (
-			top: nth($gutter, $g1),
-			right: nth($gutter, $g2),
-			bottom: nth($gutter, $g1),
-			left: nth($gutter, $g2),
-		),
-	), $gutterCount);
+		$gutterCount
+	);
 
 	$gutter-top: map-get($gutterSet, top);
 	$gutter-right: map-get($gutterSet, right);
 	$gutter-bottom: map-get($gutterSet, bottom);
 	$gutter-left: map-get($gutterSet, left);
 
-	$margin: map-get((
-		1: -$gutter-top,
-		2: (-$gutter-top) (-$gutter-right),
-	), $gutterCount);
+	$margin: map-get(
+		(
+			1: -$gutter-top,
+			2: (
+				-$gutter-top,
+			)
+			(
+				-$gutter-right,
+			),
+		),
+		$gutterCount
+	);
 
-	@if ($format == 'mixin' and ($outerGutters == 'v' or $outerGutters == 'top' or $outerGutters == true)) {
+	@if (
+		$format ==
+			'mixin' and
+			(
+				$outerGutters ==
+					'v' or
+					$outerGutters ==
+					'top' or
+					$outerGutters ==
+					true
+			)
+	) {
 		margin: $margin;
 		border-width: $gutter-top $gutter-right 0 0;
 	} @else {
@@ -99,7 +134,8 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 
 	@if ($grid-legacy-support) {
 		.lt-ie9 & {
-			&, > * {
+			&,
+			> * {
 				border-color: $grid-gutter-ie-fallback;
 			}
 		}
@@ -107,15 +143,16 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 
 	$mq-width: $grid-page-width + $gutter-left + $gutter-right;
 
-	@if ($format == 'classes'){
+	@if ($format == 'classes') {
 		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
 		&.#{$fullPrefix}grid--outerGutters {
-
-			&, &-v, &-top {
+			&,
+			&-v,
+			&-top {
 				border-top-width: $gutter-top;
 			}
 
-			@include mq(max, ($mq-width)){
+			@include mq(max, ($mq-width)) {
 				&-h-delayed {
 					margin-left: 0;
 					margin-right: 0;
@@ -129,7 +166,9 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 
 				@if ($grid-legacy-support) {
 					.lt-ie9 & {
-						&-h-delayed, &-left-delayed, &-right-delayed {
+						&-h-delayed,
+						&-left-delayed,
+						&-right-delayed {
 							margin-left: -$gutter-left;
 						}
 					}
@@ -138,23 +177,23 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 
 			@if ($grid-legacy-support) {
 				.lt-ie9 & {
-					&, &-h {
+					&,
+					&-h {
 						border-right-width: $gutter-right !important;
 					}
 				}
 			}
 		}
-
 	} @else if ($format == 'mixin') {
 		//only apply the outer horizontal gutters if the screen size is smaller than the page width + gutter size
-		@if($outerGutters){
-			@include mq(max, $mq-width){
-				@if($outerGutters == 'h-delayed'){
+		@if ($outerGutters) {
+			@include mq(max, $mq-width) {
+				@if ($outerGutters == 'h-delayed') {
 					margin-left: 0;
 					margin-right: 0;
-				} @else if ($outerGutters == 'left-delayed'){
+				} @else if ($outerGutters == 'left-delayed') {
 					margin-left: 0;
-				} @else if ($outerGutters == 'right-delayed'){
+				} @else if ($outerGutters == 'right-delayed') {
 					margin-right: 0;
 				}
 			}
@@ -162,14 +201,17 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 			@if ($grid-legacy-support) {
 				.lt-ie9 & {
 					@if (
-						$outerGutters == 'h-delayed' or
-						$outerGutters == 'left-delayed' or
-						$outerGutters == 'right-delayed'
-					){
+						$outerGutters ==
+							'h-delayed' or
+							$outerGutters ==
+							'left-delayed' or
+							$outerGutters ==
+							'right-delayed'
+					) {
 						margin-left: -$gutter-left;
 					}
 
-					@if ($outerGutters == true or $outerGutters == 'h'){
+					@if ($outerGutters == true or $outerGutters == 'h') {
 						border-right-width: $gutter-right !important;
 					}
 				}
@@ -178,27 +220,35 @@ $grid-bp-list: fill-blank-columns($grid-bp-list);
 	}
 }
 
-@mixin parse-gutter-data($gutter, $systemType, $outerGutters: false){
-	@if (nth($gutter,1) == 'mq') {
+@mixin parse-gutter-data($gutter, $systemType, $outerGutters: false) {
+	@if (nth($gutter, 1) == 'mq') {
+		$gutter_data: nth($gutter, 2);
 
-		$gutter_data: nth($gutter,2);
-
-		@for $i from 1 through length($gutter_data){
+		@for $i from 1 through length($gutter_data) {
 			$gutter_value: nth($gutter_data, $i);
 			$gutter_is_mq: false;
 
-			@if (length($gutter_value) > 1){
-				$gutter_is_mq: type-of(nth(nth($gutter_value,2),1)) == 'string';
+			@if (length($gutter_value) > 1) {
+				$gutter_is_mq: type-of(nth(nth($gutter_value, 2), 1)) ==
+					'string';
 			}
 
-			@if ($gutter_is_mq){
-				$gutterSize: nth($gutter_value,1);
-				$mediaQuery: nth($gutter_value,2);
-				@include mq($mediaQuery){
-					@include generate-gutters($systemType, $gutterSize, $outerGutters);
+			@if ($gutter_is_mq) {
+				$gutterSize: nth($gutter_value, 1);
+				$mediaQuery: nth($gutter_value, 2);
+				@include mq($mediaQuery) {
+					@include generate-gutters(
+						$systemType,
+						$gutterSize,
+						$outerGutters
+					);
 				}
 			} @else {
-				@include generate-gutters($systemType, $gutter_value, $outerGutters);
+				@include generate-gutters(
+					$systemType,
+					$gutter_value,
+					$outerGutters
+				);
 			}
 		}
 	} @else {

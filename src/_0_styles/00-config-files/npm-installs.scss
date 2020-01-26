@@ -7,25 +7,30 @@
 
 //Grid system global gutter sizes
 $grid-cell-gutters: (
-	10 : 10px,
-	20 : 20px,
-	'10-30' : 10px 30px,
-	'moduleName' : 20px,
-	'gutterName' : 20px,
-	'mixedSizeGutter' : 30px 10px,
-	'nav' : 10px,
-	'share' : 20px,
-	'body' : 30px,
-	'tabs' : 10px,
-	'logo' : mq (
-		20px,
-		(10px 5px) (max, bp('small'))
-	),
-	'mediaQueryGutter' : mq (
-		(50px 30px), //*default*/
-		(30px 10px) (max, 800px), //*affected by media query*/
-		10px (max, 700px) //*affected by media query*/
-	)
+	10: 10px,
+	20: 20px,
+	'10-30': 10px 30px,
+	'moduleName': 20px,
+	'gutterName': 20px,
+	'mixedSizeGutter': 30px 10px,
+	'nav': 10px,
+	'share': 20px,
+	'body': 30px,
+	'tabs': 10px,
+	'logo': mq
+		(
+			20px,
+			(10px 5px) (max, bp('small')),
+		),
+	'mediaQueryGutter': mq
+		(
+			// default
+				(50px 30px),
+			// affected by media query
+				(30px 10px) (max, 800px),
+			// affected by media query
+				10px (max, 700px),
+		),
 );
 
 $grid-page-width: bp('page');
