@@ -33,6 +33,10 @@ $grid-cell-gutters: (
 		),
 );
 
+$grid-no-wrap-at-screen-sizes: (
+	'navVisible': bp('xLarge'),
+);
+
 $grid-page-width: bp('page');
 
 //IE8 can't do transparent borders.

@@ -1,24 +1,20 @@
-
-$MQ-nav--hidden: (max, bp('page'));
-$MQ-nav--visible: (min, bp('page'));
-
 .nav {
 	width: 300px;
 
-	@include mq($MQ-nav--hidden){
+	@include mq($MQG-nav--hidden) {
 		width: 100%;
 	}
 
 	&__list {
 		background: $CB-green-pale;
 
-		@include mq($MQ-nav--hidden){
+		@include mq($MQG-nav--hidden) {
 			flex-direction: row;
 		}
 	}
 
 	&__item {
-		@include mq($MQ-nav--visible){
+		@include mq($MQG-nav--visible) {
 			width: 100%;
 		}
 	}

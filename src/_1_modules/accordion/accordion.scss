@@ -3,7 +3,7 @@
 
 	&__revealer {
 		display: none;
-		@include mq(min, bp('page')){
+		@include mq($MQG-nav--visible) {
 			display: block !important;
 		}
 	}
@@ -15,7 +15,8 @@
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		@include mq(min, bp('page')){
+
+		@include mq($MQG-nav--visible) {
 			display: none;
 		}
 

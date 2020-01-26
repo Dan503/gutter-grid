@@ -1,4 +1,6 @@
-﻿
-//$MQG = Media Query global
+﻿//$MQG = Media Query global
 
 $MQG-interactives--have-hoverState: (min, bp('tablet'));
+
+$MQG-nav--hidden: (max, bp('xLarge'));
+$MQG-nav--visible: (min, bp('xLarge'));
