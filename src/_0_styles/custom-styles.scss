@@ -70,6 +70,10 @@ footer {
 .markdown-body {
 	width: 100%;
 
+	@include mq($MQG-nav--visible) {
+		width: calc(100% - #{$VG-nav__width});
+	}
+
 	nav {
 		ul,
 		ol {

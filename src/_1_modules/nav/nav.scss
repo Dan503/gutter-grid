@@ -1,5 +1,5 @@
 .nav {
-	width: 300px;
+	width: $VG-nav__width;
 
 	@include mq($MQG-nav--hidden) {
 		width: 100%;
