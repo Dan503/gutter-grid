@@ -1,6 +1,4 @@
-
 .tabs {
-
 	&__links {
 		background: $CB-green-pale;
 		padding: 5px;
@@ -11,7 +9,8 @@
 		overflow: hidden;
 
 		.lt-ie9 & {
-			.grid, .grid__cell {
+			.grid,
+			.grid__cell {
 				border-color: $CB-green-pale;
 			}
 		}
@@ -32,9 +31,5 @@
 		.js & {
 			display: none;
 		}
-	}
-
-	.no-flexbox & {
-		width: 657px;
 	}
 }
