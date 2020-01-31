@@ -8,10 +8,6 @@ $C-dots: brand(1);
 .cmsContent td {
 	text-align: left;
 
-	.no-flexbox & {
-		max-width: 780px;
-	}
-
 	strong,
 	b {
 		font-weight: $bold;
