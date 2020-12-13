@@ -1,20 +1,8 @@
-import {
-	gulp,
-	plugins,
-	args,
-	config,
-	dirs,
-	taskTarget,
-	browserSync,
-} from '../config/shared-vars';
+/* eslint-disable indent */
+import { gulp, plugins, config, dirs, taskTarget } from '../config/shared-vars';
 
-import waitForFile from '../helpers/waitForFile';
-
-export default function () {
-	const dest = dirs.temporary;
-	const finalDest = [dest, 'svg-symbols.svg'].join('/');
-
-	return gulp.task('symbolize-svgs', function () {
+const symbolize_svgs = () => {
+	return (
 		gulp
 			.src([dirs.source, dirs.images, 'SVGs', '**/*.svg'].join('/'))
 
@@ -35,31 +23,44 @@ export default function () {
 			// 		{removeUselessDefs: false},
 			// 	],
 			// })))
-			.pipe(gulp.dest(dirs.temporary));
+			.pipe(gulp.dest(dirs.temporary))
+	);
+};
 
-		//letting the user know what is going on
-		console.log(`
+const display_svg_help_messages = (done) => {
+	const dest = dirs.temporary;
+	const finalDest = [dest, 'svg-symbols.svg'].join('/');
+
+	//letting the user know what is going on
+	console.log(`
 ${plugins.util.colors.bold('Generated SVG sprite')}
 
 Converted svgs from here: ${plugins.util.colors.yellow(
-			[dirs.source, dirs.images, 'SVGs'].join('/')
-		)}
+		[dirs.source, dirs.images, 'SVGs'].join('/')
+	)}
 Into an svg sprite that can be found here: ${plugins.util.colors.yellow(
-			finalDest
-		)}
+		finalDest
+	)}
 Full SVGs are still available here: ${plugins.util.colors.yellow(
-			[
-				taskTarget,
-				config.basePath,
-				dirs.assets,
-				dirs.images.replace(/^_/, ''),
-				'SVGs',
-			].join('/')
-		)}
+		[
+			taskTarget,
+			config.basePath,
+			dirs.assets,
+			dirs.images.replace(/^_/, ''),
+			'SVGs',
+		].join('/')
+	)}
 
 Use an SVG from the sprite by using ${plugins.util.colors.green(
-			'+svg("svg-file-name")'
-		)} in your pug files
+		'+svg("svg-file-name")'
+	)} in your pug files
 `);
-	});
+	done();
+};
+
+export default function () {
+	return gulp.task(
+		'symbolize-svgs',
+		gulp.series(symbolize_svgs, display_svg_help_messages)
+	);
 }

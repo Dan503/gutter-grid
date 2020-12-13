@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 'use strict';
 
 import {
@@ -11,6 +12,7 @@ import {
 	browserSync,
 	pjson,
 	notification_icon_location,
+	reload,
 } from '../config/shared-vars';
 
 import fs from 'fs';
@@ -59,8 +61,7 @@ export default function () {
 	let navMapDest = dirs.temporary;
 	let freshCompile = false;
 
-	// generates all the pages that are in the site using the navMap
-	gulp.task('pug:generate-pages', () => {
+	const generate_html_pages = (done) => {
 		freshCompile = true;
 
 		console.log(plugins.util.colors.bold('\nGenerated these pages:'));
@@ -146,6 +147,7 @@ export default function () {
 		//Grabs a list of all the template files in the _templates directory
 		let templateFiles = [];
 		var templatesFolder = path.join(dirs.source, dirs.templates);
+
 		dir.files(templatesFolder, function (err, files) {
 			if (err) throw err;
 			templateFiles = files.sort().filter(function (file) {
@@ -378,109 +380,108 @@ export default function () {
 `);
 					}
 
-					gulp.start('pug:compile');
+					done();
 				}
 			);
 			// });
 		});
-	});
+	};
 
-	// pug template compile
-	gulp.task('pug:compile', () => {
+	const compile_pug = () => {
 		//ensures you are working with the latest data
-		let siteData = generate_data();
+		const siteData = generate_data();
 
-		function compile() {
-			// Add --debug option to your gulp task to view
-			// what data is being loaded into your templates
-			if (args.debug) {
-				console.log('==== DEBUG: site.data being injected to templates ====');
-				console.log(siteData);
-				console.log(
-					'\n==== DEBUG: package.json config being injected to templates ===='
-				);
-				console.log(config);
-			}
-
-			var haveNotified = false;
-
-			const pugFilters = [require('marked')];
-
-			var a = 0;
-			var b = 0;
-
-			return gulp
-				.src([
-					path.join(dirs.source, '**/*.pug'),
-					'!' + path.join(dirs.source, '{**/_*,**/_*/**}'),
-				])
-				.pipe(plugins.changed(dest))
-				.pipe(
-					plugins.plumber((error) => {
-						if (a === 0) {
-							console.log(
-								`\n ${plugins.util.colors.red.bold(
-									'Pug failed to compile:'
-								)} ${plugins.util.colors.yellow(error.message)}\n`
-							);
-
-							console.log(error.stack);
-
-							a++;
-							return notifier.notify({
-								title: 'Pug Error',
-								message: error.message,
-								icon: notification_icon_location + 'gulp-error.png',
-							});
-						}
-					})
-				)
-				.pipe(
-					plugins.pug({
-						pug: pug,
-						filters: pugFilters,
-						pretty: true,
-						basedir: './' + [dirs.source].join('/'),
-						locals: {
-							args,
-							require,
-							config,
-							pugFilters,
-							compile: pug.compile,
-							pkg: pjson,
-							debug: true,
-							site: {
-								data: siteData,
-							},
-						},
-					})
-				)
-				.pipe(
-					plugins.htmlmin({
-						collapseBooleanAttributes: true,
-						conservativeCollapse: true,
-						removeCommentsFromCDATA: true,
-						removeEmptyAttributes: true,
-						removeRedundantAttributes: true,
-					})
-				)
-				.pipe(gulp.dest(dest))
-				.on('end', () => {
-					notifier.notify({
-						title: 'Pug',
-						message: 'HTML compiled successfully',
-						icon: notification_icon_location + 'gulp.png',
-					});
-
-					let pugPostTasks = ['clean:pages:empty'];
-
-					if (config.serve === 'php') pugPostTasks.push('convert-HTML');
-
-					gulp.start(pugPostTasks);
-					setTimeout(browserSync.reload, 500);
-				});
+		// Add --debug option to your gulp task to view
+		// what data is being loaded into your templates
+		if (args.debug) {
+			console.log('==== DEBUG: site.data being injected to templates ====');
+			console.log(siteData);
+			console.log(
+				'\n==== DEBUG: package.json config being injected to templates ===='
+			);
+			console.log(config);
 		}
 
+		var haveNotified = false;
+
+		const pugFilters = [require('marked')];
+
+		var a = 0;
+		var b = 0;
+
+		return gulp
+			.src([
+				path.join(dirs.source, '**/*.pug'),
+				'!' + path.join(dirs.source, '{**/_*,**/_*/**}'),
+			])
+			.pipe(plugins.changed(dest))
+			.pipe(
+				plugins.plumber((error) => {
+					if (a === 0) {
+						console.log(
+							`\n ${plugins.util.colors.red.bold(
+								'Pug failed to compile:'
+							)} ${plugins.util.colors.yellow(error.message)}\n`
+						);
+
+						console.log(error.stack);
+
+						a++;
+						return notifier.notify({
+							title: 'Pug Error',
+							message: error.message,
+							icon: notification_icon_location + 'gulp-error.png',
+						});
+					}
+				})
+			)
+			.pipe(
+				plugins.pug({
+					pug: pug,
+					filters: pugFilters,
+					pretty: true,
+					basedir: './' + [dirs.source].join('/'),
+					locals: {
+						args,
+						require,
+						config,
+						pugFilters,
+						compile: pug.compile,
+						pkg: pjson,
+						debug: true,
+						site: {
+							data: siteData,
+						},
+					},
+				})
+			)
+			.pipe(
+				plugins.htmlmin({
+					collapseBooleanAttributes: true,
+					conservativeCollapse: true,
+					removeCommentsFromCDATA: true,
+					removeEmptyAttributes: true,
+					removeRedundantAttributes: true,
+				})
+			)
+			.pipe(gulp.dest(dest))
+			.on('end', () => {
+				notifier.notify({
+					title: 'Pug',
+					message: 'HTML compiled successfully',
+					icon: notification_icon_location + 'gulp.png',
+				});
+
+				let pugPostTasks = ['clean:pages:empty'];
+
+				if (config.serve === 'php') pugPostTasks.push('convert-HTML');
+
+				gulp.start(pugPostTasks);
+				setTimeout(browserSync.reload, 500);
+			});
+	};
+
+	const read_nav_map = (done) => {
 		dir.readFiles(
 			navMapDest,
 			{
@@ -506,11 +507,25 @@ export default function () {
 				if (err) throw err;
 				//console.log('finished reading files:', files);
 
+				done();
+
 				//compiles the site after reading the content.json file and the navmap.json file
-				compile();
+				// compile();
 			}
 		);
-	});
+	};
+
+	// pug template compile
+	gulp.task(
+		'pug:compile',
+		gulp.series(read_nav_map, compile_pug, pugPostTasks, reload)
+	);
+
+	// generates all the pages that are in the site using the navMap
+	gulp.task(
+		'pug:generate-pages',
+		gulp.series(generate_html_pages, 'pug:compile')
+	);
 
 	//converts all the html files to pug files
 	gulp.task('convert-HTML', () => {
@@ -545,17 +560,19 @@ export default function () {
 				'Generated this redirect page:'
 			);
 		} else {
-			return false;
+			return Promise.resolve();
 		}
 	});
 
 	gulp.task(
 		'pug',
-		['symbolize-svgs', 'clean:pages:indexes', 'generate-redirect'],
-		() => {
-			return waitForFile([dirs.temporary, 'svg-symbols.svg'].join('/'), () => {
-				gulp.start(['pug:generate-pages']);
-			});
-		}
+		gulp.series(
+			gulp.parallel(
+				'symbolize-svgs',
+				'clean:pages:indexes',
+				'generate-redirect'
+			),
+			'pug:generate-pages'
+		)
 	);
 }

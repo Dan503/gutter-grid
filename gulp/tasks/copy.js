@@ -43,7 +43,7 @@ export default function () {
 		return gulp.src(dirs.source + '/_root-files/*').pipe(gulp.dest(taskTarget));
 	});
 
-	gulp.task('copy:dynamic-assets', ['clean:pages:dynamic-assets'], () => {
+	gulp.task('copy:dynamic-assets', gulp.series('clean:pages:dynamic-assets', (done)=>{
 		//copies all files file types into the content folder
 		if (content_src() !== false) {
 			return gulp
@@ -51,6 +51,9 @@ export default function () {
 				.pipe(gulp.dest(dirs.source + '/' + dirs.pages))
 				.pipe(gulp.dest(path.join(taskTarget, config.basePath, dirs.pages)));
 		}
+
+		done()
+
 	});
 
 	// Copy all files/folders into tmp folder that aren't prefixed with an underscore

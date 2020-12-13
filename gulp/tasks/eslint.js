@@ -19,7 +19,7 @@ export default function () {
 
 	// ESLint
 	gulp.task('eslint', () => {
-		gulp
+		return gulp
 			.src([
 				path.join('gulpfile.js'),
 				path.join(dirs.source, '**/*.js'),

@@ -19,10 +19,7 @@ export default function () {
 	let browserSyncTask =
 		config.serve === 'html' ? 'browserSync:html' : 'browserSync:php';
 
-	// Watch task
-	gulp.task('watch', [browserSyncTask], () => {
-		jsWatch.isEnabled = true;
-
+	const set_up_watchers = (done) => {
 		//standard scss changes only trigger the sass:compile task to be as fast as possible
 		gulp.watch(
 			[
@@ -30,12 +27,12 @@ export default function () {
 				'*.{scss,sass}',
 				'!' + local + dirs.icons + '/variables.scss',
 			],
-			['sass:compile']
+			gulp.series('sass:compile')
 		);
 
 		//when the icon font is altered, it runs the full sass function and does a browser refresh
 		gulp
-			.watch([local + dirs.icons + '/variables.scss'], ['sass'])
+			.watch([local + dirs.icons + '/variables.scss'], gulp.series('sass'))
 			.on('change', browserSync.reload);
 
 		// JS
@@ -46,11 +43,14 @@ export default function () {
 				local + 'prototype-only/**/*.js',
 				'./' + dirs.jsUtils + '/**/*.js',
 			],
-			['scripts']
+			gulp.series('scripts')
 		);
 
 		// JS
-		gulp.watch([local + dirs.scripts + '/ie8-main.js'], ['copy:scripts']);
+		gulp.watch(
+			[local + dirs.scripts + '/ie8-main.js'],
+			gulp.series('copy:scripts')
+		);
 
 		// Pug file changes only compiles existing pug files
 		gulp.watch(
@@ -60,11 +60,11 @@ export default function () {
 				'!' + local + dirs.data + '/navMap.json',
 				'!' + local + 'pages/**/index.pug',
 			],
-			['pug:compile']
+			gulp.series('pug:compile')
 		);
 
 		// Nav map file changes do full page generation re-compiles
-		gulp.watch([local + dirs.data + '/navMap.json'], ['pug']);
+		gulp.watch([local + dirs.data + '/navMap.json'], gulp.series('pug'));
 
 		//Copy
 		gulp.watch(
@@ -73,13 +73,13 @@ export default function () {
 				'!' + local + '{**/_*,**/_*/**}',
 				'!' + local + '**/*.{pug,scss,sass,js}',
 			],
-			['copy']
+			gulp.series('copy')
 		);
 
 		// Images
 		gulp.watch(
 			[local + dirs.images + '/**/*.{jpg,jpeg,gif,svg,png}'],
-			['imagemin', 'pug']
+			gulp.series('imagemin', 'pug')
 		);
 
 		//All other files
@@ -89,5 +89,13 @@ export default function () {
 				'!' + path.join(dirs.temporary, '**/*.{css,scss,map,html,js}'),
 			])
 			.on('change', browserSync.reload);
-	});
+
+		done();
+	};
+
+	// Watch task
+	gulp.task(
+		'watch',
+		gulp.series(browserSyncTask, jsWatch.enable, set_up_watchers)
+	);
 }

@@ -51,20 +51,14 @@ export default function () {
 	};
 
 	//full sass compile including icon copying
-	gulp.task('sass', ['icomoon-unpackager'], () => {
-		waitForFile(path.join(dirs.temporary, 'icon-names.scss'), () => {
-			gulp.start('sass:compile');
-		});
-	});
+	gulp.task('sass', gulp.series('icomoon-unpackager', 'sass:compile'));
 
-	//pure sass compilation
-	//does not copy across new icons
-	gulp.task('sass:compile', () => {
+	const compile_CSS = () => {
 		let a = 0;
 		let b = 0;
 
 		//Primary css file compilation
-		gulp
+		return gulp
 			.src([path.join(dirs.source, dirs.styles, entries.css)])
 			.pipe(
 				plugins.plumber((error) => {
@@ -120,11 +114,11 @@ export default function () {
 			)
 			.pipe(gulp.dest(dest))
 			.pipe(browserSync.stream({ match: '**/*.css' }));
+	};
 
-		exportAsset({ file: entries.css, path: dirs.styles, icons: true });
-
+	const compile_stripped_out_MQs_CSS = () => {
 		//stripped out MQs version
-		gulp
+		return gulp
 			.src([path.join(dirs.source, dirs.styles, 'main.legacy.scss')])
 			.pipe(plugins.plumber())
 			.pipe(plugins.sassGlob())
@@ -154,12 +148,25 @@ export default function () {
 			)
 			.pipe(plugins.if(args.production, plugins.cssnano({ rebase: false })))
 			.pipe(gulp.dest(dest));
+	};
 
+	const export_CSS = () => {
+		exportAsset({ file: entries.css, path: dirs.styles, icons: true });
 		exportAsset({
 			file: 'noMQs-' + entries.css,
 			path: dirs.styles,
 			icons: false,
 			notify: false,
 		});
-	});
+	};
+
+	//pure sass compilation
+	//does not copy across new icons
+	gulp.task(
+		'sass:compile',
+		gulp.series(
+			gulp.parallel(compile_CSS, compile_stripped_out_MQs_CSS),
+			export_CSS
+		)
+	);
 }

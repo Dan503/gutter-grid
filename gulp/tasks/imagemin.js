@@ -23,14 +23,15 @@ export default function () {
 		dirs.images.replace(/^_/, '')
 	);
 
-	// Imagemin
-	gulp.task('imagemin', () => {
-		//copies the non-typical-image favicon files into their places
-		gulp
+	/** copies the non-typical-image favicon files into their places */
+	const copy_favicons = () => {
+		return gulp
 			.src([path.join(dirs.source, dirs.images, '**/favicon/*.{json,ico,xml}')])
 			.pipe(plugins.changed(dest))
 			.pipe(gulp.dest(dest));
+	};
 
+	const minify_images = () => {
 		return gulp
 			.src([
 				path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}'),
@@ -48,5 +49,8 @@ export default function () {
 				)
 			)
 			.pipe(gulp.dest(dest));
-	});
+	};
+
+	// Imagemin
+	gulp.task('imagemin', gulp.parallel(copy_favicons, minify_images));
 }

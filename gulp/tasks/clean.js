@@ -17,10 +17,11 @@ export default function () {
 	let dirs = config.directories;
 
 	// Clean
-	gulp.task('clean', () => {
+	gulp.task('clean', (done) => {
 		var delDir = args.production ? dirs.destination : dirs.temporary;
 		del.sync(delDir);
 		deleteEmpty.sync(dirs.source + '/');
+		done();
 	});
 
 	gulp.task('clean:livesite', del.bind(null, [path.join(dirs.destination)]));
@@ -40,14 +41,20 @@ export default function () {
 		del.bind(null, [path.join(dirs.temporary, 'scripts')])
 	);
 
-	gulp.task('clean:pages:empty', () => {
+	gulp.task('clean:pages:empty', (done) => {
 		let sources = [
 			path.join(dirs.source, dirs.pages),
 			path.join(dirs.temporary, dirs.pages),
 		];
 
-		sources.forEach((source) => {
-			deleteEmpty(source, () => {});
+		const promises = sources.map((source) => {
+			return new Promise((resolve) => {
+				deleteEmpty(source, resolve);
+			});
+		});
+
+		Promise.all(promises).then(() => {
+			done();
 		});
 	});
 

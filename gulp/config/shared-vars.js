@@ -24,6 +24,11 @@ const plugins = gulpLoadPlugins();
 // Create a new browserSync instance
 let browserSync = browserSyncLib.create();
 
+const reload = (done) => {
+	browserSync.reload();
+	done();
+};
+
 var basePath = config.basePath.length > 0 ? '/' + config.basePath : '';
 
 var validFileTypes = ['pdf', 'docx', 'doc', 'xls', 'xlsx', 'txt', 'rtf'];
@@ -38,9 +43,24 @@ let bp = require([
 	'bp_break-points.js',
 ].join('/'));
 
+const enable_js_watch = (done) => {
+	// eslint-disable-next-line no-use-before-define
+	jsWatch.isEnabled = true;
+	done();
+};
+const disable_js_watch = (done) => {
+	// eslint-disable-next-line no-use-before-define
+	jsWatch.isEnabled = false;
+	done();
+};
+
 //Determines if browser should watch JS files for changes using watchify
 //(I have to set it as an object in order to overide it)
-let jsWatch = { isEnabled: false };
+let jsWatch = {
+	isEnabled: false,
+	enable: enable_js_watch,
+	disable: disable_js_watch,
+};
 
 export {
 	gulp,
@@ -57,4 +77,5 @@ export {
 	notification_icon_location,
 	bp,
 	jsWatch,
+	reload,
 };

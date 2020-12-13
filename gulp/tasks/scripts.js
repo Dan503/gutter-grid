@@ -147,12 +147,9 @@ export default function () {
 	};
 
 	//Just an alternate way to call the "gulp scripts" task without me having to introduce a breaking change
-	gulp.task('js', ['scripts']);
+	gulp.task('js', gulp.series('copy:scripts', 'scripts'));
 
-	// Browserify Task
-	gulp.task('scripts', (done) => {
-		gulp.start('copy:scripts');
-
+	const run_file_generation = (done) => {
 		var scriptDest = path.join('./', dirs.source, dirs.scripts, entries.js);
 		var moduleFiles = {};
 
@@ -182,6 +179,7 @@ export default function () {
 						fileName: entries.js,
 						content: main_js_file(moduleFiles),
 						callback() {
+							done();
 							return browserifyTask([scriptDest]);
 						},
 					},
@@ -189,9 +187,16 @@ export default function () {
 				);
 			}
 		);
+	};
 
+	const proto_only_browserify = () => {
 		return browserifyTask([
 			'./' + path.join(dirs.source, dirs.protoOnly, entries.protoOnly.js),
 		]);
+	};
+
+	// Browserify Task
+	gulp.task('scripts', () => {
+		return gulp.parallel(run_file_generation, proto_only_browserify);
 	});
 }

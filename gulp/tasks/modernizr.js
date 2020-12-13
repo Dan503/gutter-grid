@@ -18,8 +18,8 @@ export default function () {
 		options: ['setClasses', 'html5printshiv', 'testProp'],
 	};
 
-	gulp.task('modernizr', ['copy'], function () {
-		gulp
+	const run_modernizr = () => {
+		return gulp
 			.src([path.join(dirs.source, '**/*.{scss,sass,js}')])
 			.pipe(plugins.modernizr('modernizr.min.js', modernizr_settings))
 			.pipe(plugins.uglify())
@@ -33,5 +33,7 @@ export default function () {
 					)
 				)
 			);
-	});
+	};
+
+	gulp.task('modernizr', gulp.series('copy', run_modernizr));
 }

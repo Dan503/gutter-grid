@@ -1,21 +1,7 @@
 'use strict';
 
 import wrench from 'wrench';
-import {
-	gulp,
-	plugins,
-	args,
-	config,
-	dirs,
-	basePath,
-	allSites,
-	site,
-	taskTarget,
-	browserSync,
-	jsWatch,
-} from './gulp/config/shared-vars';
-
-import waitForFile from './gulp/helpers/waitForFile';
+import { gulp, plugins, args, dirs, jsWatch } from './gulp/config/shared-vars';
 
 // This will grab all js in the `tmp/gulp-local-clone` directory
 // in order to load all gulp tasks
@@ -28,7 +14,7 @@ wrench
 		require('./' + dirs.gulp + '/tasks/' + file)();
 	});
 
-var clean = args.production ? ['clean', 'clean:livesite'] : ['clean'];
+var clean = args.production ? gulp.series('clean', 'clean:livesite') : 'clean';
 
 // Compiles all the code
 gulp.task('compile', [
@@ -49,34 +35,38 @@ gulp.task('serve', () => {
 });
 
 // Testing
-gulp.task('test', ['eslint']);
+gulp.task('test', gulp.series('eslint'));
+
+const enable_js_watch = (done) => {
+	jsWatch.isEnabled = true;
+	done();
+};
+
+const warn_not_to_use_serve_command = (done) => {
+	if (user_used_serve) {
+		// User friendly message for Yeogurt users who are used to running "gulp serve"
+		setTimeout(() => {
+			console.log(
+				`\n   Just use "${plugins.util.colors.bold.green(
+					'gulp'
+				)}" rather than "${plugins.util.colors.bold.red('gulp serve')}" \n`
+			);
+		}, 2000);
+	}
+};
 
 // Default task (cleans and builds then runs server then watches for changes)
-gulp.task('default', clean, () => {
-	jsWatch.isEnabled = true;
-
-	gulp.start(['clean:pages:empty', 'compile']);
-
-	//once home page file has been generated, start watch and browsersync
-	//(pug tends to be the task that takes the longest amount of time to compile)
-	waitForFile([taskTarget, basePath, 'index.' + config.serve].join('/'), () => {
-		//includes browsersync
-		gulp.start('watch');
-
-		if (user_used_serve) {
-			// User friendly message for Yeogurt users who are used to running "gulp serve"
-			setTimeout(() => {
-				console.log(
-					`\n   Just use "${plugins.util.colors.bold.green(
-						'gulp'
-					)}" rather than "${plugins.util.colors.bold.red('gulp serve')}" \n`
-				);
-			}, 2000);
-		}
-	});
-});
+gulp.task(
+	'default',
+	gulp.series(
+		clean,
+		enable_js_watch,
+		'clean:pages:empty',
+		'compile',
+		'watch',
+		warn_not_to_use_serve_command
+	)
+);
 
 //Cleans and builds only with no server
-gulp.task('build', clean, () => {
-	gulp.start('compile');
-});
+gulp.task('build', gulp.series(clean, 'compile'));
