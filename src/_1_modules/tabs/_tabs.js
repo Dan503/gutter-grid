@@ -1,4 +1,3 @@
-
 'use strict';
 
 //npm imports
@@ -6,7 +5,7 @@ import $ from 'jquery';
 import Emitter from 'tiny-emitter/instance';
 
 class tabs__trigger {
-	constructor({trigger, index, tabs}){
+	constructor({ trigger, index, tabs }) {
 		this.index = index;
 		this.tabs = tabs;
 		this.activeClass = '-active';
@@ -16,13 +15,13 @@ class tabs__trigger {
 
 		this.name = this.$trigger.text().toLowerCase();
 
-		this.$trigger.keyup(key => {
-			const isKey = keys => keys.indexOf(key.which) > -1;
+		this.$trigger.keyup((key) => {
+			const isKey = (keys) => keys.indexOf(key.which) > -1;
 			const isNext = isKey([39]);
 			const isPrev = isKey([37]);
 			const isEnter = isKey([13]);
 
-			if (isNext){
+			if (isNext) {
 				this.tabs.switch_to(this.index + 1, false);
 			} else if (isPrev) {
 				this.tabs.switch_to(this.index - 1, false);
@@ -30,9 +29,9 @@ class tabs__trigger {
 				key.preventDefault();
 				this.set_focus();
 			}
-		})
+		});
 
-		this.$trigger.click((e)=>{
+		this.$trigger.click((e) => {
 			e.preventDefault();
 			this.activate();
 
@@ -41,7 +40,7 @@ class tabs__trigger {
 			}
 		});
 	}
-	activate(isRemote = true){
+	activate(isRemote = true) {
 		this.tabs.deactivate_triggers();
 		this.$trigger
 			.addClass(this.activeClass)
@@ -49,35 +48,35 @@ class tabs__trigger {
 			.attr('aria-selected', 'true');
 		this.$content.show();
 
-		if (!isRemote){
+		if (!isRemote) {
 			this.$trigger.focus();
 		}
 
-		if (!this.get_storage() || this.tabs.is_defaultSwitcher){
+		if (!this.get_storage() || this.tabs.is_defaultSwitcher) {
 			this.signal();
 		}
 	}
-	deactivate(){
+	deactivate() {
 		this.$trigger
 			.removeClass(this.activeClass)
-			.attr('tabindex',-1)
+			.attr('tabindex', -1)
 			.attr('aria-selected', 'false');
 		this.$content.hide();
 	}
-	signal(){
+	signal() {
 		Emitter.emit('systemSwitch--external', this.name);
 	}
-	get_storage(){
+	get_storage() {
 		return localStorage.getItem('activeTab');
 	}
-	set_focus(){
+	set_focus() {
 		this.$content.focus();
 	}
 }
 
 //module functionality
 class tabs {
-	constructor(elem){
+	constructor(elem) {
 		const This = this;
 		this.elem = elem;
 		this.$elem = $(elem);
@@ -86,52 +85,50 @@ class tabs {
 		this.is_defaultSwitcher = this.$elem.is('#JS-tabs__defaultSelector');
 
 		this.triggers = [];
-		this.$triggers.each((i,v)=>{
-			this.triggers.push(new tabs__trigger({
-				trigger: v,
-				index: i,
-				tabs: this
-			}));
+		this.$triggers.each((i, v) => {
+			this.triggers.push(
+				new tabs__trigger({
+					trigger: v,
+					index: i,
+					tabs: this,
+				})
+			);
 		});
 
-		Emitter.on('systemSwitch', name => this.switch_to(name));
-
+		Emitter.on('systemSwitch', (name) => this.switch_to(name));
 	}
 
-	find_desired_trigger(nameOrIndex, cb){
+	find_desired_trigger(nameOrIndex, cb) {
 		$.each(this.triggers, (i, trigger) => {
-			if (
-				trigger.name === nameOrIndex ||
-				trigger.index === nameOrIndex
-			) {
+			if (trigger.name === nameOrIndex || trigger.index === nameOrIndex) {
 				cb.call(this, trigger, i);
 			}
-		})
+		});
 	}
 
 	//Switches to the defined tab
-	switch_to(nameOrIndex, isRemote = true){
-		this.find_desired_trigger(nameOrIndex, trigger => {
+	switch_to(nameOrIndex, isRemote = true) {
+		this.find_desired_trigger(nameOrIndex, (trigger) => {
 			trigger.activate(isRemote);
-		})
+		});
 	}
 
-	deactivate_triggers(){
+	deactivate_triggers() {
 		$.each(this.triggers, (i, trigger) => {
 			if (trigger !== this) {
 				trigger.deactivate();
 			}
-		})
+		});
 	}
 }
 
 let tabsList = [];
 
 //This function is called on page load unless the name of this file starts with an underscore
-function tabs_on_page_load () {
-	$('.JS-tabs').each(function(e){
-		tabsList.push(new tabs(this))
-	})
+function tabs_on_page_load() {
+	$('.JS-tabs').each(function (e) {
+		tabsList.push(new tabs(this));
+	});
 }
 
 export { tabsList, tabs_on_page_load };

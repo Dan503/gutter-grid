@@ -12,4 +12,3 @@ import templateList from './_1_modules/templateList/templateList';
 $(() => {
 	new templateList();
 });
-

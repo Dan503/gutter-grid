@@ -1,8 +1,6 @@
-
 //This file controls what the default pug markup is for when you use the "gulp new:layout --layoutName" command
 
-export default function (layout){
-
+export default function (layout) {
 	return `
 extend ../_1_base/base
 

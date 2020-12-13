@@ -1,4 +1,3 @@
-
 import $ from 'jquery';
 
 // The point of this function is to make visually hidden things also hidden from screen readers and keyboard users.
@@ -8,19 +7,23 @@ import $ from 'jquery';
 // The first parameter is a jquery element.
 // The second parameter is the interactivity state. true = visible, false = hidden, "toggle" = opposite of what is is currently
 
-export default function enableFocus($target, isEnabled){
-	if (isEnabled === 'toggle'){
+export default function enableFocus($target, isEnabled) {
+	if (isEnabled === 'toggle') {
 		//disables links
-		$target.find('a, [tabindex]').each(function(){
-			var tabindex = $(this).attr('tabindex');
-			var newTabindex = tabindex == 0 ? -1 : 0;
-			$(this).prop('tabindex', newTabindex);
+		$target
+			.find('a, [tabindex]')
+			.each(function () {
+				var tabindex = $(this).attr('tabindex');
+				var newTabindex = tabindex == 0 ? -1 : 0;
+				$(this).prop('tabindex', newTabindex);
 
-		//disables tabing to inputs
-		}).find('input, button').each(function(){
-			var isDisabled = $(this).hasAttr('disabled');
-			$(this).prop('disabled', !isDisabled);
-		});
+				//disables tabing to inputs
+			})
+			.find('input, button')
+			.each(function () {
+				var isDisabled = $(this).hasAttr('disabled');
+				$(this).prop('disabled', !isDisabled);
+			});
 
 		//hides the content from screen readers
 		var ariaHidden = $target.attr('aria-hidden') || false;
@@ -29,8 +32,7 @@ export default function enableFocus($target, isEnabled){
 		} else {
 			$target.attr('aria-hidden', false);
 		}
-
-	} else if (isEnabled){
+	} else if (isEnabled) {
 		$target.find('a, [tabindex]').prop('tabindex', 0);
 		$target.find('input, button').prop('disabled', false);
 		$target.attr('aria-hidden', false);

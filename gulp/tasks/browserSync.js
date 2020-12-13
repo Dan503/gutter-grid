@@ -1,13 +1,24 @@
 'use strict';
 
-import { gulp, plugins, args, config, dirs, taskTarget, browserSync } from '../config/shared-vars';
+import {
+	gulp,
+	plugins,
+	args,
+	config,
+	dirs,
+	taskTarget,
+	browserSync,
+} from '../config/shared-vars';
 
-export default function() {
-
+export default function () {
 	let serverRoot = taskTarget;
 
-	gulp.task('php-server', function() {
-		plugins.connectPhp.server({ base: serverRoot, port: 8010, keepalive: true});
+	gulp.task('php-server', function () {
+		plugins.connectPhp.server({
+			base: serverRoot,
+			port: 8010,
+			keepalive: true,
+		});
 	});
 
 	// BrowserSync
@@ -15,7 +26,7 @@ export default function() {
 		browserSync.init({
 			proxy: '127.0.0.1:8010',
 			open: args.open ? 'local' : false,
-			port: config.port || 3000
+			port: config.port || 3000,
 		});
 	});
 
@@ -25,8 +36,8 @@ export default function() {
 			open: args.open ? 'local' : false,
 			port: config.port || 3000,
 			server: {
-				baseDir: './'+taskTarget,
-			}
+				baseDir: './' + taskTarget,
+			},
 		});
 	});
 }

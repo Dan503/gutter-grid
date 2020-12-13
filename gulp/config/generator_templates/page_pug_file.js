@@ -1,11 +1,9 @@
-
-import {dirs} from '../shared-vars';
+import { dirs } from '../shared-vars';
 
 //This file controls what goes into the index.pug files that are generated into the pages folder
 //if editing this, keep in mind that this affects every page on the site, including the home page
 
-export default function (pageMap, index, parent, contentExists){
-
+export default function (pageMap, index, parent, contentExists) {
 	var contentInclude = contentExists ? 'include _content' : '';
 	//const siteContent = require('../../../'+dirs.temporary+'/content.json');
 	//const content = typeof siteContent[pageMap.id] !== 'undefined'  ? siteContent[pageMap.id].content : [];
@@ -21,9 +19,8 @@ block append pre_nav_config
 
 ${contentInclude}
 `;
-//${readContent(content, 0)}
+	//${readContent(content, 0)}
 }
-
 
 // function readContent(contentArray, tabDepth){
 

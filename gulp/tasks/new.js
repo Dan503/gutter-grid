@@ -1,13 +1,22 @@
 'use strict';
 
-import { gulp, plugins, args, config, dirs, entries, taskTarget, browserSync, jsWatch } from '../config/shared-vars';
+import {
+	gulp,
+	plugins,
+	args,
+	config,
+	dirs,
+	entries,
+	taskTarget,
+	browserSync,
+	jsWatch,
+} from '../config/shared-vars';
 
 import path from 'path';
 import vsource from 'vinyl-source-stream';
 import { applyDefaults } from 'default-to';
 import { is_array, in_array } from '../helpers/php-to-js-translators';
 import generate_files from '../helpers/generate_files';
-
 
 import valueAt from '../../JS-utilities/valueAt';
 import module_sass_file from '../config/generator_templates/module_sass_file.js';
@@ -22,96 +31,95 @@ let names = Object.keys(args);
 
 let keywords = ['_', 'open', 'production', 'js', 'export', 'debug'];
 
-keywords.forEach((word)=>{
+keywords.forEach((word) => {
 	//removes the keywords from the argument list leaving only the name arguments behind
 	names = names.filter((x) => x !== word);
 });
 
-export default function() {
+export default function () {
 	let dirs = config.directories;
 
-	function generate(type){
-
- 		jsWatch.isEnabled = true;
+	function generate(type) {
+		jsWatch.isEnabled = true;
 
 		let files = [];
 		let gen = {};
 		let rootDest = dirs.source;
 
-		function getFilePath(name){
+		function getFilePath(name) {
 			const pathArray = name.split('/');
 			const filePath = name;
 			const fileName = valueAt(pathArray, -1);
 
-			return { filePath, fileName	}
+			return { filePath, fileName };
 		}
 
 		names.forEach((name, i) => {
-
 			gen = {
-				module(){
-
+				module() {
 					const path = getFilePath(name);
 
 					const dest = `${rootDest}/${dirs.modules}/${path.filePath}`;
 
 					return [
 						{
-							fileName : `${path.fileName}.scss`,
-							content : module_sass_file(path.fileName),
-							dest
-						}, {
-							fileName : (args.js ? '' : '_')+`${path.fileName}.js`,
-							content : module_js_file(path.fileName),
-							dest
-						}, {
-							fileName : `${path.fileName}.pug`,
-							content : module_pug_file(path.fileName),
-							dest
-						}
+							fileName: `${path.fileName}.scss`,
+							content: module_sass_file(path.fileName),
+							dest,
+						},
+						{
+							fileName: (args.js ? '' : '_') + `${path.fileName}.js`,
+							content: module_js_file(path.fileName),
+							dest,
+						},
+						{
+							fileName: `${path.fileName}.pug`,
+							content: module_pug_file(path.fileName),
+							dest,
+						},
 					];
 				},
 
-				template(){
+				template() {
 					return [
 						{
-							fileName : `${name}.pug`,
-							content : template_pug_file(name),
-							dest : `${rootDest}/${dirs.templates}`
-						}
+							fileName: `${name}.pug`,
+							content: template_pug_file(name),
+							dest: `${rootDest}/${dirs.templates}`,
+						},
 					];
 				},
 
-				layout(){
+				layout() {
 					return [
 						{
-							fileName : `${name}.pug`,
-							content : layout_pug_file(name),
-							dest : `${rootDest}/${dirs.layouts}`
-						}
+							fileName: `${name}.pug`,
+							content: layout_pug_file(name),
+							dest: `${rootDest}/${dirs.layouts}`,
+						},
 					];
 				},
 
 				//for generating both a template and a layout at the same time
-				tempLayout(){
+				tempLayout() {
 					return [
 						{
-							fileName : `${name}.pug`,
-							content : template_pug_file(name, name),
+							fileName: `${name}.pug`,
+							content: template_pug_file(name, name),
 							dest: `${rootDest}/${dirs.templates}`,
 						},
 						{
-							fileName : `${name}.pug`,
-							content : layout_pug_file(name),
+							fileName: `${name}.pug`,
+							content: layout_pug_file(name),
 							dest: `${rootDest}/${dirs.layouts}`,
-						}
+						},
 					];
-				}
-			}
+				},
+			};
 
-			gen[type]().forEach((file)=>{
+			gen[type]().forEach((file) => {
 				files.push(file);
-			})
+			});
 		});
 
 		generate_files(files);
@@ -119,33 +127,43 @@ export default function() {
 		//just to generate space
 		console.log('');
 
-		if (names.length === 1) console.log(
-`You can create multiple ${type}s by stringing them together like this:
-${plugins.util.colors.green(`gulp new:${type} --${type}1 --${type}2`)}`);
+		if (names.length === 1)
+			console.log(
+				`You can create multiple ${type}s by stringing them together like this:
+${plugins.util.colors.green(`gulp new:${type} --${type}1 --${type}2`)}`
+			);
 
 		//starts pug task if generating a new template so it is added to the template list
 		if (in_array(type, ['template', 'tempLayout'])) {
-			console.log(plugins.util.colors.yellow.bold('\n  Recompiling Pug to add the new template to the template list...\n'));
+			console.log(
+				plugins.util.colors.yellow.bold(
+					'\n  Recompiling Pug to add the new template to the template list...\n'
+				)
+			);
 			gulp.start('pug');
 		}
 
-		if (type === 'module'){
+		if (type === 'module') {
 			const path = getFilePath(names[0]);
-			waitForFile(`${rootDest}/${dirs.modules}/${path.filePath}/${ args.js ? path.fileName : '_'+path.fileName }.js`, ()=>{
-				if (args.js){
-					//scripts task is run to ensure that the js is connected straight away
-					gulp.start('scripts');
+			waitForFile(
+				`${rootDest}/${dirs.modules}/${path.filePath}/${
+					args.js ? path.fileName : '_' + path.fileName
+				}.js`,
+				() => {
+					if (args.js) {
+						//scripts task is run to ensure that the js is connected straight away
+						gulp.start('scripts');
+					}
+					gulp.start('watch');
 				}
-				gulp.start('watch');
-			})
+			);
 		} else {
-			setTimeout(()=>{
+			setTimeout(() => {
 				//new modules are instantly connected up to the watch function
 				gulp.start('watch');
 			}, 500);
 		}
-
-	};
+	}
 
 	gulp.task('new:module', () => {
 		generate('module');
@@ -163,5 +181,4 @@ ${plugins.util.colors.green(`gulp new:${type} --${type}1 --${type}2`)}`);
 	gulp.task('new:tempLayout', () => {
 		generate('tempLayout');
 	});
-
 }

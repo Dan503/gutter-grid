@@ -1,22 +1,22 @@
-
 import { applyDefaults, defaultTo } from 'default-to';
 
-import { dirs, config, basePath } from '../config/shared-vars';
-import { navMap_pre_defaults, defaultTemplate } from '../config/navMap-user-defaults';
+import { dirs, basePath } from '../config/shared-vars';
+import {
+	navMap_pre_defaults,
+	defaultTemplate,
+} from '../config/navMap-user-defaults';
 import generateFolderName from './generateFolderName';
 
 import { siteData } from './generate_data';
 
-let itemNumber = 0;
 let isLast = true;
 
 //function for reading every item in the nav map
-export default function read_navMap(map, index, callback, settings = {}){
-
+export default function read_navMap(map, index, callback, settings = {}) {
 	applyDefaults(settings, {
-		basePath: [dirs.source, dirs.pages].join('/')+'/',
+		basePath: [dirs.source, dirs.pages].join('/') + '/',
 		parent: siteData.navMap,
-		location : [index],
+		location: [index],
 	});
 
 	if (settings.parent.subnav.length !== index + 1) {
@@ -29,18 +29,21 @@ export default function read_navMap(map, index, callback, settings = {}){
 
 	var folderName = generateFolderName(index, map.title);
 
-	var recursivePath = settings.basePath+folderName+'/';
+	var recursivePath = settings.basePath + folderName + '/';
 
-	settings.parent.subTemplate = defaultTo(settings.parent.subTemplate, defaultTemplate);
+	settings.parent.subTemplate = defaultTo(
+		settings.parent.subTemplate,
+		defaultTemplate
+	);
 
 	map.location = settings.location;
 
 	applyDefaults(map, {
-		template : settings.parent.subTemplate,
-		subTemplate : defaultTemplate,
-		pageLocation : recursivePath,
-		path : basePath + recursivePath.substr([dirs.source].join('/').length),
-		templateListItem : false,
+		template: settings.parent.subTemplate,
+		subTemplate: defaultTemplate,
+		pageLocation: recursivePath,
+		path: basePath + recursivePath.substr([dirs.source].join('/').length),
+		templateListItem: false,
 	});
 
 	let hasSubnav = typeof map.subnav !== 'undefined';
@@ -58,9 +61,8 @@ export default function read_navMap(map, index, callback, settings = {}){
 			read_navMap(subMap, subIndex, callback, {
 				basePath: recursivePath,
 				parent: map,
-				location : locationCopy
-			})
+				location: locationCopy,
+			});
 		});
 	}
-
 }

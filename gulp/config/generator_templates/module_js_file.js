@@ -1,7 +1,6 @@
-
 //This file controls what goes into the moduleName.js files that are generated from using the "gulp new:module --moduleName" command
 
-export default function(moduleName){
+export default function (moduleName) {
 	return `
 'use strict';
 

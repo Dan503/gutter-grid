@@ -1,9 +1,8 @@
-
 import { config, dirs } from '../shared-vars';
 
 let generatedString;
 
-if ( config.serve === 'php' ){
+if (config.serve === 'php') {
 	generatedString = `
 <?php
 // redirect to base folder
@@ -21,7 +20,6 @@ header('Location: http://'.$_SERVER['HTTP_HOST'].'/${config.basePath}/'); exit()
 </body>
 </html>
 `;
-
 }
 
 export default generatedString;
