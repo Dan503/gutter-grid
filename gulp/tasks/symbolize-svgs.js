@@ -58,9 +58,7 @@ Use an SVG from the sprite by using ${plugins.util.colors.green(
 	done();
 };
 
-export default function () {
-	return gulp.task(
-		'symbolize-svgs',
-		gulp.series(symbolize_svgs, display_svg_help_messages)
-	);
-}
+gulp.task(
+	'symbolize-svgs',
+	gulp.series(symbolize_svgs, display_svg_help_messages)
+);

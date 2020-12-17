@@ -36,164 +36,160 @@ keywords.forEach((word) => {
 	names = names.filter((x) => x !== word);
 });
 
-export default function () {
-	let dirs = config.directories;
+function generate(type) {
+	return gulp.series(
+		((done) => {
+			jsWatch.isEnabled = true;
 
-	function generate(type) {
-		return gulp.series(
-			((done) => {
-				jsWatch.isEnabled = true;
+			let files = [];
+			let gen = {};
+			let rootDest = dirs.source;
 
-				let files = [];
-				let gen = {};
-				let rootDest = dirs.source;
+			function getFilePath(name) {
+				const pathArray = name.split('/');
+				const filePath = name;
+				const fileName = valueAt(pathArray, -1);
 
-				function getFilePath(name) {
-					const pathArray = name.split('/');
-					const filePath = name;
-					const fileName = valueAt(pathArray, -1);
+				return { filePath, fileName };
+			}
 
-					return { filePath, fileName };
-				}
+			names.forEach((name, i) => {
+				gen = {
+					module() {
+						const path = getFilePath(name);
 
-				names.forEach((name, i) => {
-					gen = {
-						module() {
-							const path = getFilePath(name);
+						const dest = `${rootDest}/${dirs.modules}/${path.filePath}`;
 
-							const dest = `${rootDest}/${dirs.modules}/${path.filePath}`;
+						return [
+							{
+								fileName: `${path.fileName}.scss`,
+								content: module_sass_file(path.fileName),
+								dest,
+							},
+							{
+								fileName: (args.js ? '' : '_') + `${path.fileName}.js`,
+								content: module_js_file(path.fileName),
+								dest,
+							},
+							{
+								fileName: `${path.fileName}.pug`,
+								content: module_pug_file(path.fileName),
+								dest,
+							},
+						];
+					},
 
-							return [
-								{
-									fileName: `${path.fileName}.scss`,
-									content: module_sass_file(path.fileName),
-									dest,
-								},
-								{
-									fileName: (args.js ? '' : '_') + `${path.fileName}.js`,
-									content: module_js_file(path.fileName),
-									dest,
-								},
-								{
-									fileName: `${path.fileName}.pug`,
-									content: module_pug_file(path.fileName),
-									dest,
-								},
-							];
-						},
+					template() {
+						return [
+							{
+								fileName: `${name}.pug`,
+								content: template_pug_file(name),
+								dest: `${rootDest}/${dirs.templates}`,
+							},
+						];
+					},
 
-						template() {
-							return [
-								{
-									fileName: `${name}.pug`,
-									content: template_pug_file(name),
-									dest: `${rootDest}/${dirs.templates}`,
-								},
-							];
-						},
+					layout() {
+						return [
+							{
+								fileName: `${name}.pug`,
+								content: layout_pug_file(name),
+								dest: `${rootDest}/${dirs.layouts}`,
+							},
+						];
+					},
 
-						layout() {
-							return [
-								{
-									fileName: `${name}.pug`,
-									content: layout_pug_file(name),
-									dest: `${rootDest}/${dirs.layouts}`,
-								},
-							];
-						},
+					//for generating both a template and a layout at the same time
+					tempLayout() {
+						return [
+							{
+								fileName: `${name}.pug`,
+								content: template_pug_file(name, name),
+								dest: `${rootDest}/${dirs.templates}`,
+							},
+							{
+								fileName: `${name}.pug`,
+								content: layout_pug_file(name),
+								dest: `${rootDest}/${dirs.layouts}`,
+							},
+						];
+					},
+				};
 
-						//for generating both a template and a layout at the same time
-						tempLayout() {
-							return [
-								{
-									fileName: `${name}.pug`,
-									content: template_pug_file(name, name),
-									dest: `${rootDest}/${dirs.templates}`,
-								},
-								{
-									fileName: `${name}.pug`,
-									content: layout_pug_file(name),
-									dest: `${rootDest}/${dirs.layouts}`,
-								},
-							];
-						},
-					};
-
-					gen[type]().forEach((file) => {
-						files.push(file);
-					});
+				gen[type]().forEach((file) => {
+					files.push(file);
 				});
+			});
 
-				generate_files(files);
+			generate_files(files);
 
-				//just to generate space
-				console.log('');
+			//just to generate space
+			console.log('');
 
-				if (names.length === 1)
-					console.log(
-						`You can create multiple ${type}s by stringing them together like this:
+			if (names.length === 1)
+				console.log(
+					`You can create multiple ${type}s by stringing them together like this:
 	${plugins.util.colors.green(`gulp new:${type} --${type}1 --${type}2`)}`
-					);
+				);
 
-				//starts pug task if generating a new template so it is added to the template list
-				if (in_array(type, ['template', 'tempLayout'])) {
-					console.log(
-						plugins.util.colors.yellow.bold(
-							'\n  Recompiling Pug to add the new template to the template list...\n'
-						)
-					);
-					gulp.start('pug');
-				}
+			//starts pug task if generating a new template so it is added to the template list
+			if (in_array(type, ['template', 'tempLayout'])) {
+				console.log(
+					plugins.util.colors.yellow.bold(
+						'\n  Recompiling Pug to add the new template to the template list...\n'
+					)
+				);
+				gulp.start('pug');
+			}
 
-				if (type === 'module') {
-					const path = getFilePath(names[0]);
-					waitForFile(
-						`${rootDest}/${dirs.modules}/${path.filePath}/${
-							args.js ? path.fileName : '_' + path.fileName
-						}.js`,
-						() => {
-							if (args.js) {
-								//scripts task is run to ensure that the js is connected straight away
-								gulp.start('scripts');
-							}
-							gulp.start('watch');
-							done();
+			if (type === 'module') {
+				const path = getFilePath(names[0]);
+				waitForFile(
+					`${rootDest}/${dirs.modules}/${path.filePath}/${
+						args.js ? path.fileName : '_' + path.fileName
+					}.js`,
+					() => {
+						if (args.js) {
+							//scripts task is run to ensure that the js is connected straight away
+							gulp.start('scripts');
 						}
-					);
-				} else {
-					setTimeout(() => {
-						done();
-						//new modules are instantly connected up to the watch function
 						gulp.start('watch');
-					}, 500);
-				}
-			},
-			() => {
-				//new modules are instantly connected up to the watch function
-				if (type === 'module' && args.js) {
-					//scripts task is run to ensure that the js is connected straight away
-					return gulp.series('scripts', 'watch');
-				} else {
-					return gulp.series('watch');
-				}
-			})
-		);
-	}
-
-	gulp.task('new:module', () => {
-		generate('module');
-	});
-
-	gulp.task('new:template', () => {
-		generate('template');
-	});
-
-	gulp.task('new:layout', () => {
-		generate('layout');
-	});
-
-	//generate templates and layouts at the same time
-	gulp.task('new:tempLayout', () => {
-		generate('tempLayout');
-	});
+						done();
+					}
+				);
+			} else {
+				setTimeout(() => {
+					done();
+					//new modules are instantly connected up to the watch function
+					gulp.start('watch');
+				}, 500);
+			}
+		},
+		() => {
+			//new modules are instantly connected up to the watch function
+			if (type === 'module' && args.js) {
+				//scripts task is run to ensure that the js is connected straight away
+				return gulp.series('scripts', 'watch');
+			} else {
+				return gulp.series('watch');
+			}
+		})
+	);
 }
+
+gulp.task('new:module', () => {
+	generate('module');
+});
+
+gulp.task('new:template', () => {
+	generate('template');
+});
+
+gulp.task('new:layout', () => {
+	generate('layout');
+});
+
+//generate templates and layouts at the same time
+gulp.task('new:tempLayout', () => {
+	generate('tempLayout');
+});
