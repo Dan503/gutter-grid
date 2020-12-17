@@ -66,12 +66,18 @@ export default function () {
 		])
 	);
 
-	gulp.task('clean:pages:dynamic-assets', ['clean:pages:indexes'], () => {
+	const clean_dynamic_assets = (done) => {
 		del.sync([
 			path.join(dirs.temporary, 'content.json'), //ensures the use of a fresh json content
 			path.join(dirs.source, dirs.pages, '**/assets/**/*'),
 			path.join(taskTarget, config.basePath, dirs.pages, '**/assets/**/*'),
 		]);
 		deleteEmpty.sync(path.join(taskTarget, config.basePath, dirs.pages));
-	});
+		done();
+	};
+
+	gulp.task(
+		'clean:pages:dynamic-assets',
+		gulp.series('clean:pages:indexes', clean_dynamic_assets)
+	);
 }

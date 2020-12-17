@@ -5,7 +5,6 @@ import {
 	plugins,
 	args,
 	config,
-	dirs,
 	taskTarget,
 	browserSync,
 } from '../config/shared-vars';
@@ -21,14 +20,16 @@ export default function () {
 		});
 	});
 
-	// BrowserSync
-	gulp.task('browserSync:php', ['php-server'], () => {
+	const run_proxy_server = () => {
 		return browserSync.init({
 			proxy: '127.0.0.1:8010',
 			open: args.open ? 'local' : false,
 			port: config.port || 3000,
 		});
-	});
+	};
+
+	// BrowserSync
+	gulp.task('browserSync:php', gulp.series('php-server', run_proxy_server));
 
 	// BrowserSync
 	gulp.task('browserSync:html', () => {
