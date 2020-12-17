@@ -11,8 +11,6 @@ import {
 	browserSync,
 } from '../config/shared-vars';
 
-import waitForFile from '../helpers/waitForFile';
-
 //This file is missing from git on purpose as it holds an absolute system path that is different for every user
 //the file is simply this one line edited to be the correct file path for your system:
 // export default 'C:/Users/user.name/path/to/folder/with/content';

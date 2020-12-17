@@ -17,7 +17,6 @@ import autoprefixer from 'autoprefixer';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import notifier from 'node-notifier';
 
-import waitForFile from '../helpers/waitForFile';
 import exportAsset from '../helpers/exportAsset';
 
 const postcss = gulpLoadPlugins({

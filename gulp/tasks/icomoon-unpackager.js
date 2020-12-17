@@ -54,11 +54,11 @@ const unpackage_icomoon = () => {
 			)
 			.pipe(plugins.rename('icon-names.scss'))
 			.pipe(gulp.dest(destination))
-			.on('end', () => {
-				gulp.start('copy-icons');
-			})
 	);
 };
 
 //converts icon variables into a sass map (needed for icon functions and mixins)
-gulp.task('icomoon-unpackager', gulp.series('copy-icons', unpackage_icomoon));
+gulp.task(
+	'icomoon-unpackager',
+	gulp.series('copy-icons', unpackage_icomoon, 'copy-icons')
+);

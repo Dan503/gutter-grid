@@ -142,7 +142,7 @@ function generate(type) {
 						'\n  Recompiling Pug to add the new template to the template list...\n'
 					)
 				);
-				gulp.start('pug');
+				gulp.series('pug')(done);
 			}
 
 			if (type === 'module') {

@@ -24,7 +24,6 @@ import vsource from 'vinyl-source-stream';
 import buffer from 'vinyl-buffer';
 import notifier from 'node-notifier';
 
-import waitForFile from '../helpers/waitForFile';
 import generate_files from '../helpers/generate_files';
 import exportAsset from '../helpers/exportAsset';
 

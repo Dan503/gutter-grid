@@ -33,11 +33,7 @@ export default function waitForFile(path, settings = {}, callback = () => {}) {
 				clearInterval(interval);
 				//one final timout to ensure all the files are in position before initiating the code
 				setTimeout(() => {
-					if (is_string(callback) || is_array(callback)) {
-						gulp.start(callback);
-					} else {
-						callback.call();
-					}
+					callback();
 				}, settings.delay);
 				return true;
 			} else if (currentTime >= settings.timeout) {
