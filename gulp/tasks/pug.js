@@ -55,6 +55,8 @@ import {
 import page_pug_file from '../config/generator_templates/page_pug_file';
 import redirect_page from '../config/generator_templates/redirect_page';
 
+let pugPostTasks = ['clean:pages:empty'];
+
 export default function () {
 	let dirs = config.directories;
 	let dest = path.join(taskTarget, config.basePath);
@@ -387,7 +389,7 @@ export default function () {
 		});
 	};
 
-	const compile_pug = () => {
+	const compile_pug = (done) => {
 		//ensures you are working with the latest data
 		const siteData = generate_data();
 
@@ -472,11 +474,11 @@ export default function () {
 					icon: notification_icon_location + 'gulp.png',
 				});
 
-				let pugPostTasks = ['clean:pages:empty'];
-
 				if (config.serve === 'php') pugPostTasks.push('convert-HTML');
 
-				gulp.start(pugPostTasks);
+				done();
+
+				// gulp.series(pugPostTasks)(done);
 				setTimeout(browserSync.reload, 500);
 			});
 	};
