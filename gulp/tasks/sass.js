@@ -128,7 +128,7 @@ const compile_stripped_out_MQs_CSS = () => {
 		.pipe(gulp.dest(dest));
 };
 
-const export_CSS = () => {
+const export_CSS = (done) => {
 	exportAsset({ file: entries.css, path: dirs.styles, icons: true });
 	exportAsset({
 		file: 'noMQs-' + entries.css,
@@ -136,6 +136,7 @@ const export_CSS = () => {
 		icons: false,
 		notify: false,
 	});
+	done();
 };
 
 //pure sass compilation
