@@ -144,9 +144,6 @@ let browserifyTask = (files) => {
 	});
 };
 
-//Just an alternate way to call the "gulp scripts" task without me having to introduce a breaking change
-gulp.task('js', gulp.series('copy:scripts', 'scripts'));
-
 const run_file_generation = (done) => {
 	var scriptDest = path.join('./', dirs.source, dirs.scripts, entries.js);
 	var moduleFiles = {};
@@ -189,7 +186,8 @@ const proto_only_browserify = () => {
 	]);
 };
 
-// Browserify Task
-gulp.task('scripts', () => {
-	return gulp.parallel(run_file_generation, proto_only_browserify);
-});
+export const scripts_task = () =>
+	gulp.parallel(run_file_generation, proto_only_browserify);
+
+//Just an alternate way to call the "gulp scripts" task without me having to introduce a breaking change
+gulp.task('js', gulp.series('copy:scripts', scripts_task));

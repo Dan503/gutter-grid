@@ -13,6 +13,8 @@ import {
 
 import path from 'path';
 
+import { scripts_task } from './scripts';
+
 let local = dirs.source + '/';
 let browserSyncTask =
 	config.serve === 'html' ? 'browserSync:html' : 'browserSync:php';
@@ -41,7 +43,7 @@ const set_up_watchers = (done) => {
 			local + 'prototype-only/**/*.js',
 			'./' + dirs.jsUtils + '/**/*.js',
 		],
-		gulp.series('scripts')
+		gulp.series(scripts_task)
 	);
 
 	// JS

@@ -26,6 +26,9 @@ import template_pug_file from '../config/generator_templates/template_pug_file.j
 import layout_pug_file from '../config/generator_templates/layout_pug_file.js';
 import waitForFile from '../helpers/waitForFile.js';
 
+import './watch';
+import { scripts_task } from './scripts';
+
 //retrieves the list of --args
 let names = Object.keys(args);
 
@@ -151,17 +154,16 @@ function generate(type) {
 					() => {
 						if (args.js) {
 							//scripts task is run to ensure that the js is connected straight away
-							gulp.start('scripts');
+							gulp.series(scripts_task)(done);
+						} else {
+							gulp.parallel(scripts_task, 'watch')(done);
 						}
-						gulp.start('watch');
-						done();
 					}
 				);
 			} else {
 				setTimeout(() => {
-					done();
 					//new modules are instantly connected up to the watch function
-					gulp.start('watch');
+					gulp.series('watch')(done);
 				}, 500);
 			}
 		},
@@ -169,7 +171,7 @@ function generate(type) {
 			//new modules are instantly connected up to the watch function
 			if (type === 'module' && args.js) {
 				//scripts task is run to ensure that the js is connected straight away
-				return gulp.series('scripts', 'watch');
+				return gulp.series(scripts_task, 'watch');
 			} else {
 				return gulp.series('watch');
 			}

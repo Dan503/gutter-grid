@@ -10,22 +10,25 @@ import './gulp/tasks/modernizr';
 import './gulp/tasks/new';
 import './gulp/tasks/pug';
 import './gulp/tasks/sass';
-import './gulp/tasks/scripts';
+import { scripts_task } from './gulp/tasks/scripts';
 import './gulp/tasks/symbolize-svgs';
 import './gulp/tasks/watch';
 
 var clean = args.production ? gulp.series('clean', 'clean:livesite') : 'clean';
 
 // Compiles all the code
-gulp.task('compile', [
-	'copy',
-	'pug',
-	'scripts',
-	'imagemin',
-	'symbolize-svgs',
-	'sass',
-	'modernizr',
-]);
+gulp.task(
+	'compile',
+	gulp.parallel(
+		'copy',
+		'pug',
+		scripts_task,
+		'imagemin',
+		'symbolize-svgs',
+		'sass',
+		'modernizr'
+	)
+);
 
 let user_used_serve = false;
 
