@@ -79,15 +79,7 @@ const compile_CSS = () => {
 		.pipe(plugins.sass(sass_settings).on('error', plugins.sass.logError))
 		.pipe(
 			plugins.postcss([
-				autoprefixer({
-					browsers: [
-						'last 2 version',
-						'> 5%',
-						'safari 5',
-						'ios 6',
-						'android 4',
-					],
-				}),
+				autoprefixer(),
 				//postcss.flexibility(),
 				postcss.pxtorem(px2rem_settings),
 			])
@@ -119,15 +111,7 @@ const compile_stripped_out_MQs_CSS = () => {
 		.pipe(plugins.sass(sass_settings).on('error', plugins.sass.logError))
 		.pipe(
 			plugins.postcss([
-				autoprefixer({
-					browsers: [
-						'last 2 version',
-						'> 5%',
-						'safari 5',
-						'ios 6',
-						'android 4',
-					],
-				}),
+				autoprefixer(),
 				postcss.pxtorem(px2rem_settings),
 				//postcss.flexibility(),
 				postcss.unmq({ width: bp.page + 10 }),
