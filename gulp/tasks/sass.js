@@ -10,6 +10,7 @@ import {
 	browserSync,
 	notification_icon_location,
 	bp,
+	join,
 } from '../config/shared-vars';
 
 import path from 'path';
@@ -25,7 +26,7 @@ const postcss = gulpLoadPlugins({
 });
 
 let entries = config.entries;
-let dest = path.join(
+let dest = join(
 	taskTarget,
 	config.basePath,
 	dirs.assets,
@@ -42,8 +43,8 @@ let sass_settings = {
 	outputStyle: 'expanded',
 	precision: 5,
 	includePaths: [
-		path.join(dirs.source, dirs.styles),
-		path.join(dirs.source, dirs.modules),
+		join(dirs.source, dirs.styles),
+		join(dirs.source, dirs.modules),
 	],
 };
 
@@ -53,7 +54,7 @@ const compile_CSS = () => {
 
 	//Primary css file compilation
 	return gulp
-		.src([path.join(dirs.source, dirs.styles, entries.css)])
+		.src([join(dirs.source, dirs.styles, entries.css)])
 		.pipe(
 			plugins.plumber((error) => {
 				if (a === 0) {
@@ -100,7 +101,7 @@ const compile_CSS = () => {
 const compile_stripped_out_MQs_CSS = () => {
 	//stripped out MQs version
 	return gulp
-		.src([path.join(dirs.source, dirs.styles, 'main.legacy.scss')])
+		.src([join(dirs.source, dirs.styles, 'main.legacy.scss')])
 		.pipe(plugins.plumber())
 		.pipe(plugins.sassGlob())
 		.pipe(plugins.sass(sass_settings).on('error', plugins.sass.logError))

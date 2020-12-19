@@ -8,6 +8,7 @@ import {
 	dirs,
 	taskTarget,
 	browserSync,
+	join,
 } from '../config/shared-vars';
 
 import path from 'path';
@@ -16,14 +17,14 @@ let destination = dirs.temporary;
 
 //copies icons into the assets folder
 gulp.task('copy-icons', () => {
-	let iconDest = path.join(
+	let iconDest = join(
 		taskTarget,
 		config.basePath,
 		dirs.assets,
 		dirs.icons.replace('_', '')
 	);
 	return gulp
-		.src(path.join(dirs.source, dirs.icons, '/**/*'))
+		.src(join(dirs.source, dirs.icons, '/**/*'))
 		.pipe(plugins.changed(iconDest))
 		.pipe(gulp.dest(iconDest));
 });
@@ -31,7 +32,7 @@ gulp.task('copy-icons', () => {
 const unpackage_icomoon = () => {
 	return (
 		gulp
-			.src(path.join(dirs.source, dirs.icons, 'variables.scss'))
+			.src(join(dirs.source, dirs.icons, 'variables.scss'))
 			//prevents it from re-running the code if nothing has changed
 			.pipe(plugins.changed(destination))
 			//replaces the sass variable syntax with sass map syntax

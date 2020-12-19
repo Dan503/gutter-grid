@@ -33,15 +33,17 @@ var basePath = config.basePath.length > 0 ? '/' + config.basePath : '';
 
 var validFileTypes = ['pdf', 'docx', 'doc', 'xls', 'xlsx', 'txt', 'rtf'];
 
+const join = (...path) => path.join('/');
+
 //Gives access to the site break points
-let bp = require([
+let bp = require(join(
 	'..',
 	'..',
 	dirs.source,
 	dirs.scripts,
 	'_config',
-	'bp_break-points.js',
-].join('/'));
+	'bp_break-points.js'
+));
 
 const enable_js_watch = (done) => {
 	// eslint-disable-next-line no-use-before-define
@@ -78,4 +80,5 @@ export {
 	bp,
 	jsWatch,
 	reload,
+	join,
 };

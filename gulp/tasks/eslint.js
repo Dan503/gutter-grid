@@ -12,16 +12,17 @@ import {
 	dirs,
 	taskTarget,
 	browserSync,
+	join,
 } from '../config/shared-vars';
 
 // ESLint
 gulp.task('eslint', () => {
 	return gulp
 		.src([
-			path.join('gulpfile.js'),
-			path.join(dirs.source, '**/*.js'),
+			join('gulpfile.js'),
+			join(dirs.source, '**/*.js'),
 			// Ignore all vendor folder files
-			'!' + path.join('**/vendor/**', '*'),
+			'!' + join('**/vendor/**', '*'),
 		])
 		.pipe(browserSync.reload({ stream: true, once: true }))
 		.pipe(

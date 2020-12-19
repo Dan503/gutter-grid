@@ -1,5 +1,12 @@
 /* eslint-disable indent */
-import { gulp, plugins, config, dirs, taskTarget } from '../config/shared-vars';
+import {
+	gulp,
+	plugins,
+	config,
+	dirs,
+	taskTarget,
+	join,
+} from '../config/shared-vars';
 
 const symbolize_svgs = () => {
 	return (

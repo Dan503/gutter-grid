@@ -7,6 +7,7 @@ import {
 	config,
 	taskTarget,
 	browserSync,
+	join,
 } from '../config/shared-vars';
 
 let serverRoot = taskTarget;

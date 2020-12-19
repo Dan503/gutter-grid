@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { applyDefaults } from 'default-to';
 import { is_string, is_array, is_object, isset } from './php-to-js-translators';
-import { gulp, plugins } from '../config/shared-vars';
+import { gulp, plugins, join } from '../config/shared-vars';
 
 //Waits for a file or folder to exist before running a function or task(s)
 //The more specific you are, the more accurate the function is

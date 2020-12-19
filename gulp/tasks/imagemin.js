@@ -8,13 +8,14 @@ import {
 	dirs,
 	taskTarget,
 	browserSync,
+	join,
 } from '../config/shared-vars';
 
 import path from 'path';
 import gulpif from 'gulp-if';
 import pngquant from 'imagemin-pngquant';
 
-let dest = path.join(
+let dest = join(
 	taskTarget,
 	config.basePath,
 	dirs.assets,
@@ -24,7 +25,7 @@ let dest = path.join(
 /** copies the non-typical-image favicon files into their places */
 const copy_favicons = () => {
 	return gulp
-		.src([path.join(dirs.source, dirs.images, '**/favicon/*.{json,ico,xml}')])
+		.src([join(dirs.source, dirs.images, '**/favicon/*.{json,ico,xml}')])
 		.pipe(plugins.changed(dest))
 		.pipe(gulp.dest(dest));
 };
@@ -32,8 +33,8 @@ const copy_favicons = () => {
 const minify_images = () => {
 	return gulp
 		.src([
-			path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}'),
-			path.join(dirs.source, dirs.pages, '**/*.{jpg,jpeg,gif,svg,png}'),
+			join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}'),
+			join(dirs.source, dirs.pages, '**/*.{jpg,jpeg,gif,svg,png}'),
 		])
 		.pipe(plugins.changed(dest))
 		.pipe(

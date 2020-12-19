@@ -9,6 +9,7 @@ import {
 	dirs,
 	taskTarget,
 	browserSync,
+	join,
 } from '../config/shared-vars';
 
 //This file is missing from git on purpose as it holds an absolute system path that is different for every user
@@ -20,7 +21,7 @@ import content_src from '../config/content_src';
 // Same as regular copy task but specific to the scripts folder
 //excludes the main js file though
 gulp.task('copy:scripts', () => {
-	let dest = path.join(
+	let dest = join(
 		taskTarget,
 		config.basePath,
 		dirs.assets,
@@ -28,9 +29,9 @@ gulp.task('copy:scripts', () => {
 	);
 	return gulp
 		.src([
-			path.join(dirs.source, dirs.scripts, '**/*'),
-			'!' + path.join(dirs.source, dirs.scripts, '{**/_*,**/_*/**}'),
-			'!' + path.join(dirs.source, dirs.scripts, config.entries.js),
+			join(dirs.source, dirs.scripts, '**/*'),
+			'!' + join(dirs.source, dirs.scripts, '{**/_*,**/_*/**}'),
+			'!' + join(dirs.source, dirs.scripts, config.entries.js),
 		])
 		.pipe(plugins.changed(dest))
 		.pipe(gulp.dest(dest));
@@ -48,7 +49,7 @@ gulp.task(
 			return gulp
 				.src(asset_src + '/' + dirs.pages + '/**/' + dirs.assets + '/**/*')
 				.pipe(gulp.dest(dirs.source + '/' + dirs.pages))
-				.pipe(gulp.dest(path.join(taskTarget, config.basePath, dirs.pages)));
+				.pipe(gulp.dest(join(taskTarget, config.basePath, dirs.pages)));
 		}
 
 		done();
@@ -59,17 +60,13 @@ gulp.task(
 gulp.task(
 	'copy',
 	gulp.series('copy:scripts', 'copy:root-files', () => {
-		let dest = path.join(taskTarget, config.basePath);
+		let dest = join(taskTarget, config.basePath);
 		return gulp
 			.src([
-				path.join(dirs.source, '**/*'),
-				'!' +
-					path.join(
-						dirs.source,
-						'/' + dirs.pages + '/**/' + dirs.assets + '/*'
-					),
-				'!' + path.join(dirs.source, '{**/_*,**/_*/**}'),
-				'!' + path.join(dirs.source, '**/*.pug'),
+				join(dirs.source, '**/*'),
+				'!' + join(dirs.source, '/' + dirs.pages + '/**/' + dirs.assets + '/*'),
+				'!' + join(dirs.source, '{**/_*,**/_*/**}'),
+				'!' + join(dirs.source, '**/*.pug'),
 			])
 			.pipe(plugins.changed(dest))
 			.pipe(gulp.dest(dest));

@@ -1,4 +1,4 @@
-import { dirs, config, pjson } from '../config/shared-vars';
+import { dirs, config, pjson, join } from '../config/shared-vars';
 
 import fs from 'fs';
 import path from 'path';
@@ -9,7 +9,7 @@ export default function generate_data() {
 	let finalData = {};
 
 	//items lower in the list overwrite items higher in the list
-	let dataPaths = [path.join(dirs.source, dirs.data)];
+	let dataPaths = [join(dirs.source, dirs.data)];
 
 	dataPaths.forEach((path, i) => {
 		if (fs.existsSync(path)) {

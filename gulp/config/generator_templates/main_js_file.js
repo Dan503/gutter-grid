@@ -1,4 +1,4 @@
-import { dirs } from '../shared-vars';
+import { dirs, join } from '../shared-vars';
 
 //This file generates the main.js file
 //To include js from the modules folder, simply remove the underscore from the front of it's file name.

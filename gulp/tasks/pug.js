@@ -13,6 +13,7 @@ import {
 	pjson,
 	notification_icon_location,
 	reload,
+	join,
 } from '../config/shared-vars';
 
 import fs from 'fs';
@@ -59,7 +60,7 @@ import '../tasks/symbolize-svgs';
 
 let pugPostTasks = ['clean:pages:empty'];
 
-let dest = path.join(taskTarget, config.basePath);
+let dest = join(taskTarget, config.basePath);
 let navMapDest = dirs.temporary;
 let freshCompile = false;
 
@@ -148,7 +149,7 @@ const generate_html_pages = (done) => {
 
 	//Grabs a list of all the template files in the _templates directory
 	let templateFiles = [];
-	var templatesFolder = path.join(dirs.source, dirs.templates);
+	var templatesFolder = join(dirs.source, dirs.templates);
 
 	dir.files(templatesFolder, function (err, files) {
 		if (err) throw err;
@@ -271,7 +272,7 @@ const generate_html_pages = (done) => {
 		siteData.navMap.subnav[0].subnav = homeSubnav;
 
 		//waits for the content.json file to be created before going any further
-		// waitForFile(path.join(navMapDest, 'content.json'), ()=> {
+		// waitForFile(join(navMapDest, 'content.json'), ()=> {
 
 		//2nd read of the nav map
 		siteData.navMap.subnav.forEach((map, index) => {
@@ -302,7 +303,7 @@ const generate_html_pages = (done) => {
 
 		//waits for index.pug to exist before trying to compile
 		waitForFile(
-			path.join(dirs.source, dirs.pages, homeFolder, 'index.pug'),
+			join(dirs.source, dirs.pages, homeFolder, 'index.pug'),
 			{ notify: false },
 			() => {
 				//Tells you what pages have been generated and where to find them
@@ -406,8 +407,8 @@ const compile_pug = (done) => {
 
 	return gulp
 		.src([
-			path.join(dirs.source, '**/*.pug'),
-			'!' + path.join(dirs.source, '{**/_*,**/_*/**}'),
+			join(dirs.source, '**/*.pug'),
+			'!' + join(dirs.source, '{**/_*,**/_*/**}'),
 		])
 		.pipe(plugins.changed(dest))
 		.pipe(
@@ -435,7 +436,7 @@ const compile_pug = (done) => {
 				pug: pug,
 				filters: pugFilters,
 				pretty: true,
-				basedir: './' + [dirs.source].join('/'),
+				basedir: `./${dirs.source}`,
 				locals: {
 					args,
 					require,

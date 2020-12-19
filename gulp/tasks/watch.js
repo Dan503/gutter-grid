@@ -9,6 +9,7 @@ import {
 	taskTarget,
 	browserSync,
 	jsWatch,
+	join,
 } from '../config/shared-vars';
 
 import path from 'path';
@@ -85,8 +86,8 @@ const set_up_watchers = (done) => {
 	//All other files
 	gulp
 		.watch([
-			path.join(dirs.temporary, '**/*'),
-			'!' + path.join(dirs.temporary, '**/*.{css,scss,map,html,js}'),
+			join(dirs.temporary, '**/*'),
+			'!' + join(dirs.temporary, '**/*.{css,scss,map,html,js}'),
 		])
 		.on('change', browserSync.reload);
 

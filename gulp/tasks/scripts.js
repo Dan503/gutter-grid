@@ -10,6 +10,7 @@ import {
 	browserSync,
 	notification_icon_location,
 	jsWatch,
+	join,
 } from '../config/shared-vars';
 
 import path from 'path';
@@ -96,7 +97,7 @@ let browserifyTask = (files) => {
 							//filepath.dirname = filepath.dirname.replace(dirs.source, '').replace('_', '');
 
 							//Sends all output files to the scripts folder
-							filepath.dirname = path.join(
+							filepath.dirname = join(
 								dirs.assets,
 								dirs.scripts.replace(/^_[0-9]_/, '')
 							);
@@ -143,10 +144,10 @@ let browserifyTask = (files) => {
 };
 
 const run_file_generation = (done) => {
-	var scriptDest = path.join('./', dirs.source, dirs.scripts, entries.js);
+	var scriptDest = join('./', dirs.source, dirs.scripts, entries.js);
 	var moduleFiles = {};
 
-	dir.files(path.join('./', dirs.source, dirs.modules), function (err, files) {
+	dir.files(join('./', dirs.source, dirs.modules), function (err, files) {
 		if (err) throw err;
 
 		let jsFiles = files.filter(function (file) {
@@ -178,7 +179,7 @@ const run_file_generation = (done) => {
 };
 
 const proto_only_browserify = browserifyTask([
-	'./' + path.join(dirs.source, dirs.protoOnly, entries.protoOnly.js),
+	'./' + join(dirs.source, dirs.protoOnly, entries.protoOnly.js),
 ]);
 
 export const scripts_task = gulp.parallel(

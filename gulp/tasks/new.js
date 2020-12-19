@@ -10,6 +10,7 @@ import {
 	taskTarget,
 	browserSync,
 	jsWatch,
+	join,
 } from '../config/shared-vars';
 
 import path, { resolve } from 'path';

@@ -1,4 +1,4 @@
-import { config, dirs } from '../shared-vars';
+import { config, dirs, join } from '../shared-vars';
 
 let generatedString;
 

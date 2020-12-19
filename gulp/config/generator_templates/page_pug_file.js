@@ -1,4 +1,4 @@
-import { dirs } from '../shared-vars';
+import { dirs, join } from '../shared-vars';
 
 //This file controls what goes into the index.pug files that are generated into the pages folder
 //if editing this, keep in mind that this affects every page on the site, including the home page

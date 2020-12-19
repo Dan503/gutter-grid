@@ -11,6 +11,7 @@ import {
 	dirs,
 	taskTarget,
 	browserSync,
+	join,
 } from '../config/shared-vars';
 
 // Clean
@@ -21,27 +22,18 @@ gulp.task('clean', (done) => {
 	done();
 });
 
-gulp.task('clean:livesite', del.bind(null, [path.join(dirs.destination)]));
+gulp.task('clean:livesite', del.bind(null, [join(dirs.destination)]));
 
-gulp.task(
-	'clean:styles',
-	del.bind(null, [path.join(dirs.temporary, 'styles')])
-);
+gulp.task('clean:styles', del.bind(null, [join(dirs.temporary, 'styles')]));
 
-gulp.task(
-	'clean:html',
-	del.bind(null, [path.join(dirs.temporary, '**/*.html')])
-);
+gulp.task('clean:html', del.bind(null, [join(dirs.temporary, '**/*.html')]));
 
-gulp.task(
-	'clean:scripts',
-	del.bind(null, [path.join(dirs.temporary, 'scripts')])
-);
+gulp.task('clean:scripts', del.bind(null, [join(dirs.temporary, 'scripts')]));
 
 gulp.task('clean:pages:empty', (done) => {
 	let sources = [
-		path.join(dirs.source, dirs.pages),
-		path.join(dirs.temporary, dirs.pages),
+		join(dirs.source, dirs.pages),
+		join(dirs.temporary, dirs.pages),
 	];
 
 	const promises = sources.map((source) => {
@@ -58,18 +50,18 @@ gulp.task('clean:pages:empty', (done) => {
 gulp.task(
 	'clean:pages:indexes',
 	del.bind(null, [
-		path.join(dirs.source, dirs.pages, '**/index.pug'),
-		path.join(dirs.temporary, dirs.pages, '**/*'),
+		join(dirs.source, dirs.pages, '**/index.pug'),
+		join(dirs.temporary, dirs.pages, '**/*'),
 	])
 );
 
 const clean_dynamic_assets = (done) => {
 	del.sync([
-		path.join(dirs.temporary, 'content.json'), //ensures the use of a fresh json content
-		path.join(dirs.source, dirs.pages, '**/assets/**/*'),
-		path.join(taskTarget, config.basePath, dirs.pages, '**/assets/**/*'),
+		join(dirs.temporary, 'content.json'), //ensures the use of a fresh json content
+		join(dirs.source, dirs.pages, '**/assets/**/*'),
+		join(taskTarget, config.basePath, dirs.pages, '**/assets/**/*'),
 	]);
-	deleteEmpty.sync(path.join(taskTarget, config.basePath, dirs.pages));
+	deleteEmpty.sync(join(taskTarget, config.basePath, dirs.pages));
 	done();
 };
 

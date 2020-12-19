@@ -2,7 +2,7 @@ import path from 'path';
 import vsource from 'vinyl-source-stream';
 import { applyDefaults } from 'default-to';
 
-import { gulp, dirs, plugins } from '../config/shared-vars';
+import { gulp, dirs, plugins, join } from '../config/shared-vars';
 
 import { is_array } from './php-to-js-translators';
 

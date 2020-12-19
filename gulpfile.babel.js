@@ -1,4 +1,11 @@
-import { gulp, plugins, args, dirs, jsWatch } from './gulp/config/shared-vars';
+import {
+	gulp,
+	plugins,
+	args,
+	dirs,
+	jsWatch,
+	join,
+} from './gulp/config/shared-vars';
 
 import './gulp/tasks/browserSync';
 import './gulp/tasks/bump';

@@ -8,6 +8,7 @@ import {
 	dirs,
 	taskTarget,
 	browserSync,
+	join,
 } from '../config/shared-vars';
 
 import path from 'path';
@@ -20,12 +21,12 @@ let modernizr_settings = {
 
 const run_modernizr = () => {
 	return gulp
-		.src([path.join(dirs.source, '**/*.{scss,sass,js}')])
+		.src([join(dirs.source, '**/*.{scss,sass,js}')])
 		.pipe(plugins.modernizr('modernizr.min.js', modernizr_settings))
 		.pipe(plugins.uglify())
 		.pipe(
 			gulp.dest(
-				path.join(
+				join(
 					taskTarget,
 					config.basePath,
 					dirs.assets,

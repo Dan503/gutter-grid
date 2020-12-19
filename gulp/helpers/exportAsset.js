@@ -7,6 +7,7 @@ import {
 	config,
 	dirs,
 	taskTarget,
+	join,
 } from '../config/shared-vars';
 
 import waitForFile from './waitForFile';

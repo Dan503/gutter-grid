@@ -1,6 +1,6 @@
 import { applyDefaults, defaultTo } from 'default-to';
 
-import { dirs, basePath } from '../config/shared-vars';
+import { dirs, basePath, join } from '../config/shared-vars';
 import {
 	navMap_pre_defaults,
 	defaultTemplate,
