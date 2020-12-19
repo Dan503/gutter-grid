@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import $ from 'jquery';
 import bp from '_config/bp_break-points';
@@ -9,9 +9,9 @@ import bp from '_config/bp_break-points';
 //if (mq.inside('tablet', 'mobile'){ ...functionality... }
 
 //Checks if the size is a valid breakpoint value
-function checkBP(size){
-	if (typeof size === 'string'){
-		if (typeof bp[size] !== 'undefined'){
+function checkBP(size) {
+	if (typeof size === 'string') {
+		if (typeof bp[size] !== 'undefined') {
 			return bp[size];
 		} else {
 			console.log('Available Breakpoints:', bp);
@@ -29,25 +29,25 @@ const mq = {
 	min(size) {
 		let screen_width = $(window).width();
 		size = checkBP(size);
-		return screen_width > (size + 1);
+		return screen_width > size + 1;
 	},
 
-	max(size){
+	max(size) {
 		let screen_width = $(window).width();
 		size = checkBP(size);
 		return screen_width < size;
 	},
 
-	inside(wideSize, thinSize){
+	inside(wideSize, thinSize) {
 		let screen_width = $(window).width();
 		wideSize = checkBP(wideSize);
 		thinSize = checkBP(thinSize);
-		return  (thinSize + 1) < screen_width && screen_width < wideSize;
+		return thinSize + 1 < screen_width && screen_width < wideSize;
 	},
 
-	outside(wideSize, thinSize){
+	outside(wideSize, thinSize) {
 		return !mq.inside(wideSize, thinSize);
-	}
+	},
 };
 
 export default mq;

@@ -1,4 +1,3 @@
-
 'use strict';
 
 //npm imports
@@ -9,7 +8,7 @@ import $ from 'jquery';
 
 //module functionality
 class footer {
-	constructor(elem){
+	constructor(elem) {
 		const This = this;
 		this.elem = elem;
 		this.$elem = $(elem);
@@ -18,23 +17,23 @@ class footer {
 
 		this.openClass = '-open';
 
-		this.$trigger.click(function(e){
+		this.$trigger.click(function (e) {
 			e.preventDefault();
 			//This.exampleMethod();
-		})
+		});
 	}
 
 	//Description for example function
-	exampleMethod(){
+	exampleMethod() {
 		//this.$target.doStuff();
 	}
 }
 
 //This function is called on page load unless the name of this file starts with an underscore
-export default function() {
+export default function () {
 	console.log('The footer module javascript has loaded');
 
-	$('.JS-footer').each(function(e){
+	$('.JS-footer').each(function (e) {
 		new footer(this);
-	})
+	});
 }

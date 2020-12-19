@@ -1,5 +1,4 @@
-
-import replaceValues from "replace-values";
+import replaceValues from 'replace-values';
 
 //use this file to apply your very own custom default settings to EVERY item in the nav map
 
@@ -13,17 +12,16 @@ import replaceValues from "replace-values";
 
 //These defaults are set before any other defaults have been defined.
 //Use this to overide the default generated values in the nav map
-function navMap_pre_defaults(map, index, parent){
+function navMap_pre_defaults(map, index, parent) {
 	return {
 		//link : '#'//uncomment to disable auto link generation (leaves user defined links in tact)
-	}
+	};
 }
 
 //These defaults are set after the nav map has been fully generated
 //Use this to have access to all the standard values usually present in the nav map
 //Mostly used to define brand new default values
-function navMap_post_defaults(map, index, parent){
-
+function navMap_post_defaults(map, index, parent) {
 	replaceValues(map, {
 		//propertyName : "forced overide value"
 		//link : '#',//using this would disable ALL links (including links already defined in the main nav map file)
@@ -34,10 +32,9 @@ function navMap_post_defaults(map, index, parent){
 		index: index,
 		//link : '#',//this wouldn't do anything as the "link" property has already been defined by this stage
 		//parentName : parent.title,//this would set "parentName" to the current nav items parent title
-	}
+	};
 }
 
 var defaultTemplate = 'standard';
 
-
-export { navMap_pre_defaults, navMap_post_defaults, defaultTemplate }
+export { navMap_pre_defaults, navMap_post_defaults, defaultTemplate };

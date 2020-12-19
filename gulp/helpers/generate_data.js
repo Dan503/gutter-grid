@@ -1,20 +1,15 @@
-
-import { dirs, config, pjson } from '../config/shared-vars';
+import { dirs, config, pjson, join } from '../config/shared-vars';
 
 import fs from 'fs';
 import path from 'path';
 import foldero from 'foldero';
 
-export default function generate_data(){
-
+export default function generate_data() {
 	let siteData = [];
 	let finalData = {};
 
-
 	//items lower in the list overwrite items higher in the list
-	let dataPaths = [
-		path.join(dirs.source, dirs.data),
-	];
+	let dataPaths = [join(dirs.source, dirs.data)];
 
 	dataPaths.forEach((path, i) => {
 		if (fs.existsSync(path)) {
@@ -23,24 +18,22 @@ export default function generate_data(){
 
 			siteData[i] = foldero(path, {
 				recurse: true,
-				whitelist: '(.*/)*.+\.(json|ya?ml)$',
+				whitelist: '(.*/)*.+.(json|ya?ml)$',
 				loader: function loadAsString(file) {
 					try {
-						let ext = file.substr(file.lastIndexOf('.')+1);
+						let ext = file.substr(file.lastIndexOf('.') + 1);
 						if (ext === 'yaml' || ext === 'yml') {
 							json = yaml.safeLoad(fs.readFileSync(file, 'utf8'));
-						}
-						else {
+						} else {
 							json = JSON.parse(fs.readFileSync(file, 'utf8'));
 						}
-					}
-					catch(e) {
+					} catch (e) {
 						console.log('Error Parsing JSON/YAML file: ' + file);
 						console.log('==== Details Below ====');
 						console.log(e);
 					}
 					return json;
-				}
+				},
 			});
 		}
 	});
@@ -62,4 +55,4 @@ export default function generate_data(){
 
 let siteData = generate_data();
 
-export { generate_data, siteData }
+export { generate_data, siteData };

@@ -6,12 +6,11 @@
 
 import $ from 'jquery';
 
-export default function onScrollStop(fn, ...args){
-	$(window).scroll(function(e){
+export default function onScrollStop(fn, ...args) {
+	$(window).scroll(function (e) {
 		clearTimeout(window.scrollFinished);
-    window.scrollFinished = setTimeout(function(){
-  		fn.call(this, ...args);
-    }, 250);
+		window.scrollFinished = setTimeout(function () {
+			fn.call(this, ...args);
+		}, 250);
 	});
 }
-

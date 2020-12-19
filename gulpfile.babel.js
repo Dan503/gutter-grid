@@ -1,65 +1,82 @@
-'use strict';
+import {
+	gulp,
+	plugins,
+	args,
+	dirs,
+	jsWatch,
+	join,
+} from './gulp/config/shared-vars';
 
-import wrench from 'wrench';
-import { gulp, plugins, args, config, dirs, basePath, allSites, site, taskTarget, browserSync, jsWatch } from './gulp/config/shared-vars';
+import './gulp/tasks/browserSync';
+import './gulp/tasks/bump';
+import './gulp/tasks/clean';
+import './gulp/tasks/eslint';
+import './gulp/tasks/icomoon-unpackager';
+import './gulp/tasks/imagemin';
+import './gulp/tasks/modernizr';
+import './gulp/tasks/new';
+import './gulp/tasks/pug';
+import './gulp/tasks/sass';
+import { scripts_task } from './gulp/tasks/scripts';
+import './gulp/tasks/symbolize-svgs';
+import './gulp/tasks/watch';
 
-import waitForFile from './gulp/helpers/waitForFile';
-
-// This will grab all js in the `tmp/gulp-local-clone` directory
-// in order to load all gulp tasks
-wrench.readdirSyncRecursive('./'+dirs.gulp+'/tasks').filter((file) => {
-  return (/\.(js)$/i).test(file);
-}).map(function(file) {
-  require('./'+dirs.gulp+'/tasks/'+file)();
-});
-
-var clean = args.production ? ['clean', 'clean:livesite'] : ['clean'];
+var clean = args.production ? gulp.series('clean', 'clean:livesite') : 'clean';
 
 // Compiles all the code
-gulp.task('compile', [
-  'copy',
-  'pug',
-  'scripts',
-  'imagemin',
-  'symbolize-svgs',
-  'sass',
-  'modernizr',
-]);
+gulp.task(
+	'compile',
+	gulp.parallel(
+		'copy',
+		'pug',
+		scripts_task,
+		'imagemin',
+		'symbolize-svgs',
+		'sass',
+		'modernizr'
+	)
+);
 
 let user_used_serve = false;
 
-gulp.task('serve', ()=>{
-  user_used_serve = true;
-  gulp.start('default');
+gulp.task('serve', () => {
+	user_used_serve = true;
+	gulp.start('default');
 });
 
 // Testing
-gulp.task('test', ['eslint']);
+gulp.task('test', gulp.series('eslint'));
+
+const enable_js_watch = (done) => {
+	jsWatch.isEnabled = true;
+	done();
+};
+
+const warn_not_to_use_serve_command = (done) => {
+	if (user_used_serve) {
+		// User friendly message for Yeogurt users who are used to running "gulp serve"
+		setTimeout(() => {
+			console.log(
+				`\n   Just use "${plugins.util.colors.bold.green(
+					'gulp'
+				)}" rather than "${plugins.util.colors.bold.red('gulp serve')}" \n`
+			);
+		}, 2000);
+	}
+};
 
 // Default task (cleans and builds then runs server then watches for changes)
-gulp.task('default', clean, () => {
-
- 	jsWatch.isEnabled = true;
-
-  gulp.start(['clean:pages:empty','compile']);
-
-  //once home page file has been generated, start watch and browsersync
-  //(pug tends to be the task that takes the longest amount of time to compile)
-  waitForFile([taskTarget, basePath, 'index.'+config.serve].join('/'), ()=>{
-    //includes browsersync
-    gulp.start('watch');
-
-    if (user_used_serve){
-      // User friendly message for Yeogurt users who are used to running "gulp serve"
-      setTimeout(()=>{
-        console.log(`\n   Just use "${plugins.util.colors.bold.green('gulp')}" rather than "${plugins.util.colors.bold.red('gulp serve')}" \n`)
-      }, 2000);
-    }
-  });
-});
-
+gulp.task(
+	'default',
+	gulp.series(
+		clean,
+		enable_js_watch,
+		'clean:pages:empty',
+		'compile',
+		'watch',
+		warn_not_to_use_serve_command
+	)
+);
 
 //Cleans and builds only with no server
-gulp.task('build', clean, () => {
-  gulp.start('compile');
-});
+gulp.task('build', gulp.series(clean, 'compile'));

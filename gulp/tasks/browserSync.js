@@ -1,32 +1,43 @@
 'use strict';
 
-import { gulp, plugins, args, config, dirs, taskTarget, browserSync } from '../config/shared-vars';
+import {
+	gulp,
+	plugins,
+	args,
+	config,
+	taskTarget,
+	browserSync,
+	join,
+} from '../config/shared-vars';
 
-export default function() {
+let serverRoot = taskTarget;
 
-	let serverRoot = taskTarget;
-
-	gulp.task('php-server', function() {
-		plugins.connectPhp.server({ base: serverRoot, port: 8010, keepalive: true});
+gulp.task('php-server', function () {
+	return plugins.connectPhp.server({
+		base: serverRoot,
+		port: 8010,
+		keepalive: true,
 	});
+});
 
-	// BrowserSync
-	gulp.task('browserSync:php', ['php-server'], () => {
-		browserSync.init({
-			proxy: '127.0.0.1:8010',
-			open: args.open ? 'local' : false,
-			port: config.port || 3000
-		});
+const run_proxy_server = () => {
+	return browserSync.init({
+		proxy: '127.0.0.1:8010',
+		open: args.open ? 'local' : false,
+		port: config.port || 3000,
 	});
+};
 
-	// BrowserSync
-	gulp.task('browserSync:html', () => {
-		browserSync.init({
-			open: args.open ? 'local' : false,
-			port: config.port || 3000,
-			server: {
-				baseDir: './'+taskTarget,
-			}
-		});
+// BrowserSync
+gulp.task('browserSync:php', gulp.series('php-server', run_proxy_server));
+
+// BrowserSync
+gulp.task('browserSync:html', () => {
+	return browserSync.init({
+		open: args.open ? 'local' : false,
+		port: config.port || 3000,
+		server: {
+			baseDir: './' + taskTarget,
+		},
 	});
-}
+});
