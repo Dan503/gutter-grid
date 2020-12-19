@@ -461,14 +461,7 @@ const compile_pug = (done) => {
 		)
 		.pipe(gulp.dest(dest))
 		.on('end', () => {
-			notifier.notify({
-				title: 'Pug',
-				message: 'HTML compiled successfully',
-				icon: notification_icon_location + 'gulp.png',
-			});
-
 			if (config.serve === 'php') pugPostTasks.push('convert-HTML');
-
 			done();
 
 			// gulp.series(pugPostTasks)(done);

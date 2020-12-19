@@ -93,11 +93,6 @@ const compile_CSS = () => {
 		)
 		.pipe(plugins.if(args.production, plugins.cssnano({ rebase: false })))
 		.pipe(plugins.sourcemaps.write('./'))
-		.pipe(
-			plugins.if(() => {
-				return b++ === 0;
-			}, plugins.notify({ title: 'Sass', message: 'CSS compiled successfully' }))
-		)
 		.pipe(gulp.dest(dest))
 		.pipe(browserSync.stream({ match: '**/*.css' }));
 };

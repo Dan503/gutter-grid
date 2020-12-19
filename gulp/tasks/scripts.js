@@ -108,11 +108,6 @@ let browserifyTask = (files) => {
 					.on('end', function () {
 						if (!hasError) {
 							let time = (new Date().getTime() - startTime) / 1000;
-							notifier.notify({
-								title: 'Scripts',
-								message: path.basename(entry) + ' compiled successfully',
-								icon: notification_icon_location + 'gulp.png',
-							});
 
 							console.log(
 								plugins.util.colors.cyan(entry) +
