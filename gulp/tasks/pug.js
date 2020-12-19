@@ -386,9 +386,6 @@ const generate_html_pages = (done) => {
 };
 
 const compile_pug = (done) => {
-	//ensures you are working with the latest data
-	const siteData = generate_data();
-
 	// Add --debug option to your gulp task to view
 	// what data is being loaded into your templates
 	if (args.debug) {
