@@ -4,7 +4,7 @@
     {
       "title": "Home",
       "altTitle": "Why use Gutter Grid?",
-      "link": "/",
+      "link": "/gutter-grid/",
       "template": "home",
       "subNavigable": false
     },
