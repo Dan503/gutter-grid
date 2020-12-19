@@ -97,5 +97,5 @@ const set_up_watchers = (done) => {
 // Watch task
 gulp.task(
 	'watch',
-	gulp.series(browserSyncTask, jsWatch.enable, set_up_watchers)
+	gulp.series(jsWatch.enable, gulp.parallel(browserSyncTask, set_up_watchers))
 );
