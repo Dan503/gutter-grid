@@ -37,7 +37,8 @@ $(document).ready(function () {
 
 		if (typeof window.localStorage.activeTab !== 'undefined') {
 			switchTab(window.localStorage.activeTab);
-		} else {
+		}
+		else {
 			switchTab(0);
 		}
 
@@ -124,7 +125,8 @@ $(document).ready(function () {
 
 		if (this.type === 'html' && this.format === 'classes') {
 			this.add_html_class();
-		} else if (this.type === 'scss' && this.format === 'mixin') {
+		}
+		else if (this.type === 'scss' && this.format === 'mixin') {
 			this.add_mixin_wrap_setting();
 		}
 	}
