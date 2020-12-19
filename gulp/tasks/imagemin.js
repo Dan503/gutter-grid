@@ -15,12 +15,7 @@ import path from 'path';
 import gulpif from 'gulp-if';
 import pngquant from 'imagemin-pngquant';
 
-let dest = join(
-	taskTarget,
-	config.basePath,
-	dirs.assets,
-	dirs.images.replace(/^_/, '')
-);
+let dest = join(taskTarget, dirs.assets, dirs.images.replace(/^_/, ''));
 
 /** copies the non-typical-image favicon files into their places */
 const copy_favicons = () => {

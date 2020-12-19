@@ -38,7 +38,7 @@ let entries = config.entries;
 let browserifyTask = (files) => {
 	return function run_browserify(done) {
 		return files.map((entry) => {
-			let dest = path.resolve(taskTarget, config.basePath);
+			let dest = path.resolve(taskTarget);
 
 			// Options
 			let customOpts = {

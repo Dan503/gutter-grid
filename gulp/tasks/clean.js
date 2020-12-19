@@ -59,9 +59,9 @@ const clean_dynamic_assets = (done) => {
 	del.sync([
 		join(dirs.temporary, 'content.json'), //ensures the use of a fresh json content
 		join(dirs.source, dirs.pages, '**/assets/**/*'),
-		join(taskTarget, config.basePath, dirs.pages, '**/assets/**/*'),
+		join(taskTarget, dirs.pages, '**/assets/**/*'),
 	]);
-	deleteEmpty.sync(join(taskTarget, config.basePath, dirs.pages));
+	deleteEmpty.sync(join(taskTarget, dirs.pages));
 	done();
 };
 

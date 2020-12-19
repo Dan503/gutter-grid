@@ -22,13 +22,7 @@ export default function exportAsset({
 	if (args.export) {
 		file = file.replace('.scss', '.css');
 		path = path.replace(/_([0-9]_)?/, '');
-		const sourceFile = [
-			taskTarget,
-			config.basePath,
-			dirs.assets,
-			path,
-			file,
-		].join('/');
+		const sourceFile = [taskTarget, dirs.assets, path, file].join('/');
 		waitForFile(sourceFile, { notify: false }, () => {
 			if (notify)
 				console.log(

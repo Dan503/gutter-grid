@@ -17,12 +17,7 @@ let destination = dirs.temporary;
 
 //copies icons into the assets folder
 gulp.task('copy-icons', () => {
-	let iconDest = join(
-		taskTarget,
-		config.basePath,
-		dirs.assets,
-		dirs.icons.replace('_', '')
-	);
+	let iconDest = join(taskTarget, dirs.assets, dirs.icons.replace('_', ''));
 	return gulp
 		.src(join(dirs.source, dirs.icons, '/**/*'))
 		.pipe(plugins.changed(iconDest))

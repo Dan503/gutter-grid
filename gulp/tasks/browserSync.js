@@ -7,6 +7,7 @@ import {
 	config,
 	taskTarget,
 	browserSync,
+	basePath,
 	join,
 } from '../config/shared-vars';
 

@@ -49,13 +49,7 @@ Into an svg sprite that can be found here: ${plugins.util.colors.yellow(
 		finalDest
 	)}
 Full SVGs are still available here: ${plugins.util.colors.yellow(
-		[
-			taskTarget,
-			config.basePath,
-			dirs.assets,
-			dirs.images.replace(/^_/, ''),
-			'SVGs',
-		].join('/')
+		[taskTarget, dirs.assets, dirs.images.replace(/^_/, ''), 'SVGs'].join('/')
 	)}
 
 Use an SVG from the sprite by using ${plugins.util.colors.green(

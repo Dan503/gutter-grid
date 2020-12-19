@@ -26,12 +26,7 @@ const run_modernizr = () => {
 		.pipe(plugins.uglify())
 		.pipe(
 			gulp.dest(
-				join(
-					taskTarget,
-					config.basePath,
-					dirs.assets,
-					dirs.scripts.replace(/^_[0-9]_/, '')
-				)
+				join(taskTarget, dirs.assets, dirs.scripts.replace(/^_[0-9]_/, ''))
 			)
 		);
 };

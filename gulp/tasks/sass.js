@@ -26,12 +26,7 @@ const postcss = gulpLoadPlugins({
 });
 
 let entries = config.entries;
-let dest = join(
-	taskTarget,
-	config.basePath,
-	dirs.assets,
-	dirs.styles.replace(/^_0_/, '')
-);
+let dest = join(taskTarget, dirs.assets, dirs.styles.replace(/^_0_/, ''));
 
 let px2rem_settings = {
 	rootValue: 10,

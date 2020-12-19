@@ -1,7 +1,7 @@
 -
 	var navMap = site.data.navMap;
 	var basePath_leadingSlash = pkg.config.basePath === '' ? '' : '/';
-	var basePath = basePath_leadingSlash + pkg.config.basePath;
+	var basePath = args.production ? basePath_leadingSlash + pkg.config.basePath : '';
 
 //- shared pug JS functions for easier variable setting
 include ../../../node_modules/default-to/defaultTo

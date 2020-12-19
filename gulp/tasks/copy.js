@@ -21,12 +21,7 @@ import content_src from '../config/content_src';
 // Same as regular copy task but specific to the scripts folder
 //excludes the main js file though
 gulp.task('copy:scripts', () => {
-	let dest = join(
-		taskTarget,
-		config.basePath,
-		dirs.assets,
-		dirs.scripts.replace(/_[0-9]_/, '')
-	);
+	let dest = join(taskTarget, dirs.assets, dirs.scripts.replace(/_[0-9]_/, ''));
 	return gulp
 		.src([
 			join(dirs.source, dirs.scripts, '**/*'),
@@ -49,7 +44,7 @@ gulp.task(
 			return gulp
 				.src(asset_src + '/' + dirs.pages + '/**/' + dirs.assets + '/**/*')
 				.pipe(gulp.dest(dirs.source + '/' + dirs.pages))
-				.pipe(gulp.dest(join(taskTarget, config.basePath, dirs.pages)));
+				.pipe(gulp.dest(join(taskTarget, dirs.pages)));
 		}
 
 		done();
@@ -60,7 +55,7 @@ gulp.task(
 gulp.task(
 	'copy',
 	gulp.series('copy:scripts', 'copy:root-files', () => {
-		let dest = join(taskTarget, config.basePath);
+		let dest = join(taskTarget);
 		return gulp
 			.src([
 				join(dirs.source, '**/*'),

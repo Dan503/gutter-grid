@@ -2,7 +2,13 @@ import filesize from 'filesize';
 import fs from 'fs';
 import path from 'path';
 import defaultTo from 'default-to';
-import { dirs, config, validFileTypes, basePath } from '../config/shared-vars';
+import {
+	dirs,
+	config,
+	validFileTypes,
+	basePath,
+	args,
+} from '../config/shared-vars';
 import {
 	is_string,
 	is_int,
@@ -203,7 +209,7 @@ function generateLink(pageMap, i, parentMap) {
 				if (pageMap.link.indexOf(config.basePath) < 0) {
 					//add base path to front of links that do not start with a back slash
 					pageMap.link =
-						config.basePath.length > 0
+						config.basePath.length > 0 && args.production
 							? `/${config.basePath}/${pageMap.link}`
 							: '/' + pageMap.link;
 				} else {
@@ -218,7 +224,7 @@ function generateLink(pageMap, i, parentMap) {
 			if (validFileTypes.indexOf(fileExtension) > -1) {
 				var pathStart = 0;
 				if (basePath.length) {
-					if (pageMap.link.indexOf(basePath) === 0) {
+					if (pageMap.link.indexOf(basePath) === 0 && args.production) {
 						pathStart = basePath.length + 1;
 					} else {
 						pathStart = 1;

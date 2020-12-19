@@ -6,7 +6,6 @@ import {
 	plugins,
 	args,
 	config,
-	basePath,
 	dirs,
 	taskTarget,
 	browserSync,
@@ -60,7 +59,7 @@ import '../tasks/symbolize-svgs';
 
 let pugPostTasks = ['clean:pages:empty'];
 
-let dest = join(taskTarget, config.basePath);
+let dest = join(taskTarget);
 let navMapDest = dirs.temporary;
 let freshCompile = false;
 
@@ -167,7 +166,6 @@ const generate_html_pages = (done) => {
 		templateFiles.forEach((file, i) => {
 			let filePath =
 				[
-					basePath,
 					dirs.pages,
 					homeFolder,
 					generateFolderName(i, templateNavItem.title),
@@ -532,31 +530,10 @@ gulp.task('convert-HTML', () => {
 		});
 });
 
-//generates a redirect page if there is a need for one
-gulp.task('generate-redirect', () => {
-	if (
-		config.basePath &&
-		config.basePath !== '' &&
-		config.basePath !== '/' &&
-		config.redirect === true
-	) {
-		return generateFiles(
-			{
-				dest: `./${taskTarget}`,
-				fileName: 'index.' + config.serve.toLowerCase(),
-				content: redirect_page,
-			},
-			'Generated this redirect page:'
-		);
-	} else {
-		return Promise.resolve();
-	}
-});
-
 gulp.task(
 	'pug',
 	gulp.series(
-		gulp.parallel('symbolize-svgs', 'clean:pages:indexes', 'generate-redirect'),
+		gulp.parallel('symbolize-svgs', 'clean:pages:indexes'),
 		'pug:generate-pages'
 	)
 );
