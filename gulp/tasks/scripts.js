@@ -35,112 +35,116 @@ import main_js_file from '../config/generator_templates/main_js_file';
 let entries = config.entries;
 
 let browserifyTask = (files) => {
-	return files.map((entry) => {
-		let dest = path.resolve(taskTarget, config.basePath);
+	return function run_browserify(done) {
+		return files.map((entry) => {
+			let dest = path.resolve(taskTarget, config.basePath);
 
-		// Options
-		let customOpts = {
-			entries: [entry],
-			debug: true,
-			transform: [
-				babelify, // Enable ES6 features
-				envify, // Sets NODE_ENV for better optimization of npm packages
-			],
-			//allows you to import scripts without defining the path to the modules or _0_scripts folder in the import statment
-			paths: [
-				'./node_modules',
-				'./src/' + dirs.modules,
-				'./src/' + dirs.scripts,
-				'./' + dirs.jsUtils,
-			],
-		};
+			// Options
+			let customOpts = {
+				entries: [entry],
+				debug: true,
+				transform: [
+					babelify, // Enable ES6 features
+					envify, // Sets NODE_ENV for better optimization of npm packages
+				],
+				//allows you to import scripts without defining the path to the modules or _0_scripts folder in the import statment
+				paths: [
+					'./node_modules',
+					'./src/' + dirs.modules,
+					'./src/' + dirs.scripts,
+					'./' + dirs.jsUtils,
+				],
+			};
 
-		let bundler = browserify(customOpts);
+			let bundler = browserify(customOpts);
 
-		if (jsWatch.isEnabled) {
-			// Setup Watchify for faster builds
-			let opts = _.assign({}, watchify.args, customOpts);
-			bundler = watchify(browserify(opts));
-		}
+			if (jsWatch.isEnabled) {
+				// Setup Watchify for faster builds
+				let opts = _.assign({}, watchify.args, customOpts);
+				bundler = watchify(browserify(opts));
+			}
 
-		let rebundle = function () {
-			var hasError = false;
-			let startTime = new Date().getTime();
+			let rebundle = function () {
+				var hasError = false;
+				let startTime = new Date().getTime();
 
-			bundler
-				.bundle()
-				.on('error', function (err) {
-					hasError = true;
-					notifier.notify({
-						title: 'Scripts error',
-						message: err.message,
-						icon: notification_icon_location + 'gulp-error.png',
-					});
-					console.log(
-						`\n ${plugins.util.colors.red.bold(
-							'JS failed to compile:'
-						)} ${plugins.util.colors.yellow(err)}\n`
-					);
-					this.emit('end');
-				})
-				.pipe(vsource(entry))
-				.pipe(buffer())
-				.pipe(plugins.sourcemaps.init({ loadMaps: true }))
-				.pipe(plugins.if(args.production, plugins.uglify()))
-				.on('error', plugins.util.log)
-				.pipe(
-					plugins.rename(function (filepath) {
-						// Remove 'source' directory as well as prefixed folder underscores
-						// Ex: 'src/_0_scripts' --> '/scripts'
-						//filepath.dirname = filepath.dirname.replace(dirs.source, '').replace('_', '');
-
-						//Sends all output files to the scripts folder
-						filepath.dirname = path.join(
-							dirs.assets,
-							dirs.scripts.replace(/^_[0-9]_/, '')
-						);
-					})
-				)
-				.pipe(plugins.sourcemaps.write('./'))
-				.pipe(gulp.dest(dest))
-				// Show which file was bundled and how long it took
-				.on('end', function () {
-					if (!hasError) {
-						let time = (new Date().getTime() - startTime) / 1000;
+				bundler
+					.bundle()
+					.on('error', function (err) {
+						hasError = true;
 						notifier.notify({
-							title: 'Scripts',
-							message: path.basename(entry) + ' compiled successfully',
-							icon: notification_icon_location + 'gulp.png',
+							title: 'Scripts error',
+							message: err.message,
+							icon: notification_icon_location + 'gulp-error.png',
 						});
-
 						console.log(
-							plugins.util.colors.cyan(entry) +
-								' was browserified: ' +
-								plugins.util.colors.magenta(time + 's')
+							`\n ${plugins.util.colors.red.bold(
+								'JS failed to compile:'
+							)} ${plugins.util.colors.yellow(err)}\n`
 						);
+						this.emit('end');
+					})
+					.pipe(vsource(entry))
+					.pipe(buffer())
+					.pipe(plugins.sourcemaps.init({ loadMaps: true }))
+					.pipe(plugins.if(args.production, plugins.uglify()))
+					.on('error', plugins.util.log)
+					.pipe(
+						plugins.rename(function (filepath) {
+							// Remove 'source' directory as well as prefixed folder underscores
+							// Ex: 'src/_0_scripts' --> '/scripts'
+							//filepath.dirname = filepath.dirname.replace(dirs.source, '').replace('_', '');
 
-						const fileInfo = entry.split('\\');
-						const file = valueAt(fileInfo, -1);
-						const filePath = entry
-							.replace(dirs.source, '')
-							.replace(file, '')
-							.replace(/^[\\]|[\\]$/g, '');
+							//Sends all output files to the scripts folder
+							filepath.dirname = path.join(
+								dirs.assets,
+								dirs.scripts.replace(/^_[0-9]_/, '')
+							);
+						})
+					)
+					.pipe(plugins.sourcemaps.write('./'))
+					.pipe(gulp.dest(dest))
+					// Show which file was bundled and how long it took
+					.on('end', function () {
+						if (!hasError) {
+							let time = (new Date().getTime() - startTime) / 1000;
+							notifier.notify({
+								title: 'Scripts',
+								message: path.basename(entry) + ' compiled successfully',
+								icon: notification_icon_location + 'gulp.png',
+							});
 
-						if (args.export && file === entries.js)
-							exportAsset({ file, path: filePath });
+							console.log(
+								plugins.util.colors.cyan(entry) +
+									' was browserified: ' +
+									plugins.util.colors.magenta(time + 's')
+							);
 
-						return browserSync.reload('*.js');
-					}
-				});
-		};
+							const fileInfo = entry.split('\\');
+							const file = valueAt(fileInfo, -1);
+							const filePath = entry
+								.replace(dirs.source, '')
+								.replace(file, '')
+								.replace(/^[\\]|[\\]$/g, '');
 
-		if (jsWatch.isEnabled) {
-			bundler.on('update', rebundle); // on any dep update, runs the bundler
-			bundler.on('log', plugins.util.log); // output build logs to terminal
-		}
+							if (args.export && file === entries.js)
+								exportAsset({ file, path: filePath });
 
-		return rebundle();
-	});
+							done();
+
+							browserSync.reload('*.js');
+						}
+					});
+			};
+
+			if (jsWatch.isEnabled) {
+				bundler.on('update', rebundle); // on any dep update, runs the bundler
+				bundler.on('log', plugins.util.log); // output build logs to terminal
+			}
+
+			return rebundle();
+		});
+	};
 };
 
 const run_file_generation = (done) => {
@@ -170,8 +174,7 @@ const run_file_generation = (done) => {
 				fileName: entries.js,
 				content: main_js_file(moduleFiles),
 				callback() {
-					done();
-					return browserifyTask([scriptDest]);
+					browserifyTask([scriptDest])(done);
 				},
 			},
 			plugins.util.colors.bold('\nGenerated the main.js file:')
@@ -179,14 +182,14 @@ const run_file_generation = (done) => {
 	});
 };
 
-const proto_only_browserify = () => {
-	return browserifyTask([
-		'./' + path.join(dirs.source, dirs.protoOnly, entries.protoOnly.js),
-	]);
-};
+const proto_only_browserify = browserifyTask([
+	'./' + path.join(dirs.source, dirs.protoOnly, entries.protoOnly.js),
+]);
 
-export const scripts_task = () =>
-	gulp.parallel(run_file_generation, proto_only_browserify);
+export const scripts_task = gulp.parallel(
+	run_file_generation,
+	proto_only_browserify
+);
 
 //Just an alternate way to call the "gulp scripts" task without me having to introduce a breaking change
 gulp.task('js', gulp.series('copy:scripts', scripts_task));
