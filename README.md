@@ -1,12 +1,12 @@
-[![Gutter Grid logo](https://gutter-grid.netlify.app/assets/images/social-media.jpg)](https://gutter-grid.netlify.app)
+[![Gutter Grid logo](https://dan503.github.io/gutter-grid//assets/images/social-media.jpg)](https://dan503.github.io/gutter-grid/)
 
 ```
 npm install gutter-grid --save
 ```
 
-Documenation website: https://gutter-grid.netlify.app
+Documenation website: https://dan503.github.io/gutter-grid/
 
-## Why use [Gutter Grid](https://gutter-grid.netlify.app)?
+## Why use [Gutter Grid](https://dan503.github.io/gutter-grid/)?
 
 ### The problem
 
@@ -22,6 +22,6 @@ Gutter Grid is a flexbox based grid system for building fully responsive grid la
 
 Even though Gutter Grid is powered by flexbox, it features a legacy mode that, when enabled, adds `display:table`, `float:left` and `display:inline-block` backups that legacy browsers can fall back on. This will help prevent your site from blowing up even when viewed in those decrepit old IE8 and 9 browsers!
 
-**To read the full documentation go to https://gutter-grid.netlify.app.**
+**To read the full documentation go to https://dan503.github.io/gutter-grid/.**
 
-You can view the change log on the [GitHub releases page](https://github.com/Dan503/gutter-grid/releases) or the [Gutter Grid website](https://gutter-grid.netlify.app/pages/15-change-log/).
+You can view the change log on the [GitHub releases page](https://github.com/Dan503/gutter-grid/releases) or the [Gutter Grid website](https://dan503.github.io/gutter-grid/pages/15-change-log/).
