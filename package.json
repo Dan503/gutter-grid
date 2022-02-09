@@ -86,7 +86,7 @@
     "natives": "^1.1.6",
     "node-dir": "^0.1.17",
     "node-notifier": "^9.0.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "postcss": "^8.2.1",
     "postcss-flexibility": "^2.0.0",
     "postcss-pxtorem": "^5.1.1",
